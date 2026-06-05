@@ -25,3 +25,55 @@ subscriptions:
     stage: A
     diff_threshold_pct: 15
   keyword_recall_mode: or
+  intent_profiles:
+    - tag: VLN
+      description: 请你帮我找找vln(vision language navigation)方面的文章
+      enabled: true
+      paper_sources:
+        - arxiv
+      keywords:
+        - keyword: robotics
+          keyword_cn: ''
+          query: r
+        - keyword: long horizon
+          keyword_cn: ''
+          query: l
+        - keyword: vision language navigation
+          keyword_cn: 视觉语言导航
+          query: vision language navigation
+        - keyword: embodied navigation
+          keyword_cn: 具身导航
+          query: embodied navigation
+        - keyword: visual language understanding
+          keyword_cn: 视觉语言理解
+          query: visual language understanding
+        - keyword: instruction following navigation
+          keyword_cn: 指令跟随导航
+          query: instruction following navigation
+      intent_queries:
+        - query: research on vision language navigation
+          query_cn: 视觉语言导航研究
+          enabled: true
+          source: manual
+          note: ''
+        - query: embodied agents following natural language instructions for navigation
+          query_cn: 遵循自然语言指令进行导航的具身智能体
+          enabled: true
+          source: manual
+          note: ''
+      updated_at: '2026-06-05T05:06:27.113Z'
+source_backends:
+  arxiv:
+    papers_table: arxiv_papers
+    use_vector_rpc: true
+    vector_rpc: match_arxiv_papers
+    vector_rpc_exact: match_arxiv_papers_exact
+    use_bm25_rpc: true
+    bm25_rpc: match_arxiv_papers_bm25
+    sync_table: arxiv_sync_status
+    sync_success_value: success
+    schema: public
+    kind: supabase
+    enabled: true
+    url: https://lyucdwgefyfbmaiopjbk.supabase.co
+    anon_key: sb_publishable_lX-oi64Uxyd7SIVv3_w2Uw_MTOojeKq
