@@ -1,0 +1,746 @@
+Title: Beyond Isolation: A Unified Benchmark for General-Purpose Navigation
+
+URL Source: https://arxiv.org/pdf/2605.09441v1
+
+Published Time: Tue, 12 May 2026 01:52:59 GMT
+
+Number of Pages: 15
+
+Markdown Content:
+# Beyond Isolation: A Unified Benchmark for General-Purpose Navigation 
+
+Samson Sun 1,2,† Tianyi Yang 1,† Tengyue Wang 1,† Yikai Xue 1,† Zhengjie Xu 1,†
+
+Lingming Zhang Qichen Zhang 2 Chao Liang 2 Zhipeng Zhang 1,2,#
+
+1AutoLab, SAI, Shanghai Jiao Tong University 2Research Lab, Anyverse Dynamics Follow the man ahead until he stops     
+
+> in the bedroom ;then turn around, walk
+> straight out of the bedroom, turn left
+> and proceed to the kitchen area while
+> strictly avoiding the woman beside the
+> table .Find the microwave on the counter
+> and tell me how many pots are next to it .
+> follow the man into
+> the bedroom
+> follow the instructions to
+> walk towards the kitchen
+> Stage 1 Stage 2 Stage 3 Stage 4
+> avoid the person beside
+> the table
+> locate the microwave and
+> answer the question
+
+Robot Pool 
+
+170+ Scenes 
+
+Simulator 
+
+Human Expert 
+
+Design 
+
+> Manipulate
+
+7K+ instructions 
+
+1700+ videos 
+
+16.7 meters average length     
+
+> Trajectory length distribution
+> Human Following VLN SocialNav ObjectNav EQA
+
+. . . 
+
+Fig. 1: Overview of the proposed OmniNavBench. We introduce a unified benchmark designed to evaluate cross-skill coordination and cross-embodiment generalization in embodied navigation. The benchmark constructs composite instructions by dynamically composing a sequence of primary sub-tasks ( i.e. , VLN, PointNav, ObjectNav, Human Following), which must be executed while concurrently satisfying overarching constraints for SocialNav and EQA. 
+
+Abstract —The pursuit of general-purpose embodied agents is currently hindered by fragmented evaluation protocols that isolate navigation skills and fixate on specific robot morpholo-gies. This disconnect fails to reflect real-world scenarios where agents must orchestrate diverse behaviors across varying phys-ical embodiments. To bridge this gap, we introduce Omni-NavBench, a holistic benchmark designed to rigorously assess cross-skill coordination and cross-embodiment generalization. Distinguished from existing datasets, OmniNavBench introduces three paradigm shifts: (1) Compositional Complexity. We propose composite instructions that interleave sub-tasks from 6 distinct categories ( i.e. , PointNav, VLN, ObjectNav, SocialNav, Human Following and EQA), compelling agents to seamlessly transition between exploration, interaction, and social compliance within a single unified episode. (2) Morphological Universality and Sensor Flexibility. We present a simulation platform that breaks the reliance on single-morphology evaluation. This ecosystem empowers researchers to test generalization across different robot types, including humanoid, quadrupedal, and wheeled, while accommodating diverse algorithmic needs through a modular 
+
+> †
+
+Equal contribution. # Corresponding author. 
+
+sensor interface and a hybrid suite of 170 environments blending synthetic assets with real-world scans. (3) Demonstrations Quality. 
+
+Moving beyond mechanical shortest-path algorithms, we curate 1,779 expert trajectories via human teleoperation, capturing critical behavioral nuances, such as exploratory glance and anticipatory avoidance, essential for natural human-robot coex-istence. Extensive evaluations demonstrate that current methods, despite their claimed unified design, struggle to adapt to the complex, interleaved nature of truly general-purpose navigation. This exposes a critical disparity between existing capabilities and the demands of real-world deployment, underscoring Omni-NavBench as a crucial testbed for the next generation of gener-alist navigators. Dataset, code, and leaderboard are available at http://omninavbench.cloud-ip.cc. 
+
+I. I NTRODUCTION 
+
+Embodied navigation stands as a cornerstone of embodied AI and aims to endow agents with the autonomy to tra-verse unfamiliar physical environments through perception and reasoning. While the field began with pioneering tasks like Vision-and-Language Navigation (VLN) [2, 32] and point goal 
+
+> arXiv:2605.09441v1 [cs.RO] 10 May 2026
+
+navigation (PointNav) [1, 42], it has subsequently expanded into a diverse array of specialized formulations. These range from PointNav and VLN to more complex behaviors such as object goal navigation (ObjectNav) [6, 10], social nav-igation (SocialNav) [3, 24], human following [13, 29, 41], and embodied question answering (EQA) [19, 37]. Although recent efforts have sought to develop unified models capa-ble of addressing multiple tasks within a single architecture [39, 40, 43, 44], the evaluation landscape remains fragmented. This fragmentation arises because different navigation tasks are typically assessed using isolated benchmarks, where VLN relies on R2R [2] and RxR [16] while ObjectNav and EQA utilize HM3D-OVON [36] and OpenEQA [19] respectively. Such a setup creates artificial boundaries between skills by implicitly assuming that agents perform only one type of task at a time. Consequently, models claiming general nav-igation [39, 40, 43, 44] capabilities must undergo testing across disparate environments that fail to reflect the reality of deployment where agents must seamlessly switch between di-verse behaviors like exploratory search and obstacle avoidance. Furthermore, current evaluation protocols often fail to capture the complexity of physical deployment at both the behavioral and embodiment levels. Most datasets rely on trajectory data generated by shortest-path algorithms [15, 30] which miss the nuances of natural human motion under uncertainty such as exploratory behaviors or anticipatory avoidance [8, 17, 23, 36]. This limitation is compounded by evaluations restricted to limited robot morphologies [28], meaning that results derived from a single configuration are insufficient to predict per-formance across the heterogeneous kinematic properties of different embodiments required for real-world applications. To bridge the gap between fragmented academic tasks and the holistic demands of real-world operation, we introduce 
+
+OmniNavBench . Particularly, our OmniNavBench makes the following efforts for developing general navigation: 
+
+(1) Cross-Skill Coordination Evaluation: We introduce a rigorous protocol to bridge isolated navigation skills, pairing 1,779 composite instructions with expert trajectories to compel seamless transitions between capabilities. This benchmark is augmented to 7,116 instructions with diverse linguistic vari-ations to test robustness against natural language ambiguity. Each instruction weaves together a sequence of at least two primary tasks ( i.e. , VLN, ObjectNav, PointNav, and Human-Follow), which must be executed while concurrently satisfying overarching constraints for SocialNav and EQA. This complex formulation ensures agents are evaluated on their ability to maintain spatiotemporal continuity while switching strategies, rather than on performance in isolated subtasks. 
+
+(2) Flexible and Unified Evaluation Platform: We present a high-fidelity simulation platform built upon NVIDIA Isaac Sim [21] that breaks the reliance on single-morphology evaluation by enabling generalization tests across humanoid, quadrupedal, and wheeled robots. To accommodate diverse algorithmic needs, the system features a highly modular in-terface for customizing sensor count, position, and orientation (e.g. , RGB-D cameras, LiDAR, panoramic vision systems). This is supported by a hybrid suite of 170 environments, blending 85 high-fidelity synthetic assets from GRScenes [27] with 85 photorealistic real-world scans from Matterport3D [5]. 
+
+(3) Human Expert Demonstrations: We move beyond the limitations of mechanical shortest-path algorithms by curating a comprehensive dataset of 1,779 expert trajectories collected through human teleoperation. These demonstrations, which span an average length of 16.7 meters and a cumulative distance of 29.5 kilometers, encapsulate the subtle decision-making patterns and hesitation behaviors that characterize natural human navigation. The dataset includes rich egocentric RGB-D video sequences totaling 24 hours and 2.6M frames. By providing these high-quality supervision signals, we offer a resource that enables models to learn human-intuitive strate-gies for exploration and obstacle avoidance rather than merely optimizing geometric efficiency. To probe the limits of existing unified navigation models, we conducted a rigorous evaluation on OmniNavBench. Our analysis indicates a substantial performance degradation when models confront complex, multi-stage tasks. Although they can often make progress on individual sub-tasks, they frequently fail to complete the full composite instruction. This suggests the principal challenge lies in sequential task coordination rather than isolated skill deficiency. This weakness extends to dynamic scenarios, where models display inadequate social awareness and struggle to maintain appropriate interaction with moving humans. Furthermore, we observe significant generalization issues, where performance is inconsistent across different robot morphologies, deteriorates in photorealistic scans compared to synthetic environments, and is highly sensitive to variations in instruction style. In summary, our main contributions are: ♠ We introduce OmniNavBench, a unified benchmark for evaluating general-purpose navigation. ♠ We build a scalable simulation platform that supports heterogeneous robot embodiments, customizable sensor configurations, and multiple action interfaces, enabling standardized evaluation across embodiment and control set-tings. ♠ We conduct systematic evaluations and in-depth analyses of state-of-the-art models with unified navigation potential under a unified protocol, providing a strong reference for future unified navigation research. II. R ELATED WORKS 
+
+A. Embodied Navigation Benchmarks 
+
+Early embodied navigation research primarily treated tasks as isolated problems, which created a fragmented evaluation landscape. For instance, standard benchmarks like R2R [2] and RxR [16] focus on VLN, while HM3D-OVON [36] targets ObjectNav. HA-VLN [8] introduces dynamic human activities, which is still confined to the VLN domain. This separation prevents us from verifying whether an agent can coordinate multiple skills within a unified task flow. To address these lim-itations, recent works have introduced more complex settings. LHPR-VLN [25] extends task horizons with multi-step goals, but these are largely repetitions of homogeneous subtasks that do not require strategy switching. Other benchmarks like GOAT-Bench [14] involve navigating to goals specified by different modalities. Several similar works attempted to unify multiple navigation tasks, including OctoNav [11] and VLNVerse [18]. However, their scope is limited as they operate primarily in static settings, failing to incorporate dynamic entities like humans. This prevents them from testing an agent’s critical ability to switch strategies in response to real-time events. Furthermore, this issue is compounded by their reliance on trajectory data from shortest-path algorithms. Such simplistic paths do not reflect the complex, nuanced movements of human experts, which is a key feature captured by the manually collected data in our benchmark. 
+
+B. Trajectory Generation and Human Demonstrations 
+
+Most existing navigation benchmarks rely heavily on map-based shortest-path algorithms to generate trajectories [8, 11, 25]. These “oracle-view” paths exhibit idealized behavior [2, 15] and lack the natural characteristics humans display when facing uncertainty, such as exploration, anticipatory avoidance, and active scanning [8, 17, 23, 36]. This distri-butional gap prevents models from learning human-intuitive strategies. To address this, some works have explored in-corporating human demonstration data. For instance, RxR [16] provides human follower trajectories with temporally aligned language grounding. Similarly, analysis in CityNav [17] reveals that human paths differ significantly from shortest paths, particularly in landmark utilization (36.3% vs. 24.6%). The necessity of human data is further supported by research in robot manipulation, such as Robomimic [20] and RH20T [9]. These studies demonstrate that even limited high-quality human demonstrations can capture behavioral diversity that algorithmically generated data cannot replicate. Despite these findings, this paradigm has not yet been adopted in multi-task navigation benchmarks. Current works either persist with shortest-path generation or limit human data collection to single task types [3], leaving a lack of expert demonstrations that cover complex task flows. 
+
+C. Unified Navigation Models 
+
+At the algorithmic level, significant progress has been made toward building unified navigation capabilities. Several works have successfully unified multiple tasks into a single framework. For example, NaviLLM [43] and SAME [44] for-mulate navigation as language generation or modular decision problems. Similarly, UniGoal [35] and OmniNav [33] manage multi-modal goals and diverse task types within one system, while Uni-NaVid [39] further integrates VLN, ObjectNav, EQA, and HumanFollow into a single architecture. These efforts demonstrate that current model architectures possess strong potential for cross-task generalization. In parallel, there is a growing trend toward developing generalist algorithms that adapt to different robot morphologies. NavFoM [40] has been deployed across diverse platforms, including quadrupeds, drones, and wheeled robots. InternVLA-N1 [31] showcases zero-shot cross-embodiment generalization, spanning wheeled to humanoid robots, and NaVILA [7] achieves transfer for legged robots by decoupling high-level planning from low-level control. Furthermore, VLN-PE [28] highlights the im-portance of physical embodiment, revealing how sensitive existing algorithms are to robot dynamics and camera con-figurations. Collectively, these advances indicate that unified navigation models have demonstrated promising capabilities in task generalization and continuous control. However, a critical gap remains. These sophisticated models are still evaluated on fragmented, single-task benchmarks. There is currently no unified platform capable of systematically verifying their ability to perform dynamic strategy switching across skills and adapt to different embodiments within a cohesive task flow. III. O MNI NAV BENCH 
+
+The goal of OmniNavBench is to offer a unified platform for evaluating cross-skill navigation capabilities across het-erogeneous robot embodiments, utilizing high-quality human demonstrations as behavioral references. To achieve this, we adhere to the following four core design principles. 
+
+♠ Compositional Task Structure. To evaluate the coordina-tion of multiple navigation skills, each instruction integrates at least two heterogeneous sub-tasks, which combine static goal reaching, dynamic target tracking, and semantic reasoning within a single episode. This design imposes spatio-temporal continuity constraints, necessitating adaptive strategy switch-ing as task demands evolve. 
+
+♠ Cross-Embodiment Coverage. Addressing the diversity of real-world platforms, we ensure the same instruction set is executable across three morphologically distinct agents, including wheeled, quadrupedal, and humanoid robots. This design enables a direct assessment of algorithmic robustness against variations in kinematics, viewpoints, and dynamics. 
+
+♠ Naturalistic Behavior Supervision. Prioritizing behavioral realism over geometric optimality, all reference trajectories are collected via human teleoperation. Unlike shortest-path algorithms ( e.g. , A*), this approach preserves human-specific navigation patterns, such as exploratory behaviors and antici-patory adjustments [8, 17, 23, 36]. 
+
+♠ Controlled Difficulty Levels. To facilitate systematic evalu-ation, we establish a complexity curriculum by modulating the sequence length and task heterogeneity. The benchmark offers a difficulty gradient, ranging from two-task compositions to long-horizon four-or-more-task sequences, which allows for fine-grained analysis of agent capabilities. 
+
+A. Task Specification 
+
+We formalize the navigation mission as a composite instruc-tion comprising an ordered sequence of sub-tasks defined by 
+
+M = {(l1, τ 1, g 1), (l2, τ 2, g 2), . . . , (ln, τ n, g n)} (1) where li represents the natural language instruction segment, τi
+
+specifies the sub-task type, and gi defines the target goal. Our benchmark incorporates the following primitives to construct these sequences. 
+
+♠ Sequential Sub-tasks. We integrate four distinct navigation primitives to evaluate a full spectrum of embodied capabilities. Follow   
+
+> Follow
+> Follow
+> EQA
+> EQA
+> EQA
+> EQA EQA
+> EQA
+> VLN
+> VLN
+> VLN
+> ObjNav
+> ObjNav
+> ObjNav
+> ObjNav
+> ObjNav
+> PointNav
+> ObjNav
+> PointNav
+> PointNav
+> VLN
+> VLN
+> VLN
+> Social
+> Social
+> Social
+> Social
+> PointNav Social
+> 12%
+> ObjNav
+> 22%
+> 2 sub -tasks
+> 39%
+> 4+ sub -tasks
+> 29%
+> VLN
+> 42%
+> Follow
+> 10%
+> PointNav
+> 8%
+> EQA
+> 6%
+> 3 sub -tasks
+> 32%
+
+Fig. 2: Statistics of Sub-instructions. Sankey diagram depict-ing cross-skill compositional patterns (left), and distribution of sub-instruction types with task complexity breakdown (right).  
+
+> •
+
+VLN requires the agent to interpret natural language in-structions grounded in visual landmarks, such as “turning right after passing a sofa”.  
+
+> •
+
+ObjectNav compels the agent to conduct semantic ex-ploration in unknown environments to locate instances of specific categories like “find a trash can”.  
+
+> •
+
+PointNav tests precise geometric understanding by re-quiring movement to exact metric coordinates (x, y )
+
+relative to the starting pose.  
+
+> •
+
+HumanFollow necessitates active visual tracking where the agent must maintain continuous line-of-sight with a moving human subject. Notably, Return is a VLN sub-task that mandates nav-igating back to the starting position upon task completion, requiring the agent to leverage long-term spatial memory. 
+
+♠ Parallel Sub-task. We designate SocialNav and EQA as a concurrent operational constraint capable of being superim-posed onto any of the aforementioned sequential sub-tasks.  
+
+> •
+
+SocialNav requires the agent to minimize intrusion into human activity spaces during navigation.  
+
+> •
+
+EQA fuses navigation with cognitive reasoning where the agent must gather visual evidence to answer questions regarding environmental attributes. 
+
+B. Data Acquisition 
+
+We adhere to a strict human teleoperation protocol to cap-ture the nuances of biological navigation rather than relying on algorithmic planners. While shortest-path algorithms prioritize geometric optimality, human controllers exhibit organic be-haviors like hesitation and exploratory glances [8, 17, 23, 36]. These subtle cues are essential for learning robust policies, particularly for dynamic tasks like HumanFollow where rule-based generators fail to produce convincing social compliance. 
+
+♠ Rigorous Collection Pipeline. We implemented a multi-stage workflow involving trained annotators to ensure high-fidelity data. Operators manually control the robot to execute composite instructions within the simulator while the system records pose and sensor data as waypoints. To guarantee se-mantic alignment, experts subsequently verify the trajectories by reviewing the egocentric video feeds. We mandate that 
+
+Fig. 3: Cross-embodiment navigation across diverse en-vironments. Each row shows a different robot morphology (Carter, Aliengo, H1); each column shows a different envi-ronment source (synthetic, Matterport3D). Insets display ego-centric RGB observations, highlighting viewpoint variations across embodiments. any trajectory failing to capture specified landmarks or objects clearly must be revised by the original operator to maintain behavioral consistency throughout the iteration loop. 
+
+♠ Morphology-Agnostic Representation. The final dataset comprises waypoint sequences (x, y, θ, t ) paired with syn-chronized RGB-D streams. We deliberately exclude low-level action primitives because the high-fidelity physics in Isaac Sim introduces inertia and friction that necessitate continuous micro-corrections. These task-irrelevant adjustments constitute noise for high-level policy learning whereas our waypoint representation abstracts away these dynamics to facilitate transfer across different robot controllers. 
+
+C. Dataset Statistics 
+
+OmniNavBench contains 1,779 expert demonstration tra-jectories spanning 170 distinct scenes accompanied by 7,116 corresponding instructions, with an average trajectory length of 16.7 meters and duration of 48.9 seconds. The scenes are drawn from three sources with different visual characteristics: home environments account for 828 trajectories (46.5%), cov-ering diverse residential layouts and furniture arrangements; commercial spaces contribute 213 trajectories (12.0%), in-cluding offices and retail environments; and Matterport3D scans provide 738 trajectories (41.4%) with photorealistic reconstructions of real-world buildings. This diversity in visual appearance and spatial structure enables evaluation of cross-domain generalization. 
+
+♠ Task and Linguistic Complexity. Fig. 2 illustrates the comprehensive statistics of our dataset. The task composition (outer ring) demonstrates a balanced distribution covering both static and dynamic objectives. Specifically, VLN accounts for the largest share at 42%, followed by ObjectNav at 22%. To ensure diversity in interaction, we incorporate significant proportions of SocialNav (12%), Follow (10%), PointNav (8%), and EQA (6%). Notably, we allocated 28.6% of the VLN category to Return episodes, a deliberate design choice to rigorously evaluate the agent’s long-term spatial memory and path integration capabilities as previously discussed. The com-plexity distribution (inner ring) reveals a deliberate gradient of difficulty designed for systematic evaluation. Specifically, 39% of trajectories contain 2 sub-tasks, 32% extend to 3 TABLE I: Comparisons between OmniNavBench and existing benchmarks. OmniNavBench supports the most compre-hensive set of tasks and utilize human-expert trajectories.                                                                                                                                                
+
+> Benchmark Task Capability Cross Trajectory Avg. Instruction ObjNav SocialNav VLN Follow PointNav EQA Unified Embodiment Source Length
+> R2R [2] ✗✗✓✗✗✗✗✗Algorithm 29 RxR [16] ✗✗✓✗✗✗✗✗Human Expert -VLN-CE [15] ✗✗✓✗✗✗✗✗Algorithm 30 OpenEQA [19] ✗✗✗✗✗✓✗✗--HA-VLN [8] ✗✓✓✗✗✗✗✗Algorithm -GOAT-Bench [14] ✓✗✗✗✗✗✗✗Algorithm -REVERIE [22] ✗✗✓✗✗✗✗✗Algorithm 18 OVON [36] ✓✗✗✗✗✗✗✗Algorithm -LHPR-VLN [25] ✓✗✓✗✗✗✓✓Algorithm 18.17 VLN-PE [28] ✗✗✓✗✗✗✗✓Algorithm -VLNVerse [18] ✓✗✓✗✗✗✓✓Algorithm -OctoNav-Bench [11] ✓✗✓✗✓✗✓✗Algorithm -
+> OmniNavBench (Ours) ✓✓✓✓✓✓✓✓Human Expert 42
+
+sub-tasks, and a substantial 29% involve sequences of 4 or more sub-tasks.The instructions exhibit rich linguistic diver-sity, encompassing spatial references ( e.g. , bedroom, kitchen), target objects ( e.g. , chair, sofa), and action verbs ( e.g. , forward, follow), with lengths spanning from 9 to over 130 words (see Appendix Fig. 8). 
+
+♠ Instruction and Linguistic Diversity Our benchmark fur-ther provides three supplementary instruction variants which are Concise , First Person , and Verbose to enhance linguistic diversity, yielding a total of 7,116 stylized instructions. These variants were generated using Qwen3-Max [34] to produce se-mantically consistent paraphrases of the original instructions. 
+
+Concise instructions retain only essential navigation intents by removing redundant descriptions. First Person instructions reframe the original into a first-person voice. Verbose instruc-tions incorporate additional contextual elaborations while pre-serving the target and action sequence. Details about stylized instructions are shown in the appendix due to space limitations. 
+
+♠ Morphology and Evaluation Protocols. The benchmark encompasses three robot morphologies including wheeled (NVIDIA Carter V1 and Kitt15), quadrupedal, and bipedal models where each category accounts for approximately one-third of the trajectories. Notably, the quadrupedal subset specifically includes stair-climbing sequences that are largely absent from the other two groups. To facilitate rigorous assessment, the trajectory split partitions the dataset by scene and contains 1,187 training trajectories across 112 scenes along with 592 test trajectories from 58 scenes to evaluate generalization to novel environments. 
+
+D. Evaluation Platform 
+
+We established an integrated simulation platform based on NVIDIA Isaac Sim to facilitate unified navigation evaluation and cross-embodiment algorithm development. Distinct from some modern simulators ( e.g. , Matterport3D [4], Habitat [26]) that employ discrete state transitions or teleportation-based navigation, our platform performs continuous physical step-ping with full dynamics simulation. We adopt the RL-based locomotion controllers from VLN-PE [28] to ensure physically grounded robot dynamics. This design provides high-fidelity physics and photorealistic rendering which ensures that eval-uated agents must handle realistic motion dynamics, sensor noise, and visual complexity that closely approximate real-world deployment conditions. Our platform integrates three morphologically distinct robots including the wheeled NVIDIA Carter V1, the quadrupedal Unitree Aliengo, and the humanoid Unitree H1 within a unified framework. Fig. 3 visualizes the three em-bodiments navigating in both synthetic and photorealistic environments, highlighting the viewpoint variations arising from different morphologies. Despite fundamental differences in kinematic constraints and viewpoint heights, the platform achieves unified orchestration through abstracted control inter-faces. Algorithms can output waypoint sequences for low-level path tracking or directly issue velocity commands (v, ω ) for end-to-end control. Furthermore, the system supports discrete actions such as step forward or rotate left and right that are mapped to physically-simulated movements. These actions reach the same target poses as teleportation-based simulators while preserving realistic dynamics, which enables the same algorithm to be evaluated across different morphologies with-out modification. Our platform also facilitates modular sensor configuration where users can specify sensor types including RGB, depth, panoramic camera, LiDAR, and IMU along with their quantities and mounting poses via configuration files. To enable dynamic scene interaction, the platform leverages the built-in human character system of Isaac Sim which offers diverse pedestrian models with various appearances. Pedestri-ans follow predefined trajectories while maintaining the ca-pability for autonomous obstacle avoidance to create realistic social navigation scenarios for SocialNav and HumanFollow tasks. The platform supports both synthetic environments with controllable lighting and real-world Matterport scans for cross-domain generalization evaluation. To ensure scientific rigor, scene initial states, pedestrian trajectories, and random seeds can be precisely reproduced via configuration files which guarantees verifiable and reproducible experimental results. TABLE II: Sub-task Definitions and Completion Rules in OmniNavBench. A composite instruction consists of sub-tasks 
+
+M = {(li, τ i, g i)}. For each τi, we define its input li, evaluator goal gi, and the sub-task completion rule. 
+
+Task Type ( τi) Instruction Input ( li) Goal ( gi) Completion Rule 
+
+State-Goal Navigation (Agent must reach a specific terminal state) 
+
+VLN Language with Landmarks & Rooms Landmarks set Lgoal and Region Rgoal ∃t :   min ℓ∈L goal dgeo (xt, ℓ ) ≤ 3.0 m ∧  xt ∈ R goal 
+
+
+
+PointNav Relative Displacement ∆p Evaluator goal coordinate pgoal ∃t : d(xt, p goal ) ≤ 0.36 m
+
+ObjectNav Open-vocabulary Query (text) Target object set O(query ) ∃t : min o∈O (query ) dgeo (xt, o ) ≤ 1.0 m
+
+Process-Maintenance (Agent must maintain a state over time) 
+
+HumanFollow “Follow [Description]” Moving person Hid Cond te = True, where Cond t := (1 .0 < d t ≤ 3.0) ∧ (∠err,t ≤ 60 ◦)
+
+Cognitive Reasoning (Agent must generate an answer) 
+
+EQA Visual Question Q Ground Truth Answer A SubstringMatch (Apred , A ) = True 
+
+Global Constraint (Applies to all tasks) 
+
+SocialNav (Implicit) All avoided humans H Constraint: d(xt, H) ≥ 1.2 m throughout the episode 
+
+Notation. xt: robot center position; dgeo (·, ·): geodesic distance computed via NavMesh; d(·, ·): 2D Euclidean distance; ∠err,t : angle between robot heading and robot-to-human vector; Hid : identity of the person to follow; te: timestep when the person stops moving; For State-Goal tasks, completion is determined at the first timestep satisfying the predicate. Episode-level metrics (SR, SPL, etc. ) are defined in Tab. III. 
+
+TABLE III: Evaluation Metrics in OmniNavBench. All reported metrics represent the average over test episodes (using the relevant subset Ntask for task-specific metrics). SR , SPL , and OSR are standard navigation metrics. SGC measures continuous progress. HFS , HFR , ACC , and SII evaluate human-robot interaction and safety.                                                            
+
+> Dimension Metric Sym. Definition / Formula (Averaged over relevant episodes) Significance Completion
+> Success Rate SR 1
+> N
+> PNi=1 Si(δg)Fraction of fully successful episodes. Completion Success Rate CSR 1
+> N
+> PNi=1
+> Kcompleted ,i
+> Ktotal ,i Avg. ratio of strictly completed sub-instructions. Sub-Goal Completion SGC 1
+> N
+> PNi=1 1
+> Ki
+> PKi
+> j=1 P(τi,j )Average continuous progress across sub-tasks. Oracle Success Rate OSR 1
+> N
+> PNi=1 OS i(δg)Success if goal was ever reached.
+> Efficiency Success weighted by Path Length SPL 1
+> N
+> PNi=1 Siℓshortest,i
+> max( ℓactual,i ,ℓ shortest,i )Efficiency weighted by success.
+> Interaction
+> Human Follow Success HFS 1
+> Nfollow
+> PNfollow
+> i=1 I(pos end ,i ∈Valid i)Binary success at the final step. Human Follow Ratio HFR 1
+> Nfollow
+> PNfollow
+> i=1
+> Tvalid ,i
+> Tfollow ,i ,Tvalid ,i =PTfollow ,i
+> t=1 I(Cond i,t )Coverage ratio during following phase. EQA Accuracy EQA-ACC 1
+> Neqa
+> PNeqa
+> i=1 I(apred ,i ∼=agt ,i )Accuracy of numeric-normalized substring match.
+> Safety Social Intrusion Index SII 1
+> Nsocial
+> PNsocial
+> i=1
+>  1
+> Ti
+> PTi
+> t=1 I(dt<1.2m)Ratio of steps violating personal space.
+
+Notation. N : total test episodes ( Nfollow , N social , N eqa : task-specific subsets); I(·): indicator function; Ktotal ,i : total number of sub-instructions in episode i;
+
+Ki: number of sub-tasks for progress calculation; τi,j : the j-th sub-task of episode i; P(·): continuous progress function (see Appendix); Si: binary success (Si = 1 if agent issues Stop within δg of the final goal); OS i: oracle success ( OS i = 1 if agent ever reaches within δg of the final goal); δg : goal distance threshold (2.0 m); ℓ: path length; Tfollow ,i : duration of the following phase; agt , a pred : ground truth and predicted answers ( ∼= denotes a success condition via numeric-normalized substring matching); dt: distance between robot and human, SII threshold of 1.2 m corresponds to Hall’s personal distance zone [12]. 
+
+E. Comparison to Other Benchmarks 
+
+As detailed in Tab. I, OmniNavBench significantly advances upon previous benchmarks. While recent works like OctoNav-Bench [11] and VLNVerse [18] move towards task unification, they are largely confined to static environments and neglect dynamic interaction. In contrast, OmniNavBench uniquely integrates six tasks spanning the full spectrum from static navigation ( e.g. , PointNav) to dynamic human-agent interac-tion ( e.g. , SocialNav). Most critically, OmniNavBench distin-guishes itself through its behavioral realism. Unlike virtually competing unified benchmarks ( e.g. , LHPR-VLN [25], VLN-Verse [18], OctoNav-Bench [11]) that rely on geometrically optimal paths from algorithmic planners, it is built entirely on human-expert teleoperated data. This foundation allows it to capture naturalistic nuances like exploratory behaviors and social compliance, which are absent in algorithmic trajectories [8, 17, 23, 36]. Furthermore, by incorporating diverse robot morphologies and the highest linguistic complexity (avg. 42 words), OmniNavBench provides a more faithful approxima-tion of real-world challenges. IV. E XPERIMENTS 
+
+Successful completion of a composite instruction requires valid execution of all sequential sub-tasks and fulfillment of end-of-task criteria. Task definitions and completion rules are detailed in Tab. II, with episode-level metrics in Tab. III. We provide more details about the metrics definition in the appendix due to space limitation. 
+
+A. Evaluating Unified Navigation Models 
+
+We evaluate four recent popular unified navigation models representing different unification mechanisms. PoliFormer [38] relies on scaled transformer-based reinforcement learning to induce general navigation behaviors across tasks while Uni-NaVid [39] formulates diverse navigation tasks as a single vision–language–action generation problem from egocentric video. MTU3D [45] unifies navigation and exploration by explicitly optimizing movement for spatial understanding and OmniNav [33] adopts a shared continuous waypoint abstrac-tion to support multiple navigation task formulations. All models are evaluated zero-shot with publicly released weights, TABLE IV: Quantitative comparison with state-of-the-art baselines across different robot embodiments. All metrics are reported in %. CSR (Completion Success Rate) and SGC (Sub-Goal Completion) indicate partial progress. SII (Social Intrusion Index) is a safety metric where lower is better (↓). EQA-ACC denotes the Embodied Question Answering accuracy. Best results are bolded.                                                                                                                                
+
+> Method Embodiment SR ↑CSR ↑SGC ↑OSR ↑SPL ↑HFS ↑HFR ↑SII ↓EQA-ACC ↑
+> MTU3D
+> NVIDIA Carter 0.00 1.08 29.65 5.38 0.00 20.00 24.66 4.46 –Unitree Aliengo 0.00 0.98 30.95 11.76 0.00 11.11 16.91 5.65 –Unitree H1 0.00 2.08 27.42 8.33 0.00 22.22 27.83 6.74 –
+> Poliformer
+> NVIDIA Carter 0.98 0.98 29.12 10.78 0.73 14.81 14.70 2.72 –Unitree Aliengo 1.00 0.00 29.41 16.00 0.29 3.70 9.68 2.94 –Unitree H1 1.08 0.00 25.27 3.23 0.31 8.00 9.32 4.14 –
+> Uni-NaVid
+> NVIDIA Carter 1.94 2.91 38.93 9.71 1.45 45.16 43.67 9.39 0.00 Unitree Aliengo 1.96 2.94 44.54 26.47 1.56 23.33 32.75 18.46 6.25 Unitree H1 1.06 2.13 29.02 8.51 1.06 24.14 25.99 10.09 7.69
+> OmniNav
+> NVIDIA Carter 1.96 0.00 32.34 8.82 1.71 33.33 31.04 5.23 –Unitree Aliengo 8.74 1.94 35.30 15.53 7.01 14.29 17.49 3.40 –Unitree H1 0.00 0.00 24.82 2.13 0.00 14.81 13.93 3.31 –
+
+adapting only camera count, resolution, and FOV to each algorithm’s specifications. 
+
+Findings1: Universal Performance Degradation. Tab. IV presents the quantitative evaluation of four unified navigation models across three robot embodiments. Despite their claimed multi-task capabilities demonstrated on isolated benchmarks, all evaluated models exhibit substantial performance degra-dation on our OmniNavBench. The highest Success Rate 
+
+(SR ), which measures whether the agent issues a stop action at goal area, achieved is merely 8.74% by OmniNav on the Unitree Aliengo platform while most configurations fall below 2%. Crucially, this underperformance is consistent across all three morphologies which indicates a fundamental limitation rather than platform-specific issues. Consequently, the finding underscores the necessity of OmniNavBench as a rigorous testbed to bridge the gap between specialized success and true cross-task cross-embodiment generalization. 
+
+Findings2: Disparity Between Isolated Skills and Sequential Execution. Sub-Goal Completion (SGC ) is defined as the mean progress across sub-tasks, where each sub-task progress score ranges from 0 to 1. The contrast between 
+
+SGC and the Success Rate (SR ) reveals a critical insight where models can achieve moderate progress on individual sub-tasks with SGC exceeding 44% for Uni-NaVid on Aliengo yet fail to complete full episodes. This disparity indicates that the primary bottleneck lies in the inability to execute multiple diverse navigation tasks sequentially within a single continuous episode. This limitation largely stems from cur-rent training paradigms which rely on datasets composed of isolated single task and fail to model the realistic transition between diverse navigation behaviors, which validates the necessity of our proposed dataset for fostering true multi-task sequential capability. 
+
+Findings3: The Last Centimeter Gap in End-to-End Navi-gation. Oracle Success Rate (OSR ) captures instances where the agent physically reaches goal once without issuing a stop action. Interestingly, Uni-NaVid achieves 26.47% OSR 
+
+on the Unitree Aliengo yet secures only a 1.96% SR . This significant disparity between higher OSR values and the lower 
+
+SR suggests that agents frequently navigate correctly to the vicinity of target goals but fail to issue correct termination signals. These results reflect that current end-to-end navigation models successfully handle path planning but fail at the final decision stage which indicates they are still missing the “last centimeter” capability required for real-world deployment. 
+
+Findings4: Deficiencies in Dynamic Social Interaction. Per-formance on dynamic interaction tasks exposes significant lim-itations. Human Follow Success (HFS ), the task comple-tion rate, and Human Follow Ratio (HFR ), the proportion of valid following, remain low across all configurations. The best HFS of 45.16% achieved by Uni-NaVid on Carter de-grades substantially on legged robots. This persistent violation of personal space constraints reveals a lack of social awareness and poses critical challenges for real-world deployment. 
+
+Findings5: Sensitivity to Morphological Variations. Perfor-mance varies dramatically across robot morphologies even for identical algorithms. OmniNav achieves 8.74% SR on the quadrupedal Aliengo but drops to 1.96% on the wheeled Carter, while the humanoid platform consistently produces the lowest performance due to its complex dynamics. This sensitivity can be attributed to the inherent differences in embodiment complexity where distinct kinematic constraints influence trajectory feasibility and the increased control diffi-culty of bipedal locomotion introduces greater physical insta-bility compared to wheeled or quadrupedal platforms. 
+
+B. Failure Mode Analysis 
+
+To provide a more granular characterization of the per-formance bottlenecks, we categorize the observed failures into four primary modes (Fig. 4 top): (i) Goal-reaching Drift (Drift ), where the agent reaches the target but leaves again; (ii) Termination Signal Failure (Stuck ), where the agent reaches the goal but fails to claim completion; (iii) Premature Termination (Prem. Stop ), involv-ing episodes that stop before reaching the target vicinity; (iv) 
+
+Fall , which accounts for failures resulting from falling. To further disentangle the failure patterns, we extend analysis to the interplay between scenario types and task performance, TABLE V: Ablation study of language prompt strategies. All metrics are reported in %. Best results are bolded.                                                                                                      
+
+> Model Variant SR ↑CSR ↑SGC ↑OSR ↑SPL ↑HFS ↑HFR ↑SII ↓EQA-ACC ↑
+> OmniNav
+> Origin 8.74 1.94 35.30 15.53 7.01 14.29 17.49 3.40 –Concise 13.65 1.94 26.85 16.51 10.41 7.86 8.91 8.98 –First Person 14.47 3.88 25.02 14.32 11.88 25.72 13.06 13.18 –Verbose 8.65 2.94 25.09 9.47 6.69 25.72 11.88 7.88 –
+> Uni-NaVid
+> Origin 1.96 2.94 44.54 26.47 1.56 23.33 32.75 18.46 6.25 Concise 4.55 1.82 38.74 25.45 3.72 24.24 27.85 14.46 10.53
+> First Person 5.83 1.94 39.83 27.18 3.28 35.71 31.10 19.34 5.26 Verbose 3.88 3.88 39.47 18.45 2.85 32.14 31.59 15.50 5.26 5
+> 10
+> 15
+> 20
+> 10
+> 20
+> 30
+> 20
+> 40
+> 60
+> 80
+> Drift
+> Stuck
+> Prem. Stop
+> Fall Rate
+> NVIDIA Carter
+> Drift
+> Stuck
+> Prem. Stop
+> Fall Rate
+> Unitree Aliengo
+> Drift
+> Stuck
+> Prem. Stop
+> Fall Rate
+> Unitree H1
+> MTU3D Poliformer Uni -NaVid OmniNav
+> Nav. Failure Rate (%)  98
+> 88
+> 76
+> 92 98 100 100 100 100 98 100 98
+
+Fig. 4: Failure Mode Analysis across Embodiments. Radar charts comparing four failure types for four models. Bar chats comparing total failure on two scenes. investigating how the structural complexity of different envi-ronments influences the distribution of failure modes. 
+
+Findings6: Failure Modes Various across Embodiments. 
+
+The distribution of failure modes differs substantially across robot morphologies (Fig. 4 top). On the wheeled Carter, 
+
+Stuck and Prem. Stop constitute the dominant failure modes, while Fall remains minimal. Falls on the wheeled Carter are caused by collisions rather than balance loss. In contrast, the humanoid H1 exhibits an elevated rate of 
+
+Fall (60–80%), which suppresses the relative proportion of other failure types. The quadrupedal Aliengo presents a more balanced distribution. We attribute this divergence to the inherent physical properties and control stability margins of each embodiment. The wheeled platform possesses a statically stable base, meaning that policy uncertainty or sub-optimal actions typically manifest passively as hesitation or idling (Stuck , Prem. Stop ). Conversely, the bipedal H1 requires continuous active balancing and is highly sensitive to control noise. Consequently, similar policy imperfections propagate into dynamic instability, causing immediate falls rather than benign stops. Thus, the variation in failure modes reflects how distinct dynamic constraints amplify different consequences of the same policy limitations. 
+
+Findings7: Failure Modes Between Synthetic and Real Scenes. A comparative analysis (Fig. 4 bottom) between synthetic environments and 3D scanned scenes reveals aconsistent performance degradation within photorealistic re-constructions. Failure Rate is defined as 1 − SR . Across all model-embodiment configurations, Matterport3D scenes induce significantly higher failure rates than their synthetic counterparts. We attribute this decline to the inherent structural complexity of real-world scans, characterized by irregular geometries, dense clutter, and narrow passages, which im-pose stricter demands on both perceptual understanding and precise kinematic planning. Consequently, while synthetic scenes with predictable layouts tend to mask policy limitations, the unstructured nature of real-world environments exposes the models’ fragility and highlights the critical gap between simplified training proxies and realistic deployment scenarios. 
+
+C. Instruction Style Analysis 
+
+Findings8: Sensitivity to Instruction Variations. To investi-gate the impact of linguistic variability on model robustness, we conducted systematic tests on the OmniNav and Uni-NaVid using the Unitree Aliengo platform. The results in Tab. V reveal that navigation performance is highly sensitive to instruction phrasing, with distinct styles eliciting varied responses across different metrics. Notably, the Concise and 
+
+First Person variants consistently improve Success Rate 
+
+(SR ) compared to the original instructions for both models, whereas the Verbose style yields comparable or degraded performance. Furthermore, while SGC and HFR consistently decrease across all stylized variants, HFS peaks specifically under the First Person style. This observed sensitivity suggests that current models overfit to specific syntactic patterns and struggle to generalize across diverse linguistic formulations, highlighting a critical need for greater linguistic diversity dur-ing training to achieve robust natural language understanding. V. C ONCLUSION 
+
+We present OmniNavBench, a comprehensive platform that bridges the divide between specialized navigation primitives and general-purpose embodiment. Through the integration of composite instructions and diverse robot morphologies, we provide a robust testbed for cross-skill and cross-embodiment generalization. Crucially, our analysis reveals a systemic fail-ure in current unified models to handle sequential skill transi-tions. These findings underscore two critical directions: robust progress tracking for sequential coordination, and reliable termination decisions to close the gap between goal reaching and task completion. More broadly, our results highlight urgent challenges in dynamic interaction, morphological adaptability, and instruction robustness, underscoring the need for next-generation agents capable of long-horizon reasoning. 
+
+Acknowledgement. This work was supported by the Natu-ral Science Foundation of China (Grant No. 62503323). REFERENCES 
+
+[1] Peter Anderson, Angel Chang, Devendra Singh Chaplot, Alexey Dosovitskiy, Saurabh Gupta, Vladlen Koltun, Jana Kosecka, Jitendra Malik, Roozbeh Mottaghi, Mano-lis Savva, et al. On evaluation of embodied navigation agents. arXiv preprint arXiv:1807.06757 , 2018. [2] Peter Anderson, Qi Wu, Damien Teney, Jake Bruce, Mark Johnson, Niko S¨ underhauf, Ian Reid, Stephen Gould, and Anton Van Den Hengel. Vision-and-language navigation: Interpreting visually-grounded navigation instructions in real environments. In Proceedings of the IEEE confer-ence on computer vision and pattern recognition , pages 3674–3683, 2018. [3] Abhijat Biswas, Allan Wang, Gustavo Silvera, Aaron Steinfeld, and Henny Admoni. Socnavbench: A grounded simulation testing framework for evaluating social navi-gation. ACM Transactions on Human-Robot Interaction (THRI) , 11(3):1–24, 2022. [4] Angel Chang, Angela Dai, Thomas Funkhouser, Maciej Halber, Matthias Niessner, Manolis Savva, Shuran Song, Andy Zeng, and Yinda Zhang. Matterport3d: Learning from rgb-d data in indoor environments. International Conference on 3D Vision (3DV) , 2017. [5] Angel Chang, Angela Dai, Thomas Funkhouser, Maciej Halber, Matthias Niessner, Manolis Savva, Shuran Song, Andy Zeng, and Yinda Zhang. Matterport3d: Learning from rgb-d data in indoor environments. arXiv preprint arXiv:1709.06158 , 2017. [6] Devendra Singh Chaplot, Dhiraj Prakashchand Gandhi, Abhinav Gupta, and Russ R Salakhutdinov. Object goal navigation using goal-oriented semantic exploration. 
+
+Advances in Neural Information Processing Systems , 33: 4247–4258, 2020. [7] An-Chieh Cheng, Yandong Ji, Zhaojing Yang, Zaitian Gongye, Xueyan Zou, Jan Kautz, Erdem Bıyık, Hongxu Yin, Sifei Liu, and Xiaolong Wang. Navila: Legged robot vision-language-action model for navigation. arXiv preprint arXiv:2412.04453 , 2024. [8] Yifei Dong, Fengyi Wu, Qi He, Heng Li, Minghan Li, Zebang Cheng, Yuxuan Zhou, Jingdong Sun, Qi Dai, Zhi-Qi Cheng, et al. Ha-vln: A benchmark for human-aware navigation in discrete-continuous environments with dynamic multi-human interactions, real-world val-idation, and an open leaderboard. arXiv preprint arXiv:2503.14229 , 2025. [9] Hao-Shu Fang, Hongjie Fang, Zhenyu Tang, Jirong Liu, Chenxi Wang, Junbo Wang, Haoyi Zhu, and Cewu Lu. Rh20t: A comprehensive robotic dataset for learning diverse skills in one-shot. arXiv preprint arXiv:2307.00595 , 2023. [10] Chen Gao, Si Liu, Jinyu Chen, Luting Wang, Qi Wu, Bo Li, and Qi Tian. Room-object entity prompting and reasoning for embodied referring expression. IEEE Transactions on Pattern Analysis and Machine Intelli-gence , 46(2):994–1010, 2023. [11] Chen Gao, Liankai Jin, Xingyu Peng, Jiazhao Zhang, Yue Deng, Annan Li, He Wang, and Si Liu. Octonav: Towards generalist embodied navigation. arXiv preprint arXiv:2506.09839 , 2025. [12] Edmund T Hall and Edward T Hall. The hidden dimen-sion , volume 609. Anchor, 1966. [13] Yulong Huang, Yonggang Zhang, Peng Shi, Zhemin Wu, Junhui Qian, and Jonathon A Chambers. Robust kalman filters based on gaussian scale mixture distributions with application to target tracking. IEEE Transactions on Systems, Man, and Cybernetics: Systems , 49(10):2082– 2096, 2017. [14] Mukul Khanna, Ram Ramrakhya, Gunjan Chhablani, Sriram Yenamandra, Theophile Gervet, Matthew Chang, Zsolt Kira, Devendra Singh Chaplot, Dhruv Batra, and Roozbeh Mottaghi. Goat-bench: A benchmark for multi-modal lifelong navigation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition , pages 16373–16383, 2024. [15] Jacob Krantz, Erik Wijmans, Arjun Majumdar, Dhruv Batra, and Stefan Lee. Beyond the nav-graph: Vision-and-language navigation in continuous environments. In 
+
+European Conference on Computer Vision , pages 104– 120. Springer, 2020. [16] Alexander Ku, Peter Anderson, Roma Patel, Eugene Ie, and Jason Baldridge. Room-across-room: Multilingual vision-and-language navigation with dense spatiotempo-ral grounding. arXiv preprint arXiv:2010.07954 , 2020. [17] Jungdae Lee, Taiki Miyanishi, Shuhei Kurita, Koya Sakamoto, Daichi Azuma, Yutaka Matsuo, and Naka-masa Inoue. Citynav: Language-goal aerial navigation dataset with geographic information. arXiv preprint arXiv:2406.14240 , 2024. [18] Sihao Lin, Zerui Li, Xunyi Zhao, Gengze Zhou, Liuyi Wang, Rong Wei, Rui Tang, Juncheng Li, Hanqing Wang, Jiangmiao Pang, Anton van den Hengel, Jiajun Liu, and Qi Wu. Vlnverse: A benchmark for vision-language nav-igation with versatile, embodied, realistic simulation and evaluation, 2025. URL https://arxiv.org/abs/2512.19021. [19] Arjun Majumdar, Anurag Ajay, Xiaohan Zhang, Pranav Putta, Sriram Yenamandra, Mikael Henaff, Sneha Silwal, Paul Mcvay, Oleksandr Maksymets, Sergio Arnaud, et al. Openeqa: Embodied question answering in the era of foundation models. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition ,pages 16488–16498, 2024. [20] Ajay Mandlekar, Danfei Xu, Josiah Wong, Soroush Nasiriany, Chen Wang, Rohun Kulkarni, Li Fei-Fei, Silvio Savarese, Yuke Zhu, and Roberto Mart´ ın-Mart´ ın. What matters in learning from offline human demon-strations for robot manipulation. arXiv preprint arXiv:2108.03298 , 2021. [21] NVIDIA. Isaac Sim. URL https://github.com/isaac-sim/ IsaacSim. [22] Yuankai Qi, Qi Wu, Peter Anderson, Xin Wang, William Yang Wang, Chunhua Shen, and Anton van den Hengel. Reverie: Remote embodied visual referring expression in real indoor environments. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition , pages 9982–9991, 2020. [23] Zhiwen Qiu, Ziang Liu, Wenqian Niu, Tapomayukh Bhattacharjee, and Saleh Kalantari. Egocognav: Cognition-aware human egocentric navigation. arXiv preprint arXiv:2511.17581 , 2025. [24] Tim Schreiter, Tiago Rodrigues de Almeida, Yufei Zhu, Eduardo Gutierrez Maestro, Lucas Morillo-Mendez, An-drey Rudenko, Luigi Palmieri, Tomasz P Kucner, Martin Magnusson, and Achim J Lilienthal. Th¨ or-magni: A large-scale indoor motion capture recording of human movement and robot interaction. The International Jour-nal of Robotics Research , 44(4):568–591, 2025. [25] Xinshuai Song, Weixing Chen, Yang Liu, Weikai Chen, Guanbin Li, and Liang Lin. Towards long-horizon vision-language navigation: Platform, benchmark and method. In Proceedings of the Computer Vision and Pattern Recognition Conference , pages 12078–12088, 2025. [26] Andrew Szot, Alexander Clegg, Eric Undersander, Erik Wijmans, Yili Zhao, John Turner, Noah Maestre, Mustafa Mukadam, Devendra Singh Chaplot, Oleksandr Maksymets, et al. Habitat 2.0: Training home assistants to rearrange their habitat. Advances in neural information processing systems , 34:251–266, 2021. [27] Hanqing Wang, Jiahe Chen, Wensi Huang, Qingwei Ben, Tai Wang, Boyu Mi, Tao Huang, Siheng Zhao, Yilun Chen, Sizhe Yang, et al. Grutopia: Dream general robots in a city at scale. arXiv preprint arXiv:2407.10943 , 2024. [28] Liuyi Wang, Xinyuan Xia, Hui Zhao, Hanqing Wang, Tai Wang, Yilun Chen, Chengju Liu, Qijun Chen, and Jiangmiao Pang. Rethinking the embodied gap in vision-and-language navigation: A holistic study of physical and visual disparities. In Proceedings of the IEEE/CVF International Conference on Computer Vision , pages 9455–9465, 2025. [29] Shaoan Wang, Jiazhao Zhang, Minghan Li, Jiahang Liu, Anqi Li, Kui Wu, Fangwei Zhong, Junzhi Yu, Zhizheng Zhang, and He Wang. Trackvla: Embodied visual track-ing in the wild. arXiv preprint arXiv:2505.23189 , 2025. [30] Zun Wang, Jialu Li, Yicong Hong, Yi Wang, Qi Wu, Mohit Bansal, Stephen Gould, Hao Tan, and Yu Qiao. Scaling data generation in vision-and-language naviga-tion. In Proceedings of the IEEE/CVF international con-ference on computer vision , pages 12009–12020, 2023. [31] Meng Wei, Chenyang Wan, Jiaqi Peng, Xiqian Yu, Yuqiang Yang, Delin Feng, Wenzhe Cai, Chenming Zhu, Tai Wang, Jiangmiao Pang, et al. Ground slow, move fast: A dual-system foundation model for gener-alizable vision-and-language navigation. arXiv preprint arXiv:2512.08186 , 2025. [32] Meng Wei, Chenyang Wan, Xiqian Yu, Tai Wang, Yuqiang Yang, Xiaohan Mao, Chenming Zhu, Wenzhe Cai, Hanqing Wang, Yilun Chen, et al. Streamvln: Streaming vision-and-language navigation via slowfast context modeling. arXiv preprint arXiv:2507.05240 ,2025. [33] Xinda Xue, Junjun Hu, Minghua Luo, Xie Shichao, Jin-tao Chen, Zixun Xie, Quan Kuichen, Guo Wei, Mu Xu, and Zedong Chu. Omninav: A unified framework for prospective exploration and visual-language navigation. 
+
+arXiv preprint arXiv:2509.25687 , 2025. [34] An Yang, Anfeng Li, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chang Gao, Chen-gen Huang, Chenxu Lv, Chujie Zheng, Dayiheng Liu, Fan Zhou, Fei Huang, Feng Hu, Hao Ge, Haoran Wei, Huan Lin, Jialong Tang, Jian Yang, Jianhong Tu, Jianwei Zhang, Jianxin Yang, Jiaxi Yang, Jing Zhou, Jingren Zhou, Junyang Lin, Kai Dang, Keqin Bao, Kexin Yang, Le Yu, Lianghao Deng, Mei Li, Mingfeng Xue, Mingze Li, Pei Zhang, Peng Wang, Qin Zhu, Rui Men, Ruize Gao, Shixuan Liu, Shuang Luo, Tianhao Li, Tianyi Tang, Wenbiao Yin, Xingzhang Ren, Xinyu Wang, Xinyu Zhang, Xuancheng Ren, Yang Fan, Yang Su, Yichang Zhang, Yinger Zhang, Yu Wan, Yuqiong Liu, Zekun Wang, Zeyu Cui, Zhenru Zhang, Zhipeng Zhou, and Zihan Qiu. Qwen3 technical report. arXiv preprint arXiv:2505.09388 , 2025. [35] Hang Yin, Xiuwei Xu, Linqing Zhao, Ziwei Wang, Jie Zhou, and Jiwen Lu. Unigoal: Towards universal zero-shot goal-oriented navigation. In Proceedings of the Computer Vision and Pattern Recognition Conference ,pages 19057–19066, 2025. [36] Naoki Yokoyama, Ram Ramrakhya, Abhishek Das, Dhruv Batra, and Sehoon Ha. Hm3d-ovon: A dataset and benchmark for open-vocabulary object goal navi-gation. In 2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) , pages 5543–5550. IEEE, 2024. [37] Licheng Yu, Xinlei Chen, Georgia Gkioxari, Mohit Bansal, Tamara L Berg, and Dhruv Batra. Multi-target embodied question answering. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition , pages 6309–6318, 2019. [38] Kuo-Hao Zeng, Zichen Zhang, Kiana Ehsani, Rose Hen-drix, Jordi Salvador, Alvaro Herrasti, Ross Girshick, Aniruddha Kembhavi, and Luca Weihs. Poliformer: Scal-ing on-policy rl with transformers results in masterful navigators. arXiv preprint arXiv:2406.20083 , 2024. [39] Jiazhao Zhang, Kunyu Wang, Shaoan Wang, Minghan Li, Haoran Liu, Songlin Wei, Zhongyuan Wang, Zhizheng Zhang, and He Wang. Uni-navid: A video-based vision-language-action model for unifying embodied navigation tasks. arXiv preprint arXiv:2412.06224 , 2024. [40] Jiazhao Zhang, Anqi Li, Yunpeng Qi, Minghan Li, Jia-hang Liu, Shaoan Wang, Haoran Liu, Gengze Zhou, Yuze Wu, Xingxing Li, et al. Embodied navigation foundation model. arXiv preprint arXiv:2509.12129 , 2025. [41] Zhen Zhang, Jiaqing Yan, Xin Kong, Guangyao Zhai, and Yong Liu. Efficient motion planning based on kinodynamic model for quadruped robots following per-sons in confined spaces. IEEE/ASME Transactions on Mechatronics , 26(4):1997–2006, 2021. [42] Xiaoming Zhao, Harsh Agrawal, Dhruv Batra, and Alexander G Schwing. The surprising effectiveness of visual odometry techniques for embodied pointgoal nav-igation. In Proceedings of the IEEE/CVF International Conference on Computer Vision , pages 16127–16136, 2021. [43] Duo Zheng, Shijia Huang, Lin Zhao, Yiwu Zhong, and Liwei Wang. Towards learning a generalist model for embodied navigation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition ,pages 13624–13634, 2024. [44] Gengze Zhou, Yicong Hong, Zun Wang, Chongyang Zhao, Mohit Bansal, and Qi Wu. Same: Learning generic language-guided visual navigation with state-adaptive mixture of experts. In Proceedings of the IEEE/CVF International Conference on Computer Vision , pages 7794–7807, 2025. [45] Ziyu Zhu, Xilin Wang, Yixuan Li, Zhuofan Zhang, Xiaojian Ma, Yixin Chen, Baoxiong Jia, Wei Liang, Qian Yu, Zhidong Deng, et al. Move to understand a 3d scene: Bridging visual grounding and exploration for efficient and versatile embodied navigation. In Proceedings of the IEEE/CVF International Conference on Computer Vision , pages 8120–8132, 2025. APPENDIX 
+
+A. Instruction Generation Pipeline 
+
+The generation of a single episode in OmniNavBench follows a structured pipeline to ensure the synchronization of environment states, task logic, and expert behavior: 1) Environment and State Initialization : A human anno-tator performs a semantic traversal of the selected scene to identify a valid initial pose s0 for the robot. During this stage, the annotator also manually places dynamic obstacles and defines their motion constraints C within the Isaac Sim environment. 2) Task Orchestration : A composite mission is constructed by sequencing at least two heterogeneous sub-tasks into a task chain 
+
+T = {(l1, τ 1, g 1), . . . , (ln, τ n, g n)}. This includes defining the semantic goals gi and the corresponding natural language instruction segments li.3) Expert Demonstration : A human operator teleoperates the selected robot morphology to execute the task chain 
+
+T within the initialized simulation state. The system synchronously records egocentric RGB-D streams, robot poses, and control commands at each timestep. 4) Verification and Post-processing : The collected tra-jectory is audited via a verification loop where experts review the egocentric video to confirm that all sub-goals 
+
+gi were successfully reached and that social constraints were maintained. Validated episodes are then aggregated into the final experience dataset D.
+
+B. Instruction Stylization Pipeline 
+
+We developed a instruction stylization pipeline. Building upon the 1,779 core expert-annotated instructions, we utilized the Qwen3-Max [34] large language model to generate seman-tically consistent paraphrases across three distinct linguistic dimensions: Concise , Verbose , and First Person . This process yielded a dataset of 7,116 stylized instructions. The three variants were specifically designed to evaluate the robustness of embodied agents against natural language ambiguity, example shown in Fig. 5. All three variants are accompanied by manual verification to preserve the original navigation targets and action sequences, differing only in linguistic style: 
+
+• Concise : Retains only core navigation intent by removing redundant modifiers and descriptions. 
+
+• Verbose : Adds environmental details and descriptive ad-jectives. 
+
+• First Person : Rewrites instructions from the agent’s perspective. 
+
+1) Robot Embodiment Specifications: The specific param-eters for the different robot embodiments used in our “Robot Pool” are detailed in Table VI. Height refers to the overall robot height. Cam (Stand) denotes the camera height in the default standing pose, while Cam (Obs.) indicates the camera height during active navigation, which may differ due to postural changes. Go straight into the living room and locate the table in the middle of the sofa . Turn left,                                                                                                                                                                             
+
+> continue straight to the bathroom doorway, then turn around again and head back to
+> the table you found earlier .Finally ,return to your starting position .
+> Concise Style *Struck -through yellow text indicates removed redundancy
+> Go straight into the living room and locate the table in the middle of the sofa .Turn left,
+> continue straight to the bathroom doorway, then turn around again and head back to
+> the table you found earlier .Finally, return to your starting position .
+> Original Instruction
+> You are now the robot navigating .Here is what you need to do :Ineed to go straight into
+> the living room and locate the table in the middle of the sofa .Ishould turn left, continue
+> straight to the bathroom doorway, then turn around again and head back to the table I
+> found earlier .Finally, Ineed to return to my starting position .
+> First Person Style *Underlined Green text indicates viewpoints shifts and framing
+> Go straight into the living room and locate the table in the middle of the sofa .Then ,turn
+> left and continue straight until you reach the bathroom doorway .Once you reach it ,turn
+> around again and head back to the table you found earlier .Finally, return to your
+> starting position .
+> Verbose Style *Red text indicates added connectors and elaborations
+
+Fig. 5: Semantically Consistent Instruction Style Genera-tion Pipeline. The figure illustrates the process of transforming a human-annotated original instruction into three distinct vari-ants ( Concise , Verbose , and First Person ) using Qwen3-Max. Visual annotations highlight specific linguistic modifications: removed redundancy (Concise), added elaborations (Verbose), and viewpoint shifts (First Person). TABLE VI: Specifications of Robot Embodiments 
+
+Robot Type Height Cam (Stand) Cam (Obs.) 
+
+(m) (m) (m) Nvidia Carter V1 0.66 0.56 0.56 Unitree Aliengo 0.60 0.52 0.22 Unitree H1 1.80 1.47 1.36 
+
+2) Simulation of Dynamic Humans: For Social Navigation and Human Following tasks, dynamic humans are simulated using the omni.anim.people extension in Isaac Sim. Human characters follow predefined waypoint sequences spec-ified, which can be chained to form longer trajectories. All characters walk at a fixed speed of about 1.0 m/s. Given the complexity of indoor spaces, each episode contains 1–2 dynamic humans, sampled from a pool of 6 distinct character appearances shown in Fig. 6. Trajectories are fully determin-istic: replaying the same episode produces identical human motion, ensuring fair and reproducible evaluation. 
+
+Fig. 6: Dynamic human character appearances. The six characters span diverse genders, ethnicities, and attire to improve visual diversity in Social Navigation and Human Following tasks. 3) Metrics Calculation: Distance Computation 
+
+a) Geodesic Distance via NavMesh.: For VLN and Ob-jectNav tasks, we compute geodesic distance dgeo (·, ·) via Navigation Mesh (NavMesh). Existing ObjectNav evaluations typically measure the Euclidean distance between the robot and the object’s geometric center. However, for large objects (e.g. , beds, sofas), the geometric center often lies in unreach-able areas, leading to false negatives. To address this, we leverage NavMesh, a polygonal rep-resentation of traversable areas in Isaac Sim. Starting from the target position, the system performs a fan-shaped scan toward the robot to identify the nearest reachable point on the NavMesh boundary, then computes the geodesic path distance. 
+
+b) Euclidean Distance.: For PointNav, HumanFollow, and SocialNav, we directly compute the 2D Euclidean distance 
+
+d(·, ·) between the robot’s center xt and the target position. 
+
+Metric Definitions 
+
+c) Distance Function Assignment.: Throughout the fol-lowing metric definitions, the distance function d(·, ·) is in-stantiated according to task type:  
+
+> •
+
+For VLN and ObjectNav sub-tasks, d(·, ·) := dgeo (·, ·)
+
+denotes the geodesic distance computed via NavMesh.  
+
+> •
+
+For PointNav , HumanFollow , and SocialNav sub-tasks, 
+
+d(·, ·) denotes the 2D Euclidean distance. Let δg = 2 .0 m denote the default goal distance threshold for episode-level metrics. 
+
+d) Completion Metrics.:  
+
+> •
+
+SR (Success Rate): The fraction of episodes where the agent issues Stop within δg of the final goal. SR = 1
+
+N
+
+> N
+
+X
+
+> i=1
+
+Si(δg )
+
+where N is the total number of test episodes, and 
+
+Si(δg ) = 1 if the agent stops within distance δg of the final goal in episode i, otherwise 0. 
+
+> •
+
+CSR (Completion Success Rate): The average ratio of strictly completed sub-instructions per episode. CSR = 1
+
+N
+
+> N
+
+X
+
+> i=1
+
+Kcompleted ,i 
+
+Ktotal ,i 
+
+where Ktotal ,i is the total number of sub-instructions in episode i, and Kcompleted ,i is the number of sub-instructions completed according to task-specific rules (see Tab. II).  
+
+> •
+
+SGC (Sub-Goal Completion): The average continuous progress across all sub-tasks. SGC = 1
+
+N
+
+> N
+
+X
+
+> i=1
+
+1
+
+KiKiX
+
+> j=1
+
+P(τi,j )
+
+where Ki is the number of sub-tasks in episode i, and 
+
+τi,j denotes the j-th sub-task. The progress function P(·)
+
+is defined according to sub-task type: 
+
+– State-Goal Navigation (GOTO_OBJECT for ObjectNav, GOTO_POINT for PointNav, 
+
+GOTO_LANDMARK and GOTO_ROOM as markers for VLN, RETURN_TO for backtracking): 
+
+P = min 
+
+
+
+1, rdmin 
+
+
+
+where dmin is the minimum distance to the sub-goal during the episode, and r is the task-specific success threshold. 
+
+– Room Entry (GOTO_ROOM ): 
+
+P = I[entered ]
+
+Binary indicator: 1 if the agent entered the target room, 0 otherwise. 
+
+– Human Following (FOLLOW_HUMAN ): 
+
+P = HFR Directly uses the Human Follow Ratio as the progress measure.  
+
+> •
+
+OSR (Oracle Success Rate): Success if the agent was 
+
+ever within δg of the final goal during the episode. OSR = 1
+
+N
+
+> N
+
+X
+
+> i=1
+
+OS i(δg )
+
+where OS i(δg ) = 1 if the agent reaches within δg of the final goal at any timestep, regardless of whether it issued 
+
+Stop .
+
+e) Efficiency Metrics.:  
+
+> •
+
+SPL (Success weighted by Path Length) [1]: Measures navigation efficiency, weighted by success. SPL = 1
+
+N
+
+> N
+
+X
+
+> i=1
+
+Si
+
+ℓshortest ,i 
+
+max( ℓactual ,i , ℓ shortest ,i )
+
+where ℓshortest ,i is the shortest path length from start to goal, and ℓactual ,i is the actual path length traversed by the agent. 
+
+f) Interaction Metrics.:  
+
+> •
+
+HFS (Human Follow Success): Adopted form [29], we defined binary success at the final timestep te when the target human stops. HFS = 1
+
+Nfollow 
+
+> Nfollow
+
+X
+
+> i=1
+
+I(Valid i,t e )
+
+where Nfollow is the number of HumanFollow episodes. 
+
+dt = d(xt, h t) denote the Euclidean distance between the robot’s center xt and the target human position ht
+
+at timestep t, and ∠err,t denote the angular difference between the robot’s heading and the direction toward the target human. The valid following condition is defined as: Valid i,t := ( dt ∈ (1 .0, 3.0] m) ∧ (∠err,t ≤ 60 ◦)Fig. 7: Sim vs. Real validation. Same instructions, approxi-mately consistent completion in each setting.  
+
+> •
+
+HFR (Human Follow Ratio): Adopted form [29], we defined the proportion of timesteps satisfying the valid following condition. HFR = 1
+
+Nfollow 
+
+> Nfollow
+
+X
+
+> i=1
+
+Tvalid ,i 
+
+Tfollow ,i 
+
+, Tvalid ,i =
+
+> Tfollow ,i
+
+X
+
+> t=1
+
+I(Valid i,t )
+
+where Tfollow ,i is the total duration of the following phase in episode i. 
+
+> •
+
+EQA-ACC (EQA Accuracy): Adopted form [39], we defined accuracy of embodied question answering. EQA-ACC = 1
+
+Neqa 
+
+> Neqa
+
+X
+
+> i=1
+
+I(apred ,i ∼= agt ,i )
+
+where Neqa is the number of EQA episodes, apred ,i and 
+
+agt ,i are the predicted and ground-truth answers. The matching operator ∼= performs case-insensitive substring matching, with numeric normalization that unifies written numerals ( e.g. , “one”, “two”) and digits ( e.g. , “1”, “2”) before comparison. 
+
+g) Safety Metrics.:  
+
+> •
+
+SII (Social Intrusion Index): The ratio of timesteps where the robot violates personal space. SII = 1
+
+Nsocial 
+
+> Nsocial
+
+X
+
+> i=1
+
+1
+
+TiTiX
+
+> t=1
+
+I(d(xt, H) < 1.2 m)
+
+!
+
+where Nsocial is the number of episodes involving dy-namic humans, Ti is the episode length, xt is the robot’s center position, H is the set of humans, and d(·, ·) is the Euclidean distance. 
+
+C. Sim-to-Real Validation 
+
+To validate sim-to-real consistency, we deployed Uni-NaVid on a wheeled robot in a real-world scene and its 3DGS-reconstructed simulated counterpart. As shown in Fig. 7, the agent exhibits qualitatively consistent behaviors across both settings. Moreover, OmniNavBench enables comprehensive evaluation by encompassing both purely synthetic environ-ments and imported real-world scans like Matterport3D, pro-viding fair, reproducible, and safe evaluations across tasks and embodiments. Number of Samples 
+
+> Instruction Length (words)
+
+Fig. 8: Statistics of instructions. Distribution of instruction lengths and a word cloud of navigation targets. 
+
+D. Behavioral Analysis During Pedestrian Pauses 
+
+Unlike human operators, who naturally pause to assess unpredictable situations ( e.g. , verifying if a pedestrian has stopped), current models lack this cognitive “hesitation”. To quantify this gap, we analyze agent behaviors during pedes-trian pause windows (Tab. VII) and classify them into four states: Correct Wait , Abandon , Social Intrusion , and Over-shoot . Our findings reveal that existing algorithms struggle sig-nificantly to interpret unpredictable dynamic behaviors. Rather than exhibiting the Correct Wait behavior seen in ground-truth (GT) demonstrations, models typically either prematurely 
+
+Abandon the target (degrading HFR) or blindly move forward, resulting in Social Intrusion (worsening SII). TABLE VII: Behavioral classification during pedestrian pause windows.                                           
+
+> Agent Correct Wait ↑Abandon ↓Intrusion ↓Overshoot ↓HFR ↑SII ↓
+> GT Operator 81.8 2.3 15.9 0.0 ––Uni-NaVid 29.4 29.4 35.3 5.9 32.75 34.28 OmniNav 37.5 62.5 0.0 0.0 17.49 23.49 MTU3D 25.0 62.5 12.5 0.0 16.91 19.48 Poliformer 13.3 86.7 0.0 0.0 9.68 14.81
+
+E. Instruction Statistics F. Assets 
+
+OmniNavBench is constructed using 170 3D scenes from two primary sources: Matterport3D (MP3D) [5] and GRScenes [27]. Tab. VIII summarizes the scene distribution. TABLE VIII: Scene statistics used in OmniNavBench. 
+
+Dataset Number of Scenes 
+
+Matterport3D (MP3D) 85 GRScenes-Home 61 GRScenes-Commercial 24 
+
+Total 170 
+
+1) Matterport3D Scenes: We utilize 85 scenes from the Matterport3D dataset. The complete list of scene identifiers is provided below: 17DRP5sb8fy, 1LXtFkjw3qL, 1pXnuDYAj8r, 29hnd4uzFmX, 2azQ1b91cZZ, 2n8kARJN3HM, 2t7WUuJeko7, 5LpN3gDmAk7, 5q7pvUzZiYa, 759xd9YjKW5, 7y3sRwLe3Va, 8194nk5LbLH, 82sE5b5pLXE, 8WUmhLawc2A, ARNzJeq3xxb, B6ByNegPMKs, D7N2EKCX4Sj, E9uDoFAP3SH, EDJbREhghzL, EU6Fwq7SyZv, GdvgFV5R1Z5, HxpKQynjfin, JF19kD82Mey, JeFG25nYj2p, JmbYfDe2QKZ, PX4nDJXEHrG, Pm6F8kyY3z2, PuKPg4mmafe, QUCTc6BB5sX, RPmz2sHmrrY, S9hNv5qa7GM, SN83YJsR3w2, TbHJrupSAjP, ULsKaCPVFJR, UwV83HsGsw3, Uxmj2M2itWa, V2XKFyX4ASd, VFuaQ6m2Qom, VLzqgDo317F, VVfe2KiqLaN, Vt2qJdWjCF2, Vvot9Ly1tCj, VzqfbhrpDEA, WYY7iVyf5p8, X7HyMhZNoso, XcA2TqTSSAj, YFuZgdQ5vWj, YVUC4YcDtcY, YmJkqBEsHnH, Z6MFQCViBuw, ZMojNkEp431, aayBHfsNo7d, ac26ZMwG7aT, b8cTxDM8gDG, cV4RVeZvu5T, e9zR4mvMWw7, fzynW3qQPVF, gTV8FGcVJC9, gYvKGZ5eRqb, gxdoqLR6rwA, i5noydFURQK, jh4fc5c5qoQ, jtcxE69GiFV, kEZ7cmS4wCh, mJXqzFtmKg4, oLBMNvg9in8, p5wJjkQkbXX, pRbA3pwrgk9, pa4otMbVnkk, q9vSo1VnCiC, qoiz87JEwZ2, r1Q1Z4BcV1o, r47D5H71a5s, rPc6DW4iMge, rqfALeAoiTq, s8pcmisQ38h, sKLMLpTHeUy, sT4fr6TAbpF, uNb9QFRL6hY, ur6pFq6Qu1A, vyrNrziPKCB, wc2JMjhGNzB, x8F5xyUWy9e, yqstnuAEVhm, zsNo4HB9uLZ 
+
+2) GRScenes-Home Scenes: We utilize 61 residential scenes from GRScenes. The scene identifiers are: 
+
+MV7J6NIKTKJZ2AABAAAAADI8, MV7J6NIKTKJZ2AABAAAAADQ8, MV7J6NIKTKJZ2AABAAAAADY8, MV7J6NIKTKJZ2AABAAAAAEA8, MV7J6NIKTKJZ2AABAAAAAEI8, MVUCSQAKTKJ5EAABAAAAAAA8, MVUCSQAKTKJ5EAABAAAAAAI8, MVUCSQAKTKJ5EAABAAAAAAQ8, MVUCSQAKTKJ5EAABAAAAAAY8, MVUCSQAKTKJ5EAABAAAAABA8, MVUCSQAKTKJ5EAABAAAAABI8, MVUCSQAKTKJ5EAABAAAAABQ8, MVUCSQAKTKJ5EAABAAAAABY8, MVUCSQAKTKJ5EAABAAAAACA8, MVUCSQAKTKJ5EAABAAAAACI8, MVUCSQAKTKJ5EAABAAAAACQ8, MVUCSQAKTKJ5EAABAAAAADI8, MVUCSQAKTKJ5EAABAAAAADQ8, MVUCSQAKTKJ5EAABAAAAADY8, MVUCSQAKTKJ5EAABAAAAAEI8, MVUHL5YKTKJ5EAABAAAAAAI8, MVUHL5YKTKJ5EAABAAAAAAQ8, MVUHLWYKTKJ5EAABAAAAAAA8, MVUHLWYKTKJ5EAABAAAAAAI8, MVUHLWYKTKJ5EAABAAAAAAQ8, MVUHLWYKTKJ5EAABAAAAAAY8, MVUHLWYKTKJ5EAABAAAAABA8, MVUHLWYKTKJ5EAABAAAAABI8, MVUHLWYKTKJ5EAABAAAAABQ8, MVUHLWYKTKJ5EAABAAAAABY8, MVUHLWYKTKJ5EAABAAAAACA8, MVUHLWYKTKJ5EAABAAAAACQ8, MVUHLWYKTKJ5EAABAAAAACY8, MVUHLWYKTKJ5EAABAAAAADA8, MVUHLWYKTKJ5EAABAAAAADI8, MVUHLWYKTKJ5EAABAAAAADQ8, MVUHLWYKTKJ5EAABAAAAAEA8, MVUHLWYKTKJ5EAABAAAAAEI8, MWAX5JYKTKJZ2AABAAAAAAA8, MWAX5JYKTKJZ2AABAAAAAAI8, MWAX5JYKTKJZ2AABAAAAAAY8, MWAX5JYKTKJZ2AABAAAAABA8, MWAX5JYKTKJZ2AABAAAAABI8, MWAX5JYKTKJZ2AABAAAAABQ8, MWAX5JYKTKJZ2AABAAAAABY8, MWAX5JYKTKJZ2AABAAAAACA8, MWAX5JYKTKJZ2AABAAAAADA8, MWAX5JYKTKJZ2AABAAAAADI8, MWAX5JYKTKJZ2AABAAAAADQ8, MWAX5JYKTKJZ2AABAAAAADY8, MWAX5JYKTKJZ2AABAAAAAEA8, MWAX5JYKTKJZ2AABAAAAAEI8, MWBGLKQKTKJZ2AABAAAAAAA8, MWBGLKQKTKJZ2AABAAAAAAI8, MWBGLKQKTKJZ2AABAAAAAAQ8, MWBGLKQKTKJZ2AABAAAAAAY8, MWBGLKQKTKJZ2AABAAAAABA8, MWBGLKQKTKJZ2AABAAAAABI8, MWBGLKQKTKJZ2AABAAAAABQ8, MWBGLKQKTKJZ2AABAAAAABY8, MWBGLKQKTKJZ2AABAAAAACA8 
+
+3) GRScenes-Commercial Scenes: We utilize 24 commer-cial scenes from GRScenes. The scene identifiers are: 
+
+MV4AFHQKTKJZ2AABAAAAAEA8, MV4AFHQKTKJZ2AABAAAAAEI8, MV5M25QKTKJZ2AABAAAAAAA8, MV5M25QKTKJZ2AABAAAAAAI8, MV5M25QKTKJZ2AABAAAAAAQ8, MV5M25QKTKJZ2AABAAAAAAY8, MV5M25QKTKJZ2AABAAAAAEI8, MV7J6NIKTKJZ2AABAAAAAAA8, MV7J6NIKTKJZ2AABAAAAAAI8, MVJWVGYKTLDAYAABAAAAAAQ8, MVSGSAIKTKJ66AABAAAAAEA8, MVSYCXYKTKJ66AABAAAAAAA8, MVSYCXYKTKJ66AABAAAAACY8, MVSYCXYKTKJ66AABAAAAADA8, MVSYCXYKTKJ66AABAAAAADI8, MWF4WLIKTIFZIAABAAAAABY8, MWF4WLIKTIFZIAABAAAAACA8, MWF4WLIKTIFZIAABAAAAACI8, MWF4WLIKTIFZIAABAAAAACQ8, MWF4WLIKTIFZIAABAAAAADA8, MWF4WLIKTIFZIAABAAAAADI8, MWF4WLIKTIFZIAABAAAAAEA8, MWF4WLIKTIFZIAABAAAAAEI8, MWHLEPQKTIFZIAABAAAAAAA8

@@ -1,0 +1,370 @@
+Title: IMAC-AgriVLN: Can Agricultural Vision-and-Language Navigation Agents be Aware of Instruction Mistakes?
+
+URL Source: https://arxiv.org/pdf/2606.02519v1
+
+Published Time: Tue, 02 Jun 2026 03:15:12 GMT
+
+Number of Pages: 15
+
+Markdown Content:
+# IMAC-AgriVLN: Can Agricultural Vision-and-Language Navigation Agents be Aware of Instruction Mistakes? 
+
+Xiaobei Zhao 1,2 , Xingqi Lyu 1, Xin Chen 1,2 B, and Xiang Li 1,2 B
+
+> 1
+
+China Agricultural University 
+
+> 2
+
+China Agricultural University-Sichuan Advanced Agricultural & Industrial Institute 
+
+{xiaobeizhao2002,lxq99725}@163.com, {chxin,cqlixiang}@cau.edu.cn 
+
+Abstract. Agricultural robots are serving as powerful assistants across a wide range of agricultural tasks, nevertheless, still heavily relying on manual operations or railway systems for movement. The AgriVLN method and the A2A benchmark pioneeringly extended Vision-and-Language Navigation (VLN) to the agricultural domain, enabling a robot to navi-gate to a target position following a natural language instruction. How-ever, almost all the prior methods adopt an ideal assumption that the given instructions themselves are correct, which does not align with the realistic scenarios, because anybody may say an instruction with mistakes. To bridge this gap, we propose the A2A-MI benchmark, in which we build a semi-automatic data annotator to insert three mistake classifications into each original instruction in a more diversified and efficient way. We test several state-of-the-art agricultural VLN agents on it and observe a sufficient drop with -57% on SR and -9% on NE, from which we suggest that an agricultural VLN agent tends to as-sume that the given instruction is correct, so does not have the aware-ness to doubt it when the scenes it sees do not align with the instruc-tion it receives. To build the awareness on instruction mistake, we pro-pose the IMAC module analyzing the instruction and the current front-facing image, to judge whether the instruction has mistakes and at-tempt to correct it when needed. We integrate IMAC into the baseline model, and observe a noteworthy improvement, sufficiently narrowing the gap to the performance on instructions without mistakes. Project: https://github.com/AlexTraveling/IMAC-AgriVLN. 
+
+Keywords: Vision-and-Language Navigation · Agricultural Agent · Vision-Language Model. 
+
+1 Introduction 
+
+Agricultural robots are serving as powerful assistants across a wide range of tasks, such as laser weeding [21], growth monitoring [11] and cross-pollination [18]. However, most of them still heavily rely on manual operations or railway systems for movement, resulting in limited mobility and poor adaptability. 
+
+> arXiv:2606.02519v1 [cs.RO] 1 Jun 2026
+
+2 Xiaobei Zhao et al. 
+
+In contrast, Vision-and-Language Navigation (VLN) enables agents to follow the natural language instructions to navigate to the target positions [1,7], hav-ing demonstrated strong performance across various domains [19], such as R2R [1] for indoor rooms, TOUCHDOWN [3] for urban streets, and AerialVLN [10] for aerial spaces. Motivated by prior Vision-Language Model-based approaches [23,4,12], Zhao et al. [22] proposed the AgriVLN method and the A2A bench-mark to pioneeringly extend VLN to the agricultural domain, enabling agricul-tural robots to navigate to the target positions following the natural language instructions. However, almost all the prior methods [9,15,20,24,14,8], including AgriVLN, adopt an ideal assumption that the given instructions themselves are correct, which does not align with the realistic scenarios, because anybody may say an instruction with mistakes, as illustrated in Figure 1. If the decision-maker was a human, which had the subconsciousness to doubt whether the instruction has mistakes when the scenes it sees does not align with the instruction it receives. This phenomenon brings us an urgent question: If an instruction had a mistake, could an agricultural VLN agent be aware of it? The billboard ✗ ( signboard ✓ ) in our farm is maybe           
+
+> broken. Please navigate to it to check its condition.
+> with IMAC: Copy that! I can see a white board
+> with some red warning contents, and I suppose
+> you mean a sign but not a billboard, because a
+> billboard is typically much larger . Hence, I will
+> correct billboard -> sign , and choose [STOP] ✓
+> since I am close enough to it.
+> w/o IMAC: Copy that!
+> I can see a white
+> board with some red
+> warning contents, so
+> … I suppose this is
+> the billboard? Since
+> it is still so small in
+> my camera, I should
+> keep walking
+> [FORWARD] ✗to
+> approach it.
+
+Fig. 1: The A2A-MI benchmark and the IMAC module illustration on an exam-ple. When the instruction is inserted with a mistake, the baseline model cannot successfully finish it anymore. After IMAC is integrated, the decision-maker can be aware of the mistake and correct billboard ✗ → sign ✓ in a reasonable man-ner. The only research having studied on this question, as far as we know, was R2RIE-CE [16], which followed VLN-CE [7] as the foundation, then artificially injected three types of errors into the instructions, pioneeringly building a bench-IMAC-AgriVLN 3
+
+mark to evaluate a VLN agent’s robustness against mistaken instructions. How-ever, we noticed two serious weaknesses: 1) In terms of benchmark, all the 11,764 episodes relied on artificial annotation, which was inefficient and costly to be re-produced on other benchmarks; 2) In terms of method, to detect and localize the instruction errors before starting running, they trained a cross-modal trans-former taking camera images across all the time steps as inputs. In fact, however, an agent only access the initial single camera image at that moment. Hence, we suggest a large gap from simulation to reality on R2RIE-CE. To extend the evaluation for agricultural VLN agents and avoid the cur-rent weaknesses of R2RIE-CE, we propose the benchmark of Agriculture-to-Agriculture with Mistaken Instruction (A2A-MI), in which we follow A2A as the foundation, then build a semi-automatic data annotation method to insert three classifications of instruction mistake into each original instruction in a more diversified and efficient way. We use A2A-MI to evaluate several state-of-the-art agricultural VLN agents, and observe a sufficient drop on both Success Rate (- 57%) and Navigation Error (- 9%), from which we suggest an answer to the question: An agricultural VLN agent tends to assume that the given instruction is correct, so does not have the awareness to doubt it when the scenes it sees do not align with the instruction it receives, unless the instruction mistake is extremely obvious. To build the awareness on instruction mistake for them, we propose the module of Instruction Mistake Awareness and Correction (IMAC), in which we design two core principles to prompt a Vision-Language Model (VLM) analyzing the instruction and the front-facing camera image at the current time step, to judge whether the instruction has mistakes and attempt to correct it when needed. We integrate IMAC into the baseline model, and observe a noteworthy improvement on both Success Rate and Navigation Error, demonstrating the IMAC’s effectiveness on strengthening an agent’s robustness against instruction mistakes. In summary, our main contributions are as follows: 
+
+– We propose the A2A-MI benchmark, in which every instruction is inserted with mistakes by our proposed semi-automatic data annotator. 
+
+– We test several state-of-the-art agricultural VLN agents on A2A-MI, and observe their poor robustnesses on mistaken instructions. 
+
+– We propose the IMAC module and integrate it into the baseline model, effectively building an awareness of instruction mistakes and an ability to correct them. 
+
+2 Related Works 
+
+2.1 A2A 
+
+The benchmark of Agriculture-to-Agriculture (A2A) [22] is specially designed for agricultural robots, consisting of 1,560 episodes across 6 types of scene: farm, greenhouse, forest, mountain, garden and village, in which all the instructions 4 Xiaobei Zhao et al. 
+
+belong to the step-by-step format and the action space belongs to the continuous environment. 
+
+2.2 AgriVLN 
+
+The agent of Vision-and-Language Navigation for Agricultural Robots (AgriVLN) [22] utilizes the Subtask List mechanism to decompose an instruction into a list of structured subtasks, enabling the VLM-based decision-maker only have to focus on a small part but not the whole instruction at any time step, thereby leading to a better navigation performance. 
+
+3 Benchmark 
+
+3.1 Task Definition 
+
+The task of Agricultural Vision-and-Language Navigation [22] is defined as fol-lows: In each episode, the model is given an instruction in natural language, denoted as W = ⟨w1, w 2, . . . , w L⟩, where L is the number of words. At each time step t, the model is given the front-facing RGB image It. The purpose is understanding both W and It, to select the best low-level action ˆat from action space {[FORWARD] , [LEFT ROTATE] , [RIGHT ROTATE] , [STOP] }, thereby leading the robot navigate from the starting point to the destination. 
+
+3.2 Instruction Mistake Insertion Policy 
+
+We follow all the instructions and images of the A2A [22] dataset, then remain all the images unchanged and only implement revisions on the instructions. We categorize human’s common speaking mistakes into three classifications: descrip-tive adjective, concrete noun, and behavioral verb, basically satisfying all the common scenarios in agricultural VLN. To insert a classification of instruction mistake in an episode, we deliberately use a mistaken contiguous span to replace the original one with the same length. An ideal revised instruction should con-tain both the core semantic and the misleading mistake, i.e., a human can be aware of the exist of the mistake, and can still successfully finish the navigation. Here we share an example to better explain what an instruction mistake classification refers to and how to insert it. 
+
+There is a warning signboard with a white background on the mountain. It has a red circle, a black figure and some characters. Please go forward to check its condition. Please rotate to find and face it first, which is on your right. Don’t stop rotating until it is in your horizontal center. Then go towards it and stop when you are very close to it. 
+
+– Descriptive Adjective refers to an adjective span to describe an object, such as color or shape. A reasonable option is: white ✓ → green ✗.
+
+– Concrete Noun refers to a concrete but not abstract object span, such as a plant or an animal. A reasonable option is: signboard ✓ → billboard ✗.
+
+– Behavioral Verb refers to a specific low-level action span, such as going forward or turning left. A reasonable option is: go ✓ → revolve ✗.IMAC-AgriVLN 5
+
+3.3 Semi-Automatic Data Annotation 
+
+To achieve the above instruction mistake insertion policy in a more diversified and efficient way, we present a semi-automatic data annotator, which runs in a two-stage paradigm for each episode. In the first stage, we utilize a Large Language Model (LLM) denoted as A ( · )
+
+to analyze an instruction W , to automatically generate a total of three revision candidates for each instruction mistake classification, defined as: 
+
+Ckm 
+
+> 3
+> m∈{ a,n,v }, k =1
+
+= A(W, p ) (1) where p is the prompt template for A ( · ), which is available in the codes in Appendix. a, n and v are the instruction mistake classifications of adjective, none and verb, respectively. Ckm consists of three parts, defined as: 
+
+Ckm =
+
+
+
+Skm, ˜Skm, W ′km
+
+
+
+(2) where Skm is a contiguous span of length ℓ in W , and ˜Skm is its revised counterpart with the same length. W ′km is the revised instruction. In the second stage, for each instruction mistake classification, we arrange a human specialist denoted as H ( · ) to inspect all the three candidates, to manu-ally select the most appropriate one, defined as: 
+
+C∗ 
+
+> m
+
+= H
+
+Ckm
+
+> 3
+> k=1
+
+
+
+(3) where C∗ 
+
+> m
+
+denotes the candidate selected by the human specialist. Finally, we package all the three selected candidates {C∗
+
+> m
+
+}m∈{ a,n,v } together with the corresponding image sequence ⟨I1, I 2, . . . , I t⟩ to form an A2A-MI episode. 
+
+3.4 Benchmark Assessment 
+
+We summarize A2A-MI and several mainstream VLN benchmarks in Table 1. On the aspects of scene and camera, A2A-MI completely follow the A2A benchmark. On the aspect of instruction, each episode is respectively inserted with three types of instruction mistake, therefore, the final scale of A2A-MI is tripled to 4,680 instructions (only for evaluation) with an average length of 46 words. We further summarize the distribution of mistaken words, as illustrated in Figure 2. Whether on the adjective, none or verb portion, the new inserted mistaken words are diversified and practical, fully aligning with agricultural workers’ potential speaking mistakes in the reality. Hence, we suggest that A2A-MI is a high-quality and large-scale benchmark to effectively evaluate whether an agricultural VLN agent can be aware of instruction mistakes. 
+
+4 Methodology 
+
+In this section, we present the method of Agricultural Vision-and-Language Nav-igation with Instruction Mistake Awareness and Correction (IMAC-AgriVLN). 6 Xiaobei Zhao et al. 
+
+Table 1: Summary of A2A-MI and several mainstream VLN benchmarks: “Gran.”, “Mis.” and “Len.” represent granularity, mistake and length, respec-tively. “I.” and “O.” represent indoor and outdoor, respectively. “G.” and “A.” represent goal-directed and action-directed, respectively. “T.” and “E.” represent training and evaluation, respectively. “Pano.” and “Sing.” represent panoramic and single, respectively.                                                                  
+
+> Benchmark Scene Instruction Camera Scope Domain Gran. Mis. Len. Number View Image
+> R2R [1] I. Residence A. ×29 7,189 (T. & E.) Pano. RGB-D TOUCHDOWN [3] O. Street A. ×90 9,326 (T. & E.) Pano. RGB REVERIE [13] I. Residence G. & A. ×18 21,702 (T. & E.) Pano. RGB-D VLN-CE [7] I. Residence A. ×19 4,475 (T. & E.) Sing. RGB-D AerialVLN [10] O. Air A. ×83 8,446 (T. & E.) Sing. RGB-D R2RIE-CE [16] I. Residence A. √19 11,764 (E.) Sing. RGB-D A2A [22] I. & O. Agriculture G. & A. ×46 1,560 (E.) Sing. RGB A2A-MI (Ours) I. & O. Agriculture G. & A. √46 4,680 (E.) Sing. RGB
+
+(a) Adjective (b) Noun (c) Verb 
+
+Fig. 2: A2A-MI mistaken words distribution illustration on different mistake clas-sifications. First, we present the module of Instruction Mistake Awareness and Correction (IMAC) in Sec. 4.1. Second, we integrate the IMAC module into the base model to build the IMAC-AgriVLN method in Sec. 4.2. 
+
+4.1 IMAC 
+
+The inputs of the IMAC module are an instruction W and a front-facing camera image It. We utilize a Vision-Language Model (VLM) denoted as AC ( · ) to analyze both the instruction and the image, to judge whether the instruction has mistakes, defined as: 
+
+ˆS, ˆW , ρ t = AC (W, I t, p imac ) (4) where ˆS is the contiguous span with mistakes. ˆW is the corrected instruction. 
+
+ρt is the decision summary, which provides an explicit interpretation. t is the IMAC-AgriVLN 7
+
+time step. pa is the prompt template for AC ( · ) being available in the codes in Appendix, in which we formulate two principles: 
+
+– Conservative Verification : Only identify a mistake if you are highly confi-dent that the instruction is incorrect and would likely cause navigation failure or unsafe behavior, based on the instruction and the current camera obser-vation, which reflects only the robot’s present viewpoint and may not include all relevant landmarks. 
+
+– Minimal Intervention : If an error exists, identify the smallest incorrect word or span, and correct it with the minimal necessary change only. Do not perform stylistic improvements or rephrasing. 
+
+When ˆS = “None”, i.e., no mistake is identified, AC ( · ) does not execute any operations. When ˆS̸ = “None”, i.e., the most possible mistake is identified, AC ( · )
+
+attempts to correct the instruction by replacing ˆS with a contiguous span. VLM Prompted             
+
+> The billboard in its condition …
+> Current Front-Facing Image
+> Instruction
+> The billboard in its condition …
+> condition The sign in its …
+> Mistake Awareness
+> Corrected Instruction
+> billboard sign
+> Correction
+> Output
+> Conservative Verification
+> Minimal Intervention
+> Linguistic
+> Input
+> Visual
+> Input
+> Multimodal
+> Reasoning
+> Prompting
+> Prompting
+
+Fig. 3: The IMAC module illustration: We formulate two core principles to prompt the VLM-based decision-maker, to judge whether the instruction has mistakes, then attempt to correct it by replacing it with a contiguous span. 
+
+4.2 Base Model 
+
+We follow AgriVLN [22] as our base model, in which we keep using the Subtask List 1 mechanism. After receiving an instruction W , to begin with, we employ the IMAC module to build the awareness on instruction mistake, defined in Equation 4, in which we set t = 0 because a robot standing on the starting position can only obtain the initial camera image I0. Then we utilize a Large Language Model (LLM)  
+
+> 1
+
+More details are available in [22]. 8 Xiaobei Zhao et al. 
+
+denoted as S ( · ) to decompose the processed instruction ˆW into an ordered list of structured subtasks, defined as: 
+
+{(Di, SC i, EC i, σ i)}Ni=1 = S( ˆW , p s) (5) where ps is the prompt template for S ( · ), being available in the codes in Ap-pendix. Di, SC i, EC i and σi are the subtask description, starting condition, ending condition and current state, respectively. N is the number of subtasks. Next, the robot begins following the subtask list but not the whole instruction to move. At each time step t, to begin with, we also employ the IMAC module to build the awareness on instruction mistake, defined in Equation 4, in which we set Di∗ and It as the inputs. If a mistake is identified, we use the outputs to update Di∗ , SC i∗ and EC i∗ , where i∗ is the order of the current executing subtask. Then we utilize a VLM as the decision-maker, denoted as D ( · ), which understands the current executing subtask and camera image to output the most appropriate low-level action ˆat, defined as: 
+
+ˆat, ∆σ i∗,t , ρ t = D(Di∗ , SC i∗ , EC i∗ , I t, p d) (6) where pd is the prompt template for D ( · ), being available in the codes in Ap-pendix. ∆σ i∗,t is the state transition signal. If D ( · ) thinks the current executing subtask has been completed, it changes σi∗ from [doing] to [done] . ρt is the decision summary, which provides an explicit interpretation. D ( · ) ends when one of the following conditions is happened: 1) ˆat′ = [STOP] ;2) The predicted action sequence ⟨ ˆat′−τ , ˆat′−τ +1 , . . . , ˆat′ ⟩ is deviated to the ground-truth action sequence ⟨at′−τ , a t′−τ +1 , . . . , a t′ ⟩;3) t′ reaches the max allowable limitation of time step. where t′ is the stopping time step. τ is the deviation time threshold, which is set to 4s following the setting of the A2A [22] benchmark. 
+
+5 Experiments 
+
+5.1 Experimental Settings 
+
+We implement all the experiments on our proposed A2A-MI benchmark. We locally deploy DeepSeek-R1-32B 2 [5] with Q4_K_M quantization as the Large Language Model (LLM), Qwen2.5-VL-32B [2] with Q4_K_M quantization as the Vision-Language Model (VLM). In Qwen2.5-VL-32B, we set the inference temperature to 1e-4 to ensure the response stability. All the experiments run on a single NVIDIA L20 GPU with 48G video memory.   
+
+> 2DeepSeek-R1-32B is the distilled version based on the Qwen2 architecture. IMAC-AgriVLN 9
+
+5.2 Evaluation Metrics 
+
+We follow two standard VLN evaluation metrics [1]: Success Rate (SR) and Nav-igation Error (NE). NE measures the path length between the stopping position and the target position. SR measures the rate successfully reaching the target position within a 2-meter NE. Besides, we propose the metric of Instruction Mistake Valid Awareness Rate (AR) to specifically evaluate the instruction mis-take awareness performance of the IMAC module. For a single episode, AR is calculated as: 
+
+AR =
+
+(
+
+1, if ∃t ∈ { 0, . . . , t ′} s.t. ˆSt = ˜S, 
+
+0, otherwise . (7) where { ˆSt}t′ 
+
+> t=0
+
+is the set of predicted mistaken spans, and ˜S is the labeled mis-taken span. Then we calculate the average score across all the episodes in a benchmark, defined as: 
+
+AR = 1
+
+Q
+
+> Q
+
+X
+
+> e=1
+
+AR e (8) where AR e is the AR score for the e-th episode, and Q is the episode quantity. 
+
+5.3 Comparison Experiment 
+
+We test IMAC-AgriVLN and three state-of-the-art methods - SIA-VLN [6], DILLM-VLN [17] and AgriVLN [22] - on our proposed A2A-MI benchmark. Besides, the methods of Random, Fixed and Human are reproduced as the lower and upper bounds, respectively. The comparison results are shown in Table 2. When any classification of mistake is inserted into instructions, all the methods’ performances significantly drop, such as the AgriVLN baseline (#5), in which SR decreases 57% in average and NE increases 9% in average. Considering both the quantitative results anal-ysis and the decision summary inspection, we suggest an answer to the main-line question: A VLM-based agricultural VLN agent tends to assume that the given instruction is correct, so does not have the awareness to doubt it when the scenes it sees do not align with the instruction it receives, unless the instruction mistake is extremely obvious. When the IMAC module is integrated, IMAC-AgriVLN achieves an average AR of 0.27, which indicates that IMAC can be effectively aware of more than a quarter of the instruction mistakes, then attempts to correct them. In the end, SR improves from 0.10 to 0.14 and NE decreases from 4.81m to 4.79m, which indicates that IMAC cannot perfectly restore a mistaken instruction, because there is still a gap to the performance when no mistake exists in the instructions. Nevertheless, this gap is sufficiently narrowing. Hence, we suggest that IMAC can provide correction in an unperfected but already reasonable manner, which effectively helps the downstream decision-maker to better understand human’s true intentions from its mistaken instructions. 10 Xiaobei Zhao et al. 
+
+Table 2: Comparison experiment results between IMAC-AgriVLN and state-of-the-art methods on the A2A-MI benchmark. × represents no instruction mistake (i.e., same to the A2A benchmark). A. , N. and V. represent the mistake classi-fications of descriptive adjective, concrete noun and behavioral verb in A2A-MI, respectively. avg. represents the average score across all mistake classifications in A2A-MI. Bold and underline mark the best and worst scores, respectively.                                                                    
+
+> # Method SR ↑NE ↓AR ↑×A. N. V. avg. ×A. N. V. avg. ×A. N. V. avg.
+> 1 Random .06 .06 .06 .06 .06 7.03 7.03 7.03 7.03 7.03 -----2 Fixed .03 .03 .03 .03 .03 3.06 3.06 3.06 3.06 3.06 -----3 SIA-VLN [6] .15 .09 .10 .07 .09 4.52 4.95 4.94 5.13 5.01 -----4 DILLM-VLN [17] .21 .11 .10 .07 .09 3.99 4.24 4.17 4.52 4.31 -----5 AgriVLN [22] .23 .10 .10 .11 .10 4.43 4.83 4.73 4.86 4.81 -----6 IMAC-AgriVLN .21 .14 .15 .13 .14 4.45 4.77 4.72 4.87 4.79 -.09 .57 .15 .27 7 Human .87 .79 .80 .71 .77 0.57 0.93 1.04 1.31 1.09 -----×ANV
+> .05
+> .10
+> .15
+> .20
+> .25
+
+(a) Success Rate ↑× A N V 
+
+> 4.4
+> 4.6
+> 4.8
+> 5.0
+> AgriVLN
+> IMAC-AgriVLN
+
+(b) Navigation Error ↓
+
+Fig. 4: Comparison experiment illustration between IMAC-AgriVLN and the baseline model. 
+
+5.4 Ablation Study Instruction Mistake Classification We further study on instruction mistake classification’s impact to methods’ performances, as shown in Table 2 and Figure 4. For the AgriVLN baseline, SRs basically keep consistent, while NEs on the classifications of adjective, noun and verb are 4.83m, 4.73m and 4.86m, respec-tively, which indicates that a verb mistake tends to be more challenging and a noun mistake tends to be relatively acceptable. We attribute this noteworthy difference to the semantic weight: The final required output is a low-level action, such as [LEFT ROTATE] , therefore, behavioral verbs provide the most straight-IMAC-AgriVLN 11 
+
+forward references, such as turn left . Relative speaking, descriptive adjectives and concrete nouns provide references more like in an assistant manner. Thus, in an instruction, behavior verbs’ semantic weights usually tends to be higher than descriptive adjectives’ or concrete nouns’, being like a double-edged sword. When a behavior verb is correct, it can provide the most direct guidance. When a behavior verb is mistaken, however, it can also provides the most misleading information, and it is difficult for the decision-maker to be aware of. 
+
+IMAC v.s. STL Considering that the STL module also has a linguistic pre-processing effect, we further study on the contribution between IMAC and STL against an instruction mistake, for which we respectively remove them from the proposed IMAC-AgriVLN model, as shown in Table 3. When only STL is re-tained, SR and NE obtain improvements of 43% and 11%, respectively. When only IMAC is retained, SR and NE obtain improvements of 86% and 8%, re-spectively. When both modules are retained, the performance reaches to the best. Hence, we suggest that STL and IMAC corporate in a compatible manner, and the main contribution to build the awareness and correction on instruction mistakes stems from IMAC. Table 3: Ablation study results on the contribution between IMAC and STL on the A2A-MI benchmark. All the metrics are calculated in average across three instruction mistake classifications.                           
+
+> #Model STL IMAC SR ↑NE ↓AR ↑
+> 8IMAC-AgriVLN .07 5.39 -9IMAC-AgriVLN √.10 4.81 -10 IMAC-AgriVLN √.13 5.00 .26 11 IMAC-AgriVLN √√.14 4.79 .27
+
+5.5 Case Study 
+
+Towards a more comprehensive discussion, we share both a successful case and a failed case, as illustrated in Figure 5. Note that before the instructions are inserted with mistakes, the baseline model can successfully finish both cases. We mark all the VLM’s pivotal reasoning thoughts with italics in the text and underline in the figure. In the successful case illustrated in the left green part, the mistaken word in the instruction is a concrete noun, i.e., billboard ✗ (signboard ✓). Until at the maximum time step = 16 .4s, the baseline model still thinks that there is still a noticeable distance between the robot and the billboard , so the robot is not yet extremely close to the billboard , choosing to keep going [FORWARD] , which 12 Xiaobei Zhao et al. 
+
+results in the crash into the fence (SR = 0, NE = 0.00m). We attribute this crash to the incorrect recognition on object scale: Compared to a signboard, a billboard is usually much bigger. Since the billboard only occupies about half of the camera frame, the baseline model’s thinking is reasonable. In contrast, at the time step = 5.4s, the IMAC module thinks that a billboard is typically much larger and more prominent , so build the awareness that the target object should be a smaller sign rather than a billboard , then correct the mistaken word in a reasonable manner, i.e., billboard ✗ → sign ✓. At the time step = 13 .0s,the IMAC-AgriVLN method observes that the sign is prominent and occupies a significant portion of the image , so properly thinks that the robot is within a reasonable distance , thereby predicting the correct [STOP] action (SR = 1, NE = 1.71m, AR = 1). From this successful case, we suggest that a mistaken instruction may mislead the decision-maker on visual perception, and the IMAC module can build an effective awareness on mistakes and correct them in a reasonable manner. <mist> billboard -> sign </mist>                                                 
+
+> <decision> … the image shows a
+> smaller sign rather than a billboard .
+> A billboard is typically much larger
+> and more prominent …</decision>
+> <action> [STOP] </action>
+> <decision> …The sign is prominent
+> and occupies a significant portion of
+> the image …the robot is within a
+> reasonable distance …</decision>
+> <action> [FORWARD] </action>
+> <decision> … the billboard is visible and appears to be in the horizontal
+> center of the view. The robot is not yet extremely close to the billboard , as
+> there is still a noticeable distance between the robot and the billboard .
+> Therefore, the robot should continue moving forward … </decision>
+> There is a warning billboard ✗(signboard ✓) with a white background on
+> the mountain. It has a red circle, a black figure and some characters. Please
+> go forward to check its warning. Please rotate to find and face it first,
+> which is on your right. Don't stop rotating until it is in your horizontal
+> center. Then go towards it and stop when you are very close to it.
+> Instruction
+> SR = 1 NE = 1.71m
+> SR = 0 NE = 0.00m
+> <mist> person -> cornfield </mist>
+> <decision> …The image shows a
+> cornfield, and there is no indication
+> of any person … Therefore, the
+> instruction is incorrect .</decision>
+> <action> [STOP] </action>
+> <decision> … first subtask was to
+> move left until … the cornfield is
+> now centered , the first subtask has
+> been completed …</decision>
+> <action> [STOP] </action>
+> <decision> …There is no visible woman in the image , which means the start
+> condition for the first subtask (\"woman is in horizontal center\") is not
+> satisfied. Therefore … the robot should stay in its current position until the
+> woman becomes visible and centered horizontally. </decision>
+> There is a suspicious person in the farm. We need to inquire about her
+> situation. First, you need left move ✗(rotate ✓) until she is in your
+> horizontal center. Then, walk towards her. Stop when you are very very
+> close to her.
+> Instruction
+> SR = 0 NE = 4.90m
+> SR = 0 NE = 4.90m
+
+RGB Camera 
+
+IMAC-AgriVLN 
+
+Baseline 
+
+User  
+
+> STOP STOP
+
+Fig. 5: Case study illustration on a successful case (left) and a failed case (right). In each case, from top to bottom are the mistaken instruction, the baseline model’s decision-making results, the RGB camera streaming (with the ground-truth actions), and IMAC-AgriVLN’s decision-making results. In the mistaken instructions, ✓ and ✗ mark the original correct word and the revised mistaken word, respectively. In the failed case illustrated in the right red part, the mistaken word in the instruction is a behavior verb, i.e., move ✗ (rotate ✓). At the time step = 1.0s,observing that there is no visible woman in the image , the baseline model should have chose [LEFT ROTATE] to find her. But the clear behavior verb “rotate” is replaced by an ambiguous word “move”, which makes it deviate from the correct path after a disorganized thinking (SR = 0, NE = 4.90m). Unfortunately, the IMAC module alse fails to be aware of it, even further misjudge the correct target noun “person” as a mistaken word. At the time step = 0.8s, IMAC-AgriVLN ob-IMAC-AgriVLN 13 
+
+serves that the image shows a cornfield and there is no indication of any person ,then does not recognize that the person is located to the left, outside the current camera view, but improperly judge that the instruction is incorrect , resulting in an unreasonable correction, i.e., person ✓ → cornfield ✗. Consequently, at the next time step, it observes that the cornfield is now centered , so thinks that the first subtask has been completed , resulting in a too early prediction to [STOP] 
+
+(SR = 0, NE = 4.90m, AR = 0). From this failed case, we suggest that overly aggressive instruction mistake awareness may introduce additional noise, which can mislead subsequent decision-making and even exacerbate navigation errors. 
+
+6 Conclusion 
+
+In this paper, we propose the A2A-MI benchmark, in which we build a semi-automatic data annotator to insert three mistake classifications into each orig-inal instruction. We test several state-of-the-art agricultural VLN agents on it and observe a sufficient drop, from which we suggest that an agricultural VLN agent tends to assume that the given instruction is correct, so does not have the awareness to doubt it when the scenes it sees do not align with the instruction it receives. To build the awareness on instruction mistake, we propose the IMAC module analyzing the instruction and the current front-facing image, to judge whether the instruction has mistakes and attempt to correct it when needed. We integrate IMAC into the baseline model, and observe a noteworthy improve-ment, sufficiently narrowing the gap to the performance on instructions without mistakes. During the experiments, we also meet a main weakness of the lacking eval-uation metric on correction quality, which is discussed in the below Limitations section. In the future, in addition to the improvement on the existing weakness, we plan to investigate a collaborative framework that leverages a team of hetero-geneous VLMs with varying scales and computational costs, instead of a single fixed VLM, to maintain navigation performance while reducing computational overhead. 
+
+Limitations 
+
+Our proposed IMAC module consists of two steps: awareness and correction. In Section 5.2, in addition to the standard metrics of SR and NE, we propose AR to evaluate the quality of mistake awareness. However, we have not yet thought of a suitable way to build an evaluation metric on correction awareness, because the concept of “appropriate correction” is abstract and not unique. For example, in our case study, the mistaken word is billboard ✗ (signboard ✓), and IMAC correct billboard ✗ → sign ✓, in which judge that both sign and signboard belong to “appropriate correction”. Hence, a simple rule-based algorithm (such as for SR) is not suitable for evaluation on correction quality. A possible solution 14 Xiaobei Zhao et al. 
+
+is to build a heavyweight LLM with crafted prompt as the professional judge to evaluate the correction quality in a more reasonable and convincing manner. 
+
+Acknowledgments. This work is supported by the Sichuan Chengdu Modern Agri-cultural Industry Research Institute of China Agricultural University: Provincial and Municipal Agricultural Subsidy Funded Project; the Natural Science Foundation of Sichuan Province (2024NSFSC0389); and the Provincial and Municipal Agricultural Subsidy Special Funds for the Construction of CAU–SCCD Advanced Agricultural & Industrial Institute. Thanks to Chiang Mai, Chiang Rai, and Bangkok for the impres-sive traveling experiences, giving us a chilled vibe for experiment and writing. Thanks to Yuanquan Xu, the inspiration to us. 
+
+Disclosure of Interests. The authors have no competing interests to declare that are relevant to the content of this article. 
+
+References 
+
+1. Anderson, P., Wu, Q., Teney, D., Bruce, J., Johnson, M., Sunderhauf, N., Reid, I., Gould, S., van den Hengel, A.: Vision-and-Language Navigation: Interpreting visually-grounded navigation instructions in real environments. In: CVPR (2018) 2. Bai, S., Chen, K., Liu, X., Wang, J., Ge, W., Song, S., Dang, K., Wang, P., Wang, S., Tang, J., Zhong, H., Zhu, Y., Yang, M., Li, Z., Wan, J., Wang, P., Ding, W., Fu, Z., Xu, Y., Ye, J., Zhang, X., Xie, T., Cheng, Z., Zhang, H., Yang, Z., Xu, H., Lin, J.: Qwen2.5-VL Technical Report. In: arXiv (2025) 3. Chen, H., Suhr, A., Misra, D., Snavely, N., Artzi, Y.: TOUCHDOWN: Natural Language Navigation and Spatial Reasoning in Visual Street Environments. In: CVPR (2019) 4. Chen, J., Lin, B., Xu, R., Chai, Z., Liang, X., Wong, K.Y.K.: MapGPT: Map-Guided Prompting with Adaptive Path Planning for Vision-and-Language Navi-gation. In: ACL (2024) 5. Guo, D., Liang, W., et al.: DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning. Nature (2025) 6. Hong, Y., Rodriguez-Opazo, C., Wu, Q., Gould, S.: Sub-Instruction Aware Vision-and-Language Navigation. In: EMNLP (2020) 7. Krantz, J., Wijmans, E., Majumdar, A., Batra, D., Lee, S.: Beyond the Nav-Graph: Vision-and-Language Navigation in Continuous Environments. In: ECCV (2020) 8. Li, J., Padmakumar, A., Sukhatme, G., Bansal, M.: VLN-VIDEO: Utilizing Driving Videos for Outdoor Vision-and-Language Navigation. In: AAAI (2024) 9. Lin, K., Chen, P., Huang, D., Li, T.H., Tan, M., Gan, C.: Learning Vision-and-Language Navigation from YouTube Videos. In: ICCV (2023) 10. Liu, S., Zhang, H., Qi, Y., Wang, P., Zhang, Y., Wu, Q.: AerialVLN: Vision-and-Language Navigation for UAVs. In: ICCV (2023) 11. Lobefaro, L., Sodano, M., Fusaro, D., Magistri, F., Malladi, M.V.R., Guadagnino, T., Pretto, A., Stachniss, C.: Spatio-Temporal Consistent Semantic Mapping for Robotics Fruit Growth Monitoring. Robotics and Automation Letters (2025) 12. Long, Y., Li, X., Cai, W., Dong, H.: Discuss Before Moving: Visual Language Navigation via Multi-expert Discussions. In: ICRA (2024) 13. Qi, Y., Wu, Q., Anderson, P., Wang, X., Wang, W.Y., Shen, C., van den Hen-gel, A.: REVERIE: Remote Embodied Visual Referring Expression in Real Indoor Environments. In: CVPR (2020) IMAC-AgriVLN 15 14. Qiao, Y., Yu, Z., Wu, Q.: VLN-PETL: Parameter-Efficient Transfer Learning for Vision-and-Language Navigation. In: ICCV (2023) 15. Schumann, R., Zhu, W., Feng, W., Fu, T.J., Riezler, S., Wang, W.Y.: VELMA: Verbalization Embodiment of LLM Agents for Vision and Language Navigation in Street View. In: AAAI (2024) 16. Taioli, F., Rosa, S., Castellini, A., Natale, L., Bue, A.D., Farinelli, A., Cristani, M., Wang, Y.: Mind the Error! Detection and Localization of Instruction Errors in Vision-and-Language Navigation. In: IROS (2024) 17. Wang, J., Wang, T., Cai, W., Xu, L., Sun, C.: Boosting Efficient Reinforcement Learning for Vision-and-Language Navigation With Open-Sourced LLM. Robotics and Automation Letters (2025) 18. Xie, Y., Zhang, T., Yang, M., Lyu, H., Zou, Y., Sun, Y., Xiao, J., Lian, W., Tao, J., Han, H., Xu, C.: Engineering crop flower morphology facilitates robotization of cross-pollination and speed breeding. Cell (2025) 19. Zhang, Y., Ma, Z., Li, J., Qiao, Y., Wang, Z., Chai, J., Wu, Q., Bansal, M., Kord-jamshidi, P.: Vision-and-Language Navigation Today and Tomorrow: A Survey in the Era of Foundation Models. Transactions on Machine Learning Research (2024) 20. Zhao, G., Li, G., Chen, W., Yu, Y.: OVER-NAV: Elevating Iterative Vision-and-Language Navigation with Open-Vocabulary Detection and StructurEd Represen-tation. In: CVPR (2024) 21. Zhao, P., Chen, J., Li, J., Ning, J., Chang, Y., Yang, S.: Design and Testing of an autonomous laser weeding robot for strawberry fields based on DIN-LW-YOLO. Computers and Electronics in Agriculture (2025) 22. Zhao, X., Lyu, X., Li, X.: AgriVLN: Vision-and-Language Navigation for Agricul-tural Robots. In: arXiv (2025) 23. Zhou, G., Hong, Y., Wu, Q.: NavGPT: Explicit Reasoning in Vision-and-Language Navigation with Large Language Models. In: AAAI (2024) 24. Zhu, W., Hu, H., Chen, J., Deng, Z., Jain, V., Ie, E., Sha, F.: BabyWalk: Going Farther in Vision-and-Language Navigation by Taking Baby Steps. In: ACL (2020)
