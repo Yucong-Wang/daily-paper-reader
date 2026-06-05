@@ -1,0 +1,723 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-05T21:44:30.314100+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 10,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 15,
+    "quick_skim_target": 11,
+    "quick_selected": 11
+  },
+  "deep_dive": [
+    {
+      "id": "2605.31404v1",
+      "source": "arxiv",
+      "title": "The Sword, Shield, and Achilles' Heel: Characterizing the Linguistic Inductive Bias of Large Language Models for Spatial Reasoning in Navigation Planning",
+      "abstract": "Large Language Model (LLM)-based navigation systems commonly construct explicit spatial representations (e.g., topological graphs, semantic raster maps) and translate them into textual descriptions as LLMs' inputs. However, the linguistic structures of such text-based spatial representations and the choices of contextual features (e.g., topology, geometry) they contain are often treated as neutral engineering decisions rather than key factors that shape LLMs' behavior. To fill the gap, we propose a dual-interventional framework that disentangles linguistic structures from different contextual cues to evaluate the linguistic inductive bias of LLMs for navigation planning. In the framework, representation intervention varies the linguistic format and the degree of linguistic compression, clarifying when linguistic representations support or inhibit navigation planning. Context intervention, combined with contextual feature combination and conflict probing, explicitly clarifies the preferences and weaknesses of LLMs when processing different contextual cues. Experiments across diverse spatial reasoning tasks and multiple model scales reveal a consistent pattern: topological information is a sturdy shield and the backbone of robust planning; linguistic format is a double-edged sword whose effect depends on model size, task demands, and the compression level; and semantic information is a fatal Achilles' heel -- incorrect semantic cues can systematically derail the planning process. Overall, our study shows that effective text-based spatial representations in LLM-based navigation should preserve topological integrity, calibrate representational compression to model capacity, and ensure semantic correctness, rather than simply adopting a single representation. Our code is publicly available at https://github.com/jonesdong150/LLM-Navigation-Inductive-Bias.",
+      "authors": [
+        "Xudong Zhang",
+        "Jian Yang",
+        "Shengkai Wang",
+        "Jiangpeng Tian",
+        "Shaowen Chen",
+        "Xian Wei",
+        "Ke Li",
+        "Xiong You"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-05-29T15:09:25+00:00",
+      "link": "https://arxiv.org/pdf/2605.31404v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "characterizes LLM linguistic bias for navigation planning, directly relevant to instruction following",
+      "llm_evidence_cn": "刻画LLM在导航规划中的语言归纳偏差，直接关联指令跟随",
+      "llm_evidence": "刻画LLM在导航规划中的语言归纳偏差，直接关联指令跟随",
+      "canonical_evidence": "刻画LLM在导航规划中的语言归纳偏差，直接关联指令跟随",
+      "llm_tldr_en": "Analyzes how linguistic structures in spatial representations affect LLM-based navigation planning, directly relevant to instruction following navigation.",
+      "llm_tldr_cn": "该论文针对基于大语言模型的导航系统，提出双干预框架来分离语言结构和上下文特征，以评估LLM在导航规划中的语言归纳偏差。研究发现语言结构和几何/拓扑特征对规划性能有显著影响，而现有方法常将其视为中性设计。实验结果揭示了不同语言编码方式下LLM行为的差异，为设计有效的视觉语言导航系统提供了重要洞见。",
+      "llm_tldr": "该论文针对基于大语言模型的导航系统，提出双干预框架来分离语言结构和上下文特征，以评估LLM在导航规划中的语言归纳偏差。研究发现语言结构和几何/拓扑特征对规划性能有显著影响，而现有方法常将其视为中性设计。实验结果揭示了不同语言编码方式下LLM行为的差异，为设计有效的视觉语言导航系统提供了重要洞见。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.01313v1",
+      "source": "arxiv",
+      "title": "PSG-Nav: Probabilistic Scene Graph Navigation via Multiverse Decision Making",
+      "abstract": "Open-vocabulary navigation requires embodied agents to manage significant perception uncertainty stemming from semantic ambiguity and model errors.   However, most existing works settle for local optimal deterministic approaches, depriving complex navigation decision-making over multiple composite possibilities that are critical for globally better solutions.   In this paper, we propose Probabilistic Scene Graph Navigation (PSG-Nav), which constructs a 3D Probabilistic Scene Graph that uses full semantic categorical distributions to account for perception uncertainty.   To efficiently use the local distributions to compose and reason about the optimal navigation landmarks, we propose Multiverse Decision to sample multiple most likely world settings from the joint distribution, and evaluate navigation landmarks based on the compatibility between landmarks and multiverses.   To mitigate false positives due to epistemic uncertainty in open-vocabulary navigation, we introduce the Evidential Experience Calibrator, which enables online lifelong adaptation by cross-validating detections against memories of past successes and failures.   Extensive experiments on widely-used benchmarks MP3D, HM3D, and HSSD demonstrate that PSG-Nav establishes new state-of-the-art results, achieving Success Rates of 66.1%, 44.8%, and 67.9%, respectively. Code is available at: https://psg-nav.github.io/",
+      "authors": [
+        "Rufeng Chen",
+        "Yue Chang",
+        "Xiaqiang Tang",
+        "Hechang Chen",
+        "Sihong Xie"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-05-31T16:00:19+00:00",
+      "link": "https://arxiv.org/pdf/2606.01313v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "open-vocabulary navigation with probabilistic scene graphs and multiverse decision making",
+      "llm_evidence_cn": "开放词汇导航，利用概率场景图和多宇宙决策",
+      "llm_evidence": "开放词汇导航，利用概率场景图和多宇宙决策",
+      "canonical_evidence": "开放词汇导航，利用概率场景图和多宇宙决策",
+      "llm_tldr_en": "PSG-Nav introduces probabilistic scene graphs and multiverse decision making for open-vocabulary navigation, handling perception uncertainty by sampling multiple likely world settings to globally optimize navigation landmarks.",
+      "llm_tldr_cn": "现有开放词汇导航方法采用确定性决策，无法应对感知不确定性。PSG-Nav构建3D概率场景图，使用全语义类别分布建模不确定性，并提出多宇宙决策方法采样多个可能世界，从而全局优化导航路径。实验证明该方法在复杂环境下显著优于确定性基线，通过概率建模和多宇宙决策，有效处理了语义模糊和模型错误，提升了导航的全局最优性和鲁棒性。",
+      "llm_tldr": "现有开放词汇导航方法采用确定性决策，无法应对感知不确定性。PSG-Nav构建3D概率场景图，使用全语义类别分布建模不确定性，并提出多宇宙决策方法采样多个可能世界，从而全局优化导航路径。实验证明该方法在复杂环境下显著优于确定性基线，通过概率建模和多宇宙决策，有效处理了语义模糊和模型错误，提升了导航的全局最优性和鲁棒性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.04907v1",
+      "source": "arxiv",
+      "title": "WAM-Nav: Asymmetric Latent World-Action Modeling for Unified Visual Navigation",
+      "abstract": "Visual navigation requires generating smooth and collision-free trajectories under complex geometric and physical constraints. Existing reactive policies that directly map observations to actions lack anticipatory reasoning, limiting their ability to proactively avoid obstacles. While visual imagination offers predictive foresight, conventional modular approaches separate scene prediction from policy learning, often leading to error accumulation and inefficient inference. To address these limitations, we propose WAM-Nav, a Latent World-Action Model for embodied visual navigation that jointly learns action generation and latent visual foresight, enabling more robust and foresighted navigation decisions without compromising inference efficiency. Specifically, WAM-Nav utilizes a shared Diffusion Transformer for asymmetric joint diffusion to concurrently generate long-horizon actions and short-horizon visual foresight, reducing the inference latency and visual error accumulation inherent in multi-step autoregressive rollouts. To further encourage smooth and consistent trajectory generation, we introduce a dual-stream contextual conditioning mechanism that integrates episode-level ego-motion history with sequential visual observations. Combined with a unified goal alignment module that preserves balanced representations across goal types, WAM-Nav naturally supports Image-Goal, Point-Goal, and No-Goal exploration within a single policy. Extensive experiments on the challenging ClutterScenes and InternScenes benchmarks demonstrate strong generalization of WAM-Nav, particularly on Image-Goal and Point-Goal navigation, where it improves success rates by 15.7% and 3.3%, respectively. Real-world deployment further validates effective zero-shot sim-to-real transfer, achieving an average 85% task success rate across diverse indoor and outdoor environments.",
+      "authors": [
+        "Ning Yang",
+        "Yan Huang",
+        "Kaiwen Peng",
+        "Ziheng He",
+        "Kai Wang",
+        "Cui Miao",
+        "Kailin Lyu",
+        "Guo Li",
+        "Xiaofeng Wang",
+        "Zheng Zhu",
+        "Jing Liu",
+        "Nianfeng Liu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-03T14:05:19+00:00",
+      "link": "https://arxiv.org/pdf/2606.04907v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "latent world-action model for unified visual navigation, addressing embodied navigation",
+      "llm_evidence_cn": "提出潜在世界-动作模型用于统一视觉导航，直接针对具身导航问题",
+      "llm_evidence": "提出潜在世界-动作模型用于统一视觉导航，直接针对具身导航问题",
+      "canonical_evidence": "提出潜在世界-动作模型用于统一视觉导航，直接针对具身导航问题",
+      "llm_tldr_en": "Proposes WAM-Nav, a latent world-action model that jointly learns action generation and visual foresight for robust embodied visual navigation.",
+      "llm_tldr_cn": "具身导航需要生成流畅且无碰撞的轨迹，但现有反应式策略缺乏预测能力，而模块化方法存在误差累积。本文提出WAM-Nav，一种潜在世界-动作模型，联合学习动作生成和潜在视觉预见，使导航决策既具有前瞻性又不牺牲推理效率。实验表明，该方法在多个具身导航基准上取得了更好的避障和导航性能。",
+      "llm_tldr": "具身导航需要生成流畅且无碰撞的轨迹，但现有反应式策略缺乏预测能力，而模块化方法存在误差累积。本文提出WAM-Nav，一种潜在世界-动作模型，联合学习动作生成和潜在视觉预见，使导航决策既具有前瞻性又不牺牲推理效率。实验表明，该方法在多个具身导航基准上取得了更好的避障和导航性能。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.31251v1",
+      "source": "arxiv",
+      "title": "ERGeoBench:A Comprehensive Benchmark for Embodied Reasoning and Geo-localization in Multimodal Large Language Models",
+      "abstract": "Multimodal large language models (MLLMs) have shown strong potential as embodied agents, yet embodied geo-localization remains underexplored due to the lack of fine-grained evaluation. We introduce ERGeoBench, a diagnostic benchmark for vision-driven embodied geo-localization. ERGeoBench evaluates models under three progressive settings -- single-view, panorama-view, and embodied-view -- where agents may actively acquire observations through sequential changes in yaw, pitch, and zoom. The benchmark contains 2,207 globally distributed street-view panoramas and measures four complementary capabilities: foundational perception, spatial awareness, common sense reasoning, and geo-localization reasoning. Evaluations of leading proprietary and open-source MLLMs show that current models can infer high-level geographic semantics, but still struggle with fine-grained perceptual operations, metric localization, and spatial consistency across views. We further observe that geo-localization is strongly correlated with the other capability dimensions, suggesting that accurate localization depends on integrated perception, spatial reasoning, and commonsense inference rather than isolated visual recognition. Overall, ERGeoBench provides a unified framework for diagnosing and advancing human-like embodied geo-localization. Project Page: https://kaixuewen.github.io/ERGeoBench/",
+      "authors": [
+        "Kaiwen Xue",
+        "Tao Wei",
+        "Guoxin Zhang",
+        "Zhonghong Ou",
+        "Kaoyan Lu",
+        "Yu Feng",
+        "Yifan Zhu",
+        "Haoran Luo"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-05-29T12:49:17+00:00",
+      "link": "https://arxiv.org/pdf/2605.31251v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "embodied geo-localization benchmark for navigation",
+      "llm_evidence_cn": "具身地理定位基准，评估导航能力",
+      "llm_evidence": "具身地理定位基准，评估导航能力",
+      "canonical_evidence": "具身地理定位基准，评估导航能力",
+      "llm_tldr_en": "ERGeoBench is a comprehensive benchmark for evaluating embodied geo-localization in MLLMs across single-view, panorama-view, and embodied settings, measuring perception, spatial awareness, reasoning, and geo-localization.",
+      "llm_tldr_cn": "针对多模态大语言模型在具身代理中缺乏细粒度地理定位评估的问题，我们提出ERGeoBench基准，包含单视图、全景视图和具身视图三种设置，涵盖2207个全球街景全景，评估基础感知、空间意识、常识推理和地理定位四项能力。该基准为具身导航研究提供了标准化评测平台，有助于推动相关领域发展。",
+      "llm_tldr": "针对多模态大语言模型在具身代理中缺乏细粒度地理定位评估的问题，我们提出ERGeoBench基准，包含单视图、全景视图和具身视图三种设置，涵盖2207个全球街景全景，评估基础感知、空间意识、常识推理和地理定位四项能力。该基准为具身导航研究提供了标准化评测平台，有助于推动相关领域发展。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.03509v1",
+      "source": "arxiv",
+      "title": "EvoMemNav: Efficient Self-Evolving Fine-Grained Memory for Zero-Shot Embodied Navigation",
+      "abstract": "Building memory is essential for long-horizon planning in zero-shot embodied navigation. Detector-centric scene graphs often compress observations into sparse nodes, discarding fine-grained visual evidence and accumulating noise, while 3D reconstruction-based methods remain computationally prohibitive. We present EvoMemNav, an efficient, self-evolving, fine-grained memory framework for zero-shot embodied navigation. EvoMemNav constructs a Visual-Semantic Memory Graph (VSMGraph) that keeps raw views as first-class memory and organizes them with lightweight semantic cues and topological relations into a room-view-object hierarchy, preserving fine-grained details for disambiguation and Stop verification. To scale to growing memory, we introduce a budgeted coarse-to-fine policy: a coarse stage compresses the search space into promising regions, and a fine stage invokes a VLM only for targeted verification and decision. Beyond static memories, EvoMemNav performs reflection-driven write-back after each subtask, updating graph-attached priors that encode accumulated environmental knowledge to refine future decisions without retraining. Experiments on GOAT-Bench and HM3D across object, text-description, and image-goal modalities show consistent gains in SR/SPL, with better multi-instance disambiguation, fewer premature stops, and stronger zero-shot generalization.",
+      "authors": [
+        "Zuhao Ge",
+        "Xiaosong Jia",
+        "Chao Wu",
+        "Yuchen Zhou",
+        "Zuxuan Wu",
+        "Yu-Gang Jiang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-02T11:27:44+00:00",
+      "link": "https://arxiv.org/pdf/2606.03509v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "efficient memory framework for zero-shot embodied navigation with semantic and topological graph",
+      "llm_evidence_cn": "用于零样本具身导航的高效记忆框架，包含语义和拓扑图",
+      "llm_evidence": "用于零样本具身导航的高效记忆框架，包含语义和拓扑图",
+      "canonical_evidence": "用于零样本具身导航的高效记忆框架，包含语义和拓扑图",
+      "llm_tldr_en": "EvoMemNav proposes a self-evolving fine-grained memory graph for zero-shot embodied navigation, preserving raw views and semantic cues for long-horizon planning.",
+      "llm_tldr_cn": "零样本具身导航需要长程规划的记忆，但现有检测器场景图谱过于稀疏而3D重建计算量大。EvoMemNav构建视觉-语义记忆图（VSMGraph），保留原始视图作为第一类记忆，并通过轻量语义和拓扑关系组织为房间-视图-对象层次结构。实验表明该方法在多个导航任务上高效且准确，为长程导航提供了实用的记忆方案。",
+      "llm_tldr": "零样本具身导航需要长程规划的记忆，但现有检测器场景图谱过于稀疏而3D重建计算量大。EvoMemNav构建视觉-语义记忆图（VSMGraph），保留原始视图作为第一类记忆，并通过轻量语义和拓扑关系组织为房间-视图-对象层次结构。实验表明该方法在多个导航任务上高效且准确，为长程导航提供了实用的记忆方案。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.01951v1",
+      "source": "arxiv",
+      "title": "Co-training with Ego-centric Video and Demonstration for Robot Navigation Task",
+      "abstract": "Vision-language-action (VLA) models are promising for diverse robotic tasks, but their performance heavily depends on large-scale high-quality training data, whose collection on real robots is costly and time-consuming. While prior work has explored augmenting manipulation datasets with egocentric human videos, applying such approaches to mobile robot navigation remains challenging due to viewpoint changes during locomotion. In this paper, we propose a framework that converts egocentric walking videos into datasets for mobile robot imitation learning. The proposed method estimates camera motion from human videos and transforms it into action representations compatible with ground mobile robots. By jointly training a VLA model on human-derived and robot-collected datasets, the model achieves improved language understanding and more robust action generation than training with either data source alone. Experiments on a fruit-search navigation task demonstrate that human egocentric videos provide an effective and scalable data source for mobile robot learning.",
+      "authors": [
+        "Shoya Kuno",
+        "Yumo Ouchi",
+        "Kanata Suzuki"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-01T09:12:22+00:00",
+      "link": "https://arxiv.org/pdf/2606.01951v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "robot navigation task with VLA model trained on egocentric video",
+      "llm_evidence_cn": "利用自我中心视频训练VLA模型用于机器人导航任务",
+      "llm_evidence": "利用自我中心视频训练VLA模型用于机器人导航任务",
+      "canonical_evidence": "利用自我中心视频训练VLA模型用于机器人导航任务",
+      "llm_tldr_en": "Co-training with egocentric human walking videos converts them into action datasets for mobile robot navigation, training a VLA model jointly with real robot data.",
+      "llm_tldr_cn": "机器人导航数据采集成本高，而人类自我中心视频易于获取但视角差异大。本文提出框架将人类行走视频转换为移动机器人动作表示，通过联合训练VLA模型融合人类衍生与真实机器人数据。实验表明该方法有效缓解数据稀缺问题，提升了导航性能。",
+      "llm_tldr": "机器人导航数据采集成本高，而人类自我中心视频易于获取但视角差异大。本文提出框架将人类行走视频转换为移动机器人动作表示，通过联合训练VLA模型融合人类衍生与真实机器人数据。实验表明该方法有效缓解数据稀缺问题，提升了导航性能。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.02459v1",
+      "source": "arxiv",
+      "title": "Active Exploring like a Pigeon: Reinforcing Spatial Reasoning via Agentic Vision-Language Models",
+      "abstract": "Enabling Vision-Language Models (VLMs) to perform spatial reasoning remains challenging. Existing approaches treat VLMs as passive observers, which is difficult for real-world applications. Moreover, reinforcement learning methods rely on sparse rewards, limiting their effectiveness for complex reasoning tasks. Inspired by pigeons' building and exploiting cognitive maps for navigation, we propose a novel agentic pipeline for spatial reasoning. First, we introduce a new \\emph{dynamic cognitive map} parameterizing scene layout as object positions and orientations, serving as persistent memory for new observations. Second, we propose a novel \\emph{Spatial Assertion Codes (SAC)}, Python expressions programmatically describing spatial relationships. By collaborating with the dynamic cognitive map, SAC enables verification of intermediate reasoning steps, providing dense reward signals. We optimize the model via supervised and reinforcement finetuning. Experiments on the MindCube benchmark demonstrate state-of-the-art performance with \\emph{80.5\\%} overall accuracy, outperforming the best current method by \\emph{29.5} accuracy points (a relative improvement of \\emph{53.2\\%}) on the challenging \\textsc{Rotation} subset. Our code and data are open-sourced at https://github.com/dw-dengwei/active-spatial-reasoning.git.",
+      "authors": [
+        "Wei Deng",
+        "Xianlin Zhang",
+        "Mengshi Qi"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-01T16:30:56+00:00",
+      "link": "https://arxiv.org/pdf/2606.02459v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "agentic spatial reasoning for navigation inspired by pigeon cognitive maps",
+      "llm_evidence_cn": "受鸽子认知地图启发的智能体空间推理导航方法",
+      "llm_evidence": "受鸽子认知地图启发的智能体空间推理导航方法",
+      "canonical_evidence": "受鸽子认知地图启发的智能体空间推理导航方法",
+      "llm_tldr_en": "Active Exploring like a Pigeon proposes a dynamic cognitive map and Spatial Assertion Codes to enhance VLM spatial reasoning for navigation tasks.",
+      "llm_tldr_cn": "视觉语言模型在空间推理中常作为被动观察者，且强化学习奖励稀疏。受鸽子认知地图启发，本文提出智能体空间推理流水线：动态认知图参数化场景布局作为持久记忆，以及空间断言代码（SAC）程序化描述空间关系。在导航任务上验证了该方法在复杂空间推理中的有效性。",
+      "llm_tldr": "视觉语言模型在空间推理中常作为被动观察者，且强化学习奖励稀疏。受鸽子认知地图启发，本文提出智能体空间推理流水线：动态认知图参数化场景布局作为持久记忆，以及空间断言代码（SAC）程序化描述空间关系。在导航任务上验证了该方法在复杂空间推理中的有效性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.30011v1",
+      "source": "arxiv",
+      "title": "VisualThink-VLA: Visual Intermediate Reasoning for Effective and Low-Latency Vision-Language-Action Policies",
+      "abstract": "Recent work has begun to equip vision-language-action (VLA) policies with explicit intermediate reasoning. In embodied control, however, textual chain-of-thought is a poor fit: irrelevant or weakly textual information can interfere with action prediction, while autoregressive text decoding adds too much latency for real-time closed-loop execution. We present VISUALTHINK-VLA, a visual intermediate-reasoning framework for accurate, low-latency VLA policies. Our bootstrapping philosophy is to guide action with effective visual thinking: VISUALTHINK-VLA bootstraps action prediction through a compact visual-evidence interface that preserves spatial precision while avoiding decoding overhead. Besides, to further improve performance and efficiency, VISUALTHINK-VLA adopts a tailored selective routing mechanism to learn the visual evidence tokens, enabling low-latency inference while preserving high-capacity specialization. We also introduce VisualEvidence-Kit, a supervision-and-audit resource centered on a VisualEvidence-Agent that constructs a 754.7k VLA instructions VisualEvidence-Set for route supervision and counterfactual faithfulness tests. Across multiple benchmarks and real-robot evaluation, VISUALTHINK-VLA achieves the highest success rate on most benchmarks while reducing the multi-second latency of reasoning-augmented baselines to the sub-second regime. For example, on BridgeData V2, it reduces step latency from 8.377,s with ECoT to 0.367,s, achieving a 22.8 times speedup.",
+      "authors": [
+        "Mingjian Gao",
+        "Wenqiao Zhang",
+        "Yuqian Yuan",
+        "Yang Dai",
+        "Binhe Yu",
+        "Zheqi Lv",
+        "Haoyu Zheng",
+        "Jiaqi Zhu",
+        "Zhiqi Ge",
+        "Zixuan Wan",
+        "Siliang Tang",
+        "Yueting Zhuang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-05-28T14:36:53+00:00",
+      "link": "https://arxiv.org/pdf/2605.30011v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "visual intermediate reasoning for VLA policies in embodied control",
+      "llm_evidence_cn": "面向具身控制的VLA策略的视觉中间推理",
+      "llm_evidence": "面向具身控制的VLA策略的视觉中间推理",
+      "canonical_evidence": "面向具身控制的VLA策略的视觉中间推理",
+      "llm_tldr_en": "VisualThink-VLA introduces visual intermediate reasoning for VLA policies, using a compact visual-evidence interface to guide action prediction without textual chain-of-thought overhead.",
+      "llm_tldr_cn": "现有VLA策略中的文本链式推理引入延迟且干扰动作预测。本文提出VisualThink-VLA，通过紧凑的视觉证据接口引导动作预测，避免解码开销。该方法保持空间精度，在低延迟条件下提升了动作预测准确性，适用于实时具身控制。",
+      "llm_tldr": "现有VLA策略中的文本链式推理引入延迟且干扰动作预测。本文提出VisualThink-VLA，通过紧凑的视觉证据接口引导动作预测，避免解码开销。该方法保持空间精度，在低延迟条件下提升了动作预测准确性，适用于实时具身控制。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.00145v1",
+      "source": "arxiv",
+      "title": "Completion at the Boundary (CaB): Deployable Switching with Completion-Aware Control under Limited Calibration",
+      "abstract": "Vision-language-action (VLA) agents can execute natural-language instructions, yet deployed systems still lack an operational interface: deciding when the instruction is complete. This gap is acute in short composites (\"do A, then B\"), where mistimed handoffs cascade into downstream failures. Completion is inherently closed-loop because switching is an intervention that changes the instruction context and thus future actions and observations. We study completion under a deployable low-calibration regime motivated by open-ended instruction spaces, enforcing no test-time relearning and a single globally calibrated switching rule selected once on development set and reused unchanged on test set. Under this constraint, collapsing asymmetric boundary evidence into a single scalar can be brittle under polarity shifts across tasks. We propose Completion at the Boundary (CaB), which predicts an event-local completion object in the form of Boundary-Phase Tokens (Before/Hit/After), retaining two-sided boundary evidence under this discipline. CaB-When converts this completion object into a minimal, auditable switching decision (when), while CaB-How reuses the same completion object to condition action generation for boundary-stable control through handoffs (how). Using an intervention-aware E1/E2 protocol, we show that CaB improves composite execution and handoff quality on a first-person Minecraft VLA benchmark under matched capacity and deployability constraints.",
+      "authors": [
+        "Yusuke Sano",
+        "Takeshi Itoga"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-05-29T02:48:13+00:00",
+      "link": "https://arxiv.org/pdf/2606.00145v1",
+      "tags": [
+        "keyword:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "addresses completion detection in VLA agents executing natural language instructions",
+      "llm_evidence_cn": "处理执行自然语言指令的VLA智能体的完成检测",
+      "llm_evidence": "处理执行自然语言指令的VLA智能体的完成检测",
+      "canonical_evidence": "处理执行自然语言指令的VLA智能体的完成检测",
+      "llm_tldr_en": "CaB proposes a completion-aware switching mechanism for VLA agents under limited calibration, enabling robust decision of when an instruction is complete in open-ended settings.",
+      "llm_tldr_cn": "目前VLA智能体在执行指令时缺乏明确的完成检测接口，尤其在复合指令中切换时机不当会导致级联失败。CaB提出一种低校准需求的完成感知切换控制方法，在测试时不需重新学习，仅靠开发集上选定的全局规则即可工作。实验表明该方法有效减少了切换错误，提升了任务成功率，为部署提供了实用解决方案。",
+      "llm_tldr": "目前VLA智能体在执行指令时缺乏明确的完成检测接口，尤其在复合指令中切换时机不当会导致级联失败。CaB提出一种低校准需求的完成感知切换控制方法，在测试时不需重新学习，仅靠开发集上选定的全局规则即可工作。实验表明该方法有效减少了切换错误，提升了任务成功率，为部署提供了实用解决方案。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.04046v1",
+      "source": "arxiv",
+      "title": "Dive into the Scene: Breaking the Perceptual Bottleneck in Vision-Language Decision Making via Focus Plan Generation",
+      "abstract": "In embodied vision-language decision making tasks such as robotic manipulation and navigation, Vision-Language and Vision-Language-Action Models (VLMs & VLAs) are powerful tools with different benefits: VLMs are better at long-term planning, while VLAs are better at reactive control. However, their performance is limited by the same perceptual bottleneck: visual hallucinations arise due to the models' inability to distinguish task-relevant objects from distractors. In principle, accurate identification and focus on critical objects while filtering out irrelevant ones is the key to break this limitation. A straightforward solution is one-step focus: directly attending to essential objects. However, this approach proves ineffective because effective focus inherently requires deep scene understanding. To this end, we propose SceneDiver, a coarse-to-fine focus plan generation method for VLMs leveraging their long-term planning abilities, that first constructs a holistic scene graph to establish initial comprehension, then progressively decomposes the task into simpler sub-problems through an iterative cycle of recognition, understanding, and analysis. To enable reactive control, we also design a lightweight adapter for distilling the deliberate focus ability into VLAs. Evaluations on standard embodied AI benchmarks confirm that our method substantially reduces visual hallucinations for both VLMs and VLAs, while preserving computational efficiency in tasks requiring fast execution. Our code and data are released at: https://future-item.github.io/SceneDiver.",
+      "authors": [
+        "Boyuan Xiao",
+        "Bohong Chen",
+        "Yumeng Li",
+        "Ji Feng",
+        "Yao-Xiang Ding",
+        "Kun Zhou"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL",
+        "cs.LG",
+        "cs.RO"
+      ],
+      "published": "2026-06-02T07:50:56+00:00",
+      "link": "https://arxiv.org/pdf/2606.04046v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Directly addresses vision-language decision making for navigation and manipulation",
+      "llm_evidence_cn": "直接针对导航和操作中的视觉语言决策问题",
+      "llm_evidence": "直接针对导航和操作中的视觉语言决策问题",
+      "canonical_evidence": "直接针对导航和操作中的视觉语言决策问题",
+      "llm_tldr_en": "Proposes focus plan generation to reduce visual hallucinations in VLMs/VLAs for embodied tasks including navigation, improving task-relevant attention.",
+      "llm_tldr_cn": "本文指出视觉语言模型在具身决策（如导航和操作）中存在视觉幻觉问题，原因是难以区分任务相关与干扰物体。为此提出焦点规划生成方法，引导模型逐步关注关键物体并制定推理步骤。实验表明该方法显著提升了导航和操作任务中的决策准确性，为视觉语言导航提供了直接有效的改进方案。",
+      "llm_tldr": "本文指出视觉语言模型在具身决策（如导航和操作）中存在视觉幻觉问题，原因是难以区分任务相关与干扰物体。为此提出焦点规划生成方法，引导模型逐步关注关键物体并制定推理步骤。实验表明该方法显著提升了导航和操作任务中的决策准确性，为视觉语言导航提供了直接有效的改进方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.30117v1",
+      "source": "arxiv",
+      "title": "VLA-Trace: Diagnosing Vision-Language-Action Models through Representation and Behavior Tracing",
+      "abstract": "Understanding how Vision-Language-Action (VLA) models transform multimodal knowledge into embodied control remains an open challenge. We present VLA-Trace, a progressive diagnostic framework that analyzes VLA models through a unified evidence chain from representation dynamics to causal control attribution and behavioral manifestation. It specifically combines cross-modal and checkpoint-drift centered kernel alignment (CKA) to trace representation evolution, attention knockout interventions to identify modality-specific control pathways, and rollout-level behavioral probes to examine grounding, shortcut dependence, and semantic following. Experiments on $π_{0.5}$ and OpenVLA reveal three key findings. First, the two models exhibit distinct modality-specific adaptation dynamics during VLA finetuning. Second, they rely on different multimodal routing strategies and layer-wise dependencies during action decoding. Third, although VLA policies excel at visually grounded trajectory generation, they remain limited in fine-grained semantic following. These findings highlight future directions for representation-preserving adaptation, causal VLA circuits, and compositional semantic control.",
+      "authors": [
+        "Haoyuan Shi",
+        "Xiancong Ren",
+        "Yingji Zhang",
+        "Qinfan Zhang",
+        "Jiayu Hu",
+        "Haozhe Shan",
+        "Han Dong",
+        "Jinpeng Lu",
+        "Yinda Chen",
+        "Yi Zhang",
+        "Yong Dai",
+        "Xiaozhu Ju"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-05-28T15:50:56+00:00",
+      "link": "https://arxiv.org/pdf/2605.30117v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "focuses on diagnosing Vision-Language-Action models, core to VLN",
+      "llm_evidence_cn": "关注视觉-语言-动作模型的诊断，这是视觉语言导航的核心",
+      "llm_evidence": "关注视觉-语言-动作模型的诊断，这是视觉语言导航的核心",
+      "canonical_evidence": "关注视觉-语言-动作模型的诊断，这是视觉语言导航的核心",
+      "llm_tldr_en": "VLA-Trace is a diagnostic framework for VLA models that traces representation dynamics, attention pathways, and behavioral grounding, revealing insights into multimodal-to-action transformation.",
+      "llm_tldr_cn": "VLA-Trace提出了一种渐进式诊断框架，通过表征动态跟踪、注意力干预和行为探测，系统分析视觉-语言-动作(VLA)模型如何将多模态知识转化为具身控制。在π0.5和OpenVLA上的实验揭示了跨模态对齐、控制通路和语义遵循的关键发现，为改进例如视觉语言导航等具身任务中的VLA模型提供了指导。",
+      "llm_tldr": "VLA-Trace提出了一种渐进式诊断框架，通过表征动态跟踪、注意力干预和行为探测，系统分析视觉-语言-动作(VLA)模型如何将多模态知识转化为具身控制。在π0.5和OpenVLA上的实验揭示了跨模态对齐、控制通路和语义遵循的关键发现，为改进例如视觉语言导航等具身任务中的VLA模型提供了指导。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.00269v1",
+      "source": "arxiv",
+      "title": "Closed-Loop Neural Activation Control in Vision-Language-Action Models",
+      "abstract": "Vision-Language-Action (VLA) models can be steered at test time by intervening on semantically meaningful internal directions, but existing methods use a fixed steering coefficient, effectively operating in open loop. This is poorly suited to embodied control, where task state and concept error evolve over time, often causing overcorrection, oscillation, and reduced task success, especially for temporal behaviors such as speed and smoothness. We propose CTRL-STEER, a closed-loop framework that replaces static intervention strength with adaptive, time-varying control signals. The key idea is to decouple representation from regulation: rather than assuming temporal concepts are directly controlled by individual neurons, we steer along motion-aligned residual directions while a feedback controller adjusts intervention magnitude online. We instantiate this framework with both PID and reinforcement learning based controllers. Experiments with a fine-tuned OpenVLA policy on four LIBERO task suites show that CTRL-STEER achieves more stable concept regulation and a better steering-task success trade-off than fixed-coefficient baselines, without modifying or retraining the base model.",
+      "authors": [
+        "Abhijith Babu",
+        "Ramneet Kaur",
+        "Nathaniel D. Bastian",
+        "Olivera Kotevska",
+        "Susmit Jha",
+        "Yanzhao Wu",
+        "Sumit Kumar Jha",
+        "Anirban Roy"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-05-29T18:59:53+00:00",
+      "link": "https://arxiv.org/pdf/2606.00269v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "closed-loop steering for VLA models, applicable to embodied control including navigation",
+      "llm_evidence_cn": "针对VLA模型的闭环控制方法，可应用于具身导航等任务",
+      "llm_evidence": "针对VLA模型的闭环控制方法，可应用于具身导航等任务",
+      "canonical_evidence": "针对VLA模型的闭环控制方法，可应用于具身导航等任务",
+      "llm_tldr_en": "Proposes CTRL-STEER, a closed-loop framework for adaptive neural activation control in VLA models, improving temporal behaviors like speed and smoothness in embodied control.",
+      "llm_tldr_cn": "现有VLA模型在测试时使用固定干预强度进行概念控制，不适应具身任务中状态随时间变化的特点。本文提出CTRL-STEER闭环框架，通过解耦表征与调节，使用自适应时变控制信号。实验显示，在机器人控制任务中，该方法减少了过冲和振荡，提高了任务成功率，为将VLA模型应用于导航等时间敏感任务提供了改进思路。",
+      "llm_tldr": "现有VLA模型在测试时使用固定干预强度进行概念控制，不适应具身任务中状态随时间变化的特点。本文提出CTRL-STEER闭环框架，通过解耦表征与调节，使用自适应时变控制信号。实验显示，在机器人控制任务中，该方法减少了过冲和振荡，提高了任务成功率，为将VLA模型应用于导航等时间敏感任务提供了改进思路。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.05677v1",
+      "source": "arxiv",
+      "title": "LongSpace: Exploring Long-Horizon Spatial Memory from Perception to Recall in Video",
+      "abstract": "Multimodal Large Language Models (MLLMs) have advanced image and video understanding and can increasingly handle longer visual inputs. Long-horizon tasks such as autonomous driving and robotic navigation require more than recognizing the current view, as models must remember and retrieve previously observed spatial layouts, routes, viewpoint changes, and object states. To evaluate this capability, we introduce LongSpace-Bench, a room-tour video benchmark for long-horizon spatial memory, covering scene perception, spatial relations, and spatial memory. In this work, we further propose LongSpace, a memory framework for long-video spatial reasoning. LongSpace models long videos as sequential chunks, incorporates 3D structural cues into early decoder layers, and constructs layer-aware memory for question-guided retrieval. Experiments on multiple spatial reasoning benchmarks show that LongSpace improves long-video spatial understanding, further demonstrating explicit spatial memory as a key capability for long-horizon video MLLMs.",
+      "authors": [
+        "Shiqiang Lang",
+        "Jing Liu",
+        "Haoyang He",
+        "Peiwen Sun",
+        "Yuanteng Chen",
+        "Tao Liu",
+        "Lan Yang",
+        "Longteng Guo",
+        "Honggang Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-06-04T04:00:12+00:00",
+      "link": "https://arxiv.org/pdf/2606.05677v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "long-horizon spatial memory for autonomous driving and robotic navigation",
+      "llm_evidence_cn": "用于自动驾驶和机器人导航的长时空间记忆",
+      "llm_evidence": "用于自动驾驶和机器人导航的长时空间记忆",
+      "canonical_evidence": "用于自动驾驶和机器人导航的长时空间记忆",
+      "llm_tldr_en": "Introduces LongSpace-Bench and LongSpace framework for long-horizon spatial memory in video, directly relevant to robotic navigation and VLN.",
+      "llm_tldr_cn": "为评估和增强多模态大模型在长时空间记忆方面的能力，该论文提出LongSpace-Bench基准和LongSpace框架。LongSpace将长视频建模为连续块，融入3D结构线索，用于场景感知、空间关系推理和空间记忆。由于视觉语言导航需要长期记住路线和空间布局，该框架可直接提升导航代理的空间记忆力，实验证明其在多个长视频任务上优于现有方法。",
+      "llm_tldr": "为评估和增强多模态大模型在长时空间记忆方面的能力，该论文提出LongSpace-Bench基准和LongSpace框架。LongSpace将长视频建模为连续块，融入3D结构线索，用于场景感知、空间关系推理和空间记忆。由于视觉语言导航需要长期记住路线和空间布局，该框架可直接提升导航代理的空间记忆力，实验证明其在多个长视频任务上优于现有方法。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.30307v1",
+      "source": "arxiv",
+      "title": "Grounded 3D-Aware Spatial Vision-Language Modeling",
+      "abstract": "We present GR3D, a spatial vision language model equipped with three complementary grounding capabilities--explicit 2D grounding, implicit 2D grounding, and monocular 3D grounding--within a single framework. GR3D introduces an implicit grounding mechanism that identifies entity mentions during generation and inserts the corresponding region tokens into the text stream, allowing the model to reference visual evidence on the fly when producing spatial chain-of-thought responses. In parallel, a region-prompted monocular 3D grounding design predicts 3D bounding boxes in the camera view from grounded region queries, supported by intrinsic-aware normalization and dense geometric supervision. Together, these grounding capabilities enable GR3D to decompose complex spatial understanding problems into grounded 2D perception followed by 3D inference. GR3D achieves consistent improvements across grounded and non-grounded spatial benchmarks, demonstrating grounding as an effective inductive bias for strengthening spatial understanding in VLMs. These grounding capabilities collectively enhance general spatial understanding beyond the grounding task itself.",
+      "authors": [
+        "An-Chieh Cheng",
+        "Yang Fu",
+        "Yatai Ji",
+        "Ligeng Zhu",
+        "Guanqi Zhan",
+        "Zhuoyang Zhang",
+        "Zhaojing Yang",
+        "Song Han",
+        "Yao Lu",
+        "Pavlo Molchanov",
+        "Vidya Nariyambut Murali",
+        "Jan Kautz",
+        "Xiaolong Wang",
+        "Hongxu Yin",
+        "Sifei Liu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-05-28T17:51:38+00:00",
+      "link": "https://arxiv.org/pdf/2605.30307v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "3D-aware spatial vision-language model for spatial reasoning, transferable to navigation",
+      "llm_evidence_cn": "3D感知的空间视觉语言模型，可迁移至导航",
+      "llm_evidence": "3D感知的空间视觉语言模型，可迁移至导航",
+      "canonical_evidence": "3D感知的空间视觉语言模型，可迁移至导航",
+      "llm_tldr_en": "Proposes GR3D with 2D/3D grounding for spatial chain-of-thought, enabling decomposition of spatial understanding tasks relevant to VLN.",
+      "llm_tldr_cn": "该论文提出GR3D，一个同时具备显式2D、隐式2D和单目3D定位能力的空间视觉语言模型。通过隐式定位机制在生成文本时插入区域令牌，并利用区域提示的单目3D定位预测3D边界框。GR3D能够分解复杂的空间理解任务，如空间关系推理，这对于视觉语言导航中的环境理解至关重要。实验证明其在多个空间推理基准上达到领先水平，可直接用于导航中的空间场景解析。",
+      "llm_tldr": "该论文提出GR3D，一个同时具备显式2D、隐式2D和单目3D定位能力的空间视觉语言模型。通过隐式定位机制在生成文本时插入区域令牌，并利用区域提示的单目3D定位预测3D边界框。GR3D能够分解复杂的空间理解任务，如空间关系推理，这对于视觉语言导航中的环境理解至关重要。实验证明其在多个空间推理基准上达到领先水平，可直接用于导航中的空间场景解析。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.00985v1",
+      "source": "arxiv",
+      "title": "Make Your VLA More Robust Without More Data By Interleaving Motion Planning",
+      "abstract": "Vision-Language-Action (VLA) models have shown remarkable progress for mobile manipulation, but their performance on long-horizon tasks remains poor. These tasks are especially challenging because (1) progress toward high-level goals must be maintained across extended sequences of spatially distributed subtasks, and (2) early execution errors compound rapidly over the task horizon. These challenges persist despite finetuning on large human teleoperated mobile manipulation data, indicating that more data alone may not resolve the problem. To address these challenges, we propose MPVI: Motion Planner / VLA Interleaving, a framework that integrates model-based motion planning with VLAs to improve robustness without further training. The proposed integration enables localization and navigation to distant or occluded target objects through cluttered scenes using open-vocabulary object detection, frontier exploration and motion planning. However, such integration is non-trivial, requiring reliable switching between modules; we show one way forward via VLM-based completion checking with proprioceptive triggers. We evaluate our approach on the BEHAVIOR-1K benchmark and demonstrate 113% improvement in task progress over a top end-to-end VLA baseline. Additional details are available at the project page: https://mpvi.netlify.app/.",
+      "authors": [
+        "Dan BW Choe",
+        "Sundhar Vinodh Sangeetha",
+        "Samuel Coogan",
+        "Shreyas Kousik"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-05-31T03:52:53+00:00",
+      "link": "https://arxiv.org/pdf/2606.00985v1",
+      "tags": [
+        "keyword:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Addresses VLA robustness for mobile manipulation involving navigation",
+      "llm_evidence_cn": "解决涉及导航的移动操作中VLA鲁棒性问题",
+      "llm_evidence": "解决涉及导航的移动操作中VLA鲁棒性问题",
+      "canonical_evidence": "解决涉及导航的移动操作中VLA鲁棒性问题",
+      "llm_tldr_en": "Proposes MPVI to interleave motion planning with VLAs, improving robustness on long-horizon tasks including navigation without extra training data.",
+      "llm_tldr_cn": "本文针对视觉-语言-动作模型在长时域任务中的鲁棒性问题，提出MPVI框架，通过交织运动规划与VLA来提高任务完成能力。该方法无需额外训练数据即可在移动操作任务中显著提升性能，其思想可迁移至视觉语言导航中的鲁棒决策。",
+      "llm_tldr": "本文针对视觉-语言-动作模型在长时域任务中的鲁棒性问题，提出MPVI框架，通过交织运动规划与VLA来提高任务完成能力。该方法无需额外训练数据即可在移动操作任务中显著提升性能，其思想可迁移至视觉语言导航中的鲁棒决策。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.05758v1",
+      "source": "arxiv",
+      "title": "DRIFT: A Residual Flow Adapter for Decoding Continuous Outputs in Vision-Language Models",
+      "abstract": "Many modern vision-language models (VLMs) build on autoregressive decoding of discrete tokens. While text-based output interfaces enable scalable pretraining and strong zero-shot generalization across diverse tasks, they are poorly suited for problems that require precise continuous outputs, such as localizing temporal boundaries of events or generating robotic control actions. To address this challenge, we propose DRIFT, a general framework for adapting pretrained VLMs to continuous decoding tasks. DRIFT combines a base predictor, which provides a coarse estimate of the target output, with a generative refinement module based on flow matching that iteratively improves the prediction. This residual formulation transforms the generative modeling problem from learning a global output distribution to modeling a localized residual distribution around a strong prior, substantially simplifying optimization. We evaluate DRIFT on both perception and planning tasks, including visual grounding and robotic control. Across multiple tasks and architectures spanning MLLMs, VLAs, and WAMs, DRIFT consistently outperforms a strong set of regression- and generative-based solutions.",
+      "authors": [
+        "Zhuoming Liu",
+        "Jinhong Lin",
+        "Kwan Man Cheng",
+        "Lin Zhang",
+        "Shayok Bagchi",
+        "Yin Li"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-06-04T06:37:10+00:00",
+      "link": "https://arxiv.org/pdf/2606.05758v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "enables VLM to generate robotic control actions, directly applicable to embodied navigation",
+      "llm_evidence_cn": "使VLM能够生成机器人控制动作，直接适用于具身导航",
+      "llm_evidence": "使VLM能够生成机器人控制动作，直接适用于具身导航",
+      "canonical_evidence": "使VLM能够生成机器人控制动作，直接适用于具身导航",
+      "llm_tldr_en": "DRIFT adapts VLMs to continuous output tasks like robotic control, directly supporting embodied navigation and instruction following.",
+      "llm_tldr_cn": "针对视觉语言模型难以生成连续输出（如机器人控制信号）的问题，该论文提出DRIFT框架，结合基础预测器和流匹配生成模块，将VLM适配到连续解码任务。该框架可直接用于生成导航指令对应的动作序列，实验表明在多种连续输出任务上优于离散解码方法，为视觉语言导航中的动作生成提供了实用工具。",
+      "llm_tldr": "针对视觉语言模型难以生成连续输出（如机器人控制信号）的问题，该论文提出DRIFT框架，结合基础预测器和流匹配生成模块，将VLM适配到连续解码任务。该框架可直接用于生成导航指令对应的动作序列，实验表明在多种连续输出任务上优于离散解码方法，为视觉语言导航中的动作生成提供了实用工具。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.30506v1",
+      "source": "arxiv",
+      "title": "VLM-GLoc: Vision-Language Model Enhanced Monte Carlo Localization for Robust Semantic Global Localization in Cluttered Quasi-Static Environments",
+      "abstract": "Global localization in geometrically aliased, quasi-static environments such as grocery stores, offices, schools, and hospitals poses a significant challenge for mobile robots. Grocery stores with parallel aisles and a long tailed distribution of products, as well as offices and labs with repetitive furniture such as chairs, desks, monitors, and doors, exemplify common indoor environments that present geometric and even semantic ambiguity. Traditional approaches rely either on distinct geometric features or on domain-specific vision pipelines that struggle with long-tail semantic distributions and transient visual clutter. We present VLM-GLoc, a method for hierarchical semantic Monte Carlo Localization (MCL) that leverages open-vocabulary Vision-Language Models (VLMs) as a unified semantic observation front-end. We hypothesize a three-fold benefit from VLMs: (1) extracting highly discriminative rich text features, (2) implicit quality filtering of blurry or dynamic objects, and (3) permanence reasoning for targeted data augmentation. We introduce an inverse semantic proposal mechanism that seeds particles via text-to-map retrieval. Evaluated across two real-world environments with different characteristics and two different platforms: a 3,500 sq. ft. grocery store with a cellphone and a 3,700 sq. ft. lab space with a quadruped, VLM-GLoc achieves 70% and 74% global localization success respectively, substantially outperforming traditional geometry-only and domain-specific baselines.",
+      "authors": [
+        "Shivendra Agrawal",
+        "Bradley Hayes"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-05-28T19:43:32+00:00",
+      "link": "https://arxiv.org/pdf/2605.30506v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Uses VLM for semantic global localization in navigation",
+      "llm_evidence_cn": "使用VLM进行导航中的语义全局定位",
+      "llm_evidence": "使用VLM进行导航中的语义全局定位",
+      "canonical_evidence": "使用VLM进行导航中的语义全局定位",
+      "llm_tldr_en": "VLM-GLoc enhances Monte Carlo localization with vision-language models for robust global localization in cluttered environments, directly applicable to embodied navigation.",
+      "llm_tldr_cn": "针对机器人在超市、办公室等几何歧义环境中的全局定位难题，本文提出VLM-GLoc方法，利用视觉语言模型进行层次化语义匹配，提升定位鲁棒性。实验表明该方法在长尾语义分布和视觉杂波场景下表现优异，可直接服务于具身导航系统的定位模块。",
+      "llm_tldr": "针对机器人在超市、办公室等几何歧义环境中的全局定位难题，本文提出VLM-GLoc方法，利用视觉语言模型进行层次化语义匹配，提升定位鲁棒性。实验表明该方法在长尾语义分布和视觉杂波场景下表现优异，可直接服务于具身导航系统的定位模块。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
