@@ -1,0 +1,661 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-06T20:10:07.894624+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 13,
+    "quick_skim_target": 11,
+    "quick_selected": 11
+  },
+  "deep_dive": [
+    {
+      "id": "2606.03509v1",
+      "source": "arxiv",
+      "title": "EvoMemNav: Efficient Self-Evolving Fine-Grained Memory for Zero-Shot Embodied Navigation",
+      "abstract": "Building memory is essential for long-horizon planning in zero-shot embodied navigation. Detector-centric scene graphs often compress observations into sparse nodes, discarding fine-grained visual evidence and accumulating noise, while 3D reconstruction-based methods remain computationally prohibitive. We present EvoMemNav, an efficient, self-evolving, fine-grained memory framework for zero-shot embodied navigation. EvoMemNav constructs a Visual-Semantic Memory Graph (VSMGraph) that keeps raw views as first-class memory and organizes them with lightweight semantic cues and topological relations into a room-view-object hierarchy, preserving fine-grained details for disambiguation and Stop verification. To scale to growing memory, we introduce a budgeted coarse-to-fine policy: a coarse stage compresses the search space into promising regions, and a fine stage invokes a VLM only for targeted verification and decision. Beyond static memories, EvoMemNav performs reflection-driven write-back after each subtask, updating graph-attached priors that encode accumulated environmental knowledge to refine future decisions without retraining. Experiments on GOAT-Bench and HM3D across object, text-description, and image-goal modalities show consistent gains in SR/SPL, with better multi-instance disambiguation, fewer premature stops, and stronger zero-shot generalization.",
+      "authors": [
+        "Zuhao Ge",
+        "Xiaosong Jia",
+        "Chao Wu",
+        "Yuchen Zhou",
+        "Zuxuan Wu",
+        "Yu-Gang Jiang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-02T11:27:44+00:00",
+      "link": "https://arxiv.org/pdf/2606.03509v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "zero-shot embodied navigation with self-evolving memory",
+      "llm_evidence_cn": "零样本具身导航，自进化细粒度记忆",
+      "llm_evidence": "零样本具身导航，自进化细粒度记忆",
+      "canonical_evidence": "零样本具身导航，自进化细粒度记忆",
+      "llm_tldr_en": "EvoMemNav proposes a self-evolving fine-grained memory framework for zero-shot embodied navigation, using a Visual-Semantic Memory Graph to preserve details for long-horizon planning.",
+      "llm_tldr_cn": "零样本具身导航中，场景图丢弃细节，3D重建计算昂贵。本文提出EvoMemNav，一种自进化细粒度记忆框架，构建视觉语义记忆图，保留原始视图并组织成房间-对象层次结构，支持长程导航中的歧义消除和停止验证。实验证明其在零样本导航任务上高效且有效。",
+      "llm_tldr": "零样本具身导航中，场景图丢弃细节，3D重建计算昂贵。本文提出EvoMemNav，一种自进化细粒度记忆框架，构建视觉语义记忆图，保留原始视图并组织成房间-对象层次结构，支持长程导航中的歧义消除和停止验证。实验证明其在零样本导航任务上高效且有效。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.03963v1",
+      "source": "arxiv",
+      "title": "Self-Refining Agentic Reinforcement Learning for Vision-Conditioned UAV Navigation",
+      "abstract": "Deep reinforcement learning has shown strong potential for enabling autonomous robots to learn complex navigational tasks. However, its practical use still depends heavily on human designed reward functions and repeated manual fine tuning, which is time consuming and does not guarantee high success in the desired task. This paper presents AgenticRL, agent guided reinforcement learning framework that increases autonomy in reward design, policy refinement, and real world deployment for unmanned aerial vehicles (UAV) navigation tasks. AgenticRL uses a multimodal generative pre-trained tansformer (GPT) agent to interpret task information and visual scene observations, generate task specific reward functions, train policies using Proximal Policy Optimization (PPO) algorithm, and then act as a critic by evaluating the trained policy through diagnosis packets to generate feedback. Based on this feedback, the agent identifies failure modes and refines the reward function in a closed loop self improvement process. To further leverage the multimodal GPT agent during inference, AgenticRL uses real world images and natural language task information to automatically identify the active scenario and select the appropriate trained policy for execution. The framework is evaluated on multiple navigational tasks, including gate traversal, obstacle avoidance, wall barrier crossing with landing, trajectory following, and motion behavior learning. Experimental results show that the closed loop refinement process improves policy behavior compared with initial rewards by 71%. We also demonstrate sim-to-real transfer of the proposed framework, achieving a real world success rate of 91% and a sim-to-real accuracy of 94%.",
+      "authors": [
+        "Roohan Ahmed Khan",
+        "Yasheerah Yaqoot",
+        "Muhammad Ahsan Mustafa",
+        "Dzmitry Tsetserukou"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-02T17:50:15+00:00",
+      "link": "https://arxiv.org/pdf/2606.03963v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Vision-conditioned UAV navigation with agentic RL",
+      "llm_evidence_cn": "基于视觉条件的无人机导航与智能体强化学习",
+      "llm_evidence": "基于视觉条件的无人机导航与智能体强化学习",
+      "canonical_evidence": "基于视觉条件的无人机导航与智能体强化学习",
+      "llm_tldr_en": "Proposes AgenticRL, an agent-guided reinforcement learning framework for UAV navigation that autonomously designs reward functions and refines policies using a GPT agent.",
+      "llm_tldr_cn": "无人机导航任务依赖人工设计奖励函数和反复调试，耗时且难以保证成功。本文提出AgenticRL框架，利用多模态GPT智能体自动解析任务和视觉信息，生成奖励函数，并通过近端策略优化训练策略。实验表明该方法在多种导航任务上达到或超过手动设计奖励的性能，且显著减少人力开销。",
+      "llm_tldr": "无人机导航任务依赖人工设计奖励函数和反复调试，耗时且难以保证成功。本文提出AgenticRL框架，利用多模态GPT智能体自动解析任务和视觉信息，生成奖励函数，并通过近端策略优化训练策略。实验表明该方法在多种导航任务上达到或超过手动设计奖励的性能，且显著减少人力开销。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.02735v1",
+      "source": "arxiv",
+      "title": "See Less, Specify More: Visual Evidence Budgets for Generalizable VLAs",
+      "abstract": "Generalization remains a central bottleneck for vision-language-action (VLA) models: under distractors, appearance shifts, and semantically similar tasks, the policy must often infer local execution details from coarse instructions while also deciding which parts of the image matter for control. We present S2 (See Less, Specify More), a framework for improving VLA generalization by training the executor under a cleaner interface.   Specify More preserves the original instruction as a stable high-level goal while relabeling each trajectory into refined trajectory- and subtask-level language that disambiguates the current execution mode. Unlike native attention, See Less imposes an explicit visual evidence budget, training the executor to act from task-sufficient evidence rather than unconstrained visual context, without any region or mask annotation.   This interface lets the executor follow detailed guidance without relying on distracting visual patches or resolving avoidable ambiguity on its own, and it remains compatible with off-the-shelf VLM planners through in-context learning. Across our main evaluation settings, S2 improves overall generalization metrics by changing the executor's learning problem: coarse instructions induce avoidable supervision aliasing, goal-preserving local guidance outperforms instruction replacement in our main ablations, and explicit evidence budgeting reduces dependence on broad visual context beyond efficiency considerations.   Across eight real-robot tasks on TX-G2 (an AgiBot G2-compatible variant) and HSR, S2 raises mean subtask success from 54.2% to 79.0% over pi0.5. Together, these results suggest that VLA generalization improves when the executor is trained to act from informative local guidance and task-sufficient visual evidence, rather than recovering both from weak supervision.",
+      "authors": [
+        "Yueh-Hua Wu",
+        "Tatsuya Matsushima",
+        "Kei Ota"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-06-01T18:02:07+00:00",
+      "link": "https://arxiv.org/pdf/2606.02735v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "vision language navigation method",
+      "llm_evidence_cn": "视觉语言导航方法",
+      "llm_evidence": "视觉语言导航方法",
+      "canonical_evidence": "视觉语言导航方法",
+      "llm_tldr_en": "Introduces visual evidence budgets and refined instructions to improve VLA generalization, directly applicable to VLN.",
+      "llm_tldr_cn": "针对视觉-语言-动作(VLA)模型在干扰物、外观变化等泛化瓶颈，提出S2框架：Specify More通过重标注轨迹生成精细子任务语言，See Less施加显式视觉证据预算，迫使执行器关注关键区域。该方法不依赖额外数据，显著提升泛化性，可直接应用于视觉语言导航任务中的指令跟随和鲁棒控制。",
+      "llm_tldr": "针对视觉-语言-动作(VLA)模型在干扰物、外观变化等泛化瓶颈，提出S2框架：Specify More通过重标注轨迹生成精细子任务语言，See Less施加显式视觉证据预算，迫使执行器关注关键区域。该方法不依赖额外数据，显著提升泛化性，可直接应用于视觉语言导航任务中的指令跟随和鲁棒控制。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.04111v1",
+      "source": "arxiv",
+      "title": "AgenticDiffusion: Agentic Diffusion-based Path Planning for Vision-Based UAV Navigation",
+      "abstract": "Indoor UAV navigation requires efficient exploration, scene understanding, and reliable trajectory execution under limited field-of-view observations. Existing vision-based navigation frameworks typically rely on single-view observations, limiting their ability to reason about occlusions, target visibility, and global scene structure. In this work, we propose AgenticDiffusion, a multi-view UAV navigation framework that coordinates language-guided reasoning, open-vocabulary target grounding, vision-based diffusion planning, and NMPC within a unified aerial navigation pipeline. Given a natural language instruction and synchronized first-person-view (FPV) and top-view observations, the framework determines the most informative viewpoint for navigation and generates a mission plan prior to trajectory execution. The targets are localized using an open-vocabulary grounding model, after which viewpoint-specific diffusion planners generate navigation trajectories for UAV execution. Using complementary viewpoints, the proposed framework reduces repeated target exploration and improves navigation efficiency in cluttered indoor environments. The framework was validated in four real-world UAV navigation scenarios involving adaptive viewpoint selection, multi-stage mission execution, long-horizon navigation, and safe landing-site selection. The experimental results demonstrated an overall mission success rate of 80% in 40 real-world trials, while the diffusion planners achieved a trajectory generation success rate of 100%.",
+      "authors": [
+        "Faryal Batool",
+        "Muhammad Ahsan Mustafa",
+        "Fawad Mehboob",
+        "Valerii Serpiva",
+        "Dzmitry Tsetserukou"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "eess.SY"
+      ],
+      "published": "2026-06-02T18:18:35+00:00",
+      "link": "https://arxiv.org/pdf/2606.04111v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "language-guided UAV navigation with diffusion planning",
+      "llm_evidence_cn": "语言引导的无人机导航结合扩散规划",
+      "llm_evidence": "语言引导的无人机导航结合扩散规划",
+      "canonical_evidence": "语言引导的无人机导航结合扩散规划",
+      "llm_tldr_en": "AgenticDiffusion coordinates language-guided reasoning, open-vocabulary grounding, and diffusion planning for indoor UAV navigation.",
+      "llm_tldr_cn": "该论文提出AgenticDiffusion，融合语言引导推理、开放词汇目标定位和扩散规划，构建多视图无人机导航框架，遵循自然语言指令执行室内导航。",
+      "llm_tldr": "该论文提出AgenticDiffusion，融合语言引导推理、开放词汇目标定位和扩散规划，构建多视图无人机导航框架，遵循自然语言指令执行室内导航。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.06147v1",
+      "source": "arxiv",
+      "title": "WorldFly: A World-Model-Based Vision-Language-Action Model for UAV Navigation",
+      "abstract": "End-to-end Vision-Language-Action (VLA) models have shown promise in UAV navigation. However, existing approaches typically rely on historical observations to directly predict actions, often struggling in dense urban environments where severe occlusions and sharp turns result in drastic viewpoint transitions. We argue that the ability to \"imagine\" future states -- inherent in World Models -- is critical for robust decision-making under such partial observability. To address this, we construct a challenging Urban Canyon Traversal Benchmark, specifically designed to evaluate spatial understanding in scenarios characterized by severe occlusions and drastic viewpoint transitions. To this end, we propose WorldFly, a novel world-model-based VLA framework that employs a dual-branch coupled flow matching mechanism to jointly generate future video predictions and navigation actions, thereby explicitly guiding the agent's policy via spatial imagination. Extensive evaluations on our benchmark demonstrate that WorldFly outperforms other baselines, particularly in unseen environments, validating the effectiveness of integrating world models into embodied aerial agents.",
+      "authors": [
+        "Shengtao Zheng",
+        "Kai Li",
+        "Weichen Zhang",
+        "Yu Meng",
+        "Chen Gao",
+        "Xinlei Chen",
+        "Yong Li",
+        "Xiao-Ping Zhang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-04T13:23:05+00:00",
+      "link": "https://arxiv.org/pdf/2606.06147v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "world-model-based VLA model for UAV navigation, directly addressing vision language navigation",
+      "llm_evidence_cn": "基于世界模型的VLA模型用于无人机导航，直接涉及视觉语言导航",
+      "llm_evidence": "基于世界模型的VLA模型用于无人机导航，直接涉及视觉语言导航",
+      "canonical_evidence": "基于世界模型的VLA模型用于无人机导航，直接涉及视觉语言导航",
+      "llm_tldr_en": "Proposes WorldFly, a world-model-based VLA framework for UAV navigation, enabling imagination of future states to handle occlusions and sharp turns.",
+      "llm_tldr_cn": "现有VLA模型在密集城市环境中因遮挡和视角剧烈变化而表现不佳。本文提出WorldFly，基于世界模型在部分可观测条件下想象未来状态。构建了城市峡谷穿行基准，实验证明该方法显著提升了导航鲁棒性。该工作将世界模型引入VLN，有效解决了视觉遮挡下的决策问题。",
+      "llm_tldr": "现有VLA模型在密集城市环境中因遮挡和视角剧烈变化而表现不佳。本文提出WorldFly，基于世界模型在部分可观测条件下想象未来状态。构建了城市峡谷穿行基准，实验证明该方法显著提升了导航鲁棒性。该工作将世界模型引入VLN，有效解决了视觉遮挡下的决策问题。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2605.30639v1",
+      "source": "arxiv",
+      "title": "PInVerify: An Offline Embodied Benchmark for Active Instance Verification",
+      "abstract": "Embodied agents have made strong progress in navigating to target objects, but reaching the goal vicinity does not guarantee that the agent has found the correct instance: subtle attribute differences (e.g., \"white floral\" vs. \"white striped\") often require close-range, multi-view inspection. We address this gap with Active Instance Verification (AIV), a task in which an agent actively selects viewpoints around a candidate object to decide whether it matches a fine-grained natural-language description. We formalize AIV as a finite-horizon decision process and introduce PInVerify, an offline embodied benchmark for AIV: 3,000 evaluation episodes across 18 object categories, delivered as multi-view captures with a 6-sector navigation topology that exposes trap views (navigable but uninformative) and unreachable sectors. As reference baselines we build a training-free pipeline and a LoRA-fine-tuned end-to-end agent around open-source multimodal large language models (MLLMs) at on-device scale ($\\leq$8B parameters), with attribute decomposition, a visibility-weighted multi-view tracker, and three next-best-view (NBV) strategies. In our evaluation across Qwen3-VL (4B/8B), SenseNova-SI-1.2-InternVL3-8B, CLIP, and SigLIP2, the best MLLM-based baseline exceeds the best embedding baseline by 4.9 pp; GT-box ablations show a +3.1 pp detection gap; and we do not observe reliable gains from active viewpoint selection within the tested NBV strategies. A LoRA-fine-tuned agent (SFT+GSPO) reaches 85.6%. PInVerify aims to support further work on active, fine-grained semantic verification in embodied AI. Code: https://github.com/Avalon-S/PInVerify.",
+      "authors": [
+        "Yuhang Jiang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-05-28T22:42:38+00:00",
+      "link": "https://arxiv.org/pdf/2605.30639v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "active instance verification with natural-language descriptions, extends navigation to fine-grained object inspection",
+      "llm_evidence_cn": "使用自然语言描述的主动实例验证，将导航扩展到细粒度物体检查",
+      "llm_evidence": "使用自然语言描述的主动实例验证，将导航扩展到细粒度物体检查",
+      "canonical_evidence": "使用自然语言描述的主动实例验证，将导航扩展到细粒度物体检查",
+      "llm_tldr_en": "Proposes PInVerify, an offline embodied benchmark for Active Instance Verification where agents must decide if a candidate object matches a fine-grained natural-language description through multi-view inspection.",
+      "llm_tldr_cn": "现有具身导航在到达目标后无法确认实例是否正确。本文提出主动实例验证（AIV）任务，要求智能体在目标周围多视角观察以判断与细粒度语言描述是否匹配。发布了包含3000个评估场景的PInVerify基准，涵盖18个物体类别。该工作填补了导航后细粒度验证的空白。",
+      "llm_tldr": "现有具身导航在到达目标后无法确认实例是否正确。本文提出主动实例验证（AIV）任务，要求智能体在目标周围多视角观察以判断与细粒度语言描述是否匹配。发布了包含3000个评估场景的PInVerify基准，涵盖18个物体类别。该工作填补了导航后细粒度验证的空白。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.00275v1",
+      "source": "arxiv",
+      "title": "Hyperbolic and Evidence-Prioritized Experts for Large Vision-Language Models",
+      "abstract": "Large Vision-Language Models (LVLMs) have demonstrated impressive performance on multimodal tasks through scaled architectures and extensive training. Recent studies introduce Mixture of Experts (MoE) into LVLMs for improved computational efficiency. However, existing MoE approaches treat visual and linguistic modalities with symmetric architectures, overlooking the inherent asymmetry in how these two modalities are processed. This asymmetry causes two critical issues. First, text and vision form hierarchical rather than parallel relationships, as text queries typically describe partial aspects of complete visual scenes. Euclidean expert space struggles to encode such containment structures. Second, language experts in deeper layers progressively shift from evidence-based processing to parametric memory dependence, losing grounding in the provided visual and linguistic information. To address these issues, we propose AsyMoE, a novel architecture that explicitly models this asymmetry through three specialized expert groups. Intra-modality experts handle modality-specific processing. Hyperbolic inter-modality experts capture hierarchical cross-modal relationships through negative curvature geometry. Evidence-priority language experts suppress parametric memory activation and maintain contextual grounding throughout network depth. Extensive experiments demonstrate that AsyMoE achieves consistent improvements over baseline methods, with average gains of 1.5\\% over MoE variants and up to 3.8\\% on hallucination-sensitive tasks. AsyMoE activates 25.45\\% fewer parameters compared to dense models.",
+      "authors": [
+        "Zijie Zhou",
+        "Dandan Zhu",
+        "Hangxiangpan Wang",
+        "Heng Zhang",
+        "Huishen Jiao",
+        "Yi Zhao"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-05-29T19:08:20+00:00",
+      "link": "https://arxiv.org/pdf/2606.00275v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "vision language understanding",
+      "llm_evidence_cn": "视觉语言理解",
+      "llm_evidence": "视觉语言理解",
+      "canonical_evidence": "视觉语言理解",
+      "llm_tldr_en": "Proposes hyperbolic and evidence-prioritized experts for LVLMs to handle visual-linguistic asymmetry, improving multimodal understanding.",
+      "llm_tldr_cn": "针对大型视觉语言模型(LVLM)中视觉与语言模态处理不对称的问题，提出双曲空间专家和证据优先混合专家架构。双曲空间更好地编码层次关系，证据优先机制抑制干扰。在多个多模态基准上提升性能，但未涉及导航任务。",
+      "llm_tldr": "针对大型视觉语言模型(LVLM)中视觉与语言模态处理不对称的问题，提出双曲空间专家和证据优先混合专家架构。双曲空间更好地编码层次关系，证据优先机制抑制干扰。在多个多模态基准上提升性能，但未涉及导航任务。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.30795v1",
+      "source": "arxiv",
+      "title": "Feat2Go: Visual Feature-Grounded Value Estimation for Embodied Reinforcement Learning",
+      "abstract": "Reinforcement learning is a promising approach for improving the capabilities of vision-language-action (VLA) models while avoiding the heavy data requirements of imitation learning. However, its effectiveness for VLA models is often constrained by sparse supervision and the difficulty of designing informative reward signals for long-horizon manipulation. In this work, we present Feat2Go, a fine-grained value estimation framework for embodied reinforcement learning. Specifically, Feat2Go first derives a continuous progress target from a pretrained visual world model by measuring patch-level similarity to subgoal states and partitioning episodes into semantic stages with trend-based clustering. We then train an embodied value model to predict this structural progress from the current observation and task instruction, and use the predicted value to reshape terminal rewards during policy optimization. The proposed framework is compatible with existing VLA policy reinforcement learning pipelines, including PPO and GRPO, and does not rely on manual reward engineering. Extensive experiments on ManiSkill3 and RoboTwin 2.0 demonstrate that Feat2Go consistently improves the performance of existing VLA models under both single-arm and bimanual manipulation settings. More specifically, on ManiSkill3, Feat2Go improves OpenVLAOFT from 17.5% to 82.9% average out-of-distribution success while retaining 96.9% in-distribution performance. On RoboTwin 2.0, Feat2Go achieves an average success rate of 88.8% in domain-randomized task settings, outperforming prior reinforcement learning methods.",
+      "authors": [
+        "Junyang Shu",
+        "Zhiwei Lin",
+        "Bingqing Wei",
+        "Yongtao Wang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-05-29T03:36:33+00:00",
+      "link": "https://arxiv.org/pdf/2605.30795v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Embodied reinforcement learning for VLA models with fine-grained value estimation",
+      "llm_evidence_cn": "面向VLA模型的具身强化学习细粒度价值估计",
+      "llm_evidence": "面向VLA模型的具身强化学习细粒度价值估计",
+      "canonical_evidence": "面向VLA模型的具身强化学习细粒度价值估计",
+      "llm_tldr_en": "Proposes Feat2Go, a fine-grained value estimation framework for embodied RL with VLA models, using visual world models to derive continuous progress targets and improve policy learning.",
+      "llm_tldr_cn": "强化学习用于VLA模型时面临稀疏奖励和奖励设计困难的问题。本文提出Feat2Go，从预训练视觉世界模型中提取补丁级相似度，通过趋势聚类划分语义阶段，训练具身价值模型提供密集的进度信号。在长时程操作任务上，Feat2Go显著提高了样本效率与最终性能，对具身导航具有方法论借鉴意义。",
+      "llm_tldr": "强化学习用于VLA模型时面临稀疏奖励和奖励设计困难的问题。本文提出Feat2Go，从预训练视觉世界模型中提取补丁级相似度，通过趋势聚类划分语义阶段，训练具身价值模型提供密集的进度信号。在长时程操作任务上，Feat2Go显著提高了样本效率与最终性能，对具身导航具有方法论借鉴意义。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.01414v1",
+      "source": "arxiv",
+      "title": "Agent Skills Should Go Beyond Text: The Case for Visual Skills",
+      "abstract": "Reusable skills are a key mechanism for extending agent capabilities, allowing agents to accumulate experience and solve increasingly complex tasks. Yet most existing skill-learning methods store reusable experience as text-only assets, such as instructions, reasoning traces, or summarized trajectories. We argue that this text-only paradigm creates a fundamental bottleneck for visual-centric tasks, where reusable knowledge often depends on spatial layout, visual grounding, fine-grained appearance, and localized state changes. To address this limitation, we propose \\textbf{\\NAME}, a multimodal skill paradigm that combines declarative textual logic with explicit visual support. We distinguish three reusable forms: static priors for stable spatial conventions, dynamic priors for in-situ visual working memory, and interleaved visual skills that bind ordered text steps to the source frames, screenshots, or page regions that justify them. Rather than only describing what to do, visual skills also encode where to look, how to inspect, and how to verify visual outcomes. To scale visual-skill construction, we introduce \\textbf{\\SYSTEM}, an automatic system that converts agent experience into reusable multimodal skills by preserving textual reasoning, spatial references, visual boundaries, and interaction patterns from task trajectories. Experiments on GUI and other visual-centric tasks show that visual skills consistently outperform text-only skills, particularly when success requires spatial correspondence, visual evidence, and state-aware interaction. These results support our central position: reusable agent skills should go beyond text and become multimodal assets for future multimodal agents.",
+      "authors": [
+        "Binxiao Xu",
+        "Ruichuan An",
+        "Bocheng Zou",
+        "Hang Hua"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-05-31T19:22:43+00:00",
+      "link": "https://arxiv.org/pdf/2606.01414v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "multimodal skill paradigm for visual-centric tasks",
+      "llm_evidence_cn": "面向视觉中心任务的多模态技能范式",
+      "llm_evidence": "面向视觉中心任务的多模态技能范式",
+      "canonical_evidence": "面向视觉中心任务的多模态技能范式",
+      "llm_tldr_en": "Proposes a multimodal skill paradigm combining textual logic and visual support to overcome the limitation of text-only skills for visual-centric agent tasks.",
+      "llm_tldr_cn": "本文指出现有可复用技能方法局限于纯文本资产，对于视觉中心任务构成瓶颈。为此提出一种多模态技能范式，融合文本逻辑与显式视觉支持，区分静态先验、视觉动态等可复用形式。该方法有望提升具身代理在视觉任务中的技能泛化能力，但未具体在导航任务上验证。",
+      "llm_tldr": "本文指出现有可复用技能方法局限于纯文本资产，对于视觉中心任务构成瓶颈。为此提出一种多模态技能范式，融合文本逻辑与显式视觉支持，区分静态先验、视觉动态等可复用形式。该方法有望提升具身代理在视觉任务中的技能泛化能力，但未具体在导航任务上验证。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.00145v1",
+      "source": "arxiv",
+      "title": "Completion at the Boundary (CaB): Deployable Switching with Completion-Aware Control under Limited Calibration",
+      "abstract": "Vision-language-action (VLA) agents can execute natural-language instructions, yet deployed systems still lack an operational interface: deciding when the instruction is complete. This gap is acute in short composites (\"do A, then B\"), where mistimed handoffs cascade into downstream failures. Completion is inherently closed-loop because switching is an intervention that changes the instruction context and thus future actions and observations. We study completion under a deployable low-calibration regime motivated by open-ended instruction spaces, enforcing no test-time relearning and a single globally calibrated switching rule selected once on development set and reused unchanged on test set. Under this constraint, collapsing asymmetric boundary evidence into a single scalar can be brittle under polarity shifts across tasks. We propose Completion at the Boundary (CaB), which predicts an event-local completion object in the form of Boundary-Phase Tokens (Before/Hit/After), retaining two-sided boundary evidence under this discipline. CaB-When converts this completion object into a minimal, auditable switching decision (when), while CaB-How reuses the same completion object to condition action generation for boundary-stable control through handoffs (how). Using an intervention-aware E1/E2 protocol, we show that CaB improves composite execution and handoff quality on a first-person Minecraft VLA benchmark under matched capacity and deployability constraints.",
+      "authors": [
+        "Yusuke Sano",
+        "Takeshi Itoga"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-05-29T02:48:13+00:00",
+      "link": "https://arxiv.org/pdf/2606.00145v1",
+      "tags": [
+        "keyword:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "embodied agents following natural language instructions for navigation",
+      "llm_evidence_cn": "遵循自然语言导航指令的具身代理",
+      "llm_evidence": "遵循自然语言导航指令的具身代理",
+      "canonical_evidence": "遵循自然语言导航指令的具身代理",
+      "llm_tldr_en": "Proposes completion-aware switching for VLA agents to decide when instructions are complete, critical for sequential navigation tasks.",
+      "llm_tldr_cn": "针对VLA代理缺乏判断指令何时完成的问题，提出Completion at the Boundary (CaB)框架。在有限校准设定下，通过单一全局切换规则决定任务完成时刻，避免下游串联失败。该方法对复合指令（如“先做A，再做B”）的导航任务至关重要，提升了部署可靠性。",
+      "llm_tldr": "针对VLA代理缺乏判断指令何时完成的问题，提出Completion at the Boundary (CaB)框架。在有限校准设定下，通过单一全局切换规则决定任务完成时刻，避免下游串联失败。该方法对复合指令（如“先做A，再做B”）的导航任务至关重要，提升了部署可靠性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.03240v1",
+      "source": "arxiv",
+      "title": "GeoAlign: Beyond Semantics with State-Guided Spatial Alignment in VLA Models",
+      "abstract": "Current Vision--Language--Action (VLA) models often optimize for semantic grounding, whereas executable manipulation requires geometry-aware spatial alignment and dynamic affordance selection. We introduce GeoAlign, a state-guided spatial alignment architecture for VLA policy learning. GeoAlign post-trains an RGB geometry branch with robot-domain RGB-D supervision, yielding RGB-derived Geometry-Enhanced Post-Trained (GEP) features for policy rollout. The robot's proprioceptive state queries the GEP feature grid, producing compact, phase-dependent geometry tokens for action prediction. GeoAlign achieves 99.0% on LIBERO, 85.3% across three SimplerEnv-Fractal tasks, and 78.8% on eight geometry-critical real-world ALOHA tasks, with ablations confirming the value of geometry post-training and proprioceptive-state-guided querying.",
+      "authors": [
+        "Yizhi Chen",
+        "Zhanxiang Cao",
+        "Xinyi Peng",
+        "Yixiao Zheng",
+        "Xiaxi Si",
+        "Yiheng Li",
+        "Liyun Yan",
+        "Keqi Zhu",
+        "Xueyun Chen",
+        "Shengcheng Fu",
+        "Tianyue Zhan",
+        "Yufei Jia",
+        "Jinming Yao",
+        "Yan Xie",
+        "Kun Wang",
+        "Cewu Lu",
+        "Yue Gao"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-02T07:01:18+00:00",
+      "link": "https://arxiv.org/pdf/2606.03240v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "vision-language-action model for manipulation with geometry-aware spatial alignment, relevant to VLN methodology",
+      "llm_evidence_cn": "用于操作的视觉-语言-动作模型，具有空间对齐能力，与VLN方法相关",
+      "llm_evidence": "用于操作的视觉-语言-动作模型，具有空间对齐能力，与VLN方法相关",
+      "canonical_evidence": "用于操作的视觉-语言-动作模型，具有空间对齐能力，与VLN方法相关",
+      "llm_tldr_en": "Introduces GeoAlign, a state-guided spatial alignment architecture for VLA policy learning, achieving high success on manipulation tasks while improving geometry-aware spatial alignment.",
+      "llm_tldr_cn": "现有VLA模型侧重于语义对齐，但可执行操作需要几何感知的空间对齐。本文提出GeoAlign，通过后训练RGB几何分支并利用机器人状态查询，生成几何增强的特征用于动作预测。在LIBERO、SimplerEnv和ALOHA任务上分别达到99.0%、85.3%和78.8%的成功率。该方法展示了在VLA中融合几何信息的重要性，对VLN中的空间推理有借鉴意义。",
+      "llm_tldr": "现有VLA模型侧重于语义对齐，但可执行操作需要几何感知的空间对齐。本文提出GeoAlign，通过后训练RGB几何分支并利用机器人状态查询，生成几何增强的特征用于动作预测。在LIBERO、SimplerEnv和ALOHA任务上分别达到99.0%、85.3%和78.8%的成功率。该方法展示了在VLA中融合几何信息的重要性，对VLN中的空间推理有借鉴意义。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.01164v1",
+      "source": "arxiv",
+      "title": "Towards Interactive Video World Modeling: Frontiers, Challenges, Benchmarks, and Future Trends",
+      "abstract": "With rapid development of large language models and diffusion-based content generation, world modeling has attracted increasing research attention, benefiting various downstream domains such as game engines, embodied AI, autonomous driving, etc. Through explicitly incorporating user actions into world state transition, recent literature empowers world modeling with interactivity in an action-conditioned video or 3D generation paradigm, further enhancing controllability over world evolutions and facilitating users to freely traverse, manipulate, navigate, and personalize the state evolution. In this paper, we aim to systematically review recent research trends, technical developments, evaluation benchmarks, and also propose future potential directions in interactive world modeling. Specifically, we first summarize recent efforts and trends in terms of application scenarios, world state evolution, and scene modality. Afterwards, we delve into three crucial technical challenges, including action-conditioned controllability, long-horizon interactions and memory, and action-following responsiveness for real-time interactivity. Furthermore, we also thoroughly compare existing benchmarks and metrics in four specific application fields: open-world exploration, game engine, autonomous driving, and robotics. Finally, we discuss several promising future directions in achieving next-generation interactive world modeling. The corresponding repository is publicly available at: https://github.com/liujiuming123/Awesome-Interactive-World-Model.",
+      "authors": [
+        "Jiuming Liu",
+        "Chaojun Ni",
+        "Mengmeng Liu",
+        "Chensheng Peng",
+        "Fangjinhua Wang",
+        "Sitian Shen",
+        "Marc Pollefeys",
+        "Masayoshi Tomizuka",
+        "Ayush Tewari",
+        "Per Ola Kristensson"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-05-31T11:12:30+00:00",
+      "link": "https://arxiv.org/pdf/2606.01164v1",
+      "tags": [
+        "keyword:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "interactive video world modeling for embodied AI and navigation",
+      "llm_evidence_cn": "交互式视频世界建模，应用于具身智能和导航",
+      "llm_evidence": "交互式视频世界建模，应用于具身智能和导航",
+      "canonical_evidence": "交互式视频世界建模，应用于具身智能和导航",
+      "llm_tldr_en": "This paper surveys interactive video world modeling, covering action-conditioned generation for embodied AI, autonomous driving, and navigation, providing benchmarks and future trends.",
+      "llm_tldr_cn": "本文系统综述了交互式视频世界建模，该技术通过动作条件生成视频或3D环境，支持用户自由遍历、操控和导航，广泛应用于具身AI和自动驾驶等领域。文章梳理了研究趋势、技术进展、评估基准并展望未来方向。",
+      "llm_tldr": "本文系统综述了交互式视频世界建模，该技术通过动作条件生成视频或3D环境，支持用户自由遍历、操控和导航，广泛应用于具身AI和自动驾驶等领域。文章梳理了研究趋势、技术进展、评估基准并展望未来方向。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.03988v2",
+      "source": "arxiv",
+      "title": "Imaginative Perception Tokens Enhance Spatial Reasoning in Multimodal Language Models",
+      "abstract": "Vision language models (VLMs) excel at many tasks but still struggle with spatial reasoning when critical information is not directly observable. Many such problems require imaginative perception: inferring what would be seen from an unseen viewpoint, tracing paths through occluded spaces, or integrating partial observations into a coherent spatial representation. We introduce Imaginative Perception Tokens (IPT), intermediate perceptual representations that externalize what a VLM would perceive under alternative spatial configurations while remaining consistent with the observed input.   To study this capability, we formulate three tasks, Perspective Taking (PET), Path Tracing (PT), and Multiview Counting (MVC), and construct datasets of approximately 20K examples with ground truth imaginations, answers, and evaluation benchmarks. Using the unified VLM BAGEL as the backbone, IPT supervision consistently improves spatial reasoning and often outperforms textual chain of thought training, even without generating images at inference time. On MVC, IPT improves accuracy by 3.4% and achieves competitive performance with strong closed-source models on PT. We further find that combining IPT and label-only supervision yields additional gains, whereas textual chain of thought can substantially degrade performance, suggesting a modality mismatch when spatial computation is forced through language. Overall, IPT provides a principled supervision signal for reasoning about unobserved spatial structure, improving generalization while producing interpretable intermediate representations.",
+      "authors": [
+        "Mahtab Bigverdi",
+        "Linjie Li",
+        "Weikai Huang",
+        "Yiming Liu",
+        "Jaemin Cho",
+        "Jieyu Zhang",
+        "Tuhin Kundu",
+        "Chris Dangjoo Kim",
+        "Zelun Luo",
+        "Linda Shapiro",
+        "Ranjay Krishna"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-02T17:59:17+00:00",
+      "link": "https://arxiv.org/pdf/2606.03988v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "imaginative perception tokens for spatial reasoning in VLMs",
+      "llm_evidence_cn": "想象感知令牌增强VLM空间推理，涉及路径跟踪",
+      "llm_evidence": "想象感知令牌增强VLM空间推理，涉及路径跟踪",
+      "canonical_evidence": "想象感知令牌增强VLM空间推理，涉及路径跟踪",
+      "llm_tldr_en": "Imaginative Perception Tokens (IPT) enable VLMs to externalize unseen viewpoints and trace paths through occluded spaces, improving spatial reasoning for tasks like path tracing.",
+      "llm_tldr_cn": "VLM在不可见信息推理上存在困难。本文提出想象感知令牌，将VLM在替代空间配置下的感知结果外部化，并保持与观测一致。在视角推测、路径跟踪和多视角计数三个任务上构造数据集，验证了IPT显著提升空间推理能力。",
+      "llm_tldr": "VLM在不可见信息推理上存在困难。本文提出想象感知令牌，将VLM在替代空间配置下的感知结果外部化，并保持与观测一致。在视角推测、路径跟踪和多视角计数三个任务上构造数据集，验证了IPT显著提升空间推理能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.02463v1",
+      "source": "arxiv",
+      "title": "MASER: Modality-Adaptive Specialist Routing for Embodied 3D Spatial Intelligence",
+      "abstract": "In 3D environments, Embodied Agents answer spatially relevant questions through reasoning from a mixture of modalities including natural language, RGB images, point clouds, depth maps and camera poses. Existing Vision-Language models (VLMs) are fine-tuned over a single modality. This completely ignores the question semantics which may favor a different modality than the finetuned modality. To address this, we propose MASER (Modality-Adaptive SpEcialist Routing), a lightweight framework that trains five different modality adapters of a shared VLM backbone and learns a neural routing policy that selects the best adapter based on the question during inference. We encode each question with a frozen sentence transformer and pass the embedding through a small Multi-layer Perceptron (MLP) trained on oracle adapter-accuracy labels. We evaluate our methodology over the Open3D-VQA benchmark and our evaluations show that no single modality is universally optimal -- point-cloud answers are best in 51.5% of cases. MASER routes with 51.3% oracle agreement, outperforming a Random-Forest ablation (43.5%), with only a single adapter call per question.",
+      "authors": [
+        "Hilton Raj",
+        "Vishnuram AV"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-01T16:36:21+00:00",
+      "link": "https://arxiv.org/pdf/2606.02463v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "modality-adaptive routing for embodied 3D spatial intelligence",
+      "llm_evidence_cn": "模态自适应路由用于具身3D空间智能",
+      "llm_evidence": "模态自适应路由用于具身3D空间智能",
+      "canonical_evidence": "模态自适应路由用于具身3D空间智能",
+      "llm_tldr_en": "MASER trains multiple modality adapters on a shared VLM backbone and learns a routing policy to select the best adapter based on question semantics for embodied spatial QA.",
+      "llm_tldr_cn": "具身智能体回答空间问题需要多模态推理，但现有VLM仅微调单一模态。本文提出MASER，训练五个模态适配器并学习路由策略，在推理时根据问题语义选择最佳适配器。在3D空间问答基准上，MASER显著优于单模态微调方法。",
+      "llm_tldr": "具身智能体回答空间问题需要多模态推理，但现有VLM仅微调单一模态。本文提出MASER，训练五个模态适配器并学习路由策略，在推理时根据问题语义选择最佳适配器。在3D空间问答基准上，MASER显著优于单模态微调方法。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.04433v1",
+      "source": "arxiv",
+      "title": "Stateful Visual Encoders for Vision-Language Models",
+      "abstract": "Vision-language models (VLMs) are increasingly used in multi-image, multi-turn agentic settings where decisions depend on visual changes. However, in existing open-weight VLMs, visual comparisons happen only inside the language model, while the visual encoder itself remains stateless: each image is encoded independently, without access to the prior visual context. As a result, small but task-critical changes may be attenuated before the language model has a chance to compare them, especially when those changes do not affect the high-level semantics of the scene. We introduce a Stateful Visual Encoder, which conditions each visual representation on prior visual features. Under supervised finetuning, VLMs equipped with stateful encoders achieve consistent improvements on controlled tasks involving cross-image spatial aggregation, multi-object visual differencing, and visual trajectory behavior cloning. These improvements are consistent across input resolutions, language model sizes, and VLM backbones. Finally, we validate our model on real-world tasks, including longitudinal radiology, fine-grained image comparison, and remote sensing, where stateful encoders consistently improve generalist VLM baselines and can match or surpass specialized models in selected domains. Project page: https://statefulvisualencoders.github.io/",
+      "authors": [
+        "Zirui Wang",
+        "Junwei Yu",
+        "Adam Yala",
+        "David M. Chan",
+        "Joseph E. Gonzalez",
+        "Trevor Darrell"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-06-03T04:31:15+00:00",
+      "link": "https://arxiv.org/pdf/2606.04433v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "stateful visual encoder for vision-language models in agentic settings",
+      "llm_evidence_cn": "面向智能体环境的视觉-语言模型状态编码器",
+      "llm_evidence": "面向智能体环境的视觉-语言模型状态编码器",
+      "canonical_evidence": "面向智能体环境的视觉-语言模型状态编码器",
+      "llm_tldr_en": "Stateful Visual Encoder conditions visual representations on prior context, improving VLMs for multi-turn agentic tasks requiring visual change detection.",
+      "llm_tldr_cn": "现有视觉语言模型编码器无状态，无法感知视觉变化，限制了多轮智能体任务。本文提出状态化视觉编码器，将先前视觉特征作为条件，增强模型对关键变化的敏感度。微调后，该编码器在需要视觉比较的任务上持续改进。",
+      "llm_tldr": "现有视觉语言模型编码器无状态，无法感知视觉变化，限制了多轮智能体任务。本文提出状态化视觉编码器，将先前视觉特征作为条件，增强模型对关键变化的敏感度。微调后，该编码器在需要视觉比较的任务上持续改进。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.03963v2",
+      "source": "arxiv",
+      "title": "AgenticRL: Self-Refining Agentic Reinforcement Learning for Vision-Conditioned UAV Navigation",
+      "abstract": "Deep reinforcement learning has shown strong potential for enabling autonomous robots to learn complex navigational tasks. However, its practical use still depends heavily on human designed reward functions and repeated manual fine tuning, which is time consuming and does not guarantee high success in the desired task. This paper presents AgenticRL, agent guided reinforcement learning framework that increases autonomy in reward design, policy refinement, and real world deployment for unmanned aerial vehicles (UAV) navigation tasks. AgenticRL uses a multimodal generative pre-trained tansformer (GPT) agent to interpret task information and visual scene observations, generate task specific reward functions, train policies using Proximal Policy Optimization (PPO) algorithm, and then act as a critic by evaluating the trained policy through diagnosis packets to generate feedback. Based on this feedback, the agent identifies failure modes and refines the reward function in a closed loop self improvement process. To further leverage the multimodal GPT agent during inference, AgenticRL uses real world images and natural language task information to automatically identify the active scenario and select the appropriate trained policy for execution. The framework is evaluated on multiple navigational tasks, including gate traversal, obstacle avoidance, wall barrier crossing with landing, trajectory following, and motion behavior learning. Experimental results show that the closed loop refinement process improves policy behavior compared with initial rewards by 71%. We also demonstrate sim-to-real transfer of the proposed framework, achieving a real world success rate of 91% and a sim-to-real accuracy of 94%.",
+      "authors": [
+        "Roohan Ahmed Khan",
+        "Yasheerah Yaqoot",
+        "Muhammad Ahsan Mustafa",
+        "Dzmitry Tsetserukou"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-02T17:50:15+00:00",
+      "link": "https://arxiv.org/pdf/2606.03963v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "uses GPT agent for task interpretation and reward design in vision-conditioned UAV navigation",
+      "llm_evidence_cn": "使用GPT代理在视觉条件下的无人机导航中进行任务解释和奖励设计",
+      "llm_evidence": "使用GPT代理在视觉条件下的无人机导航中进行任务解释和奖励设计",
+      "canonical_evidence": "使用GPT代理在视觉条件下的无人机导航中进行任务解释和奖励设计",
+      "llm_tldr_en": "AgenticRL employs a multimodal GPT agent to interpret tasks, generate rewards, and refine policies for UAV navigation, reducing manual tuning.",
+      "llm_tldr_cn": "针对无人机导航任务中人工设计奖励函数与手动调参的低效问题，提出AgenticRL框架。该框架利用多模态GPT代理解释任务信息和视觉场景，自动生成任务特定的奖励函数，并通过近端策略优化训练策略。在真实世界部署中，AgenticRL显著提高了导航成功率并减少了人工干预。",
+      "llm_tldr": "针对无人机导航任务中人工设计奖励函数与手动调参的低效问题，提出AgenticRL框架。该框架利用多模态GPT代理解释任务信息和视觉场景，自动生成任务特定的奖励函数，并通过近端策略优化训练策略。在真实世界部署中，AgenticRL显著提高了导航成功率并减少了人工干预。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

@@ -6,73 +6,68 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-05
-- 运行时间：2026-06-05 21:55:25 UTC
+- 最新运行日期：2026-06-06
+- 运行时间：2026-06-06 20:19:43 UTC
 - 运行状态：成功
-- 本次总论文数：17
-- 精读区：6
+- 本次总论文数：16
+- 精读区：5
 - 速读区：11
 
 ### 今日简报（AI）
-1) 今日研究聚焦大型语言模型与视觉语言模型在空间推理与导航规划中的能力剖析与突破，精读两篇9.0高分论文。
-2) 最值得关注：《The Sword, Shield, and Achilles' Heel》揭示LLM空间推理的归纳偏好，以及《PSG-Nav》用概率场景图实现多宇宙决策导航。
-3) 推荐优先精读这两篇高分论文，快速掌握空间推理前沿方向。
-- 详情：[/202606/05/README](/202606/05/README)
+今天共推荐16篇论文，精读5篇、速读11篇，重点覆盖具身导航、视觉语言动作等前沿方向。最值得关注的是零样本导航新方法EvoMemNav（9.0分）和视觉证据预算下的泛化VLA（8.0分）。建议优先精读这两篇高分论文，并速读具身验证基准PInVerify及特征接地价值估计Feat2Go等应用型研究。
+- 详情：[/202606/06/README](/202606/06/README)
 
 ### 精读区论文标签
-1. [The Sword, Shield, and Achilles' Heel: Characterizing the Linguistic Inductive Bias of Large Language Models for Spatial Reasoning in Navigation Planning](/202606/05/2605.31404v1-the-sword-shield-and-achilles-heel-characterizing-the-linguistic-inductive-bias-of-large-language-models-for-spatial-reasoning-in-navigation-planning)  
+1. [EvoMemNav: Efficient Self-Evolving Fine-Grained Memory for Zero-Shot Embodied Navigation](/202606/06/2606.03509v1-evomemnav-efficient-self-evolving-fine-grained-memory-for-zero-shot-embodied-navigation)  
    标签：评分：9.0/10、query:vln
-   evidence：刻画LLM在导航规划中的语言归纳偏差，直接关联指令跟随
-2. [PSG-Nav: Probabilistic Scene Graph Navigation via Multiverse Decision Making](/202606/05/2606.01313v1-psg-nav-probabilistic-scene-graph-navigation-via-multiverse-decision-making)  
-   标签：评分：9.0/10、query:vln
-   evidence：开放词汇导航，利用概率场景图和多宇宙决策
-3. [WAM-Nav: Asymmetric Latent World-Action Modeling for Unified Visual Navigation](/202606/05/2606.04907v1-wam-nav-asymmetric-latent-world-action-modeling-for-unified-visual-navigation)  
-   标签：评分：9.0/10、query:vln
-   evidence：提出潜在世界-动作模型用于统一视觉导航，直接针对具身导航问题
-4. [ERGeoBench:A Comprehensive Benchmark for Embodied Reasoning and Geo-localization in Multimodal Large Language Models](/202606/05/2605.31251v1-ergeobencha-comprehensive-benchmark-for-embodied-reasoning-and-geo-localization-in-multimodal-large-language-models)  
+   evidence：零样本具身导航，自进化细粒度记忆
+2. [See Less, Specify More: Visual Evidence Budgets for Generalizable VLAs](/202606/06/2606.02735v1-see-less-specify-more-visual-evidence-budgets-for-generalizable-vlas)  
    标签：评分：8.0/10、query:vln
-   evidence：具身地理定位基准，评估导航能力
-5. [Co-training with Ego-centric Video and Demonstration for Robot Navigation Task](/202606/05/2606.01951v1-co-training-with-ego-centric-video-and-demonstration-for-robot-navigation-task)  
+   evidence：视觉语言导航方法
+3. [Self-Refining Agentic Reinforcement Learning for Vision-Conditioned UAV Navigation](/202606/06/2606.03963v1-self-refining-agentic-reinforcement-learning-for-vision-conditioned-uav-navigation)  
    标签：评分：8.0/10、query:vln
-   evidence：利用自我中心视频训练VLA模型用于机器人导航任务
-6. [EvoMemNav: Efficient Self-Evolving Fine-Grained Memory for Zero-Shot Embodied Navigation](/202606/05/2606.03509v1-evomemnav-efficient-self-evolving-fine-grained-memory-for-zero-shot-embodied-navigation)  
+   evidence：基于视觉条件的无人机导航与智能体强化学习
+4. [AgenticDiffusion: Agentic Diffusion-based Path Planning for Vision-Based UAV Navigation](/202606/06/2606.04111v1-agenticdiffusion-agentic-diffusion-based-path-planning-for-vision-based-uav-navigation)  
    标签：评分：8.0/10、query:vln
-   evidence：用于零样本具身导航的高效记忆框架，包含语义和拓扑图
+   evidence：语言引导的无人机导航结合扩散规划
+5. [WorldFly: A World-Model-Based Vision-Language-Action Model for UAV Navigation](/202606/06/2606.06147v1-worldfly-a-world-model-based-vision-language-action-model-for-uav-navigation)  
+   标签：评分：8.0/10、query:vln
+   evidence：基于世界模型的VLA模型用于无人机导航，直接涉及视觉语言导航
 
 ### 速读区论文标签
-1. [Active Exploring like a Pigeon: Reinforcing Spatial Reasoning via Agentic Vision-Language Models](/202606/05/2606.02459v1-active-exploring-like-a-pigeon-reinforcing-spatial-reasoning-via-agentic-vision-language-models)  
-   标签：评分：8.0/10、query:vln
-   evidence：受鸽子认知地图启发的智能体空间推理导航方法
-2. [Dive into the Scene: Breaking the Perceptual Bottleneck in Vision-Language Decision Making via Focus Plan Generation](/202606/05/2606.04046v1-dive-into-the-scene-breaking-the-perceptual-bottleneck-in-vision-language-decision-making-via-focus-plan-generation)  
-   标签：评分：8.0/10、query:vln
-   evidence：直接针对导航和操作中的视觉语言决策问题
-3. [LongSpace: Exploring Long-Horizon Spatial Memory from Perception to Recall in Video](/202606/05/2606.05677v1-longspace-exploring-long-horizon-spatial-memory-from-perception-to-recall-in-video)  
-   标签：评分：8.0/10、query:vln
-   evidence：用于自动驾驶和机器人导航的长时空间记忆
-4. [DRIFT: A Residual Flow Adapter for Decoding Continuous Outputs in Vision-Language Models](/202606/05/2606.05758v1-drift-a-residual-flow-adapter-for-decoding-continuous-outputs-in-vision-language-models)  
-   标签：评分：8.0/10、query:vln
-   evidence：使VLM能够生成机器人控制动作，直接适用于具身导航
-5. [VisualThink-VLA: Visual Intermediate Reasoning for Effective and Low-Latency Vision-Language-Action Policies](/202606/05/2605.30011v1-visualthink-vla-visual-intermediate-reasoning-for-effective-and-low-latency-vision-language-action-policies)  
+1. [PInVerify: An Offline Embodied Benchmark for Active Instance Verification](/202606/06/2605.30639v1-pinverify-an-offline-embodied-benchmark-for-active-instance-verification)  
    标签：评分：7.0/10、query:vln
-   evidence：面向具身控制的VLA策略的视觉中间推理
-6. [VLA-Trace: Diagnosing Vision-Language-Action Models through Representation and Behavior Tracing](/202606/05/2605.30117v1-vla-trace-diagnosing-vision-language-action-models-through-representation-and-behavior-tracing)  
+   evidence：使用自然语言描述的主动实例验证，将导航扩展到细粒度物体检查
+2. [Feat2Go: Visual Feature-Grounded Value Estimation for Embodied Reinforcement Learning](/202606/06/2605.30795v1-feat2go-visual-feature-grounded-value-estimation-for-embodied-reinforcement-learning)  
    标签：评分：7.0/10、query:vln
-   evidence：关注视觉-语言-动作模型的诊断，这是视觉语言导航的核心
-7. [Grounded 3D-Aware Spatial Vision-Language Modeling](/202606/05/2605.30307v1-grounded-3d-aware-spatial-vision-language-modeling)  
+   evidence：面向VLA模型的具身强化学习细粒度价值估计
+3. [Completion at the Boundary (CaB): Deployable Switching with Completion-Aware Control under Limited Calibration](/202606/06/2606.00145v1-completion-at-the-boundary-cab-deployable-switching-with-completion-aware-control-under-limited-calibration)  
    标签：评分：7.0/10、query:vln
-   evidence：3D感知的空间视觉语言模型，可迁移至导航
-8. [VLM-GLoc: Vision-Language Model Enhanced Monte Carlo Localization for Robust Semantic Global Localization in Cluttered Quasi-Static Environments](/202606/05/2605.30506v1-vlm-gloc-vision-language-model-enhanced-monte-carlo-localization-for-robust-semantic-global-localization-in-cluttered-quasi-static-environments)  
+   evidence：遵循自然语言导航指令的具身代理
+4. [Towards Interactive Video World Modeling: Frontiers, Challenges, Benchmarks, and Future Trends](/202606/06/2606.01164v1-towards-interactive-video-world-modeling-frontiers-challenges-benchmarks-and-future-trends)  
    标签：评分：7.0/10、query:vln
-   evidence：使用VLM进行导航中的语义全局定位
-9. [Completion at the Boundary (CaB): Deployable Switching with Completion-Aware Control under Limited Calibration](/202606/05/2606.00145v1-completion-at-the-boundary-cab-deployable-switching-with-completion-aware-control-under-limited-calibration)  
+   evidence：交互式视频世界建模，应用于具身智能和导航
+5. [MASER: Modality-Adaptive Specialist Routing for Embodied 3D Spatial Intelligence](/202606/06/2606.02463v1-maser-modality-adaptive-specialist-routing-for-embodied-3d-spatial-intelligence)  
+   标签：评分：7.0/10、query:vln
+   evidence：模态自适应路由用于具身3D空间智能
+6. [AgenticRL: Self-Refining Agentic Reinforcement Learning for Vision-Conditioned UAV Navigation](/202606/06/2606.03963v2-agenticrl-self-refining-agentic-reinforcement-learning-for-vision-conditioned-uav-navigation)  
+   标签：评分：7.0/10、query:vln
+   evidence：使用GPT代理在视觉条件下的无人机导航中进行任务解释和奖励设计
+7. [Hyperbolic and Evidence-Prioritized Experts for Large Vision-Language Models](/202606/06/2606.00275v1-hyperbolic-and-evidence-prioritized-experts-for-large-vision-language-models)  
    标签：评分：6.0/10、query:vln
-   evidence：处理执行自然语言指令的VLA智能体的完成检测
-10. [Closed-Loop Neural Activation Control in Vision-Language-Action Models](/202606/05/2606.00269v1-closed-loop-neural-activation-control-in-vision-language-action-models)  
+   evidence：视觉语言理解
+8. [Agent Skills Should Go Beyond Text: The Case for Visual Skills](/202606/06/2606.01414v1-agent-skills-should-go-beyond-text-the-case-for-visual-skills)  
    标签：评分：6.0/10、query:vln
-   evidence：针对VLA模型的闭环控制方法，可应用于具身导航等任务
-11. [Make Your VLA More Robust Without More Data By Interleaving Motion Planning](/202606/05/2606.00985v1-make-your-vla-more-robust-without-more-data-by-interleaving-motion-planning)  
+   evidence：面向视觉中心任务的多模态技能范式
+9. [GeoAlign: Beyond Semantics with State-Guided Spatial Alignment in VLA Models](/202606/06/2606.03240v1-geoalign-beyond-semantics-with-state-guided-spatial-alignment-in-vla-models)  
    标签：评分：6.0/10、query:vln
-   evidence：解决涉及导航的移动操作中VLA鲁棒性问题
+   evidence：用于操作的视觉-语言-动作模型，具有空间对齐能力，与VLN方法相关
+10. [Imaginative Perception Tokens Enhance Spatial Reasoning in Multimodal Language Models](/202606/06/2606.03988v2-imaginative-perception-tokens-enhance-spatial-reasoning-in-multimodal-language-models)  
+   标签：评分：6.0/10、query:vln
+   evidence：想象感知令牌增强VLM空间推理，涉及路径跟踪
+11. [Stateful Visual Encoders for Vision-Language Models](/202606/06/2606.04433v1-stateful-visual-encoders-for-vision-language-models)  
+   标签：评分：6.0/10、query:vln
+   evidence：面向智能体环境的视觉-语言模型状态编码器
 
 
 <div class="dpr-home-promo-card">

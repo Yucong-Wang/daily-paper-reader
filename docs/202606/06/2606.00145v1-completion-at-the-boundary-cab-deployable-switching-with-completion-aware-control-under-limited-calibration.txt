@@ -1,0 +1,1064 @@
+Title: Completion at the Boundary (CaB): Deployable Switching with Completion-Aware Control under Limited Calibration
+
+URL Source: https://arxiv.org/pdf/2606.00145v1
+
+Published Time: Tue, 02 Jun 2026 00:05:29 GMT
+
+Number of Pages: 31
+
+Markdown Content:
+# Completion at the Boundary (CaB): Deployable Switching with Completion-Aware Control under Limited Calibration 
+
+Yusuke Sano, Takeshi Itoga 
+
+Intelligent Systems Laboratory, SECOM Co., Ltd. 
+
+yus-sano@secom.co.jp, t-itoga@secom.co.jp 
+
+## Abstract 
+
+Vision–language–action (VLA) agents can execute natural-language instructions, yet deployed systems still lack an operational interface: deciding when the in-struction is complete. This gap is acute in short composites (“do A, then B”), where mistimed handoffs cascade into downstream failures. Completion is inher-ently closed-loop because switching is an intervention that changes the instruction context and thus future actions and observations. We study completion under a de-ployable low-calibration regime motivated by open-ended instruction spaces, en-forcing no test-time relearning and a single globally calibrated switching rule se-lected once on development set and reused unchanged on test set. Under this con-straint, collapsing asymmetric boundary evidence into a single scalar can be brit-tle under polarity shifts across tasks. We propose Completion at the Boundary (CaB) , which predicts an event-local completion object in the form of Boundary-Phase Tokens (Before/Hit/After), retaining two-sided boundary evidence under this discipline. CaB-When converts this completion object into a minimal, au-ditable switching decision ( when ), while CaB-How reuses the same completion object to condition action generation for boundary-stable control through handoffs (how ). Using an intervention-aware E1/E2 protocol, we show that CaB improves composite execution and handoff quality on a first-person Minecraft VLA bench-mark under matched capacity and deployability constraints. 
+
+## 1 Introduction 
+
+Vision–language–action (VLA) policies have rapidly advanced in executing natural-language in-structions in embodied environments, ranging from end-to-end robot control to open-ended long-horizon instruction following with hierarchical VLA systems [7, 49, 23, 21, 19, 36]. Similar progress is emerging in open-world Minecraft, where recent VLA agents can follow diverse human instruc-tions across large collections of atomic tasks [24, 27, 26, 41]. Yet deployed systems still lack a basic operational interface: deciding when the current instruction is complete. This gap is acute in short composite routines (“do A, then B”), where a mistimed handoff can cascade into downstream failures. A key reason completion is challenging in composites is that switching is an intervention: changing the active instruction alters the agent’s context, actions, and thus future observations. Completion is therefore inherently closed-loop, with completion and control tightly coupled, rather than a passive prediction problem. In composites, completion decisions directly change the active instruction, making switching a high-impact intervention that can materially affect downstream outcomes. For reliability and safety [17], completion should therefore be exposed as a deployable completion interface for intervention-sensitive execution—not merely as a passive prediction head.       
+
+> Preprint.
+> arXiv:2606.00145v1 [cs.RO] 29 May 2026 (Correct Handoff) (Premature) (Overrun)
+> switch
+> early
+> switch
+> late
+> switch
+> at Boundary
+> Time Time Time
+> Outcome : Outcome :
+> Hunt
+> the cow.
+> Cook
+> the beef.
+> (no beef) (cooked
+> beef) Outcome : (miss
+> handoff)
+> Composite Instruction :
+> (a) Switching is an intervention
+> Environment
+> Action Observation
+> Composite
+> Instruction
+> Shear
+> sheep
+> Shear
+> sheep
+> Cook
+> the beef.
+
+Boundary -Phase  Posterior     
+
+> (Event -Local)
+> Conditioning
+> (how )
+> Completion
+> interface ( when )Hit
+> Before After
+> CaB
+> VLA
+> Estimate
+> Event
+> Happens Time
+> Hunt
+> the cow.
+> Cook
+> the beef.
+> how how
+> when
+> Environment
+> Composite
+> Instruction
+> Cook
+> the beef.
+> Typical
+> VLA
+> Missing interface: when to switch
+> < Typical VLA >
+
+< CaB  VLA > 
+
+> (b) Completion at the Boundary ( CaB )
+> Deployable
+
+Figure 1: Key idea: deployable completion interface under intervention. (a) In short composite instructions (“do A, then B”), mistimed handoffs (premature vs. overrun) cause downstream failures; switching updates the active instruction and thus intervenes in the trajectory. ( b) Many VLA policies lack an explicit completion interface for deciding when to switch, whereas CaB learns an event-local 
+
+boundary-phase posterior (Before/Hit/After) and uses it for both a deployable completion interface (when ) and control conditioning for boundary-stable execution ( how ). We target a deployability regime motivated by practical constraints in open-ended instruction spaces, where new phrasings, compositions, and user-specific goals continually emerge. Task/group-specific calibration would therefore require ongoing maintenance of the task/group taxonomy and calibration mappings, making it operationally ill-defined; moreover, introducing explicit grouping (manual or learned) increases calibration capacity and undermines auditability. We therefore enforce a strict low-capacity deployability discipline —no test-time relearning and switching via a single global rule (θ, L ) calibrated once on development (dev) set and reused unchanged on test set (Sec.5.2). Under this discipline, a single global rule becomes brittle when completion evidence is collapsed into a scalar/bit in a way that discards boundary-phase structure, trading premature/false switches against overruns (e.g., [16, 25, 30, 17, 13, 44]). This happens because boundary evidence can be polarity-shifted across tasks—some provide mainly anticipatory evidence before first success, others mainly confirmatory evidence after. To handle polarity shifts, we therefore retain two-sided bound-ary evidence in an event-local posterior over boundary phase (Before/Hit/After). In practice, we realize this posterior as an online posterior over a small, discrete Boundary-Phase Tokens (BPT) 
+
+vocabulary. This brittleness claim is scoped to the matched deployability discipline; Appendix˜B gives simple constructions underscoring the importance of retaining two-sided boundary evidence. Crucially, composite execution concentrates at handoff boundaries, where switching is an interven-tion: the agent must decide when to hand off, and also remain stable through the handoff as the instruction context changes. A completion signal such as a posterior over BPT is necessary to make 
+
+when decisions, but by itself it does not guarantee stable behavior through the intervention. Thus, a completion signal is necessary but not sufficient for closed-loop composite success. To meet both requirements, we propose Completion at the Boundary (CaB) (Fig.˜1). CaB trains a single autoregressive VLA policy that jointly predicts actions and a BPT posterior as a shared completion object, and dual-uses it for switching and control: CaB-When reads it to decide when 
+
+to switch, while CaB-How reuses it to condition how actions traverse the handoff. We validate CaB with an intervention-aware E1/E2 protocol that separates action-fixed detection (E1) from closed-loop execution (E2), and attribute composite gains via a Switching×Conditioning decomposition. 2Contributions. 
+
+• One completion object: dual-use for switching and control. We introduce a com-pletion object—an online posterior over Boundary-Phase Tokens (BPT) that retains two-sided boundary evidence (Before/Hit/After)—used for a completion interface ( when ) and completion-aware control ( how ). • CaB: two consumers of the same completion object. We propose Completion at the Boundary (CaB), which jointly predicts actions and a BPT posterior; CaB-When uses it to decide when to switch under the deployability discipline, while CaB-How reuses it to condition how actions traverse the handoff for boundary-stable control. • Intervention-aware protocol and empirical validation in Minecraft. We introduce an E1/E2 protocol and a When (Switching) × How (Conditioning) decomposition to separate detection from closed-loop effects and attribute gains. we report empirical evidence for CaB in a first-person Minecraft VLA setting under matched deployability constraints. 
+
+## 2 Related Work 
+
+A unifying view: temporal structure for completion. Across VLA/RL, temporal structure relevant to completion appears in three forms: (i) supervision-based auxiliary targets such as progress or step-to-event regression that provide dense scalar signals [33, 16, 17], (ii) prediction-based timing models that estimate event times/hazards from observations [10, 31, 12], and (iii) control-internal temporal abstraction mechanisms (e.g., options) in which termination governs when to hand off [38, 3]. However, none provides what we target: a deployable completion interface that exposes boundary evidence under intervention with limited calibration capacity. 
+
+Sequence modeling in vision–language–action. Recent VLA systems treat control as action token prediction conditioned on multimodal context [7, 49, 23, 21]; hierarchical stacks further emphasize long-horizon execution via decomposition and delegation (e.g., Hi Robot) [19, 36]. In open-world Minecraft, public VLA models (e.g., Jarvis-VLA, Optimus2) shows that large vision–language models can be post-trained to execute diverse game instructions with keyboard-and-mouse con-trol [24, 27, 41, 26]. Our work is orthogonal to scaling tokenization or pretraining: we focus on the missing operational interface for composites—deciding when the current instruction is complete. 
+
+Supervision-based temporal signals (step-to-event / progress). Such supervision-based temporal objectives range from TD–based horizon-conditioned value prediction to auxiliary progress estima-tion learned from interaction [33, 29]. In reinforcement learning, such progress/step-to-event heads are often used as global (or relative [46, 2]) progress estimates for reward shaping [16, 25, 30], rather than as an explicit completion interface. A coarse alternative is a thresholded binary done head [17, 13, 44]. CaB instead is designed as an explicit completion interface, predicting a boundary-phase posterior (Before/Hit/After) that preserves two-sided evidence. 
+
+Prediction-based temporal modeling (hazard / point processes). Time-to-event models (e.g., Cox-style hazards and neural point processes) capture uncertainty in event timing and temporal de-pendencies [10, 31, 12]. These methods are typically evaluated under passive observation , where prediction does not influence the future trajectory. Our completion setting is closed-loop : switch-ing intervenes on the trajectory, so completion must be evaluated under intervention rather than as passive event prediction. 
+
+Control-internal temporal abstraction (options and termination). Hierarchical RL introduces temporal abstraction via temporally extended actions and termination: options (and option-critic) learn both when to terminate and how behavior evolves within an option [38, 3]. CaB is aligned in treating phase/termination as central to composition, but differs in exposure: rather than keeping temporal structure implicit inside the controller, it exposes a BPT posterior as an explicit completion object readable by a deployable completion interface. 
+
+Provided conditioning signals vs. inferred completion posteriors. Prior work often stabilizes staged behavior by conditioning policies on externally provided signals—e.g., explicit goals (in-cluding goal images) or target returns/reward-to-go—available from the task interface or dataset [34, 1, 32, 9, 14]. Our setting differs in that such variables are not provided: CaB infers a BPT posterior online and dual-uses it both as a deployable completion interface ( when ) and as a control-conditioning signal for boundary-stable handoffs ( how ). 3Vision                  
+
+> Encoder
+> Environment
+> Language
+> Encoder
+> Action
+> Observation Autoregressive Transformer
+> Shear sheep
+> Shear sheep Combat
+> the zombie.
+> Hit
+> Before After
+> signed distance
+> to the boundary
+> (latent)
+> completion time
+> 1234⊘⊘0
+> prob
+> 𝑠 𝑡 =෍
+> 𝑦 ∈𝓎
+> 𝑤 𝑦 𝑝 𝑡 (𝑦 )
+> 𝑆 𝑡 =෍
+> 𝜏 =𝑡 −𝐿 +1
+> 𝑡
+> 𝑠 𝜏
+> 𝐶𝑜𝑚𝑝𝑙𝑒𝑡𝑒 𝑡 𝑖𝑓 𝑆 𝑡 >𝜃
+> 𝑝 𝑡 (𝑦 )
+
+How 
+
+When 
+
+BPT posterior 
+
+(𝜃 , 𝐿 )
+
+> Single
+> global Composite
+> Instruction
+
+Fixed Readout & Switch   
+
+> -3-2-1-4
+
+## Dual Use               
+
+> 𝐵𝑃𝑇 𝑝𝑜𝑠𝑡𝑒𝑟𝑖𝑜𝑟 &
+> 𝑠𝑎𝑚𝑝𝑙𝑒𝑑 𝑡𝑜𝑘𝑒𝑛
+> 𝑎𝑐𝑡𝑖𝑜𝑛 𝑐ℎ𝑢𝑛𝑘
+> :visual token, :text token, :special token, : action token, : boundary -phase token
+
+Figure 2: CaB overview (one posterior, two consumers). An autoregressive VLA policy jointly predicts actions and an event-local BPT posterior pt(y) as the shared completion object. This poste-rior is dual-used by two consumers: (i) CaB-When applies a fixed readout to decide when to switch, and (ii) CaB-How reuses it to condition how actions are generated for boundary-stable control. 
+
+## 3 Problem Setting 
+
+We consider discrete-time interaction. At step t, the agent observes ot, receives the currently active natural-language instruction l(it), and outputs an action at. Many VLA policies map (ot, l (it)) to ac-tions at but typically lack an explicit operational interface for deciding when the current instruction is complete; we add such a deployable completion interface that uses an online completion signal to update the instruction index it. Because updating it intervenes on the instruction context, switching changes future observations and actions, so completion is inherently closed-loop. 
+
+Scope & Assumption (latent completion time; offline annotation). We focus on tasks where each sub-instruction admits a completion time t∗ 
+
+> i
+
+defined by the first success event. During training and evaluation, we assume access to an offline procedure (e.g., state predicates or manual labeling) that can assign t∗ 
+
+> i
+
+. These annotations are used only to construct supervision and to evaluate timing; deployment relies solely on observations and instructions. 
+
+## 4 Method: CaB — Dual-Use Boundary-Phase Posterior 
+
+CaB trains a single autoregressive VLA policy (parameterized by ϕ) that jointly predicts actions and a posterior over Boundary-Phase Tokens (BPT) anchored to the first-success event, which serves as the shared completion object. At inference, we dual-use this same posterior via two consumers: CaB-When exposes it as a deployable completion interface for switching ( when ) under a fixed low-capacity rule, while CaB-How reuses it to condition action generation for boundary-stable control (how ); see Fig.˜2 for an overview of CaB. 
+
+4.1 The Completion Object: Boundary-Phase Tokens (BPT) 
+
+Because boundary evidence can be polarity-shifted across tasks, we retain two-sided boundary ev-idence as an event-local posterior over boundary phase (Before/Hit/After). We instantiate this pos-terior with Boundary-Phase Tokens (BPT), a small discrete vocabulary that bins boundary phase around the first-success event within a fixed window. Many progress-style approaches emphasize pre-event evidence (Before/Hit), while post-event evidence is often left implicit [16, 25, 30, 28]. 4Under our problem setting, each sub-instruction admits an offline-annotatable completion time t∗
+
+> i
+
+(first success), which is used only to construct supervision; at inference, t∗ 
+
+> i
+
+is unobserved and the agent must infer the BPT posterior online from past-only context. 
+
+Event anchoring (offline). Given an annotated completion time t∗, we define the signed distance 
+
+dt = t − t∗ to the boundary and discretize it into a BPT label yt ∈ Y within an event-local window. Using a window radius K (default K = 20 steps; 1s at 20 Hz) and fixed bin edges, we assign yt ∈ Y 
+
+by: (i) yt = Hit if |dt| ≤ 1; (ii) else if 2 ≤ | dt| ≤ K − 1, set b = ⌊| dt|/2⌋ and assign yt = Before[ b]
+
+if dt < 0 or yt = After[ b] if dt > 0; and (iii) yt = ∅ow otherwise (out of window), i.e., if |dt| ≥ K.Importantly, BPT uses a single shared vocabulary across tasks; it encodes only signed proximity to completion, not task-specific semantics. 
+
+Posterior as a reusable completion object. The model predicts a posterior over BPT classes from past-only context ct (observation ot, active instruction l(it), and optional history up to t): 
+
+pt(y) = Pϕ(yt = y | ct), y ∈ Y .
+
+This posterior is the single completion object reused by both consumers: CaB-When (switching) and CaB-How (control conditioning). 
+
+4.2 Consumer A ( when ): CaB-When as a deployable completion interface 
+
+CaB-When exposes the posterior as a deployable, auditable switching interface under limited cali-bration capacity: no test-time relearning, a fixed readout, and a single globally calibrated rule (θ, L )
+
+selected once on dev set and reused unchanged on test set. 
+
+Fixed linear readout (low capacity, auditable). Let pt(y) = Pϕ(yt = y | ct) denote the inferred BPT posterior for the currently active sub-instruction from past-only context ct. We compute a scalar completion-evidence score via a transparent fixed linear readout: 
+
+st = X
+
+> y∈Y
+
+wy pt(y).
+
+We use a predetermined triangular kernel over signed distance (low capacity, auditable). Let δ(y) ∈
+
+Z denote the representative signed distance associated with BPT class y ∈ Y (bin-center distances). We define 
+
+wy = max(0 , K − | δ(y)|),
+
+with the same event-local radius K used for BPT windowing. This fixed kernel can be viewed as a distribution-level proximity score—i.e., it measures posterior mass near the boundary rather than the proximity of a point estimate (see Appendix˜B.3). We also report one-sided (Before/After-only) kernels and a learnable readout as ablations in Sec.7. 
+
+Learning-free aggregation and global thresholding. To reduce sensitivity to spikes without learn-ing, we aggregate over a short horizon L:
+
+St =
+
+> t
+
+X 
+
+> τ=t−L+1
+
+sτ , Complete (t) ⇐⇒ St ≥ θ. 
+
+We calibrate the single global pair (θ, L ) once on dev set and reuse it unchanged on test set. 
+
+Minimal switch wrapper. We use a deterministic one-shot update: if Complete( t) fires for the current sub-instruction, we advance it by exactly one (capped at the final sub-instruction); otherwise we keep it unchanged. By default we use zero hold ( H = 0 ); optionally, we insert a fixed hold of 
+
+H steps ( 0 ≤ H < K ) after a trigger for smoother CaB-How handoff. 
+
+4.3 Consumer B ( how ): CaB-How as completion-aware control conditioning 
+
+Completion prediction alone is not sufficient for composite success: at the handoff boundary, the agent must also remain stable while the instruction context changes. CaB-How addresses this by reusing the same inferred completion object for control-side conditioning, improving boundary-stable behavior in closed loop. 5BPT–Action factorization: predict BPT first, then act. At each step t, CaB-How models two within-step tokens—a BPT token yt and an action token at—given past-only context ct, and factor-izes 
+
+pϕ(yt, a t | ct) = pϕ(yt | ct) pϕ(at | ct, y t).
+
+The BPT prediction term pϕ(yt | ct) defines the shared completion object as a posterior pt(·), which CaB-When reads for switching; CaB-How reuses it by conditioning action generation on a BPT token via pϕ(at | ct, y t).
+
+Within-step one-way masking (no reverse leakage). We implement CaB-How in a single autore-gressive transformer with one-way within-step attention: at step t, actions may attend to same-step phase (phase →action), but phase cannot attend to same-step actions (no action →phase). Thus re-verse leakage is structurally impossible: the completion posterior used by CaB-When is computed before at and cannot depend on the action. 
+
+How-ON/OFF. How-ON conditions action generation on yt; How-OFF keeps the same BPT pre-diction and loss but drops yt from the action conditioning, isolating the effect of control-side reuse. Many prior VLA/RL designs predict phase and actions with separate heads (or even separate mod-ules); How-OFF matches this decoupled setting [16, 28, 20]. 
+
+4.4 Training and Inference: one posterior, two consumers Training (shared across consumers). 
+
+We train a single autoregressive model that predicts both the BPT token and the action token at each step. Because BPT is a discrete token, it can be learned without architectural friction in transformer-style sequence modeling. Under teacher forcing, the loss is the sum of next-token cross entropies: 
+
+L = X
+
+> t
+
+
+
+CE( yt, p ϕ(yt | ct)) + CE( at, p ϕ(at | ct, y cond  
+
+> t
+
+)) 
+
+
+
+,
+
+where yt is the event-derived BPT label and ycond  
+
+> t
+
+is the token fed to the action head (typically the ground-truth yt). The first term trains BPT-token prediction and yields the BPT posterior pt(·) = 
+
+pϕ(· | ct), read out by CaB-When for switching and reused by CaB-How for control conditioning. The second term trains the same model to predict the action token conditioned on ycond  
+
+> t
+
+.
+
+Inference (one posterior, two consumers). 
+
+At each step t, a single autoregressive VLA policy pϕ first produces the BPT posterior pt(·) = pϕ(· | 
+
+ct); CaB-When reads out pt(·) with the fixed wrapper to decide switching, while CaB-How uses the same policy to sample a BPT token from pt(·) and generates an action conditioned on that token. 
+
+## 5 Evaluation Protocol 
+
+We use an intervention-aware E1/E2 protocol to separate completion-signal quality from closed-loop execution effects under matched deployability constraints. See Appendix˜C for details. 
+
+5.1 Evaluation: Separating Detection from Closed-Loop Effects 
+
+Because switching is an intervention (Fig.1(a)), we evaluate completion via two complementary views: E1 (necessary; action-fixed detection) and E2 (sufficient; closed-loop execution) . In E1, we evaluate completion-signal quality on a shared bank of fixed trajectories—a common set of rollouts (observations and sampled actions) reused across all methods—thereby isolating prediction quality from behavioral feedback and ensuring matched evaluation conditions. In E2, we run the agent with switching enabled and measure end-to-end closed-loop execution outcomes and boundary timing effects under intervention. 
+
+Metrics and diagnostics. In E1, we report Completion-F1 within a fixed ±20 -step tolerance win-dow around ground truth completion time t∗ and False Completion (episode-level). In E2, we report Single and Composite Task Success Rate, with timing errors (episode-level): we count a Premature episode if tswitch < t ∗ − 20 and an Overrun episode if tswitch > t ∗ + 20 , and report Prema-ture/Overrun rates over episodes. We also report handoff quality SR 2|1 = Pr( subtask 2 succeeds |
+
+subtask 1 succeeds ).65.2 Deployability discipline Core discipline. All methods are evaluated under the same deployability constraints: (i) no test-time relearning, (ii) a fixed, low-capacity switching wrapper that converts each method’s completion signal into switching decisions, and (iii) a single global switching rule (θ, L ), calibrated once on dev set and reused unchanged on test set. 
+
+Calibration protocol. We select (θ, L ) on dev set by maximizing E1:Completion-F1 (rather than E2) and freeze it for all test evaluations. 
+
+Why a single global (θ, L ) with E1. In open-ended instruction spaces, task/group-specific cali-bration is operationally ill-defined (it would require ongoing maintenance), and explicit grouping increases calibration capacity and undermines auditability. We therefore use a single global (θ, L )
+
+to minimize calibration capacity while keeping the completion interface stable and auditable. Cal-ibrating on E2 composite success would require impractically broad dev coverage over subtask compositions, since E2 is closed-loop and intervention-sensitive; we thus calibrate on E1. 
+
+## 6 Experiments 
+
+We instantiate CaB in a first-person Minecraft VLA setting and evaluate it under the matched de-ployability discipline using intervention-aware E1/E2 protocol and a When×How decomposition. 
+
+6.1 Experimental Setting Environment. We evaluate CaB in a first-person Minecraft VLA environment [8] with RGB obser-vations at 20 Hz and low-level discrete actions corresponding to human controls (keyboard/mouse), rather than higher-level action abstractions (e.g., functional commands such as craft/place, or op-tions/skill hierarchies [15, 39, 40, 45, 26]). To ensure each instructed task is executable, we fix task-critical initial conditions and randomize the remaining components, evaluating 50 episodes per task (distinct randomized seeds). Dev/test sets are seed-disjoint. See Appendix˜D for details. 
+
+Tasks. Single tasks follow the Jarvis-VLA protocol, using the same instruction set/templates to specify goals in natural language [24]. We evaluate four task groups (craft, combat, mine, smelt), 8 tasks per group (32 total). Composite tasks are fixed sequences of two semantically meaningful consecutive tasks drawn from the same groups (18 composite routines total). Episode horizons are capped at Tmax = 600 /1800 (Single / Composite). 
+
+E1/E2 protocol and uncertainty. We follow the intervention-aware E1/E2 protocol in Sec.5.1 (shared rollout bank for E1; closed-loop execution for E2). Calibration is dev-only and frozen on test. We report 95% bootstrap confidence intervals unless otherwise stated. 
+
+Implementation details. We train on the VPT Demonstration Dataset [4] with a PaliGemma-3B backbone [5, 37]; following the π-series robotics VLA models [6, 21, 11, 20]. Training uses 2× RTX 6000 Ada GPUs for 10 days; we use a single training seed. See Appendix˜E for details. 
+
+6.2 Baselines (matched deployability discipline) 
+
+We compare CaB against completion baselines under the matched deployability discipline (Sec.5.2): no test-time relearning and a single global (θ, L ) calibrated on dev set and frozen on test set. All methods use the same PaliGemma-3B backbone. As in many prior VLA/RL designs, baselines use separate heads for completion/progress and actions, without conditioning actions on progress. • Binary completion (+dwell): predicts done/not-done and triggers switching via a learning-free dwell rule [17, 13, 44]. • Hazard-style completion: estimates near-boundary completion likelihood with a hazard model over the past L steps [10]. • Progress regression (STG): regresses a step-to-event scalar (time-to-completion) without modeling post-event behavior [16, 25, 30]. • Signed-distance regression: regresses a signed distance dt = clip( t − t∗, −D, D ) and converts it to a proximity score st = max(0 , K − | dt|). This is a strong event-anchored scalar comparator, yet brittle under polarity shifts with a single global (θ, L ) (Appendix˜B). 7Table 1: Main scoreboard under the matched deployability discipline (single global (θ, L ); dev-only calibration; frozen on test). E1: action-fixed detection (overall and group-wise F1; worst-case E1 regret). E2: closed-loop execution. Best mean is in bold. 
+
+Method E1: F1 ↑ E1: FP ↓ E1: F1 (Cr/Co/Mi/Sm) ↑ E1: Rworst ↓ E2: Single ↑ E2: Comp ↑
+
+Binary 73 .8(±2.1) 36 .3(±3.4) 92 .2/78 .9/41 .0/76 .5 45 .3 52 .4(±2.1) 8.0(±1.9) 
+
+Hazard-style 77 .8(±1.9) 30 .4(±3.0) 86 .5/88 .8/46 .3/87 .7 40 .0 51 .8(±2.1) 8.9(±2.0) 
+
+Progress reg 74 .6(±2.2) 29 .2(±3.3) 55 .2/83 .2/68 .6/89 .9 40 .3 51 .4(±2.1) 7.4(±1.9) 
+
+Signed-distance reg 79 .5(±2.0) 16 .5(±2.6) 63 .6/88 .1/75 .7/90 .9 31 .9 52 .1(±2.0) 9.1(±2.1) 
+
+CaB-When 90 .3(±1.4) 13 .8(±2.6) 95 .5/88 .9/80 .5/93 .2 5.8 51 .2(±2.1) 10 .4(±2.2) 
+
+CaB (When+How) 90.5 (±1.4) 13.4 (±2.5) 94 .1/85 .3/86 .3/94 .2 3.6 61.1 (±1.9) 12.6 (±2.2) 
+
+Sanity check: Under the single-task evaluation protocol, our models show competitive Success Rate relative to public Minecraft VLA models (incl. Jarvis-VLA Qwen2-VL-7B) [24, 27, 4]. This comparison is not directly comparable due to different backbones/training setups (see Appendix˜G). 
+
+6.3 Main Results: Deployable Completion under matched calibration capacity 
+
+Table1 summarizes the main results under the matched deployability discipline (Sec.5.2): a single global (θ, L ) calibrated on dev set and frozen on test set. We report E1 (action-fixed detection: Completion-F1 / False Completion) and E2 (closed-loop execution: Single-SR / Composite-SR). To probe robustness under a single global rule, we additionally report group-wise E1 Completion-F1 across the task groups and the worst-case E1 regret Rworst (m) = max g∈G 
+
+  max m′ F1 g,m ′ −F1 g,m 
+
+,with g over task groups and m′ over methods. 
+
+Key takeaways. (1) Under the matched deployability discipline, CaB-When improves E1 detection (Completion-F1 ↑, False Completion ↓) and remains robust across task groups, achieving small worst-case E1 regret (e.g., Signed-distance: 31.9 → 5.8). In contrast, each baseline exhibits at least one weak task group (large regret), even for the strong event-anchored signed-distance regressor. (2) 
+
+CaB-When also improves E2 composite execution (Composite-SR; e.g., 9.1 → 10.4), as improved completion timing under intervention leads to downstream success. (3) Adding CaB-How boosts Composite-SR (e.g., 10.4 → 12.6) without materially changing E1, showing that the when interface remains fixed/auditable, while the how consumer reuses the same completion object to stabilize closed-loop behavior through the handoff. Overall, consistently low worst-case E1 regret under the matched discipline supports CaB-When as a deployable completion interface robust to task-group shifts, while CaB-How further improves closed-loop composite execution; see Appendix˜H for qualitative examples. 
+
+6.4 When (Switching) × How (Conditioning): A Decomposition 
+
+To attribute composite gains to when the handoff occurs versus how behavior traverses the boundary, we run a 2×2 ablation varying Switching (FS vs CD) and Conditioning (How-OFF vs How-ON). Here FS uses a fixed schedule that allocates the episode horizon uniformly across subtasks, CD uses completion-driven switching with the same global (θ, L ), and How-ON/OFF enables/disables action conditioning on the inferred BPT token. (CD corresponds to CaB-When; How-ON corresponds to enabling CaB-How.) 
+
+Key takeaways. Table2 reveals a structured interaction between Switching and Conditioning. CD 
+
+sharply reduces overrun (e.g., 92.5 → 4.5) at the cost of a modest increase in premature switching (e.g., 4.9 → 12.9), and also improves Composite-SR and SR 2|1 (e.g., Composite-SR 6.3 → 10.4; 
+
+SR 2|1 8.7 → 15.7), suggesting that better when decisions can benefit downstream behavior by align-ing the handoff closer to the boundary. How-ON improves Composite-SR and SR 2|1 strongly under FS (e.g., Composite-SR 6.3 → 8.9; SR 2|1 8.7 → 12.7) but yields smaller gains under CD (e.g., Composite-SR 10.4 → 12.6; SR 2|1 15.7 → 18.7), indicating smaller marginal gains once switching is already boundary-aligned. Overall, enabling both yields the best Composite-SR (12.6), supporting complementary contribu-tions from CaB-When (when ) and CaB-How (how ) under the same completion object. 8Table 2: When(Switching) ×How(Conditioning) decomposition in closed-loop composite execution (E2). FS = fixed-schedule; CD = completion-driven; How-ON/OFF = action conditioning on/off. Switching How E2: Composite-SR ↑ E2: SR 2|1 ↑ Premature ↓ Overrun ↓
+
+FS OFF 6.3(±1.9) 8.7(±2.6) 4.9 (±2.1) 92 .5(±2.5) 
+
+FS ON 8.9(±2.1) 12 .7(±3.0) 6.3(±2.3) 91 .8(±2.6) 
+
+CD OFF 10 .4(±2.2) 15 .7(±3.3) 12 .9(±3.2) 4.5 (±2.1) 
+
+CD ON 12.6 (±2.2) 18.7 (±3.0) 10 .5(±2.8) 4.5 (±2.0) 
+
+Table 3: Ablations (i–iii). (i) Auditable readout variants (E1-only). ( ii ) BPT window radius K and (iii ) train-time timestamp jitter (E1/E2). (θ, L ) is dev-calibrated (E1) and frozen on test. 
+
+(i) Auditable readout ablation (E1) 
+
+Kernel E1: F1 ↑ E1: FP ↓ E1: F1(Cr) ↑ E1: F1(Co) ↑ E1: F1(Mi) ↑ E1 F1 (Sm) ↑ E1: Rworst ↓
+
+Full 90.5 (±1.4) 13 .4(±2.5) 86.3 (±3.8) 94 .1(±2.0) 85.3 (±3.5) 94 .2(±2.2) 4.1
+
+Before-only 78 .3(±1.9) 46 .4(±3.6) 63 .7(±5.0) 82 .2(±3.4) 72 .4(±4.5) 95 .0(±2.0) 22 .6
+
+After-only 83 .1(±1.8) 13.1 (±2.5) 55 .5(±7.4) 98.1 (±1.1) 78 .1(±4.4) 83 .6(±3.8) 30 .8
+
+Constant 86 .9(±1.6) 19 .8(±2.9) 77 .9(±4.5) 90 .9(±2.5) 85 .1(±3.6) 91 .8(±2.6) 8.4
+
+Learnable 90.5 (±1.4) 16 .9(±2.8) 85 .5(±4.0) 95 .9(±1.7) 83 .3(±3.6) 95.1 (±1.9) 2.3 (ii) BPT window radius K (E1/E2) 
+
+Radius K E1: F1 ↑ E1: FP ↓ E2: Comp-SR ↑ SR 2|1 ↑
+
+20 (default) 90 .5(±1.4) 13 .4(±2.5) 12 .6(±2.2) 18 .7(±3.0) 
+
+40 87 .8(±1.6) 14 .8(±2.5) 8.0(±2.0) 12 .6(±3.3) 
+
+60 86 .9(±1.7) 19 .0(±2.9) 4.8(±1.5) 8.0(±2.4) 
+
+(iii) Timestamp-jitter robustness (E1/E2)                   
+
+> Noise level aE1: F1 ↑E1: FP ↓E2: Comp-SR ↑SR 2|1↑
+> 0 (no noise) 90 .5(±1.4) 13 .4(±2.5) 12 .6(±2.2) 18 .7(±3.0)
+> 10 87 .6(±1.6) 25 .8(±3.2) 8.7(±1.9) 12 .7(±2.7)
+> 20 84 .3(±1.6) 26 .5(±3.1) 8.5(±1.8) 11 .6(±2.6)
+
+## 7 Analysis and Ablations 
+
+(i) Auditable readout ablations. Table3(i) keeps the trained BPT posterior fixed and varies only the completion-interface readout (Full / Before-only / After-only / Constant / Learnable) under the same dev-only calibration protocol. One-sided or constant readouts degrade E1 detection, supporting the need to preserve two-sided boundary evidence, while the dev-only learnable readout yields only marginal gains over the fixed kernel. See Appendix˜F for details. 
+
+(ii) Locality via BPT window radius K. Table3(ii) varies the BPT window radius K under the same dev-only calibration protocol. Increasing K leaves E1 detection largely unchanged but reduces E2 Composite-SR, suggesting that the locality of the BPT window is important for closed-loop execution: larger windows admit more off-boundary mass and degrade handoffs. 
+
+(iii) Robustness to noisy completion timestamps. Table3(iii) tests robustness to imperfect offline completion-time annotation. We perturb training timestamps via ˜t∗ = t∗ + ϵ, ϵ ∼ Unif[ −a, a ],sweeping a ∈ { 0, 10 , 20 }, and evaluate with clean t∗. E1/E2 outcomes quantify robustness to train-time timestamp jitter, and E2 remains competitive with baselines trained on clean timestamps. 
+
+## 8 Discussion & Limitations 
+
+Scope and supervision. CaB uses first-success timestamps t∗ for supervision during training; these signals can be computed offline from instrumentation or manual annotation and are not required at deployment. A limitation is that some tasks may admit ambiguous or delayed success evidence, in which case proxy or weak event definitions may be needed, which we leave for future work. 
+
+Safety, deployment, and societal impacts. In composites, completion changes the active instruc-tion, making switching high-impact; mistiming leaves the agent on the wrong instruction. For safety-critical deployment, use a deployable completion interface with conservative calibration, auditable logging; see Appendix˜H for auditability examples. We also discuss broader impacts in Appendix˜A. 
+
+Conclusion. Our contribution is not merely predicting completion, but learning a single boundary-phase posterior that is dual-used in closed loop—both as a deployable interface for deciding when 
+
+to switch and as a completion-aware signal for conditioning how actions traverse the handoff. 9References 
+
+[1] Marcin Andrychowicz, Dwight Crow, Alex Ray, Jonas Schneider, Rachel Fong, Peter Welinder, Bob McGrew, Josh Tobin, Pieter Abbeel, and Wojciech Zaremba. Hind-sight experience replay. In Isabelle Guyon, Ulrike von Luxburg, Samy Bengio, Hanna M. Wallach, Rob Fergus, S. V. N. Vishwanathan, and Roman Garnett, editors, 
+
+Advances in Neural Information Processing Systems 30: Annual Conference on Neu-ral Information Processing Systems 2017, December 4-9, 2017, Long Beach, CA, USA ,pages 5048–5058, 2017. URL https://proceedings.neurips.cc/paper/2017/hash/ 453fadbd8a1a3af50a9df4df899537b5-Abstract.html .[2] Tewodros Ayalew, Xiao Zhang, Kevin Yuanbo Wu, Tianchong Jiang, Michael Maire, and Matthew R. Walter. PROGRESSOR: A perceptually guided reward estimator with self-supervised online refinement. CoRR , abs/2411.17764, 2024. doi: 10.48550/ARXIV.2411. 17764. URL https://doi.org/10.48550/arXiv.2411.17764 .[3] Pierre-Luc Bacon, Jean Harb, and Doina Precup. The option-critic architecture. In Satinder Singh and Shaul Markovitch, editors, Proceedings of the Thirty-First AAAI Conference on Artificial Intelligence, February 4-9, 2017, San Francisco, California, USA , pages 1726–1734. AAAI Press, 2017. doi: 10.1609/AAAI.V31I1.10916. URL https://doi.org/10.1609/ aaai.v31i1.10916 .[4] Bowen Baker, Ilge Akkaya, Peter Zhokhov, Joost Huizinga, Jie Tang, Adrien Ecof-fet, Brandon Houghton, Raul Sampedro, and Jeff Clune. Video pretraining (VPT): learning to act by watching unlabeled online videos. In Sanmi Koyejo, S. Mohamed, A. Agarwal, Danielle Belgrave, K. Cho, and A. Oh, editors, Advances in Neural In-formation Processing Systems 35: Annual Conference on Neural Information Process-ing Systems 2022, NeurIPS 2022, New Orleans, LA, USA, November 28 - Decem-ber 9, 2022 , 2022. URL http://papers.nips.cc/paper_files/paper/2022/hash/ 9c7008aff45b5d8f0973b23e1a22ada0-Abstract-Conference.html .[5] Lucas Beyer, Andreas Steiner, Andr´ e Susano Pinto, Alexander Kolesnikov, Xiao Wang, Daniel Salz, Maxim Neumann, Ibrahim Alabdulmohsin, Michael Tschannen, Emanuele Bugliarello, Thomas Unterthiner, Daniel Keysers, Skanda Koppula, Fangyu Liu, Adam Grycner, Alexey A. Gritsenko, Neil Houlsby, Manoj Kumar, Keran Rong, Julian Eisenschlos, Rishabh Kabra, Matthias Bauer, Matko Bosnjak, Xi Chen, Matthias Minderer, Paul Voigtlaender, Ioana Bica, Ivana Balazevic, Joan Puigcerver, Pinelopi Papalampidi, Olivier J. H´ enaff, Xi Xiong, Radu Soricut, Jeremiah Harmsen, and Xiaohua Zhai. Paligemma: A versatile 3b VLM for transfer. CoRR , abs/2407.07726, 2024. doi: 10.48550/ARXIV.2407.07726. URL https: //doi.org/10.48550/arXiv.2407.07726 .[6] Kevin Black, Noah Brown, Danny Driess, Adnan Esmail, Michael Equi, Chelsea Finn, Niccolo Fusai, Lachy Groom, Karol Hausman, Brian Ichter, Szymon Jakubczak, Tim Jones, Liyiming Ke, Sergey Levine, Adrian Li-Bell, Mohith Mothukuri, Suraj Nair, Karl Pertsch, Lucy Xi-aoyang Shi, James Tanner, Quan Vuong, Anna Walling, Haohuan Wang, and Ury Zhilinsky. 
+
+π0: A vision-language-action flow model for general robot control. CoRR , abs/2410.24164, 2024. doi: 10.48550/ARXIV.2410.24164. URL https://doi.org/10.48550/arXiv. 2410.24164 .[7] Anthony Brohan, Noah Brown, Justice Carbajal, Yevgen Chebotar, Joseph Dabis, Chelsea Finn, Keerthana Gopalakrishnan, Karol Hausman, Alexander Herzog, Jasmine Hsu, Julian Ibarz, Brian Ichter, Alex Irpan, Tomas Jackson, Sally Jesmonth, Nikhil J. Joshi, Ryan Julian, Dmitry Kalashnikov, Yuheng Kuang, Isabel Leal, Kuang-Huei Lee, Sergey Levine, Yao Lu, Ut-sav Malla, Deeksha Manjunath, Igor Mordatch, Ofir Nachum, Carolina Parada, Jodilyn Peralta, Emily Perez, Karl Pertsch, Jornell Quiambao, Kanishka Rao, Michael S. Ryoo, Grecia Salazar, Pannag R. Sanketi, Kevin Sayed, Jaspiar Singh, Sumedh Sontakke, Austin Stone, Clayton Tan, Huong T. Tran, Vincent Vanhoucke, Steve Vega, Quan Vuong, Fei Xia, Ted Xiao, Peng Xu, Sichun Xu, Tianhe Yu, and Brianna Zitkovich. RT-1: robotics transformer for real-world con-trol at scale. In Kostas E. Bekris, Kris Hauser, Sylvia L. Herbert, and Jingjin Yu, editors, 
+
+Robotics: Science and Systems XIX, Daegu, Republic of Korea, July 10-14, 2023 , 2023. doi: 10.15607/RSS.2023.XIX.025. URL https://doi.org/10.15607/RSS.2023.XIX.025 .10 [8] Shaofei Cai, Zhancun Mu, Kaichen He, Bowei Zhang, Xinyue Zheng, Anji Liu, and Yitao Liang. Minestudio: A streamlined package for minecraft AI agent development. CoRR ,abs/2412.18293, 2024. doi: 10.48550/ARXIV.2412.18293. URL https://doi.org/10. 48550/arXiv.2412.18293 .[9] Lili Chen, Kevin Lu, Aravind Rajeswaran, Kimin Lee, Aditya Grover, Michael Laskin, Pieter Abbeel, Aravind Srinivas, and Igor Mordatch. Decision transformer: Rein-forcement learning via sequence modeling. In Marc’Aurelio Ranzato, Alina Beygelz-imer, Yann N. Dauphin, Percy Liang, and Jennifer Wortman Vaughan, editors, Ad-vances in Neural Information Processing Systems 34: Annual Conference on Neural In-formation Processing Systems 2021, NeurIPS 2021, December 6-14, 2021, virtual , pages 15084–15097, 2021. URL https://proceedings.neurips.cc/paper/2021/hash/ 7f489f642a0ddb10272b5c31057f0663-Abstract.html .[10] David R Cox. Regression models and life-tables. Journal of the royal statistical society: Series B (methodological) , 34(2):187–202, 1972. [11] Danny Driess, Jost Tobias Springenberg, Brian Ichter, Lili Yu, Adrian Li-Bell, Karl Pertsch, Allen Z. Ren, Homer Walke, Quan Vuong, Lucy Xiaoyang Shi, and Sergey Levine. Knowl-edge insulating vision-language-action models: Train fast, run fast, generalize better. CoRR ,abs/2505.23705, 2025. doi: 10.48550/ARXIV.2505.23705. URL https://doi.org/10. 48550/arXiv.2505.23705 .[12] Nan Du, Hanjun Dai, Rakshit S. Trivedi, Utkarsh Upadhyay, Manuel Gomez-Rodriguez, and Le Song. Recurrent marked temporal point processes: Embedding event history to vector. In Balaji Krishnapuram, Mohak Shah, Alexander J. Smola, Charu C. Aggarwal, Dou Shen, and Rajeev Rastogi, editors, Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, San Francisco, CA, USA, August 13-17, 2016 ,pages 1555–1564. ACM, 2016. doi: 10.1145/2939672.2939875. URL https://doi.org/ 10.1145/2939672.2939875 .[13] Yuqing Du, Ksenia Konyushkova, Misha Denil, Akhil Raju, Jessica Landon, Felix Hill, Nando de Freitas, and Serkan Cabi. Vision-language models as success detectors. In Sarath Chandar, Razvan Pascanu, Hanie Sedghi, and Doina Precup, editors, Conference on Lifelong Learning Agents, 22-25 August 2023, McGill University, Montr´ eal, Qu´ ebec, Canada , Proceedings of Machine Learning Research, pages 120–136. PMLR, 2023. URL https://proceedings. mlr.press/v232/du23b.html .[14] Scott Emmons, Benjamin Eysenbach, Ilya Kostrikov, and Sergey Levine. Rvs: What is essen-tial for offline RL via supervised learning? In The Tenth International Conference on Learning Representations, ICLR 2022, Virtual Event, April 25-29, 2022 . OpenReview.net, 2022. URL 
+
+https://openreview.net/forum?id=S874XAIpkR-.[15] Linxi Fan, Guanzhi Wang, Yunfan Jiang, Ajay Mandlekar, Yuncong Yang, Haoyi Zhu, Andrew Tang, De-An Huang, Yuke Zhu, and Anima Anandkumar. Minedojo: Building open-ended embodied agents with internet-scale knowledge. In Sanmi Koyejo, S. Mo-hamed, A. Agarwal, Danielle Belgrave, K. Cho, and A. Oh, editors, Advances in Neu-ral Information Processing Systems 35: Annual Conference on Neural Information Pro-cessing Systems 2022, NeurIPS 2022, New Orleans, LA, USA, November 28 - Decem-ber 9, 2022 , 2022. URL http://papers.nips.cc/paper_files/paper/2022/hash/ 74a67268c5cc5910f64938cac4526a90-Abstract-Datasets_and_Benchmarks.html .[16] Seyed Kamyar Seyed Ghasemipour, Ayzaan Wahid, Jonathan Tompson, Pannag Sanketi, and Igor Mordatch. Self-improving embodied foundation models. CoRR , abs/2509.15155, 2025. doi: 10.48550/ARXIV.2509.15155. URL https://doi.org/10.48550/arXiv. 2509.15155 .[17] Qiao Gu, Yuanliang Ju, Shengxiang Sun, Igor Gilitschenski, Haruki Nishimura, Masha Itkina, and Florian Shkurti. SAFE: multitask failure detection for vision-language-action models. 
+
+CoRR , abs/2506.09937, 2025. doi: 10.48550/ARXIV.2506.09937. URL https://doi.org/ 10.48550/arXiv.2506.09937 .11 [18] William H. Guss, Brandon Houghton, Nicholay Topin, Phillip Wang, Cayden R. Codel, Manuela Veloso, and Ruslan Salakhutdinov. Minerl: A large-scale dataset of minecraft demon-strations. In Sarit Kraus, editor, Proceedings of the Twenty-Eighth International Joint Confer-ence on Artificial Intelligence, IJCAI 2019, Macao, China, August 10-16, 2019 , pages 2442– 2448. ijcai.org, 2019. doi: 10.24963/IJCAI.2019/339. URL https://doi.org/10.24963/ ijcai.2019/339 .[19] Brian Ichter, Anthony Brohan, Yevgen Chebotar, Chelsea Finn, Karol Hausman, Alexander Herzog, Daniel Ho, Julian Ibarz, Alex Irpan, Eric Jang, Ryan Julian, Dmitry Kalashnikov, Sergey Levine, Yao Lu, Carolina Parada, Kanishka Rao, Pierre Sermanet, Alexander Toshev, Vincent Vanhoucke, Fei Xia, Ted Xiao, Peng Xu, Mengyuan Yan, Noah Brown, Michael Ahn, Omar Cortes, Nicolas Sievers, Clayton Tan, Sichun Xu, Diego Reyes, Jarek Rettinghouse, Jornell Quiambao, Peter Pastor, Linda Luu, Kuang-Huei Lee, Yuheng Kuang, Sally Jesmonth, Nikhil J. Joshi, Kyle Jeffrey, Rosario Jauregui Ruano, Jasmine Hsu, Keerthana Gopalakrishnan, Byron David, Andy Zeng, and Chuyuan Kelly Fu. Do as I can, not as I say: Grounding language in robotic affordances. In Karen Liu, Dana Kulic, and Jeffrey Ichnowski, editors, 
+
+Conference on Robot Learning, CoRL 2022, 14-18 December 2022, Auckland, New Zealand ,Proceedings of Machine Learning Research, pages 287–318. PMLR, 2022. URL https: //proceedings.mlr.press/v205/ichter23a.html .[20] Physical Intelligence, Ali Amin, Raichelle Aniceto, Ashwin Balakrishna, Kevin Black, Ken Conley, Grace Connors, James Darpinian, Karan Dhabalia, Jared DiCarlo, Danny Driess, Michael Equi, Adnan Esmail, Yunhao Fang, Chelsea Finn, Catherine Glossop, Thomas God-den, Ivan Goryachev, Lachy Groom, Hunter Hancock, Karol Hausman, Gashon Hussein, Brian Ichter, Szymon Jakubczak, Rowan Jen, Tim Jones, Ben Katz, Liyiming Ke, Chan-dra Kuchi, Marinda Lamb, Devin LeBlanc, Sergey Levine, Adrian Li-Bell, Yao Lu, Vishnu Mano, Mohith Mothukuri, Suraj Nair, Karl Pertsch, Allen Z. Ren, Charvi Sharma, Lucy Xi-aoyang Shi, Laura Smith, Jost Tobias Springenberg, Kyle Stachowicz, Will Stoeckle, Alex Swerdlow, James Tanner, Marcel Torne, Quan Vuong, Anna Walling, Haohuan Wang, Blake Williams, Sukwon Yoo, Lili Yu, Ury Zhilinsky, and Zhiyuan Zhou. π*0.6 : a VLA that learns from experience. CoRR , abs/2511.14759, 2025. doi: 10.48550/ARXIV.2511.14759. URL 
+
+https://doi.org/10.48550/arXiv.2511.14759 .[21] Physical Intelligence, Kevin Black, Noah Brown, James Darpinian, Karan Dhabalia, Danny Driess, Adnan Esmail, Michael Equi, Chelsea Finn, Niccolo Fusai, Manuel Y. Galliker, Dibya Ghosh, Lachy Groom, Karol Hausman, Brian Ichter, Szymon Jakubczak, Tim Jones, Liyiming Ke, Devin LeBlanc, Sergey Levine, Adrian Li-Bell, Mohith Mothukuri, Suraj Nair, Karl Pertsch, Allen Z. Ren, Lucy Xiaoyang Shi, Laura Smith, Jost Tobias Springen-berg, Kyle Stachowicz, James Tanner, Quan Vuong, Homer Walke, Anna Walling, Haohuan Wang, Lili Yu, and Ury Zhilinsky. π0.5 : a vision-language-action model with open-world generalization. CoRR , abs/2504.16054, 2025. doi: 10.48550/ARXIV.2504.16054. URL 
+
+https://doi.org/10.48550/arXiv.2504.16054 .[22] Siddharth Karamcheti, Suraj Nair, Ashwin Balakrishna, Percy Liang, Thomas Kollar, and Dorsa Sadigh. Prismatic vlms: Investigating the design space of visually-conditioned lan-guage models. In Ruslan Salakhutdinov, Zico Kolter, Katherine A. Heller, Adrian Weller, Nuria Oliver, Jonathan Scarlett, and Felix Berkenkamp, editors, Forty-first International Con-ference on Machine Learning, ICML 2024, Vienna, Austria, July 21-27, 2024 , Proceedings of Machine Learning Research, pages 23123–23144. PMLR / OpenReview.net, 2024. URL 
+
+https://proceedings.mlr.press/v235/karamcheti24a.html .[23] Moo Jin Kim, Karl Pertsch, Siddharth Karamcheti, Ted Xiao, Ashwin Balakrishna, Suraj Nair, Rafael Rafailov, Ethan Paul Foster, Pannag R. Sanketi, Quan Vuong, Thomas Kollar, Ben-jamin Burchfiel, Russ Tedrake, Dorsa Sadigh, Sergey Levine, Percy Liang, and Chelsea Finn. Openvla: An open-source vision-language-action model. In Pulkit Agrawal, Oliver Kroemer, and Wolfram Burgard, editors, Conference on Robot Learning, 6-9 November 2024, Munich, Germany , Proceedings of Machine Learning Research, pages 2679–2713. PMLR, 2024. URL 
+
+https://proceedings.mlr.press/v270/kim25c.html .[24] Muyao Li, Zihao Wang, Kaichen He, Xiaojian Ma, and Yitao Liang. JARVIS-VLA: post-training large-scale vision language models to play visual games with keyboards and mouse. 12 In Wanxiang Che, Joyce Nabende, Ekaterina Shutova, and Mohammad Taher Pilehvar, editors, 
+
+Findings of the Association for Computational Linguistics, ACL 2025, Vienna, Austria, July 27 - August 1, 2025 , Findings of ACL, pages 17878–17899. Association for Computational Linguistics, 2025. URL https://aclanthology.org/2025.findings-acl.920/ .[25] Yunfei Li, Xiao Ma, Jiafeng Xu, Yu Cui, Zhongren Cui, Zhigang Han, Liqun Huang, Tao Kong, Yuxiao Liu, Hao Niu, Wanli Peng, Jingchao Qiao, Zeyu Ren, Haixin Shi, Zhi Su, Jiawen Tian, Yuyang Xiao, Shenyu Zhang, Liwei Zheng, Hang Li, and Yonghui Wu. GR-RL: going dex-terous and precise for long-horizon robotic manipulation. CoRR , abs/2512.01801, 2025. doi: 10.48550/ARXIV.2512.01801. URL https://doi.org/10.48550/arXiv.2512.01801 .[26] Zaijing Li, Yuquan Xie, Rui Shao, Gongwei Chen, Dongmei Jiang, and Liqiang Nie. Optimus-2: Multimodal minecraft agent with goal-observation-action conditioned policy. In IEEE/CVF Conference on Computer Vision and Pattern Recognition, CVPR 2025, Nashville, TN, USA, June 11-15, 2025 , pages 9039–9049. Computer Vision Foundation / IEEE, 2025. doi: 10.1109/CVPR52734.2025.00845. URL https://openaccess.thecvf. com/content/CVPR2025/html/Li_Optimus-2_Multimodal_Minecraft_Agent_with_ Goal-Observation-Action_Conditioned_Policy_CVPR_2025_paper.html .[27] Shalev Lifshitz, Keiran Paster, Harris Chan, Jimmy Ba, and Sheila A. McIlraith. STEVE-1: A generative model for text-to-behavior in minecraft. In Alice Oh, Tristan Nau-mann, Amir Globerson, Kate Saenko, Moritz Hardt, and Sergey Levine, editors, Ad-vances in Neural Information Processing Systems 36: Annual Conference on Neural In-formation Processing Systems 2023, NeurIPS 2023, New Orleans, LA, USA, December 10 - 16, 2023 , 2023. URL http://papers.nips.cc/paper_files/paper/2023/hash/ dd03f856fc7f2efeec8b1c796284561d-Abstract-Conference.html .[28] Yuanzhe Liu, Jingyuan Zhu, Yuchen Mo, Gen Li, Xu Cao, Jin Jin, Yifan Shen, Zhengyuan Li, Tianjiao Yu, Wenzhen Yuan, Fangqiang Ding, and Ismini Lourentzou. PALM: progress-aware policy learning via affordance reasoning for long-horizon robotic manipulation. CoRR ,abs/2601.07060, 2026. doi: 10.48550/ARXIV.2601.07060. URL https://doi.org/10. 48550/arXiv.2601.07060 .[29] Chih-Yao Ma, Jiasen Lu, Zuxuan Wu, Ghassan AlRegib, Zsolt Kira, Richard Socher, and Caiming Xiong. Self-monitoring navigation agent via auxiliary progress estimation. In 
+
+7th International Conference on Learning Representations, ICLR 2019, New Orleans, LA, USA, May 6-9, 2019 . OpenReview.net, 2019. URL https://openreview.net/forum?id= r1GAsjC5Fm .[30] Yecheng Jason Ma, Joey Hejna, Chuyuan Fu, Dhruv Shah, Jacky Liang, Zhuo Xu, Sean Kir-mani, Peng Xu, Danny Driess, Ted Xiao, Osbert Bastani, Dinesh Jayaraman, Wenhao Yu, Tingnan Zhang, Dorsa Sadigh, and Fei Xia. Vision language models are in-context value learners. In The Thirteenth International Conference on Learning Representations, ICLR 2025, Singapore, April 24-28, 2025 . OpenReview.net, 2025. URL https://openreview. net/forum?id=friHAl5ofG .[31] Hongyuan Mei and Jason Eisner. The neural hawkes process: A neurally self-modulating multivariate point process. In Isabelle Guyon, Ulrike von Luxburg, Samy Bengio, Hanna M. Wallach, Rob Fergus, S. V. N. Vishwanathan, and Roman Garnett, editors, 
+
+Advances in Neural Information Processing Systems 30: Annual Conference on Neu-ral Information Processing Systems 2017, December 4-9, 2017, Long Beach, CA, USA ,pages 6754–6764, 2017. URL https://proceedings.neurips.cc/paper/2017/hash/ 6463c88460bd63bbe256e495c63aa40b-Abstract.html .[32] Ashvin Nair, Vitchyr Pong, Murtaza Dalal, Shikhar Bahl, Steven Lin, and Sergey Levine. Visual reinforcement learning with imagined goals. In Samy Bengio, Hanna M. Wallach, Hugo Larochelle, Kristen Grauman, Nicol` o Cesa-Bianchi, and Roman Garnett, editors, Ad-vances in Neural Information Processing Systems 31: Annual Conference on Neural Infor-mation Processing Systems 2018, NeurIPS 2018, December 3-8, 2018, Montr´ eal, Canada ,pages 9209–9220, 2018. URL https://proceedings.neurips.cc/paper/2018/hash/ 7ec69dd44416c46745f6edd947b470cd-Abstract.html .13 [33] Vitchyr Pong, Shixiang Gu, Murtaza Dalal, and Sergey Levine. Temporal difference models: Model-free deep RL for model-based control. In 6th International Conference on Learning Representations, ICLR 2018, Vancouver, BC, Canada, April 30 - May 3, 2018, Conference Track Proceedings . OpenReview.net, 2018. URL https://openreview.net/forum?id= Skw0n-W0Z .[34] Tom Schaul, Daniel Horgan, Karol Gregor, and David Silver. Universal value function ap-proximators. In Francis R. Bach and David M. Blei, editors, Proceedings of the 32nd In-ternational Conference on Machine Learning, ICML 2015, Lille, France, 6-11 July 2015 ,JMLR Workshop and Conference Proceedings, pages 1312–1320. JMLR.org, 2015. URL 
+
+http://proceedings.mlr.press/v37/schaul15.html .[35] Noam Shazeer and Mitchell Stern. Adafactor: Adaptive learning rates with sublinear memory cost. In Jennifer G. Dy and Andreas Krause, editors, Proceedings of the 35th International Conference on Machine Learning, ICML 2018, Stockholmsm¨ assan, Stockholm, Sweden, July 10-15, 2018 , Proceedings of Machine Learning Research, pages 4603–4611. PMLR, 2018. URL http://proceedings.mlr.press/v80/shazeer18a.html .[36] Lucy Xiaoyang Shi, Brian Ichter, Michael Robert Equi, Liyiming Ke, Karl Pertsch, Quan Vuong, James Tanner, Anna Walling, Haohuan Wang, Niccolo Fusai, Adrian Li-Bell, Danny Driess, Lachy Groom, Sergey Levine, and Chelsea Finn. Hi robot: Open-ended instruction following with hierarchical vision-language-action models. In Aarti Singh, Maryam Fazel, Daniel Hsu, Simon Lacoste-Julien, Felix Berkenkamp, Tegan Maharaj, Kiri Wagstaff, and Jerry Zhu, editors, Forty-second International Conference on Machine Learning, ICML 2025, Vancouver, BC, Canada, July 13-19, 2025 , Proceedings of Machine Learning Research. PMLR / OpenReview.net, 2025. URL https://proceedings.mlr.press/v267/shi25d.html .[37] Andreas Steiner, Andr´ e Susano Pinto, Michael Tschannen, Daniel Keysers, Xiao Wang, Yonatan Bitton, Alexey A. Gritsenko, Matthias Minderer, Anthony Sherbondy, Shangbang Long, Siyang Qin, R. Reeve Ingle, Emanuele Bugliarello, Sahar Kazemzadeh, Thomas Mes-nard, Ibrahim Alabdulmohsin, Lucas Beyer, and Xiaohua Zhai. Paligemma 2: A family of versatile vlms for transfer. CoRR , abs/2412.03555, 2024. doi: 10.48550/ARXIV.2412.03555. URL https://doi.org/10.48550/arXiv.2412.03555 .[38] Richard S. Sutton, Doina Precup, and Satinder Singh. Between mdps and semi-mdps: A framework for temporal abstraction in reinforcement learning. Artif. Intell. , 112(1-2):181– 211, 1999. doi: 10.1016/S0004-3702(99)00052-1. URL https://doi.org/10.1016/ S0004-3702(99)00052-1 .[39] Guanzhi Wang, Yuqi Xie, Yunfan Jiang, Ajay Mandlekar, Chaowei Xiao, Yuke Zhu, Linxi Fan, and Anima Anandkumar. Voyager: An open-ended embodied agent with large language models. Trans. Mach. Learn. Res. , 2024, 2024. URL https://openreview.net/forum? id=ehfRiF0R3a .[40] Zihao Wang, Shaofei Cai, Zhancun Mu, Haowei Lin, Ceyao Zhang, Xuejie Liu, Qing Li, Anji Liu, Xiaojian (Shawn) Ma, and Yitao Liang. Omnijarvis: Unified vision-language-action tokenization enables open-world instruction following agents. In Amir Globersons, Lester Mackey, Danielle Belgrave, Angela Fan, Ulrich Paquet, Jakub M. Tomczak, and Cheng Zhang, editors, Advances in Neural Information Processing Systems 38: Annual Conference on Neu-ral Information Processing Systems 2024, NeurIPS 2024, Vancouver, BC, Canada, December 10 - 15, 2024 , 2024. URL http://papers.nips.cc/paper_files/paper/2024/hash/ 85f1225db986e629289f402c46eff1a4-Abstract-Conference.html .[41] Zihao Wang, Muyao Li, Kaichen He, Xiangyu Wang, Zhancun Mu, Anji Liu, and Yitao Liang. Openha: A series of open-source hierarchical agentic models in minecraft. CoRR ,abs/2509.13347, 2025. doi: 10.48550/ARXIV.2509.13347. URL https://doi.org/10. 48550/arXiv.2509.13347 .[42] Ziming Wei, Bingqian Lin, Zijian Jiao, Yunshuang Nie, Liang Ma, Yuecheng Liu, Yuzheng Zhuang, and Xiaodan Liang. Mineanybuild: Benchmarking spatial planning for open-world AI agents. CoRR , abs/2505.20148, 2025. doi: 10.48550/ARXIV.2505.20148. URL https: //doi.org/10.48550/arXiv.2505.20148 .14 [43] Zeqi Xiao, Yushi Lan, Yifan Zhou, Wenqi Ouyang, Shuai Yang, Yanhong Zeng, and Xin-gang Pan. WORLDMEM: long-term consistent world simulation with memory. CoRR ,abs/2504.12369, 2025. doi: 10.48550/ARXIV.2504.12369. URL https://doi.org/10. 48550/arXiv.2504.12369 .[44] Zhejian Yang, Yongchao Chen, Xueyang Zhou, Jiangyue Yan, Dingjie Song, Yinuo Liu, Yut-ing Li, Yu Zhang, Pan Zhou, Hechang Chen, and Lichao Sun. Agentic robot: A brain-inspired framework for vision-language-action models in embodied agents. CoRR , abs/2505.23450, 2025. doi: 10.48550/ARXIV.2505.23450. URL https://doi.org/10.48550/arXiv. 2505.23450 .[45] Haoqi Yuan, Chi Zhang, Hongcheng Wang, Feiyang Xie, Penglin Cai, Hao Dong, and Zongqing Lu. Plan4mc: Skill reinforcement learning and planning for open-world minecraft tasks. CoRR , abs/2303.16563, 2023. doi: 10.48550/ARXIV.2303.16563. URL https: //doi.org/10.48550/arXiv.2303.16563 .[46] Shaopeng Zhai, Qi Zhang, Tianyi Zhang, Fuxian Huang, Haoran Zhang, Ming Zhou, Shengzhe Zhang, Litao Liu, Sixu Lin, and Jiangmiao Pang. A vision-language-action-critic model for robotic real-world reinforcement learning. CoRR , abs/2509.15937, 2025. doi: 10.48550/ ARXIV.2509.15937. URL https://doi.org/10.48550/arXiv.2509.15937 .[47] Yanli Zhao, Andrew Gu, Rohan Varma, Liang Luo, Chien-Chin Huang, Min Xu, Less Wright, Hamid Shojanazeri, Myle Ott, Sam Shleifer, Alban Desmaison, Can Balioglu, Pritam Dama-nia, Bernard Nguyen, Geeta Chauhan, Yuchen Hao, Ajit Mathews, and Shen Li. Pytorch FSDP: experiences on scaling fully sharded data parallel. Proc. VLDB Endow. , 16(12):3848–3860, 2023. doi: 10.14778/3611540.3611569. URL https://www.vldb.org/pvldb/vol16/ p3848-huang.pdf .[48] Hanqing Zhu, Zhenyu Zhang, Wenyan Cong, Xi Liu, Sem Park, Vikas Chandra, Bo Long, David Z. Pan, Zhangyang Wang, and Jinwon Lee. APOLLO: sgd-like memory, adamw-level performance. In Matei Zaharia, Gauri Joshi, and Yingyan (Celine) Lin, editors, Proceedings of the Eighth Conference on Machine Learning and Systems, MLSys 2025, Santa Clara, CA, USA, May 12-15, 2025 . OpenReview.net/mlsys.org, 2025. URL https://openreview.net/ forum?id=mJrPkdcZDj .[49] Brianna Zitkovich, Tianhe Yu, Sichun Xu, Peng Xu, Ted Xiao, Fei Xia, Jialin Wu, Paul Wohlhart, Stefan Welker, Ayzaan Wahid, Quan Vuong, Vincent Vanhoucke, Huong T. Tran, Radu Soricut, Anikait Singh, Jaspiar Singh, Pierre Sermanet, Pannag R. Sanketi, Grecia Salazar, Michael S. Ryoo, Krista Reymann, Kanishka Rao, Karl Pertsch, Igor Mordatch, Henryk Michalewski, Yao Lu, Sergey Levine, Lisa Lee, Tsang-Wei Edward Lee, Isabel Leal, Yuheng Kuang, Dmitry Kalashnikov, Ryan Julian, Nikhil J. Joshi, Alex Irpan, Brian Ichter, Jas-mine Hsu, Alexander Herzog, Karol Hausman, Keerthana Gopalakrishnan, Chuyuan Fu, Pete Florence, Chelsea Finn, Kumar Avinava Dubey, Danny Driess, Tianli Ding, Krzysztof Marcin Choromanski, Xi Chen, Yevgen Chebotar, Justice Carbajal, Noah Brown, Anthony Bro-han, Montserrat Gonzalez Arenas, and Kehang Han. RT-2: vision-language-action mod-els transfer web knowledge to robotic control. In Jie Tan, Marc Toussaint, and Kourosh Darvish, editors, Conference on Robot Learning, CoRL 2023, 6-9 November 2023, Atlanta, GA, USA , Proceedings of Machine Learning Research, pages 2165–2183. PMLR, 2023. URL 
+
+https://proceedings.mlr.press/v229/zitkovich23a.html .15 Appendix 
+
+Appendix Overview. Appendix A discusses broader impacts. Appendices B–G provide (i) theory and additional analyses/ablations that support the main claims and (ii) protocol, environment, and implementation details that support reproducibility. Appendix H provides qualitative audit examples of the completion interface. Appendix I summarizes assets and licenses. 
+
+## A Broader Impacts 
+
+A.1 Positive Impacts 
+
+CaB targets a practical operational gap in embodied VLA systems: deciding when an instruction is complete in closed-loop composite routines where switching changes the active instruction and can materially affect downstream outcomes. By exposing completion as a deployable completion interface calibrated once on a dev set and reused unchanged on test, CaB emphasizes auditable, low-capacity decision rules that may im-prove reliability under realistic deployment constraints (e.g., open-ended instruction spaces where task/group-specific calibration is operationally ill-defined). Beyond switching, CaB’s completion-aware control conditioning (CaB-How) is designed to reduce boundary instability during handoffs when instruction context changes, which may improve pre-dictability in interactive settings. 
+
+A.2 Negative / Misuse Risks 
+
+Techniques that improve reliable compositional execution can increase misuse risk: in broader de-ployments, they may increase an agent’s ability to faithfully carry out undesirable or harmful com-posite instructions if deployed without appropriate instruction-safety mechanisms and oversight. More generally, completion-driven switching is a high-impact intervention: if miscalibrated or trig-gered under ambiguous success evidence, the agent may continue operating under an incorrect active instruction, potentially compounding errors across subsequent subtasks. While our empirical scope is Minecraft, the underlying interface concept (deployable completion decisions under limited calibration capacity) could influence other interactive or embodied settings; this motivates careful attention to calibration, logging, and monitoring when adapting the approach beyond controlled simulation. 
+
+A.3 Mitigations and Safeguards 
+
+We recommend treating completion decisions as an explicitly monitored interface: since completion changes the active instruction in composites, switching should be audited as a safety-relevant event in intervention-sensitive deployments. Practically, this suggests: (i) conservative calibration of the single global switching rule on dev data (reused unchanged on test), (ii) transparent/auditable logging of completion scores and switch triggers (including false-trigger rates), and (iii) monitoring for systematic failure modes such as premature or delayed switching under ambiguous success evidence. 
+
+## B Polarity Shift Analysis: Why Scalar Completion Signals Are Brittle Under a Single Global Rule (θ, L )
+
+This appendix motivates our core design choice: representing the instruction completion object as an 
+
+event-local posterior over boundary phase (Before/Hit/After)—rather than learning completion only as a single scalar/bit interface signal. In CaB, the posterior is the object; a scalar is derived only as a low-capacity, auditable interface readout for switching. 
+
+Scope (deployability-limited). We present minimal constructions illustrating failure modes that arise under our low calibration-capacity deployability discipline: no test-time relearning, a fixed switching wrapper, and a single globally reused (θ, L ). These constructions are not intended as a 16 universal impossibility claim about all scalar progress/completion signals; rather, they justify why retaining a boundary-phase posterior is advantageous under this deployability discipline. 
+
+B.1 Setup and Notation Boundary and boundary-phase variable (event-local signed distance). For each instruction, completion time is defined by the first-success event (the boundary ) at time t∗. Let the signed distance in steps to this boundary be 
+
+˜δt := t − t∗.
+
+We define the boundary-phase variable as the event-local clipped signed distance 
+
+δt := clip( ˜δt, [−K, K ]) = clip( t − t∗, [−K, K ]) ,
+
+where δt < 0 indicates Before, δt > 0 indicates After, and values of δt near 0 correspond to Hit (the boundary neighborhood). Here K is the event-local window radius (the same radius used for BPT windowing and proximity-style readouts). 
+
+Completion object vs. scalar/bit interface. A completion method may expose either • a posterior over boundary phase , i.e., a posterior over the boundary-phase variable p(δt |
+
+ct) (realized in practice by discretizing δt into BPT bins and representing the result as a categorical posterior over those bins), which can later be read out into a scalar for switching; or • a scalar/bit signal obtained by collapsing p(δt | ct), e.g., a point estimate mt := E[δt | ct]
+
+or a thresholded done bit. Here mt is the canonical Bayes target for squared-loss regression to δt.Here ct denotes the past-only context (instruction and observation/history up to time t). 
+
+Deployable switching wrapper (single global (θ, L )). Our deployment discipline uses a fixed, learning-free wrapper: aggregate a scalar score over a short horizon L and trigger by a single global threshold θ,
+
+St := 
+
+> t
+
+X 
+
+> τ=t−L+1
+
+sτ , switch if St ≥ θ, 
+
+where st is the interface signal, either a scalar/bit or a posterior readout. 
+
+Calibration note. The pair (θ, L ) is calibrated once on dev and reused unchanged on test (no test-time relearning), matching the paper’s “fixed wrapper + one global rule (θ, L )” protocol. 
+
+Polarity shift (informal). Using the boundary-phase variable δt = clip( t − t∗, [−K, K ]) , com-pletion evidence near the boundary can manifest as posterior mass concentrating on different signs across tasks: for some tasks, p(δt | ct) places most mass on δt < 0 (Before-heavy, anticipatory evidence), while for others it concentrates on δt > 0 (After-heavy, confirmatory evidence). This polarity shift is precisely what challenges scalar/bit switching under a single global (θ, L ) rule (see Key Observations 1–2). 
+
+B.2 Key Observation 1: polarity shift + one-sided supervision ⇒ unreliable under a single global (θ, L ) rule 
+
+Under polarity shift, tasks differ in which side of the boundary provides most usable evidence (Before-heavy vs. After-heavy). Many progress/step-to-event style baselines supervise a scalar pri-marily on one side of the boundary (typically pre-boundary), leaving its behavior on the other side weakly constrained (often non-identifiable) by the training objective. Under a single globally reused 
+
+(θ, L ) wrapper, a fixed threshold is meaningful only if the scalar behaves consistently on both sides across tasks; with polarity shift, it is easy to construct task families whose dominant evidence lies on the unsupervised side, for which the same globally calibrated threshold becomes unreliable. This concern is consistent with our main matched calibration results, where progress-regression baselines (e.g., STG) exhibit brittle completion switching under the single-global (θ, L ) calibration (see Table˜1). 17 This motivates either (i) representing completion as a polarity-invariant proximity scalar derived from a point estimate of δt, or (ii) representing completion as an explicit boundary-phase object (Before/Hit/After). Key Observation 2 shows why option (i) can still be brittle under multi-modal boundary belief, motivating option (ii). 
+
+B.3 Key Observation 2: Mean-cancellation breaks proximity-of-mean scalars 
+
+A natural countermeasure to one-sided/phase-sensitive scalars is to use a polarity-invariant proxim-ity score computed from a point estimate mt := E[δt | ct], e.g. 
+
+sprox  
+
+> t
+
+:= max(0 , K − | mt|),
+
+so that “near the boundary” corresponds to a large score regardless of side (Before vs. After). This removes sign sensitivity, but introduces a distinct brittleness: collapsing a multi-modal boundary be-lief into a single point estimate can yield mean-cancellation, spuriously appearing “near boundary.” 
+
+Why multi-modality is plausible in VLA completion: near boundaries, the agent often faces par-tial observability (visual occlusions, camera motion, inventory/state not fully visible) and ambigu-ous success evidence (weak/latent predicates, delayed effects), making boundary belief naturally multi-modal even when the policy is well-trained. In such cases, “far-before” vs. “already-after” hypotheses can coexist, so a point estimate can be misleadingly close to zero. 
+
+B.3.1 Proposition (Mean-cancellation false trigger for proximity of the mean) 
+
+Let δ ∈ [−K, K ] denote the boundary-phase variable, i.e., the event-local clipped signed distance to the first-success event with window radius K > 0. Consider a timestep with a bi-modal posterior over δ given context c:
+
+P (δ = −K | c) = 12 , P (δ = + K | c) = 12 ,
+
+and (for simplicity) zero probability mass for |δ| < K . Define the posterior-mean scalar m := E[δ |
+
+c] and its proximity transform 
+
+smean := max(0 , K − | m|).
+
+Then smean = K (maximal), even though the posterior places no mass near the boundary. In contrast, consider the posterior-based proximity readout 
+
+spost := E[max(0 , K − | δ|) | c] .
+
+Then spost = 0 , correctly reflecting the absence of near-boundary mass. 
+
+Proof By symmetry, m = E[δ | c] = 12 (−K) + 12 (+ K) = 0 . Hence smean = max(0 , K − | m|) = 
+
+K. But max(0 , K − | δ|) = 0 whenever |δ| = K. Therefore spost = E[max(0 , K − | δ|) | c] = 0 . □
+
+B.3.2 Interpretation 
+
+Proposition˜B.3.1 shows that even polarity-invariant proximity scalars computed from a point es-timate (e.g., mean or regressor output) can falsely trigger when boundary belief is multi-modal: “far-before OR far-after” can cancel to m ≈ 0, which proximity-of-mean interprets as “near bound-ary.” This motivates applying proximity to the distribution (posterior mass near the boundary), not to a single collapsed scalar. This point-estimate brittleness is consistent with our main-table results, where the corresponding polarity-invariant proximity baseline (e.g., Signed-distance reg(+proximity)) remains sensitive un-der the single-global (θ, L ) discipline (Table˜1). 
+
+B.4 Connection to CaB-When: Posterior readout as “proximity of the distribution” 
+
+CaB predicts an event-local posterior pt(y) over BPT bins (including Before/Hit/After around the boundary), a discretized realization of p(δt | ct). CaB-When then computes a transparent scalar score via a fixed linear readout 
+
+st = X
+
+> y∈Y
+
+wy pt(y),
+
+18 where the weights are predetermined and depend only on bin-center signed distance (e.g., a triangu-lar proximity kernel wy ∝ max(0 , K − | δ(y)|)). 
+
+Discrete BPT bridge. The distribution-level proximity 
+
+spost = E[max(0 , K − | δ|) | ct]
+
+is realized by the discrete BPT posterior as st = P 
+
+> y
+
+wy pt(y) with wy = max(0 , K − | δ(y)|).This is “proximity of the distribution” rather than “proximity of a point estimate.” We use this st
+
+within the same fixed (θ, L ) wrapper (dev-calibrated, frozen on test) as in the main paper. 
+
+B.4.1 Why this matters under limited calibration capacity 
+
+Under a strict single global (θ, L ), robustness depends on whether the interface score behaves con-sistently across tasks and ambiguity patterns. The first observation above highlights a structural issue of one-sided supervision: post-boundary behavior can be weakly constrained, making a single frozen threshold unreliable for some task families. Proposition˜B.3.1 highlights a complementary is-sue for polarity-invariant point estimates: multi-modal boundary belief can cause mean-cancellation and false triggers. By retaining a boundary-phase posterior and applying a fixed proximity-based readout to posterior mass near the boundary, CaB-When is designed to remain auditable while being robust to both failure modes under the paper’s deployment discipline. 
+
+## C Evaluation Protocol Details (E1/E2) 
+
+This appendix provides protocol details omitted from the main text due to space; the main text con-tains the high-level concept and motivation in Sec˜5. We specify an intervention-aware evaluation protocol under matched deployability constraints, separating (i) action-fixed completion detection on a shared trajectory bank (E1) from (ii) closed-loop execution with switching enabled (E2), and we define the metrics, calibration procedure, and uncertainty estimation used throughout the paper. 
+
+C.1 Overview: E1 vs. E2 and what is held fixed 
+
+• E1 (necessary; action-fixed detection). E1 evaluates completion-signal quality on a shared bank of fixed trajectories (observations + actions) across all methods, isolating pre-diction quality from behavioral feedback and ensuring matched evaluation conditions. • E2 (sufficient; closed-loop execution). E2 runs the agent with switching enabled and measures end-to-end outcomes and boundary timing effects under intervention. Both E1/E2 follow the same deployability discipline: no test-time relearning, a fixed low-capacity switching wrapper, and a single global switching rule calibrated once on dev set. 
+
+C.2 E1 rollout bank construction 
+
+We construct a shared set of trajectories that is reused across all completion methods to ensure matched evaluation conditions in E1, decoupling completion prediction from policy feedback. 
+
+Equal-mixture bank policy (switching disabled). To ensure matched E1 conditions without priv-ileging any single behavior policy/distribution, we construct the E1 rollout bank using an equal mixture over the behavior policies corresponding to all baselines and CaB variants. Concretely, for each episode we sample one behavior policy uniformly at random from this pool and roll it out in the environment with the switching wrapper always OFF (i.e., the active instruction is kept fixed and no completion-driven switching is applied). The resulting trajectories therefore provide a policy-agnostic and action-fixed evaluation substrate for E1. 
+
+What is recorded. For each episode, we record step-wise: • RGB observations ot and the (fixed) instruction text l(it),• executed actions at,• offline completion annotation t∗ (first-success event) when it exists, 
+
+Bank size and splits. We evaluate 50 episodes per task with distinct randomized seeds; dev/test splits are seed-disjoint. Dev-only calibration is performed on the dev bank and frozen for test. 19 C.3 E1 metrics Completion-F1 (Episode-level) 
+
+Let t∗ denote the offline completion time (first-success event) for an episode when it exists. We use a fixed tolerance window ∆ = 20 steps (1 sec at 20 Hz) around t∗, consistent with the main-text E1 definition. For each episode, we define episode-level indicators: • has event : the episode contains a success event, i.e., t∗ exists. • has any trigger : the method triggers completion at least once anywhere in the episode. • hit in window : the method triggers at least once within the tolerance window. Using these indicators, we compute confusion matrix: • T P = P 1[has event ∧ hit in window ]
+
+• F N = P 1[has event ∧ ¬ hit in window ]
+
+• F P = P 1[¬has event ∧ has any trigger ]
+
+• T N = P 1[¬has event ∧ ¬ has any trigger ]
+
+We report Completion-F1: Precision = T P T P + F P , Recall = T P T P + F N , F1 = 2 Precision Recall Precision + Recall .
+
+False Completion 
+
+We also report False Completion: FalseCompletionRate = F P F P + T N .
+
+We define False Completion on no-event episodes ( ¬has event ); timing errors on event episodes are characterized in E2 via Premature/Overrun rates. 
+
+C.4 E2 metrics Task Success Rate 
+
+We report Single Task Success Rate and Composite Task Success Rate under intervention (switching enabled). Single-task SR is the fraction of episodes where the target subtask succeeds; Composite-SR is the fraction of composite episodes where all subtasks succeed within the episode horizon. 
+
+Premature Rate / Overrun Rate 
+
+For timing diagnostics, we focus on a sub-instruction with an offline completion time t∗ (the first-success event). Let ˆt be the first timestep at which Complete( t) fires while this sub-instruction is active—i.e., the timestep that triggers the switch to the next sub-instruction. In closed loop, ˆt is the only meaningful trigger time because the active instruction changes immediately at ˆt.Using a fixed tolerance window ∆ = 20 steps, we define episode-level timing categories: • Hit-in-window: |ˆt − t∗| ≤ ∆.• Premature: ˆt < t ∗ − ∆.• Overrun: ˆt > t ∗ + ∆ , or no trigger occurs within the episode horizon. We report Premature Rate and Overrun Rate as episode-level fractions over evaluation seeds for which t∗ is defined. 
+
+Handoff quality 
+
+We additionally report handoff quality: 
+
+SR 2|1 = Pr( subtask 2 succeeds | subtask 1 succeeds ),
+
+estimated empirically over composite episodes by conditioning on episodes where subtask 1 suc-ceeds. 20 C.5 Calibration protocol 
+
+We calibrate the single global rule (θ, L ) once on the dev E1 rollout bank and reuse it unchanged on test (no test-time relearning). We perform discrete grid search over ranges (rather than task-specific values): • Aggregation horizon L. We search L over a small discrete set with an upper bound on the order of twice the tolerance window, i.e., up to ≈ 2∆ steps (with ∆ = 20 ). • Threshold θ. For each candidate L, we search θ over the dev min–max range of aggregated scores St, i.e., θ ∈ [min St, max St] computed on the dev bank. We select the rule (θ, L ) that maximizes episode-level E1 Completion-F1 on dev; ties, if any, are broken by minimizing the episode-level False Completion rate. The selected (θ, L ) is then frozen for all test evaluations. 
+
+C.6 Uncertainty estimation 
+
+Unless otherwise stated, we report 95% bootstrap confidence intervals. We use a hierarchical bootstrap that preserves the per-task evaluation budget: for each bootstrap replicate, we resample episodes within each task with replacement while keeping the number of sampled episodes per task fixed to the original count (e.g., 50 episodes per task). We then aggregate metrics across tasks (or task groups) in the same manner as the main report and compute confidence intervals from the bootstrap distribution (e.g., 2.5/97.5 percentiles). Although percentile bootstrap CIs can be asymmetric, in our experiments the empirical CIs were nearly sym-metric; for readability, we therefore report them in symmetric “ ±” form using half-widths, i.e., we display ˆx ± 12 (U − L) while still computing (L, U ) from the bootstrap percentiles. 
+
+## D Minecraft Environment Details 
+
+This appendix specifies the Minecraft evaluation environment used in our experiments and the inter-face assumptions under which completion is studied. We provide concrete definitions of the obser-vation/action interfaces and task design to support reproducibility and to clarify what information is (and is not) available to the policy at inference time. 
+
+D.1 Overview (positioning and interface assumptions) 
+
+Many widely-used Minecraft simulators (e.g., MineDojo [15, 39]) expose multimodal observa-tions beyond RGB (e.g., inventory/GPS/compass/voxels) and support functional actions (e.g., craft/equip/place) that abstract away fine-grained GUI manipulation; programmatic tasks can fur-ther be evaluated via deterministic success predicates on simulator states. Such simulators have served as common infrastructure in recent Minecraft agent research; see, e.g., [40, 45, 26, 43, 42]. In contrast, our setting intentionally operates in a native human-interface regime : the pol-icy consumes only egocentric RGB pixels (including HUD overlays) and issues low-level key-board/mouse controls at a fixed 20 Hz step rate, requiring cursor-based GUI interaction when appli-cable. Environment-provided diagnostics may be recorded for bookkeeping and offline annotation, but are not used as direct policy inputs. Completion timestamps (first-success events) used for su-pervision/evaluation are obtained offline and are not available at deployment. We run all evaluations using the MineStudio simulator (v1.1.4) [8], which provides an easily cus-tomizable Minecraft simulator built on MineRL [18] and exposes a low-level keyboard/mouse con-trol interface. 
+
+D.2 Observation space Raw pixel observations. Observations are the RGB pixels a human player would see in first-person Minecraft, including HUD overlays (e.g., hotbar, health/hunger indicators, and hand animation), rather than removing them. 21 Rendering and model input resolution. The environment renders frames at (640, 360) and resizes them to a (224, 224) image before passing them to the model (rendering resolution for environment fidelity; model input size for computational efficiency). 
+
+GUI and cursor rendering. When an in-game GUI is open, the observation includes a rendered mouse cursor at the current cursor position, matching the native human-interface visual stream re-quired for inventory and crafting interactions. 
+
+D.3 Action space (Keyboard / Mouse) 
+
+Our agent acts through a native human-style interface at 20 Hz, using discrete keyboard actions together with discretized relative mouse movements. This interface is designed to support both navigation/combat and fine-grained GUI interaction within a single action representation. 
+
+Keyboard actions. The discrete key/button set mirrors standard Minecraft controls for movement and interaction (20 buttons in total), including: • locomotion: move forward / backward / strafe left / strafe right • mobility modifiers: jump, sprint, sneak • interaction: attack (left-click), use/place (right-click), drop • inventory/GUI toggle: open/close inventory • hotbar selection: choose one of slots 1–9 (or no hotbar switch) 
+
+Mouse movements (relative, discretized). Mouse movement is represented as discretized relative X/Y motions: when no GUI is open, X/Y rotate the first-person camera view (horizontal/vertical look direction); when a GUI is open, X/Y move the on-screen cursor (which is rendered in the observation). To support both coarse camera turns and precise cursor positioning with a single representation, we discretize mouse movement using foveated binning along each axis: bins are denser around small motions and coarser for large motions. We use a 21-bin × 21-bin discretization (i.e., 441 joint classes for (X,Y) movement). The binning scheme is otherwise unchanged: each bin corresponds to an interval of relative motion, and a representative bin center is used when converting a discrete bin back into a concrete motion at execution time. 
+
+D.4 Structured Action Tokenization (Keyboard + Mouse) 
+
+A purely factored parameterization (independent Bernoulli decisions per key and independent mouse-axis outputs) can distort correlated human control patterns because it cannot represent de-pendencies among simultaneous keypresses and mouse movements. At the same time, a single flat joint distribution over all keys and mouse combinations is impractical due to combinatorial growth. Following VPT’s motivation for moving beyond fully factored heads [4], we therefore use factoriza-tion to capture dependencies, but we do not introduce an explicit hierarchical gate. 
+
+Mutual exclusivity constraints. Following VPT’s action mapping, we organize mutually exclusive controls into categorical groups (e.g., forward vs. backward; left vs. right; sprint vs. sneak; and hotbar selection), reducing invalid combinations while preserving realistic human control patterns. 
+
+Factorized (token-based) modeling. Consistent with this choice, we adopt a factorization that is more compatible with Transformer-style action token sequence modeling. Concretely, we repre-sent each step with two discrete components—a structured keyboard/action token and a discretized mouse-movement token—and model their joint distribution via an ordered factorization: 
+
+p(akey  
+
+> t
+
+, a mouse  
+
+> t
+
+| ct) = p(akey  
+
+> t
+
+| ct) p(amouse  
+
+> t
+
+| ct, a key  
+
+> t
+
+),
+
+where ct denotes the past-only context (observation and instruction history). For CaB-How, we additionally condition on the phase token by augmenting the context, i.e., ˜ct = ( ct, y cond  
+
+> t
+
+).This preserves cross-component dependencies (mouse conditioned on the keyboard/action decision) without requiring a flat joint over all combinations. In our implementation, this yields a 4,321-way categorical distribution for the structured key-board/action token (after applying mutual-exclusivity grouping) and a 441-way categorical distri-bution for the discretized mouse token (21×21 bins). 22 No-mouse steps. When no mouse movement is intended, we encode this as the relative displacement (0, 0), i.e., selecting the zero-motion (center) bin in the same 21×21 discretization. 
+
+D.5 Tasks, task groups, and composite construction Task design (Jarvis-VLA protocol). We adopt the Jarvis-VLA protocol for task design [24]. Con-cretely, each task is defined by a natural-language instruction instantiated from a static instruction set/templates; the same instruction is provided to the agent at execution time. Task success is eval-uated via a simulator-state–based success predicate, used only for evaluation and offline annotation (e.g., first-success timestamps), and is never exposed to the policy at deployment/inference time. Task grouping also follows the Jarvis-VLA protocol, as described below. 
+
+Task groups. We consider four groups, defined by the dominant interaction pattern and required environment interface: (i) craft (crafting/inventory-centric), (ii) combat (enemy interaction), (iii) 
+
+mine (resource acquisition), and (iv) smelt (furnace/processing-centric). 
+
+Single tasks. We evaluate a fixed set of 8 single tasks per group (32 total). • combat (8) :zombie, spider, skeleton, sheep, pig, creeper, cow, chicken. • mine (8) :oak log, stone, coal ore, iron ore, diamond ore, dirt, sand, obsidian. • craft (8) :bread, crafting table, furnace, stick, iron pickaxe, iron sword, diamond chestplate, dia-mond boots. • smelt (8) :iron ingot, gold ingot, coal from smelting, charcoal, glass, baked potato, cooked beef, cooked chicken. 
+
+Composite routines. We evaluate 18 fixed two-step composite routines formed by selecting se-mantically meaningful ordered subtask pairs from a predefined per-group subtask inventory; this inventory includes the single-task set and may additionally include composite-only subtasks that do not appear as standalone single tasks. Composite execution is evaluated under the E2 protocol, where switching is treated as an intervention, and is not directly supervised as multi-instruction sequences in the training data. Each pair is ordered (A precedes B). • mine × craft (5) :oak log × crafting table, oak log × stick, stone × furnace, stone × stone pickaxe, stone × stone sword. • mine × smelt (4) :coal ore × baked potato, oak log × charcoal, sand × glass, iron ore × iron ingot. • combat × smelt (4) :cow × cooked beef, chicken × cooked chicken, sheep × cooked mutton, pig ×cooked porkchop. • craft × craft (5) :oak planks × chest, oak planks × white bed, stick × torch, stick × wooden pickaxe, stick × wooden shovel. 
+
+D.6 Episode semantics: horizons, death, and respawn Episode horizons. We cap episode length at 600 steps for single tasks and 1800 steps for composite tasks at 20 Hz, corresponding to 30 sec and 90 sec respectively. 
+
+Death and respawn. The episode does not terminate on agent death. Instead, the agent drops its items and respawns in the initial spawn region and continues the same episode. This non-termination-on-death design keeps the evaluation budget comparable across episodes and avoids confounding completion timing with early termination. 23 E Implementation Details 
+
+This appendix summarizes implementation choices held fixed across all methods to ensure matched comparisons. We specify the I/O interfaces (action and completion tokenization), then describe backbone adaptation, data preprocessing, training objectives, distributed training, and compute used in our experiments. 
+
+E.1 Fixed interfaces & factorizations 
+
+We fix the discrete output interfaces used throughout the paper. Control is represented by two action tokens: a structured button/action token and a discretized mouse-movement token. The button/action token has vocabulary size |Vbtn | = 4321 (after applying mutual-exclusivity grouping), and the mouse token uses a 21 × 21 discretization with |Vmouse | = 441 . Completion is represented by a Boundary-Phase Token (BPT) with vocabulary size |Y| = 20 , whose binning (including out-of-window handling) is specified in Appendix.E.4. At each decision step t, we generate completion and control in an ordered manner. Let ct denote the past-only context (observation/instruction history), yt ∈ Y the BPT token, and (abtn  
+
+> t
+
+, a mouse  
+
+> t
+
+) the action tokens. We model the joint distribution with the ordered factorization 
+
+pϕ
+
+ yt, a btn  
+
+> t
+
+, a mouse  
+
+> t
+
+| ct
+
+ = pϕ(yt | ct) pϕ
+
+ abtn  
+
+> t
+
+| ct, y t
+
+ pϕ
+
+ amouse  
+
+> t
+
+| ct, y t, a btn 
+
+> t
+
+ ,
+
+which is compatible with the BPT →action construction used by CaB-How (Sec.4.3) while making explicit the two-token action interface used in our implementation. 
+
+E.2 Backbone (PaliGemma) & post-training recipe Shared backbone and matched I/O. All methods (CaB and baselines) are instantiated on the same pretrained backbone and share the same video-conditioned input interface and chunked action out-put interface, so differences arise only from the completion/control components described in the Baselines section. 
+
+Backbone initialization and video-context adaptation. We initialize from the publicly available image-VLM checkpoint paligemma-3b-pt-224 and adapt it to video-conditioned control [5, 37]. While the released PaliGemma weights/implementation target single-image inputs, our policies con-sume a short history of past RGB observations as context. We implement this as frame stacking with 
+
+F = 4 most recent frames at 20 Hz (a 0.2-second visual context window). While our implementa-tion supports configurable frame sampling (e.g., skipping frames), all reported results use contiguous frames (no skipping). 
+
+Action chunking and inference stride. Both CaB and baselines predict an action chunk rather than a single-step action. During training we use chunk length C = 6 (next 6 low-level actions). At inference we run the policy every 4 steps and output a chunk of C = 4 low-level actions, executed open-loop until the next policy call; the chunk length is implementation-configurable. We report these settings for all main results. 
+
+What is trained vs. frozen. To preserve the pretrained visual representation while adapting to con-trol, we freeze the PaliGemma vision encoder and train the remaining components: the Transformer, the vision-to-token projector, and the action head(s) (including completion-related heads required by CaB). This training policy is shared across methods for matched comparisons. 
+
+Separated vocabularies and heads (text vs. action). We explicitly separate the text-token vocab-ulary/head used by the pretrained VLM from the action-token vocabulary/head introduced for VLA control. Action-loss gradients update the action pathway and shared backbone, without contami-nating the pretrained text head. It also avoids common VLA engineering shortcuts that repurpose a small set of reserved tokens or low-frequency text tokens as action symbols. 
+
+How-ON/OFF implementation (masking-level ablation). How-ON uses the standard causal at-tention mask (allowing BPT →action conditioning as described in the Method section). How-OFF is implemented by modifying the attention mask so that action tokens are prevented from attending to the BPT token, while keeping the rest of the architecture, heads, and supervision unchanged; this isolates the effect of control-side conditioning. 24 E.3 Data & preprocessing Training data. We post-train on the VPT Minecraft Demonstration Dataset [4], which consists of long human demonstration rollouts captured with a dedicated Minecraft recording pipeline. Each recording provides a synchronized first-person video stream and per-step action logs: frames are written every game tick by downsampling the window framebuffer to 640×360, while actions are logged separately in a step-aligned format. The recording setup fixes key rendering settings and captures native human controls (keyboard presses and continuous mouse movements), rather than relying on a simplified functional action interface. 
+
+Why event-centered single-task crops. Our supervision is derived from event timestamps: we can identify when a relevant success event occurs but do not have composite routines annotated with multi-instruction supervision in the dataset. When an event timestamp is available, we associate it with the corresponding instruction and construct a single-task training example around that event. Composite execution is not directly supervised as multi-instruction sequences in the training data; instead, it is evaluated at test time via completion-driven switching under intervention (E2). 
+
+Asymmetric cropping around completion events. We construct training examples by randomly cropping short segments from long rollouts around the offline completion event time t∗ (first suc-cess). The crop window is intentionally asymmetric: we allow crop starts from far before the event (up to 200 steps pre-event) to capture anticipatory context, while limiting the post-event range to within K plus a small buffer, where K is the BPT window radius used in label construction. This asymmetry reflects the event-timestamped nature of the data (event times are known, but full composite-instruction structure is not) and keeps supervision focused on boundary-relevant behav-ior. 
+
+Video context / Chunked targets. We use the same frame-stacking and action-chunking specifica-tions as in Sec.˜E.2 for all reported results. 
+
+Optional expert synthesis for GUI-centric tasks. For structured GUI-based tasks (e.g., craft-ing and smelting), we synthesize a small set of expert demonstration entries that emphasize inven-tory/crafting interactions to better cover interface-heavy behaviors. These synthesized entries are used only for training and are excluded from dev/test evaluation banks to preserve matched compar-isons. 
+
+E.4 Training specification: objectives, labels, and optimization Objective. We train a single autoregressive model to predict (i) a Boundary-Phase Token (BPT) and (ii) an action output, using teacher forcing. At each step t, the training loss is the sum of next-token cross-entropies: 
+
+L = X
+
+> t
+
+
+
+CE( yt, p ϕ(yt | ct)) + CE( at, p ϕ(at | ct, y cond  
+
+> t
+
+)) 
+
+
+
+,
+
+where yt is the event-derived BPT label and ycond  
+
+> t
+
+is the token fed to the action head (ground-truth BPT under teacher forcing). How-ON/OFF differs only in whether action prediction is allowed to attend to the BPT token (How-ON) or is prevented from attending to it via masking (How-OFF), while keeping the same BPT prediction and supervision unchanged. 
+
+BPT label construction and binning. Offline completion times t∗ (first-success events) are used to construct BPT supervision during training/evaluation but are not available at deployment. We define signed distance to the boundary dt = t − t∗ and assign a discrete BPT label yt ∈ Y within an event-local window with radius parameter K (default K = 20 ). We use a ∆ = 2 step binning with an expanded hit region: we set yt = Hit for |dt| ≤ 1. For the remaining in-window distances, i.e., 2 ≤ | dt| ≤ K − 1, we bin by magnitude using b = ⌊| dt|/2⌋ and assign Before[ b] if dt < 0 or 
+
+After[ b] if dt > 0. For |dt| ≥ K, we assign an explicit out-of-window class ∅ow , which is included in the training loss. Under this definition, bins correspond to After[ b] ↔ { 2b, 2b + 1 } and Before[ b] ↔ {− (2 b +1) , −2b}. With this scheme, |Y| = 2 ⌊(K − 1) /2⌋ + 2 = 20 (Before/After bins + Hit + ∅ow ). Whenever a representative signed distance is required, we use the bin center δ(After[ b]) = 2 b,
+
+δ(Before[ b]) = −2b, δ(Hit) = 0; for convenience we set |δ(∅ow )| = K (used only inside proximity-style weights). 25 Optimization hyperparameters (numbers-only). We use AdamW with a cosine learning-rate schedule with warmup: • Learning rate: 2 × 10 −5
+
+• Weight decay: 0.1
+
+• Max grad norm: 1.0
+
+• Warmup ratio: 0.03 (cosine schedule with warmup) • Global batch size: 128 (across all GPUs and gradient accumulation) • Context length: 1024 
+
+• Precision: bfloat16 
+
+E.5 Systems and resource-aware training Distributed training stack. We build on the Prismatic VLMs codebase [22] (also used by Open-VLA [23]) and extend it to support a PaliGemma backbone under PyTorch FSDP2 [47]. We shard transformer blocks and write consolidated checkpoints (trainable modules by default). 
+
+Optimizer choices under FSDP2 (resource-aware design). A practical bottleneck for VLA post-training is optimizer-state memory: AdamW maintains first and second-moment states, which in-creases memory usage. To improve accessibility, we support memory-efficient optimizers as drop-in options under the same FSDP2 training loop, including Adafactor (factored second-moment statis-tics) [35] and APOLLO-style optimizers [48] designed to reduce optimizer-state memory. This enables extensive ablations in a comparatively low-resource setting (2× RTX 6000 Ada), and we plan to release code enabling these distributed optimizer choices. 
+
+E.6 Compute / runtime Training compute. Unless otherwise stated, post-training experiments were run on 2 × NVIDIA RTX 6000 Ada GPUs. We use a single training seed. Peak GPU memory during training was 48 GB per GPU, and peak memory at inference was 13 GB. Training a single model in the main setting took 10 days of wall-clock time on 2× RTX 6000 Ada GPUs (480 GPU-hours). 
+
+Evaluation compute. E1 evaluates completion signals on a fixed rollout bank and consists of offline forward passes over recorded trajectories, while E2 runs closed-loop rollouts with switching enabled. For a single trained model, one full pass of the E2 evaluation suite took approximately 1 day of wall-clock time on the same 2× RTX 6000 Ada setup. We report these compute and memory figures to clarify the resource requirements under which the reported results and ablations were obtained. 
+
+## F Readout-kernel Analysis 
+
+F.1 Auditable readout ablations (completion-interface readout) Goal and controlled factors. This ablation isolates the completion-interface readout while holding the learned completion signal fixed. We keep the trained CaB model unchanged (CaB(When+How)) and reuse its inferred Boundary-Phase Token (BPT) posterior pt(y) = Pϕ(yt = y | ct) at every step. We vary only the readout that maps the BPT posterior to a scalar completion-evidence score, and evaluate all variants under the same dev-only calibration discipline (single global rule calibrated once on dev and reused unchanged on test; no test-time relearning). 
+
+F.2 Common score form (fixed kernels) 
+
+For fixed, auditable readouts, we compute a scalar score by a transparent linear functional of the posterior: 
+
+st = X
+
+> y∈Y
+
+wy pt(y),
+
+26 where Y is the shared BPT vocabulary and wy are fixed weights that do not depend on the task or instruction. 
+
+F.3 Fixed kernels: Full / Before-only / After-only / Constant 
+
+Let δ(y) denote the representative signed distance associated with BPT class y (e.g., bin-center distance relative to the first-success boundary), and let K be the BPT window radius in steps. We define the full triangular kernel, the one-sided kernels, and the constant (flattened) kernel as: 
+
+wfull  
+
+> y
+
+= max(0 , K − | δ(y)|),wbefore  
+
+> y
+
+= max(0 , K − | δ(y)|) · 1[δ(y) ≤ 0] ,wafter  
+
+> y
+
+= max(0 , K − | δ(y)|) · 1[δ(y) ≥ 0] ,wconst  
+
+> y
+
+= 1[y̸ = ow ].
+
+The Full kernel preserves two-sided boundary evidence (Before and After), the one-sided variants ablate one side by construction, and the Constant kernel discards signed phase structure while re-taining only total in-window mass st = P  
+
+> y̸=ow
+
+pt(y) = 1 − pt(ow ).
+
+F.4 Learnable readout (dev-only; higher-capacity) 
+
+For the learnable readout, we fit a one-hidden-layer MLP that takes the BPT posterior vector pt ∈
+
+R|Y| as input and outputs a scalar completion score: 
+
+st = σ w⊤ 
+
+> 2
+
+ReLU( W1pt + b1) + b2
+
+ ,
+
+where ReLU( ·) is the hidden-layer nonlinearity and σ(·) is the sigmoid. 
+
+Labels. We construct binary targets from the E1 tolerance window around the ground-truth comple-tion time t∗: frames within the window are labeled positive, and frames outside are labeled negative. The MLP is trained on the dev set only; evaluation uses the same fixed switching wrapper and dev-only calibration protocol as CaB-When (single global calibration on dev, reused unchanged on test; no test-time relearning). 
+
+F.5 Results and brief discussion 
+
+All readout variants are evaluated with the same E1 detection metrics reported in the main text (Completion-F1 / False Completion), and results are summarized in Table˜3(i). Overall, these readout ablations are complementary to Appendix˜B under the same single-global 
+
+(θ, L ) discipline. Holding the BPT posterior fixed, the completion interface is consumed by a single globally reused (θ, L ) wrapper, so the readout must be robust across tasks whose boundary evi-dence is polarity-shifted (Before-heavy vs. After-heavy evidence). One-sided readouts (Before-only / After-only) discard evidence from one side at the interface level, which can make a single globally calibrated threshold less reliable across such task variation. By contrast, the full (two-sided) ker-nel preserves boundary-phase structure in the interface score and improves discrimination between “near-but-before” and “near-but-after” states under the same calibration capacity. Finally, the small gap between the dev-only learnable MLP and the fixed full kernel suggests that, under the single-global (θ, L ) deployability discipline, robustness is driven less by readout capacity than by preserving distributional, two-sided boundary evidence in the completion object. In other words, once the BPT posterior retains both Before/After information, a simple auditable proximity-style kernel already extracts most of what the fixed wrapper needs, while higher-capacity readouts offer limited additional benefit when calibration capacity is held constant. 
+
+## G Sanity check: CaB vs. public Minecraft VLA baselines 
+
+We additionally report an external-reference sanity check on single-task success rate (Single-SR) against public Minecraft VLA baselines, including JARVIS-VLA (Qwen2-VL-7B) and other public baselines (e.g., VPT, STEVE-1) [24, 27, 4]. 27 Table G1: External single-task sanity check (same evaluation protocol).       
+
+> Model Single-SR ↑
+> VPT 4.2(±0.9)
+> STEVE-1 19 .7(±1.6)
+> JARVIS-VLA (Qwen2-VL-7B) 45 .5(±2.1)
+> Baseline (Signed-distance reg) 52 .1(±2.0)
+> CaB(When+How) 61 .1(±1.9)
+
+This sanity check is intended to contextualize the overall strength of our experimental pipeline. It is not an apples-to-apples comparison with our main matched-discipline results, since the referenced systems differ in backbone size, training data/objectives, and inference setups. 
+
+Protocol alignment. We report Single-SR under our E2 single-task evaluation, which is designed with reference to the single-task protocol used in prior work [24]. Results are summarized in Ta-ble˜G1. Our goal is not to claim a matched advantage over external baselines, but to verify that our models operate in a reasonable performance regime under an established protocol. 
+
+Note on VPT. VPT [4] is included as a widely used demonstration-trained reference point (behav-ioral cloning on human gameplay demonstrations). We use it to anchor the scale of Single-SR under the same measurement procedure and to confirm that the evaluation reflects instruction-following performance beyond imitation-only baselines. 
+
+Summary. As shown in Table˜G1, our models achieve competitive Single-SR relative to the pub-lic reference points, and CaB further improves Single-SR within our pipeline. This sanity check complements the paper’s main focus—deployable completion under intervention—whose primary claims are established under the matched deployability discipline in Table˜1. 
+
+## H Qualitative Audit of the Completion Interface (BPT Posterior) 
+
+This section provides qualitative examples that complement the quantitative results by visual-izing how the predicted Boundary-Phase Token (BPT) posterior evolves over time during exe-cution. Figure˜H1 plots the posterior pt(y) over boundary phase (Before / Hit / After) versus time (steps) for representative single-instruction episodes: four successful runs (a–d) spanning mine/combat/craft/smelt, and one target-not-visible example (e). 
+
+What is plotted. For each episode, we plot the model’s predicted BPT posterior pt(y) over the boundary-phase classes (Before/Hit/After) as the agent executes actions under a fixed instruction (switching disabled). This posterior is the same completion object that would be read out for switch-ing. 
+
+Successful episodes: a common qualitative signature (a–d). Across four successful tasks— Mine coal ore, Hunt the cow, Craft a stick, and Smelt a potato—the posterior typically exhibits a phase-localization pattern: it is Before-heavy earlier in the episode, then concentrates near Hit around completion, and subsequently shifts toward After. While the sharpness and persistence of Hit/After evidence vary across task types, a shared qualitative signature is the emergence of a coher-ent boundary-phase transition in pt(y).
+
+Target-not-visible example: absence of boundary evidence (e). In panel (e) (Hunt the chicken; Target not visible), the observation stream lacks the target entity, so the agent receives little to no boundary-relevant evidence for completion. Accordingly, the BPT posterior does not form a clear Hit concentration and remains dominated by non-hit phase mass throughout the episode. This exam-ple highlights that the completion interface behaves conservatively when task evidence is missing, rather than spuriously “firing” without visual support. 
+
+Auditability takeaway. These examples illustrate why the proposed completion interface is au-ditable : the interface exposes a structured, time-resolved evidence trace pt(y) over interpretable boundary phases (Before/Hit/After) that a user can directly inspect to understand why a trigger would (or would not) occur. In successful runs, the posterior localizes around Hit near completion; in the target-not-visible run, the absence of Hit localization provides an explicit, human-verifiable indication that completion evidence is not present. 28 High 
+
+> Low
+
+(a) Mine coal ore.  time(step) 
+
+> Before
+> After
+> Hit
+> 𝒑 𝒕 (𝒚 )
+
+BPT 
+
+> High
+> Low
+
+(b) Hunt the cow.  time(step) 
+
+> Before
+> After
+> Hit
+> 𝒑 𝒕 (𝒚 )
+
+BPT 
+
+> High
+> Low
+
+(c) Craft a stick.  time(step) 
+
+> Before
+> After
+> Hit
+> 𝒑 𝒕 (𝒚 )
+
+BPT 
+
+> High
+> Low
+
+(d) Smelt a potato.  time(step) 
+
+> Before
+> After
+> Hit
+> 𝒑 𝒕 (𝒚 )
+
+BPT 
+
+> High
+> Low
+
+(e) Hunt the chicken. (Target not visible) 
+
+> time(step)
+> Before
+> After
+> Hit
+> 𝒑 𝒕 (𝒚 )
+
+BPT Figure H1: Qualitative audit of the completion interface. We plot the predicted BPT posterior 
+
+pt(y) over boundary phase (Before/Hit/After) versus time (steps) during execution. Panels (a–d) show successful episodes spanning mine/combat/craft/smelt, while panel (e) is a target-not-visible 
+
+example (Hunt the chicken) where the posterior correspondingly does not localize near Hit. 29 I Assets and Licenses 
+
+I.1 Environments and Simulators 
+
+• Minecraft simulator/tooling: MineStudio. 
+
+– Version: v1.1.4 (release). 
+
+– URL: 
+
+* GitHub: https://github.com/CraftJarvis/MineStudio * Docs: https://craftjarvis.github.io/MineStudio/ * Release notes: https://github.com/CraftJarvis/MineStudio/releases 
+
+– License / Terms: MIT License (repository license). 
+
+– Usage note: See Appendix.D. 
+
+I.2 Datasets 
+
+• Training dataset: OpenAI VPT contractor demonstrations. 
+
+– Source / access: 
+
+The VPT project distributes code and associated resources via the official repository: https://github.com/openai/Video-Pre-Training 
+
+– Primary reference: 
+
+The VPT paper states that the contractor data is open-sourced as part of the project’s released assets. * Paper (OpenAI PDF): https://cdn.openai.com/vpt/Paper.pdf * NeurIPS proceedings PDF: https://proceedings.neurips.cc/paper files/paper/2022/file/9c7008aff45b5d8f0973b Paper-Conference.pdf 
+
+– Version / subset: 
+
+We use a mixture of contractor demonstration subsets (covering multiple recorder “series” such as free gameplay / early game / house building / obtain-diamond-style trajectories) as provided by the VPT release. 
+
+– License / Terms (dataset): 
+
+The VPT paper indicates the contractor data is open-sourced, but it does not specify a standard dataset license in the paper text. We therefore do not redistribute the dataset in our release. 
+
+– License / Terms (VPT repository): The VPT repository itself is MIT-licensed. 
+
+– Usage note: See Appendix.E.3. 
+
+I.3 Pretrained Models / Backbones 
+
+• Backbone model: PaliGemma-3B (VLA backbone). • Checkpoint ID: google/paligemma-3b-pt-224. • URL / access: https://huggingface.co/google/paligemma-3b-pt-224 (license-gated access). • License / Terms: Gemma license / Google usage terms (acceptance required to access files). • Usage note: See Appendix.E.2. 
+
+I.4 External Codebases and Libraries 
+
+• Training codebase foundation: Prismatic VLMs (MIT). 
+
+– Version (pinned commit): 874c5bbff52b248294a3ab97006491a7faa698e6 
+
+– URL: 
+
+https://github.com/TRI-ML/prismatic-vlms 
+
+– Pinned commit URL: 
+
+https://github.com/TRI-ML/prismatic-vlms/commit/874c5bbff52b248294a3ab97006491a7faa698e6 
+
+– License: MIT License (repository LICENSE). 30 – Usage note: See Appendix.E.5. • Core framework: PyTorch (distributed training with FSDP2 / fully shard ). 
+
+– Version: 2.7.0 (as used in experiments). 
+
+– URL: 
+
+* Repository: https://github.com/pytorch/pytorch * FSDP2 API docs ( fully shard ): https://docs.pytorch.org/docs/stable/distributed.fsdp.fully shard.html 
+
+– License / Terms: PyTorch is distributed under a BSD-3 license (see PyTorch forums clarification). 31
