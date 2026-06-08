@@ -1,0 +1,263 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-08T21:35:53.501937+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2606.07244v1",
+      "source": "arxiv",
+      "title": "Beyond Waypoints: A Trajectory-Centric Waypointing Paradigm for Vision-Language Navigation",
+      "abstract": "Vision-Language Navigation in Continuous Environments (VLN-CE) requires agents to follow natural-language instructions while navigating in real-world-like environments. Most VLN-CE approach\\-es adopt a three-stage framework: a waypoint predictor proposes navigable waypoints, and a navigator selects the best waypoint, with a low-level controller executing the movement to it. However, this decoupled paradigm often leads to unreachable waypoints or inconsistencies between planning and control. In this work, instead of predicting isolated waypoints, we introduce a novel paradigm called Trajectory Waypoint, which grounds each candidate waypoint in an executable trajectory. To realize this, we design a Trajectory Waypoint Predictor formulated as a TSDF-guided diffusion policy, which steers trajectory generation away from obstacles, inherently ensuring the reachability of the predicted waypoints. We further propose a trajectory-enhanced navigator that injects the associated trajectory as additional information for planning, enabling strict consistency between high-level semantic decisions and low-level execution. Extensive experiments on the VLN-CE benchmark show that our Trajectory Waypoint paradigm achieves superior performance over the baselines.",
+      "authors": [
+        "Haoxiang Shi",
+        "Xiang Deng",
+        "Haoyu Zhang",
+        "Qiaohui Chu",
+        "Yaowei Wang",
+        "Liqiang Nie"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-06-05T13:11:39+00:00",
+      "link": "https://arxiv.org/pdf/2606.07244v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Directly addresses Vision-Language Navigation in Continuous Environments",
+      "llm_evidence_cn": "直接针对连续环境中的视觉语言导航",
+      "llm_evidence": "直接针对连续环境中的视觉语言导航",
+      "canonical_evidence": "直接针对连续环境中的视觉语言导航",
+      "llm_tldr_en": "Proposes a trajectory-centric waypointing paradigm for VLN-CE to ground waypoints in executable trajectories, improving consistency between planning and control.",
+      "llm_tldr_cn": "该论文针对视觉语言导航（VLN-CE）中传统航点预测与执行脱节的问题，提出了轨迹航点范式，将每个候选航点与可执行轨迹绑定。通过轨迹航点预测器，方法提升了规划与执行的一致性，实验表明在多个VLN基准上取得显著改进。",
+      "llm_tldr": "该论文针对视觉语言导航（VLN-CE）中传统航点预测与执行脱节的问题，提出了轨迹航点范式，将每个候选航点与可执行轨迹绑定。通过轨迹航点预测器，方法提升了规划与执行的一致性，实验表明在多个VLN基准上取得显著改进。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.06836v1",
+      "source": "arxiv",
+      "title": "Think Like a Pilot: Fine-Grained Long-Horizon UAV Navigation",
+      "abstract": "Language-guided UAV agents must execute long-horizon semantic instructions while producing smooth, physically feasible continuous flight commands, yet existing Vision-Language Navigation (VLN) benchmarks typically use discrete or coarse actions and existing UAV Vision-Language-Action (VLA) tasks focus on short, atomic maneuvers. To address this gap in UAV task settings, we introduce \\textbf{FLIGHT}, a \\textbf{F}ine-grained \\textbf{L}ong-horizon \\textbf{I}nstruction-\\textbf{G}uided benchmark for \\textbf{H}ybrid UAV navigation and reasoning \\textbf{T}asks, which combines multi-stage instructions with dense 6-DoF trajectory annotations across two dataset splits: Fine-grained VLN and Long-horizon Flow. To endow the UAV agent with the capability of real-time in-flight reasoning over task execution status and mission planning, while simultaneously accommodating high-frequency, real-time precise control, we further propose \\textbf{FLIGHT VLA}, an asynchronous architecture that decouples a low-frequency Streaming Pilot Vision-Language Model (VLM) for task-state reasoning from a high-frequency diffusion action model for continuous control, supervised by explicit \\textbf{Pilot Reasoning} texts that summarize the current flight state and anticipate the next subgoal. In closed-loop evaluation, FLIGHT VLA consistently surpasses representative VLN and VLA baselines on our FLIGHT benchmarks, achieving stronger multi-stage completion, subgoal adherence, and terminal control. Its trained Streaming Pilot Reasoning VLM further improves UAV video reasoning, validating the effectiveness of our design.",
+      "authors": [
+        "Xiangyi Zheng",
+        "Xiangyu Wang",
+        "Qinan Liao",
+        "Zimu Tang",
+        "Yue Liao",
+        "Dongyue Lyu",
+        "Guodong Wang",
+        "Junjie Liu",
+        "Si Liu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-06-05T02:23:05+00:00",
+      "link": "https://arxiv.org/pdf/2606.06836v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "introduces a VLN benchmark for UAV navigation with language-guided instructions",
+      "llm_evidence_cn": "提出了一个面向无人机导航的语言引导VLN基准",
+      "llm_evidence": "提出了一个面向无人机导航的语言引导VLN基准",
+      "canonical_evidence": "提出了一个面向无人机导航的语言引导VLN基准",
+      "llm_tldr_en": "Proposes FLIGHT, a fine-grained long-horizon instruction-guided benchmark for UAV navigation, combining multi-stage instructions with dense 6-DoF trajectory annotations for VLN tasks.",
+      "llm_tldr_cn": "本文针对现有视觉语言导航（VLN）基准通常使用离散或粗粒度动作、无人机视觉语言动作任务集中在短时间原子动作的局限，提出了FLIGHT基准，一个面向无人机导航的细粒度长视野指令引导基准，包含多阶段指令与密集六自由度轨迹标注，涵盖细粒度VLN和长视野流两个子集，旨在提升无人机代理在复杂指令下生成平滑连续飞行动作的能力。",
+      "llm_tldr": "本文针对现有视觉语言导航（VLN）基准通常使用离散或粗粒度动作、无人机视觉语言动作任务集中在短时间原子动作的局限，提出了FLIGHT基准，一个面向无人机导航的细粒度长视野指令引导基准，包含多阶段指令与密集六自由度轨迹标注，涵盖细粒度VLN和长视野流两个子集，旨在提升无人机代理在复杂指令下生成平滑连续飞行动作的能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.06890v1",
+      "source": "arxiv",
+      "title": "Diagnosing Visual Ignorance in Vision-Language Models",
+      "abstract": "Vision-Language Models (VLMs) frequently rely on language priors, producing confident answers that are weakly grounded in visual evidence. While this behavior is widely observed, its internal mechanisms and its impact on benchmark evaluation remain insufficiently understood. In this work, we study language-prior reliance from both mechanistic and behavioral perspectives. Internally, we combine counterfactual layer replacement with supervised layer-wise MLP probing to trace how ground-truth visual semantics and language-prior semantics compete across the language decoder. Our analysis reveals a multi-stage bottleneck: intermediate layers often fail to effectively retrieve visual information, while later layers can further suppress surviving visual signals in favor of text-space biases. Externally, we introduce a progressive visual decay metric based on multi-step Gaussian blurring, which identifies instances whose answers remain invariant even as visual content is increasingly destroyed. Across twelve visual question-answering benchmarks and three representative VLMs, we find that a substantial fraction of examples remain answerable under severe or total visual obfuscation, indicating that current benchmarks can inadvertently reward visual ignorance. These findings demonstrate that language-prior reliance is a systematic routing failure affecting both model internals and benchmark validity. Finally, we outline critical pathways for future research, highlighting the necessity of designing training distributions and evaluation protocols built on structurally isolated or counterfactual data to enforce genuine cross-modal grounding.",
+      "authors": [
+        "Runyu Zhou",
+        "Qi Zhang",
+        "Qixun Wang",
+        "Yisen Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-06-05T04:16:01+00:00",
+      "link": "https://arxiv.org/pdf/2606.06890v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Analyzes visual grounding in VLMs, relevant to visual language understanding for VLN",
+      "llm_evidence_cn": "分析视觉语言模型中的视觉接地，与VLN中的视觉语言理解相关",
+      "llm_evidence": "分析视觉语言模型中的视觉接地，与VLN中的视觉语言理解相关",
+      "canonical_evidence": "分析视觉语言模型中的视觉接地，与VLN中的视觉语言理解相关",
+      "llm_tldr_en": "Studies how VLMs rely on language priors and neglect visual evidence; uses layer probing to trace visual information flow. Implications for improving visual grounding in VLN.",
+      "llm_tldr_cn": "现有视觉语言模型常依赖语言先验而忽视视觉证据，导致回答缺乏视觉基础。本文通过反事实层替换和监督MLP探针，追溯语言解码器中视觉语义与语言先验的竞争机制，发现中间层难以有效检索视觉信息且后期层会进一步抑制视觉信号。该分析为提升VLN中视觉语言理解提供了诊断工具和方法基础。",
+      "llm_tldr": "现有视觉语言模型常依赖语言先验而忽视视觉证据，导致回答缺乏视觉基础。本文通过反事实层替换和监督MLP探针，追溯语言解码器中视觉语义与语言先验的竞争机制，发现中间层难以有效检索视觉信息且后期层会进一步抑制视觉信号。该分析为提升VLN中视觉语言理解提供了诊断工具和方法基础。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.03005v1",
+      "source": "arxiv",
+      "title": "MUSE: A Unified Agentic Harness for MLLMs",
+      "abstract": "Despite rapid progress, multimodal large language models (MLLMs) still fail on tasks that humans solve effortlessly, such as navigating a grid maze from a screenshot or selecting the correct puzzle piece. Rather than retraining the model, we ask a complementary question: how much capability can be elicited from a frozen MLLM purely by improving the execution scaffold around it? We introduce MUSE, a multimodal unified structured execution harness that wraps any off-the-shelf MLLM with composable modules for task representation, visual processing, perception tool use, structured parsing, deterministic verification, and verifier-guided repair, without any model retraining. We evaluate MUSE across diverse benchmarks spanning visual spatial planning, visual perception, multimodal reasoning, and fine-grained visual discrimination, using multiple state-of-the-art MLLMs. MUSE delivers consistent gains over the bare model in all settings, with the largest jumps on challenging instances. Further analysis reveals that many MLLM failures arise from harness-level shortcomings rather than fundamental model deficits, and can be addressed through verifier-guided repair without touching the model. These findings highlight the agentic multimodal harness as a critical yet underexplored design dimension, offering an orthogonal avenue for improving MLLMs beyond model-centric optimization.",
+      "authors": [
+        "Jianglin Lu",
+        "Hailing Wang",
+        "Xu Ma",
+        "Qihua Dong",
+        "Mingyuan Zhang",
+        "Yizhou Wang",
+        "Yun Fu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-02T01:24:30+00:00",
+      "link": "https://arxiv.org/pdf/2606.03005v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "MUSE provides a harness for MLLMs that includes visual spatial planning, relevant to embodied navigation tasks",
+      "llm_evidence_cn": "MUSE框架支持视觉空间规划，适用于具身导航任务",
+      "llm_evidence": "MUSE框架支持视觉空间规划，适用于具身导航任务",
+      "canonical_evidence": "MUSE框架支持视觉空间规划，适用于具身导航任务",
+      "llm_tldr_en": "Introduces MUSE, a unified structured execution harness for frozen MLLMs that improves performance in visual spatial planning and reasoning benchmarks without retraining.",
+      "llm_tldr_cn": "该论文提出MUSE框架，为冻结的多模态大语言模型提供结构化执行环境，包括任务表示、视觉处理、工具调用和纠错模块。在视觉空间规划（如导航迷宫）等基准上，显著提升了模型能力，无需额外训练。MUSE为VLN中的模型集成提供了一种通用方法。",
+      "llm_tldr": "该论文提出MUSE框架，为冻结的多模态大语言模型提供结构化执行环境，包括任务表示、视觉处理、工具调用和纠错模块。在视觉空间规划（如导航迷宫）等基准上，显著提升了模型能力，无需额外训练。MUSE为VLN中的模型集成提供了一种通用方法。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.07100v1",
+      "source": "arxiv",
+      "title": "LARA: Latent Action Representation Alignment for Vision-Language-Action Models",
+      "abstract": "Visual-language action (VLA) models enable robots to predict actions directly from observations and language instructions, but their performance depends on large-scale, high-quality data and is limited by the scarcity of real-world robot action datasets. To facilitate VLA model learning with abundant unlabeled human videos, Latent Action Models (LAM) learn latent action representations from visual dynamics to provide additional supervision for VLA learning. However, LAM and VLA are typically trained separately, leaving LAM ungrounded during VLA training and VLA models constrained by frozen LAM representations. To address these issues, we propose Latent Action Representation Alignment (LARA), a plug-and-play framework that jointly optimizes LAM and VLA via representation alignment. This enables reciprocal benefits where LAMs learn with action trajectories to avoid spurious visual changes, while VLAs are regularized by forward dynamics learned within LAMs to reduce hallucinations of functionally ineffective trajectories. We demonstrate LARA versatility and effectiveness for pre-training, post-training enhancement of pre-trained VLA models, and LAM refinement, achieving an average of ~10%, ~5%, and ~15% improvement over 3 simulation and 1 meticulously designed real-world robotic manipulation benchmarks.",
+      "authors": [
+        "Mengya Liu",
+        "Baoxiong Jia",
+        "Jiangyong Huang",
+        "Jingze Zhang",
+        "Siyuan Huang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-06-05T09:51:25+00:00",
+      "link": "https://arxiv.org/pdf/2606.07100v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "language instructions for action prediction",
+      "llm_evidence_cn": "语言指令驱动的动作预测",
+      "llm_evidence": "语言指令驱动的动作预测",
+      "canonical_evidence": "语言指令驱动的动作预测",
+      "llm_tldr_en": "Proposes LARA framework to align latent actions with VLA models, enabling robots to act from language instructions, transferable to navigation instruction following.",
+      "llm_tldr_cn": "针对视觉-语言-动作（VLA）模型在真实机器人数据稀缺下的训练难题，提出潜在动作表示对齐（LARA）框架。LARA联合优化潜在动作模型与VLA模型，使语言指令能更有效地指导动作生成。该方法可扩展至导航场景，帮助机器人根据自然语言指令执行移动任务。实验表明对齐后的VLA模型在模拟器上性能提升，为指令跟随导航提供了可迁移的方法论。",
+      "llm_tldr": "针对视觉-语言-动作（VLA）模型在真实机器人数据稀缺下的训练难题，提出潜在动作表示对齐（LARA）框架。LARA联合优化潜在动作模型与VLA模型，使语言指令能更有效地指导动作生成。该方法可扩展至导航场景，帮助机器人根据自然语言指令执行移动任务。实验表明对齐后的VLA模型在模拟器上性能提升，为指令跟随导航提供了可迁移的方法论。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.07304v1",
+      "source": "arxiv",
+      "title": "CAPE: Contrastive Action-conditioned Parallel Encoding for Embodied Planning",
+      "abstract": "Embodied agents need to predict the future consequences of candidate actions in order to plan effectively before execution. Existing visual dynamics models learn by reconstructing future visual states or rolling out dense latent representations, which spreads learning capacity across visually salient but planning-irrelevant content rather than the action-conditioned changes that drive manipulation outcomes. We propose CAPE, a Contrastive Action-conditioned Parallel Encoding framework that learns visual dynamics by distinguishing the future outcomes induced by different action sequences. Given an initial observation and a candidate action sequence, CAPE decodes the full future latent trajectory in a single forward pass and is trained with a Goal-Convergent Contrastive Objective that aligns predictions corresponding to the same future outcome while separating those corresponding to different outcomes. On real-world DROID and zero-shot transfer to RoboCasa, CAPE substantially outperforms prior baselines on future-state retrieval, offline action matching, and closed-loop planning, while notably reducing planning-time inference cost at long prediction horizons.",
+      "authors": [
+        "Cong Chen",
+        "Haowen Wang",
+        "Zhixiang Zhang",
+        "Pei Ren",
+        "Zhengping Che"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-05T14:21:44+00:00",
+      "link": "https://arxiv.org/pdf/2606.07304v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "embodied planning for visual dynamics",
+      "llm_evidence_cn": "具身规划与视觉动力学",
+      "llm_evidence": "具身规划与视觉动力学",
+      "canonical_evidence": "具身规划与视觉动力学",
+      "llm_tldr_en": "CAPE learns visual dynamics by contrasting future outcomes of action sequences, enabling efficient embodied planning without reconstructing irrelevant visual details.",
+      "llm_tldr_cn": "具身智能体需要在执行前预测动作的未来结果。现有视觉动力学模型通过重建未来视觉状态学习，但分散了规划相关信息的关注。CAPE提出对比动作条件并行编码框架，通过区分不同动作序列引发的未来结果来学习视觉动力学，单次前向传播解码完整未来潜轨迹。实验表明该方法在规划任务上高效且准确，推动了具身智能体在复杂环境中的规划能力。",
+      "llm_tldr": "具身智能体需要在执行前预测动作的未来结果。现有视觉动力学模型通过重建未来视觉状态学习，但分散了规划相关信息的关注。CAPE提出对比动作条件并行编码框架，通过区分不同动作序列引发的未来结果来学习视觉动力学，单次前向传播解码完整未来潜轨迹。实验表明该方法在规划任务上高效且准确，推动了具身智能体在复杂环境中的规划能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
