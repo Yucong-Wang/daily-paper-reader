@@ -1,0 +1,228 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-09T21:04:11.591246+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 2,
+    "quick_skim_target": 11,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2606.08992v1",
+      "source": "arxiv",
+      "title": "SpaceVLN: A Zero-Shot Vision-and-Language Navigation Agent with Online Spatial Cognitive Memory and Reasoning",
+      "abstract": "Vision-and-Language Navigation in continuous environments requires agents to understand the spatial structure of previously unseen environments in order to follow language instructions. Although foundation models have opened a promising path toward zero-shot navigation without task-specific policy training, many navigators still rely on local visual cues and linear history-based reasoning, overlooking the spatial nature of navigation across explored regions, traversed paths, landmarks, and their spatial relations. In this paper, we propose SpaceVLN, a navigation agent built around Spatial Cognitive Memory and Task-Guided Spatial Reasoning. Specifically, SpaceVLN introduces an efficient stagewise closed-loop framework where planning and execution are organized around verifiable space--landmark stages. During navigation, the agent progressively abstracts explored regions into Spatial Waypoints and dynamically maintains subtask-grounded landmark evidence, forming a hierarchical Spatial Cognitive Memory for progress localization and spatial-relation understanding. Built on this memory, Spatial-CoT integrates task-progress reasoning with spatial perception, analysis, and prediction, enabling Task-Guided Spatial Reasoning for embodied navigation. The unified stage interface enables SpaceVLN to address both Vision-and-Language Navigation and Object-Goal Navigation under a unified zero-shot setting, without task-specific policy training. Across R2R-CE, RxR-CE, GN-Bench, and HM3D-OVON, SpaceVLN achieves state-of-the-art zero-shot performance, and real-robot deployment further validates its applicability. These results highlight Spatial Cognitive Memory and Task-Guided Spatial Reasoning as a practical foundation for stronger embodied navigation agents.",
+      "authors": [
+        "Yucheng Deng",
+        "Pingrui Lai",
+        "Xinhai Li",
+        "Chenjia Bai",
+        "Xiaoheng Deng",
+        "Chengnuo Sun",
+        "Xuelong Li",
+        "Hua Yang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-06-08T03:42:08+00:00",
+      "link": "https://arxiv.org/pdf/2606.08992v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Zero-shot Vision-and-Language Navigation agent with spatial cognitive memory",
+      "llm_evidence_cn": "零样本视觉语言导航代理，具有空间认知记忆",
+      "llm_evidence": "零样本视觉语言导航代理，具有空间认知记忆",
+      "canonical_evidence": "零样本视觉语言导航代理，具有空间认知记忆",
+      "llm_tldr_en": "Proposes SpaceVLN, a zero-shot VLN agent using Spatial Cognitive Memory and Task-Guided Spatial Reasoning in continuous environments, achieving strong navigation performance without task-specific training.",
+      "llm_tldr_cn": "现有零样本视觉语言导航代理缺乏对环境的整体空间认知，仅依赖局部视觉线索和历史推断。本文提出SpaceVLN，通过构建空间认知记忆和任务引导的空间推理模块，采用分阶段闭环框架实现零样本导航。在连续环境基准上，该方法显著提升了导航成功率，验证了空间认知对于VLN的重要性。",
+      "llm_tldr": "现有零样本视觉语言导航代理缺乏对环境的整体空间认知，仅依赖局部视觉线索和历史推断。本文提出SpaceVLN，通过构建空间认知记忆和任务引导的空间推理模块，采用分阶段闭环框架实现零样本导航。在连续环境基准上，该方法显著提升了导航成功率，验证了空间认知对于VLN的重要性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.08666v1",
+      "source": "arxiv",
+      "title": "Language as a Sensor: Calibrated Spatial Belief Estimation in 3D Scenes from Natural Language",
+      "abstract": "Robots deployed in human-centric environments routinely receive natural-language descriptions of spatial information (\"I left my backpack on the table\") that reference parts of the world beyond their perceptual field of view. Traditional metric-semantic mapping ignores this signal, while off-the-shelf multimodal models remain limited in 3D spatial reasoning and are not directly amenable to fusion with other sensor modalities. To convert language observations into a calibrated spatial distribution, we train a Language Sensor Model (LSM) that maps each utterance and its scene-graph context to a multimodal distribution, with mixture weights encoding referential ambiguity (e.g., \"which table\") and component covariances encoding spatial uncertainty (e.g., where \"on the table\" the target lies). We then introduce VL-Map (Vision-Language Metric-Semantic Mapping), a probabilistic framework that treats these language predictions as stochastic observations and fuses them with onboard perception within a unified belief map. On the VLA-3D benchmark as well as on a real-world mobile robot, LSM is the only language predictor whose covariance estimates remain within the calibrated regime; fused into VL-Map, it leads to more accurate predictions of the target object location (~70% more probability mass on the true target compared to the strongest foundation-model baseline).",
+      "authors": [
+        "Aryan Naveen",
+        "Jason Xinyu Liu",
+        "Luca Carlone",
+        "Andreea Bobu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-07T15:17:25+00:00",
+      "link": "https://arxiv.org/pdf/2606.08666v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "language as sensor for spatial belief estimation in robotics",
+      "llm_evidence_cn": "将语言作为传感器用于机器人空间信念估计",
+      "llm_evidence": "将语言作为传感器用于机器人空间信念估计",
+      "canonical_evidence": "将语言作为传感器用于机器人空间信念估计",
+      "llm_tldr_en": "Trains a Language Sensor Model that converts natural language spatial descriptions into calibrated probability distributions for 3D scenes, enabling fusion with other sensors.",
+      "llm_tldr_cn": "机器人常收到自然语言空间描述（如“我把背包放在桌子上”），但传统地图构建无法利用该信息。本文训练语言传感模型（LSM），将每条语句及其场景图上下文映射为多峰分布，编码指代歧义和空间不确定性。该模型可与视觉、激光等传感器融合，为机器人提供校准的空间信念，有助于视觉语言导航中的语言指令理解与定位。",
+      "llm_tldr": "机器人常收到自然语言空间描述（如“我把背包放在桌子上”），但传统地图构建无法利用该信息。本文训练语言传感模型（LSM），将每条语句及其场景图上下文映射为多峰分布，编码指代歧义和空间不确定性。该模型可与视觉、激光等传感器融合，为机器人提供校准的空间信念，有助于视觉语言导航中的语言指令理解与定位。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.08729v1",
+      "source": "arxiv",
+      "title": "IR-SIM: A Lightweight Skill-Native Simulator for Navigation, Learning, and Benchmarking",
+      "abstract": "Simulation plays a key role in automated robotics research supported by large language models (LLMs). However, existing simulators often require custom code or complex interfaces, creating a barrier to rapid prototyping and automated algorithm development. To this end, we propose the Intelligent Robot Simulator (IR-SIM), a lightweight skill-native navigation simulator designed for rapid scenario construction, benchmarking, and robot learning. In IR-SIM, scenarios are entirely defined by YAML configuration files that specify mobile robot kinematics, geometric collision checking, LiDAR sensing, visualization, and behavior modules. This design makes robotic simulation fully describable and reproducible, allowing scenarios to be generated and modified from text prompts through the proposed IR-SIM agent skills. The resulting scenarios can be used for automated benchmarking of navigation algorithms and for automated generation of training data for learning methods. Furthermore, IR-SIM provides bridges to high fidelity simulators and real world deployment, allowing users to validate their algorithms in more realistic settings after prototyping without extra coding. The experiments showcase the convenience and versatility of IR-SIM in multiple tasks: constructing navigation scenarios from natural language, training a collision avoidance policy, benchmarking social navigation policies, and bridging to high fidelity simulators and real world deployment. The project website is available at https://github.com/hanruihua/ir-sim.",
+      "authors": [
+        "Ruihua Han",
+        "Shuai Wang",
+        "Chengyang Li",
+        "Rui Gao",
+        "Xinyi Wang",
+        "Zhe Liu",
+        "Guoliang Li",
+        "Yupu Lu",
+        "Qi Hao",
+        "Jia Pan",
+        "Hengshuang Zhao"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.LG"
+      ],
+      "published": "2026-06-07T16:55:37+00:00",
+      "link": "https://arxiv.org/pdf/2606.08729v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "lightweight navigation simulator for embodied robotics",
+      "llm_evidence_cn": "面向具身导航的轻量级仿真器",
+      "llm_evidence": "面向具身导航的轻量级仿真器",
+      "canonical_evidence": "面向具身导航的轻量级仿真器",
+      "llm_tldr_en": "Introduces IR-SIM, a lightweight skill-native navigation simulator for rapid scenario construction, benchmarking, and robot learning, defined entirely by YAML configs.",
+      "llm_tldr_cn": "现有导航仿真器常需复杂接口，阻碍快速原型开发。本文提出IR-SIM，一个轻量级的技能原生导航模拟器，通过YAML配置完全定义场景，支持移动机器人运动学、碰撞检测、LiDAR感知等。该设计使仿真完全可描述和可复现，便于快速构建基准测试和机器人学习，为视觉语言导航（VLN）等具身导航研究提供了高效工具。",
+      "llm_tldr": "现有导航仿真器常需复杂接口，阻碍快速原型开发。本文提出IR-SIM，一个轻量级的技能原生导航模拟器，通过YAML配置完全定义场景，支持移动机器人运动学、碰撞检测、LiDAR感知等。该设计使仿真完全可描述和可复现，便于快速构建基准测试和机器人学习，为视觉语言导航（VLN）等具身导航研究提供了高效工具。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.06485v1",
+      "source": "arxiv",
+      "title": "PAR3D: A Unified 3D-MLLM with Part-Aware Representation for Scene Understanding",
+      "abstract": "Recent advances in 3D multimodal large language models (3D-MLLMs) have enabled unified solutions for 3D scene understanding tasks, including visual question answering, captioning, and referring segmentation. However, existing 3D-MLLMs remain largely object-centric, limiting their ability to model fine-grained part structures that are essential for embodied interaction with 3D environments. In this work, we present PAR3D, a unified part-aware 3D-MLLM framework that enables models to understand, reason about, and ground both objects and their parts in 3D scenes. To enable training and evaluation of part-aware 3D scene understanding, we introduce ScenePart, a synthetic 3D scene dataset with part-level annotations and language instructions. We further develop Part-Aware 3D Representation Learning to enrich 3D visual representations with fine-grained part-level semantics, and propose Hierarchical Segmentation Query Generation to ground part targets via hierarchical object-part queries. Extensive experiments show that our method substantially improves part-level question answering and referring segmentation, while also achieving strong performance across object-level vision-language tasks.",
+      "authors": [
+        "Shaohui Dai",
+        "Yansong Qu",
+        "You Shen",
+        "Shengchuan Zhang",
+        "Liujuan Cao"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-04T17:59:04+00:00",
+      "link": "https://arxiv.org/pdf/2606.06485v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "part-aware 3D scene understanding for embodied interaction",
+      "llm_evidence_cn": "面向具身交互的部件级3D场景理解",
+      "llm_evidence": "面向具身交互的部件级3D场景理解",
+      "canonical_evidence": "面向具身交互的部件级3D场景理解",
+      "llm_tldr_en": "PAR3D provides part-aware 3D scene understanding with language instructions, supporting embodied navigation.",
+      "llm_tldr_cn": "现有3D-MLLM局限于物体级理解，无法支持需部件交互的具身任务。PAR3D提出部件感知的3D-MLLM框架，可理解、推理和定位物体及其部件。同时构建包含部件级标注和语言指令的合成数据集ScenePart。实验表明PAR3D在多种3D场景理解任务上达到最先进水平，可助力导航中的细粒度环境建模。",
+      "llm_tldr": "现有3D-MLLM局限于物体级理解，无法支持需部件交互的具身任务。PAR3D提出部件感知的3D-MLLM框架，可理解、推理和定位物体及其部件。同时构建包含部件级标注和语言指令的合成数据集ScenePart。实验表明PAR3D在多种3D场景理解任务上达到最先进水平，可助力导航中的细粒度环境建模。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.08029v1",
+      "source": "arxiv",
+      "title": "IntentNav: Learning Spatial-Visual Object Navigation from Human Demonstrations",
+      "abstract": "Object navigation requires a robot to search for an unobserved target in an unknown environment by deciding where to explore next under partial observability. Effective search resembles human-like exploration: selectively probing visually promising frontiers while relying on spatial memory to avoid redundant revisits. We propose IntentNav, a spatial-visual imitation framework that learns human-like ObjectNav policies from human demonstrations. To infer high-level search intent from low-level human actions, we introduce Frontier-based Human-Intent Labeling, which looks ahead in human demonstrations and labels the frontier that best explains the demonstrator's future search direction. We construct a spatial-visual candidate space, where BEV memory tracks explored regions, unexplored frontiers, and trajectory history, while egocentric visual memory provides semantic cues for each candidate. A VLM policy is trained to select among these grounded candidates, using Intent-Aligned Objective to encourage consistent and human-like exploration. IntentNav achieves state-of-the-art performance on the MP3D, HM3D-v1 and HM3D-v2 ObjectNav benchmarks. The proposed candidate-level navigation interface transfers zero-shot to wheeled, quadruped, and humanoid robots without further VLM fine-tuning. \\href{https://anonymous.4open.science/w/IntentNav/}{Project page}.",
+      "authors": [
+        "Yuxin Cai",
+        "Zongtai Li",
+        "Maonan Wang",
+        "Muyi Bao",
+        "Haokun Zhu",
+        "Ruofei Bai",
+        "Ding Zhao",
+        "Zirui Li",
+        "Wenshan Wang",
+        "Wei-Yun Yau",
+        "Ji Zhang",
+        "Chen Lv"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-06T07:45:19+00:00",
+      "link": "https://arxiv.org/pdf/2606.08029v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Spatial-visual imitation learning for object navigation from human demonstrations",
+      "llm_evidence_cn": "从人类演示中学习空间视觉物体导航策略",
+      "llm_evidence": "从人类演示中学习空间视觉物体导航策略",
+      "canonical_evidence": "从人类演示中学习空间视觉物体导航策略",
+      "llm_tldr_en": "IntentNav learns human-like ObjectNav policies via spatial-visual imitation, using frontier-based intent labeling and BEV memory to achieve efficient exploration.",
+      "llm_tldr_cn": "针对物体导航中探索策略不类人导致冗余访问的问题，提出IntentNav框架。通过前沿人类意图标注从演示中提取搜索意图，结合鸟瞰图记忆构建空间视觉候选空间进行模仿学习。在多个物体导航基准上达到接近人类效率的探索性能。",
+      "llm_tldr": "针对物体导航中探索策略不类人导致冗余访问的问题，提出IntentNav框架。通过前沿人类意图标注从演示中提取搜索意图，结合鸟瞰图记忆构建空间视觉候选空间进行模仿学习。在多个物体导航基准上达到接近人类效率的探索性能。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
