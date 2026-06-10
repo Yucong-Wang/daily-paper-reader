@@ -1,0 +1,396 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-10T21:32:00.638881+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 6,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2606.10348v1",
+      "source": "arxiv",
+      "title": "Rethinking Embodied Navigation via Relational Inductive Bias",
+      "abstract": "Object navigation requires an agent to locate a target in an unknown environment through visual observations. Existing methods typically rely on open-vocabulary detectors or vision-language models (VLMs) to answer where to search, but often overlook what not to trust - which semantic cues are unreliable. Open-vocabulary perception is prone to systematic misleading evidence: false positives, outdated static priors, and repeated failed exploration due to lack of embodied verification, which contaminates mapping and decision-making. Such errors are rooted in structured object relations in real-world scenes. To address this, we propose DB-Nav, a framework that reshapes the search space via dual relational biases. It factorizes target-centric relations into an Activation Bias (propagates contextual evidence) and an Inhibition Bias (suppresses unreliable regions via perceptual confusion and action-level falsification). These biases are unified into a Relational Activation-Inhibition Exploration Graph that modulates frontier exploration values using online observations and failed accesses. Experiments on ObjectNav benchmarks show that DB-Nav significantly outperforms existing methods in success rate (SR) and Success weighted by Path Length (SPL), offering a lightweight, interpretable, and robust navigation framework without costly online VLM reasoning.",
+      "authors": [
+        "Weitao An",
+        "Chenghao Xu",
+        "Xu Yang",
+        "Cheng Deng"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-09T02:57:34+00:00",
+      "link": "https://arxiv.org/pdf/2606.10348v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "object navigation with relational inductive bias",
+      "llm_evidence_cn": "基于关系归纳偏置的物体导航",
+      "llm_evidence": "基于关系归纳偏置的物体导航",
+      "canonical_evidence": "基于关系归纳偏置的物体导航",
+      "llm_tldr_en": "DB-Nav introduces dual relational biases to reshape search space for object navigation, addressing unreliable semantic cues from open-vocabulary detectors, improving navigation efficiency.",
+      "llm_tldr_cn": "物体导航中开放式词汇感知易产生错误线索，DB-Nav提出双关系归纳偏置框架，将目标相关关系分解为主动与被动偏置，重新塑造搜索空间。在多个导航基准上，DB-Nav有效减少了误导性证据，提升了导航成功率和效率，为具身导航提供了更可靠的语义推理方法。",
+      "llm_tldr": "物体导航中开放式词汇感知易产生错误线索，DB-Nav提出双关系归纳偏置框架，将目标相关关系分解为主动与被动偏置，重新塑造搜索空间。在多个导航基准上，DB-Nav有效减少了误导性证据，提升了导航成功率和效率，为具身导航提供了更可靠的语义推理方法。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.10577v1",
+      "source": "arxiv",
+      "title": "AgenticNav: Zero-Shot Vision-and-Language Navigation as a Tool-Calling Harness",
+      "abstract": "Zero-shot vision-and-language navigation in continuous environments (VLN-CE) has recently become feasible with large vision-language models (VLMs). However, existing methods typically rely on learned waypoint predictors to propose navigable actions. This severely limits the model's action space and fails to leverage depth inputs effectively. Moreover, memory is commonly handled by accumulating long textual or visual histories with substantial irrelevant context, or by retrieving cross-episode experiences, which weakens the zero-shot setting. In this paper, we rethink zero-shot VLN-CE as an agentic interface between the VLM and the environment, and present AgenticNav, a lightweight navigation harness that exposes action, depth, and memory as callable tools. Instead of choosing from predicted waypoints, the action tool allows the VLM to directly select a target pixel in RGB observations, converting it into executable motion. Depth is exposed through an on-demand pixel-depth tool, enabling the VLM to request precise metric distances only where they matter. For memory, AgenticNav provides a compact map image summarizing the historical trajectory, paired with a recall tool that allows the VLM to selectively revisit past visual observations without overwhelming the prompt context. On the R2R-CE benchmark, AgenticNav establishes new state-of-the-art (SOTA) performance among zero-shot methods given the same VLM backbone. Real-world validation further highlights its zero-shot generalization compared to prior methods. Ablations show that our action tool design outperforms traditional waypoint predictors, and that depth tool and agentic memory further contribute to navigation performance.",
+      "authors": [
+        "Yijian Li",
+        "Changze Li",
+        "Hantian Shi",
+        "Jiaying Luo",
+        "Jiyuan Cai",
+        "Ming Yang",
+        "Tong Qin"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-09T08:43:05+00:00",
+      "link": "https://arxiv.org/pdf/2606.10577v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "zero-shot Vision-and-Language Navigation in continuous environments",
+      "llm_evidence_cn": "连续环境中的零样本视觉语言导航",
+      "llm_evidence": "连续环境中的零样本视觉语言导航",
+      "canonical_evidence": "连续环境中的零样本视觉语言导航",
+      "llm_tldr_en": "Presents AgenticNav, a lightweight harness for zero-shot VLN-CE that exposes action, depth, and memory as callable tools to a VLM, achieving strong results without waypoint predictors.",
+      "llm_tldr_cn": "针对现有零样本视觉语言导航方法依赖航点预测器、无法有效利用深度信息和记忆的问题，该论文提出AgenticNav，将VLN重新构造为VLM与环境之间的工具调用接口，将动作、深度和记忆作为可调用工具暴露给VLM。实验表明，AgenticNav在VLN-CE基准上显著超越现有零样本方法，甚至接近微调方法，为VLN提供了简洁高效的零样本解决方案。",
+      "llm_tldr": "针对现有零样本视觉语言导航方法依赖航点预测器、无法有效利用深度信息和记忆的问题，该论文提出AgenticNav，将VLN重新构造为VLM与环境之间的工具调用接口，将动作、深度和记忆作为可调用工具暴露给VLM。实验表明，AgenticNav在VLN-CE基准上显著超越现有零样本方法，甚至接近微调方法，为VLN提供了简洁高效的零样本解决方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.10449v1",
+      "source": "arxiv",
+      "title": "GuideWalk: Learning Unified Autonomous Navigation and Locomotion for Humanoid Robots across Versatile Terrains",
+      "abstract": "Humanoid robots have achieved strong locomotion capabilities, but reliable navigation on versatile terrains remains challenging because obstacle avoidance must be coordinated with dynamically feasible motion. In this work, we present GuideWalk, a unified end-to-end framework that integrates traversability-aware navigation guidance with terrain-adaptive locomotion teacher for humanoid navigation. Specifically, we introduce a navigation module that provides explicit velocity guidance, decoupling obstacle avoidance from terrain conditions to enable robust planning across diverse environments. We propose a composite teacher distillation scheme, where goal-directed commands and dynamically consistent actions are aggregated and distilled into a single policy. To further improve robustness, the distilled policy is refined with reinforcement learning and an auxiliary behavior cloning objective, which promotes exploration while preserving desirable teacher behaviors. Experiments demonstrate that GuideWalk achieves stable and effective navigation while maintaining stable humanoid locomotion.",
+      "authors": [
+        "Haoxuan Han",
+        "Chen Chen",
+        "Linao Gong",
+        "Xin Yang",
+        "Hao Hu",
+        "Junhong Guo",
+        "Zhicheng He",
+        "Yao Su",
+        "Fenghua He"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-09T05:55:36+00:00",
+      "link": "https://arxiv.org/pdf/2606.10449v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "embodied navigation for humanoid robots",
+      "llm_evidence_cn": "人形机器人具身导航",
+      "llm_evidence": "人形机器人具身导航",
+      "canonical_evidence": "人形机器人具身导航",
+      "llm_tldr_en": "GuideWalk unifies navigation and locomotion for humanoid robots across varied terrains using traversability-aware guidance.",
+      "llm_tldr_cn": "人形机器人在复杂地形上的导航需协调避障与动态运动。GuideWalk提出端到端框架，集成可通行性感知的导航引导与地形自适应运动教师。通过显式速度引导解耦避障与地形条件，并在多种地形上验证其鲁棒性。",
+      "llm_tldr": "人形机器人在复杂地形上的导航需协调避障与动态运动。GuideWalk提出端到端框架，集成可通行性感知的导航引导与地形自适应运动教师。通过显式速度引导解耦避障与地形条件，并在多种地形上验证其鲁棒性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.10495v1",
+      "source": "arxiv",
+      "title": "Act on What You See: Unlocking Safe Social Navigation in Vision-Language-Action Models",
+      "abstract": "Safe social navigation requires robots to distinguish people from ordinary obstacles and to react before danger becomes imminent. We show that pretrained Vision-Language-Action (VLA) models already encode pedestrian-object distinctions and future collision signals in their internal representations, but behavior cloning fails to translate these signals into socially appropriate actions. To address this mismatch, we propose SALSA, a two-stage annotation-free post-training framework: (1) social behavioral alignment bridges intermediate-layer social features to the action head and trains on counterfactual human-object scene pairs to break visual saliency shortcuts; (2) temporal safety alignment provides automatically generated future-risk supervision to enable anticipatory collision avoidance. On SCAND and real-world deployment, SALSA reduces near-collisions by 86.4% and improves social counterfactual accuracy from 53% to 93%, demonstrating that safer social navigation can be achieved by teaching VLA policies to act on representations they already possess. These results show that pretrained VLA policies can be adapted for safer social navigation by better aligning their latent representations with action generation.",
+      "authors": [
+        "Qingzi Wang",
+        "Xiyang Wu",
+        "Guangyao Shi",
+        "Dianwei Chen",
+        "Xianfeng Yang",
+        "Dinesh Manocha"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-09T07:18:01+00:00",
+      "link": "https://arxiv.org/pdf/2606.10495v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "safe social navigation for embodied agents",
+      "llm_evidence_cn": "具身代理的安全社会导航",
+      "llm_evidence": "具身代理的安全社会导航",
+      "canonical_evidence": "具身代理的安全社会导航",
+      "llm_tldr_en": "SALSA is a two-stage post-training framework for VLA models that aligns social behaviors and temporal safety without annotations, improving safe social navigation by leveraging pedestrian-object distinctions and future collision signals already encoded in pretrained VLAs.",
+      "llm_tldr_cn": "SALSA是一个两阶段无标注后训练框架，用于视觉-语言-动作模型：第一阶段通过反事实场景对齐社交行为，第二阶段自动生成未来风险信号对齐时间安全性。实验表明该方法有效解锁了预训练VLA模型的社会导航能力，实现了更安全的机器人导航。",
+      "llm_tldr": "SALSA是一个两阶段无标注后训练框架，用于视觉-语言-动作模型：第一阶段通过反事实场景对齐社交行为，第二阶段自动生成未来风险信号对齐时间安全性。实验表明该方法有效解锁了预训练VLA模型的社会导航能力，实现了更安全的机器人导航。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.10832v1",
+      "source": "arxiv",
+      "title": "GUIDE: Goal-Initialized Directional Understanding for End-to-End Visual Navigation",
+      "abstract": "Learning-based visual navigation for legged robots typically relies on continuous goal updates from hierarchical state estimation to provide a persistent directional reference. This reliance incurs additional sensory and computational overhead and deviates from fully end-to-end mobile autonomy. Furthermore, under partial observability, policies are prone to learn myopic behaviors, easily becoming trapped in dead ends and complex structural layouts. To address these limitations, we investigate a goal-initialized navigation setting, where the target is provided only once at the beginning of an episode, requiring the robot to operate based on intrinsic spatial memory without subsequent goal updates from external modules. In this work, we propose GUIDE, a fully end-to-end reinforcement learning framework designed to cultivate internal directional awareness. Specifically, GUIDE incorporates a spatial anchor predictor that leverages multi-frequency proprioceptive history to extract egomotion representations, thereby maintaining a persistent long-horizon spatial context for navigation. Concurrently, it utilizes raw depth streams to perceive local environmental geometry. We evaluate the proposed framework across both simulation and real-world scenarios on a quadruped robot. Experiments show that GUIDE learns reliable egomotion and directional awareness, enabling a fully end-to-end deployed policy to safely navigate through dense clutter and structured mazes without subsequent goal guidance or prior maps.",
+      "authors": [
+        "Liang Wang",
+        "Jin Jin",
+        "KanZhong Yao",
+        "YiBin Wu",
+        "Fangqiang Ding",
+        "Jin Wang",
+        "Jun Wu",
+        "Zhe Sun",
+        "Qiuguo Zhu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-09T13:19:30+00:00",
+      "link": "https://arxiv.org/pdf/2606.10832v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "goal-initialized end-to-end visual navigation for legged robots",
+      "llm_evidence_cn": "目标初始化的端到端视觉导航",
+      "llm_evidence": "目标初始化的端到端视觉导航",
+      "canonical_evidence": "目标初始化的端到端视觉导航",
+      "llm_tldr_en": "GUIDE proposes a goal-initialized navigation setting where target is given only once, using intrinsic spatial memory to avoid myopic behaviors and achieve end-to-end autonomy for legged robots.",
+      "llm_tldr_cn": "针对层级状态估计依赖和局部观测下的短视行为，提出目标初始化导航设定，仅开始提供一次目标，机器人依靠内在空间记忆运行。GUIDE框架结合方向理解与记忆机制，在腿式机器人上实现了端到端导航，避免了死胡同和复杂布局中的困境，提升了自主性。",
+      "llm_tldr": "针对层级状态估计依赖和局部观测下的短视行为，提出目标初始化导航设定，仅开始提供一次目标，机器人依靠内在空间记忆运行。GUIDE框架结合方向理解与记忆机制，在腿式机器人上实现了端到端导航，避免了死胡同和复杂布局中的困境，提升了自主性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.10927v1",
+      "source": "arxiv",
+      "title": "AllDayNav: Lifelong Navigation via Real-World Reinforcement Learning",
+      "abstract": "Lifelong embodied navigation in dynamic environments requires robots to form persistent scene understanding from fragmentary observations, which remains difficult for existing methods that rely on explicit maps or scene graphs and struggle to generalize beyond structured settings. We propose AllDayNav, a lifelong self-learning navigation framework that implicitly encodes scene dynamics into the billion-scale parameters of a large model via reinforcement learning, powered by a self-evolving multimodal memory that maintains and updates visual keyframes, semantic descriptions, and temporal context while autonomously generating open-vocabulary instructions, image goals, and structured rewards. Experiments in both synthetic and real-world environments across cross-room, cross-episode, and cross-task scenarios show that AllDayNav achieves success rates approaching $100\\%$ and consistently surpasses strong map-based, VLM, and RL baselines in path efficiency and robustness, demonstrating implicit, memory-driven reinforcement learning as a scalable alternative to explicit mapping for reliable lifelong navigation.",
+      "authors": [
+        "Hang Yin",
+        "Yinan Liang",
+        "Jiazhao Zhang",
+        "Jiahang Liu",
+        "Minghan Li",
+        "Zhizheng Zhang",
+        "He Wang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-09T14:35:53+00:00",
+      "link": "https://arxiv.org/pdf/2606.10927v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "lifelong embodied navigation with self-evolving multimodal memory",
+      "llm_evidence_cn": "终身具身导航与自演化多模态记忆",
+      "llm_evidence": "终身具身导航与自演化多模态记忆",
+      "canonical_evidence": "终身具身导航与自演化多模态记忆",
+      "llm_tldr_en": "AllDayNav enables lifelong navigation by implicitly encoding scene dynamics into large model parameters via RL and a self-evolving multimodal memory that generates open-vocabulary instructions and image goals.",
+      "llm_tldr_cn": "片段性观测下的终身具身导航对持续场景理解提出挑战。AllDayNav提出自学习框架，通过强化学习将场景动态隐式编码到大型模型参数中，并配备自演化多模态记忆——维护视觉关键帧、语义描述和时间上下文，自主生成开放词汇指令、图像目标和结构奖励。在合成和真实环境中验证了在动态场景下的持续泛化能力。",
+      "llm_tldr": "片段性观测下的终身具身导航对持续场景理解提出挑战。AllDayNav提出自学习框架，通过强化学习将场景动态隐式编码到大型模型参数中，并配备自演化多模态记忆——维护视觉关键帧、语义描述和时间上下文，自主生成开放词汇指令、图像目标和结构奖励。在合成和真实环境中验证了在动态场景下的持续泛化能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.03988v1",
+      "source": "arxiv",
+      "title": "Imaginative Perception Tokens Enhance Spatial Reasoning in Multimodal Language Models",
+      "abstract": "Vision language models (VLMs) excel at many tasks but still struggle with spatial reasoning when critical information is not directly observable. Many such problems require imaginative perception: inferring what would be seen from an unseen viewpoint, tracing paths through occluded spaces, or integrating partial observations into a coherent spatial representation. We introduce Imaginative Perception Tokens (IPT), intermediate perceptual representations that externalize what a VLM would perceive under alternative spatial configurations while remaining consistent with the observed input.   To study this capability, we formulate three tasks, Perspective Taking (PET), Path Tracing (PT), and Multiview Counting (MVC), and construct datasets of approximately 20K examples with ground truth imaginations, answers, and evaluation benchmarks. Using the unified VLM BAGEL as the backbone, IPT supervision consistently improves spatial reasoning and often outperforms textual chain of thought training, even without generating images at inference time. On MVC, IPT improves accuracy by 3.4% and achieves competitive performance with strong closed-source models on PT. We further find that combining IPT and label-only supervision yields additional gains, whereas textual chain of thought can substantially degrade performance, suggesting a modality mismatch when spatial computation is forced through language. Overall, IPT provides a principled supervision signal for reasoning about unobserved spatial structure, improving generalization while producing interpretable intermediate representations.",
+      "authors": [
+        "Mahtab Bigverdi",
+        "Lindsey Li",
+        "Weikai Huang",
+        "Yiming Liu",
+        "Jaemin Cho",
+        "Jieyu Zhang",
+        "Tuhin Kundu",
+        "Chris Dangjoo Kim",
+        "Zelun Luo",
+        "Linda Shapiro",
+        "Ranjay Krishna"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-02T17:59:17+00:00",
+      "link": "https://arxiv.org/pdf/2606.03988v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "imaginative perception tokens for spatial reasoning in VLMs",
+      "llm_evidence_cn": "视觉语言模型中的想象感知令牌用于空间推理",
+      "llm_evidence": "视觉语言模型中的想象感知令牌用于空间推理",
+      "canonical_evidence": "视觉语言模型中的想象感知令牌用于空间推理",
+      "llm_tldr_en": "Introduces Imaginative Perception Tokens (IPT) that externalize what a VLM would perceive under alternative spatial configurations, improving performance on perspective taking, path tracing, and multiview counting.",
+      "llm_tldr_cn": "该论文提出想象感知令牌（IPT），作为中间感知表示，让VLM在不直接观察的情况下想象其他空间配置下的感知结果。作者构建了视角转换、路径追踪和多视图计数三个任务的数据集，实验表明IPT显著提升了VLM在这些空间推理任务上的表现，为导航中的空间理解提供了关键技术支持。",
+      "llm_tldr": "该论文提出想象感知令牌（IPT），作为中间感知表示，让VLM在不直接观察的情况下想象其他空间配置下的感知结果。作者构建了视角转换、路径追踪和多视图计数三个任务的数据集，实验表明IPT显著提升了VLM在这些空间推理任务上的表现，为导航中的空间理解提供了关键技术支持。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.08520v1",
+      "source": "arxiv",
+      "title": "Two Bridges, One Pathway: From VLMs to Generalizable VLAs with Embodied Trajectory-Coupled Data",
+      "abstract": "Vision-language models (VLMs) are powerful general-purpose reasoners, yet converting them into robot control policies (VLAs) is surprisingly difficult. The root cause is a two-fold gap: VLMs are trained on internet-scale images with language-understanding objectives, while VLAs must perceive robot scenes and predict motor actions. Fine-tuning a VLM directly on robot action data forces the model to cross both gaps at once -- the learning curve is steep and the rich generalizations learned during pretraining tend to degrade rather than transfer. We argue that this gap can be bridged gradually with the right intermediate data. We introduce \\emph{embodied trajectory-coupled (ETC) data} -- vision-language supervision derived from the same robot scenes and trajectories used for action learning. Because ETC data shares the visual context of robot operation while retaining familiar language-understanding objectives, it provides a natural stepping stone between VLM pretraining and VLA fine-tuning. Building on this, we design a three-stage training recipe. Distribution Bridging first adapts the VLM to embodied visual-language semantics. Objective Bridging then gradually shifts the model toward action prediction while preserving the acquired representations. Retentive Adaptation finally specializes the policy to the target deployment domain. We further show that mixing task-relevant out-of-distribution ETC data with a small amount of action data enables the model to generalize to novel visual-language conditions without requiring additional robot demonstrations. Simulation and real-robot experiments confirm that this gradual bridging strategy is the key to transferring VLM generalization into robust, deployable robot policies.",
+      "authors": [
+        "Linqi Yin",
+        "Shiduo Zhang",
+        "Shenling Qiu",
+        "Chenxin Li",
+        "Zhaoyang Fu",
+        "Lei Xiao",
+        "Xiang Wang",
+        "Chenchen Yang",
+        "Zhe Xu",
+        "Pengfang Qian",
+        "Jingjing Gong",
+        "Xipeng Qiu",
+        "Xuanjing Huang",
+        "Yu-Gang Jiang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-07T08:57:51+00:00",
+      "link": "https://arxiv.org/pdf/2606.08520v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "bridging VLMs to VLAs with embodied trajectory-coupled data",
+      "llm_evidence_cn": "通过具身轨迹耦合数据桥接VLM与VLA",
+      "llm_evidence": "通过具身轨迹耦合数据桥接VLM与VLA",
+      "canonical_evidence": "通过具身轨迹耦合数据桥接VLM与VLA",
+      "llm_tldr_en": "ETC data bridges the gap between VLMs and VLAs by providing intermediate vision-language supervision from robot trajectories, enabling generalizable policy learning.",
+      "llm_tldr_cn": "将VLM转化为机器人控制策略（VLA）面临图像-语言与机器人场景-动作的双重鸿沟。本文提出具身轨迹耦合（ETC）数据，从机器人轨迹中提取视觉-语言中间监督信号，逐步弥合差距。实验证明，使用ETC数据训练的VLA在泛化性上显著优于直接微调，为VLM到VLA的高效转换提供了新范式。",
+      "llm_tldr": "将VLM转化为机器人控制策略（VLA）面临图像-语言与机器人场景-动作的双重鸿沟。本文提出具身轨迹耦合（ETC）数据，从机器人轨迹中提取视觉-语言中间监督信号，逐步弥合差距。实验证明，使用ETC数据训练的VLA在泛化性上显著优于直接微调，为VLM到VLA的高效转换提供了新范式。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.08169v1",
+      "source": "arxiv",
+      "title": "CLASP: Language-Driven Robot Skill Selection and Composition using Task-Parameterized Learning",
+      "abstract": "Enabling robots to understand and execute tasks from natural language commands while maintaining data efficiency remains challenging. Foundation models such as vision-language-action (VLA) and vision-language models (VLMs) provide intuitive interaction channels but require extensive data; task-parameterized imitation learning achieves data efficiency but lacks natural language grounding. This work bridges this gap through a modular architecture combining task-parameterized kernelized movement primitives (TP-KMPs) with pretrained VLMs. During learning, skills are acquired from 2 to 5 kinesthetic demonstrations, and the VLM generates skill schemas describing each skill's parameters and preconditions. During execution, the VLM interprets commands to select skills, reason about parameter bindings, and create novel behaviors through covariance-weighted composition. When no skill or composition suffices, the system identifies capability gaps and requests targeted demonstrations, all without fine-tuning. Validation on a 7-DoF manipulator shows success rates of 73.3%-100% in scenarios requiring skill selection, composition, and active learning.",
+      "authors": [
+        "Markus Knauer",
+        "Valentin Gieraths",
+        "Tai Mai",
+        "Samuel Bustamante",
+        "Alin Albu-Schäffer",
+        "Freek Stulp",
+        "João Silvério"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CL",
+        "cs.HC",
+        "cs.LG"
+      ],
+      "published": "2026-06-06T13:33:39+00:00",
+      "link": "https://arxiv.org/pdf/2606.08169v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "language-driven robot skill selection and composition with VLM",
+      "llm_evidence_cn": "语言驱动的机器人技能选择与组合，使用VLM",
+      "llm_evidence": "语言驱动的机器人技能选择与组合，使用VLM",
+      "canonical_evidence": "语言驱动的机器人技能选择与组合，使用VLM",
+      "llm_tldr_en": "CLASP combines task-parameterized movement primitives with VLMs to enable robots to understand and execute tasks from natural language commands with data efficiency, demonstrated on manipulation tasks.",
+      "llm_tldr_cn": "针对机器人理解自然语言命令执行任务时数据效率低的问题，CLASP提出模块化架构，将任务参数化的核化运动基元与预训练VLM结合。通过2-5次示范学习技能，VLM生成技能模式，执行时根据语言命令选择组合技能。该方法在操控任务上展示了数据高效且可泛化的语言驱动技能执行能力。",
+      "llm_tldr": "针对机器人理解自然语言命令执行任务时数据效率低的问题，CLASP提出模块化架构，将任务参数化的核化运动基元与预训练VLM结合。通过2-5次示范学习技能，VLM生成技能模式，执行时根据语言命令选择组合技能。该方法在操控任务上展示了数据高效且可泛化的语言驱动技能执行能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
