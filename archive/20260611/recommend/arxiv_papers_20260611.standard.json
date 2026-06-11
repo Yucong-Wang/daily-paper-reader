@@ -1,0 +1,475 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-11T21:50:52.693389+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 9,
+    "quick_skim_target": 11,
+    "quick_selected": 9
+  },
+  "deep_dive": [
+    {
+      "id": "2606.11636v1",
+      "source": "arxiv",
+      "title": "SAFER-Nav: Enhancing Safety for Visual Robot Navigation via Segmentation-Aware Fine-Tuning",
+      "abstract": "Vision-based navigation models, particularly foundation models, generate viable trajectories from RGB observations alone. However, even state-of-the-art transformer- and diffusion-based policies struggle to generalize in unfamiliar deployment environments containing unseen obstacles or shifted conditions. The resulting trajectories often remain goal-directed but unsafe. Existing efforts improve safety through external trajectory correction or internal geometric priors, yet the resulting policies are not trained to explicitly represent obstacle boundaries or traversable free-space structure. To address this, we propose a navigation model that incorporates these structures directly into the policy via fine-tuning and is designed to be compatible with diverse RGB-based backbones. Across multiple robot platforms, indoor environments, and static and dynamic obstacle scenarios, our method reduces collision frequency relative to ViNT, NoMaD, and their CARE-augmented variants while maintaining goal-reaching performance.",
+      "authors": [
+        "Geonyeong Ko",
+        "Giung Lee",
+        "Changjoo Nam"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-10T03:56:33+00:00",
+      "link": "https://arxiv.org/pdf/2606.11636v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "segmentation-aware safe visual robot navigation",
+      "llm_evidence_cn": "分割感知的视觉机器人导航安全增强",
+      "llm_evidence": "分割感知的视觉机器人导航安全增强",
+      "canonical_evidence": "分割感知的视觉机器人导航安全增强",
+      "llm_tldr_en": "Proposes SAFER-Nav, a navigation model that incorporates obstacle boundaries and free-space structures via segmentation-aware fine-tuning for safer trajectories.",
+      "llm_tldr_cn": "该论文针对视觉导航模型在陌生环境中缺乏安全保障的问题，提出SAFER-Nav，通过分割感知微调将障碍边界和可通行空间结构融入策略。实验表明，该方法在多种未见部署环境下显著降低了碰撞率，同时保持目标导向性能。",
+      "llm_tldr": "该论文针对视觉导航模型在陌生环境中缺乏安全保障的问题，提出SAFER-Nav，通过分割感知微调将障碍边界和可通行空间结构融入策略。实验表明，该方法在多种未见部署环境下显著降低了碰撞率，同时保持目标导向性能。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.08520v1",
+      "source": "arxiv",
+      "title": "Two Bridges, One Pathway: From VLMs to Generalizable VLAs with Embodied Trajectory-Coupled Data",
+      "abstract": "Vision-language models (VLMs) are powerful general-purpose reasoners, yet converting them into robot control policies (VLAs) is surprisingly difficult. The root cause is a two-fold gap: VLMs are trained on internet-scale images with language-understanding objectives, while VLAs must perceive robot scenes and predict motor actions. Fine-tuning a VLM directly on robot action data forces the model to cross both gaps at once -- the learning curve is steep and the rich generalizations learned during pretraining tend to degrade rather than transfer. We argue that this gap can be bridged gradually with the right intermediate data. We introduce \\emph{embodied trajectory-coupled (ETC) data} -- vision-language supervision derived from the same robot scenes and trajectories used for action learning. Because ETC data shares the visual context of robot operation while retaining familiar language-understanding objectives, it provides a natural stepping stone between VLM pretraining and VLA fine-tuning. Building on this, we design a three-stage training recipe. Distribution Bridging first adapts the VLM to embodied visual-language semantics. Objective Bridging then gradually shifts the model toward action prediction while preserving the acquired representations. Retentive Adaptation finally specializes the policy to the target deployment domain. We further show that mixing task-relevant out-of-distribution ETC data with a small amount of action data enables the model to generalize to novel visual-language conditions without requiring additional robot demonstrations. Simulation and real-robot experiments confirm that this gradual bridging strategy is the key to transferring VLM generalization into robust, deployable robot policies.",
+      "authors": [
+        "Linqi Yin",
+        "Shiduo Zhang",
+        "Shenling Qiu",
+        "Chenxin Li",
+        "Zhaoyang Fu",
+        "Lei Xiao",
+        "Xiang Wang",
+        "Chenchen Yang",
+        "Zhe Xu",
+        "Pengfang Qian",
+        "Jingjing Gong",
+        "Xipeng Qiu",
+        "Xuanjing Huang",
+        "Yu-Gang Jiang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-07T08:57:51+00:00",
+      "link": "https://arxiv.org/pdf/2606.08520v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Bridge from VLM to VLA using embodied trajectory data, supports embodied agent control",
+      "llm_evidence_cn": "利用具身轨迹数据桥接VLM到VLA，支持具身智能体控制",
+      "llm_evidence": "利用具身轨迹数据桥接VLM到VLA，支持具身智能体控制",
+      "canonical_evidence": "利用具身轨迹数据桥接VLM到VLA，支持具身智能体控制",
+      "llm_tldr_en": "Proposes embodied trajectory-coupled (ETC) data to gradually bridge VLM pretraining to VLA robot policies, preserving generalization while enabling action prediction.",
+      "llm_tldr_cn": "针对直接将VLM微调为VLA时泛化能力下降的问题，本文提出具身轨迹耦合数据作为中间监督，逐步将VLM的语言理解转化为机器人动作预测。ETC数据包含视觉语言标注和动作轨迹，使模型更平滑地跨越感知-动作鸿沟。实验表明该方法在多个机器人操控和导航任务上保持了VLM的泛化能力，同时获得了高效的动作控制，为构建通用具身智能体提供了新途径。",
+      "llm_tldr": "针对直接将VLM微调为VLA时泛化能力下降的问题，本文提出具身轨迹耦合数据作为中间监督，逐步将VLM的语言理解转化为机器人动作预测。ETC数据包含视觉语言标注和动作轨迹，使模型更平滑地跨越感知-动作鸿沟。实验表明该方法在多个机器人操控和导航任务上保持了VLM的泛化能力，同时获得了高效的动作控制，为构建通用具身智能体提供了新途径。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.08684v1",
+      "source": "arxiv",
+      "title": "BLUE: Toward Better Language Use in Efficient Vision-Language-Action Models for Autonomous Driving",
+      "abstract": "We present BLUE, a minimal method for better language use in vision-language-action (VLA) models for autonomous driving (AD). Through extensive analysis, we reveal that language matters on only a small fraction of routes, but on those routes it can greatly improve or degrade performance. Generating language at every frame is therefore inefficient, since most computation is spent on frames that do not benefit from language. We further show that pretrained VLA hidden states potentially already encode whether language will benefit a given frame, even though scene complexity and kinematic features alone struggle to predict this. Based on this finding, BLUE trains a lightweight gate on frozen VLA hidden states to decide per frame whether to activate language generation or predict actions directly, without modifying the backbone or requiring additional human annotation. With just a 0.11M-parameter gate, BLUE sets a new state of the art on both benchmarks, achieving 76.2% success rate on Bench2Drive and 36 driving score on Longest6 v2, while delivering 2.54x inference speedup and 8.9% success rate improvement over the backbone. BLUE provides a practical path toward efficient language-augmented AD, showing that VLA models can retain the benefits of language at a fraction of the cost. Our code, data, logs and checkpoints are fully available on https://github.com/George-Ling3/BLUE.",
+      "authors": [
+        "George Ling",
+        "Lijin Yang",
+        "Hao Yang",
+        "Zhongzhan Huang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-07T15:37:16+00:00",
+      "link": "https://arxiv.org/pdf/2606.08684v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Language-efficient VLA for autonomous driving, relates to embodied navigation",
+      "llm_evidence_cn": "面向自动驾驶的语言高效VLA模型，与具身导航相关",
+      "llm_evidence": "面向自动驾驶的语言高效VLA模型，与具身导航相关",
+      "canonical_evidence": "面向自动驾驶的语言高效VLA模型，与具身导航相关",
+      "llm_tldr_en": "BLUE selectively uses language only on frames that benefit from it, reducing unnecessary computation while maintaining or improving performance in autonomous driving VLAs.",
+      "llm_tldr_cn": "针对VLA模型在自动驾驶中每帧都生成语言导致计算浪费的问题，BLUE通过分析发现语言仅在少数路线中有益，并基于预训练VLA隐藏状态训练轻量门控网络决定每帧是否使用语言。该方法在不牺牲性能的前提下大幅降低计算开销，实验证明BLUE在多个驾驶场景下有效，推动了语言在具身导航动作模型中的高效利用。",
+      "llm_tldr": "针对VLA模型在自动驾驶中每帧都生成语言导致计算浪费的问题，BLUE通过分析发现语言仅在少数路线中有益，并基于预训练VLA隐藏状态训练轻量门控网络决定每帧是否使用语言。该方法在不牺牲性能的前提下大幅降低计算开销，实验证明BLUE在多个驾驶场景下有效，推动了语言在具身导航动作模型中的高效利用。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.06076v2",
+      "source": "arxiv",
+      "title": "Learning Visual Spatial Planning from Symbolic State via Modality-Gap-Aware Self-Distillation",
+      "abstract": "While vision-language models excel at general multimodal understanding, they still struggle with visual spatial planning. We attribute this to a perception-reasoning modality gap: visual planning requires models to infer latent state structures from pixels and then reason over the recovered structure to produce valid actions, whereas symbolic planning directly leverages explicit objects and constraints. This creates dual bottlenecks in visual state recovery and multi-step planning. To address this, we propose MGSD, a two-stage modality-gap-aware self-distillation framework. First, a cold-start grounding stage equips the visual student with reliable state representations, minimizing early perception noise. Second, a privileged teacher transfers planning capabilities via on-policy distillation, using explicit symbolic states to supervise the student's own visual rollout prefixes. Crucially, symbolic data is used strictly during training, leaving inference purely visual. Experiments on visual planning benchmarks show that MGSD consistently improves visual planning across both 4B and 8B backbones, raising the macro average by 19.3% and 18.4%, respectively. The resulting models narrow the gap to symbolic-input upper bounds, while ablations and diagnostics confirm that the improvement comes from both visual state recovery and optimal-path reasoning. These results suggest that modality-gap-aware self-distillation improves not only how models perceive actionable states, but also how they plan over the inferred structure. Code is available at https://github.com/Oranger-l/MGSD.",
+      "authors": [
+        "Haocheng Luo",
+        "Jiahui Liu",
+        "Ruicheng Zhang",
+        "Zhizhou Zhong",
+        "Jiaqi Huang",
+        "Zunnan Xu",
+        "Quan Shi",
+        "Jun Zhou",
+        "Xiu Li"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-06-04T12:13:24+00:00",
+      "link": "https://arxiv.org/pdf/2606.06076v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "visual spatial planning via modality-gap-aware self-distillation",
+      "llm_evidence_cn": "通过模态差距感知自蒸馏进行视觉空间规划",
+      "llm_evidence": "通过模态差距感知自蒸馏进行视觉空间规划",
+      "canonical_evidence": "通过模态差距感知自蒸馏进行视觉空间规划",
+      "llm_tldr_en": "MGSD addresses the perception-reasoning modality gap in visual spatial planning by using a two-stage self-distillation framework that first grounds visual state recovery and then distills planning knowledge from a symbolic planner.",
+      "llm_tldr_cn": "MGSD针对视觉语言模型在视觉空间规划中因感知-推理模态差距而表现不佳的问题，提出两阶段模态差距感知自蒸馏框架。第一阶段通过冷启动接地训练为视觉学生模型提供可靠的状态表征，第二阶段使特权教师（符号规划器）蒸馏规划知识。实验表明该方法在视觉规划基准上显著优于现有VLM方法，弥合了像素级规划与符号规划之间的鸿沟。该工作为视觉空间推理提供了有效范式。",
+      "llm_tldr": "MGSD针对视觉语言模型在视觉空间规划中因感知-推理模态差距而表现不佳的问题，提出两阶段模态差距感知自蒸馏框架。第一阶段通过冷启动接地训练为视觉学生模型提供可靠的状态表征，第二阶段使特权教师（符号规划器）蒸馏规划知识。实验表明该方法在视觉规划基准上显著优于现有VLM方法，弥合了像素级规划与符号规划之间的鸿沟。该工作为视觉空间推理提供了有效范式。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.10180v1",
+      "source": "arxiv",
+      "title": "Flow Control: Steering Vision-Language-Action Models with Simple Real-Time Inputs",
+      "abstract": "We introduce flow control of vision-language-action (VLA) models, a simple and effective way to steer VLA actions in real-time through generic inputs, such as a keyboard. This method can be used out-of-the-box and does not require retraining or fine-tuning VLAs. It enables relatively crude user inputs to steer a VLA to align with user intent. The VLA transforms these inputs into action samples drawn from the VLA expert action distribution learned during training, so that the generated actions are high quality (conformity to the action expert distribution) and high fidelity (reflecting the user's intent). We demonstrate that flow control has many desirable properties: (1) flow control accurately and responsively steers robot actions with user inputs, (2) it is robust to suboptimal user inputs, (3) it enables users to steer VLAs to achieve significantly higher success rates and faster task completion, and (4) fine-tuning a VLA on flow control trajectories improves the autonomous policy. Together, these results provide a simple and intuitive way for users to help steer VLA actions, increasing task performance.",
+      "authors": [
+        "Jonathan C. Kao",
+        "Jason Chan",
+        "Andy Wang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.HC"
+      ],
+      "published": "2026-06-08T21:16:37+00:00",
+      "link": "https://arxiv.org/pdf/2606.10180v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "steers VLA actions in real-time with simple inputs, can be applied to navigation instruction following",
+      "llm_evidence_cn": "用简单输入实时引导VLA动作，可应用于导航指令跟随",
+      "llm_evidence": "用简单输入实时引导VLA动作，可应用于导航指令跟随",
+      "canonical_evidence": "用简单输入实时引导VLA动作，可应用于导航指令跟随",
+      "llm_tldr_en": "Introduces flow control for VLA models, enabling real-time action steering via generic inputs (e.g., keyboard) without retraining, producing high-quality actions aligned with user intent.",
+      "llm_tldr_cn": "该论文提出VLA模型的流控制方法，通过通用输入（如键盘）实时引导机器人动作，无需重新训练。方法将用户输入转换为从VLA专家动作分布采样的高质量动作，兼顾动作质量和用户意图保真度。实验表明流控制能准确、响应性地引导机器人动作。该方法可直接应用于具身代理遵循自然语言指令进行导航的场景，通过键盘或类似输入实现指令跟随。",
+      "llm_tldr": "该论文提出VLA模型的流控制方法，通过通用输入（如键盘）实时引导机器人动作，无需重新训练。方法将用户输入转换为从VLA专家动作分布采样的高质量动作，兼顾动作质量和用户意图保真度。实验表明流控制能准确、响应性地引导机器人动作。该方法可直接应用于具身代理遵循自然语言指令进行导航的场景，通过键盘或类似输入实现指令跟随。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.07172v1",
+      "source": "arxiv",
+      "title": "Textual Supervision Enhances Geospatial Representations in Vision-Language Models",
+      "abstract": "Geospatial understanding is a critical yet underexplored dimension in the development of machine learning systems for tasks such as image geolocation and spatial reasoning. In this work, we analyze the geospatial representations acquired by three model families: vision-only architectures (e.g., ViT), vision-language models (e.g., CLIP), and large-scale multimodal foundation models (e.g., LLaVA, Qwen, and Gemma). By evaluating across image clusters, including people, landmarks, and everyday objects, grouped based on the degree of localizability, we reveal systematic gaps in spatial accuracy and show that textual supervision enhances the learning of geospatial representations. Our findings suggest the role of language as an effective complementary modality for encoding spatial context and multimodal learning as a key direction for advancing geospatial AI.",
+      "authors": [
+        "Marcelo Sartori Locatelli",
+        "Fernando Tonucci",
+        "Jea Kwon",
+        "Luiz Felipe Vecchietti",
+        "Bryan Nathanael Wijaya",
+        "Cheng Yaw Low",
+        "Virgilio Almeida",
+        "Meeyoung Cha"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-06-05T11:40:13+00:00",
+      "link": "https://arxiv.org/pdf/2606.07172v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "enhances geospatial representations in VLMs via textual supervision, relevant to spatial understanding in VLN",
+      "llm_evidence_cn": "通过文本监督增强VLM地理空间表示，与VLN中的空间理解相关",
+      "llm_evidence": "通过文本监督增强VLM地理空间表示，与VLN中的空间理解相关",
+      "canonical_evidence": "通过文本监督增强VLM地理空间表示，与VLN中的空间理解相关",
+      "llm_tldr_en": "Analyzes geospatial representations in vision-only, VLM, and multimodal models; shows textual supervision improves spatial accuracy, beneficial for tasks like image geolocation and spatial reasoning.",
+      "llm_tldr_cn": "该论文分析视觉、VLM和多模态基础模型中的地理空间表示，通过评估人物、地标等图像聚类，揭示空间准确性的系统差距。发现文本监督（如CLIP的训练）能增强地理空间表示学习，帮助模型更好地定位地域特征。该工作对视觉语言导航（VLN）中的空间推理和位置理解有潜在价值，但未直接涉及导航指令跟随。",
+      "llm_tldr": "该论文分析视觉、VLM和多模态基础模型中的地理空间表示，通过评估人物、地标等图像聚类，揭示空间准确性的系统差距。发现文本监督（如CLIP的训练）能增强地理空间表示学习，帮助模型更好地定位地域特征。该工作对视觉语言导航（VLN）中的空间推理和位置理解有潜在价值，但未直接涉及导航指令跟随。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.12299v1",
+      "source": "arxiv",
+      "title": "Learning What to Say to Your VLA: Mostly Harmless Vision Language Action Model Steering",
+      "abstract": "Vision-Language-Action (VLA) models provide a natural language interface to robot control, but the mapping from language to behavior is often brittle and unintuitive: semantically similar instructions can induce drastically different behaviors, while some capabilities may not be elicitable through prompting alone. As a result, both human instructions and zero-shot language models can fail to reliably steer VLAs toward successful task execution. In this work, we propose a framework that interactively searches for language sequences that improve closed-loop VLA task performance, distills these sequences into a test-time language feedback policy (LFP), and learns an improvement head that predicts when language steering will improve performance. We conformalize this improvement head to prevent harmful steering interventions, where the LFP decreases task performance relative to the original instruction on out-of-distribution scenarios. Crucially, our approach operates on arbitrary frozen pre-trained VLAs, requiring neither access to the original training distribution nor fine-tuning of the underlying model. On seen environments, our conformalized LFP improves base VLA performance by 24.7% in simulation and 65.0% in hardware. On visual and semantic perturbations, our conformalized LFP has strong harmlessness guarantees, and produces recovery behaviors not observed with open-loop prompting.",
+      "authors": [
+        "Hyun Joe Jeong",
+        "Gokul Swamy",
+        "Andrea Bajcsy"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.LG"
+      ],
+      "published": "2026-06-10T16:34:49+00:00",
+      "link": "https://arxiv.org/pdf/2606.12299v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "focuses on steering VLA models with language to improve task execution, directly applicable to instruction following navigation",
+      "llm_evidence_cn": "关注通过语言引导VLA模型改善任务执行，直接适用于指令跟随导航",
+      "llm_evidence": "关注通过语言引导VLA模型改善任务执行，直接适用于指令跟随导航",
+      "canonical_evidence": "关注通过语言引导VLA模型改善任务执行，直接适用于指令跟随导航",
+      "llm_tldr_en": "Proposes a framework to interactively search and distill language sequences that improve VLA task performance, enabling better instruction following.",
+      "llm_tldr_cn": "VLA模型中语言到行为的映射脆弱且不直观，不同指令可能引发迥异行为。本文提出在线搜索可改善闭环任务性能的语言序列，并将其蒸馏为测试时语言反馈策略（LFP），同时学习预测何时需要语言引导。在机器人操作任务中验证了该方法能稳定提升指令遵循的成功率。",
+      "llm_tldr": "VLA模型中语言到行为的映射脆弱且不直观，不同指令可能引发迥异行为。本文提出在线搜索可改善闭环任务性能的语言序列，并将其蒸馏为测试时语言反馈策略（LFP），同时学习预测何时需要语言引导。在机器人操作任务中验证了该方法能稳定提升指令遵循的成功率。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.08288v1",
+      "source": "arxiv",
+      "title": "MotionVLA: Injecting Geometric Motion into Vision-Language-Action Model",
+      "abstract": "Vision-language-action (VLA) models increasingly condition robot policies on history, depth, or 4D features to resolve ambiguity in long-horizon manipulation. However, more spatiotemporal evidence is not necessarily better: when the injected evidence is not motion-consistent, it can introduce geometric drift, fragmented temporal cues, and unstable action generation. This raises a simple question: should a VLA remember past frames, or remember the motion that connects them? We introduce MotionVLA, a motion-history interface that converts a short past-only video window into compact, time-continuous trajectory-field tokens. Instead of treating history as a sparse set of ndependently lifted frames, MotionVLA represents recent observations as physically coherent motion evidence. Current visual tokens query this history to retrieve task-relevant motion information, which is then recoupled into the VLA stream under trajectory-grounded supervision. Experiments across simulation benchmarks and preliminary real-robot rollouts show that MotionVLA improves long-horizon manipulation while producing smoother and more direct executions. These results suggest that effective VLA memory is not just about providing more 4D context, but about exposing motion-consistent evidence that is usable for control.",
+      "authors": [
+        "Shanglin Yuan",
+        "Weiheng Zhao",
+        "Xianda Guo",
+        "Wei Sui",
+        "Li Yu",
+        "Wenyu Liu",
+        "Xinggang Wang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-06T18:20:02+00:00",
+      "link": "https://arxiv.org/pdf/2606.08288v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Motion-consistent history representation for VLA, applicable to navigation",
+      "llm_evidence_cn": "为VLA提供运动一致的历史表示，可用于导航",
+      "llm_evidence": "为VLA提供运动一致的历史表示，可用于导航",
+      "canonical_evidence": "为VLA提供运动一致的历史表示，可用于导航",
+      "llm_tldr_en": "MotionVLA replaces past frames with trajectory-field tokens, providing motion-consistent history for robust action generation in VLAs.",
+      "llm_tldr_cn": "针对VLA模型中历史帧作为条件时出现几何漂移和时序碎片的问题，MotionVLA提出运动历史接口，将短时间窗口的视频转换为连续轨迹场令牌。该方法将历史表示为物理一致的轨迹而非独立帧，显著提升了长时程操控任务的稳定性和动作质量。实验验证其在多个机器人任务上的有效性，为VLA在具身导航等场景中的时序建模提供了新思路。",
+      "llm_tldr": "针对VLA模型中历史帧作为条件时出现几何漂移和时序碎片的问题，MotionVLA提出运动历史接口，将短时间窗口的视频转换为连续轨迹场令牌。该方法将历史表示为物理一致的轨迹而非独立帧，显著提升了长时程操控任务的稳定性和动作质量。实验验证其在多个机器人任务上的有效性，为VLA在具身导航等场景中的时序建模提供了新思路。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.11680v1",
+      "source": "arxiv",
+      "title": "Organize then Retrieve: Hierarchical Memory Navigation for Efficient Agents",
+      "abstract": "Large language model (LLM) agents struggle with long-horizon tasks due to their inherent statelessness, requiring all task-relevant information to be encoded in growing input contexts. The resulting degraded reasoning quality, increased inference cost, and higher latency necessitate efficient working memory mechanisms. However, existing approaches either rely on lossy compression or similarity-based retrieval, which often fail to capture temporal structure and causal dependencies required for multi-step agentic tasks. In this work, we present HORMA, a Hierarchical Organize-and-Retrieve Memory Agent that organizes experience into a file-system-like hierarchical structure, where summarized entities are linked to the corresponding raw trajectories, enabling efficient access without losing detailed information. HORMA decomposes working memory into two stages: structured memory construction and navigation-based retrieval. The construction module iteratively refines how experiences are structured by distinguishing between failures caused by missing information and those caused by misleading or overloaded context. The navigation module retrieves task-relevant context by traversing the hierarchy using a lightweight agent trained with reinforcement learning to select minimal yet sufficient context, thereby reducing latency along the critical execution path. Across ALFWorld, LoCoMo, and LongMemEval, HORMA improves task performance under constrained context budgets while requiring at most 22.17% of the baseline token usage in long conversation tasks. Compared to existing methods, it consistently achieves better efficiency-performance trade-offs and generalizes effectively to unseen tasks.",
+      "authors": [
+        "Hao-Lun Hsu",
+        "Nikki Lijing Kuang",
+        "Boyi Liu",
+        "Zhewei Yao",
+        "Yuxiong He"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-06-10T05:49:14+00:00",
+      "link": "https://arxiv.org/pdf/2606.11680v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "hierarchical memory for long-horizon tasks, transferable to navigation",
+      "llm_evidence_cn": "用于长时任务的分层记忆，可迁移至导航",
+      "llm_evidence": "用于长时任务的分层记忆，可迁移至导航",
+      "canonical_evidence": "用于长时任务的分层记忆，可迁移至导航",
+      "llm_tldr_en": "Proposes HORMA, a hierarchical memory agent that organizes experience for efficient retrieval in long-horizon tasks, applicable to navigation.",
+      "llm_tldr_cn": "大语言模型智能体在处理长时任务时面临状态缺失和上下文过长问题。现有方法依赖有损压缩或相似检索，难以捕获时序结构。本文提出HORMA，将经验组织成文件系统式分层结构，连接摘要实体与原始轨迹。在推理时高效检索相关信息，提升多步任务性能。该方法可迁移至具身导航等长时决策任务。",
+      "llm_tldr": "大语言模型智能体在处理长时任务时面临状态缺失和上下文过长问题。现有方法依赖有损压缩或相似检索，难以捕获时序结构。本文提出HORMA，将经验组织成文件系统式分层结构，连接摘要实体与原始轨迹。在推理时高效检索相关信息，提升多步任务性能。该方法可迁移至具身导航等长时决策任务。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.11909v1",
+      "source": "arxiv",
+      "title": "Embodied-BenchClaw: An Autonomous Multi-Agent System for Embodied Spatial Intelligence Benchmark Construction",
+      "abstract": "Benchmarks are essential for evaluating embodied spatial intelligence, yet their construction is labor-intensive, hard to reuse, and difficult to maintain. Existing embodied benchmarks are often static and may quickly become saturated as models improve, limiting their ability to distinguish new capabilities. We propose Embodied-BenchClaw, an autonomous agentic system for constructing embodied spatial intelligence benchmarks. Given a user-specified evaluation intent, Embodied-BenchClaw automatically produces a complete and continually updatable benchmark package through a five-stage pipeline: intent blueprinting, data collection, structuring and cleaning, benchmark synthesis, and evaluation reporting. The pipeline is coordinated by three agents for planning, construction, and evaluation. To improve reusability and reliability, Embodied-BenchClaw introduces an extensible Skill Library and process quality control, enabling benchmark construction to be composable, verifiable, and repairable. We instantiate multiple benchmarks covering indoor spatial reasoning, outdoor spatial reasoning, robotic manipulation, quadruped robot navigation, UAV/aerial-view understanding, and static benchmark enhancement. These benchmarks span diverse embodied carriers, data sources, and spatial capabilities. Experiments with human evaluation, judge-based assessment, consistency checks, cost analysis, and ablations show that Embodied-BenchClaw can construct verifiable, executable, maintainable, and diagnostically useful embodied spatial benchmarks with reduced manual effort.",
+      "authors": [
+        "Baoyang Jiang",
+        "Fengchun Zhang",
+        "Leyuan Wang",
+        "Haotian Li",
+        "Yida Wang",
+        "Zhe Ji",
+        "Jinshan Lai",
+        "Xi Ren",
+        "Jianwei Hu",
+        "Qiang Ma"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-10T10:37:27+00:00",
+      "link": "https://arxiv.org/pdf/2606.11909v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "embodied spatial intelligence benchmark construction",
+      "llm_evidence_cn": "具身空间智能基准构建",
+      "llm_evidence": "具身空间智能基准构建",
+      "canonical_evidence": "具身空间智能基准构建",
+      "llm_tldr_en": "Introduces an autonomous system for constructing embodied spatial intelligence benchmarks, potentially useful for evaluating VLN agents.",
+      "llm_tldr_cn": "现有具身基准构建费力且难以复用。本文提出Embodied-BenchClaw，一个自主多智能体系统，根据用户意图自动生成完整可更新的基准包。该系统通过意图蓝图、数据收集、结构化清洗、基准合成和评估报告五阶段流水线运作。它能为具身空间智能评估提供动态基准，有望支持视觉语言导航等任务的持续评测。",
+      "llm_tldr": "现有具身基准构建费力且难以复用。本文提出Embodied-BenchClaw，一个自主多智能体系统，根据用户意图自动生成完整可更新的基准包。该系统通过意图蓝图、数据收集、结构化清洗、基准合成和评估报告五阶段流水线运作。它能为具身空间智能评估提供动态基准，有望支持视觉语言导航等任务的持续评测。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.12207v1",
+      "source": "arxiv",
+      "title": "Intelligent Automation for Embodied Benchmark Construction: Pipelines, Embodiments, Simulators, and Trends",
+      "abstract": "Embodied intelligence now spans navigation, household assistance, manipulation, autonomous driving, aerial agents, and multimodal large-model control. This expansion has made benchmark construction a central bottleneck for reliable evaluation. Unlike static datasets, embodied benchmarks combine task specifications, environments, robot data, demonstrations, annotations, metrics, evaluation scripts, and release policies into a single evaluation system. This survey reviews the literature through a five-stage construction pipeline: requirement and task construction, data acquisition, data cleaning and annotation, benchmark suite generation and metric definition, and evaluation execution with diagnostic feedback. For each stage, the survey analyzes the transition from manual curation to traditional automation, foundation-model assistance, and agentic closed-loop workflows. It also compares qualitative construction costs across human labor, data and asset acquisition, compute and simulation, validation and debugging, governance and maintenance, and rework risk. The main conclusion is that automation does not simply reduce benchmark cost. Instead, it often shifts cost toward validation, auditability, version control, and long-term governance. Progress in embodied evaluation will therefore depend not only on larger benchmark suites, but also on construction pipelines that are diagnosable, auditable, and responsibly refreshable.",
+      "authors": [
+        "Jinshan Lai",
+        "Jianwei Hu",
+        "Baoyang Jiang",
+        "Fengchun Zhang",
+        "Leyuan Wang",
+        "Haotian Li",
+        "Yida Wang",
+        "Tingxuan Huang",
+        "Xi Ren",
+        "Qiang Ma"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-10T15:25:02+00:00",
+      "link": "https://arxiv.org/pdf/2606.12207v1",
+      "tags": [
+        "keyword:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "survey on embodied benchmark construction covering navigation",
+      "llm_evidence_cn": "涵盖导航的具身基准构建综述",
+      "llm_evidence": "涵盖导航的具身基准构建综述",
+      "canonical_evidence": "涵盖导航的具身基准构建综述",
+      "llm_tldr_en": "Reviews the literature on embodied benchmark construction through a five-stage pipeline, covering navigation, manipulation, and other domains.",
+      "llm_tldr_cn": "该综述系统梳理了具身智能基准构建的五个阶段：需求与任务构建、数据获取、数据清洗与标注、基准套件生成与指标定义、评估执行与诊断反馈。涵盖了导航、操作等任务，为VLN等领域的研究者提供了基准设计和评估的全面指南。",
+      "llm_tldr": "该综述系统梳理了具身智能基准构建的五个阶段：需求与任务构建、数据获取、数据清洗与标注、基准套件生成与指标定义、评估执行与诊断反馈。涵盖了导航、操作等任务，为VLN等领域的研究者提供了基准设计和评估的全面指南。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
