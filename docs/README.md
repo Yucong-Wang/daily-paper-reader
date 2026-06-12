@@ -6,53 +6,35 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-11
-- 运行时间：2026-06-11 21:57:51 UTC
+- 最新运行日期：2026-06-12
+- 运行时间：2026-06-12 21:43:02 UTC
 - 运行状态：成功
-- 本次总论文数：11
-- 精读区：2
-- 速读区：9
+- 本次总论文数：5
+- 精读区：1
+- 速读区：4
 
 ### 今日简报（AI）
-今日精读2篇、速读9篇，聚焦视觉机器人导航安全性与视觉-语言-动作模型通用性。最值得关注精读高分论文SAFER-Nav（9分）通过分割感知微调提升导航安全，以及Two Bridges, One Pathway（8分）提出从VLM到VLA的轨迹耦合数据路径。建议优先精读这两篇，深入理解具体技术方案。
-- 详情：[/202606/11/README](/202606/11/README)
+今天日报聚焦具身规划中的测试时计算分配、视觉空间自蒸馏、动作token规划及社会导航强化学习等5篇前沿工作。最值得精读的是得分8.0的《DIRECT》，系统研究了具身规划器中何时何地分配测试时计算；速读可关注《Learning Visual Spatial Planning》的跨模态自蒸馏方法与《KinematicRL》的仿真到现实社会导航。建议优先精读《DIRECT》以把握计算资源优化核心思路，速读其余三篇了解多模态规划与仿真迁移的最新进展。
+- 详情：[/202606/12/README](/202606/12/README)
 
 ### 精读区论文标签
-1. [SAFER-Nav: Enhancing Safety for Visual Robot Navigation via Segmentation-Aware Fine-Tuning](/202606/11/2606.11636v1-safer-nav-enhancing-safety-for-visual-robot-navigation-via-segmentation-aware-fine-tuning)  
-   标签：评分：9.0/10、query:vln
-   evidence：分割感知的视觉机器人导航安全增强
-2. [Two Bridges, One Pathway: From VLMs to Generalizable VLAs with Embodied Trajectory-Coupled Data](/202606/11/2606.08520v1-two-bridges-one-pathway-from-vlms-to-generalizable-vlas-with-embodied-trajectory-coupled-data)  
+1. [DIRECT: When and Where Should You Allocate Test-Time Compute in Embodied Planners?](/202606/12/2606.12402v1-direct-when-and-where-should-you-allocate-test-time-compute-in-embodied-planners)  
    标签：评分：8.0/10、query:vln
-   evidence：利用具身轨迹数据桥接VLM到VLA，支持具身智能体控制
+   evidence：面向具身Agent的VLM规划器及其测试时计算分配
 
 ### 速读区论文标签
-1. [BLUE: Toward Better Language Use in Efficient Vision-Language-Action Models for Autonomous Driving](/202606/11/2606.08684v1-blue-toward-better-language-use-in-efficient-vision-language-action-models-for-autonomous-driving)  
+1. [Learning Visual Spatial Planning from Symbolic State via Modality-Gap-Aware Self-Distillation](/202606/12/2606.06076v1-learning-visual-spatial-planning-from-symbolic-state-via-modality-gap-aware-self-distillation)  
    标签：评分：7.0/10、query:vln
-   evidence：面向自动驾驶的语言高效VLA模型，与具身导航相关
-2. [Flow Control: Steering Vision-Language-Action Models with Simple Real-Time Inputs](/202606/11/2606.10180v1-flow-control-steering-vision-language-action-models-with-simple-real-time-inputs)  
+   evidence：通过自蒸馏从符号状态学习视觉空间规划
+2. [Coarse-to-Control: Action-Token Planning for Vision-Language-Action Models](/202606/12/2606.07107v1-coarse-to-control-action-token-planning-for-vision-language-action-models)  
    标签：评分：7.0/10、query:vln
-   evidence：用简单输入实时引导VLA动作，可应用于导航指令跟随
-3. [Learning What to Say to Your VLA: Mostly Harmless Vision Language Action Model Steering](/202606/11/2606.12299v1-learning-what-to-say-to-your-vla-mostly-harmless-vision-language-action-model-steering)  
+   evidence：为VLA模型引入动作令牌规划，可用于导航任务
+3. [KinematicRL: A Sim-to-Real Reinforcement Learning Framework For Social Navigation With Kinodynamic Feasibility](/202606/12/2606.12042v1-kinematicrl-a-sim-to-real-reinforcement-learning-framework-for-social-navigation-with-kinodynamic-feasibility)  
    标签：评分：7.0/10、query:vln
-   evidence：关注通过语言引导VLA模型改善任务执行，直接适用于指令跟随导航
-4. [Learning Visual Spatial Planning from Symbolic State via Modality-Gap-Aware Self-Distillation](/202606/11/2606.06076v2-learning-visual-spatial-planning-from-symbolic-state-via-modality-gap-aware-self-distillation)  
+   evidence：提出了面向社交导航的强化学习框架，考虑运动学可行性
+4. [Hierarchical Policies from Verbal and Egocentric Human Signals for Natural Human-Robot Interaction](/202606/12/2606.10276v1-hierarchical-policies-from-verbal-and-egocentric-human-signals-for-natural-human-robot-interaction)  
    标签：评分：6.0/10、query:vln
-   evidence：通过模态差距感知自蒸馏进行视觉空间规划
-5. [Textual Supervision Enhances Geospatial Representations in Vision-Language Models](/202606/11/2606.07172v1-textual-supervision-enhances-geospatial-representations-in-vision-language-models)  
-   标签：评分：6.0/10、query:vln
-   evidence：通过文本监督增强VLM地理空间表示，与VLN中的空间理解相关
-6. [MotionVLA: Injecting Geometric Motion into Vision-Language-Action Model](/202606/11/2606.08288v1-motionvla-injecting-geometric-motion-into-vision-language-action-model)  
-   标签：评分：6.0/10、query:vln
-   evidence：为VLA提供运动一致的历史表示，可用于导航
-7. [Organize then Retrieve: Hierarchical Memory Navigation for Efficient Agents](/202606/11/2606.11680v1-organize-then-retrieve-hierarchical-memory-navigation-for-efficient-agents)  
-   标签：评分：6.0/10、query:vln
-   evidence：用于长时任务的分层记忆，可迁移至导航
-8. [Embodied-BenchClaw: An Autonomous Multi-Agent System for Embodied Spatial Intelligence Benchmark Construction](/202606/11/2606.11909v1-embodied-benchclaw-an-autonomous-multi-agent-system-for-embodied-spatial-intelligence-benchmark-construction)  
-   标签：评分：6.0/10、query:vln
-   evidence：具身空间智能基准构建
-9. [Intelligent Automation for Embodied Benchmark Construction: Pipelines, Embodiments, Simulators, and Trends](/202606/11/2606.12207v1-intelligent-automation-for-embodied-benchmark-construction-pipelines-embodiments-simulators-and-trends)  
-   标签：评分：6.0/10、query:vln
-   evidence：涵盖导航的具身基准构建综述
+   evidence：利用语言和第一人称信号实现自然的人机交互
 
 
 <div class="dpr-home-promo-card">

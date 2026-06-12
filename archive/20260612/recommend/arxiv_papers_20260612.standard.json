@@ -1,0 +1,232 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-12T21:38:35.886183+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 1,
+    "deep_cap": 6,
+    "deep_selected": 1,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2606.12402v1",
+      "source": "arxiv",
+      "title": "DIRECT: When and Where Should You Allocate Test-Time Compute in Embodied Planners?",
+      "abstract": "Vision-Language Models (VLMs) are increasingly deployed as high-level planners for embodied agents, with an emerging strategy of scaling test-time compute to improve capability. However, we observe that doing so increases latency, token usage, and FLOPs while yielding uneven, often diminishing gains in downstream success, limiting where embodied agents can be deployed. We argue that choosing when and where to spend test-time compute is central to bringing frontier performance to the real world. We introduce DIRECT, a routing framework that uses multimodal scene context to allocate compute per prompt, improving the success--cost Pareto frontier over fixed model selection. Across three dominant scaling axes, namely chain-of-thought depth, model size, and memory history, our experiments on VLABench and RoboMME show that test-time compute is not a uniform lever: different axes yield qualitatively distinct capability gains. We validate these insights on a physical Franka arm in a DROID setup spanning zero-shot manipulation and long-horizon chaining, where our router matches or exceeds a stronger model's success rate at up to 65% lower average latency. Ultimately, our results show that naively scaling test-time compute is wasteful, and that DIRECT can provide frontier-level embodied planning in robotic systems at a fraction of the cost. Project page can be found at jadee-dao.github.io/direct/.",
+      "authors": [
+        "Jadelynn Dao",
+        "Milan Ganai",
+        "Yasmina Abukhadra",
+        "Ajay Sridhar",
+        "Mozhgan Nasr Azadani",
+        "Katie Luo",
+        "Clark Barrett",
+        "Jiajun Wu",
+        "Chelsea Finn",
+        "Marco Pavone"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-06-10T17:58:49+00:00",
+      "link": "https://arxiv.org/pdf/2606.12402v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "VLM planners for embodied agents with compute allocation",
+      "llm_evidence_cn": "面向具身Agent的VLM规划器及其测试时计算分配",
+      "llm_evidence": "面向具身Agent的VLM规划器及其测试时计算分配",
+      "canonical_evidence": "面向具身Agent的VLM规划器及其测试时计算分配",
+      "llm_tldr_en": "DIRECT proposes a routing framework for embodied planners that allocates test-time compute based on multimodal scene context, improving the success-cost Pareto frontier over fixed model selection for VLMs as high-level planners.",
+      "llm_tldr_cn": "DIRECT针对具身Agent中视觉语言模型作为高层规划器时测试时计算浪费的问题，提出了一个路由框架。该框架利用多模态场景上下文为每个提示动态分配计算资源（如思维链深度、模型选择），在三个主流扩展轴上的实验表明，相比固定模型选择，该方法在成功-成本帕累托前沿上取得显著提升，使前沿性能更可部署到真实世界。",
+      "llm_tldr": "DIRECT针对具身Agent中视觉语言模型作为高层规划器时测试时计算浪费的问题，提出了一个路由框架。该框架利用多模态场景上下文为每个提示动态分配计算资源（如思维链深度、模型选择），在三个主流扩展轴上的实验表明，相比固定模型选择，该方法在成功-成本帕累托前沿上取得显著提升，使前沿性能更可部署到真实世界。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.06076v1",
+      "source": "arxiv",
+      "title": "Learning Visual Spatial Planning from Symbolic State via Modality-Gap-Aware Self-Distillation",
+      "abstract": "While vision-language models excel at general multimodal understanding, they still struggle with visual spatial planning. We attribute this to a perception-reasoning modality gap: visual planning requires models to infer latent state structures from pixels and then reason over the recovered structure to produce valid actions, whereas symbolic planning directly leverages explicit objects and constraints. This creates dual bottlenecks in visual state recovery and multi-step planning. To address this, we propose MGSD, a two-stage modality-gap-aware self-distillation framework. First, a cold-start grounding stage equips the visual student with reliable state representations, minimizing early perception noise. Second, a privileged teacher transfers planning capabilities via on-policy distillation, using explicit symbolic states to supervise the student's own visual rollout prefixes. Crucially, symbolic data is used strictly during training, leaving inference purely visual. Experiments on visual planning benchmarks show that MGSD consistently improves visual planning across both 4B and 8B backbones, raising the macro average by 19.3% and 18.4%, respectively. The resulting models narrow the gap to symbolic-input upper bounds, while ablations and diagnostics confirm that the improvement comes from both visual state recovery and optimal-path reasoning. These results suggest that modality-gap-aware self-distillation improves not only how models perceive actionable states, but also how they plan over the inferred structure. Code is available at https://github.com/Oranger-l/MGSD.",
+      "authors": [
+        "Haocheng Luo",
+        "Jiahui Liu",
+        "Ruicheng Zhang",
+        "Zhizhou Zhong",
+        "Jiaqi Huang",
+        "Zunnan Xu",
+        "Quan Shi",
+        "Jun Zhou",
+        "Xiu Li"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-06-04T12:13:24+00:00",
+      "link": "https://arxiv.org/pdf/2606.06076v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "visual spatial planning from symbolic state via self-distillation",
+      "llm_evidence_cn": "通过自蒸馏从符号状态学习视觉空间规划",
+      "llm_evidence": "通过自蒸馏从符号状态学习视觉空间规划",
+      "canonical_evidence": "通过自蒸馏从符号状态学习视觉空间规划",
+      "llm_tldr_en": "MGSD bridges the perception-reasoning modality gap for visual spatial planning by two-stage self-distillation, improving state recovery and multi-step planning.",
+      "llm_tldr_cn": "该文针对视觉语言模型在视觉空间规划上的困难，归因于感知-推理模态鸿沟。提出MGSD两阶段自蒸馏框架：冷启动阶段赋予视觉学生可靠状态表征，教师蒸馏阶段通过特权信息引导多步推理，有效弥合了像素到符号的转换瓶颈。",
+      "llm_tldr": "该文针对视觉语言模型在视觉空间规划上的困难，归因于感知-推理模态鸿沟。提出MGSD两阶段自蒸馏框架：冷启动阶段赋予视觉学生可靠状态表征，教师蒸馏阶段通过特权信息引导多步推理，有效弥合了像素到符号的转换瓶颈。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.10276v1",
+      "source": "arxiv",
+      "title": "Hierarchical Policies from Verbal and Egocentric Human Signals for Natural Human-Robot Interaction",
+      "abstract": "For natural human-robot interaction, a robot must understand human intent expressed not only through language but also through nonverbal signals such as gestures and gaze. However, current robot policies rely on language instructions as the sole interface for conveying intent, leaving nonverbal signals unused and placing the full burden of communication. In this work, we present EDITH, a robot framework that captures the human's nonverbal signals through continuous streams of first-person view and gaze from smart glasses, and uses them alongside language instructions as inputs to the robot policy. Our hardware system streams the human's first-person view, gaze, and speech to the robot in real time, transcribing the speech into language instructions. To handle these rich but noisy signals, we design a hierarchical policy in which a high-level policy infers the human's intent and produces a sequence of subtasks, where each subtask is represented as a fine-grained instruction paired with a keyframe that grounds the intent in the scene (e.g., the frame where the human points at the target object). A low-level policy then executes these subtasks. In our experiments on human-robot interactive tasks, EDITH enables the robot to act on the human's nonverbal signals even when intent is expressed only briefly, and significantly reduces user effort to convey intent compared to using language instructions alone. Visit our project page for source code and real-robot demo videos.",
+      "authors": [
+        "Dongjun Lee",
+        "Juheon Choi",
+        "Dong Kyu Shin",
+        "Sinjae Kang",
+        "Kimin Lee"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-09T00:50:29+00:00",
+      "link": "https://arxiv.org/pdf/2606.10276v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "uses verbal and egocentric human signals for natural human-robot interaction",
+      "llm_evidence_cn": "利用语言和第一人称信号实现自然的人机交互",
+      "llm_evidence": "利用语言和第一人称信号实现自然的人机交互",
+      "canonical_evidence": "利用语言和第一人称信号实现自然的人机交互",
+      "llm_tldr_en": "Presents EDITH, a robot framework that integrates first-person view, gaze, and speech for natural human-robot interaction, enabling intent understanding beyond language.",
+      "llm_tldr_cn": "针对传统机器人仅依赖语言指令、忽略非语言信号的局限，提出EDITH框架，通过智能眼镜流式获取人类第一人称视角、注视和语音，结合语言指令输入机器人策略，实现了更自然的人机交互，减轻了语言表达负担。",
+      "llm_tldr": "针对传统机器人仅依赖语言指令、忽略非语言信号的局限，提出EDITH框架，通过智能眼镜流式获取人类第一人称视角、注视和语音，结合语言指令输入机器人策略，实现了更自然的人机交互，减轻了语言表达负担。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.07107v1",
+      "source": "arxiv",
+      "title": "Coarse-to-Control: Action-Token Planning for Vision-Language-Action Models",
+      "abstract": "Most vision-language-action (VLA) models map observations directly to actions without explicit intermediate planning, which limits performance on long-horizon tasks where early mistakes compound. We propose Coarse-to-Control, a plan-execute VLA that introduces planning natively in the action-token space. The key idea is to let the policy first predict a compact sequence of coarse action tokens that summarize the intended future trajectory, and then generate executable action tokens conditioned on this plan. Because both planning and execution share a unified discrete action vocabulary, the plan stays close to the control manifold and provides directly actionable guidance rather than an abstract hint that must be translated back to motor commands. Experiments on LIBERO, SimplerEnv-WidowX, and real-world manipulation tasks show that action-token planning consistently improves over direct action generation, with the largest gains on long-horizon multi-stage tasks.",
+      "authors": [
+        "Jinhao Wu",
+        "Shiduo Zhang",
+        "Yicheng Liu",
+        "Xiaopeng Yu",
+        "Sixian Li",
+        "Siyin Wang",
+        "Hang Zhao",
+        "Jing Huo",
+        "Yang Gao",
+        "Jingjing Gong",
+        "Xipeng Qiu",
+        "Yu-Gang Jiang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-05T10:01:37+00:00",
+      "link": "https://arxiv.org/pdf/2606.07107v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "action-token planning for VLA models enabling navigation tasks",
+      "llm_evidence_cn": "为VLA模型引入动作令牌规划，可用于导航任务",
+      "llm_evidence": "为VLA模型引入动作令牌规划，可用于导航任务",
+      "canonical_evidence": "为VLA模型引入动作令牌规划，可用于导航任务",
+      "llm_tldr_en": "Proposes Coarse-to-Control, a plan-execute VLA that introduces planning in action-token space, enabling long-horizon navigation-like tasks.",
+      "llm_tldr_cn": "现有VLA模型缺乏中间规划，在长程任务中易累积错误。本文提出Coarse-to-Control方法，在动作标记空间中引入原生规划，先预测粗动作序列再生成可执行动作。实验表明该方法在长期任务上显著提升性能，为视觉语言导航中的路径规划提供了可迁移的范式。",
+      "llm_tldr": "现有VLA模型缺乏中间规划，在长程任务中易累积错误。本文提出Coarse-to-Control方法，在动作标记空间中引入原生规划，先预测粗动作序列再生成可执行动作。实验表明该方法在长期任务上显著提升性能，为视觉语言导航中的路径规划提供了可迁移的范式。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.12042v1",
+      "source": "arxiv",
+      "title": "KinematicRL: A Sim-to-Real Reinforcement Learning Framework For Social Navigation With Kinodynamic Feasibility",
+      "abstract": "Deep Reinforcement Learning (DRL) has shown promise for social navigation, yet its real-world deployment remains hindered by a persistent sim-to-real gap arising from simplified first-order dynamics and context-specific human state estimation pipelines. This work presents a unified framework that addresses these limitations to produce dynamically feasible navigation policies suitable for real-world deployment. First, theoretical analysis reveals that tracking error between simulated and actual robot position decays exponentially with increased control order, motivating the use of higher-order control inputs as DRL action space. A second-order control formulation tailored to differential drive robots is developed, complemented by a stochastic iterative Linear Quadratic Regulator (iLQR) that pretrains the policy via a divergence minimization objective. Second, to avoid the added system complexity of camera-LiDAR fusion, a cluster-based human tracking pipeline using only 2D LiDAR is introduced. Human detections are associated according to both spatial proximity and velocity similarity, enabling reliable differentiation of nearby pedestrians and yielding stable velocity estimates through temporal aggregation. Third, we introduce an unbiased residual gating block to balance reaction- and memory-based behaviors while handling time-varying crowd sizes, both critical for social navigation. The resulting policy, KinematicRL, consistently improves kinematic performance and adapts to varying number of detected humans. Experiments in real-world environments demonstrate that, when combined with the proposed tracking pipeline, KinematicRL can be deployed on a real differential drive robot with minimal modifications.",
+      "authors": [
+        "Zhiming Xu",
+        "Haodong Yang",
+        "Chengju Liu",
+        "Qijun Chen",
+        "Chenpeng Yao"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-10T13:07:03+00:00",
+      "link": "https://arxiv.org/pdf/2606.12042v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "proposes a reinforcement learning framework for social navigation with kinodynamic feasibility",
+      "llm_evidence_cn": "提出了面向社交导航的强化学习框架，考虑运动学可行性",
+      "llm_evidence": "提出了面向社交导航的强化学习框架，考虑运动学可行性",
+      "canonical_evidence": "提出了面向社交导航的强化学习框架，考虑运动学可行性",
+      "llm_tldr_en": "Presents a sim-to-real RL framework for socially compliant navigation with second-order dynamics to bridge the gap, enabling dynamically feasible policies.",
+      "llm_tldr_cn": "针对深度强化学习在社交导航中因简化动力学导致的仿真与现实差距，提出KinematicRL框架，采用二阶控制动作空间并分析追踪误差衰减，使策略在差分驱动机器人上具备动力学可行性，并实现了真实世界部署。",
+      "llm_tldr": "针对深度强化学习在社交导航中因简化动力学导致的仿真与现实差距，提出KinematicRL框架，采用二阶控制动作空间并分析追踪误差衰减，使策略在差分驱动机器人上具备动力学可行性，并实现了真实世界部署。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

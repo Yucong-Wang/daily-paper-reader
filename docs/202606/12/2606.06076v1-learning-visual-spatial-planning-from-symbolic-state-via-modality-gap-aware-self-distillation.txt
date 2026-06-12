@@ -1,0 +1,441 @@
+Title: Learning Visual Spatial Planning from Symbolic State via Modality-Gap-Aware Self-Distillation
+
+URL Source: https://arxiv.org/pdf/2606.06076v1
+
+Published Time: Fri, 05 Jun 2026 01:06:09 GMT
+
+Number of Pages: 17
+
+Markdown Content:
+# Learning Visual Spatial Planning from Symbolic State via Modality-Gap-Aware Self-Distillation 
+
+Haocheng Luo 1*, Jiahui Liu 1*, Ruicheng Zhang 1, Zhizhou Zhong 2,Jiaqi Huang 1, Zunnan Xu 1, Quan Shi 1, Jun Zhou 1, Xiu Li 1†
+
+> 1
+
+Tsinghua University, 2The Hong Kong University of Science and Technology 
+
+Abstract 
+
+While Vision-language models excel at general multimodal understanding, they still struggle with visual spatial planning. We attribute this to a perception–reasoning modality gap : vi-sual planning requires models to infer latent state structures from pixels and then reason over the recovered structure to produce valid actions, whereas symbolic planning directly leverages explicit objects and constraints. This creates dual bottlenecks in visual state recovery (perception) and multi-step planning (reason-ing). To address this, we propose MGSD , a two-stage modality-gap-aware self-distillation framework. First, a cold-start grounding stage equips the visual student with reliable state representations, minimizing early perception noise. Second, a privileged teacher transfers planning capabilities via on-policy distillation, using explicit symbolic states to supervise the student’s own visual rollout prefixes. Cru-cially, symbolic data is used strictly during training, leaving inference purely visual. Ex-periments on visual planning benchmarks show that MGSD consistently improves visual plan-ning across both 4B and 8B backbones, raising the macro average by 19.3% and 18.4%, re-spectively. The resulting models narrow the gap to symbolic-input upper bounds, while ab-lations and diagnostics confirm that the im-provement comes from both visual state re-covery and optimal-path reasoning. These results suggest that modality-gap-aware self-distillation improves not only how models per-ceive actionable states, but also how they plan over the inferred structure.Code is available at 
+
+https://github.com/Oranger-l/MGSD .
+
+1 Introduction 
+
+Vision-language models (VLMs) are increasingly becoming general-purpose multimodal reasoners, yet this progress has not fully translated to visual 
+
+> *Equal contribution.
+> †Corresponding author.
+
+spatial planning (Bai et al., 2025a,b; Zhu et al., 2025; Hurst et al., 2024). Unlike conventional mul-timodal understanding, visual planning requires models to infer task-relevant state structures from pixels and then reason over them to generate ex-ecutable actions (Zhang et al., 2025b). This se-quential dependency makes visual planning funda-mentally different from its symbolic counterpart: symbolic inputs make objects, constraints, and tran-sitions explicit, whereas visual inputs require the model to construct such structures before planning can begin. As illustrated in Figure 1, this discrep-ancy gives rise to a perception–reasoning modal-ity gap , presenting a dual challenge where percep-tion errors can severely corrupt the downstream planning state, while reasoning failures may persis-tently occur even under a perfectly inferred state. Existing training paradigms provide only partial solutions to this gap. Supervised fine-tuning (SFT) can imitate expert action traces, but it entangles perception and planning failures: an incorrect ac-tion may result from a wrong visual state, a flawed plan, or both (Wu et al., 2025; Dao and Vu, 2025; Zhai et al., 2024; Jiang et al., 2025; Merler et al., 2025). Reinforcement learning with verifiable re-wards (RLVR) provides reliable task-level supervi-sion, yet the reward is sparse and sequence-level, making it difficult to assign credit to the intermedi-ate state recovery and planning decisions that pro-duced the final outcome (Xu et al., 2026; Oh, 2025; Min et al., 2026; He et al., 2026; Liu et al., 2026; Zhang et al., 2025a). Recent visual-centric reason-ing methods introduce intermediate images, visual thoughts, or latent visual states to make reasoning more explicit (Li et al., 2025; Jin et al., 2026; Shao et al., 2024; Chern et al., 2025; Su et al., 2025). However, these methods mainly operate within the visual modality and often require additional vi-sual generation or latent reasoning modules. They do not directly exploit a complementary source of supervision that is naturally available in many 1    
+
+> arXiv:2606.06076v1 [cs.AI] 4 Jun 2026 Figure 1: The Modality Gap and MGSD. Top: Perception and reasoning bottlenecks in visual planning. Bottom:
+> MGSD sequentially bridges the gap via SFT and OPSD, progressively matching symbolic reference performance.
+
+planning environments: symbolic states, where the same planning problem is easier and more reliable to solve. This observation suggests an alternative route: leveraging the simpler symbolic state as privileged training-time supervision for a visual student. How-ever, offline imitation of symbolic expert trajecto-ries is insufficient, as fixed demonstrations cannot correct the student once it deviates from the refer-ence trace. On-policy distillation addresses this by querying a teacher on student-generated trajecto-ries, providing token-level guidance on the states actually visited (Agarwal et al., 2024; Gu et al., 2024; Zhao et al., 2026). For visual planning, this dense feedback precisely localizes and corrects er-rors along the perception–reasoning chain. Yet, while standard on-policy methods transfer behav-ior within a single modality, our setting demands a modality-gap-aware variant, where a symbolic teacher guides an image-conditioned student with-out exposing symbolic inputs. Building on these, we propose MGSD , atwo-stage modality-gap-aware on-policy self-distillation framework for visual spatial planning. The first stage performs cold-start perception align-ment: the visual student is trained with SFT to re-cover task-relevant state structures from images, producing prefixes that are better aligned with the symbolic state space. The second stage per-forms on-policy self-distillation(OPSD): the stu-dent generates its own rollout from the image and question, while a frozen text-only teacher condi-tions on the symbolic state, reference action plan, and student prefix to provide dense token-level su-pervision. This design combines the strength of OPSD, which supervises student-generated trajec-tories rather than fixed references, with privileged symbolic guidance that makes planning supervi-sion more reliable. By optimizing a reverse-KL-style objective on student rollouts, MGSD transfers symbolic planning behavior to the visual student without requiring human-written rationales or sym-bolic inputs at inference time. We evaluate MGSD on visual planning bench-marks covering safe grid navigation, topology-aware path finding, and embodied object interac-tion. Across 4B and 8B backbones, MGSD raises the macro average from 11.2 to 30.5 and from 17.2 to 35.6, respectively, while narrowing the gap to symbolic-input upper bounds. Ablations confirm the importance of both training stages, and diag-nostics show that the improvements arise from bet-ter visual state recovery and stronger optimal-path reasoning. These results suggest that modality-gap-aware self-distillation improves both how models perceive actionable states and how they plan over the inferred structure. Our contributions are as follows: 2• We formulate visual spatial planning as a 
+
+perception–reasoning modality gap between visual and symbolic representations, where models must first recover task-relevant state structures from pixels and then reason over the inferred state to generate executable plans. • We propose MGSD, a two-stage modality-gap-aware self-distillation framework that first performs perception-oriented supervised fine-tuning for reliable state grounding, and then uses symbolic-guided on-policy self-distillation to transfer planning behavior on the student’s own visual rollout trajectories. • Extensive experiments that MGSD substan-tially improves task success on visual plan-ning benchmarks and narrows the gap to symbolic-input planning. Diagnostic results indicate that the improvement stems from both better visual state recovery and stronger optimal-path reasoning, demonstrating that MGSD mitigates both sides of the perception– reasoning modality gap. 
+
+2 Related Work 
+
+Visual Spatial Planning and Modality Gap. Vi-sual spatial planning has emerged as a challenging testbed for VLMs because it requires models to infer task states from images and reason over them to produce executable actions. VSP diagnoses this challenge by decomposing visual planning failures into perception and reasoning sub-tasks, showing that current models can fail both to recover the rele-vant state structure and to plan over it reliably (Wu et al., 2025). Recent work attempts to strengthen spatial reasoning by making intermediate states more explicit: MVoT generates visualized reason-ing traces (Li et al., 2025), Visual Planning reasons through image trajectories on FrozenLake, Maze, and MiniBehaviour (Xu et al., 2026), and Laten-tUM performs interleaved cross-modal reasoning in a shared latent space (Jin et al., 2026). While effective, these methods mainly operate within the visual or latent modality and often introduce addi-tional inference-time reasoning mechanisms. Our work instead frames visual planning as a modality gap between image-conditioned state recovery and symbolic planning. We use symbolic states as priv-ileged supervision during training, but preserve the standard visual-input inference interface. 
+
+On-Policy Distillation and Self-Distillation. 
+
+Knowledge distillation transfers behavior from a teacher to a student, but offline distillation can suffer from a mismatch between fixed training traces and the student’s own autoregressive genera-tions (Guo et al., 2026). MiniLLM studies reverse-KL distillation for generative language models (Gu et al., 2024), while GKD trains students on self-generated outputs with teacher feedback, reducing the distribution mismatch between training and in-ference (Agarwal et al., 2024). Recent work fur-ther extends this idea to reasoning: OPSD lets a single model act as both teacher and student by conditioning the teacher on privileged reasoning information (Zhao et al., 2026), and VOLD trans-fers reasoning ability from text-only LLM teach-ers to VLM students through on-policy distillation, highlighting the importance of cold-start alignment for effective transfer (Bousselham et al., 2025). Meanwhile, recent analyses show that OPD can be fragile in long-horizon settings when student rollouts drift away from the teacher’s reliable sup-port, motivating stable local token-level supervi-sion (Fu et al., 2026). Our work builds on this on-policy perspective, but differs in the source and purpose of supervision. Rather than distilling from a stronger teacher in the same modality, MGSD uses an explicit symbolic state as privileged teacher-side context to guide an image-conditioned student. This makes the distillation modality-gap-aware: the teacher reasons over the symbolic planning state, while the student must learn to recover and plan from visual inputs, with symbolic information used only during training. 
+
+3 Method 
+
+3.1 MGSD Framework Overview 
+
+We propose MGSD , a modality-gap-aware self-distillation framework for visual spatial planning, as illustrated in Figure 2. The key setting is that each training instance provides two aligned views of the same planning problem: a visual view ob-served by the student and a symbolic view available only to the teacher. This creates a natural asym-metry: the student must infer state structures from images, whereas the teacher reasons over explicit symbolic states and reference plans. MGSD ex-ploits this asymmetry to effectively embed sym-bolic planning behavior into the image-conditioned student while keeping final inference purely visual. Formally, each training instance is represented 3Figure 2: Overview of the MGSD framework. Training consists of two stages to bridge the perception–reasoning modality gap . Bottom Left (Cold-Start SFT): The base visual model is fine-tuned on structured perception tasks to reliably recover state variables (e.g., coordinates of the player, goal, and holes) from images. Bottom Right (OPSD): Symbolic-guided on-policy self-distillation. The visual student generates reasoning rollouts from the image ( I), while a privileged symbolic teacher conditions on the explicit symbolic state ( T ) and reference plan (A) to provide dense, token-level supervision on the student’s prefix. Top (Inference): The symbolic teacher is discarded, and the trained student performs spatial planning purely from visual inputs. 
+
+as (I, Q, T, A ), where I is the image observation, 
+
+Q is the task-specific planning prompt, T is the symbolic state description, and A is the ground-truth executable action plan. The student receives only (I, Q ), while the teacher receives the privi-leged context (T, Q, A ). Both views describe the same environment, but they expose different levels of structure: the visual view requires state recovery from pixels, whereas the symbolic view directly specifies the objects, constraints, and transitions needed for planning. MGSD follows a two-stage training strategy. First, perception-oriented supervised fine-tuning 
+
+serves as a cold start that aligns the visual stu-dent with the symbolic state space used by the teacher. Rather than directly supervising long-horizon plans, this stage trains the model to recover planning-relevant variables from images, such as object positions, obstacles, topology, interaction affordances, and legal local actions. Crucially, this explicit grounding ensures the student’s initial roll-outs are reliable enough for effective multi-step guidance. Second, symbolic-guided on-policy self-distillation transfers planning behavior on trajecto-ries generated by the student itself. For each rollout from (I, Q ), the frozen symbolic teacher evaluates the same prefixes under (T, Q, A ) and provides token-level context distillation signals. This allows the student to learn from teacher feedback on states it actually visits, while requiring no symbolic input at inference time. 
+
+3.2 Perception-Oriented Supervised Fine-Tuning 
+
+To make OPSD effective, the student should gen-erate prefixes that are meaningfully grounded in the visual state. We therefore introduce perception-oriented supervised fine-tuning as a cold-start stage, using structured perception questions automatically derived from symbolic environment annotations rather than long-horizon action-plan supervision. This initialization reduces early grounding noise and better aligns the student’s visual rollouts with the teacher’s symbolic context, enabling subse-quent on-policy distillation to jointly refine state recovery and planning behavior. Let Dperc denote the perception SFT dataset, where each example consists of an image I, a per-ception question Qp, and a structured answer Yp.With Xp = ( I, Q p) as the multimodal perception 4prompt, we optimize the standard next-token pre-diction objective: 
+
+Lperc (θ) = −EDperc 
+
+> |Yp|
+
+X
+
+> t=1
+
+log πθ
+
+ Yp,t Xp, Y p,<t 
+
+.
+
+(1) The resulting perception-adapted model initializes the OPSD stage. 
+
+3.3 Symbolic-Guided On-Policy Self-Distillation 
+
+After perception-oriented SFT, we train the student with symbolic-guided on-policy self-distillation .Given a visual observation I and prompt Q, the student samples an on-policy trajectory 
+
+y ∼ πθ(· | I, Q ).
+
+A frozen text-only teacher then evaluates the same student-generated prefix y<t under the privileged symbolic context (T, Q, A ), where T is the explicit state description and A is the reference action plan. For each generated token yt, we define the student and teacher log-probabilities as 
+
+ℓst = log πθ(yt | I, Q, y <t ),ℓTt = log πT(yt | T, Q, A, y <t ).
+
+The student is optimized with a reverse-KL-style context distillation loss: 
+
+Lsym (θ) = Ey∼πθ
+
+
+
+> |y|
+
+X
+
+> t=1
+
+wt
+
+ ℓst − ℓTt
+
+ . (2) where wt ≥ 0 optionally emphasizes planning-critical tokens (uniformly set to wt = 1 in our experiments). This objective applies dense teacher feedback on the student’s own rollout distribu-tion, encouraging image-conditioned predictions to move toward symbolic planning behavior while reducing train–test mismatch. Crucially, rule-based environment rewards are logged only for monitor-ing; at inference time, the teacher and symbolic context are entirely removed, leaving a purely vi-sual model for downstream deployment. 
+
+3.4 Training Procedure 
+
+Algorithm 1 summarizes the training procedure of MGSD. We first perform cold-start perception-oriented SFT on Dperc , which adapts the visual student to recover planning-relevant state informa-tion from images. The resulting perception-adapted 
+
+Algorithm 1: MGSD Modality-Gap-Aware Self-Distillation                                                                   
+
+> Input :Base VLM πθ0; Perc. SFT data Dperc ;Visual Plan data D={(I, Q, T, A )}
+> Output :Visual planning model πθ∗
+> Init student πθfrom πθ0
+> Stage 1: Cold-Start Perception-Oriented SFT for batch Bperc ∼ D perc do
+> // Update student via Eq. 1
+> Update θby minimizing Lperc (θ)on Bperc
+> end
+> Init frozen symbolic teacher πT←πθ0
+> Stage 2: Symbolic-Guided OPSD for batch {(Ii, Q i, T i, A i)}Bi=1 ∼ D do
+> // On-policy visual rollout
+> for i= 1 to Bdo
+> Sample yi∼πθ(· | Ii, Q i)
+> // Token-level log-probs
+> for t= 1 to |yi|do
+> ℓsi,t ←log πθ(yi,t |Ii, Q i, y i,<t )
+> ℓTi,t ←log πT(yi,t |Ti, Q i, A i, y i,<t )
+> end end
+> // Distillation loss (Eq. 2)
+> Lsym (θ)←1
+> B
+> PBi=1
+> P|yi|
+> t=1 wt
+>  ℓsi,t −ℓTi,t
+> 
+> Update θby minimizing Lsym (θ)
+> end return πθ∗←πθ
+
+student is then used to initialize the second stage. In symbolic-guided on-policy self-distillation , the student samples responses from image-conditioned prompts, while a frozen text-only teacher evalu-ates the same generated tokens under the privileged symbolic context (T, Q, A ). The student is opti-mized with the context distillation loss in Eq. 2, which encourages its image-conditioned distribu-tion to move toward the teacher distribution on the student’s own rollout prefixes. After training, both the teacher and symbolic context are discarded; the final model receives only visual inputs and au-tonomously generates the state variables and action sequence without external symbolic prompts. 
+
+4 Experiments 
+
+4.1 Experimental Setup Benchmarks. We evaluate MGSD on three vi-sual planning environments: FrozenLake , Maze ,and MiniBehaviour . FrozenLake follows the visual spatial planning setup from VSP, where the model must infer the agent, goal, and unsafe cells from an image and produce a safe action se-quence (Wu et al., 2025). Maze is based on the 
+
+maze-dataset benchmark, which provides pro-cedurally generated maze-solving tasks with ras-5terized and symbolic representations (Ivanitskiy et al., 2023). MiniBehaviour is derived from Mini-BEHAVIOR, a fast gridworld benchmark for em-bodied decision-making with navigation and object-interaction actions (Jin et al., 2023). Together, these environments cover complementary planning chal-lenges: safe grid navigation, topology-aware path finding, and state-conditioned object interaction. Following prior work on visual spatial planning, we evaluate executable task success and analyze failures related to state recovery and downstream planning (Wu et al., 2025; Xu et al., 2026). 
+
+Training Data. We construct training data for both stages of MGSD from symbolic annotations of the three environments. For perception-oriented SFT , we use 18K multimodal QA samples, evenly split across FrozenLake, Maze, and MiniBehaviour. Each sample contains a 256 × 256 RGB image, a structured perception question, and an answer deterministically generated from the symbolic en-vironment description, exposing planning-relevant state structure and local action constraints with-out manual annotation. For symbolic-guided on-policy distillation , each example is normalized as 
+
+(I, Q, T, A ), where I is the task image, Q is the visual planning prompt, T is the complete sym-bolic context, and A is the reference executable ac-tion plan. The student receives only (I, Q ), while the text-only teacher receives (T, Q, A ). Answers are normalized into task-specific action formats: FrozenLake and Maze use compact strings over 
+
+L,D,R,U , whereas MiniBehaviour uses comma-separated sequences that may include PICK and 
+
+DROP . All examples are shuffled into mixed-task batches for joint training. More details on procedu-ral generation, verification, and data distributions are provided in Appendix B. 
+
+Baselines. We compare MGSD against pro-prietary and open-source VLMs under the same visual-input/text-output inference interface. Pro-prietary models include Claude-4.5-Haiku (An-thropic, 2025), GPT-4o (Hurst et al., 2024), GPT-5 (Singh et al., 2025), and Gemini models, in-cluding Gemini-2.5-Flash, Gemini-2.5-Pro, and Gemini-3-Flash (Comanici et al., 2025; Google DeepMind, 2025); all are evaluated through API-only prompt-only inference. Open-source mod-els include LLaVA-OneVision-7B (Li et al., 2024), InternVL3-8B (Zhu et al., 2025), Qwen2.5-VL (Bai et al., 2025b), Qwen3-VL (Bai et al., 2025a), and Kimi-K2.5 variants (Kimi Team, 2026), which are evaluated without task-specific training. We addi-tionally report symbolic-input upper bounds, where the model receives explicit symbolic state descrip-tions instead of images. These results are treated as oracle references rather than fair baselines, since they remove the visual state-recovery bottleneck and measure how much gain is possible when per-ception is perfect. 
+
+Training Configuration. Our model is built on Qwen3-VL-4B-Instruct and Qwen3-VL-8B-Instruct. We use a two-stage training strategy: SFT 
+
+(Perception-Oriented Supervised Fine-Tuning) fol-lowed by OPSD (Symbolic-Guided On-Policy Self-Distillation). In SFT, we apply LoRA to struc-tured perception QA data for 3 epochs with learn-ing rate 1 × 10 −4, then merge the adapter into the base model. In OPSD, each prompt produces one on-policy rollout (Zhang et al., 2026); a frozen text-only teacher uses symbolic context and a refer-ence plan to provide token-level distillation signals. We train OPSD for 3 epochs on 8 ×H200 GPUs with rollout batch size 32, maximum prompt length 5,120, maximum response length 2,048. More training details are provided in Appendix A. 
+
+4.2 Main Results 
+
+Table 1 reports the main results. Under the stan-dard visual-input setting, MGSD substantially im-proves over the base models. MGSD-4B raises the macro average of Qwen3-VL-4B-Instruct from 11.2 to 30.5, while MGSD-8B improves Qwen3-VL-8B-Instruct from 17.2 to 35.6 across Frozen-Lake, Maze, and MiniBehaviour. The gains are consistent across all environments, indicating that modality-gap-aware self-distillation improves the intrinsic visual planning ability of the base model without changing its inference interface. As further illustrated in Figure 3, both MGSD models compare favorably with stronger general-purpose VLMs. MGSD-4B outperforms Qwen3-VL-235B-A22B-Instruct, GPT-4o, and Claude-4.5-Haiku in overall average, while MGSD-8B further closes the gap to top-tier proprietary systems like Gemini-2.5-Flash and GPT-5. Compared with the symbolic-input upper bound, MGSD-4B reduces the overall gap to 6.4 points, suggesting that much of the symbolic planning behavior can be trans-ferred to image-conditioned inference. The remain-ing gap, especially on MiniBehaviour, indicates that recovering object affordances and interaction constraints from images is still a major bottleneck. 6Table 1: Main results on visual planning benchmarks. We report task success accuracy across different difficulty levels. Proprietary and open-source models are evaluated under prompt-only visual-input inference without task-specific training. Symbolic-input models are reported as oracle upper bounds because they receive explicit state descriptions instead of images. Task averages are computed within each environment, and Avg. denotes the macro average over environment-level averages.                                                                                                                                                                                                                                                                                                                                                                                                       
+
+> Model FrozenLake Avg. F Maze Avg. M MiniBehaviour Avg. MB Avg.
+> 345678345656
+> Private Models
+> Claude-4.5-Haiku 49 41 29 17 10 625.3 34.8 30.0 21.6 15.2 25.4 12.3 11.1 11.7 20.8 GPT-4o 61 38 28 15 12 13 27.8 38.0 30.4 20.4 16.8 26.4 5.9 9.0 7.5 20.6 GPT-5 92 65 53 30 38 32 51.7 77.2 44.4 26.4 16 41.0 33.3 29.1 31.2 41.3 Gemini-2.5-Flash 92 91 74 58 37 33 64.2 44.0 32.8 22.8 15.6 28.8 27.0 22.1 24.5 39.2 Gemini-2.5-Pro 99 97 81 46 44 48 69.2 41.2 21.6 13.6 8.8 21.3 42.2 29.1 35.7 42.1 Gemini-3-Flash 100 100 99 96 84 97 96.0 75.6 54.4 30.0 16.4 44.1 65.7 56.3 61.0 67.0
+> Open-Source Models
+> LLaVA-OneVision-7B 13 843315.3 7.2 4.0 5.6 4.4 5.3 1.0 1.0 1.0 3.9 InternVL3-8B 30 18 14 10 7914.7 10.0 7.6 7.6 4.0 7.3 1.5 1.0 1.2 7.7 Qwen2.5-VL-3B-Instruct 14 811 7448.0 10.0 5.6 5.6 5.2 6.6 2.0 1.0 1.5 5.4 Qwen2.5-VL-7B-Instruct 18 18 11 87611.3 11.2 6.0 10.8 3.6 7.9 1.0 0.0 0.5 6.6 Qwen3-VL-4B-Instruct 33 29 19 53515.7 24.4 12.0 5.2 4.8 11.6 8.8 3.5 6.2 11.2 Qwen3-VL-8B-Instruct 42 30 27 18 16 13 24.3 35.2 20.0 15.2 8.8 19.8 8.3 7.0 7.7 17.2 Qwen3-VL-32B-Thinking 98 79 59 35 28 21 53.3 54.4 34.0 19.2 17.6 31.3 11.8 12.6 12.2 32.3 Qwen3-VL-235B-A22B-Instruct 77 56 44 20 20 18 39.2 32.0 24.0 22.4 16.4 23.7 13.2 15.6 14.4 25.8 Kimi-K2.5 93 77 75 54 48 51 66.3 58.4 43.6 33.6 20.4 39.0 16.2 16.6 16.4 40.6
+> Our Models MGSD-4B 76 56 60 27 27 24 45.0 48.6 35.6 21.6 14.8 29.7 20.6 13.1 16.8 30.5
+> ∆vs. Qwen3-VL-4B +43 +27 +41 +22 +24 +19 +29.3 +24.2 +23.6 +16.4 +10.0 +18.1 +11.8 +9.6 +10.6 +19.3
+> MGSD-8B 78 61 58 39 35 40 51.8 52.0 36.0 28.4 18.0 33.6 25.0 18.1 21.5 35.6
+> ∆vs. Qwen3-VL-8B +36 +31 +31 +21 +19 +27 +27.5 +16.8 +16.0 +13.2 +9.2 +13.8 +16.7 +11.1 +13.8 +18.4
+> Symbolic-Input Upper Bound
+> Symbolic-Input Qwen3-VL-4B 79 62 51 40 28 26 47.7 50.4 38.4 25.6 17.2 32.9 36.3 24.1 30.2 36.9
+> ∆vs. MGSD-4B +3 +6 -9 +13 +1 +2 +2.7 +1.8 +2.8 +4.0 +2.4 +3.2 +15.7 +11.0 +13.4 +6.4 Symbolic-Input Qwen3-VL-8B 82 72 65 39 43 46 57.8 61.6 46.0 31.6 29.6 42.2 31.9 26.6 29.2 43.1
+> ∆vs. MGSD-8B +4 +11 +7 0+8 +6 +6.0 +9.6 +10.0 +3.2 +11.6 +8.6 +6.9 +8.5 +7.7 +7.5
+
+Table 2: Ablation study of MGSD. All experiments use Qwen3-VL-4B-Instruct. We evaluate standard base-lines, the progressive gains of our two-stage framework, and specific design choices during the on-policy self-distillation (OPSD) stage. 
+
+Method Configuration Acc. Opt. 
+
+Standard Baselines 
+
+Base Model 11.2 10.0 Direct SFT 18.2 15.9 GRPO 16.2 14.7 
+
+Framework Progression 
+
+Cold-Start SFT 17.7 16.0 
+
+MGSD (Full) 30.5 26.6 
+
+MGSD Ablations 
+
+w/o Cold Start 16.8 14.7 w/o Ground Truth 21.3 18.3 w/ EMA Teacher 19.5 17.2 
+
+4.3 Ablation Study 
+
+Table 2 details the ablation of MGSD on the Qwen3-VL-4B-Instruct backbone. We evaluate the standard baselines, the progressive gains of our two-stage framework, and the individual compo-nents within the MGSD. 
+
+Baselines vs. Framework Progression. Stan-dard optimization paradigms yield limited improve-ments on visual spatial planning: Direct SFT achieves 18.2% accuracy, while reinforcement learning via GRPO achieves only 16.2%, strug-gling with the sparse rewards inherent in multi-step visual reasoning. In contrast, our two-stage frame-work demonstrates a clear progressive advantage. The Cold-Start SFT stage alone establishes essen-tial spatial grounding (17.7%), but the critical leap occurs after applying the Symbolic-Guided OPSD stage, which boosts overall task success to 30.5%. This confirms that transferring reasoning behav-ior from a privileged symbolic teacher to student-generated visual trajectories is significantly more effective than standard imitation or sparse-reward reinforcement learning. 
+
+MGSD Design Choices. Our ablation study re-veals several critical design choices. First, bypass-ing the initial perception alignment (‘w/o Cold Start‘) drastically drops accuracy to 16.8%, validat-ing our hypothesis that the student must reliably recover state structures before it can effectively 70 10 20 30 40 
+
+> Performance (%)
+> LLaVA-OV-7B
+> Qwen2.5-7B
+> Qwen2.5-3B
+> InternVL3-8B
+> Qwen3-4B
+> Qwen3-8B
+> GPT-4o
+> Claude Haiku 4.5
+> Qwen3-235B-A22B
+> MGSD-4B
+> MGSD-8B
+> Symbolic-UB-4B
+> Gemini 2.5 Flash
+> GPT-5
+> Gemini 2.5 Pro
+> Symbolic-UB-8B
+> Base Model
+> MGSD
+> Upper Bound (Text-Input)
+> Closed Model
+> Optimal
+> Acc - Optimal gap
+
+Figure 3: Overall Performance on Visual Spatial Planning. MGSD significantly boosts the capabilities of the Qwen3 base models, outperforming several much larger open-source and proprietary VLMs. Diamond markers denote optimal-path accuracy, illustrating the gap between overall task success and perfect reasoning. Symbolic-input models serve as oracle references. 
+
+absorb planning behavior. Second, withholding ref-erence action plans from the teacher (‘w/o Ground Truth‘) reduces performance to 21.3%; without the exact target plan, the teacher’s distillation signal becomes less focused, diluting guidance. Finally, replacing the frozen teacher with an Exponential Moving Average update (‘w/ EMA Teacher‘) de-grades performance to 19.5%, demonstrating that a strictly frozen teacher provides a more stable op-timization target across the modality gap than a dynamically shifting one. 
+
+4.4 Diagnostic Analysis: Decoupling Perception and Planning 
+
+End-to-end task success often conflates two distinct capabilities: recovering the correct symbolic state from pixels (perception) and generating a valid ac-tion sequence over that inferred state (reasoning). To explicitly isolate these factors, we introduce a causal decomposition diagnostic framework eval-uated across three complementary metrics: State F1 (visual state recovery accuracy), Plan on GT 
+
+(pure planning capability given ground-truth sym-bolic states), and E2E Acc. (standard visual-to-action performance). As visualized in Figure 4, standard baselines struggle severely on both fron-tiers. Critically, while the Cold-Start SFT stage drastically improves visual state recovery (x-axis), it fails to translate this enhanced perception into multi-step execution, suffering a notable degrada-tion in pure reasoning capabilities (y-axis). This 20 40 60 80 100   
+
+> Visual State Recovery: State F1 (%)
+> 22.5
+> 25.0
+> 27.5
+> 30.0
+> 32.5
+> 35.0
+> 37.5
+> 40.0
+> Symbolic Planning: Plan on GT (%)
+> improves planning
+> with competitive perception
+> E2E Acc.
+> 10% 20% 35%
+
+Figure 4: Diagnostic Analysis. We decompose vi-sual planning into visual state recovery (x-axis) and pure symbolic planning (y-axis). Bubble size represents End-to-End accuracy. MGSD bridges the perception– reasoning gap, combining competitive state recovery with the highest reasoning capability to achieve the best overall performance. 
+
+perceptual-reasoning mismatch is further under-scored by our upper-bound sanity check ( Base + GT State ), which reveals that even with flawless perception, the base model caps out at a 35.2% success rate due to inherent planning bottlenecks. MGSD effectively bridges this perception-reasoning gap. By preserving competitive state recovery rather than maximizing State F1 alone, while simultaneously achieving the highest pure reasoning capability among all trained models, MGSD yields the dominant end-to-end accuracy, visually manifest as the largest bubble size at the top-right of the frontier. The key to this balanced synergy lies in our training paradigm: by supervis-ing student-generated visual prefixes with a privi-leged symbolic teacher, MGSD learns to both per-ceive actionable states and logically reason over them. Detailed task-level tabular data supporting these insights is provided in Appendix C. 
+
+5 Conclusion 
+
+We introduced MGSD, a two-stage modality-gap-aware self-distillation framework for visual spa-tial planning. By first aligning the visual student with planning-relevant state structures and then distilling symbolic planning behavior on student-generated rollouts, MGSD bridges the gap between image-conditioned perception and symbolic plan-ning. Experiments on FrozenLake, Maze, and MiniBehaviour show substantial gains over the base VLM and a smaller gap to symbolic-input upper bounds. Further diagnostics demonstrate 8improvements in both visual state recovery and optimal-path reasoning, indicating that MGSD strengthens not only what the model perceives, but also how it plans over the inferred state. Overall, our results highlight privileged symbolic supervi-sion as a practical way to improve visual planning while keeping inference purely visual. 
+
+Limitations 
+
+MGSD relies on paired visual and symbolic train-ing data, where symbolic states and reference plans provide privileged teacher supervision. This set-ting is natural for simulator-based environments, but may be harder to obtain in open-world visual planning. Our evaluation also focuses on structured tasks with discrete action spaces, so the results do not fully cover continuous control, dynamic scenes, partial observability, or long-horizon real-world manipulation. Finally, although MGSD improves visual state recovery and optimal-path reasoning, it does not guarantee faithful intermediate reasoning under severe visual ambiguity or distribution shift. Extending the method to noisy or automatically ex-tracted symbolic states and stronger intermediate-state verification remains future work. 
+
+References 
+
+Rishabh Agarwal, Nino Vieillard, Yongchao Zhou, Pi-otr Stanczyk, Sabela Ramos Garea, Matthieu Geist, and Olivier Bachem. 2024. On-policy distillation of language models: Learning from self-generated mistakes. In Proceedings of the International Con-ference on Learning Representations .Anthropic. 2025. Introducing Claude Haiku 4.5. https: //www.anthropic.com/news/claude-haiku-4-5 .Accessed: 2026-05-26. Shuai Bai, Yuxuan Cai, Ruizhe Chen, Keqin Chen, Xionghui Chen, Zesen Cheng, Lianghao Deng, Wei Ding, Chang Gao, Chunjiang Ge, Wenbin Ge, Zhi-fang Guo, Qidong Huang, Jie Huang, Fei Huang, Binyuan Hui, Shutong Jiang, Zhaohai Li, Mingsheng Li, and 2 others. 2025a. Qwen3-VL technical report. 
+
+arXiv preprint arXiv:2511.21631 .Shuai Bai, Keqin Chen, Xuejing Liu, Jialin Wang, Wen-bin Ge, Sibo Song, Kai Dang, Peng Wang, Shijie Wang, Jun Tang, and 1 others. 2025b. Qwen2.5-VL technical report. arXiv preprint arXiv:2502.13923 .Walid Bousselham, Hilde Kuehne, and Cordelia Schmid. 2025. VOLD: Reasoning transfer from LLMs to vision-language models via on-policy distillation. 
+
+arXiv preprint arXiv:2510.23497 .Ethan Chern, Zhulin Hu, Steffi Chern, Siqi Kou, Jiadi Su, Yan Ma, Zhijie Deng, and Pengfei Liu. 2025. Thinking with generated images. arXiv preprint arXiv:2505.22525 .Gheorghe Comanici, E. Bieber, Mike Schaekermann, Ice Pasupat, Noveen Sachdeva, Inderjit S. Dhillon, Marcel Blistein, Ori Ram, Dan Zhang, Evan Rosen, and 1 others. 2025. Gemini 2.5: Pushing the fron-tier with advanced reasoning, multimodality, long context, and next generation agentic capabilities. 
+
+Preprint , arXiv:2507.06261. Alan Dao and Dinh Bach Vu. 2025. AlphaMaze: En-hancing large language models’ spatial intelligence via GRPO. arXiv preprint arXiv:2502.14669 .Yuqian Fu, Haohuan Huang, Kaiwen Jiang, Jiacai Liu, Zhuo Jiang, Yuanheng Zhu, and Dongbin Zhao. 2026. Revisiting on-policy distillation: Empiri-cal failure modes and simple fixes. arXiv preprint arXiv:2603.25562 .Google DeepMind. 2025. Gemini 3 Flash model card. https://storage.googleapis. com/deepmind-media/Model-Cards/ Gemini-3-Flash-Model-Card.pdf . Accessed: 2026-05-26. Yuxian Gu, Li Dong, Furu Wei, and Minlie Huang. 2024. MiniLLM: Knowledge distillation of large language models. In Proceedings of the International Conference on Learning Representations .Haowei Guo, Baolong Bi, Ruicheng Zhang, Bingqian Sun, and Wentao Zhang. 2026. When should the teacher move? temporal coupling and stability in self on-policy distillation. Preprint , arXiv:2606.03532. Yuhang He, Haodong Wu, Siyi Liu, Hongyu Ge, Hange Zhou, Keyi Wu, Zhuo Zheng, Qihong Lin, Zixin Zhong, and Yongqi Zhang. 2026. Rethinking token-level credit assignment in rlvr: A polarity-entropy analysis. arXiv preprint arXiv:2604.11056 .Edward J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang, and Weizhu Chen. 2022. LoRA: Low-rank adaptation of large language models. In Proceedings of the Inter-national Conference on Learning Representations .Aaron Hurst, Adam Lerer, Adam P. Goucher, Adam Perelman, Aditya Ramesh, Aidan Clark, A. J. Ostrow, Akila Welihinda, Alan Hayes, Alec Radford, and 1 others. 2024. GPT-4o system card. arXiv preprint arXiv:2410.21276 .Michael Igorevich Ivanitskiy, Rusheb Shah, Alex F. Spies, Tilman Räuker, Dan Valentine, Can Rager, Lucia Quirke, Chris Mathwin, Guillaume Corlouer, Cecilia Diniz Behn, and Samy Wu Fung. 2023. A configurable library for generating and manipulating maze datasets. arXiv preprint arXiv:2309.10498 .
+
+9Chaoya Jiang, Zhengyuan Yan, Shanbo He, Haiyang Chen, Wei Qian, Lihua Chen, and Zhihong Xie. 2025. Openvlthinker: Complex vision-language reasoning via iterative sft-rl cycles. arXiv preprint arXiv:2503.17352 .Emily Jin, Jiaheng Hu, Zhuoyi Huang, Ruohan Zhang, Jiajun Wu, Li Fei-Fei, and Roberto Martín-Martín. 2023. Mini-BEHAVIOR: A procedurally generated benchmark for long-horizon decision-making in em-bodied ai. arXiv preprint arXiv:2310.01824 .Jiachun Jin, Zetong Zhou, Xiao Yang, Hao Zhang, Pengfei Liu, Jun Zhu, and Zhijie Deng. 2026. Laten-tUM: Unleashing the potential of interleaved cross-modal reasoning via a latent-space unified model. 
+
+arXiv preprint arXiv:2604.02097 .Kimi Team. 2026. Kimi K2.5: Visual agentic intelli-gence. arXiv preprint arXiv:2602.02276 .Bo Li, Yuanhan Zhang, Dong Guo, Renrui Zhang, Feng Li, Hao Zhang, Kaichen Zhang, Peiyuan Zhang, Yan-wei Li, Ziwei Liu, and Chunyuan Li. 2024. LLaVA-OneVision: Easy visual task transfer. arXiv preprint arXiv:2408.03326 .Chengzu Li, Wenshan Wu, Huanyu Zhang, Yan Xia, Shaoguang Mao, Li Dong, Ivan Vuli´ c, and Furu Wei. 2025. Imagine while reasoning in space: Multimodal visualization-of-thought. In Proceedings of the Inter-national Conference on Machine Learning .Gongye Liu, Bo Yang, Yida Zhi, Zhizhou Zhong, Lei Ke, Didan Deng, Han Gao, Yongxiang Huang, Kai-hao Zhang, Hongbo Fu, and 1 others. 2026. Beyond vlm-based rewards: Diffusion-native latent reward modeling. arXiv preprint arXiv:2602.11146 .Matteo Merler, Nicola Dainese, Minttu Alakuijala, Gio-vanni Bonetta, Pietro Ferrazzi, Yu Tian, Bernardo Magnini, and Pekka Marttinen. 2025. Viplan: A benchmark for visual planning with symbolic pred-icates and vision-language models. arXiv preprint arXiv:2505.13180 .Yingqian Min, Kun Zhou, Yifan Li, Yuhuan Wu, Han Peng, Yifan Du, Wayne Xin Zhao, Min Yang, and Ji-Rong Wen. 2026. Improving vision-language mod-els with perception-centric process reward models. 
+
+arXiv preprint arXiv:2604.24583 .Hayeon Oh. 2025. Laviplan: Language-guided vi-sual path planning with rlvr. arXiv preprint arXiv:2507.12911 .Hao Shao, Shengju Qian, Han Xiao, Guanglu Song, Zhuofan Zong, Letian Wang, Yu Liu, and Hong-sheng Li. 2024. Visual cot: Advancing multi-modal language models with a comprehensive dataset and benchmark for chain-of-thought reasoning. arXiv preprint arXiv:2403.16999 .Aaditya K. Singh, A. Fry, Adam Perelman, A. Tart, A. Ganesh, and 1 others. 2025. OpenAI GPT-5 Sys-tem Card. Preprint , arXiv:2601.03267. Zhaochen Su, Peng Xia, Hangyu Guo, Zhenhua Liu, Yan Ma, Xiaoye Qu, Jiaqi Liu, Yanshu Li, Kaide Zeng, Zhengyuan Yang, Linjie Li, Yu Cheng, Heng Ji, Junxian He, and Yi R. Fung. 2025. Think-ing with images for multimodal reasoning: Foun-dations, methods, and future frontiers. arXiv preprint arXiv:2506.23918 .Qiucheng Wu, Handong Zhao, Michael Saxon, Trung Bui, William Yang Wang, Yang Zhang, and Shiyu Chang. 2025. VSP: Diagnosing the dual challenges of perception and reasoning in spatial planning tasks for MLLMs. In Proceedings of the IEEE/CVF In-ternational Conference on Computer Vision , pages 2270–2280. Yi Xu, Chengzu Li, Han Zhou, Xingchen Wan, Caiqi Zhang, Anna Korhonen, and Ivan Vuli´ c. 2026. Visual planning: Let’s think only with images. In Proceed-ings of the International Conference on Learning Representations .Yuexiang Zhai, Hao Bai, Zipeng Lin, Jiayi Pan, Sheng-bang Tong, Yifei Zhou, Alane Suhr, Saining Xie, Yann LeCun, Yi Ma, and Sergey Levine. 2024. Fine-tuning large vision-language models as decision-making agents via reinforcement learning. arXiv preprint arXiv:2405.10292 .Ruicheng Zhang, Kaixi Cong, Jun Zhou, Zhizhou Zhong, Zunnan Xu, Shuiyang Mao, Wei Liu, and Xiu Li. 2026. Kvpo: Ode-native grpo for autore-gressive video alignment via kv semantic exploration. 
+
+arXiv preprint arXiv:2605.14278 .Ruicheng Zhang, Yu Sun, Zeyu Zhang, Jinai Li, Xiaofan Liu, Hoi Fan Au, Haowei Guo, and Puxin Yan. 2025a. Marl-mambacontour: Unleashing multi-agent deep reinforcement learning for active contour optimiza-tion in medical image segmentation. In Proceedings of the 33rd ACM International Conference on Mul-timedia , MM ’25, page 7815–7824, New York, NY, USA. Association for Computing Machinery. Ruicheng Zhang, Mingyang Zhang, Jun Zhou, Zhangrui Guo, Xiaofan Liu, Zunnan Xu, Zhizhou Zhong, Puxin Yan, Haocheng Luo, and Xiu Li. 2025b. Mind-v: Hierarchical video generation for long-horizon robotic manipulation with rl-based physical align-ment. arXiv preprint arXiv:2512.06628 .Siyan Zhao, Zhihui Xie, Mengchen Liu, Jing Huang, Guan Pang, Feiyu Chen, and Aditya Grover. 2026. Self-distilled reasoner: On-policy self-distillation for large language models. Preprint , arXiv:2601.18734. Jinguo Zhu, Weiyun Wang, Zhe Chen, Zhaoyang Liu, Shenglong Ye, Lixin Gu, Hao Tian, Yuchen Duan, Weijie Su, Jie Shao, and 1 others. 2025. InternVL3: Exploring advanced training and test-time recipes for open-source multimodal models. arXiv preprint arXiv:2504.10479 .
+
+10 A Training Details 
+
+We train MGSD in two stages. First, perception-oriented SFT adapts the model with LoRA on struc-tured multimodal QA data derived from symbolic environment annotations; the resulting adapter is merged into the base model to initialize the next stage. LoRA provides parameter-efficient adap-tation by freezing pretrained weights and adding trainable low-rank updates (Hu et al., 2022). Sec-ond, symbolic-guided on-policy self-distillation trains the visual student with rollouts sampled from image-conditioned prompts, while a frozen text-only teacher uses symbolic contexts and reference action plans to provide token-level distillation sig-nals. Rule-based rewards are used only for monitor-ing and validation. Table 3 and Table 4 summarize the main hyperparameters for the two stages. 
+
+Table 3: SFT training hyperparameters.                    
+
+> Setting Value
+> Backbone Qwen3-VL-4B Initialization Base model Training tasks 3 tasks Training samples 18K Validation samples 2% held-out Tuning method LoRA Precision bfloat16 Epochs 3Learning rate 1×10 −4
+> Scheduler cosine Warmup ratio 0.1 LoRA rank / alpha 8 / 16 LoRA dropout 0.0 Max sequence length 2,048 Validation frequency every 100 steps Checkpoint frequency every 200 steps
+
+B Data Construction Details 
+
+To systematically address the perception–reasoning modality gap, we construct the FrozenLake, Maze, and MiniBehaviour datasets by strictly pairing raw visual observations with deterministic symbolic states. This design guarantees that the privileged teacher supervision is grounded in verified graph-search solutions rather than heuristic rollouts or noisy model-generated text. 
+
+B.1 Generation Principles 
+
+Our procedural generation pipeline enforces four invariants to ensure label consistency and data qual-ity: 1. Reproducibility: All environment instances are 
+
+Table 4: OPSD training hyperparameters.                   
+
+> Setting Value
+> Backbone Qwen3-VL-4B Initialization SFT-merged model Training tasks 3 tasks Training samples 18K Validation samples 1.2K Tuning method On-policy distillation Teacher frozen text-only teacher Precision bfloat16 Epochs 3Max prompt length 5,120 Max response length 2,048 Rollouts per prompt 1Rollout batch size 32 Actor global batch size 32 Validation frequency every 20 steps Checkpoint frequency every 20 steps Number of GPUs 8
+
+procedurally generated using deterministic ran-dom seeds, uniquely defined by task level, diffi-culty bucket, and sampling index. 2. Guaranteed Solvability: Candidate states un-dergo rigorous graph-based validation. Solu-tions are computed via exact shortest-path algo-rithms; any candidate lacking a complete, legal solution is discarded. 3. Action Feasibility: Generated trajectories are strictly verified against environment transition dynamics. Move actions must be locally valid, interactions must satisfy explicit state precon-ditions, and terminal states must strictly align with task success criteria. 4. Balanced Complexity: To prevent distribution skew toward trivial or overly complex paths, we apply rejection sampling across predefined diffi-culty buckets. Intra-level deduplication (via spa-tial layout and key-state hashing) further maxi-mizes dataset diversity. 
+
+B.2 Environment-Specific Construction 
+
+• FrozenLake: Formulated as an N × N grid navigation task. Obstacle density is controlled by modulating the frozen-cell sampling probabil-ity. We extract a graph of safe traversable cells and apply Breadth-First Search (BFS) to find the shortest path from start to goal, ensuring the ref-erence trajectory strictly avoids all hazard tiles. • Maze: Constructed using a “perfect maze” topol-ogy via randomized Depth-First Search (DFS). 11 Perfect mazes are fully connected and acyclic, guaranteeing a unique simple path between any two coordinates. This topological constraint is vital for reasoning supervision, as it entirely elim-inates optimal-path ambiguity. Difficulty is buck-eted by the minimum path length. • MiniBehaviour: Modeled as a two-stage em-bodied interaction task that requires evaluating dynamic reachability. Prior to the PICK action, both the target object (printer) and the destination region (table) act as non-traversable obstacles. Executing a valid PICK removes the object and updates the obstacle mask. The generator runs BFS independently for the start-to-printer and printer-to-table sub-tasks, ensuring sequential ad-jacency constraints are satisfied before stitching the actions into a unified trajectory. 
+
+B.3 Dataset Statistics and Distribution 
+
+To ensure that the visual environments encountered during cold-start perception alignment match the complexity of those used for reasoning distillation, both the SFT and OPSD stages sample from the identical underlying distribution of 18,000 unique environment configurations (rendered as 256 × 256 
+
+RGB images): • FrozenLake (6,000 instances): Uniformly dis-tributed across map levels 3 through 8 (1,000 per level). Each level is evenly stratified across five frozen-cell probability buckets (200 per bucket). • Maze (6,000 instances): Uniformly distributed across map levels 3 through 6 (1,500 per level). Each level is evenly stratified across easy, medium, and hard path-length buckets (500 per bucket). • MiniBehaviour (6,000 instances): Split equally between map levels 5 and 6 (3,000 per level). Each level is evenly stratified across easy, medium, and hard difficulty buckets (1,000 per bucket). 
+
+B.4 SFT Target Formulation 
+
+Rather than sampling separate states, the cold-start SFT dataset deterministically converts the verified symbolic annotations of the 18,000 training in-stances into structured QA pairs. Because these re-gression targets are algorithmically extracted from the underlying state engine, they provide noise-free perception grounding. • FrozenLake: Requires extracting grid size, player coordinates, goal coordinates, and an ex-haustive list of hazardous hole coordinates. • Maze: Requires parsing fine-grained topolog-ical structure by generating a complete open-direction reachability table for every valid cell based on the visual walls. • MiniBehaviour: Requires grounding object co-ordinates, occupied regions, dynamically cal-culated legal adjacency sets, and current bi-nary interaction affordances (e.g., verifying if 
+
+PICK /DROP is legally permitted). 
+
+B.5 Held-out Validation 
+
+The validation set comprises 1,200 instances (600 FrozenLake, 400 Maze, 200 MiniBehaviour). These are generated using identical dynamics and difficulty criteria but are strictly isolated from the training corpus to provide a robust evaluation of out-of-distribution reasoning and perception. 
+
+C Diagnostic Experiment Details 
+
+This section provides the detailed setup, metric def-initions, and task-level breakdowns for the causal decomposition diagnostic discussed in Section 4.4. 
+
+Dataset Discrepancy. The End-to-End (E2E) ac-curacies reported here differ from Table 1. By design, isolating pure reasoning ( Plan on GT )requires perfectly paired ground-truth symbolic states, which standard open benchmarks lack. Con-sequently, these diagnostic experiments exclu-sively evaluate our 1,200 procedurally generated validation samples (600 FrozenLake, 400 Maze, 200 MiniBehaviour) to ensure flawless perception-reasoning alignment. 
+
+C.1 Experimental Design and Metrics 
+
+To diagnose whether visual spatial planning fail-ures stem from perception errors or reasoning bot-tlenecks, we decouple the end-to-end evaluation into three complementary metrics: • State F1: Evaluates the model’s ability to vi-sually recover the task’s structural state. For FrozenLake, this includes grid size, agent/goal coordinates, and the exact hole set. For Maze, it requires the precise open-direction table (topol-ogy) for every cell. For MiniBehaviour, it re-quires object locations, table cells, and valid 
+
+PICK /DROP affordances. 12 Table 5: Detailed Diagnostic Results. This table provides the exact quantitative data corresponding to the visual analysis in Section 4.4. It isolates the model’s ability to recover actionable states from images ( State F1 ) versus its ability to plan given perfect text states ( Plan on GT ). MGSD consistently provides the best balance across all individual tasks, leading to the highest End-to-End accuracy ( E2E Acc. ). Values are percentages (%).                                                                            
+
+> Model FrozenLake Maze MiniBehaviour Macro Average
+> State F1 Plan on GT E2E Acc. State F1 Plan on GT E2E Acc. State F1 Plan on GT E2E Acc. State F1 Plan on GT E2E Acc. Base 37.4 44.7 11.2 26.6 40.5 14.0 23.7 20.5 2.5 29.2 35.2 9.2 Direct SFT 29.6 38.7 18.5 13.0 36.5 17.2 24.6 16.5 9.0 22.4 30.6 14.9 Cold-Start SFT 41.0 32.2 20.7 34.0 31.2 15.8 54.4 9.5 8.0 43.1 24.3 14.8
+> MGSD (Ours) 40.9 42.3 39.3 43.2 44.5 35.8 37.4 27.0 22.0 40.5 37.9 32.4
+> Upper Bound (Sanity Check)
+> Base + GT State 100.0 44.7 44.7 100.0 40.5 40.5 100.0 20.5 20.5 100.0 35.2 35.2
+
+• Plan on GT: The model is provided strictly with the text-based ground-truth symbolic state (no images) and must output a plan. This iso-lates the model’s pure reasoning capabilities by removing visual perception errors. • E2E Acc.: The standard end-to-end evaluation where the model receives an image and directly outputs an executable action plan. 
+
+C.2 Detailed Task-Level Results 
+
+Table 5 presents the full causal decomposition across all three tasks alongside the macro aver-age. The task-level breakdowns reinforce our main claims regarding the perception–reasoning modal-ity gap. 
+
+Perception Gap: All tested base VLMs strug-gle to recover perfectly actionable symbolic states from images. In Maze, where fine-grained topo-logical extraction is required, visual state recovery is particularly challenging. However, both Cold-Start SFT and MGSD drastically improve State F1 across all tasks compared to the Base and Di-rect SFT models, proving that dedicated perception alignment is crucial. 
+
+Reasoning Gap: As established in the main text, providing the Base model with ground-truth symbolic text (Base + GT State) only yields a 35.2% macro success rate. This proves that even with perfect perception, VLMs lack the intrinsic reasoning to consistently generate valid spatial plans. MGSD achieves the highest Plan on GT per-formance among the trained models, specifically reaching 42.3% on FrozenLake, 44.5% on Maze, and 27.0% on MiniBehaviour. Crucially, the task-level data illustrates why solely optimizing for perception is insufficient. In MiniBehaviour, Cold-Start SFT alone achieves the highest perception accuracy (54.4% State F1) but fails severely at reasoning (9.5% Plan on GT), re-sulting in a poor E2E accuracy (8.0%). MGSD demonstrates the best synergy: by distilling reason-ing behaviors directly onto the student’s visual pre-fixes, it balances high-quality visual state recovery with robust reasoning, achieving state-of-the-art End-to-End accuracy across all three environments. 
+
+D Case Study 
+
+# FrozenLake 
+
+Input Image 
+
+Question and Ground Truth 
+
+Question: Analyze the maze and produce a safe action plan from the start to the goal without stepping into any hole. 
+
+Ground-Truth: URRURR 
+
+Qwen3-VL-4B-Instruct Reasoning Trajectory 
+
+The map size is 4x4. The player starts at (3,3), and the goal is at (3,3). The H tiles are at: (0,0); (1,0); (1,3); (2,3); (3,2). The player is already at the goal, so no movement is needed. <answer></answer> 
+
+MGSD-4B Reasoning Trajectory 
+
+The map size is 6x6. The player starts at (4,1), and the goal is at (2,5). The H tiles are at: (0,0); (2,0); (3,4); (4,3); (4,5). To safely reach the goal, the route moves upward first and then proceeds rightward through safe frozen tiles, reaching the goal at (2,5) without stepping into any hole. So the final answer is 
+
+<answer> URRURR </answer> 
+
+13 Maze 
+
+Input Image 
+
+Question and Ground Truth 
+
+Question: Analyze the maze image and produce a valid action plan from the player to the goal without crossing any wall. 
+
+Ground-Truth: LLLU 
+
+Qwen3-VL-4B-Instruct Reasoning Trajectory 
+
+The map size is 4x4. The player starts at (3,3), and the goal is at (0,0). Open directions: (3,3): up; (0,0): right, down; (0,1): right, down; (1,0): right, down; (2,0): right, down; (3,0): up; (0,2): right, down; (1,2): right, down; (2,2): right, down; (3,2): up; (0,3): left, down; (1,3): left, down; (2,3): left, down; (3,3): up. To reach the goal, we move up from (3,3) to (2,3), then left to (2,2), then up to (1,2), then left to (1,1), then up to (0,1), then left to (0,0), and all moves follow open directions without crossing any wall. So the final answer is <answer>ULULU</answer> 
+
+MGSD-4B Reasoning Trajectory 
+
+The map size is 5x5. The player starts at (4,3), and the goal is at (3,0). Open directions: (0,0): right; (0,1): right, left; (0,2): down, left; (0,3): down; (0,4): down; (1,0): right; (1,1): right, down, left; (1,2): up, down, left; (1,3): up, right; (1,4): up, down, left; (2,0): down; (2,1): up, down; (2,2): up, down; (2,3): right; (2,4): up, down, left; (3,0): up, right, down; (3,1): up, left; (3,2): up, right; (3,3): down, left; (3,4): up, down; (4,0): up, right; (4,1): right, left; (4,2): right, left; (4,3): up, right, left; (4,4): up, left. To reach the goal, we move left from (4,3) to (4,2), then left to (4,1), then left to (4,0), then up to (3,0), and all moves follow open directions without crossing any wall. So the final answer is <answer>LLLU</answer> 
+
+# Minibehaviour 
+
+Input Image 
+
+Question and Ground Truth 
+
+Question: Analyze the grid image and produce a valid action plan. The agent must go to the printer, pick it up, go to the table, and drop the printer. 
+
+Ground-Truth: L,U,L,PICK,D,DROP 
+
+Qwen3-VL-4B-Instruct Reasoning Trajectory 
+
+The grid size is 4x4. The agent is at (3,2), the printer is at (1,1), and the table is at (1,2). To complete the task, we move up from (3,2) to (2,2), then left to (2,1), then up to (1,1) to PICK (adjacent), then move right to (1,2) to DROP (adjacent to table). This satisfies all rules. 
+
+<answer>U,L,U,PICK,R,DROP</answer> 
+
+MGSD-4B Reasoning Trajectory 
+
+The grid size is 6x6. The agent starts at (2,4), the printer is at (0,2), and the table cells are: (3,0); (3,1); (3,2); (4,0); (4,1); (4,2). To complete the task, we move up from (2,4) to (1,4), then up to (0,4) — but this is not adjacent to the printer. Instead, we must move left from (2,4) to (2,3), then up to (1,3), then left to (1,2), which is adjacent to the printer at (0,2), then PICK legally; after PICK, we move down to (2,2), which is adjacent to table cell (3,2), then DROP legally. So the final answer is <answer>L,U,L,PICK,D,DROP</answer> 
+
+E Prompts 
+
+In this section, we provide the exact prompt templates used for both the privileged symbolic teacher and the visual student across our three evaluated environments: FrozenLake, Maze, and MiniBehaviour. 
+
+E.1 FrozenLake Teacher Prompt. The teacher receives the privi-leged symbolic context (e.g., grid size, agent po-sition, goal location, hazard coordinates) and the reference action plan, but no image. 14 FrozenLake: Teacher Prompt 
+
+You are a FrozenLake text-only planning teacher. You will receive a Teacher Text Context that contains a fully observable symbolic FrozenLake map, the start and goal coor-dinates, hole coordinates, and a reference action plan. Use the symbolic context to reason about the safe route. Do not refer to images. Task rules: 1. The grid uses 0-based (row, column) coordinates. 2. S is the player start, G is the goal, H is a hole, and F is safe frozen land. 3. Valid actions are L (Left), D (Down), R (Right), and U (Up). 4. Moving into a hole fails. The route should finish at G. Output requirements: 1. First, briefly state the map size, the positions of the Player and Goal, and the positions of all H tiles. 2. Next, give exactly one short sentence that states the planned route at a high level and simulate mentally and verify reaches Goal without hitting any hole. 3. Do not narrate the solution step by step. Do not list repeated moves, repeated coordi-nates, or intermediate states outside <an-swer>. 4. End with exactly one <an-swer>...</answer> block containing only the complete action plan, for example: <an-swer>LLRUD</answer> Example Format: The map size is 4x4. The player starts at (3,1), and the goal is at (1,2). The H tiles are at: (2,2); (2,3). To safely reach the goal, we move from (3,1) up to (2,1), then up again to (1,1), and fi-nally right to reach the goal at (1,2), avoid-ing all H tiles. So the final answer is <an-swer>UUR</answer> 
+
+Student Prompt. In contrast to the teacher, the visual student receives only the original image and the task instruction. FrozenLake: Student Prompt You are a FrozenLake solver. Task: Analyze the maze and produce a safe action plan from the start to the goal without stepping into any hole. Rules: 1. Valid actions are L (Left), D (Down), R (Right), and U (Up). 2. Frozen tiles are non-slippery. 3. Keep the reasoning brief and necessary only. 4. When mention-ing positions, use 0-based (row, column) coordinates only. Output requirements: 1. First, briefly state the map size, the positions of the Player and Goal, and the positions of all H tiles. 2. Next, give exactly one short sentence that states the planned route at a high level and simulate mentally and verify reaches Goal without hitting any hole. 3. Do not narrate the solution step by step. Do not list repeated moves, repeated coordi-nates, or intermediate states outside <an-swer>. 4. End with exactly one <an-swer>...</answer> block containing only the complete action plan, for example: <an-swer>LLRUD</answer> Example Format: The map size is 4x4. The player starts at (3,1), and the goal is at (1,2). The H tiles are at: (2,2); (2,3). To safely reach the goal, we move from (3,1) up to (2,1), then up again to (1,1), and fi-nally right to reach the goal at (1,2), avoid-ing all H tiles. So the final answer is <an-swer>UUR</answer> Please generate the action plan for the fol-lowing maze: <TEST-IMAGE> 
+
+E.2 Maze Teacher Prompt. The teacher receives the sym-bolic maze topology, start/end coordinates, and the reference trajectory. 15 Maze: Teacher Prompt 
+
+You are a Maze text-only planning teacher. You will receive a Teacher Text Context that contains the maze size, start and target co-ordinates, an open-direction table for ev-ery cell, an optional wall-mask table, and a reference action plan. Use only this text context to solve the maze. Do not refer to images. Task rules: 1. The grid uses 0-based (row, column) coordinates. 2. Valid actions are L (Left), D (Down), R (Right), and U (Up). 3. A move is legal only when the current cell lists that direction as open. 4. The route should finish at the target without crossing any wall. Output requirements: 1. First, briefly state the map size, the positions of the Player and Goal, and an open-direction table for every cell. 2. Next, give exactly one short sen-tence that states the planned route at a high level and mentally verifies that it reaches the Goal without crossing walls. 3. Do not narrate the solution step by step. Do not list repeated moves, repeated coordinates, or intermediate states outside <answer>. 4. End with exactly one <answer>...</answer> block containing only the complete action plan using L, D, R, U, for example: <an-swer>DDRUR</answer> Example Format: The map size is 2x2. The player starts at (0,0), and the goal is at (1,1). Open directions: (0,0): right, down; (0,1): left, down; (1,0): up; (1,1): up. To reach the goal, we move right from (0,0) to (0,1), then down to (1,1), and both moves follow open directions without crossing any wall. So the final answer is <answer>RD</answer> 
+
+Student Prompt. The student receives the vi-sual maze rendering and the standard planning prompt. Maze: Student Prompt You are a Maze solver. Task: Analyze the maze image and produce a valid action plan from the player to the goal without crossing any wall. Image rules: 1. The yellow dot is the Player. 2. The blue dot is the Goal. 3. White re-gions are traversable corridors. 4. Black boundaries are walls and cannot be crossed. Rules: 1. Valid actions are L (Left), D (Down), R (Right), and U (Up). 2. The player moves one grid cell per action. 3. Keep the reasoning brief and necessary only. 4. When mentioning positions, use 0-based (row, column) coordinates only. Output requirements: 1. First, briefly state the map size, the positions of the Player and Goal, and an open-direction table for every cell. 2. Next, give exactly one short sen-tence that states the planned route at a high level and mentally verifies that it reaches the Goal without crossing walls. 3. Do not narrate the solution step by step. Do not list repeated moves, repeated coordinates, or intermediate states outside <answer>. 4. End with exactly one <answer>...</answer> block containing only the complete action plan using L, D, R, U, for example: <an-swer>DDRUR</answer> Example Format: The map size is 2x2. The player starts at (0,0), and the goal is at (1,1). Open directions: (0,0): right, down; (0,1): left, down; (1,0): up; (1,1): up. To reach the goal, we move right from (0,0) to (0,1), then down to (1,1), and both moves follow open directions without crossing any wall. So the final answer is <answer>RD</answer> Please generate the action plan for the fol-lowing maze: <TEST-IMAGE> 
+
+E.3 MiniBehaviour Teacher Prompt. The teacher receives the explicit state dictionary (objects, states, agent inventory) and the executable sequence of interaction actions. 16 MiniBehaviour: Teacher Prompt 
+
+You are a MiniBehaviour text-only planning teacher. You will receive a Teacher Text Context that contains the grid size, agent position, printer position, table cells, printer-adjacent cells, table-adjacent cells, initial legal moves, a text grid, and a reference action plan. Use only this text context to solve the task. Do not refer to images. Task rules: 1. The grid uses 0-based (row, column) coordinates. 2. Valid movement actions are L (Left), D (Down), R (Right), and U (Up). 3. The agent cannot enter any table cell. The printer cell is blocked before PICK, but after PICK the printer is removed and that cell becomes traversable. 4. PICK is legal only when the agent is adjacent to the printer. 5. DROP is legal only after PICK, when the agent is adjacent to the table. 6. The plan must perform PICK before DROP and finish immediately after a legal DROP. Output requirements: 1. First, briefly state the grid size and the positions of the Agent, Printer, and Table. 2. Next, give exactly one short sentence that states the planned route at a high level and mentally verifies that PICK and DROP are legal. 3. Do not narrate the solution step by step. Do not list repeated moves, repeated coordinates, or intermediate states outside <answer>. 4. End with exactly one <answer>...</answer> block containing only comma-separated actions, for example: <an-swer>L,L,PICK,D,D,R,DROP</answer> Example Format: The grid size is 5x5. The agent starts at (4,0), the printer is at (3,1), and the table cells are: (1,2); (1,3); (1,4); (2,2); (2,3); (2,4). To complete the task, we move up from (4,0) to (3,0), which is adjacent to the printer at (3,1), then PICK legally; after PICK, we move right into the now-empty printer cell (3,1), then right to (3,2), which is adjacent to table cell (2,2), and DROP legally. So the final answer is <answer>U,PICK,R,R,DROP</answer> 
+
+Student Prompt. The student receives the em-bodied visual observation and the natural language task goal. MiniBehaviour: Student Prompt You are a MiniBehaviour solver. Task: Analyze the grid image and produce a valid action plan. The agent must go to the printer, pick it up, go to the table, and drop the printer. Image rules: 1. The red object is the Agent. 2. The white marker is the Printer. 3. The tan block is the Table. 4. Black cells are free floor cells. Rules: 1. Valid move actions are L (Left), D (Down), R (Right), and U (Up). 2. Valid interaction actions are PICK and DROP. 3. The agent moves one grid cell per move ac-tion. 4. The agent cannot enter table cells. The printer cell is blocked before PICK, but after PICK the printer is removed and that cell becomes traversable. 5. PICK is valid only when the agent is in a cell adjacent to the printer. 6. DROP is valid only after PICK, when the agent is in a cell adjacent to the table. 7. Keep the reasoning brief and necessary only. 8. When mentioning positions, use 0-based (row, column) coor-dinates only. Output requirements: 1. First, briefly state the grid size and the positions of the Agent, Printer, and Table. 2. Next, give exactly one short sentence that states the planned route at a high level and mentally verifies that PICK and DROP are legal. 3. Do not narrate the solution step by step. Do not list repeated moves, repeated coordinates, or intermediate states outside <answer>. 4. End with exactly one <answer>...</answer> block containing only comma-separated actions, for example: <an-swer>L,L,PICK,D,D,R,DROP</answer> Example Format: The grid size is 5x5. The agent starts at (4,0), the printer is at (3,1), and the table cells are: (1,2); (1,3); (1,4); (2,2); (2,3); (2,4). To complete the task, we move up from (4,0) to (3,0), which is adjacent to the printer at (3,1), then PICK legally; after PICK, we move right into the now-empty printer cell (3,1), then right to (3,2), which is adjacent to table cell (2,2), and DROP legally. So the final answer is <answer>U,PICK,R,R,DROP</answer> Please generate the action plan for the fol-lowing MiniBehaviour grid: <TEST-IMAGE> 17
