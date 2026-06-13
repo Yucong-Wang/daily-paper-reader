@@ -1,0 +1,216 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-13T21:16:31.489344+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 1,
+    "deep_cap": 6,
+    "deep_selected": 1,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2606.10903v1",
+      "source": "arxiv",
+      "title": "AgniNav: Configuration-Driven Cross-Embodiment Local Planning for Robot Navigation",
+      "abstract": "Monocular local navigation is attractive for lightweight robots, but existing vision-based policies often couple perception to a specific body, camera height, and footprint, making transfer from wheeled bases to legged platforms dependent on retraining or active depth hardware. This paper introduces AgniNav, a configuration-driven local navigation framework that standardizes cross-embodiment transfer at the collision-envelope level. Each robot is specified by a measurable four-parameter safety envelope: collision-relevant height, front length, rear length, and half width. The height parameter conditions an image-to-scan network to predict a one-dimensional, collision-relevant pseudo-laserscan from a monocular color image, while the remaining footprint parameters configure a dimension-aware local planner for collision checking. Training uses height-conditioned column-minimum scan labels generated from paired color-depth data, allowing the same image to supervise different safety envelopes without collecting robot-specific data. To the best of our knowledge, AgniNav is the first monocular local-navigation framework that jointly conditions perception and planning on a shared collision-envelope configuration for zero-retraining deployment across wheeled, quadruped, and humanoid platforms. Real-robot experiments on a Turtlebot2, Unitree Go2, and Accelerated Evolution K1 achieve 39/40, 18/20, and 18/20 successes with 0/40, 1/20, and 2/20 collisions, respectively, while running at 30 Hz on Jetson Orin.",
+      "authors": [
+        "Tianhao Zang",
+        "Siwei Cheng",
+        "Haidong Huang",
+        "Shanze Wang",
+        "Wei Zhang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-09T14:13:45+00:00",
+      "link": "https://arxiv.org/pdf/2606.10903v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "cross-embodiment local navigation",
+      "llm_evidence_cn": "跨形态局部导航",
+      "llm_evidence": "跨形态局部导航",
+      "canonical_evidence": "跨形态局部导航",
+      "llm_tldr_en": "AgniNav introduces a configuration-driven local navigation framework that standardizes cross-embodiment transfer using a 4-parameter safety envelope, enabling monocular navigation on diverse robots without retraining.",
+      "llm_tldr_cn": "针对现有视觉导航策略与机器人硬件紧密耦合的问题，提出AgniNav框架，通过四参数安全包络标准化跨形态迁移，利用单目图像预测碰撞相关的伪激光扫描，实现不同底盘机器人上的零额外训练导航。实验表明该方法在多种机器人上有效，促进了导航算法的泛化。",
+      "llm_tldr": "针对现有视觉导航策略与机器人硬件紧密耦合的问题，提出AgniNav框架，通过四参数安全包络标准化跨形态迁移，利用单目图像预测碰撞相关的伪激光扫描，实现不同底盘机器人上的零额外训练导航。实验表明该方法在多种机器人上有效，促进了导航算法的泛化。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.12352v1",
+      "source": "arxiv",
+      "title": "CHORUS: Decentralized Multi-Embodiment Collaboration with One VLA Policy",
+      "abstract": "Multi-robot collaboration allows robots to efficiently take on a wide range of tasks, from moving a couch through a doorway to assembling structures on a construction site. However, achieving such coordination in mobile multi-robot settings remains challenging: centralized methods conditioned on the combined observations of a team scale poorly with team size, and decentralized methods that train one policy per robot often require explicit alignment procedures or information sharing at inference time to overcome partial observability. Our key insight is that the visuomotor priors of pretrained vision-language-action (VLA) models should enable reactive, decentralized collaboration from each robot's local observations alone, without these inference-time assumptions. We propose CHORUS, a framework that adapts a single VLA backbone to control diverse, multi-robot teams. At inference time, each robot runs an independent copy of CHORUS, conditioned only on its own observations and a robot-identifying prompt. In real-world experiments including mobile tape measurement, library book handovers, and laundry basket lifting, CHORUS achieves a 64% point improvement over decentralized, from-scratch models, improves reactivity to teammate behavior by 40% points, and outperforms centralized baselines. Together, these results show that a shared VLA backbone is capable of achieving decentralized multi-robot collaboration, without per-robot policies or inter-robot communication at inference.",
+      "authors": [
+        "Ria Doshi",
+        "Tian Gao",
+        "Annie Chen",
+        "Chelsea Finn",
+        "Jeannette Bohg"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-10T17:26:08+00:00",
+      "link": "https://arxiv.org/pdf/2606.12352v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "multi-robot navigation with VLA policy",
+      "llm_evidence_cn": "多机器人导航与VLA策略",
+      "llm_evidence": "多机器人导航与VLA策略",
+      "canonical_evidence": "多机器人导航与VLA策略",
+      "llm_tldr_en": "CHORUS enables decentralized multi-robot collaboration using a single VLA policy, achieving scalable coordination without inference-time communication.",
+      "llm_tldr_cn": "针对多机器人协作中集中式方法扩展性差和分布式方法需信息共享的问题，提出CHORUS框架，利用预训练视觉-语言-动作模型的内在视觉运动先验，实现从局部观测直接进行去中心化协作。实验表明该方法在多种协作任务上有效，无需推理时通信，为多机器人导航协作提供了新范式。",
+      "llm_tldr": "针对多机器人协作中集中式方法扩展性差和分布式方法需信息共享的问题，提出CHORUS框架，利用预训练视觉-语言-动作模型的内在视觉运动先验，实现从局部观测直接进行去中心化协作。实验表明该方法在多种协作任务上有效，无需推理时通信，为多机器人导航协作提供了新范式。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.07338v1",
+      "source": "arxiv",
+      "title": "VeriDrive: Verifiable Counterfactual Supervision for Cost-Efficient Vision-Language Planning",
+      "abstract": "Vision-language driving models increasingly use reasoning supervision to bridge perception, prediction, and planning, but existing driving rationales are often free-form and expensive to generate with frontier models. We present VeriDrive, a framework for constructing planning-oriented, verifiable counterfactual supervision. VeriDrive converts driving reasoning into a structured Perception-Evaluation-Revision chain that grounds key objects in future motion, evaluates alternative ego trajectories with rule-checkable evidence, revises risky intent toward expert behavior, and produces final planning targets. To scale data construction, VeriDrive combines local generation with validator-guided selective correction, escalating only invalid or difficult samples. We build the VeriDrive dataset on nuScenes and train under the Omni-Q protocol. Controlled open-loop experiments show that VeriDrive improves L2, Collision, and Intersection over OmniDrive while reducing logged token usage, generation time, and actual paid LLM/VLM cost. These results show that auditable intermediate fields and structured revision targets can improve vision-language planning supervision under realistic annotation budgets. Code, prompts, and validator scripts are coming soon and will be released after the review process.",
+      "authors": [
+        "Zikai Zhang",
+        "Hubert P. H. Shum",
+        "Toby P. Breckon"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-05T14:50:11+00:00",
+      "link": "https://arxiv.org/pdf/2606.07338v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "vision-language planning with verifiable counterfactual supervision for driving",
+      "llm_evidence_cn": "视觉语言规划中可验证的反事实监督，与VLN的规划推理相关",
+      "llm_evidence": "视觉语言规划中可验证的反事实监督，与VLN的规划推理相关",
+      "canonical_evidence": "视觉语言规划中可验证的反事实监督，与VLN的规划推理相关",
+      "llm_tldr_en": "VeriDrive constructs verifiable counterfactual supervision for vision-language planning, using a structured Perception-Evaluation-Revision chain to improve driving decisions.",
+      "llm_tldr_cn": "针对现有驾驶推理监督自由形式且昂贵的问题，提出VeriDrive框架，构建可验证的反事实监督。通过感知-评估-修订链将关键物体与未来运动绑定，评估备选轨迹，修正风险意图，生成最终规划目标。结合局部生成和验证引导的选择性校正，扩展数据构建。实验表明该方法提升规划安全性和可解释性，其结构推理对VLN中的指令规划有借鉴意义。",
+      "llm_tldr": "针对现有驾驶推理监督自由形式且昂贵的问题，提出VeriDrive框架，构建可验证的反事实监督。通过感知-评估-修订链将关键物体与未来运动绑定，评估备选轨迹，修正风险意图，生成最终规划目标。结合局部生成和验证引导的选择性校正，扩展数据构建。实验表明该方法提升规划安全性和可解释性，其结构推理对VLN中的指令规划有借鉴意义。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.07451v1",
+      "source": "arxiv",
+      "title": "TEVI: Text-Conditioned Editing of Visual Representations via Sparse Autoencoders for Improved Vision-Language Alignment",
+      "abstract": "Vision-language models such as CLIP are highly useful for diverse tasks due to their shared image-text embedding space. Despite this, the image and text embeddings are often poorly aligned, affecting downstream performance. Recent work has shown that this can be attributed to an information imbalance: images contain more information than their captions describe. In this work, we propose TEVI, a framework that uses captions as a signal for what to retain from image embeddings. Specifically, we use sparse autoencoders to disentangle image embeddings and train a masking module to selectively reconstruct the embedding based on a given caption. In a controlled setup with synthetic captions, we show that TEVI is effective at preserving caption-described attributes while discarding others. By applying TEVI to CLIP models trained on natural images, we further achieve improved retrieval performance across coarse-grained short-caption (MS COCO, Flickr) and fine-grained long-caption (IIW, DOCCI) benchmarks, with stronger gains on richer captions, and improved robustness on the RoCOCO benchmark.",
+      "authors": [
+        "Sweta Mahajan",
+        "Sukrut Rao",
+        "Jiahao Xie",
+        "Alexander Koller",
+        "Bernt Schiele"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-06-05T16:54:40+00:00",
+      "link": "https://arxiv.org/pdf/2606.07451v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "text-conditioned editing of visual representations for better VL alignment",
+      "llm_evidence_cn": "文本条件编辑视觉表示，提升视觉语言对齐，辅助VLN理解",
+      "llm_evidence": "文本条件编辑视觉表示，提升视觉语言对齐，辅助VLN理解",
+      "canonical_evidence": "文本条件编辑视觉表示，提升视觉语言对齐，辅助VLN理解",
+      "llm_tldr_en": "TEVI uses sparse autoencoders and caption-guided masking to edit image embeddings, improving vision-language alignment for models like CLIP.",
+      "llm_tldr_cn": "针对视觉语言模型（如CLIP）中图像和文本嵌入对齐不佳的问题，提出TEVI框架。利用稀疏自编码器解耦图像嵌入，并训练掩码模块根据给定文本选择性重建嵌入，从而保留与文本相关的视觉信息。在合成字幕的受控实验中，TEVI有效提升下游任务性能。该方法可改善VLN中指令与视觉输入的匹配质量。",
+      "llm_tldr": "针对视觉语言模型（如CLIP）中图像和文本嵌入对齐不佳的问题，提出TEVI框架。利用稀疏自编码器解耦图像嵌入，并训练掩码模块根据给定文本选择性重建嵌入，从而保留与文本相关的视觉信息。在合成字幕的受控实验中，TEVI有效提升下游任务性能。该方法可改善VLN中指令与视觉输入的匹配质量。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.11770v1",
+      "source": "arxiv",
+      "title": "SVoT: State-aware Visualization-of-Thought for Spatial Reasoning via Reinforcement Learning",
+      "abstract": "Spatial reasoning remains a challenge for Multimodal Large Language Models (MLLMs), as it requires reliable multi-hop inference over both intermediate states and state transitions. Current studies often leave intermediate states unverified and treat state transitions as implicit processes, which limits reliability in multi-hop spatial reasoning. To address this, we propose State-aware Visualization-of-Thought (SVoT), a reinforcement learning framework that generates interleaved, verifiable intermediate states and visualizations. SVoT integrates transition reasoning chains into the generation processes, enabling the model to verify action preconditions and effects through interleaved textual and visual reasoning. We train SVoT via Group Relative Policy Optimization (GRPO), instantiating verification through reward design and evaluating the efficacy of different fine-grained rewards. As existing benchmarks reduce state transitions to single-variable updates, substantially simplifying the problems, we establish five domains by extending classical environments and introducing two novel domains, Pacman and Gather, that require multi-object interactions and numerical reasoning. These domains support systematic evaluation of multi-hop spatial reasoning with quantitative verification of generated intermediate states and transition reasoning. SVoT with transition-aware supervision achieves state-of-the-art performance across the introduced domains, yielding up to a 65% absolute accuracy gain on out-of-distribution test sets.",
+      "authors": [
+        "Chao Lei",
+        "Yanbei Jiang",
+        "Markus Hiller",
+        "Zhijian Zhou",
+        "Xunye Tian",
+        "Krista A. Ehinger",
+        "Nir Lipovetzky"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-10T07:54:42+00:00",
+      "link": "https://arxiv.org/pdf/2606.11770v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "spatial reasoning for embodied navigation",
+      "llm_evidence_cn": "空间推理用于具身导航",
+      "llm_evidence": "空间推理用于具身导航",
+      "canonical_evidence": "空间推理用于具身导航",
+      "llm_tldr_en": "SVoT uses reinforcement learning to generate verifiable intermediate states for spatial reasoning, improving multi-hop inference in MLLMs for tasks like navigation.",
+      "llm_tldr_cn": "针对多模态大模型在多跳空间推理中中间状态不可验证的问题，提出SVoT强化学习框架，生成可验证的中间状态和可视化，使模型能通过交错的文本和视觉推理验证动作前提和效果。实验证明该方法在空间推理任务上有效，有望应用于具身导航。",
+      "llm_tldr": "针对多模态大模型在多跳空间推理中中间状态不可验证的问题，提出SVoT强化学习框架，生成可验证的中间状态和可视化，使模型能通过交错的文本和视觉推理验证动作前提和效果。实验证明该方法在空间推理任务上有效，有望应用于具身导航。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
