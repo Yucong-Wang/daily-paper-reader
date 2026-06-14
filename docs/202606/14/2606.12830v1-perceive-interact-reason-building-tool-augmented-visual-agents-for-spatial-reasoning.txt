@@ -1,0 +1,1487 @@
+Title: Perceive, Interact, Reason: Building Tool-Augmented Visual Agents for Spatial Reasoning
+
+URL Source: https://arxiv.org/pdf/2606.12830v1
+
+Published Time: Fri, 12 Jun 2026 00:24:44 GMT
+
+Number of Pages: 27
+
+Markdown Content:
+# Perceive, Interact, Reason: Building Tool-Augmented Visual Agents for Spatial Reasoning 
+
+Changye Li 1, Meng Lu 2, Yi Wu 1, Ligeng Zhu 31Tsinghua University 2Virginia Tech 3NVIDIA 
+
+Abstract 
+
+While recent vision-language models (VLMs) demonstrate strong multimodal understanding, they remain limited in spatial reasoning tasks that require active evidence acquisition and multi-step visual interaction. This limitation suggests that relying solely on implicit visual representations from vision encoders is insufficient for recovering fine-grained spatial evidence. We introduce PERception-Interaction-reason Agent (PERIA ), a tool-augmented visual agent for spatial reasoning tasks across map reasoning, visual probing, and vision reconstruction. PERIA uses two lightweight tool families: vision perception tools for exposing textual, symbolic, and spatial evidence, and vision interaction tools for manipulating visual context, tracing paths, and verifying spatial relations. To train PERIA, we develop a unified recipe that combines supervised tool-use trajectory synthesis, composite rewards, and Observation-Relaxed Group-in-Group Policy Optimization (OR-GIGPO) for effective multi-tool behavior. Experiments on 13 benchmarks from 8 datasets show that PERIA-8B improves over the Qwen3-8B backbone by 10 .0% 
+
+on in-distribution benchmarks and 4.4% on out-of-distribution benchmarks, while outperforming previous state-of-the-art baselines of similar size by 7.0% –14 .8% .It also achieves performance comparable to much larger models such as Qwen3-VL-235B-A22B-Thinking and GPT-5, demonstrating the effectiveness of PERIA in enhancing spatial reasoning capabilities. 
+
+1 Introduction 
+
+Vision-language models (VLMs) have made strong progress in multimodal understanding and vision-language reasoning [Bai et al., 2025, Comanici et al., 2025, Wang et al., 2025a, Singh et al., 2025]. Chain-of-thought prompting [Wei et al., 2023] and reasoning-oriented post training [Zhang et al., 2024] further enhance their ability to perform visual reasoning. However, many complex visual tasks require more than reasoning over a static visual representation, as models need to ground fine-grained evidence, extract task-relevant details, and reason about spatial relations through multiple intermediate steps [Yue et al., 2024, Ma et al., 2024, Stogiannidis et al., 2025]. Tool use provides a natural way to extend model capabilities. Inspired by LLM agents [Yao et al., 2023, Schick et al., 2023], recent VLMs have begun to use external visual tools for reasoning [OpenAI, 2025, Lu et al., 2025, Fu et al., 2025, Wu et al., 2026b]. Existing tool-augmented VLMs show promising gains on structured visual tasks such as chart understanding and mathematical problem solving, where answers often come from explicit evidence and mature expert tools such as ChartMoE [Xu et al., 2025]. Yet many spatial tasks cannot be solved by reading a local text span, chart element, equation, or detected object. For example, subway-map reasoning requires aligning station labels with route topology [Feng et al., 2025c,b], while MapTrace requires drawing valid paths over maps [Panagopoulou et al., 2025]. These tasks require a coherent spatial state that links entities across regions and supports topology-dependent reasoning. 
+
+> Preprint.
+> arXiv:2606.12830v1 [cs.CV] 11 Jun 2026 M
+
+Baseline 2: Thinking with Image         
+
+> ×Lack of global perception and
+> verification through interaction.
+> Where is the
+> shortest route from
+> bus stop to buy a
+> café then go to
+> the Library?
+> To buy café and go
+> to the library, you
+> can go strai ght to the
+> café shop, then turn
+> right… ✕
+> VLM /
+> Reasoning
+> Library
+> Park
+> Museum
+> Café
+> Bus Stop
+> Local inspection only
+> Crop
+
+Baseline 1: Thinking       
+
+> ×Fails to ground landmarks
+> and route topology.
+> Library
+> Park
+> Museum
+> Café
+> Bus Stop
+> VLM /
+> Reasoning
+> You can go straight
+> toward map center
+> and …. ✕
+> Where is the
+> shortest route from
+> bus stop to buy a
+> café then go to
+> the Library?
+
+Our Method:  PERIA 
+
+✓ Grounded multi -step spatial reasoning  
+
+> Library
+> Park
+> Museum
+> Café
+> Bus Stop
+> 2
+
+Interact  
+
+> Crop landmark
+> Draw feasible path
+> Interact to acquire details and verify them
+> 3
+
+Reason        
+
+> Combine observations to produce the answer
+> Shortest route to the café and then the Library.
+> To buy café and go to the library, you can go
+> straight to the café shop, then turn left… The
+> library is in your right hand. ✓
+> 1
+
+Perceive 
+
+> Perceive task -relevant evidence
+> Text Spotting:
+> Library: [49, 68, 101, 89]
+> Park: [91, 161, 126, 181]
+> Café: [264, 209, 298, 230]
+> ...
+> Grounding Dino:
+> {"label": "library icon",
+> "bbox ": [52, 42, 91, 70]},
+> {"label": "park icon", " bbox ":
+> [82, 95, 121, 136]},
+> {"label": "cafe icon", " bbox ":
+> [263, 168, 294, 201]}
+> ….
+> Visual Perception Tool
+> Visual Interaction Tool
+
+Figure 1: Overview of our proposed PERception-Interaction-reason Agent (PERIA). PERception-Interaction-reason Agent (PERIA ) first uses perception tools to gather global spatial evidence, then applies interaction tools for fine-grained local analysis, and finally reasons over accumulated observations. This design addresses the limits of conventional methods, which either miss local visual details or fail to recover global spatial structure. The main limitation is a mismatch between current visual tools and spatial reasoning. Most tools read evidence or focus regions through OCR or cropping, but they do not by themselves build or update a spatial state across tool calls. Existing visual-tool methods also use limited tool spaces or domain-specific training data, which limits transfer to broader spatial reasoning [Fu et al., 2025, Lai et al., 2025]. Raw tool access is not enough either: Section 3 shows that tools provide useful evidence, but open-source VLMs often fail to use them reliably without tool-use training. Thus, the root issue is the lack of a trained policy that can compose perception and interaction tools, gather local evidence, recover global structure, and reason over accumulated observations. This motivates our central question: How can we train visual agents to leverage diverse visual tools within a unified reasoning process for spatial reasoning tasks? We introduce PERception-Interaction-reason Agent (PERIA ), a tool-augmented visual agent for spatial reasoning tasks. As shown in Figure 1, PERIA organizes visual problem solving into a unified process: the agent perceives task-relevant evidence, interacts with visual content for spatial planning and verification, and reasons over accumulated observations to produce the answer. It is supported by two complementary tool families: vision perception tools and vision interaction tools . For policy optimization, we further develop Observation-Relaxed Group-in-Group Policy Optimization (OR-GIGPO) to assign credit across multi-step visual tool-use trajectories. Empirically, PERIA-8B surpasses previous state-of-the-art baselines of similar size and reaches performance comparable to current leading models. Our contributions are summarized as follows: • We introduce a diverse perception–interaction toolset for spatial reasoning and formulate PERIA as a general framework for tool-augmented visual agents that reason, plan, and verify over images. We further synthesize a diverse, high-quality trajectory dataset for supervised fine-tuning, enabling reliable tool invocation and tool-grounded reasoning. • We develop a unified reinforcement training recipe centered on Observation-Relaxed Group-in-Group Policy Optimization (OR-GIGPO), our core optimization method for visual tool-use trajectories. Together with task-specific rewards, OR-GIGPO enables fine-grained credit assignment and effective multi-tool composition. Ablation studies show that OR-GIGPO surpasses mainstream reinforcement learning algorithms in our tasks. 2• We instantiate PERIA as a spatial reasoning agent across diverse task families, including map reasoning, visual probing, and vision reconstruction. Across 13 benchmarks from 8 datasets, PERIA-8B achieves consistent gains of 7.0% –14 .8% over strong VLM and tool-augmented baselines at a comparable scale, while approaching the performance of much larger models such as Qwen3-VL-235B-A22B-Thinking and GPT-5. 
+
+2 Related Work 
+
+Tool-Augmented Visual Reasoning Tool use is a common way to extend language agents beyond text generation. ReAct [Yao et al., 2023] shows that models can interleave reasoning traces with external actions, forming a simple recipe for multi-step problem solving and environment feedback integration. Recent VLM agents extend visual reasoning with tool calls in domains such as charts, mathematics, and tables, helping models read text, edit images, or call expert modules with strong empirical gains [Lu et al., 2025, Fu et al., 2025, Wu et al., 2026b, Zhao et al., 2025]. Another line of work explores interactive visual tools, where the DeepEyes series and Mini-o3 demonstrate the effectiveness of multi-turn image cropping, and Think3D studies 3D manipulation tools for spatial exploration [Zheng et al., 2026, Hong et al., 2026, Lai et al., 2025, Zhang et al., 2026]. However, the former line leaves spatial reasoning underexplored, while the latter often focuses on a small toolset or a narrow task family. In contrast, our work jointly trains perception and interaction tools within a unified framework, targeting general spatial reasoning agents that can read, inspect, trace, verify, and compose evidence across diverse task families. 
+
+Spatial Reasoning in VLMs. Spatial reasoning tests whether VLMs can connect visual evidence with relations, routes, layouts, and geometric changes. Prior work studies this ability across domains such as 3D spatial understanding [Chen et al., 2024, Ma et al., 2024], map and geospatial reason-ing [Dihan et al., 2025, Xing et al., 2025, Feng et al., 2026], and visual search or probing in cluttered images [Wu and Xie, 2023b, Lai et al., 2025, Gavrikov et al., 2025]. Recent work further moves from isolated tasks toward broader spatial intelligence, including shared spatial skills, low-level visual primitives, simulation, and reconstruction [Stogiannidis et al., 2025, Jia et al., 2026, Chen et al., 2026, Wu et al., 2026a]. Together, these studies suggest that spatial reasoning requires global-local align-ment, path tracing, relation checking, and multi-step planning, motivating our perception–interaction tool design that combines visual evidence acquisition with explicit visual interaction. 
+
+Reinforcement Learning for Tool-Use Agents. Reinforcement learning (RL) is widely used in post-training: PPO [Schulman et al., 2017] provides a general policy optimization framework, GRPO [Shao et al., 2024] estimates relative advantages from groups of sampled responses, and DAPO [Yu et al., 2025] improves large-scale RL with decoupled clipping and dynamic sampling. For tool-use agents, sparse rewards and long-horizon interactions make it difficult to evaluate intermediate decisions; RAGEN addresses this issue in multi-turn agent RL, while GIGPO assigns learning signals to both full trajectories and intermediate states [Wang et al., 2025b, Feng et al., 2025a]. Our setting further introduces visual observation variability from tool-agent outputs, motivating observation-relaxed policy optimization instead of exact state matching. 
+
+3 Motivation: The Gap Between Having Tools and Using Tools 
+
+Having visual tools does not mean using them well. We test this gap on 6 benchmarks from 4 datasets: MapTrace [Panagopoulou et al., 2025], ReasonMap [Feng et al., 2025c], ReasonMap-Plus [Feng et al., 2025b], and Visual Probing Easy/Medium/Hard [Lai et al., 2025]. The raw-tool setting gives each model access to 18 perception and interaction tools for evidence extraction, spatial annotation, and local inspection; Section 4.1 details the sandbox. As shown in Figure 2, GPT-5 improves with these tools, confirming that they expose useful spatial evidence. In contrast, Qwen3-VL-Thinking models often degrade, showing that open-source VLMs do not reliably turn tool access into better spatial reasoning without dedicated tool-use training. We further diagnose the gap by inspecting 300 cases where GPT-5 succeeds with tools but Qwen3-VL-Thinking models fail. Table 1 shows that most errors are semantic tool-use failures rather than formatting failures. Models often skip needed tools or are misled by tool outputs during later reasoning. Thus, the gap is mainly a policy-learning problem: models must learn when to call tools, 3Qwen3 2B Qwen3 4B Qwen3 8B Qwen3 30B Qwen3 235B GPT-5     
+
+> Model
+> 0
+> 10
+> 20
+> 30
+> 40
+> 50
+> 60
+> 70
+> Average Score (%)
+> 35.9
+> 41.2 44.1 44.7
+> 49.7
+> 55.8
+> 18.3
+> 30.0
+> 40.9
+> 36.6
+> 43.4
+> 62.9
+> Baseline
+> Raw tool
+> Gap (Raw tool - Baseline)
+> -20
+> -15
+> -10
+> -5
+> 0
+> 5
+> 10
+> 15
+> Performance Gap (%)
+> -17.6
+> -11.2
+> -3.2 -8.1 -6.3
+> +7.1
+
+Figure 2: Tool access does not guarantee tool competence. We compare reasoning without tools ( Baseline ) with direct tool-augmented rea-soning ( Raw tool ). GPT-5 benefits from raw tool access, but Qwen3-VL-Thinking models, abbreviated as Qwen3 in the figure, often de-grade without tool-use training. The gap nar-rows with model size but remains clear.                             
+
+> Model Error Count Tool-Call Omission Tool-Induced Error Format Error Other
+> Qwen3-2B 296 (98.7%) 55.9% 31.1% 2.0% 7.1%
+> Qwen3-4B 176 (58.7%) 71.6% 25.0% 2.3% 1.1%
+> Qwen3-8B 166 (55.4%) 59.0% 30.7% 1.8% 8.4%
+> Qwen3-30B 172 (57.3%) 68.6% 30.8% 0.6% 0.0%
+> Qwen3-235B 133 (44.3%) 38.3% 60.9% 0.8% 0.0%
+
+Table 1: Most failures come from not using tools well. We analyze 300 cases from 6 benchmarks where GPT-5 solves the task with tools but Qwen3-VL-Thinking models, abbreviated as Qwen3 in the table, fail in most cases. Tool-call omission and tool-induced errors dominate, showing that current models mainly struggle with tool selection, invoca-tion, and feedback integration. Larger models fail less often, but clear tool-use gaps remain. which tools to call, and how to integrate tool feedback. This motivates PERIA, which trains agents to coordinate perception and interaction tools throughout multi-step spatial reasoning. 
+
+4 Methodology B. SFT Trajectory Synthesis    
+
+> Initialized
+> PERI AAgent
+> Diverse
+> Data Base
+> Executable
+> SFT Data
+> Thinking Style
+> Diversification
+> Proprietary Model
+> 1-turn 2-turn Max -turn
+
+…Query   
+
+> : Action
+> :Wrong Answer
+> :Correct Answer
+
+Explore & Exploit  Sampling 
+
+C.  OR -GIGPO  Training  
+
+> 1Grouped
+> Rollouts
+
+𝝉 𝟏 
+
+> Text Spotting
+> Text Spotting
+
+𝝉 𝟐 
+
+𝝉 𝟑        
+
+> Image Crop
+> 2Observation -relaxed
+> Grouping
+> Matched
+> (Similar
+> Text -tool
+> Observation )
+> Unmatched
+> (image -tool
+> Observation)
+> Huming Rd:
+> [910, 520, 1000, 552]
+> Huming Rd:
+> [910, 520, 1000, 55 0]
+> 3Relative
+> Advantages
+> Step -level
+> Group
+> Advantage
+> 𝑨 𝒔
+> Episode -
+> level
+> Advantage
+> 𝑨 𝑬
+> Updated
+> PERIA agent
+> Combine
+> 𝐴 𝐸 +𝜔 𝐴 𝑠
+
+PPO 
+
+Update 
+
+A. P ERIA  Tool  Sandbox 
+
+Function -base Tools      
+
+> Deterministic Visual Utilities
+> •Image label
+> •Bounding box
+> •Draw path
+> •Region Highlight
+> •…
+> Tool
+> Router
+
+Agent -based Tools     
+
+> Lightweight Tool Agnets
+> •OCR Agent : Map Text OCR,
+> Table OCR, …
+> •Segment Agent : Auto Segment,
+> Presence Check, …
+> •…
+> Map Text
+> OCR
+
+𝝉 𝟒  China Southern,  
+
+> Huming Rd, Jinhui
+> Garden…
+> Unmatched
+> (text -tool
+> Observation)
+> Visual Perception Tool
+> Visual Interaction Tool
+
+Figure 3: PERIA learns tool use through sandbox construction, trajectory synthesis, and OR-GIGPO. The pipeline first builds the PERIA Tool Sandbox, which organizes function-based visual utilities and lightweight agent-based tools into perception and interaction tools. It then synthesizes executable SFT trajectories with budgeted explore-and-exploit sampling and thinking-style diversification. Finally, OR-GIGPO groups rollouts by relaxed observations and combines step-level and episode-level advantages to assign credit across multi-step tool-use trajectories. In this section, we describe the construction of PERIA, as illustrated in Figure 3. The overall design follows three stages. First, we formulate PERIA as a tool-augmented visual agent and build a modular tool sandbox that exposes both deterministic visual utilities and lightweight tool agents, organized into perception and interaction tools for acquiring evidence and manipulating visual context. Second, we synthesize executable tool-use trajectories for supervised fine-tuning (SFT): a proprietary model explores candidate tool-call paths under increasing turn budgets, and an expert model diversifies the intermediate reasoning styles. Third, we train the initialized agent with Observation-Relaxed Group-in-Group Policy Optimization (OR-GIGPO), which groups rollouts by relaxed observations and combines episode-level and step-level advantages for multi-step tool-use credit assignment. We detail the PERIA formulation and tool sandbox in Section 4.1, trajectory synthesis in Section 4.2, and OR-GIGPO training with composite rewards in Section 4.3. 44.1 PERIA Formulation and Tool Sandbox PERIA as a POMDP. Following prior formulations of tool-integrated and agentic reasoning [Yao et al., 2023, Lu et al., 2025], we formulate PERIA as a partially observable Markov decision process (POMDP) ⟨S , O, A, I, P, R⟩ , where I, S, O, A, P, and R denote the instruction, latent state, observation, action, transition, and reward spaces. Given an instruction x ∈ I and an initial visual observation o0, we denote the task input as q = ( x, o 0). The agent iteratively generates a reasoning thought and an action: 
+
+gt ∼ πθ (· | q, c t−1), at ∼ πθ (· | q, c t−1, g t),
+
+where ct−1 = ( g1, a 1, o 1, . . . , g t−1, a t−1, o t−1) is the interaction history, and at can be a perception-tool call, an interaction-tool call, or a final-answer action. Tool actions update the environment through P and return new observations, which are appended to the history. The resulting trajectory is 
+
+τ = ( g1, a 1, o 1, . . . , g T −1, a T −1, o T −1, g T , y ) ∼ πθ (τ | q),
+
+where y = aT is the final-answer action generated after the final reasoning step gT .
+
+PERIA Tool Sandbox. To support flexible tool-augmented spatial reasoning, we build a modular PERIA Tool Sandbox with 18 tools, implemented through function-based utilities and 3 lightweight tool agents. The sandbox provides a unified and extensible interface for tool invocation. We organize the tools into two categories: visual perception tools , which extract task-relevant evidence such as text, coordinates, and object presence, represented by text_spotting , map_text_ocr , and 
+
+auto_segment ; and visual interaction tools , which explicitly manipulate or annotate the visual scene, represented by draw_path , bounding_box , and image_crop . Our sandbox design draws inspiration from recent tool-augmented systems [Wu et al., 2026b, Fu et al., 2025, Lu et al., 2025], while introducing newly designed and task-specific tools tailored to spatial reasoning. Full tool definitions and sandbox design are provided in Appendix C.1. 
+
+4.2 Synthesizing Tool-Use Trajectories 
+
+Our preliminary analysis in Section 3 shows that directly enabling tool calls does not consistently improve model performance. We therefore synthesize tool-executing trajectories with a proprietary model ( GPT-5 ) as supervised fine-tuning data to enhance the tool-calling capability of models. Given a training instance (q, y ∗), where q = ( x, o 0), we generate trajectories with an explore-and-exploit strategy. At round t, πpro expands each current prefix by one reasoning–action step: 
+
+{τ (i) 
+
+> t
+
+= ( τ (i)
+
+> t−1
+
+, g (i) 
+
+> t
+
+, a (i) 
+
+> t
+
+)}nsample  
+
+> i=1
+
+∼ πpro (· | q, c (i)
+
+> t−1
+
+),
+
+where a(i) 
+
+> t
+
+is either a tool call or a final-answer action; if it is a tool call, the returned observation o(i)
+
+> t
+
+is appended to the next prefix, while final-answer actions are denoted by y(i) 
+
+> t
+
+. We accept a trajectory once y(i) 
+
+> t
+
+= y∗; otherwise, we add error feedback and continue expansion until a valid trajectory is found or the turn budget T is reached. To diversify reasoning, we rewrite only the intermediate thoughts {gt} with an open-weight expert model ( Qwen3-VL-235B-A22B-Thinking ), while keeping tool calls, observations, and answers fixed. Full details of SFT trajectory synthesis are provided in Appendix C.2. 
+
+4.3 Training Tool-Augmented Spatial Agents 
+
+We first fine-tune the model on the trajectories synthesized in Section 4.2, which equips the agent with basic tool-use abilities and the Perceive–Interact–Reason workflow. Since SFT mainly imitates existing trajectories and is insufficient for flexible tool composition, we further optimize the agent with reinforcement learning. To better handle multi-tool trajectories, we design OR-GIGPO for credit assignment and use a composite reward for spatial reasoning. 
+
+OR-GIGPO. Motivated by Group-in-Group Policy Optimization (GIGPO) [Feng et al., 2025a], we design Observation-Relaxed Group-in-Group Policy Optimization (OR-GIGPO) for multi-step spatial reasoning training. GIGPO assigns credit with both episode-level and step-level advantages, where 5the step-level term compares downstream returns among actions taken from the same anchor state. In PERIA, however, states are reflected through multimodal tool observations. Even the same tool call with semantically equivalent arguments may return slightly different observations, especially for tool-agent outputs. Thus, exact anchor-state matching is too restrictive for visual tool-use trajectories. OR-GIGPO retains the two-level advantage structure of GIGPO but replaces exact state matching with observation-relaxed matching. Following formulation in Section 4.1, we denote each task input by q = ( x, o 0), where x is the instruction and o0 is the initial visual observation. We define the episode-level rollout group and the step-level relaxed anchor group as 
+
+GE (q) = {τi : qi = q}Ni=1 , GS (q, ˜o) = (a(i) 
+
+> t
+
+, R (i) 
+
+> t
+
+) : qi = q, h (o(i) 
+
+> t
+
+) = h(˜ o) ∨ sim( o(i) 
+
+> t
+
+, ˜o) ≥ δ
+
+| {z }
+
+> observation-relaxed matching
+
+.
+
+Here τi denotes the i-th rollout, and a(i) 
+
+> t
+
+is the action generated from the policy conditioned on 
+
+(q(i), c (i)
+
+> t−1
+
+, g (i) 
+
+> t
+
+). For step-level credit assignment, we associate each action with its discounted return 
+
+R(i) 
+
+> t
+
+= PTk=t γk−tr(i) 
+
+> k
+
+, where T is the number of turns, γ is the discount factor, and r(i) 
+
+> k
+
+is the reward at turn k. The episode group GE (q) contains rollouts from the same input, while the step group 
+
+GS (q, ˜o) contains action-return pairs whose observations match the relaxed anchor observation ˜o.Here h(·) is used for exact observation matching, and sim( ·, ·) matches semantically similar textual observations from tool agents, implemented with Python’s SequenceMatcher .For each rollout τi, let Ri = R(τi) be the trajectory-level reward. We compute the episode-level advantage AE and the step-level advantage AS as 
+
+AE (τi) = Ri − μE (q)
+
+σE (q) + ϵadv 
+
+, AS (a(i) 
+
+> t
+
+) = R(i) 
+
+> t
+
+− μS (q, ˜o)
+
+σS (q, ˜o) + ϵadv 
+
+.
+
+Here μE (q) and σE (q) are the mean and standard deviation of trajectory rewards over rollouts from the same task input q = ( x, o 0), and ϵadv is a small constant for numerical stability. The step-level statistics μS (q, ˜o) and σS (q, ˜o) are computed over discounted returns in the same relaxed anchor group GS (q, ˜o). In our trajectory-level reward setting, this step-level return propagates the final rollout reward back to intermediate tool decisions. The final advantage combines global trajectory quality and local tool-decision quality: 
+
+A(i) 
+
+> t
+
+= AE (τi) + ωA S (a(i) 
+
+> t
+
+),
+
+where ω controls the strength of step-level credit assignment. We optimize the policy with a clipped objective using the combined advantage, without an explicit KL penalty: 
+
+JOR -GIGPO (θ) = E
+
+"
+
+1
+
+N T 
+
+> N
+
+X
+
+> i=1
+> T
+
+X
+
+> t=1
+
+min 
+
+
+
+ρ(i) 
+
+> t
+
+A(i) 
+
+> t
+
+, clip( ρ(i) 
+
+> t
+
+, 1 − ϵclip , 1 + ϵclip )A(i)
+
+> t
+
+#
+
+,
+
+where θ denotes the current policy parameters, ϵclip is the clipping threshold, and ρ(i) 
+
+> t
+
+= πθ (a(i) 
+
+> t
+
+|
+
+qi, c (i)
+
+> t−1
+
+, g (i) 
+
+> t
+
+)/π θold (a(i) 
+
+> t
+
+| qi, c (i)
+
+> t−1
+
+, g (i) 
+
+> t
+
+) is the importance sampling ratio. Further details on observation-relaxed grouping and OR-GIGPO implementation are provided in Appendix C.3. 
+
+Reward Design. For a generated rollout τ , we define a composite trajectory-level reward: 
+
+R(τ ) = Rrep (τ ) + Rformat (τ ) + Rcorrect (τ ).
+
+The repetition penalty Rrep discourages repeated characters, repeated words, and repeated long text spans, and further applies turn-normalized penalties to sentence-level repetition to balance multi-turn tool use. The format reward Rformat encourages valid trajectories with explicit tags: intermediate tool-use turns should follow <think>...</think><action>...</action> , while the final turn should follow <think>...</think><answer>...</answer> . The correctness reward Rcorrect evaluates the final answer with normalized matching for general spatial QA, covering yes/no, numerical, range, and unordered-list answers. For MapTrace [Panagopoulou et al., 2025], we follow its NDTW-based metric and use a continuous reward: 
+
+Rcorrect = min {1, max {0, (dhigh − dNDTW )/(dhigh − dlow )}} .
+
+Here dNDTW denotes the path distance, with dlow = 0 .3 and dhigh = 0 .8 by default. For other tasks, 
+
+Rcorrect is binary. Further details on reward penalties, correctness verification, and the LLM-judge fallback design are provided in Appendix C.4. 65 Experiments 
+
+Datasets and Metrics. Following prior visual reasoning evaluations [Feng et al., 2025b, Lai et al., 2025, Lu et al., 2025, Liu et al., 2026], we evaluate PERIA on a broad set of spatial reasoning tasks. For in-distribution evaluation, we select four task families from our training environment with held-out test splits: (1) MapTrace [Panagopoulou et al., 2025], (2) ReasonMap [Feng et al., 2025c], (3) ReasonMap-Plus [Feng et al., 2025b], and (4) Visual Probing tasks [Lai et al., 2025]. To assess 
+
+out-of-distribution generalization, we evaluate additional benchmarks not used for training, including four tasks from Wu et al. [2026a] that span distinct spatial reasoning domains: (5) Ball Tracking, (6) Paper Folding, (7) Cube Three-View Reasoning, and (8) Real-world Spatial Reasoning, as well as (9) V* [Wu and Xie, 2023a], (10) MapEval [Dihan et al., 2025], and (11) BabyVision [Chen et al., 2026]. We report accuracy as the unified metric across all tasks. For MapTrace, following its route-tracing evaluation protocol, we treat a prediction as successful if its NDTW distance is below 
+
+1.0 and compute accuracy based on this criterion. We further discuss how different evaluation criteria affect MapTrace scores in Appendix D.3. Our training data includes in-distribution trajectories and additional map QA data from MapQA [Chang et al., 2022]. Detailed information about the training data and evaluation datasets is provided in Appendix D. 
+
+Baselines. We compare PERIA with three groups of baselines: (i) API-based proprietary VLMs ,including GPT-5 [Singh et al., 2025], Gemini-2.5-Flash [Comanici et al., 2025], and Gemini-2.5-Pro [Comanici et al., 2025]; (ii) open-source VLMs , including the Qwen3-VL series [Bai et al., 2025] with thinking enabled and the InternVL3.5 series [Wang et al., 2025a]; and (iii) tool/reasoning-integrated VLMs , including VTool-R1 series [Wu et al., 2026b], R1-OneVision-7B [Yang et al., 2025], and Mini-o3-7B-v1 [Lai et al., 2025]. Non-agentic baselines are evaluated without access to our tool sandbox, while tool-integrated baselines follow their original tool configurations. 
+
+Implementation Details. We instantiate PERIA using Qwen3-VL-Thinking backbones at 2B, 4B, and 8B scales. We conduct training with Verl-Tool [Jiang et al., 2025] and use vLLM [Kwon et al., 2023] for inference. For SFT, we train with a learning rate of 1 × 10 −5 and a batch size of 32 .For RL, we train with a learning rate of 1 × 10 −6, a batch size of 64 , a group size of N = 4 , and 3
+
+epochs. Additional implementation details are provided in Appendix B. 
+
+5.1 Main Comparison                                                                                                                                                                                                                                                                            
+
+> Methods ( ↓)In-Distribution Dataset Out-of-Distribution Dataset Overall Datasets ( →)ReasonMap Plus ReasonMap VisualProbe Easy VisualProbe Medium VisualProbe Hard MapTrace Avg. MapEval BabyVision Ball Tracing Paper Folding Cube 3-View Reasoning Real-world Spatial Reasoning VStar Avg. Avg.
+> Commercial Models
+> GPT-5 89.7 53.8 62.4 21.6 25.4 82.2 55.8 72.7 22.9 25.9 11.0 32.9 38.3 70.1 39.1 46.8 Gemini-2.5-Flash 85.4 43.2 46.1 36.0 33.6 66.4 51.7 71.0 19.5 22.7 7.5 55.0 36.7 76.9 41.3 46.2 Gemini-2.5-Pro 81.3 55.1 62.1 38.7 32.0 80.4 58.2 71.0 27.3 28.3 16.8 55.0 40.0 78.5 45.2 51.3
+> Open-Source VLMs and Tool/Reason-Augmented Baselines
+> InternVL3.5-8B 53.3 5.8 54.7 25.7 15.2 70.8 37.5 53.7 13.9 17.9 13.5 51.0 28.4 71.7 35.7 36.6 VTool-R1-7B 38.3 1.5 30.5 26.4 22.6 45.2 27.4 45.7 12.3 18.0 15.2 35.6 30.5 70.6 32.5 30.2 R1-OneVision-7B 52.1 8.2 39.2 21.7 17.3 41.9 30.0 45.2 14.4 15.7 12.9 33.7 28.2 53.9 29.1 29.6 Mini-o3 45.9 1.6 70.2 52.9 41.5 30.4 40.4 46.7 11.6 16.8 12.9 39.7 28.9 82.7 34.1 37.1 InternVL3.5-14B 51.3 4.4 58.1 12.0 19.8 76.2 36.9 54.0 14.6 16.2 11.0 46.6 26.8 69.6 34.1 35.4 Qwen3-30B 67.8 18.2 51.7 30.2 25.4 75.0 44.7 64.7 14.9 19.5 8.5 37.7 32.8 84.2 37.4 40.8 Qwen3-32B 68.8 20.6 57.4 32.0 24.5 75.5 46.4 67.2 22.9 20.3 8.1 48.1 38.0 85.8 41.4 43.8 Qwen3-235B 76.7 30.7 58.8 32.0 27.3 72.9 49.7 69.0 21.9 20.9 6.0 38.5 34.5 86.9 39.6 44.3
+> Our Method
+> Qwen3-8B 65.7 12.3 54.6 31.3 26.6 74.1 44.1 54.0 13.0 17.8 11.0 21.2 27.7 77.5 31.7 37.4 PERIA-8B (ours) 72.6 +6.9 27.1 +14.8 61.7 +7.1 41.2 +9.9 44.3 +17.7 77.7 +3.6 54.1 +10.0 55.5 +1.5 15.5 +2.5 18.8 +1.0 15.7 +4.7 36.3 +15.1 29.1 +1.4 82.2 +4.7 36.1 +4.4 44.4 +7.0
+> w/o RL 66.2 21.1 51.0 37.3 32.0 74.2 46.9 54.8 12.4 18.1 14.6 39.0 29.6 74.4 34.7 40.4
+> w/o SFT 64.2 45.1 19.1 18.6 26.4 71.1 40.7 49.5 7.2 12.4 6.0 29.1 25.0 59.2 26.9 33.3
+> w/o Tool 72.4 13.7 36.1 21.2 19.8 82.4 40.9 59.0 13.9 19.6 15.0 30.4 28.3 76.4 34.7 37.6
+
+Table 2: PERIA closes much of the gap to larger proprietary and open-source models. All scores are reported as accuracy percentages, and Qwen3 denotes Qwen3-VL-Thinking models. PERIA-8B substantially improves over strong open-source and tool/reasoning-augmented baselines, achieving the best overall average among non-commercial models and performance comparable to GPT-5 and Qwen3-235B. We also report ablations: w/o RL uses SFT alone, w/o SFT trains directly with RL from the base model, and w/o Tool removes tool access during training and inference. 
+
+PERIA-8B achieves strong overall performance across 13 benchmarks. As reported in Table 2, PERIA-8B consistently improves over the Qwen3-8B backbone by 10 .0% on in-distribution tasks and 4.4% on out-of-distribution tasks, and it exceeds prior state-of-the-art baselines at a comparable 7scale by 7.0% –14 .8% across 13 benchmarks from 8 datasets. On average, it further approaches proprietary models such as Qwen3-VL-235B-A22B-Thinking and GPT-5. Across individual domains, including map-based reasoning, route tracing, visual probing, real-world spatial understanding, dynamic object tracking, object transformation, multi-view 3D reasoning, visual search, geospatial understanding, and language-free visual reasoning, PERIA-8B outperforms most similarly sized baselines and achieves performance comparable to much larger open-source models. These results indicate that effective visual tool-use training can provide gains beyond backbone scaling alone. 
+
+OR-GIGPO is the major contributor to the performance improvement. The w/o RL ablation in Table 2 is substantially below the full PERIA-8B model, with average drops of 7.2% on in-distribution benchmarks and 4.0% on out-of-distribution benchmarks. The RL algorithm ablation in Table 3 further shows that OR-GIGPO outperforms mainstream alternatives, exceeding GRPO by 
+
+2.4% and DAPO by 11 .1% on average, and the Model-size ablation shows consistent gains on 2B and 4B backbones. These results indicate that OR-GIGPO accounts for a major portion of the final performance gains, and that observation-relaxed step-level advantages provide effective fine-grained credit assignment for multi-step visual tool use across model scales. 
+
+The PERIA tool sandbox and trajectory synthesis are essential for spatial reasoning. The w/o Tool ablation in Table 2 shows an imbalanced performance pattern, suggesting that training without tool access can lead to catastrophic forgetting in certain spatial domains and fails to support robust performance across diverse tasks. Meanwhile, the w/o SFT variant performs substantially worse than the full PERIA, showing that synthesized tool-use trajectories are critical for teaching reliable tool invocation before RL. The inference-time Tool-use ablation in Table 3 further confirms the complementary roles of perception and interaction tools. These results support our toolset design and show that PERIA benefits from both spatially targeted tools and supervised trajectory synthesis. 
+
+5.2 Ablation Studies                                                                                                              
+
+> Datasets( →)Model ( ↓)ReasonMap Plus ReasonMap VisualProbe Easy VisualProbe Medium VisualProbe Hard MapTrace Avg.
+> RL algorithm ablation
+> Qwen3-8B 65.7 12.3 54.6 31.3 26.6 74.1 44.1 PERIA-8B (ours)
+> w/ OR-GIGPO 72.6 27.1 61.7 41.2 44.3 77.7 54.1
+> w/ GIGPO 70.6 21.8 61.7 40.3 42.5 70.6 51.3
+> w/ GRPO 70.0 24.3 58.8 41.5 40.6 75.5 51.7
+> w/ DAPO 69.2 20.8 43.2 32.4 27.3 65.3 43.0
+> Model-size ablation
+> Qwen3-2B 53.1 8.8 42.8 21.7 23.0 66.2 35.9 PERIA-2B 58.2 16.7 43.0 26.0 19.8 72.2 39.3
+> Qwen3-4B 64.2 13.7 46.1 25.3 26.4 71.6 41.2 PERIA-4B 67.1 21.4 58.1 36.1 35.8 74.5 48.8
+> Tool-use ablation
+> Qwen3-8B Baseline 65.7 12.3 54.6 31.3 26.6 74.1 44.1 PERIA-8B (ours) 72.6 27.1 61.7 41.2 44.3 77.7 54.1
+> No Tool 67.6 26.6 46.9 23.9 25.5 75.9 44.4
+> w/ Previous Tool Set 65.8 22.1 58.9 36.2 25.5 77.6 47.6
+> w/o Perception Tools 46.0 11.2 57.5 34.7 34.9 76.4 43.5
+> w/o Interaction Tools 69.4 25.0 53.2 26.5 32.1 78.5 47.4
+
+Table 3: OR-GIGPO, model scale, and tool access all affect performance. OR-GIGPO gives the best 8B result among RL algorithms, and the same recipe improves the 2B and 4B backbones. The full tool sandbox also outperforms no-tool, previous-tool, and tool-family removal settings, showing that perception and interaction tools are complementary. All scores are accuracy percentages. 
+
+Observation-relaxed credit assignment improves multi-step tool learning. Table 3 compares OR-GIGPO with original GIGPO, GRPO, and DAPO on in-distribution benchmarks. OR-GIGPO 8achieves the best average accuracy, outperforming GIGPO by 2.8% , GRPO by 2.4% , and DAPO by 
+
+11 .1% , which supports the value of observation-relaxed step-level advantages for fine-grained credit assignment in multi-step tool use. We observe that the original GIGPO obtains an Average Step Adv Ratio of 9.3% , whereas OR-GIGPO increases it to 62 .3% . This indicates that, in the setting of visual tool agents, original GIGPO struggles to match exactly identical observations and therefore largely degrades to GRPO-level behavior, while OR-GIGPO constructs relaxed step-level anchor groups that enable fine-grained advantage assignment. DAPO performs worse than the baseline, suggesting that its algorithmic design may not be well suited to our visual tool-use setting, where early-stage tool-calling ability is still unstable. 
+
+PERIA’s training recipe is effective beyond the 8B model. Table 3 also shows that the proposed training recipe transfers to smaller backbones. Compared with their Qwen3 baselines, PERIA-2B improves from 35 .9% to 39 .3% , and PERIA-4B improves from 41 .2% to 48 .8% on average. This indicates the generality of PERIA across model scales. 
+
+Both perception and interaction tools are needed for robust spatial reasoning. Table 3 evaluates PERIA-8B under different inference-time tool conditions. Removing all tools reduces the average score to 44 .4% , showing that tool access is necessary for robust performance across diverse spatial reasoning domains. Using only the previous tool set reaches 47 .6% , clearly below the full sandbox; this previous set contains six tools adopted from existing work: image_crop , bounding_box ,
+
+image_highlight , text_ocr , auto_segment , and grounding_dino . This gap demonstrates that our PERIA tool design is more effective than generic visual utilities for spatial reasoning. Removing either perception or interaction tools also degrades performance, confirming their complementary roles in evidence acquisition, local verification, and spatial planning. Detailed tool definitions are provided in Appendix C.1, and fine-grained tool-use distribution analysis is presented in Appendix E. 
+
+5.3 Qualitative Analysis Original image               
+
+> Question: How many
+> intermediate stops are there
+> between Grand Av Arts/Bunker
+> Hill and Jefferson/USC?
+> Perception (1): "To determine the
+> number of intermediate stops
+> between "Grand Av Arts/Bunker
+> Hill" and "Jefferson/USC“ on the
+> transit map , the first step requires
+> precise identification of station
+> labels and their spatial
+> arrangement ...“ <action>{ \"name \":
+> \"map_text_ocr \", \"arguments \":
+> {\"image_index \": 0}}</action>
+> Obs 1: "Tool executed
+> successfully. \nResult : { \"task \":
+> \"ocr \", \"text \": \"SAN LUIS OBISPO
+> COUNTY \\... Wishire \\nWishire /Verm
+> ont \\nSouth
+> La \\nWestlake /MacArthur Park \\n7th
+> St/Metro
+> City \\nLAITCO /OrtheInstitute \\nJeffer
+> son /USC \\nVernon ...
+> Interaction (2): ""Hmm, the prior
+> OCR result didn’t yield a fully
+> structured list of stations ... Cropping
+> the area around these two stations
+> will allow me to visually confirm the
+> intermediate stops and count them
+> accurately ..."<action>{ \"name \":
+> \"image_crop \", \"arguments \":
+> {\"image_index \":0, \"bounding_box \":
+> \"\\\\boxed{400,300,600,500} \"}}</acti
+> on>
+> Obs 2：
+> Reasoning (3) : Let me verify the
+> intermediate stops between
+> Grand Av Arts/Bunker Hill and
+> Jefferson/USC on the map.
+> Reviewing the route, .. Tracing the
+> local route step by step, I can
+> identify LATTC/Ortho Institute as
+> one stop, Pico as the second, and
+> 7th St/Metro Ctr as the third ... the
+> most reasonable answer is
+> <answer> \boxed{3}</answer>.
+
+Subway Map Reasoning 
+
+Figure 4: PERIA grounds route tracing with visual tools. In this qualitative example, PERIA uses perception tools to identify station labels, interaction tools to verify the relevant region, and accumulated observations to trace the route and answer correctly. Figure 4 shows an example of PERIA on subway-map reasoning. The task requires counting intermediate stops between two stations, which depends on both global route topology and local station details. PERIA first extracts station names and spatial layout from the full map, then crops the relevant region for local verification. By reasoning over these observations, PERIA traces the route step by step and produces a grounded answer. More qualitative results are provided in Appendix F. 
+
+6 Conclusion 
+
+We presented PERception-Interaction-reason Agent (PERIA ), a tool-augmented visual agent frame-work for general-purpose spatial reasoning. PERIA integrates perception and interaction tools into a unified Perceive–Interact–Reason process, enabling agents to acquire global spatial evidence, perform fine-grained local verification, and reason over accumulated observations. To train such agents, we introduced supervised tool-use trajectory synthesis and OR-GIGPO, an observation-relaxed policy 9optimization method for multi-step visual tool use. Experimental results show that PERIA consis-tently improves spatial reasoning performance, approaches much larger proprietary and open-source models, and benefits from both the designed tool sandbox and the two-stage training recipe. These results suggest that trained visual tool use is a promising direction for building more capable spatial reasoning agents. We discuss limitations, future work, and broader impact in Appendix A. 
+
+References 
+
+Shuai Bai, Yuxuan Cai, Ruizhe Chen, Keqin Chen, Xionghui Chen, Zesen Cheng, Lianghao Deng, Wei Ding, Chang Gao, Chunjiang Ge, Wenbin Ge, Zhifang Guo, Qidong Huang, Jie Huang, Fei Huang, Binyuan Hui, Shutong Jiang, Zhaohai Li, Mingsheng Li, Mei Li, Kaixin Li, Zicheng Lin, Junyang Lin, Xuejing Liu, Jiawei Liu, Chenglong Liu, Yang Liu, Dayiheng Liu, Shixuan Liu, Dunjie Lu, Ruilin Luo, Chenxu Lv, Rui Men, Lingchen Meng, Xuancheng Ren, Xingzhang Ren, Sibo Song, Yuchong Sun, Jun Tang, Jianhong Tu, Jianqiang Wan, Peng Wang, Pengfei Wang, Qiuyue Wang, Yuxuan Wang, Tianbao Xie, Yiheng Xu, Haiyang Xu, Jin Xu, Zhibo Yang, Mingkun Yang, Jianxin Yang, An Yang, Bowen Yu, Fei Zhang, Hang Zhang, Xi Zhang, Bo Zheng, Humen Zhong, Jingren Zhou, Fan Zhou, Jing Zhou, Yuanzhi Zhu, and Ke Zhu. Qwen3-vl technical report, 2025. URL https://arxiv.org/abs/2511.21631 .Nicolas Carion, Laura Gustafson, Yuan-Ting Hu, Shoubhik Debnath, Ronghang Hu, Didac Suris, Chaitanya Ryali, Kalyan Vasudev Alwala, Haitham Khedr, Andrew Huang, Jie Lei, Tengyu Ma, Baishan Guo, Arpit Kalla, Markus Marks, Joseph Greer, Meng Wang, Peize Sun, Roman Rädle, Triantafyllos Afouras, Effrosyni Mavroudi, Katherine Xu, Tsung-Han Wu, Yu Zhou, Liliane Momeni, Rishi Hazra, Shuangrui Ding, Sagar Vaze, Francois Porcher, Feng Li, Siyuan Li, Aishwarya Kamath, Ho Kei Cheng, Piotr Dollár, Nikhila Ravi, Kate Saenko, Pengchuan Zhang, and Christoph Feichtenhofer. Sam 3: Segment anything with concepts, 2026. URL 
+
+https://arxiv.org/abs/2511.16719 .Shuaichen Chang, David Palzer, Jialin Li, Eric Fosler-Lussier, and Ningchuan Xiao. Mapqa: A dataset for question answering on choropleth maps, 2022. URL https://arxiv.org/abs/2211. 08545 .Boyuan Chen, Zhuo Xu, Sean Kirmani, Brian Ichter, Danny Driess, Pete Florence, Dorsa Sadigh, Leonidas Guibas, and Fei Xia. Spatialvlm: Endowing vision-language models with spatial reasoning capabilities, 2024. URL https://arxiv.org/abs/2401.12168 .Liang Chen, Weichu Xie, Yiyan Liang, Hongfeng He, Hans Zhao, Zhibo Yang, Zhiqi Huang, Haoning Wu, Haoyu Lu, Y. charles, Yiping Bao, Yuantao Fan, Guopeng Li, Haiyang Shen, Xuanzhong Chen, Wendong Xu, Shuzheng Si, Zefan Cai, Wenhao Chai, Ziqi Huang, Fangfu Liu, Tianyu Liu, Baobao Chang, Xiaobo Hu, Kaiyuan Chen, Yixin Ren, Yang Liu, Yuan Gong, and Kuan Li. Babyvision: Visual reasoning beyond language, 2026. URL https://arxiv.org/abs/2601.06521 .Gheorghe Comanici, Eric Bieber, Mike Schaekermann, Ice Pasupat, Noveen Sachdeva, Inderjit Dhillon, Marcel Blistein, Ori Ram, Dan Zhang, Evan Rosen, et al. Gemini 2.5: Pushing the frontier with advanced reasoning, multimodality, long context, and next generation agentic capabilities. 
+
+arXiv preprint arXiv:2507.06261 , 2025. Cheng Cui, Ting Sun, Suyin Liang, Tingquan Gao, Zelun Zhang, Jiaxuan Liu, Xueqing Wang, Changda Zhou, Hongen Liu, Manhui Lin, Yue Zhang, Yubo Zhang, Yi Liu, Dianhai Yu, and Yanjun Ma. Paddleocr-vl-1.5: Towards a multi-task 0.9b vlm for robust in-the-wild document parsing, 2026. URL https://arxiv.org/abs/2601.21957 .Mahir Labib Dihan, Md Tanvir Hassan, Md Tanvir Parvez, Md Hasebul Hasan, Md Almash Alam, Muhammad Aamir Cheema, Mohammed Eunus Ali, and Md Rizwan Parvez. Mapeval: A map-based evaluation of geo-spatial reasoning in foundation models, 2025. URL https://arxiv. org/abs/2501.00316 .Lang Feng, Zhenghai Xue, Tingcong Liu, and Bo An. Group-in-group policy optimization for llm agent training, 2025a. URL https://arxiv.org/abs/2505.10978 .Sicheng Feng, Kaiwen Tuo, Song Wang, Lingdong Kong, Jianke Zhu, and Huan Wang. Rewardmap: Tackling sparse rewards in fine-grained visual reasoning via multi-stage reinforcement learning. 
+
+arXiv preprint arXiv:2510.02240 , 2025b. 10 Sicheng Feng, Song Wang, Shuyi Ouyang, Lingdong Kong, Zikai Song, Jianke Zhu, Huan Wang, and Xinchao Wang. Can mllms guide me home? a benchmark study on fine-grained visual reasoning from transit maps. arXiv preprint arXiv:2505.18675 , 2025c. Sicheng Feng, Song Wang, Shuyi Ouyang, Lingdong Kong, Zikai Song, Jianke Zhu, Huan Wang, and Xinchao Wang. Reasonmap: Towards fine-grained visual reasoning from transit maps, 2026. URL https://arxiv.org/abs/2505.18675 .Xingyu Fu, Minqian Liu, Zhengyuan Yang, John Corring, Yijuan Lu, Jianwei Yang, Dan Roth, Dinei Florencio, and Cha Zhang. Refocus: Visual editing as a chain of thought for structured image understanding, 2025. URL https://arxiv.org/abs/2501.05452 .Paul Gavrikov, Wei Lin, M. Jehanzeb Mirza, Soumya Jahagirdar, Muhammad Huzaifa, Sivan Doveh, Serena Yeung-Levy, James Glass, and Hilde Kuehne. Visualoverload: Probing visual understanding of vlms in really dense scenes, 2025. URL https://arxiv.org/abs/2509.25339 .Jack Hong, Chenxiao Zhao, ChengLin Zhu, Weiheng Lu, Guohai Xu, and Xing Yu. Deepeyesv2: Toward agentic multimodal model, 2026. URL https://arxiv.org/abs/2511.05271 .Mengdi Jia, Zekun Qi, Shaochen Zhang, Wenyao Zhang, Xinqiang Yu, Jiawei He, He Wang, and Li Yi. Omnispatial: Towards comprehensive spatial reasoning benchmark for vision language models, 2026. URL https://arxiv.org/abs/2506.03135 .Dongfu Jiang, Yi Lu, Zhuofeng Li, Zhiheng Lyu, Ping Nie, Haozhe Wang, Alex Su, Hui Chen, Kai Zou, Chao Du, et al. Verltool: Towards holistic agentic reinforcement learning with tool use. arXiv preprint arXiv:2509.01055 , 2025. Woosuk Kwon, Zhuohan Li, Siyuan Zhuang, Ying Sheng, Lianmin Zheng, Cody Hao Yu, Joseph E. Gonzalez, Hao Zhang, and Ion Stoica. Efficient memory management for large language model serving with pagedattention. In Proceedings of the ACM SIGOPS 29th Symposium on Operating Systems Principles , 2023. Xin Lai, Junyi Li, Wei Li, Tao Liu, Tianjian Li, and Hengshuang Zhao. Mini-o3: Scaling up reasoning patterns and interaction turns for visual search, 2025. URL https://arxiv.org/abs/2509. 07969 .Shilong Liu, Zhaoyang Zeng, Tianhe Ren, Feng Li, Hao Zhang, Jie Yang, Qing Jiang, Chunyuan Li, Jianwei Yang, Hang Su, Jun Zhu, and Lei Zhang. Grounding dino: Marrying dino with grounded pre-training for open-set object detection, 2024. URL https://arxiv.org/abs/2303.05499 .Yuqi Liu, Tianyuan Qu, Zhisheng Zhong, Bohao Peng, Shu Liu, Bei Yu, and Jiaya Jia. Visionreasoner: Unified reasoning-integrated visual perception via reinforcement learning, 2026. URL https: //arxiv.org/abs/2505.12081 .Meng Lu, Ran Xu, Yi Fang, Wenxuan Zhang, Yue Yu, Gaurav Srivastava, Yuchen Zhuang, Mohamed Elhoseiny, Charles Fleming, Carl Yang, Zhengzhong Tu, Yang Xie, Guanghua Xiao, Hanrui Wang, Di Jin, Wenqi Shi, and Xuan Wang. Scaling agentic reinforcement learning for tool-integrated reasoning in vlms, 2025. URL https://arxiv.org/abs/2511.19773 .Wufei Ma, Haoyu Chen, Guofeng Zhang, Celso M de Melo, Alan Yuille, and Jieneng Chen. 3dsrbench: A comprehensive 3d spatial reasoning benchmark. arXiv preprint arXiv:2412.07825 , 2024. OpenAI. Openai o3 and o4-mini system card, April 2025. URL https://cdn.openai.com/pdf/ 2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf . Sys-tem card. Artemis Panagopoulou, Aveek Purohit, Achin Kulshrestha, Soroosh Yazdani, and Mohit Goyal. Maptrace: Scalable data generation for route tracing on maps, 2025. URL https://arxiv.org/ abs/2512.19609 .Timo Schick, Jane Dwivedi-Yu, Roberto Dessì, Roberta Raileanu, Maria Lomeli, Luke Zettlemoyer, Nicola Cancedda, and Thomas Scialom. Toolformer: Language models can teach themselves to use tools, 2023. URL https://arxiv.org/abs/2302.04761 .11 John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov. Proximal policy optimization algorithms, 2017. URL https://arxiv.org/abs/1707.06347 .Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, Y. K. Li, Y. Wu, and Daya Guo. Deepseekmath: Pushing the limits of mathemat-ical reasoning in open language models, 2024. URL https://arxiv.org/abs/2402.03300 .Aaditya Singh, Adam Fry, Adam Perelman, Adam Tart, Adi Ganesh, Ahmed El-Kishky, Aidan McLaughlin, Aiden Low, AJ Ostrow, Akhila Ananthram, et al. Openai gpt-5 system card. arXiv preprint arXiv:2601.03267 , 2025. Ilias Stogiannidis, Steven McDonagh, and Sotirios A. Tsaftaris. Mind the gap: Benchmarking spatial reasoning in vision-language models, 2025. URL https://arxiv.org/abs/2503.19707 .Weiyun Wang, Zhangwei Gao, Lixin Gu, Hengjun Pu, Long Cui, Xingguang Wei, Zhaoyang Liu, Linglin Jing, Shenglong Ye, Jie Shao, Zhaokai Wang, Zhe Chen, Hongjie Zhang, Ganlin Yang, Haomin Wang, Qi Wei, Jinhui Yin, Wenhao Li, Erfei Cui, Guanzhou Chen, Zichen Ding, Changyao Tian, Zhenyu Wu, Jingjing Xie, Zehao Li, Bowen Yang, Yuchen Duan, Xuehui Wang, Zhi Hou, Haoran Hao, Tianyi Zhang, Songze Li, Xiangyu Zhao, Haodong Duan, Nianchen Deng, Bin Fu, Yinan He, Yi Wang, Conghui He, Botian Shi, Junjun He, Yingtong Xiong, Han Lv, Lijun Wu, Wenqi Shao, Kaipeng Zhang, Huipeng Deng, Biqing Qi, Jiaye Ge, Qipeng Guo, Wenwei Zhang, Songyang Zhang, Maosong Cao, Junyao Lin, Kexian Tang, Jianfei Gao, Haian Huang, Yuzhe Gu, Chengqi Lyu, Huanze Tang, Rui Wang, Haijun Lv, Wanli Ouyang, Limin Wang, Min Dou, Xizhou Zhu, Tong Lu, Dahua Lin, Jifeng Dai, Weijie Su, Bowen Zhou, Kai Chen, Yu Qiao, Wenhai Wang, and Gen Luo. Internvl3.5: Advancing open-source multimodal models in versatility, reasoning, and efficiency, 2025a. URL https://arxiv.org/abs/2508.18265 .Zihan Wang, Kangrui Wang, Qineng Wang, Pingyue Zhang, Linjie Li, Zhengyuan Yang, Xing Jin, Kefan Yu, Minh Nhat Nguyen, Licheng Liu, Eli Gottlieb, Yiping Lu, Kyunghyun Cho, Jiajun Wu, Li Fei-Fei, Lijuan Wang, Yejin Choi, and Manling Li. Ragen: Understanding self-evolution in llm agents via multi-turn reinforcement learning, 2025b. URL https://arxiv.org/abs/2504. 20073 .Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed Chi, Quoc Le, and Denny Zhou. Chain-of-thought prompting elicits reasoning in large language models, 2023. URL https://arxiv.org/abs/2201.11903 .Jialong Wu, Xiaoying Zhang, Hongyi Yuan, Xiangcheng Zhang, Tianhao Huang, Changjing He, Chaoyi Deng, Renrui Zhang, Youbin Wu, and Mingsheng Long. Visual generation unlocks human-like reasoning through multimodal world models. arXiv preprint arXiv:2601.19834 , 2026a. Mingyuan Wu, Jingcheng Yang, Jize Jiang, Meitang Li, Kaizhuo Yan, Hanchao Yu, Minjia Zhang, Chengxiang Zhai, and Klara Nahrstedt. Vtool-r1: Vlms learn to think with images via reinforce-ment learning on multimodal tool use, 2026b. URL https://arxiv.org/abs/2505.19255 .Penghao Wu and Saining Xie. V*: Guided visual search as a core mechanism in multimodal llms. 
+
+arXiv preprint arXiv:2312.14135 , 2023a. Penghao Wu and Saining Xie. V*: Guided visual search as a core mechanism in multimodal llms, 2023b. URL https://arxiv.org/abs/2312.14135 .Shuo Xing, Zezhou Sun, Shuangyu Xie, Kaiyuan Chen, Yanjia Huang, Yuping Wang, Jiachen Li, Dezhen Song, and Zhengzhong Tu. Can large vision language models read maps like a human?, 2025. URL https://arxiv.org/abs/2503.14607 .Zhengzhuo Xu, Bowen Qu, Yiyan Qi, Sinan Du, Chengjin Xu, Chun Yuan, and Jian Guo. Chartmoe: Mixture of diversely aligned expert connector for chart understanding, 2025. URL https: //arxiv.org/abs/2409.03277 .Yi Yang, Xiaoxuan He, Hongkun Pan, Xiyan Jiang, Yan Deng, Xingtao Yang, Haoyu Lu, Dacheng Yin, Fengyun Rao, Minfeng Zhu, Bo Zhang, and Wei Chen. R1-onevision: Advancing generalized multimodal reasoning through cross-modal formalization, 2025. URL https://arxiv.org/ abs/2503.10615 .12 Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, and Yuan Cao. React: Synergizing reasoning and acting in language models, 2023. URL https://arxiv.org/ abs/2210.03629 .Qiying Yu, Zheng Zhang, Ruofei Zhu, Yufeng Yuan, Xiaochen Zuo, Yu Yue, Weinan Dai, Tiantian Fan, Gaohong Liu, Lingjun Liu, Xin Liu, Haibin Lin, Zhiqi Lin, Bole Ma, Guangming Sheng, Yuxuan Tong, Chi Zhang, Mofan Zhang, Wang Zhang, Hang Zhu, Jinhua Zhu, Jiaze Chen, Jiangjie Chen, Chengyi Wang, Hongli Yu, Yuxuan Song, Xiangpeng Wei, Hao Zhou, Jingjing Liu, Wei-Ying Ma, Ya-Qin Zhang, Lin Yan, Mu Qiao, Yonghui Wu, and Mingxuan Wang. Dapo: An open-source llm reinforcement learning system at scale, 2025. URL https://arxiv.org/abs/2503.14476 .Xiang Yue, Yuansheng Ni, Kai Zhang, Tianyu Zheng, Ruoqi Liu, Ge Zhang, Samuel Stevens, Dongfu Jiang, Weiming Ren, Yuxuan Sun, Cong Wei, Botao Yu, Ruibin Yuan, Renliang Sun, Ming Yin, Boyuan Zheng, Zhenzhu Yang, Yibo Liu, Wenhao Huang, Huan Sun, Yu Su, and Wenhu Chen. Mmmu: A massive multi-discipline multimodal understanding and reasoning benchmark for expert agi, 2024. URL https://arxiv.org/abs/2311.16502 .Zaibin Zhang, Yuhan Wu, Lianjie Jia, Yifan Wang, Zhongbo Zhang, Yijiang Li, Binghao Ran, Fuxi Zhang, Zhuohan Sun, Zhenfei Yin, Lijun Wang, and Huchuan Lu. Think3d: Thinking with space for spatial reasoning, 2026. URL https://arxiv.org/abs/2601.13029 .Zhuosheng Zhang, Aston Zhang, Mu Li, Hai Zhao, George Karypis, and Alex Smola. Multimodal chain-of-thought reasoning in language models, 2024. URL https://arxiv.org/abs/2302. 00923 .Shitian Zhao, Haoquan Zhang, Shaoheng Lin, Ming Li, Qilong Wu, Kaipeng Zhang, and Chen Wei. Pyvision: Agentic vision with dynamic tooling, 2025. URL https://arxiv.org/abs/2507. 07998 .Ziwei Zheng, Michael Yang, Jack Hong, Chenxiao Zhao, Guohai Xu, Le Yang, Chao Shen, and Xing Yu. Deepeyes: Incentivizing "thinking with images" via reinforcement learning, 2026. URL 
+
+https://arxiv.org/abs/2505.14362 .13 A Limitations, Future Work, and Broader Impact 
+
+Although PERIA shows consistent gains across model sizes, our main experiments focus on the 8B model due to computational constraints. We leave larger-backbone validation and a more detailed study of scaling with trajectory data size and tool-use diversity to future work. In addition, we restrict inference to at most 10 interaction turns. This setting covers the tasks studied in this paper, but longer-horizon spatial reasoning may require stronger memory, better exploration, and more stable credit assignment over extended tool-use trajectories. Future work will extend PERIA to broader spatial reasoning domains, including realistic 3D reason-ing, maze navigation, Sokoban-like planning, and embodied or environment-centric tasks that require stronger spatial state tracking. Building larger and more diverse trajectory datasets is also important for exploring the upper bound of PERIA. 
+
+Broader impact. Tool-augmented spatial reasoning agents may benefit visual assistance, map understanding, robotics, navigation, and spatial planning by improving visual evidence acquisition and verification. However, incorrect tool-grounded reasoning may mislead decisions in safety-sensitive scenarios, and the framework could be misused for surveillance or privacy-invasive visual analysis. Responsible deployment should include task-specific evaluation, human oversight for high-stakes use, and restrictions on privacy-sensitive applications. 
+
+B Implementation Details 
+
+B.1 Training and Inference SFT training parameters. We first perform supervised fine-tuning to initialize the model with basic tool-use and spatial reasoning abilities. Table 4 summarizes the main SFT hyperparameters, including the training schedule, optimization settings, and cutoff length.           
+
+> Parameters SFT Training
+> epochs 1.0 global batch size 32 learning rate 1.0×10 −5
+> scheduler cosine warmup ratio 0.1 weight decay 0.01 cutoff length 65,536
+
+Table 4: SFT Parameters. We report the main optimization and cutoff-length settings used during supervised fine-tuning. 
+
+RL training parameters. After SFT, we further optimize the model with reinforcement learning to improve reliable tool use and multi-step spatial reasoning. Table 5 reports the shared RL training and rollout settings, together with the algorithm-specific parameters used by OR-GIGPO and DAPO. 
+
+Inference parameters. For evaluation, we use a fixed inference configuration across datasets and models to ensure consistent comparisons. Table 6 lists the decoding parameters used in our experiments. 
+
+Inference prompts. We use a unified inference prompt for all tool-augmented evaluations. As shown in Figure 5, the prompt defines the available tools, enforces one tool call per action, and requires the model to reason before and after each tool execution. The model is instructed to place intermediate reasoning inside <think> and </think> tags, issue tool calls using the prescribed 
+
+<action> format, and provide the final answer inside <answer> and </answer> tags. This protocol encourages the agent to verify tool observations before producing the final response. 14 Parameters RL Training                                        
+
+> rollout samples per prompt, N4train batch size 64 PPO mini-batch size 256 PPO micro-batch size / GPU 4log-prob micro-batch size / GPU 16 actor learning rate 1.0×10 −6
+> learning rate scheduler cosine warmup ratio 0.05 total epochs 3max prompt length 16,384 max response length 32,768 max action length 4,096 max observation length 8,192 max turns, T11 sampling temperature 1.0 top_p 1.0 top_k -1 rollout backend vLLM standard clipping coefficient, ϵclip 0.2
+> OR-GIGPO-specific parameters
+> episode-step advantage weight, ω1.0 discount factor, γ0.99 advantage normalization constant, ϵadv 1.0×10 −6
+> observation similarity threshold, δ0.9
+> DAPO-specific parameters
+> lower clipping coefficient, ϵlow 0.2 upper clipping coefficient, ϵhigh 0.28 total training steps 300
+
+Table 5: RL Parameters. We report the rollout configuration, optimization settings, interaction limits, and algorithm-specific parameters for OR-GIGPO and DAPO.      
+
+> Parameters Inference
+> max response length 32,768 max turns 11 temperature 0.0 inference backend vLLM
+
+Table 6: Inference Parameters. We use the same decoding configuration across datasets and models for fair comparison. 
+
+B.2 Evaluation Protocol Evaluation protocol. We adopt a two-stage evaluation protocol for answer-based spatial reasoning tasks. We first apply rule-based matching to compare model predictions with ground-truth answers, which handles exact matches, normalized formatting, and simple equivalent forms. If the rule-based matcher does not mark the prediction as correct, we further use an LLM judge ( GPT-5-Mini )to evaluate whether the prediction meaningfully matches the ground truth. The judge focuses on semantic correctness and ignores minor differences in phrasing or formatting, while allowing equivalent expressions such as unit conversions when they are consistent with the ground truth. For MapTrace, where the output is a coordinate path rather than a textual answer, we directly evaluate the predicted trajectory against the ground-truth trajectory using normalized dynamic time warping (NDTW). Both paths are represented as normalized coordinates in [0 , 1] , and the cumulative DTW cost is computed with Euclidean distance between matched points. We regard a prediction as correct if its NDTW score is below the threshold of 1.0. Lower NDTW indicates better alignment between the predicted and ground-truth paths. 15 System Prompt: 
+
+You are an advanced AI agent capable of complex 
+
+reasoning and tool usage. You must strictly adhere 
+
+to the following protocol for every interaction: 
+
+1. Call appropriate tools based on the task; 
+
+2. Only  persue  one tool calling per action; 
+
+3. Reasoning Before Action: before selecting a tool, 
+
+you must analyze the user's request and determine 
+
+the necessary steps. Output your internal monologue 
+
+and logic inside <think> and </think> tags; 
+
+4. Tool Execution: If a tool is required, generate the 
+
+tool call immediately after your reasoning. 
+
+5. Reasoning After Action: Once you receive the 
+
+output from a tool, you must analyze the results to 
+
+determine if further actions are needed or if the task 
+
+is complete. Output this analysis inside <think> and </think> 
+
+tags and then decide your next step, which could be calling 
+
+another tool or providing the final answer.; 
+
+6. Final Output: When you have formulated your 
+
+conclusion, you must wrap your final answer in 
+
+<answer> and </answer> tags. 
+
+Available tools:  {tool_definitions_text },
+
+Use this format for tool calls:<action>{{"name": " tool_name ", 
+
+"arguments": {{"param1": "value1"}}}}</action> 
+
+User  Prompt: 
+
+Please answer the following  {task_type } question: 
+
+Question:  {Question} 
+
+Please provide a complete step -by -step solution to 
+
+this problem. Your reasoning should: 
+
+1. Analyze the problem systematically 
+
+2. Check if the tool execution and answer are correct 
+
+3. If there are errors, explain what went wrong and 
+
+provide the correct reasoning 
+
+4. Provide the final answer 
+
+Use natural expressions like 'let me think' or 'hmm' 
+
+when helpful, but keep it concise. It's encouraged 
+
+to use self -reflection or verification especially in the 
+
+verifying tool output in the reasoning process. 
+
+Provide your detailed reasoning between <think> 
+
+and </think> tags, then give your final answer 
+
+between <answer> and </answer> tags. 
+
+Output format:  {output_format }Figure 5: The inference prompt enforces structured tool use and answer formatting. It defines the tool-use protocol, including tool selection, one tool call per action, pre- and post-action reasoning, observation verification, and the required final-answer format. 
+
+Evaluation prompts. For predictions that cannot be verified by rule-based matching, we use the evaluation prompt shown in Figure 6. The prompt provides the image-related question, the ground-truth answer, and the model prediction, and asks the judge to output a binary correctness score. The judge is instructed to consider both relevance and accuracy, allowing paraphrases and formatting differences while rejecting predictions that introduce factual errors. 
+
+C Method Details 
+
+C.1 Tool Sandbox 
+
+We organize the tool sandbox into two categories: perception tools and interaction tools. Perception tools transform images into structured observations, including text, localized text boxes, object detections, segmentation proposals, counts, and presence signals, powered by three lightweight tool agents: PaddleOCR-VL-1.5 [Cui et al., 2026], Grounding DINO [Liu et al., 2024], and SAM3 [Carion et al., 2026]. The OCR agent is served with vLLM using a maximum context length of 8192 and maximum generation length of 4096 ; the detection agent uses GroundingDINO base with box/text thresholds of 0.25 and NMS threshold of 0.8; and the segmentation agent uses SAM3.1 with score 16 Evaluation System  Prompt: 
+
+You are an intelligent chatbot designed for evaluating the 
+
+correctness of generative outputs for question -answer pairs. 
+
+Your task is to compare the predicted answer with the correct 
+
+answer and determine if they match meaningfully. 
+
+Instructions: Focus on the meaningful match between the 
+
+predicted answer and the correct answer, ignoring minor 
+
+differences in phrasing or formatting. Consider synonyms or 
+
+paraphrases as valid matches. Evaluate the correctness of the 
+
+prediction compared to the answer. 
+
+Evaluation  User Prompt :
+
+I will give you a question related to an image and the following 
+
+text as inputs: 
+
+1. Question Related to the Image:  {question} 
+
+2. Ground Truth Answer:  {ground_truth }
+
+3. Model Predicted Answer:  {prediction} 
+
+Your task is to evaluate the model's predicted answer against 
+
+the ground truth answer, based on the context provided by the 
+
+question related to the image. Consider the following criteria for 
+
+evaluation: Relevance, whether the predicted answer directly 
+
+addresses the question posed; and Accuracy, whether the 
+
+prediction matches the ground truth. If the ground truth answer 
+
+is open -ended, consider whether the prediction reflects the 
+
+information given in the ground truth without introducing factual 
+
+inaccuracies. If the ground truth answer is definitive, strictly 
+
+compare the model's prediction to the actual answer, while 
+
+allowing consistent unit conversions such as length and angle. 
+
+Examples of correct predictions include: (pred=23.8 billion euros, 
+
+gt =23.8 billion euros), (pred=60%,  gt =60), and (pred="Don’t 
+
+know" (6%).,  gt =Don't Know). 
+
+Output Format:  Your response should include an integer score 
+
+indicating the correctness of the prediction: 1 for correct and 0 
+
+for incorrect. The format should be "Score: 0 or 1". Figure 6: The evaluation prompt checks semantic correctness beyond exact matching. It asks the LLM judge to compare the model prediction with the ground-truth answer for an image-related question and output a binary correctness score. The prompt emphasizes semantic matching, relevance, accuracy, and tolerance to minor formatting or phrasing differences. threshold 0.25 and at most 20 returned proposals. Interaction tools perform deterministic image operations, such as cropping, labeling, drawing, and highlighting, to help the agent inspect and verify spatial evidence during multi-step reasoning. All tools use image_index to specify the input image. For tools requiring spatial coordinates, we use normalized coordinates in a 1000 × 1000 image space. Bounding boxes follow the format 
+
+\boxed{x1,y1,x2,y2} , where (x1, y 1) and (x2, y 2) denote the top-left and bottom-right corners. Table 7 summarizes the full tool list, including each tool’s execution backend, output type, and main parameters. 
+
+Perception tools. The perception tools extract structured visual evidence from the image. • text_ocr performs general OCR and extracts visible text from images, such as document text, signs, labels, and natural scene text. • text_spotting detects and recognizes text with localization, returning both text content and bounding boxes. It is useful when the spatial position of text matters, such as station names, road labels, or map annotations. • map_text_ocr extracts map-related text, including place names, road names, station names, and landmarks. It filters common map OCR noise such as pure numbers, scale markers, and isolated symbols. 17 Tool Driven by Output Main parameters                                                                    
+
+> Visual perception tools
+> text_ocr PaddleOCR-VL-1.5 0.9B Text image_index text_spotting PaddleOCR-VL-1.5 0.9B Text image_index map_text_ocr PaddleOCR-VL-1.5 0.9B Text image_index formula_ocr PaddleOCR-VL-1.5 0.9B Text image_index table_ocr PaddleOCR-VL-1.5 0.9B Text image_index grounding_dino GroundingDINO base Text image_index ,question auto_segment SAM3.1 Text image_index bbox_segment SAM3.1 Text image_index ,bounding_box text_segment SAM3.1 Text image_index ,text_prompt exemplar_segment SAM3.1 Text image_index ,bounding_box concept_count SAM3.1 Text image_index ,text_prompt presence_check SAM3.1 Text image_index ,text_prompt
+> Visual interaction tools
+> image_crop Function tool Image image_index ,bounding_box image_label Function tool Image image_index ,text ,position draw_line Function tool Image image_index ,coordinates draw_path Function tool Image image_index ,points bounding_box Function tool Image image_index ,bounding_box image_highlight Function tool Image image_index ,bounding_box
+
+Table 7: Complete tool list in the PERIA Tool Sandbox. We list all perception and interaction tools, together with their execution backends, output types, and main input parameters. • formula_ocr recognizes mathematical expressions and equations from images and converts them into textual or L ATEX-style outputs. • table_ocr recognizes table structures and extracts rows, columns, and cell contents from structured images. • grounding_dino performs open-vocabulary object detection from text descriptions. It returns detected objects with bounding boxes, confidence scores, and labels, which helps locate landmarks, icons, objects, or semantic regions. • auto_segment automatically segments objects in the full image and returns proposals with bounding boxes, confidence scores, areas, and centroids. • bbox_segment performs region-constrained segmentation inside a specified bounding box, enabling focused analysis or refinement of a target area. • text_segment segments objects described by a natural-language prompt, supporting open-vocabulary object localization and isolation. • exemplar_segment uses a bounding box as a visual exemplar and finds visually similar objects in the image, which is useful for repeated patterns or “find more like this” reasoning. • concept_count counts objects matching a text prompt and returns both the count and instance locations. • presence_check checks whether a described concept is present in the image and returns a presence flag, confidence score, and count. 
+
+Interaction tools. The interaction tools return modified images and support active visual inspection and verification. • image_crop crops a specified region for fine-grained inspection, such as verifying small text, landmarks, or local route details. • image_label adds a text label at a specified position, helping annotate landmarks, objects, or intermediate reasoning results. • draw_line draws a single line between two points, which is useful for marking road segments, boundaries, crossings, or direct spatial relations. 18 • draw_path draws a connected path through multiple waypoints, supporting route tracing, maze solving, and multi-step path verification. • bounding_box draws a bounding box around a target region, providing explicit localization of objects, landmarks, or regions of interest. • image_highlight highlights a specified region with a translucent overlay, helping focus attention on relevant areas while preserving surrounding context. 
+
+C.2 Trajectory Synthesis TOOL_SELECTION_PROMPT (For  𝒓𝒐𝒖𝒏𝒅 = 𝟏 ):     
+
+> You are an AI agent that selects tools for visual analysis tasks.
+> Based on the question and observations, select ONE tool and
+> explain why.
+> STRICT OUTPUT FORMAT (you MUST follow this exactly):
+> <think>
+> Tool: [ tool_name ]
+> Reason: [1 paragraph explaining why this tool is appropriate]
+> </think>
+> Rules:
+> 1. You MUST select a tool -NEVER answer the question directly
+> 2. Only output the tool NAME -do NOT include parameters
+> 3. Select only ONE tool per turn
+> 4. Do NOT output anything outside the <think></think> tags
+> TOOL_CALL_ONLY_PROMPT:
+> You are an advanced AI agent. In this phase, you must execute
+> the tool call based on previous reasoning.
+> Instructions:
+> 1. Based on the reasoning provided, execute the tool call
+> immediately
+> 2. Make sure the tool call is consistent with the decision in the
+> reasoning phase.
+> 2. Do NOT provide any final answer in this phase
+> 3. Do NOT provide any text explanation, just call the tool with
+> the parameters specified in the reasoning
+> 4. Never require a tool to directly solve the problem, but rather to
+> analyze the problem and provide more information for you to
+> solve the problem.
+
+Figure 7: Round-1 prompts force exploration before answering. At round 1,
+
+TOOL_SELECTION_PROMPT forces the model to select exactly one tool and explain the reason inside 
+
+<think> tags, while TOOL_CALL_ONLY_PROMPT executes the selected tool with concrete parameters and forbids final answers. 
+
+Data synthesis procedure. We synthesize tool-use trajectories with an iterative explore-and-exploit procedure. For each example, we initialize the task with the image, question, ground-truth answer, dataset-specific metadata, and the available tool sandbox. We set the number of sampled trajectories per round to nsample = 3 and the maximum number of rounds to T = 11 , including at most 10 
+
+tool-use rounds and one final-answer round. Rather than asking the model to answer directly, we decompose trajectory generation into tool selection, tool execution, observation gathering, and final answering. At round 1, the model is forced to explore by selecting one tool for visual analysis and then executing the corresponding tool call. For rounds 2 to T − 1, the model exploits accumulated observations to decide whether the current evidence is sufficient for answering or whether another tool call is needed. If the model produces an answer before the final round, we validate it before committing it to the trajectory. Correct answers are saved as valid trajectories, while rejected answers are removed from the conversation history and trigger a reflection step that forces the model to gather additional evidence with a new or more informative tool. At round T , if no valid trajectory has been found, the model is prompted to reflect on all observations and provide a final answer. We validate synthesized trajectories using the same task-specific criteria as our evaluation protocol in Appendix B.2, including rule-based and LLM-judge checks for answer-based tasks and NDTW-based verification for MapTrace. This process yields executable trajectories with explicit tool choices, grounded observations, self-reflection after rejected answers, and verified final responses. 
+
+Synthesis prompts. Figures 7 and 8 show the prompts used for iterative trajectory synthesis. At round 1, we use TOOL_SELECTION_PROMPT and TOOL_CALL_ONLY_PROMPT to separate tool selection from tool execution: the model first selects exactly one tool in the reasoning phase, and then executes the selected tool with concrete parameters without producing a final answer. For rounds > 1, we use TOOL_SELECTION_OR_ANSWER_PROMPT when no previous answer in the current trajectory has been rejected, allowing the model to either call another tool or provide a final answer based on accumulated observations. If an attempted answer is rejected by the verifier, we use 
+
+EXTEND_TOOL_SELECTION_PROMPT in the following retry to force self-reflection and additional tool use. At the maximum round, FINAL_ANSWER_PROMPT asks the model to reflect on all observations and produce the final answer. 19 EXTEND_TOOL_SELECTION_PROMPT  (For  𝒓𝒐𝒖𝒏𝒅 > 𝟏  and 
+
+have provided wrong answer in the  𝒓𝒐𝒖𝒏𝒅  ): 
+
+You are an AI agent selecting tools for visual analysis. 
+
+IMPORTANT: Your previous analysis led to an INCORRECT 
+
+answer. You need to gather MORE information by calling 
+
+additional tools. 
+
+Before selecting a tool, use a self -reflection phrase such as: 
+
+- "Wait, I think my previous analysis might be incomplete..." 
+
+- "Is it true that [previous assumption]? Let me check..." 
+
+- "Current information is not sufficient to determine..." 
+
+- "Hmm, this seems inconsistent with... I need to investigate..." 
+
+- "Perhaps I should verify [specific aspect]..." 
+
+- Or similar expressions that show critical thinking 
+
+Your task: 
+
+1. Reflect on what might have gone wrong 
+
+2. Identify what additional information could help 
+
+3. You have used: { used_tools }. Explore new tools for a 
+
+DIFFERENT perspective 
+
+OUTPUT FORMAT: 
+
+<think> 
+
+[Your self -reflection  - choose or generate a phrase similar to the 
+
+examples above] 
+
+Tool: [ tool_name ]
+
+Reason: [what NEW information this tool will provide to correct 
+
+the analysis] 
+
+</think> 
+
+CRITICAL: You MUST call a tool  - do NOT provide an answer 
+
+yet. 
+
+TOOL_SELECTION_OR_ANSWER_PROMPT  (For  𝒓𝒐𝒖𝒏𝒅 > 𝟏 
+
+and have not provided wrong answer  in the  𝒓𝒐𝒖𝒏𝒅  ): 
+
+You are an AI agent selecting tools for visual analysis. 
+
+Review ALL observations gathered so far. Start your reasoning 
+
+with a brief 
+
+reflection on what you have learned, using connective phrases 
+
+such as: 
+
+- "Ok, I have [what you just did]. Now I need to..." 
+
+- "Wait, the result shows [observation]. Let me check..." 
+
+- "Good, this confirms [finding].  Next  I should..." 
+
+- "Hmm, this is not what I expected. I need to..." 
+
+Then decide your next action: 
+
+If you need more information, select a tool: 
+
+<think> 
+
+[Your reflection with connective phrase] 
+
+Tool: [ tool_name ]
+
+Reason: [what NEW information this tool will provide] 
+
+</think> 
+
+If you have gathered CONCRETE evidence and are confident in 
+
+your answer: 
+
+<think>[Your reflection and final reasoning]</think> 
+
+<answer>[your answer]</answer> 
+
+CRITICAL RULES: 
+
+- NEVER respond with "I cannot determine", "I'm unable to 
+
+verify", or ask the user for clarification. You must work with the 
+
+image and tools available. 
+
+- If previous tool results were unclear or insufficient, select a 
+
+DIFFERENT tool or use the same tool with different parameters 
+
+to gather more information. 
+
+- Only provide an answer when you have specific, concrete 
+
+findings from tool results  — not when you are uncertain or giving 
+
+up. 
+
+- PREFER using tools to verify conclusions before answering. 
+
+FINAL_ANSWER_PROMPT  (For  𝒓𝒐𝒖𝒏𝒅 = 𝒎𝒂𝒙 _𝒓𝒐𝒖𝒏𝒅  ): 
+
+You are an advanced AI agent. In this phase, you must analyze all 
+
+observations and tool results to provide the final answer. 
+
+Instructions: 
+
+1. Based on all the observations and tool results gathered, analyze 
+
+them carefully and provide the final answer 
+
+2. Wrap your analysis in <think> and </think> tags. 
+
+3. Wrap your final answer in <answer> and </answer> tags 
+
+4. Be concise and direct in your answer Figure 8: Later-round prompts balance further tool use with final answering. For rounds > 1,
+
+TOOL_SELECTION_OR_ANSWER_PROMPT lets the model choose between further tool use and final answering; after a rejected answer, EXTEND_TOOL_SELECTION_PROMPT forces self-reflection and additional tool use; at the maximum round, FINAL_ANSWER_PROMPT requires a final answer. 
+
+Diversification procedure and prompts. After collecting valid trajectories, we diversify only the intermediate reasoning text while keeping the tool calls, tool parameters, observations, and final answers unchanged. As shown in Figure 9, DIVERSIFY_SYSTEM_PROMPT defines the rephrasing task and asks the model to preserve the core meaning and technical information. We then select one of three user prompts according to the role of the <think> block: DIVERSIFY_PROMPT_FOR_FIRST_TOOL 
+
+rewrites the first tool-selection reasoning, DIVERSIFY_PROMPT_FOR_SUBSEQUENT_TOOL rewrites later tool-selection reasoning with conversation context and self-reflection over previous tool results, and DIVERSIFY_PROMPT_FOR_FINAL_REASONING rewrites the final reasoning and answer block by reviewing all tool calls and preserving all factual data and conclusions. The rewritten text is inserted back into the original <think> tags, while outputs containing forbidden tags or missing the required tool name are rejected. 20 DIVERSIFY_SYSTEM_ PROMPT: 
+
+You  are a text rephrasing assistant. Rephrase the given 
+
+reasoning text while preserving its core meaning and key 
+
+technical information. Wrap your final rephrased text in 
+
+<answer>...</answer> tags. 
+
+DIVERSIFY _PROMPT_FOR_FIRST_TOOL: 
+
+Rephrase the following reasoning text where a model decides to 
+
+use the tool  \
+
+"{tool_name }" as its first analysis step. 
+
+Requirements: 
+
+- Keep the tool name " {tool_name }" exactly as -is in the output 
+
+- Vary how and why this tool is chosen as the first step 
+
+- Change sentence structure, word choice, and perspective 
+
+- Do NOT include <think>, </think>, or <action> tags inside 
+
+<answer> 
+
+- Wrap your final rephrased text in <answer>...</answer> tags 
+
+Original text: 
+
+{text} 
+
+DIVERSIFY_  PROMPT_FOR_SUBSEQUENT_TOOL: 
+
+Below is the conversation history of a geometric analysis model 
+
+solving a problem,  \
+
+followed by one of its intermediate reasoning blocks where it 
+
+decides to call  \
+
+the tool " {tool_name }" after analyzing previous results. 
+
+Conversation so far: 
+
+{context} 
+
+Reasoning block to rewrite: 
+
+{text} 
+
+Requirements: 
+
+- Start with a critical analysis of the previous tool call's result:  \
+
+is it correct, reasonable, and useful for solving the problem? 
+
+- If the result seems questionable, note what might be off and 
+
+how to account for it 
+
+- Then explain why the current information is insufficient and 
+
+why  \
+
+calling " {tool_name }" next is the right decision 
+
+- Keep the tool name " {tool_name }" exactly as -is in the output 
+
+- Use natural self -reflection phrases (e.g. "Wait, let me verify...", 
+
+\
+
+"Hmm, this result suggests...", "I should double -check...") 
+
+- Change sentence structure and word choice compared to the 
+
+original 
+
+- Do NOT include <think>, </think>, or <action> tags inside 
+
+<answer> 
+
+- Wrap your final rewritten text in <answer>...</answer> tags 
+
+DIVERSIFY_PROMPT_FOR_FINAL_REASONING: 
+
+Below is the full conversation history of a geometric analysis 
+
+model solving  \
+
+a problem, followed by its final reasoning block that synthesizes 
+
+all results. 
+
+Full conversation: 
+
+{context} 
+
+Final reasoning block to rewrite: 
+
+{text} 
+
+Requirements: 
+
+- Review each tool call and its result: was it necessary? Was the 
+
+result  \
+
+correct and reliable? Did it contribute useful information? 
+
+- If any tool result appears wrong or unhelpful, explicitly reason 
+
+about  \
+
+how to correct for it and derive the right answer despite the error 
+
+- Use self -reflection to verify the logical chain from observations 
+
+to conclusion 
+
+- Preserve ALL factual data, numbers, measurements, and the 
+
+final conclusion EXACTLY 
+
+- Use natural self -reflection phrases (e.g. "Let me verify this 
+
+makes sense...",  \
+
+"Looking back at the results...", "I need to reconsider whether...") 
+
+- Change sentence structure and word choice compared to the 
+
+original 
+
+- Do NOT include <think>, </think>, or <action> tags inside 
+
+<answer> 
+
+- Wrap your final rewritten text in <answer>...</answer> tags Figure 9: Diversification rewrites reasoning without changing tool behavior. The prompts rewrite reasoning traces for first-tool selection, subsequent tool selection, and final reasoning while keeping tool calls, observations, and answers fixed. 21 C.3 OR-GIGPO Observation-relaxed grouping. OR-GIGPO keeps the two-level credit assignment structure de-scribed in the main text, but replaces exact anchor-state matching with observation-relaxed grouping for visual tool-use trajectories. Since intermediate states are represented by tool observations, seman-tically equivalent tool calls may still produce slightly different outputs, such as reordered OCR text, small detection variations, or different natural-language descriptions from tool agents. 
+
+Implementation details. For each tool-use turn, we collect its observation hash, optional obser-vation text, token boundary, and discounted return. We first group turns by the concatenation of prompt index and observation hash, ensuring that observations are only compared among rollouts from the same multimodal input. This exact-hash grouping is applied to all tool observations. For image-returning tools, exact matching is usually sufficient because the returned image is deterministic when the tool command and arguments are the same. For textual observations returned by tool agents, however, exact matching can be too strict because the same tool behavior may produce minor differences in wording, ordering, or localization descriptions. We therefore further merge exact-hash groups whose representative texts have SequenceMatcher similarity above δ = 0 .9.
+
+SequenceMatcher computes a normalized sequence-matching ratio based on the total length of matched subsequences; for two observation texts a and b, we use sim( a, b ) = 2 M/ (|a| + |b|), where 
+
+M is the total number of matched elements. Step-level advantages are computed only for groups with more than one entry, assigned back to the corresponding token spans, and combined with the episode-level advantage using ω = 1 .0 and γ = 0 .99 .
+
+C.4 Rewards 
+
+For each rollout τ , we assign the final reward to the last valid response token. The trajectory-level reward is defined as: 
+
+R(τ ) = Rrep (τ ) + Rformat (τ ) + Rcorrect (τ ).
+
+Here Rrep penalizes degenerate repetition, Rformat encourages valid tool-use trajectories, and Rcorrect 
+
+measures final-answer correctness. 
+
+Repetition penalty. We compute the repetition penalty on the model-generated text after removing user turns. The penalty is zero for normal responses and becomes negative when repeated patterns are detected: • −3.0 if a character is repeated at least 50 times; • −3.0 if a word is repeated at least 20 times; • −2.0 if a text span of at least 4 words is repeated at least 10 times; • −1.5 · 2 
+
+> T
+
+if a sentence is repeated at least 10 times; • −1.0 · 2 
+
+> T
+
+if a sentence is repeated at least 7 times; • −1.5 if a word is repeated at least 10 times; • 0.0 otherwise. where T = max( number of turns , 2) . This turn-normalized design avoids over-penalizing longer multi-turn trajectories while discouraging repeated reasoning or tool-use loops. 
+
+Format reward. The format reward checks whether the trajectory follows the required tool-use protocol: • +1 .0 if the response contains valid reasoning and a final answer; • 0.0 if the trajectory contains tool actions but is truncated before the final answer; • −1.0 otherwise. A valid trajectory should contain reasoning indicated by </think> and a final answer wrapped by 
+
+<answer>...</answer> . If the response contains <action>...</action> blocks, each action must be preceded by a reasoning segment. 22 Correctness reward. For general spatial QA tasks, Rcorrect follows the evaluation protocol in Appendix B.2. We first apply rule-based answer matching and then use the LLM-judge fallback described in the evaluation protocol when rule-based matching marks a non-MapTrace prediction as incorrect. For non-MapTrace tasks, the final correctness reward is binary: 
+
+Rcorrect = 1 .0 if the prediction is judged correct, and 0.0 otherwise. 
+
+MapTrace reward. For MapTrace, the Rcorrect uses a continuous NDTW-based score instead of the binary success criterion used in evaluation. Given the NDTW distance dNDTW , we compute: 
+
+RMapTrace correct =
+
+
+
+1.0, dNDTW ≤ dlow ,dhigh − dNDTW 
+
+dhigh − dlow 
+
+, dlow < d NDTW < d high ,
+
+0.0, dNDTW ≥ dhigh .
+
+We set dlow = 0 .3 and dhigh = 0 .8 by default. If the predicted path cannot be parsed or the verifier marks it as invalid, we assign RMapTrace correct = 0 .0.
+
+D Dataset Details 
+
+D.1 Training Data 
+
+Table 8 summarizes the data composition used in the SFT and RL stages. For evaluation, we directly use the complete test set of each benchmark without additional subsampling.                   
+
+> Data source SFT samples RL samples
+> MapTrace 3,698 2,000 ReasonMap-Plus 1,979 1,580 MM-MapQA 1,716 2,000 ReasonMap 268 572 Mini-o3-Coldstart-Dataset 3,000 –DeepEyes –1,500 VisualProbe –1,000
+> Total 10,661 8,652
+
+Table 8: Training combines map reasoning, visual probing, and image-thinking data. We report the data sources and number of samples used in each training stage. 
+
+D.2 Evaluation Domains 
+
+We group the evaluation datasets by task domain to clarify the types of spatial reasoning in our experiments. 
+
+Map-based reasoning. This group evaluates spatial reasoning over map-like images, where models must connect text labels, landmarks, routes, and global topology. MapTrace focuses on route tracing and requires the model to output coordinate paths on maps [Panagopoulou et al., 2025]. ReasonMap 
+
+evaluates subway-map reasoning over station connectivity, transfer relations, and route topology [Feng et al., 2025c]. ReasonMap-Plus further expands map reasoning with diverse question types such as counting, true/false verification, and route-related questions [Feng et al., 2025b]. MapEval evaluates geospatial map understanding across map-based visual questions [Dihan et al., 2025]. 
+
+Visual probing and visual search. This group evaluates whether models can actively inspect visual evidence and locate task-relevant regions. Visual Probing contains visual search and probing tasks that require locating relevant evidence through regional inspection [Lai et al., 2025]. V* focuses on visual search and fine-grained visual reasoning, where the answer often depends on identifying small or localized visual details [Wu and Xie, 2023a]. 23 Physical and geometric spatial reasoning. This group evaluates spatial transformation, motion, and 3D reasoning beyond map-like domains. Ball Tracking tests reasoning over object motion and trajectory changes [Wu et al., 2026a]. Paper Folding requires geometric transformation reasoning over folded or unfolded 2D patterns [Wu et al., 2026a]. Cube Three-View Reasoning evaluates 3D structure understanding from multiple 2D views [Wu et al., 2026a]. Real-world Spatial Reasoning 
+
+covers spatial relations in natural scenes, requiring models to reason about layouts, object positions, and relative directions [Wu et al., 2026a]. 
+
+Basic visual primitives. BabyVision evaluates low-level visual reasoning abilities inspired by early human visual development, including visual tracking, spatial perception, fine-grained discrimination, and pattern understanding [Chen et al., 2026]. It tests whether models possess robust visual primitives rather than relying only on high-level semantic or language priors. 
+
+D.3 MapTrace Evaluation Criterion Ablation 
+
+Methods ( ↓) MapTrace Thr. 1.0 (↑)
+
+MapTrace Thr. 0.5 (↑)
+
+MapTrace Thr. 0.3 (↑)
+
+Avg. NDTW 
+
+(↓)
+
+Commercial Models 
+
+GPT-5 82.2 61.4 41.8 0.720 
+
+Gemini-2.5-Flash 66.4 40.6 21.1 29.9 Gemini-2.5-Pro 80.4 60.2 42.5 3.51 
+
+Open-Source VLMs and Tool/Reason-Augmented Baselines 
+
+InternVL3.5-8B 70.8 48.7 31.0 5.92 InternVL3.5-14B 76.2 55.8 37.1 3.27 Qwen3-30B-A3B 75.0 55.0 39.1 0.796 Qwen3-32B 75.5 53.7 35.5 0.811 Qwen3-235B 72.9 53.5 37.5 0.827 VTool-R1-3B 40.6 22.8 13.2 2.14 VTool-R1-7B 45.2 29.8 19.4 28.3 R1-OneVision-7B 41.9 22.9 13.3 1012 Mini-o3 30.4 12.8 6.2 3.33 
+
+Our Method 
+
+Qwen3-2B 66.2 45.8 30.7 3.56 PERIA-2B 72.2 +6.0 56.2 +10.4 38.4 +7.7 0.812 −2.74 
+
+Qwen3-4B 71.6 49.9 34.0 0.902 PERIA-4B 74.5 +2.9 57.9 +8.0 40.7 +6.7 0.818 −0.084 
+
+Qwen3-8B 74.1 57.5 38.4 0.822 PERIA-8B (ours) 77.7 +3.6 59.2 +1.7 44.1 +5.7 0.778 −0.044 
+
+Table 9: MapTrace evaluation under different NDTW thresholds. We report MapTrace success rates under three NDTW thresholds and the average NDTW distance. Higher is better for threshold-based accuracy, while lower is better for Avg. NDTW. PERIA-8B improves over the Qwen3-8B backbone across all threshold settings and achieves the best result among non-commercial models under the strictest threshold. We use a threshold of 1.0 to evaluate MapTrace scores instead of the Avg. NDTW metric used by Panagopoulou et al. [2025]. As shown in Table 9, Avg. NDTW is sensitive to extreme values and may not reliably reflect the capability of different models. We therefore also report model performance under stricter thresholds. PERIA-8B achieves either the best or second-best result across these settings, and its relative advantage becomes larger as the criterion becomes stricter. At the threshold of 0.3, PERIA-8B achieves the best result among all models. 24 0 20 40 60 80 100 
+
+Tool Usage Composition (%) 
+
+PERIA-8B 
+
+w/ Prior Tool 
+
+w/o Perception 
+
+w/o Interaction 
+
+> Draw Path
+> 51.0%
+> Text Spotting
+> 19.4%
+> Map Text OCR
+> 17.2%
+> Image Crop
+> 9.7%
+> Other 2.5%
+> Hallucination 0.2%
+> Auto Segment
+> 39.1%
+> Grounding DINO
+> 32.5%
+> Text OCR
+> 15.2%
+> Image Crop
+> 11.5%
+> Hallucination 1.5%
+> Other 0.2%
+> Draw Path
+> 78.9%
+> Image Crop
+> 18.7%
+> Other 2.4%
+> Text Spotting
+> 39.5%
+> Auto Segment
+> 23.6%
+> Map Text OCR
+> 13.5%
+> Text Segment
+> 11.7%
+> Other
+> 9.9%
+> Hallucination 1.8%
+
+Draw Path 
+
+Grounding DINO 
+
+Text Spotting 
+
+Text Segment 
+
+Map Text OCR 
+
+Auto Segment 
+
+Text OCR 
+
+Other 
+
+Image Crop 
+
+Hallucination Figure 10: Tool-use distribution under different inference tool conditions. PERIA-8B adapts to different available tool sets by using diverse tools. Compared with the previous-tool setting, the full sandbox shows a substantially different usage pattern, suggesting that newly designed tools are actively used for reasoning. 
+
+E Fine-grained Tool-use Analysis 
+
+We further analyze how PERIA-8B uses different tools under the inference-time tool conditions in Table 3. Figure 10 reports the normalized tool-call composition for the full sandbox, the previous-tool setting, the setting without perception tools, and the setting without interaction tools. With the full 18-tool sandbox, PERIA-8B primarily uses draw_path (51 .0% ), text_spotting (19 .4% ), 
+
+map_text_ocr (17 .2% ), and image_crop (9.7% ), while hallucinated tool calls remain rare ( 0.2% ). This distribution shows that the trained agent actively combines interaction tools for path-level reasoning with perception tools for extracting textual and spatial evidence. Under the previous-tool setting, where only generic tools from prior work are available, the usage pattern changes substantially: the model relies mainly on auto_segment (39 .1% ), grounding_dino 
+
+(32 .5% ), text_ocr (15 .2% ), and image_crop (11 .5% ). This shift suggests that the full PERIA sandbox does not merely increase the number of available tools, but introduces spatially targeted tools that are preferred by the trained agent and lead to stronger performance. In particular, the frequent use of draw_path , text_spotting , and map_text_ocr in the full setting aligns with the needs of route tracing, map reasoning, and fine-grained spatial verification. The constrained settings further reveal the complementary roles of the two tool families. When perception tools are removed, the model reallocates calls to interaction tools, especially draw_path 
+
+(78 .9% ) and image_crop (18 .7% ). When interaction tools are removed, it instead relies on per-ception tools such as text_spotting (39 .5% ), auto_segment (23 .6% ), map_text_ocr (13 .5% ), and text_segment (11 .7% ). These reallocations show that PERIA-8B can adapt to different tool availability, but the corresponding performance drops in Table 3 indicate that either tool family alone is insufficient. We also observe slightly higher hallucinated tool-call rates under constrained settings, especially when interaction tools are removed, suggesting that restricting the sandbox makes tool selection harder. Overall, the analysis supports the effectiveness of our tool design and the necessity of coordinating perception and interaction tools for robust spatial reasoning. 
+
+F Qualitative Examples 
+
+Example: From view identification to spatial reasoning. Figure 11 shows an example that requires reasoning over multiple cube views. The question asks how many red cubes can possibly be seen from the right view. The model first uses text spotting to identify the three view labels: “front_left”, “left”, and “front”. These labels help ground the diagrams, but they do not directly answer the visibility question. 25 Cube  Visibility  Reasoning  Original image 
+
+Question:  How many red cubes can 
+
+possibly be seen from the right view?               
+
+> Perception (1): "The image presents three
+> distinct views of a cube arrangement: front -left,
+> left, and front. To determine the possible count of
+> red cubes visible in the right view, the model first
+> applies text_spotting to decode the labeled
+> diagrams accurately. These view labels establish
+> which projection should be cropped and analyzed
+> more closely for the final visibility judgment ...
+> <action>{ \"name \": \"text _spotting \", \"arguments \":
+> {\"image_index \": 0}}</action> "
+> Obs 1: Tool executed successfully.
+> Result: {"task": "spotting", "text": [{"text":
+> "front_left ", " bbox ": [126, 17, 207, 69]},
+> {"text": "left", " bbox ": [484, 10, 514, 59]},
+> {"text": "front", " bbox ": [811, 15, 854, 62]}]}
+> Interaction (2): "Wait, let me verify the earlier
+> text spotting results. They correctly identify the
+> labels for the three views, but they do not directly
+> reveal how many red cubes remain visible from
+> the right perspective ... Cropping the front -left
+> region is the right next step because it isolates
+> the key 3D stack structure needed to reason
+> about which red cubes would be occluded from
+> the unseen right -side projection ...
+> <action>{ \"name \": \"image_crop \", \"arguments \":
+> {\"image_index \":0, \"bounding_box \": \"\\\\boxed {0,
+> 0,600,600 }\"}}</ action>" "
+
+Obs  2:    
+
+> Reasoning (3): After reviewing the cropped cube stack, the red cubes occupy three different positions in the front -left
+> structure, but only one of them remains visible from the right view after accounting for occlusion by the gray cubes. The front -
+> left and orthographic projections together imply that the other red cubes are blocked, so the correct option is exactly one
+> visible red cube ... <answer>A. 1</answer>.
+
+Figure 11: Qualitative example of cube visibility reasoning. Text spotting identifies the view labels, while the final answer requires cropping the cube arrangement and reasoning about 3D occlusion. To obtain the needed visual evidence, the model crops the front-left region and inspects the 3D cube structure. Based on the relative positions of the red and gray cubes, it infers that only one red cube remains visible from the right view after occlusion. The final answer is A. 1 . This example shows that view labels are useful for grounding, while the final answer still requires localized spatial reasoning. 
+
+Example: Recovering from incomplete OCR evidence. Figure 12 shows an example where the initial OCR output is correct but incomplete for the question. The question asks for the phone number at the bottom of a white billboard. The model first applies OCR to the full image, which returns visible storefront text such as “PEINTRE”, “LE DANAY”, and “Visuel”. However, the returned text does not include the queried phone number. The model therefore checks the sufficiency of the OCR evidence and crops the right side of the image where the billboard appears. After this localized inspection, the phone number becomes visible, leading to the answer (+237) 650 58 49 04 . This example shows that a tool output can be useful but non-exhaustive, and that additional localization can recover missing task-relevant evidence. Together, these examples show that intermediate tool outputs should be checked for sufficiency, and that perception and interaction tools play complementary roles. Perception tools provide global cues such as text labels and OCR evidence, while interaction tools enable localized inspection through cropping or other visual operations. When the returned evidence is incomplete or only partially relevant, combining these two tool families helps the agent obtain the information needed for the final answer. 26 Vision Probe  Original image 
+
+Question:  What is the phone number at the 
+
+bottom of the white billboard? 
+
+Perception (1):  "To identify the phone number on 
+
+the white billboard, the initial step involves using 
+
+the  map_text_ocr  tool.  By focusing on the 
+
+billboard's textual elements, it can isolate the 
+
+required contact information from the surrounding 
+
+visual clutter  ...  <action>{ \"name \": 
+
+\"map_text_ocr \",  \"arguments \": { \"image_index \": 
+
+0}}</action> "  
+
+> Obs 1: Tool executed
+> successfully.
+> Result: {"task": " ocr ",
+> "text": "PEINTRE \nLE
+> DANAY \nVisuel "}
+
+Interaction (2):  "Wait, let me verify this. The 
+
+OCR tool returned  "PEINTRE", "LE DANAY", 
+
+and " Visuel ", but these are the main signs on 
+
+the storefront, not the white billboard ... I should 
+
+zoom in on the right section of the image where 
+
+the billboard is located. Cropping that area will 
+
+allow me to see the text clearly and extract the 
+
+phone number accurately ...  <action>{ \"name \": 
+
+\"image_crop \",  \"arguments \": 
+
+{\"image_index \":0, \"bounding_box \": \"\\\\boxed{ 
+
+700,300,1000,500 }\"}}</action> "
+
+Obs  2: 
+
+Reasoning (3):  I have examined the white billboard 
+
+in the image.  The phone number is clearly visible at 
+
+the bottom of the billboard, next to the text "WEB 
+
+DESIGN  - COMMUNICATION" ...  The final answer 
+
+is <answer>(+237) 650 58 49 04</answer>. Figure 12: Qualitative example of iterative vision probing. The OCR output contains visible storefront text but omits the phone number required by the question. Cropping the relevant billboard region provides the missing evidence. 27

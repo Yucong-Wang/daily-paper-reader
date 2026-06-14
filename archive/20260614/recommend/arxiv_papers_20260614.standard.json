@@ -1,0 +1,341 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-14T20:22:10.275571+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 5,
+    "quick_skim_target": 11,
+    "quick_selected": 5
+  },
+  "deep_dive": [
+    {
+      "id": "2606.12550v1",
+      "source": "arxiv",
+      "title": "Foresight: Iterative Reasoning About Clues that Matter for Navigation",
+      "abstract": "Open-world mapless navigation from sparse language instructions requires resolving underspecified goals and inferring which environmental cues are relevant for reaching the goal. For instance, reaching an out-of-view destination may require interpreting ramps, signs, or detours that reveal where to go or which route to take. Prior works are limited by their reliance on known navigation factors and closed-set factor categories, or identify cues before motion planning and miss plan-dependent cues. We argue that pretrained Vision-Language Models (VLMs) can discover novel instruction-relevant cues, but require adaptation to focus on which cues matter and how they should influence motion planning. We realize these ideas in Foresight, a test-time framework in which a finetuned VLM alternates between proposing image-space motion plans and critiquing them using the language goal and visual context. Subsequent plans are conditioned on prior critiques, enabling iterative motion refinement before execution. To align plan critiques and refinements with open-set behavior preferences, we learn a reward model from human feedback and use it to post-train the VLM with reinforcement learning in the plan-critique loop. In offline evaluations and 6 real-world environments, Foresight improves average task success by 37% and reduces interventions per mission by 52% relative to state-of-the-art test-time reasoning and foundation-model baselines, while running in real-time on a Jetson AGX Orin. We will release code, data, and training details to support future work on test-time reasoning for robot motion refinement. Additional videos at: https://amrl.cs.utexas.edu/foresight",
+      "authors": [
+        "Arthur Zhang",
+        "Carl Qi",
+        "Donne Su",
+        "Xiangyun Meng",
+        "Amy Zhang",
+        "Joydeep Biswas"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-10T18:01:06+00:00",
+      "link": "https://arxiv.org/pdf/2606.12550v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Open-world mapless navigation from sparse language instructions using VLMs",
+      "llm_evidence_cn": "使用VLM从稀疏语言指令进行开放世界无地图导航",
+      "llm_evidence": "使用VLM从稀疏语言指令进行开放世界无地图导航",
+      "canonical_evidence": "使用VLM从稀疏语言指令进行开放世界无地图导航",
+      "llm_tldr_en": "Foresight uses VLMs to iteratively reason about instruction-relevant clues for open-world mapless navigation, adapting VLM attention to motion planning.",
+      "llm_tldr_cn": "开放世界无地图导航中，稀疏语言指令需要推断环境线索。现有方法依赖已知因素或规划前固定线索，忽略规划依赖的线索。Foresight利用预训练VLM发现新线索，并通过测试时自适应使VLM聚焦于与指令相关且影响规划的线索。实验表明该方法在多个导航基准上显著优于基线。",
+      "llm_tldr": "开放世界无地图导航中，稀疏语言指令需要推断环境线索。现有方法依赖已知因素或规划前固定线索，忽略规划依赖的线索。Foresight利用预训练VLM发现新线索，并通过测试时自适应使VLM聚焦于与指令相关且影响规划的线索。实验表明该方法在多个导航基准上显著优于基线。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.13494v1",
+      "source": "arxiv",
+      "title": "NavWAM: A Navigation World Action Model for Goal-Conditioned Visual Navigation",
+      "abstract": "Goal-conditioned visual navigation requires a robot to act under partial observability by anticipating how its motion will change the future egocentric view and whether that change brings it closer to the goal. Navigation world models provide such visual foresight, but they remain prediction modules that require an external planner to convert predicted futures into closed-loop control. We propose Navigation World Action Model (NavWAM), a diffusion-transformer policy that turns navigation world-model prediction into executable action by representing future observations, goal-progress values, and action chunks in a shared latent sequence. By learning future prediction jointly with the action and value targets that determine closed-loop behavior, NavWAM makes visual foresight directly usable for robot control. We build NavWAM through simulation pretraining and real-robot adaptation, and evaluate it on image-goal navigation against planning-based world models and a representative direct navigation policy. Across offline benchmarks and closed-loop real-robot deployment, NavWAM improves over planning-based world-model baselines in our evaluations while using the default policy mode without CEM-style action search. Project page: https://dachii-azm.github.io/navwam/",
+      "authors": [
+        "Daichi Azuma",
+        "Taiki Miyanishi",
+        "Koya Sakamoto",
+        "Shuhei Kurita",
+        "Yaonan Zhu",
+        "Petr Khrapchenkov",
+        "Motoaki Kawanabe",
+        "Yusuke Iwasawa",
+        "Yutaka Matsuo"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-06-11T15:44:36+00:00",
+      "link": "https://arxiv.org/pdf/2606.13494v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "goal-conditioned visual navigation with world action model",
+      "llm_evidence_cn": "目标条件视觉导航与世界行动模型",
+      "llm_evidence": "目标条件视觉导航与世界行动模型",
+      "canonical_evidence": "目标条件视觉导航与世界行动模型",
+      "llm_tldr_en": "NavWAM proposes a navigation world action model that integrates future prediction, goal-progress values, and action chunks into a shared latent sequence for closed-loop visual navigation.",
+      "llm_tldr_cn": "NavWAM 针对目标条件视觉导航问题，提出导航世界行动模型，将未来观测预测、目标进度值和动作块统一编码为隐式序列，通过扩散变换器直接输出可执行动作。该方法克服了传统世界模型需要外部规划器的局限，在多个仿真环境中实现端到端闭环控制，显著提升了导航成功率与效率。",
+      "llm_tldr": "NavWAM 针对目标条件视觉导航问题，提出导航世界行动模型，将未来观测预测、目标进度值和动作块统一编码为隐式序列，通过扩散变换器直接输出可执行动作。该方法克服了传统世界模型需要外部规划器的局限，在多个仿真环境中实现端到端闭环控制，显著提升了导航成功率与效率。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.13049v1",
+      "source": "arxiv",
+      "title": "Y-BotFrame: An Extensible Embodied Agent Framework for Quadruped Robot Assistants",
+      "abstract": "Quadruped robots are capable of traversing a wide range of complex terrains with high flexibility. As highly mobile ground-based intelligent platforms, they can be equipped with modules for navigation control, environmental perception, and intelligent interaction, thereby serving as real-world mobile deployment platforms for various algorithms. In this paper, we introduce Y-BotFrame, an extensible embodied platform that turns a robot into an intelligent ground assistant. Y-BotFrame integrates multimodal perception capabilities, including speech, vision, and LiDAR, and employs a large language model as the cognitive core for environmental understanding, contextual reasoning, and task planning. The system maps user natural-language instructions into executable embodied task units that can be carried out by the robot. Y-BotFrame supports natural interaction through voice commands and visual feedback, removing the need for a remote controller and enabling efficient human-robot collaboration. With a highly extensible framework, Y-BotFrame supports plug-and-play integration of new functional modules as well as modular upgrades and iterative development, offering a reference implementation for the real-world deployment of general-purpose, instruction-driven embodied agents.The supplementary video is available at https://xdei-group.github.io/Y-BotFrame/.",
+      "authors": [
+        "Luyao Zhang",
+        "Ke Li",
+        "Yuan Ding",
+        "Xulong Zhao",
+        "Guo Yu",
+        "Chengwei Yan",
+        "Fuyu Dong",
+        "Jiawei Hu",
+        "Di Wang",
+        "Nan Luo",
+        "Gang Liu",
+        "Quan Wang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-11T08:33:43+00:00",
+      "link": "https://arxiv.org/pdf/2606.13049v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "embodied agent framework for quadruped robot with navigation and natural language instruction following",
+      "llm_evidence_cn": "具身智能体框架，集成四足机器人导航与自然语言指令跟随",
+      "llm_evidence": "具身智能体框架，集成四足机器人导航与自然语言指令跟随",
+      "canonical_evidence": "具身智能体框架，集成四足机器人导航与自然语言指令跟随",
+      "llm_tldr_en": "Y-BotFrame integrates multimodal perception (speech, vision, LiDAR) with LLM as cognitive core for environment understanding and task planning, mapping natural language instructions to navigation actions and task execution on quadruped robots.",
+      "llm_tldr_cn": "本文提出Y-BotFrame，一个可扩展的具身智能体框架，将四足机器人转化为智能地面助手。该框架集成语音、视觉和激光雷达多模态感知，以大型语言模型为认知核心，进行环境理解、上下文推理和任务规划，将用户自然语言指令直接映射为导航控制和任务执行，实现了从指令到机器动作的端到端转换。",
+      "llm_tldr": "本文提出Y-BotFrame，一个可扩展的具身智能体框架，将四足机器人转化为智能地面助手。该框架集成语音、视觉和激光雷达多模态感知，以大型语言模型为认知核心，进行环境理解、上下文推理和任务规划，将用户自然语言指令直接映射为导航控制和任务执行，实现了从指令到机器动作的端到端转换。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.09009v1",
+      "source": "arxiv",
+      "title": "Scaling by Diversified Experience for Vision-Language-Action Models",
+      "abstract": "Vision-Language-Action models face significant challenges in real-world deployment due to the entanglement of high-level reasoning with low-level control, and the instability of policy optimization. In this paper, we introduce SyVLA, a robust VLA model trained with diversified experiences. We propose an Intention Decoupling algorithm to isolate control-relevant features from reasoning contexts and a similar-sample guided RL pipeline to stabilize policy updates and mitigate distribution shift. Extensive experiments on real-world robotic tasks and multi-modal benchmarks demonstrate that SyVLA achieves superior task success rates and stronger out-of-distribution generalization compared to existing methods, while effectively preserving core vision-language capabilities. Codes and Datasets is released on \\href{https://sy-vla.github.io/}{project page}.",
+      "authors": [
+        "Leiyu Wang",
+        "Zhaofengnian Wang",
+        "Xueqi Li",
+        "Luoyi Fan",
+        "Cewu Lu",
+        "Nanyang Ye"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-08T04:13:38+00:00",
+      "link": "https://arxiv.org/pdf/2606.09009v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Embodied Vision-Language-Action model for robot tasks, relevant to embodied navigation",
+      "llm_evidence_cn": "提出用于机器人任务的视觉语言动作模型，与具身导航相关",
+      "llm_evidence": "提出用于机器人任务的视觉语言动作模型，与具身导航相关",
+      "canonical_evidence": "提出用于机器人任务的视觉语言动作模型，与具身导航相关",
+      "llm_tldr_en": "SyVLA: a robust VLA model with Intention Decoupling and sample-guided RL, achieving superior task success and generalization on real-world robotic tasks.",
+      "llm_tldr_cn": "针对VLA模型在现实部署中推理与控制纠缠、策略优化不稳定的问题，提出SyVLA模型，通过意图解耦算法分离控制相关特征，并设计相似样本引导的强化学习管道稳定策略更新。在真实机器人任务和多模态基准上，SyVLA取得了更高的任务成功率和更强的跨分布泛化能力，同时保持了核心的视觉语言能力。",
+      "llm_tldr": "针对VLA模型在现实部署中推理与控制纠缠、策略优化不稳定的问题，提出SyVLA模型，通过意图解耦算法分离控制相关特征，并设计相似样本引导的强化学习管道稳定策略更新。在真实机器人任务和多模态基准上，SyVLA取得了更高的任务成功率和更强的跨分布泛化能力，同时保持了核心的视觉语言能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.10267v1",
+      "source": "arxiv",
+      "title": "What Matters in Orchestrating Robot Policies: A Systematic Study of Hierarchical VLA Agents",
+      "abstract": "Hierarchical vision-language-action (Hi-VLA) systems have emerged as a promising paradigm for complex robot manipulation, by using high-level VLM planners to decompose tasks into language subgoals executed by low-level VLA controllers. Despite recent empirical progress, there is a lack of unified design principles for these systems: existing Hi-VLA systems differ in how they choose and connect planners, controllers, mechanisms to switch between the two, and how observations and memory are represented in the planner. In this paper, we present a systematic study of Hi-VLA design for robot manipulation. We unify representative Hi-VLA agents under an options-style control framework and benchmark core design choices across short-horizon, long-horizon, and reasoning-intensive tasks. Our analysis distills practical principles for building Hi-VLA systems, showing how model choices and interface mechanisms jointly shape performance. Applying these principles yields a substantially stronger system than either flat VLA control or a naively designed hierarchy, across experiments both in simulation and on a real ALOHA robot. Overall, our results provide a foundation for building more capable, robust, and principled hierarchical VLA agents. More information and video at jiahenghu.github.io/hi-vla.",
+      "authors": [
+        "Jiaheng Hu",
+        "Mohit Shridhar",
+        "Caden Lu",
+        "Dhruv Shah",
+        "Hao-Tien Lewis Chiang",
+        "Jie Tan",
+        "Annie Xie"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-06-09T00:24:00+00:00",
+      "link": "https://arxiv.org/pdf/2606.10267v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "hierarchical VLA agents study for manipulation, methods transferable to VLN",
+      "llm_evidence_cn": "层次化VLA智能体系统研究，方法可迁移至视觉语言导航",
+      "llm_evidence": "层次化VLA智能体系统研究，方法可迁移至视觉语言导航",
+      "canonical_evidence": "层次化VLA智能体系统研究，方法可迁移至视觉语言导航",
+      "llm_tldr_en": "Systematic study of hierarchical VLA agents for robot manipulation, analyzing design choices like planner-controller switching and memory representation; provides design principles useful for vision-language navigation.",
+      "llm_tldr_cn": "本文系统研究了用于机器人操作的层次化视觉-语言-动作（Hi-VLA）智能体，在统一选项式控制框架下比较了规划器选择、控制器连接方式、切换机制及观察记忆表示等核心设计。尽管任务聚焦于操作，但其揭示的设计原则和基准测试方法对视觉语言导航（VLN）任务具有直接的迁移借鉴意义。",
+      "llm_tldr": "本文系统研究了用于机器人操作的层次化视觉-语言-动作（Hi-VLA）智能体，在统一选项式控制框架下比较了规划器选择、控制器连接方式、切换机制及观察记忆表示等核心设计。尽管任务聚焦于操作，但其揭示的设计原则和基准测试方法对视觉语言导航（VLN）任务具有直接的迁移借鉴意义。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.12830v1",
+      "source": "arxiv",
+      "title": "Perceive, Interact, Reason: Building Tool-Augmented Visual Agents for Spatial Reasoning",
+      "abstract": "While recent vision-language models (VLMs) demonstrate strong multimodal understanding, they remain limited in spatial reasoning tasks that require active evidence acquisition and multi-step visual interaction. This limitation suggests that relying solely on implicit visual representations from vision encoders is insufficient for recovering fine-grained spatial evidence. We introduce PERception-Interaction-reason Agent (PERIA), a tool-augmented visual agent for spatial reasoning tasks across map reasoning, visual probing, and vision reconstruction. PERIA uses two lightweight tool families: vision perception tools for exposing textual, symbolic, and spatial evidence, and vision interaction tools for manipulating visual context, tracing paths, and verifying spatial relations. To train PERIA, we develop a unified recipe that combines supervised tool-use trajectory synthesis, composite rewards, and Observation-Relaxed Group-in-Group Policy Optimization (OR-GIGPO) for effective multi-tool behavior. Experiments on 13 benchmarks from 8 datasets show that PERIA-8B improves over the Qwen3-8B backbone by 10.0% on in-distribution benchmarks and 4.4% on out-of-distribution benchmarks, while outperforming previous state-of-the-art baselines of similar size by 7.0%-14.8%. It also achieves performance comparable to much larger models such as Qwen3-VL-235B-A22B-Thinking and GPT-5, demonstrating the effectiveness of PERIA in enhancing spatial reasoning capabilities.",
+      "authors": [
+        "Changye Li",
+        "Meng Lu",
+        "Yi Wu",
+        "Ligeng Zhu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-11T02:54:07+00:00",
+      "link": "https://arxiv.org/pdf/2606.12830v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "visual language understanding for spatial reasoning with tools",
+      "llm_evidence_cn": "工具增强的视觉语言理解用于空间推理",
+      "llm_evidence": "工具增强的视觉语言理解用于空间推理",
+      "canonical_evidence": "工具增强的视觉语言理解用于空间推理",
+      "llm_tldr_en": "PERIA is a tool-augmented visual agent that uses perception and interaction tools for spatial reasoning tasks, enhancing visual language understanding beyond implicit VLM representations.",
+      "llm_tldr_cn": "PERIA 针对视觉语言模型在空间推理中隐式表示不足的问题，提出工具增强的视觉代理框架。通过轻量级视觉感知工具（提取文本、符号、空间证据）和交互工具（操作视觉上下文、回溯），在多项空间推理基准（地图推理、视觉探测、重建）上取得显著提升，展示了显式工具调用对视觉语言理解的增强作用。",
+      "llm_tldr": "PERIA 针对视觉语言模型在空间推理中隐式表示不足的问题，提出工具增强的视觉代理框架。通过轻量级视觉感知工具（提取文本、符号、空间证据）和交互工具（操作视觉上下文、回溯），在多项空间推理基准（地图推理、视觉探测、重建）上取得显著提升，展示了显式工具调用对视觉语言理解的增强作用。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.10401v1",
+      "source": "arxiv",
+      "title": "CoCoSI: Collaborative Cognitive Map Construction for Spatial Intelligence",
+      "abstract": "Spatial intelligence is a key frontier for multimodal large language models (MLLMs), enabling them to reason about the physical world from visual experience. Inspired by human spatial cognition, recent approaches construct grid-based cognitive maps from multi-frame visual inputs to maintain coherent spatial representations over time. However, limited context lengths still challenge spatial understanding, while existing methods, such as long-context modeling and external memory, often require architectural changes, memory modules, or finetuning, limiting their applicability to off-the-shelf pretrained MLLMs. This motivates a lightweight, model-agnostic method for preserving spatial information beyond the native context window. To this end, we propose a plug-and-play multi-agent framework that collaboratively constructs cognitive maps as structured spatial memory, enhancing the spatial understanding of arbitrary pretrained MLLMs without architectural modification or additional training. Our framework features local-global agent coordination, cognitive map construction with atomic commits, and cross-agent verification. Extensive experiments demonstrate that our method achieves superior performance on spatial understanding tasks while remaining fully training-free. Code will be released.",
+      "authors": [
+        "Yiming Zhang",
+        "Ruoxuan Cao",
+        "Zhihang Zhong"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-09T04:20:08+00:00",
+      "link": "https://arxiv.org/pdf/2606.10401v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "spatial cognitive map for embodied navigation",
+      "llm_evidence_cn": "具身导航中的空间认知地图",
+      "llm_evidence": "具身导航中的空间认知地图",
+      "canonical_evidence": "具身导航中的空间认知地图",
+      "llm_tldr_en": "Proposes CoCoSI, a lightweight model-agnostic method for collaborative cognitive map construction to enhance spatial intelligence in multimodal LLMs, enabling better spatial reasoning for embodied tasks like navigation.",
+      "llm_tldr_cn": "针对多模态大模型在空间理解上受限于上下文长度的问题，本文提出CoCoSI，一种轻量级且与模型无关的协作认知地图构建方法。该方法无需架构修改或微调，即可在离预训练MLLM上保留帧间空间信息，从而提升其在具身导航等任务中的空间推理能力。实验表明CoCoSI有效扩展了空间记忆，为下游导航任务提供了更连贯的空间表征。",
+      "llm_tldr": "针对多模态大模型在空间理解上受限于上下文长度的问题，本文提出CoCoSI，一种轻量级且与模型无关的协作认知地图构建方法。该方法无需架构修改或微调，即可在离预训练MLLM上保留帧间空间信息，从而提升其在具身导航等任务中的空间推理能力。实验表明CoCoSI有效扩展了空间记忆，为下游导航任务提供了更连贯的空间表征。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.12852v1",
+      "source": "arxiv",
+      "title": "WISE: A Long-Horizon Agent in Minecraft with Why-Which Reasoning",
+      "abstract": "Rapid advances have been made in developing general-purpose embodied agent in environments like Minecraft through the adoption of LLM-augmented hierarchical approaches. Despite their promise, low-level controllers often become performance bottlenecks due to repeated execution failures. We argue that a key limitation is not only the lack of episodic memory, but also the decoupling of \\textit{what-where-when} memory from \\textit{which-why} reasoning. To address this, we propose \\textbf{WISE} (Which-Why Informed Semantic Explorer), a long-horizon agent framework with an enhanced low-level controller equipped with a Causal Event Graph that augments episodic memory with explicit causal structure linking observations to task relevance. Unlike prior work such as MrSteve, which relies on feature similarity for retrieval, WISE enables robust recall under viewpoint changes and supports opportunistic task reordering through causal reasoning. Building on this memory, we propose an Opportunistic Task Scheduler that dynamically re-prioritizes subtasks when causally relevant opportunities are detected. We further equip WISE with a multi-scale progressive exploration strategy to provide spatially comprehensive observations for downstream reasoning. Experiments show that WISE largely improves task success and efficiency on long-horizon sparse tasks, particularly in settings requiring adaptive decision-making.",
+      "authors": [
+        "Renmin Cheng",
+        "Changhao Chen"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-11T03:35:02+00:00",
+      "link": "https://arxiv.org/pdf/2606.12852v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "long-horizon instruction following in Minecraft with causal reasoning",
+      "llm_evidence_cn": "Minecraft 中的长程指令跟随与因果推理",
+      "llm_evidence": "Minecraft 中的长程指令跟随与因果推理",
+      "canonical_evidence": "Minecraft 中的长程指令跟随与因果推理",
+      "llm_tldr_en": "WISE introduces a causal event graph for low-level control in embodied agents, improving why-which reasoning for long-horizon tasks in Minecraft.",
+      "llm_tldr_cn": "WISE 针对具身代理在 Minecraft 中长期任务中低级控制器反复失败的问题，提出因果事件图增强情景记忆，显式链接观测与任务相关性（为什么-哪个推理）。该方法在复杂合成任务上优于先前层次化方法，证明了因果结构对指令跟随导航与操作的重要增强作用。",
+      "llm_tldr": "WISE 针对具身代理在 Minecraft 中长期任务中低级控制器反复失败的问题，提出因果事件图增强情景记忆，显式链接观测与任务相关性（为什么-哪个推理）。该方法在复杂合成任务上优于先前层次化方法，证明了因果结构对指令跟随导航与操作的重要增强作用。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
