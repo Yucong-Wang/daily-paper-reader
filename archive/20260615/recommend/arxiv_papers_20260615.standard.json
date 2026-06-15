@@ -1,0 +1,215 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-15T22:34:11.785218+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2606.13878v1",
+      "source": "arxiv",
+      "title": "AnyGoal: Vision-Language Guided Multi-Agent Exploration for Training-Free Lifelong Navigation",
+      "abstract": "End-to-end navigation policies trained on large simulation corpora degrade sharply when transferred to out-of-distribution scenes, categories, or goal modalities. Modular pipelines such as Modular GOAT are bottlenecked by closed-set object detection recall, while 3D snapshot-memory systems (e.g. 3D-Mem) accumulate dense, view-dependent representations that are heavy to maintain. We present AnyGoal, a training-free multi-robot architecture that places a Vision-Language Model (VLM) at the core of frontier-based exploration and coordinates agents through a shared 2D Gaussian Bayesian Value Map (BVM). The BVM maintains a per-pixel (mu, sigma^2) posterior over goal relevance, updated via precision-weighted fusion of VLM scores through a depth-cone mask, and is never reset between subtasks, yielding lifelong evidence accumulation. Frontiers are ranked by a convex blend of a VLM-as-judge softmax and a Bayesian UCB term on the BVM. A greedy allocator with spatial-separation penalty and commitment hysteresis distributes frontiers across agents without a centralized controller. On the full GOAT-Bench val unseen split (360 episodes, 2,669 subtasks), our dual-agent system achieves 52.4% Subtask SR at 12.7% SPL--state of the art under the strict physical regime (discrete 0.25 m steps, no teleportation, 42 deg HFOV) and a +27.5 pp improvement over Modular GOAT (24.9%). Single-agent AnyGoal achieves 41.9% Subtask SR, showing gains arise from the decision architecture. A four-way perception ablation shows that open-vocabulary detectors shift the dominant failure mode from exploration to goal verification.",
+      "authors": [
+        "MoniJesu James",
+        "Marcelino Julio Fernando",
+        "Miguel Altamirano Cabrera",
+        "Dzmitry Tsetserukou"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-11T20:07:34+00:00",
+      "link": "https://arxiv.org/pdf/2606.13878v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "VLM-guided multi-robot lifelong navigation without training",
+      "llm_evidence_cn": "VLM引导的多机器人无训练终身导航",
+      "llm_evidence": "VLM引导的多机器人无训练终身导航",
+      "canonical_evidence": "VLM引导的多机器人无训练终身导航",
+      "llm_tldr_en": "AnyGoal uses a VLM at the core of multi-robot frontier exploration with a Bayesian Value Map for training-free lifelong navigation under natural language goals.",
+      "llm_tldr_cn": "本文提出AnyGoal，一种无训练的多机器人导航架构，将视觉语言模型置于前沿探索核心，通过共享贝叶斯价值图协调多个机器人，实现基于自然语言目标的无训练终身导航。在多种场景下验证了其对分布外目标的鲁棒泛化能力。",
+      "llm_tldr": "本文提出AnyGoal，一种无训练的多机器人导航架构，将视觉语言模型置于前沿探索核心，通过共享贝叶斯价值图协调多个机器人，实现基于自然语言目标的无训练终身导航。在多种场景下验证了其对分布外目标的鲁棒泛化能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.14267v1",
+      "source": "arxiv",
+      "title": "FloVerse: Floor Plan-Guided Multi-Modal Navigation",
+      "abstract": "Floor plans encapsulate compact spatial priors, enabling agents to navigate unseen scenes more efficiently. While prior work has explored floor plan-guided navigation, it has focused mainly on PointNav and a limited set of environments. To bridge this gap, we introduce FloVerse, a new task for floor plan-guided embodied navigation that unifies PointNav, ObjectNav, and ImageNav. To support FloVerse, we assemble FloVerse-1.6K, a large-scale dataset of 1.6K scenes from HM3D and Gibson 4+, paired with corresponding floor plans, comprising 240K expert trajectories and 12M RGBD frames. We further propose ThreeDiff, a two-stage imitation learning policy comprising a planner, a diffusion-based multimodal goal-reasoning module trained via masked-modality modeling, and a refiner, a depth-based trajectory-refinement module for safe execution. Extensive experiments demonstrate that (1) floor-plan priors improve navigation performance across all goal modalities, and (2) ThreeDiff implicitly captures spatial information from floor plans. These results underscore the effectiveness of spatial priors and validate our proposed unified approach for floor plan-guided embodied navigation.",
+      "authors": [
+        "Weiqi Huang",
+        "Shuangyi Dong",
+        "Jiaxin Li",
+        "Yifei Guo",
+        "Zan Wang",
+        "Wei Liang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-12T08:49:53+00:00",
+      "link": "https://arxiv.org/pdf/2606.14267v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "floor plan-guided embodied navigation unifying PointNav, ObjectNav, ImageNav",
+      "llm_evidence_cn": "基于楼层平面的具身导航，统一了点目标、物体目标和图像目标导航",
+      "llm_evidence": "基于楼层平面的具身导航，统一了点目标、物体目标和图像目标导航",
+      "canonical_evidence": "基于楼层平面的具身导航，统一了点目标、物体目标和图像目标导航",
+      "llm_tldr_en": "FloVerse proposes floor plan-guided multi-modal navigation unifying PointNav, ObjectNav, ImageNav, with a large-scale dataset and a two-stage imitation learning policy ThreeDiff using diffusion-based goal reasoning.",
+      "llm_tldr_cn": "现有楼层平面导航局限于PointNav和少量环境。本文提出FloVerse新任务，统一PointNav、ObjectNav和ImageNav，并构建包含1.6K场景、240K专家轨迹的大规模数据集FloVerse-1.6K。提出ThreeDiff两阶段模仿学习策略，包含规划器、基于扩散的多模态目标推理模块和精炼器，有效利用楼层平面先验提升导航效率。实验证明该方法在新场景泛化上优于基线。",
+      "llm_tldr": "现有楼层平面导航局限于PointNav和少量环境。本文提出FloVerse新任务，统一PointNav、ObjectNav和ImageNav，并构建包含1.6K场景、240K专家轨迹的大规模数据集FloVerse-1.6K。提出ThreeDiff两阶段模仿学习策略，包含规划器、基于扩散的多模态目标推理模块和精炼器，有效利用楼层平面先验提升导航效率。实验证明该方法在新场景泛化上优于基线。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.13288v1",
+      "source": "arxiv",
+      "title": "Cross-Modal Masked Compositional Concept Modeling for Enhancing Visio-Linguistic Compositionality",
+      "abstract": "Contrastively trained vision-language models like CLIP, have made remarkable progress in learning joint image-text representations, but still face challenges in compositional understanding. They often exhibit a \"bag-of-words\" behavior--struggling to capture the object relations, attribute-object bindings, and word order dependencies. This limitation arises not only from the reliance on global, single-vector representations for optimization, but also from the insufficient exploitation and modeling of the rich compositional information inherently present in paired image text data. In this work, we propose MACCO (MAsked Compositional Concept MOdeling), a framework that masks compositional concepts in one modality and reconstructs them conditioned on the full contextual information from the other, enabling the model to capture and align cross-modal compositional structures more effectively. To facilitate this process, we introduce two auxiliary objectives that jointly align and regularize masked features both inter-modally and intra-modally. Extensive experiments on five compositional benchmarks, along with in-depth analyses, demonstrate that our approach not only significantly enhances compositionality in VLMs but also improves their ability to capture syntactic structure and linguistic information. Additionally, the improved compositionality also benefits text-to-image generation and multimodal large language model. Code is available at https://github.com/hiker-lw/MACCO.",
+      "authors": [
+        "Wei Li",
+        "Zhen Huang",
+        "Xinmei Tian"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-06-11T12:45:25+00:00",
+      "link": "https://arxiv.org/pdf/2606.13288v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "visual language understanding enhancement via compositional concept modeling",
+      "llm_evidence_cn": "通过组合概念建模增强视觉语言理解",
+      "llm_evidence": "通过组合概念建模增强视觉语言理解",
+      "canonical_evidence": "通过组合概念建模增强视觉语言理解",
+      "llm_tldr_en": "MacCo masks compositional concepts in one modality and reconstructs them via cross-modal learning, improving VLMs' compositional understanding beyond bag-of-words behavior.",
+      "llm_tldr_cn": "当前视觉语言模型如CLIP在组合理解上存在不足，表现为词袋行为，难以捕捉对象关系、属性绑定和词序依赖。本文提出MACCO框架，通过在一种模态中掩码组合概念并利用跨模态重建来学习组合表示。实验表明，该方法显著提升了模型在多项组合性基准上的性能，为视觉语言理解提供了新思路。",
+      "llm_tldr": "当前视觉语言模型如CLIP在组合理解上存在不足，表现为词袋行为，难以捕捉对象关系、属性绑定和词序依赖。本文提出MACCO框架，通过在一种模态中掩码组合概念并利用跨模态重建来学习组合表示。实验表明，该方法显著提升了模型在多项组合性基准上的性能，为视觉语言理解提供了新思路。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.09738v1",
+      "source": "arxiv",
+      "title": "HDSL: A Hierarchical Domain-Specific Language for Structured 3D Indoor Scene Generation and Localized Editing with LLM Agents",
+      "abstract": "Text-driven indoor scene generation and editing require an intermediate representation that language models can both produce and revise. Existing LLM-based systems often rely on scene graphs or global constraint lists, which are compact but underspecify local geometry and make instruction-based edits difficult to localize. We frame this problem as structured program generation and local program repair, and propose Hierarchical Descriptive Scene Language (HDSL), an XML/CSS-style domain-specific language for structured 3D indoor scenes. HDSL represents rooms, regions, objects, and support surfaces as a tree with local coordinates, making complex scenes easier to plan recursively and easier to retrieve for editing. Our pipeline uses LLM agents to generate HDSL subtrees with bounded verification, grounds non-virtual nodes through multimodal asset retrieval, and applies force-directed layout optimization to repair boundary and collision errors. For editing, Hierarchical Retrieval-Augmented Generation retrieves the relevant subtree, asks the LLM to rewrite only that local context, and merges the result back through a deterministic three-way merge. In our reproduced benchmark, HDSL improves average object coverage, text-scene alignment, and generation time over full text-to-scene baselines while remaining competitive with recent layout-only reproductions on geometry metrics; for editing, HRAG reduces token use by $5.22\\times$ and runtime by $6.19\\times$, produces valid DSL for all eight paired edits, and better preserves unrelated scene objects.",
+      "authors": [
+        "Letian Li",
+        "Chao Shen",
+        "Shuzhao Xie",
+        "Chenghao Gu",
+        "ZhengXiao He",
+        "Yu Meng",
+        "Xin Yang",
+        "Wenyuan Jiang",
+        "Zhi Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-08T17:02:36+00:00",
+      "link": "https://arxiv.org/pdf/2606.09738v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Indoor scene generation and editing with language, relevant to embodied navigation environments",
+      "llm_evidence_cn": "用语言生成和编辑室内场景，与具身导航环境相关",
+      "llm_evidence": "用语言生成和编辑室内场景，与具身导航环境相关",
+      "canonical_evidence": "用语言生成和编辑室内场景，与具身导航环境相关",
+      "llm_tldr_en": "HDSL is a hierarchical domain-specific language for generating and editing structured 3D indoor scenes via LLM agents, enabling localized editing and recursive planning.",
+      "llm_tldr_cn": "提出分层描述性场景语言（HDSL），以XML/CSS风格表示室内场景树，使LLM agent能递归生成和局部编辑三维场景。该方法可快速构建具身导航所需的多样化室内环境，为VLN提供场景生成工具，但未直接服务于导航算法。",
+      "llm_tldr": "提出分层描述性场景语言（HDSL），以XML/CSS风格表示室内场景树，使LLM agent能递归生成和局部编辑三维场景。该方法可快速构建具身导航所需的多样化室内环境，为VLN提供场景生成工具，但未直接服务于导航算法。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.13883v1",
+      "source": "arxiv",
+      "title": "Guided Diffusion with Distilled Vision-Language Reliability for Aerial Navigation",
+      "abstract": "Autonomous UAV navigation is conventionally solved by pipelines that separate perception, mapping, and planning into distinct stages, which propagates errors, accumulates latency, and requires environment-specific retuning. End-to-end generative models remove these interfaces by mapping raw observations directly to trajectories, but inherit a subtle failure mode: trained on clean data, they cannot recognise when an observation is unreliable, and treat degraded regions such as glass, mirrors, and overexposed surfaces as valid evidence for planning. We present a reliability-aware diffusion planner for 3D UAV navigation. It conditions trajectory generation on the observation together with a scene-level reliability heatmap that marks where perception cannot be trusted, produced by a lightweight network that distils the open-vocabulary reasoning of a vision-language model within the real-time planning budget. To generalise to unseen environments without retraining, we steer the denoising process with a differentiable two-stage ESDF cost that treats physical obstacles from depth and virtual obstacles from highly unreliable regions on equal footing. In simulation and on a real quadrotor, our planner produces markedly safer trajectories than a state-of-the-art diffusion baseline, reducing the obstacle-violation rate from 40.3% to 9.6% and raising the mean reliability of traversed regions from 0.588 to 0.925. Ablating the reliability term alone drops mean reliability from 0.898 to 0.783, confirming it as the decisive component, while distillation runs the framework up to 2 times faster than the full vision-language model.",
+      "authors": [
+        "Ivan Valuev",
+        "Iana Zhura",
+        "Valerii Serpiva",
+        "Didar Seyidov",
+        "Dzmitry Tsetserukou"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-11T20:18:34+00:00",
+      "link": "https://arxiv.org/pdf/2606.13883v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "reliability-aware diffusion planner for UAV navigation using vision-language reliability heatmap",
+      "llm_evidence_cn": "利用视觉语言可靠性热图的无人机扩散规划器",
+      "llm_evidence": "利用视觉语言可靠性热图的无人机扩散规划器",
+      "canonical_evidence": "利用视觉语言可靠性热图的无人机扩散规划器",
+      "llm_tldr_en": "Proposed a reliability-aware diffusion planner for UAV navigation that conditions trajectory generation on scene-level reliability heatmaps from vision-language models, improving safety in glass and mirror regions.",
+      "llm_tldr_cn": "传统无人机导航分阶段处理易出错，端到端模型无法识别不可靠观测。本文提出可靠性感知扩散规划器，利用视觉语言模型生成场景级可靠性热图，引导轨迹生成避免玻璃、镜子等退化区域。在仿真和真实场景中，该方法有效减少了碰撞，提升了导航鲁棒性。",
+      "llm_tldr": "传统无人机导航分阶段处理易出错，端到端模型无法识别不可靠观测。本文提出可靠性感知扩散规划器，利用视觉语言模型生成场景级可靠性热图，引导轨迹生成避免玻璃、镜子等退化区域。在仿真和真实场景中，该方法有效减少了碰撞，提升了导航鲁棒性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
