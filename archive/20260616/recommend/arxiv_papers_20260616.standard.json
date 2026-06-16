@@ -1,0 +1,699 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-16T21:35:57.924193+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 6,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 9,
+    "quick_skim_target": 11,
+    "quick_selected": 9
+  },
+  "deep_dive": [
+    {
+      "id": "2606.16400v1",
+      "source": "arxiv",
+      "title": "SemGeoNav:A Safety-Guided Visual Navigation Approach with Semantic Reasoning and Geometric Planning",
+      "abstract": "Learning-based visual navigation has enhanced semantic goal-reaching capabilities. However, due to their black-box nature, purely end-to-end models often lack explicit geometric constraints, leading to unpredictable and unreliable obstacle avoidance in open environments. Conversely, traditional geometric planners ensure safety but struggle with high-dimensional visual targets. To address these limitations, we propose SemGeoNav, a novel hierarchical visual navigation framework.It tightly integrates the high-level semantic reasoning of end-to-end models with the reliable local planning ability of geometry-based methods, achieving robust image-based navigation while significantly improving obstacle avoidance. Furthermore, we introduce a temporal trajectory smoothing mechanism to ensure continuous and stable robot motion. We evaluated SemGeoNav on a Unitree Go2 quadruped robot in real-world environments. The results demonstrate that SemGeoNav outperforms existing representative methods, including ViNT and NoMaD, achieving higher success rates and shorter navigation times.",
+      "authors": [
+        "Yu Liu",
+        "Zongyang Chen",
+        "Yan Guo",
+        "Chao Liu",
+        "Xianfei Pan"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-15T08:38:46+00:00",
+      "link": "https://arxiv.org/pdf/2606.16400v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "visual navigation with semantic reasoning and geometric planning",
+      "llm_evidence_cn": "结合语义推理与几何规划的视觉导航",
+      "llm_evidence": "结合语义推理与几何规划的视觉导航",
+      "canonical_evidence": "结合语义推理与几何规划的视觉导航",
+      "llm_tldr_en": "SemGeoNav integrates end-to-end semantic reasoning with geometric planning for safe visual navigation.",
+      "llm_tldr_cn": "针对纯端到端视觉导航缺乏几何约束导致避障不可靠的问题，提出SemGeoNav层次化导航框架，将高层语义推理与局部几何规划紧密结合，实现基于图像的鲁棒导航并显著提升避障安全性。实验证明该方法在开放环境中有效克服黑箱模型的不确定性。",
+      "llm_tldr": "针对纯端到端视觉导航缺乏几何约束导致避障不可靠的问题，提出SemGeoNav层次化导航框架，将高层语义推理与局部几何规划紧密结合，实现基于图像的鲁棒导航并显著提升避障安全性。实验证明该方法在开放环境中有效克服黑箱模型的不确定性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.16935v1",
+      "source": "arxiv",
+      "title": "CrossMaps: Confidence-Aware Open-Vocabulary Semantic Mapping for Rover Navigation",
+      "abstract": "Rovers rely on perception to maintain spatial maps that encode both objects and sensor quality (e.g., range reliability, lighting artifacts, data density), guiding data fusion, embedding updates, and navigation under partial observability. To study these coupled perception-navigation processes, we present CrossMaps, a real-time confidence-aware open-vocabulary semantic mapping pipeline that constructs language-queryable maps from RGB-D data. Building on VLMaps-style approaches, CrossMaps integrates multi-scale CLIP embeddings with confidence-aware fusion and a dual-memory architecture consisting of Short-Term Memory (STM) and Long-Term Memory (LTM). The STM aggregates noisy visual observations using geometric, semantic, and temporal confidence cues, while confident and coherent cells are promoted to the LTM as persistent semantic landmarks. Designed for deployment with a Jetson Orin-powered UGV alongside SLAM, CrossMaps runs in real time and produces semantic heatmaps that can be queried with natural language to guide rover navigation.",
+      "authors": [
+        "Jan-Niklas Klein",
+        "Sona Ghahremani",
+        "Christian Medeiros Adriano",
+        "Holger Giese"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-06-15T16:35:01+00:00",
+      "link": "https://arxiv.org/pdf/2606.16935v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "open-vocabulary semantic mapping for rover navigation",
+      "llm_evidence_cn": "面向漫游者导航的开放词汇语义地图构建",
+      "llm_evidence": "面向漫游者导航的开放词汇语义地图构建",
+      "canonical_evidence": "面向漫游者导航的开放词汇语义地图构建",
+      "llm_tldr_en": "CrossMaps builds confidence-aware language-queryable maps for rover navigation using RGB-D data.",
+      "llm_tldr_cn": "针对漫游者导航中信号质量与语义信息耦合的问题，提出CrossMaps实时语义地图构建流水线，集成多尺度CLIP嵌入、置信度融合和双记忆架构，支持语言查询和导航。实验证明其在部分可观测环境下有效融合感知与导航。",
+      "llm_tldr": "针对漫游者导航中信号质量与语义信息耦合的问题，提出CrossMaps实时语义地图构建流水线，集成多尺度CLIP嵌入、置信度融合和双记忆架构，支持语言查询和导航。实验证明其在部分可观测环境下有效融合感知与导航。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.10495v2",
+      "source": "arxiv",
+      "title": "Act on What You See: Unlocking Safe Social Navigation in Vision-Language-Action Models",
+      "abstract": "Safe social navigation requires robots to distinguish people from ordinary obstacles and to react before danger becomes imminent. We show that pretrained Vision-Language-Action (VLA) models already encode pedestrian-object distinctions and future collision signals in their internal representations, but behavior cloning fails to translate these signals into socially appropriate actions. To address this mismatch, we propose SALSA, a two-stage annotation-free post-training framework: (1) social behavioral alignment bridges intermediate-layer social features to the action head and trains on counterfactual human-object scene pairs to break visual saliency shortcuts; (2) temporal safety alignment provides automatically generated future-risk supervision to enable anticipatory collision avoidance. On SCAND and real-world deployment, SALSA reduces near-collisions by 86.4% and improves social counterfactual accuracy from 53% to 93%, demonstrating that safer social navigation can be achieved by teaching VLA policies to act on representations they already possess. These results show that pretrained VLA policies can be adapted for safer social navigation by better aligning their latent representations with action generation.",
+      "authors": [
+        "Qingzi Wang",
+        "Xiyang Wu",
+        "Guangyao Shi",
+        "Dianwei Chen",
+        "Xianfeng Yang",
+        "Dinesh Manocha"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-09T07:18:01+00:00",
+      "link": "https://arxiv.org/pdf/2606.10495v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "social navigation using vision-language-action models",
+      "llm_evidence_cn": "使用视觉-语言-动作模型进行社交导航",
+      "llm_evidence": "使用视觉-语言-动作模型进行社交导航",
+      "canonical_evidence": "使用视觉-语言-动作模型进行社交导航",
+      "llm_tldr_en": "Proposes SALSA, a two-stage post-training framework for safe social navigation in VLA models, bridging intermediate social features to action and using temporal safety alignment to prevent collisions.",
+      "llm_tldr_cn": "本文针对VLA模型在社交导航中无法将内部表征转化为安全行为的问题，提出SALSA框架。该方法通过两阶段无标注后训练：社会行为对齐将中间层社会特征桥接到动作头，并通过反事实场景训练打破视觉显著性捷径；时间安全对齐自动生成未来风险信号进行训练。实验表明该方法有效提升了社交导航安全性，为难例处理提供了新思路。",
+      "llm_tldr": "本文针对VLA模型在社交导航中无法将内部表征转化为安全行为的问题，提出SALSA框架。该方法通过两阶段无标注后训练：社会行为对齐将中间层社会特征桥接到动作头，并通过反事实场景训练打破视觉显著性捷径；时间安全对齐自动生成未来风险信号进行训练。实验表明该方法有效提升了社交导航安全性，为难例处理提供了新思路。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.16432v1",
+      "source": "arxiv",
+      "title": "ACCORD: Action-Conditioned Contextual Grounding for Language Agents",
+      "abstract": "User instructions are often underspecified because humans rely on implicit assumptions about the surrounding environment. For large language model (LLM) agents operating in information-rich digital and physical environments, these assumptions cannot be inferred from the instruction alone; they must be recovered from the current state of tools, data, interfaces, and observations. Effective execution therefore requires agents to identify missing context, ground it in observed evidence, and carry it forward into subsequent actions. We show that current agents often fail to do so. They act from assumed rather than observed specifics, overlook information they could have gathered, and fail to incorporate evidence that has already been returned. Building on this insight, we propose ACCORD (Action-Conditioned Contextual Grounding), a simple and effective agent framework for adaptive grounding. Before each action, ACCORD actively probes the environment for missing information and integrates relevant context from the agent's trajectory that would otherwise be overlooked. Requiring no additional training or task-success signals, ACCORD improves task-goal completion on AppWorld by up to +20.6 points with GPT-5-mini, from 42.0% to 62.6%, compared to strong baselines. These gains persist with a substantially stronger base model (+10.8 with Claude-4.5-sonnet), an open-weight model (+10.1 with Qwen3.5-27B-FP8), and on the embodied AlfWorld benchmark (+7.4 success rate with GPT-5-mini).",
+      "authors": [
+        "Lai Jiang",
+        "Cheng Qian",
+        "Zhenhailong Wang",
+        "Pan Lu",
+        "Heng Ji",
+        "Hao Peng"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-06-15T09:05:55+00:00",
+      "link": "https://arxiv.org/pdf/2606.16432v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "focuses on grounding user instructions in environmental context for LLM agents, directly applicable to instruction-following navigation",
+      "llm_evidence_cn": "专注于在环境上下文中接地用户指令，直接适用于指令跟随导航",
+      "llm_evidence": "专注于在环境上下文中接地用户指令，直接适用于指令跟随导航",
+      "canonical_evidence": "专注于在环境上下文中接地用户指令，直接适用于指令跟随导航",
+      "llm_tldr_en": "ACCORD proposes action-conditioned contextual grounding for LLM agents to recover missing context from observations, enabling robust instruction following in physical environments, directly relevant to VLN.",
+      "llm_tldr_cn": "人类指令通常因隐含的环境假设而欠指定，而LLM代理无法从指令中推断这些假设。ACCORD提出动作条件上下文接地方法，让代理从工具、数据、接口和观察中恢复缺失的上下文，并将其结合到后续动作中。实验表明，现有代理常因依赖假设而非观察而失败，而ACCORD能显著提升指令执行的鲁棒性。这项工作为视觉语言导航中的指令跟随提供了关键的技术支撑。",
+      "llm_tldr": "人类指令通常因隐含的环境假设而欠指定，而LLM代理无法从指令中推断这些假设。ACCORD提出动作条件上下文接地方法，让代理从工具、数据、接口和观察中恢复缺失的上下文，并将其结合到后续动作中。实验表明，现有代理常因依赖假设而非观察而失败，而ACCORD能显著提升指令执行的鲁棒性。这项工作为视觉语言导航中的指令跟随提供了关键的技术支撑。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.16902v1",
+      "source": "arxiv",
+      "title": "Binary Tracking for Spatial QA and Navigation with Open Vision-Language Models",
+      "abstract": "This work addresses spatial question answering for service robots traversing long egocentric routes. Given a query such as \"where can I find a dry cleaner on the way back home?\", the system returns a metric coordinate that downstream navigation components can act on. Prior Spatial Question Answering approaches leverage retrieval-augmented agents built on closed-source models such as GPT-4o for path exploration. However, robots operating in the real world often cannot reliably depend on online closed-source models due to network instability, communication latency, and deployment cost. It creates a need for open-source based Spatial Question Answering approaches that can run onboard the robot, yet prior research in this direction remains limited. This work proposes BinTrack, a simple yet effective, fully open-source spatial-localization agent that leverages the temporal ordering of a robot's trajectory. BinTrack performs a binary search over the trajectory segments between two anchor landmarks identified from a query. It improves overall accuracy by up to 22.8% over other open-source implementations and even matches the reported closed-source model result on the global category of the SpaceLocQA benchmark, the most challenging setting that has so far required strong reasoning agents such as GPT-4o. Furthermore, its optimized inference strategy consistently yields more than a 1.5x inference speedup over previous approaches. Finally, this work releases GangnamLoop, a novel and practical multi-trip outdoor benchmark collected by deploying a real quadruped robot on public streets with the anonymization policy. It revisits the same locations under different outdoor conditions and pairs the robot's low viewpoint with the human owner's. The source codes and datasets are publicly available at https://github.com/ndb796/BinaryTracking",
+      "authors": [
+        "Dongbin Na",
+        "Chanwoo Kim",
+        "Soonbin Rho",
+        "Giyun Choi",
+        "Gangbok Lee",
+        "Dooyoung Hong"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-15T16:10:03+00:00",
+      "link": "https://arxiv.org/pdf/2606.16902v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "open vision-language models for spatial QA serving robot navigation",
+      "llm_evidence_cn": "用开放视觉语言模型做空间问答支持机器人导航",
+      "llm_evidence": "用开放视觉语言模型做空间问答支持机器人导航",
+      "canonical_evidence": "用开放视觉语言模型做空间问答支持机器人导航",
+      "llm_tldr_en": "Proposes Binary Tracking method using open vision-language models for spatial question answering in long egocentric routes, returning metric coordinates for downstream navigation.",
+      "llm_tldr_cn": "本文针对服务机器人在长ego路线中的空间问答问题，提出一种基于开放视觉语言模型的二进制追踪方法。该方法接收自然语言查询（如“回家路上哪里能找到干洗店？”），返回度量坐标供下游导航组件使用。实验表明，该方法在避免依赖闭源模型的同时，实现了有效的空间定位与导航引导，为开放环境下的视觉语言导航提供了实用方案。",
+      "llm_tldr": "本文针对服务机器人在长ego路线中的空间问答问题，提出一种基于开放视觉语言模型的二进制追踪方法。该方法接收自然语言查询（如“回家路上哪里能找到干洗店？”），返回度量坐标供下游导航组件使用。实验表明，该方法在避免依赖闭源模型的同时，实现了有效的空间定位与导航引导，为开放环境下的视觉语言导航提供了实用方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.17030v1",
+      "source": "arxiv",
+      "title": "Qwen-RobotWorld Technical Report: Unifying Embodied World Modeling through Language-Conditioned Video Generation",
+      "abstract": "We introduce Qwen-RobotWorld, a language-conditioned video world model for embodied intelligence. With natural language as a unified action interface, it predicts physically grounded future visual trajectories from current observations across robotic manipulation, autonomous driving, indoor navigation, and human-to-robot transfer. This unified formulation provides three promising application directions: synthetic data generation for policy training augmentation, scalable virtual environments for policy evaluation, and language-guided planning signals for downstream robot control. This is achieved through a three-part design: a) Double-Stream MMDiT with MLLM Action Encoding, where a 60-layer double-stream diffusion transformer couples frozen Qwen2.5-VL semantics with video-VAE latents through layer-wise joint attention; b) Embodied World Knowledge (EWK), an 8.6M video-text corpus (200M+ frames) with action-language mapping over 20+ embodiments and 500+ action categories; and c) General+Expert Progressive Curriculum, a two-stage training strategy that first learns general visual priors and then injects embodied specialization under a shared language interface. Extensive results show strong competitiveness: ranks 1st overall on EWMBench and DreamGen Bench, outperforms all open-source models on WorldModelBench and PBench. Additional zero-shot analyses on RoboTwin-IF benchmark further support robust generalization and multi-view consistency.",
+      "authors": [
+        "Jie Zhang",
+        "Xiaoyue Chen",
+        "Anzhe Chen",
+        "Chenxu Lv",
+        "Deqing Li",
+        "Gengze Zhou",
+        "Hang Yin",
+        "Haoqi Yuan",
+        "Haoyang Li",
+        "Jiahao Li",
+        "Jiazhao Zhang",
+        "Jingren Zhou",
+        "Kaiyuan Gao",
+        "Kun Yan",
+        "Lihan Jiang",
+        "Ningyuan Tang",
+        "Pei Lin",
+        "Qihang Peng",
+        "Shengming Yin",
+        "Tianhe Wu",
+        "Tianyi Yan",
+        "Xiao Xu",
+        "Yan Shu",
+        "Yanran Zhang",
+        "Ye Wang",
+        "Yi Wang",
+        "Yilei Chen",
+        "Yixian Xu",
+        "Yiyang Huang",
+        "Yuxiang Chen",
+        "Zekai Zhang",
+        "Zhendong Wang",
+        "Zhixing Lei",
+        "Zhixuan Liang",
+        "Zihao Liu",
+        "Zikai Zhou",
+        "Xiong-Hui Chen",
+        "Chenfei Wu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-15T17:52:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.17030v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "language-conditioned world model for embodied navigation",
+      "llm_evidence_cn": "语言条件的世界模型用于具身导航",
+      "llm_evidence": "语言条件的世界模型用于具身导航",
+      "canonical_evidence": "语言条件的世界模型用于具身导航",
+      "llm_tldr_en": "Introduces Qwen-RobotWorld, a language-conditioned video world model for embodied intelligence covering manipulation, driving, and indoor navigation, enabling synthetic data generation and policy evaluation.",
+      "llm_tldr_cn": "本文提出Qwen-RobotWorld，一个统一的语言条件视频世界模型，涵盖机器人操作、自动驾驶和室内导航。通过双流MMDiT和大语言模型动作编码，该模型能够从当前观测预测未来视觉轨迹，支持策略训练数据增强、虚拟评估和语言引导规划。实验展示了其在多个具身任务中的有效性。",
+      "llm_tldr": "本文提出Qwen-RobotWorld，一个统一的语言条件视频世界模型，涵盖机器人操作、自动驾驶和室内导航。通过双流MMDiT和大语言模型动作编码，该模型能够从当前观测预测未来视觉轨迹，支持策略训练数据增强、虚拟评估和语言引导规划。实验展示了其在多个具身任务中的有效性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.09669v1",
+      "source": "arxiv",
+      "title": "SpatialWorld: Benchmarking Interactive Spatial Reasoning of Multimodal Agents in Real-World Tasks",
+      "abstract": "Spatial reasoning is a foundational capability for multimodal large language models (MLLMs) to perceive and operate within the physical world. However, existing benchmarks predominantly rely on passive evaluation (e.g., static VQA) or simulator-specific pipelines, failing to assess general interactive spatial understanding. We introduce SpatialWorld, a unified benchmark designed specifically for evaluating the interactive spatial understanding of multimodal agents in complex real-world tasks. Integrating eight heterogeneous simulation backends under a shared, simulator-agnostic protocol, SpatialWorld features 760 human-annotated tasks across diverse domains (e.g., household routines, travel, social collaboration). Agents must solve tasks under vision-only partial observability, actively gathering egocentric visual evidence and expressing decisions via a unified, text-based action interface native to MLLMs. For reliable evaluation, each task includes a human-validated initial state, a reference trajectory, and a terminal-state verifier. Evaluating 15 advanced agents reveals that robust spatial task solving remains challenging: the strongest model, GPT-5, achieves an average task success rate (TSR) of only 17.4%, while the leading open-source model, Qwen-3.5, reaches 14.1%. Further analysis exposes a clear mismatch between task success and execution efficiency, alongside substantial domain-specific performance variations. These bottlenecks in active exploration and long-horizon planning position SpatialWorld as a rigorous testbed for future spatial agents.",
+      "authors": [
+        "Hongcheng Gao",
+        "Hailong Qu",
+        "Jingyi Tang",
+        "Jiahao Wang",
+        "Zihao Huang",
+        "Hengkang Qiao",
+        "Shihong Huang",
+        "Junming Yang",
+        "Yi Li",
+        "Hongyixuan Yuan",
+        "Wenjie Li",
+        "Bohan Zeng",
+        "Wenbo Li",
+        "Bo Wang",
+        "Jianhui Liu",
+        "Olive Huang",
+        "Haoyang Huang",
+        "Wentao Zhang",
+        "Guoqing Huang",
+        "Nan Duan",
+        "Yinpeng Dong"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-06-08T15:51:51+00:00",
+      "link": "https://arxiv.org/pdf/2606.09669v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "benchmark for interactive spatial reasoning in real-world tasks including household routines travel",
+      "llm_evidence_cn": "包含家务旅行等真实任务的交互式空间推理基准",
+      "llm_evidence": "包含家务旅行等真实任务的交互式空间推理基准",
+      "canonical_evidence": "包含家务旅行等真实任务的交互式空间推理基准",
+      "llm_tldr_en": "Introduces SpatialWorld benchmark with 760 human-annotated tasks across 8 simulators evaluating interactive spatial understanding of multimodal agents in real-world scenarios like household and travel.",
+      "llm_tldr_cn": "本文提出SpatialWorld基准，集成8种异构仿真后端，包含760个人工标注的真实世界任务（如家务、旅行、社交协作），专门评估多模态智能体的交互式空间理解能力。该基准填补了现有静态VQA或专用模拟器测试的空白，为具身导航和空间推理研究提供了统一评估平台。",
+      "llm_tldr": "本文提出SpatialWorld基准，集成8种异构仿真后端，包含760个人工标注的真实世界任务（如家务、旅行、社交协作），专门评估多模态智能体的交互式空间理解能力。该基准填补了现有静态VQA或专用模拟器测试的空白，为具身导航和空间推理研究提供了统一评估平台。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.10449v2",
+      "source": "arxiv",
+      "title": "GuideWalk: Learning Unified Autonomous Navigation and Locomotion for Humanoid Robots across Versatile Terrains",
+      "abstract": "Humanoid robots have achieved strong locomotion capabilities, but reliable navigation on versatile terrains remains challenging because obstacle avoidance must be coordinated with dynamically feasible motion. In this work, we present GuideWalk, a unified end-to-end framework that integrates traversability-aware navigation guidance with terrain-adaptive locomotion teacher for humanoid navigation. Specifically, we introduce a navigation module that provides explicit velocity guidance, decoupling obstacle avoidance from terrain conditions to enable robust planning across diverse environments. We propose a composite teacher distillation scheme, where goal-directed commands and dynamically consistent actions are aggregated and distilled into a single policy. To further improve robustness, the distilled policy is refined with reinforcement learning and an auxiliary behavior cloning objective, which promotes exploration while preserving desirable teacher behaviors. Experiments demonstrate that GuideWalk achieves stable and effective navigation while maintaining stable humanoid locomotion.",
+      "authors": [
+        "Haoxuan Han",
+        "Chen Chen",
+        "Linao Gong",
+        "Xin Yang",
+        "Hao Hu",
+        "Junhong Guo",
+        "Zhicheng He",
+        "Yao Su",
+        "Fenghua He"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-09T05:55:36+00:00",
+      "link": "https://arxiv.org/pdf/2606.10449v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Unified navigation and locomotion for humanoid robots",
+      "llm_evidence_cn": "人形机器人统一导航与运动",
+      "llm_evidence": "人形机器人统一导航与运动",
+      "canonical_evidence": "人形机器人统一导航与运动",
+      "llm_tldr_en": "GuideWalk integrates traversability-aware navigation with terrain-adaptive locomotion for humanoids.",
+      "llm_tldr_cn": "人形机器人在复杂地形上的导航需要协调避障与动态运动。本文提出GuideWalk端到端框架，融合可通行感知导航引导与地形自适应运动教师，通过导航模块显式提供速度引导，解耦避障与地形条件。在多种地形上验证了导航与运动的统一能力，属于具身导航范畴。",
+      "llm_tldr": "人形机器人在复杂地形上的导航需要协调避障与动态运动。本文提出GuideWalk端到端框架，融合可通行感知导航引导与地形自适应运动教师，通过导航模块显式提供速度引导，解耦避障与地形条件。在多种地形上验证了导航与运动的统一能力，属于具身导航范畴。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.09669v2",
+      "source": "arxiv",
+      "title": "SpatialWorld: Benchmarking Interactive Spatial Reasoning of Multimodal Agents in Real-World Tasks",
+      "abstract": "Spatial reasoning is a foundational capability for multimodal large language models (MLLMs) to perceive and operate within the physical world. However, existing benchmarks predominantly rely on passive evaluation (e.g., static VQA) or simulator-specific pipelines, failing to assess general interactive spatial understanding. We introduce SpatialWorld, a unified benchmark designed specifically for evaluating the interactive spatial understanding of multimodal agents in complex real-world tasks. Integrating eight heterogeneous simulation backends under a shared, simulator-agnostic protocol, SpatialWorld features 760 human-annotated tasks across diverse domains (e.g., household routines, travel, social collaboration). Agents must solve tasks under vision-only partial observability, actively gathering egocentric visual evidence and expressing decisions via a unified, text-based action interface native to MLLMs. For reliable evaluation, each task includes a human-validated initial state, a reference trajectory, and a terminal-state verifier. Evaluating 15 advanced agents reveals that robust spatial task solving remains challenging: the strongest model, GPT-5, achieves an average task success rate (TSR) of only 17.4%, while the leading open-source model, Qwen-3.5, reaches 14.1%. Further analysis exposes a clear mismatch between task success and execution efficiency, alongside substantial domain-specific performance variations. These bottlenecks in active exploration and long-horizon planning position SpatialWorld as a rigorous testbed for future spatial agents.",
+      "authors": [
+        "Hongcheng Gao",
+        "Hailong Qu",
+        "Jingyi Tang",
+        "Jiahao Wang",
+        "Zihao Huang",
+        "Hengkang Qiao",
+        "Shihong Huang",
+        "Junming Yang",
+        "Yi Li",
+        "Hongyixuan Yuan",
+        "Wenjie Li",
+        "Bohan Zeng",
+        "Wenbo Li",
+        "Bo Wang",
+        "Jianhui Liu",
+        "Olive Huang",
+        "Haoyang Huang",
+        "Wentao Zhang",
+        "Guoqing Huang",
+        "Nan Duan",
+        "Yinpeng Dong"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-06-08T15:51:51+00:00",
+      "link": "https://arxiv.org/pdf/2606.09669v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "benchmark for interactive spatial reasoning in real-world tasks including household routines and travel, directly evaluating embodied navigation",
+      "llm_evidence_cn": "交互式空间推理基准，涵盖家庭日常和旅行等真实世界任务，直接评估具身导航能力",
+      "llm_evidence": "交互式空间推理基准，涵盖家庭日常和旅行等真实世界任务，直接评估具身导航能力",
+      "canonical_evidence": "交互式空间推理基准，涵盖家庭日常和旅行等真实世界任务，直接评估具身导航能力",
+      "llm_tldr_en": "SpatialWorld is a unified benchmark for interactive spatial reasoning of multimodal agents, featuring 760 real-world tasks across diverse domains like household and travel, directly assessing embodied navigation capabilities.",
+      "llm_tldr_cn": "现有的空间推理基准主要依赖被动评估或特定模拟器，无法衡量通用的交互式空间理解。为此，引入了SpatialWorld，一个统一的基准，集成八个异构模拟后端，包含760个人工标注任务，涵盖家庭日常、旅行、社交协作等领域。代理必须通过主动探索和交互来完成空间理解任务，这直接评估了具身导航的核心能力。该基准填补了交互式空间推理评估的空白，是VLN研究的重要评测平台。",
+      "llm_tldr": "现有的空间推理基准主要依赖被动评估或特定模拟器，无法衡量通用的交互式空间理解。为此，引入了SpatialWorld，一个统一的基准，集成八个异构模拟后端，包含760个人工标注任务，涵盖家庭日常、旅行、社交协作等领域。代理必须通过主动探索和交互来完成空间理解任务，这直接评估了具身导航的核心能力。该基准填补了交互式空间推理评估的空白，是VLN研究的重要评测平台。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.12105v1",
+      "source": "arxiv",
+      "title": "DAM-VLA: Decoupled Asynchronous Multimodal Vision Language Action model",
+      "abstract": "Vision-language-action (VLA) models inherit a shared synchronous clock from vision-language pretraining, processing every input at one rate. This is misaligned with physical interaction, where a high-frequency modality changes at hundreds of hertz, vision evolves more slowly, and language stays constant across an episode. A synchronous VLA oversamples slow modalities, undersamples fast ones, and caps action generation at the lowest effective frequency. We hypothesize that decoupling temporal processing per modality, letting each update and retain information at its own sensor rate, yields stronger representations and more robust control. We present DAM-VLA, which maintains per-modality latent buffers refreshed at sensor rates and read continuously by the action head, integrating new high-frequency modalities through gated cross-attention that leaves the pretrained backbone intact. Across seven contact-rich real-world manipulation tasks, DAM-VLA more than doubles the average success rate of the strongest synchronous baseline (95.2\\% vs.\\ 40.95\\%) while sustaining smooth, reactive 100\\,Hz control. Project website: \\href{https://intuitive-robots.github.io/DAM-VLA/}{intuitive-robots.github.io/DAM-VLA/}",
+      "authors": [
+        "Pankhuri Vanjani",
+        "Zhuoyue Li",
+        "Jakub Suliga",
+        "Moritz Reuss",
+        "Gianluca Geraci",
+        "Xinkai Jiang",
+        "Rudolf Lioutikov"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-06-10T13:59:07+00:00",
+      "link": "https://arxiv.org/pdf/2606.12105v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "decoupled asynchronous VLA model for physical interaction, relevant to embodied navigation where high-frequency sensor data and language instructions must be processed",
+      "llm_evidence_cn": "解耦异步VLA模型用于物理交互，与需要高频传感器数据和语言指令处理的具身导航相关",
+      "llm_evidence": "解耦异步VLA模型用于物理交互，与需要高频传感器数据和语言指令处理的具身导航相关",
+      "canonical_evidence": "解耦异步VLA模型用于物理交互，与需要高频传感器数据和语言指令处理的具身导航相关",
+      "llm_tldr_en": "DAM-VLA decouples temporal processing per modality in VLA models, handling high-frequency action, slower vision, and constant language, applicable to embodied navigation control.",
+      "llm_tldr_cn": "传统VLA模型使用同步时钟处理所有输入，与物理交互中不同模态速率不匹配（如高频动作、低频视觉、恒定语言）。DAM-VLA主张解耦时间处理：为每个模态维护独立潜在缓冲区，以各自传感器速率更新，并由执行器连续读取。实验表明，这种异步机制在机器人控制任务中产生更强的表示和更鲁棒的控制。该方法可直接用于具身导航中的多模态融合和实时决策。",
+      "llm_tldr": "传统VLA模型使用同步时钟处理所有输入，与物理交互中不同模态速率不匹配（如高频动作、低频视觉、恒定语言）。DAM-VLA主张解耦时间处理：为每个模态维护独立潜在缓冲区，以各自传感器速率更新，并由执行器连续读取。实验表明，这种异步机制在机器人控制任务中产生更强的表示和更鲁棒的控制。该方法可直接用于具身导航中的多模态融合和实时决策。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.15099v1",
+      "source": "arxiv",
+      "title": "Think Less, Act Early: Reinforced Latent Reasoning with Early Exit in Vision-Language-Action Models",
+      "abstract": "Existing Vision-Language-Action (VLA) models predominantly rely on explicit Chain-of-Thought (CoT) reasoning to bridge perception and action. While effective, this paradigm suffers from high computational costs and error propagation in multi-step tasks. In this paper, we propose Adaptive Variable Alignment VLA (AVA-VLA), a novel Latent Reasoning VLA framework that models reasoning as a sequence of unobservable latent variables, bypassing the need for explicit text generation. However, latent trajectories are inherently susceptible to noise interference and misalignment with downstream objectives. To address this, we introduce a Reinforcement Learning-based Denoising mechanism that treats latent state generation as a sequential decision process, optimizing reasoning trajectories via task-level rewards. Furthermore, we incorporate an Early-Exit Strategy that adaptively terminates reasoning based on state confidence, enabling a dynamic trade-off between depth and efficiency. Extensive experiments on embodied decision benchmarks demonstrate that AVA-VLA achieves a 6x inference speedup over explicit CoT methods while attaining a 98.3% average success rate on LIBERO, improving both efficiency and long-horizon stability over full-reasoning baselines.",
+      "authors": [
+        "Dianqiao Lei",
+        "Lianlei Shan"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "cs.RO"
+      ],
+      "published": "2026-06-13T04:16:18+00:00",
+      "link": "https://arxiv.org/pdf/2606.15099v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "latent reasoning for vision-language-action models",
+      "llm_evidence_cn": "视觉-语言-动作模型的潜在推理",
+      "llm_evidence": "视觉-语言-动作模型的潜在推理",
+      "canonical_evidence": "视觉-语言-动作模型的潜在推理",
+      "llm_tldr_en": "Proposes AVA-VLA, a latent reasoning VLA framework with RL-based denoising and early exit mechanism to reduce computational cost and error propagation.",
+      "llm_tldr_cn": "本文提出AVA-VLA框架，用潜在变量序列替代显式文本推理，结合强化学习去噪和早期退出机制，在保持性能的同时大幅降低计算开销。实验表明，该方法在多步任务中有效减少了错误传播，提升了VLA模型的效率。",
+      "llm_tldr": "本文提出AVA-VLA框架，用潜在变量序列替代显式文本推理，结合强化学习去噪和早期退出机制，在保持性能的同时大幅降低计算开销。实验表明，该方法在多步任务中有效减少了错误传播，提升了VLA模型的效率。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.14674v1",
+      "source": "arxiv",
+      "title": "AgentSpec: Understanding Embodied Agent Scaffolds Through Controlled Composition",
+      "abstract": "LLM agents are increasingly built not as single model calls, but as scaffolded systems that combine reasoning, memory, reflection, action execution, and learning. While such scaffolds often improve performance, they are often embedded in tightly coupled pipelines, making it difficult to isolate component contributions, compare alternative designs, or understand how module interactions shape agent behavior. We introduce AgentSpec, a modular specification framework that represents embodied agents as typed compositions of reusable policy components with standardized interfaces. AgentSpec standardizes the interfaces among perception, memory, reasoning, reflection, action, and optional learning, enabling components to be swapped and recombined under controlled conditions. We instantiate this framework across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR, and analyze reasoning, memory, reflection, and reinforcement-learning modules across model backbones. Our results show that agent performance is governed by scaffold compatibility and interaction effects rather than isolated module strength. In particular, structured multi-granularity memory improves long-horizon state tracking, reasoning and memory interact non-uniformly across environments, reflection trades off correction and cost, and RL-trained policies compose best when optimized with deployment-time scaffold structure. AgentSpec provides a controlled foundation for studying, comparing, and designing composable LLM agents. Our code, baselines and interactive playground are publicly available at https://agentspec-embodied.github.io.",
+      "authors": [
+        "Jixuan Chen",
+        "Jianzhi Shen",
+        "Haoqiang Kang",
+        "Zhi Hong",
+        "Qingyi Jiang",
+        "Soham Bose",
+        "Yiming Zhang",
+        "Leon Leng",
+        "Amit Vyas",
+        "Lingjun Mao",
+        "Siru Ouyang",
+        "Kun Zhou",
+        "Lianhui Qin"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-06-12T17:39:49+00:00",
+      "link": "https://arxiv.org/pdf/2606.14674v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "modular specification framework for embodied agents",
+      "llm_evidence_cn": "具身代理的模块化规范框架",
+      "llm_evidence": "具身代理的模块化规范框架",
+      "canonical_evidence": "具身代理的模块化规范框架",
+      "llm_tldr_en": "AgentSpec provides a modular framework to compose and understand embodied agent scaffolds.",
+      "llm_tldr_cn": "针对具身代理系统组件耦合紧密难以分析的问题，提出AgentSpec模块化规范框架，将感知、记忆、推理、反射、动作和学习等组件标准化，支持灵活组合和替换。该框架帮助研究者隔离组件贡献，理解交互行为，对构建可解释的具身导航代理有重要意义。",
+      "llm_tldr": "针对具身代理系统组件耦合紧密难以分析的问题，提出AgentSpec模块化规范框架，将感知、记忆、推理、反射、动作和学习等组件标准化，支持灵活组合和替换。该框架帮助研究者隔离组件贡献，理解交互行为，对构建可解释的具身导航代理有重要意义。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.15631v1",
+      "source": "arxiv",
+      "title": "Retrieve, Don't Retrain: Extending Vision Language Action Models to New Tasks at Test Time",
+      "abstract": "Extending a vision-language-action (VLA) policy to a new task typically requires task-specific teleoperated demonstrations and per-task fine-tuning, making adaptation costly in both data collection and compute. In this paper, we show that this target-side per-task adaptation cost can be replaced by retrieval. Our retrieval-augmented policy is trained once on paired demonstrations from the target embodiment (query) and a cheaper embodiment (pool, e.g., human-hand video), then frozen. New tasks are added at deployment by appending pool-side demonstrations to a retrieval pool. The frozen policy conditions on retrieved trajectories at every control step, so new tasks are absorbed by indexing data rather than updating parameters. Fine-tuning is needed only to take on a new, unseen embodiment, not for each new task. We show that retrieval improves policies beyond a specific backbone, including standard VLA policies, but its effect is especially pronounced in Cosmos Policy, a video-generation-based world-action model (WAM). In this setting, retrieval supplies coarse task progression, while the WAM's future-image objective provides an additional visual consistency signal that strengthens the retrieval-conditioned actions. On PushT, we study how retrieval provides a reusable high-level motion prior for cross-embodiment generalization to unseen goal angles, while on RoboTwin 2.0 our method outperforms cross-embodiment baselines on unseen tasks, and we additionally demonstrate the method on a real robot.",
+      "authors": [
+        "Jeongeun Park",
+        "Juhan Park",
+        "Taekyung Kim",
+        "Sungjoon Choi",
+        "Dongyoon Han",
+        "Sangdoo Yun"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-14T06:48:01+00:00",
+      "link": "https://arxiv.org/pdf/2606.15631v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "extending VLA models to new tasks via retrieval",
+      "llm_evidence_cn": "通过检索扩展视觉-语言-动作模型至新任务",
+      "llm_evidence": "通过检索扩展视觉-语言-动作模型至新任务",
+      "canonical_evidence": "通过检索扩展视觉-语言-动作模型至新任务",
+      "llm_tldr_en": "Proposes a retrieval-augmented VLA policy that avoids per-task fine-tuning by retrieving demonstrations from a pool at test time, enabling zero-shot task extension.",
+      "llm_tldr_cn": "本文提出检索增强的视觉-语言-动作策略，通过在测试时从池中检索示范轨迹替代微调，实现新任务零样本扩展。该方法只需在源端收集数据，目标端无需额外训练。实验表明，检索增强策略在无需更新参数的情况下，能够有效适应新任务，大幅降低部署成本。",
+      "llm_tldr": "本文提出检索增强的视觉-语言-动作策略，通过在测试时从池中检索示范轨迹替代微调，实现新任务零样本扩展。该方法只需在源端收集数据，目标端无需额外训练。实验表明，检索增强策略在无需更新参数的情况下，能够有效适应新任务，大幅降低部署成本。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.15753v1",
+      "source": "arxiv",
+      "title": "RoboPIN: Grounded Embodied Reasoning via Pinned Chain-of-Thought",
+      "abstract": "Embodied reasoning requires models to perceive task-relevant objects and spaces in physical environments and maintain consistent visual grounding throughout multi-step reasoning. However, current vision-language models rely on text-only or coordinate-augmented chain-of-thought, where entity references remain implicit and ambiguous. This may cause the reasoning process to decouple from visual evidence, entity references to drift across steps, and a causal disconnection between the reasoning trajectory and the final answer, with these problems further amplified in multi-view scenarios due to cross-view appearance changes. To address these issues, we propose Pinned Chain-of-Thought (\\pincot{}), a structured reasoning paradigm that pins every reasoning step to visual evidence. \\pincot{} introduces the concept of \\reasoninganchor{}, which binds each task-relevant entity to a structured visual anchor with entity name, unique identity, view index, and spatial grounding, enabling consistent entity tracking across reasoning steps and views. We build a fully automated data generation pipeline to construct \\dataset{}, a high-quality \\pincot{}-formatted reasoning dataset. We then train \\method{} through three-stage post-training that progressively injects embodied knowledge, structured reasoning ability, and process-supervised alignment, with rewards that directly constrain both anchor localization and identity consistency during reasoning. On 14 benchmarks covering embodied spatial reasoning, multi-view reasoning, and pointing, \\method{} with only 4B parameters consistently outperforms 7B level open-source embodied models, achieving a 12\\% average improvement over the strongest 7B baseline, Mimo-Embodied. Further analysis shows that \\pincot{} improves grounding accuracy and cross-step identity consistency, validating the effectiveness of process supervision.",
+      "authors": [
+        "Yaoting Huang",
+        "Yifu Yuan",
+        "Linqi Han",
+        "Chengwen Li",
+        "Shuoheng Zhang",
+        "Xianze Yao",
+        "Hongyao Tang",
+        "Yan Zheng",
+        "Jianye Hao"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-14T11:30:42+00:00",
+      "link": "https://arxiv.org/pdf/2606.15753v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "grounded embodied reasoning via pinned chain-of-thought, maintaining visual grounding across reasoning steps, directly relevant to VLN agents following instructions",
+      "llm_evidence_cn": "通过固定链式思维实现接地具身推理，保持推理步骤中的视觉接地，直接适用于遵循指令的VLN代理",
+      "llm_evidence": "通过固定链式思维实现接地具身推理，保持推理步骤中的视觉接地，直接适用于遵循指令的VLN代理",
+      "canonical_evidence": "通过固定链式思维实现接地具身推理，保持推理步骤中的视觉接地，直接适用于遵循指令的VLN代理",
+      "llm_tldr_en": "RoboPIN introduces pinned chain-of-thought for embodied reasoning, preventing visual grounding drift across multi-step reasoning, crucial for VLN agents that must follow instructions in dynamic environments.",
+      "llm_tldr_cn": "具身推理要求模型在物理环境中感知相关物体和空间，并在多步推理中保持视觉接地的一致性。然而现有VLM依赖纯文本或坐标增强的链式思维，导致实体引用模糊和漂移。RoboPIN提出固定链式思维（Pinned CoT），将每个推理步骤固定到视觉证据上，通过结构化引用消除歧义。在多视图场景下，该方法有效避免了跨视图外观变化导致的失配。实验表明，Pinned CoT显著提升具身推理任务的成功率，为视觉语言导航中的指令跟随提供了稳健的推理框架。",
+      "llm_tldr": "具身推理要求模型在物理环境中感知相关物体和空间，并在多步推理中保持视觉接地的一致性。然而现有VLM依赖纯文本或坐标增强的链式思维，导致实体引用模糊和漂移。RoboPIN提出固定链式思维（Pinned CoT），将每个推理步骤固定到视觉证据上，通过结构化引用消除歧义。在多视图场景下，该方法有效避免了跨视图外观变化导致的失配。实验表明，Pinned CoT显著提升具身推理任务的成功率，为视觉语言导航中的指令跟随提供了稳健的推理框架。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.15869v1",
+      "source": "arxiv",
+      "title": "Metis: A Generalizable and Efficient World-Action Model for Autonomous Driving and Urban Navigation",
+      "abstract": "World action models~(WAMs) have shown great promise for autonomous driving and urban navigation. Built upon Vision-Language-Action models or video generation models, existing approaches suffer key limitations: (1) High inference latency due to future observation prediction at test time, and (2) tightly coupled video and action modeling leading to representational mismatch and degraded generalization. To address both issues, we propose Metis, an end-to-end WAM framework that decouples video generation and action prediction. Specifically, Metis employs a Mixture-of-Transformers architecture with dedicated experts for video generation and action prediction, preserving the intrinsic distributional properties of each task. To enhance efficiency, we introduce an asymmetric attention mask that enables joint training of both experts while allowing the action model to bypass explicit video generation during inference. This design ensures training-inference consistency and significantly reduces computational costs without compromising planning performance. Extensive experiments demonstrate state-of-the-art performance on the NAVSIM navhard and navtest benchmarks and the CityWalker navigation benchmark, validating both the generalizability and efficiency across diverse tasks. Real-robot deployments further confirm the practical feasibility of our approach.",
+      "authors": [
+        "Jingyu Li",
+        "Zhe Liu",
+        "Dongnan Hu",
+        "Junjie Wu",
+        "Zipei Ma",
+        "Wenxiao Wu",
+        "Chao Han",
+        "Zhihui Hao",
+        "Zhikang Liu",
+        "Kun Zhan",
+        "Jiankang Deng",
+        "Xiatian Zhu",
+        "Li Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-14T15:40:49+00:00",
+      "link": "https://arxiv.org/pdf/2606.15869v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "World-action model for autonomous driving and urban navigation",
+      "llm_evidence_cn": "面向自动驾驶和城市导航的世界-动作模型",
+      "llm_evidence": "面向自动驾驶和城市导航的世界-动作模型",
+      "canonical_evidence": "面向自动驾驶和城市导航的世界-动作模型",
+      "llm_tldr_en": "Metis decouples video generation and action prediction for efficient urban navigation.",
+      "llm_tldr_cn": "现有世界-动作模型在自动驾驶中面临推理速度慢和表示不匹配问题。本文提出Metis，采用混合专家变换器架构解耦视频生成与动作预测，通过专家模块各自保持数据分布特性。在导航任务上实现低延迟和强泛化，特别适用于城市环境导航。",
+      "llm_tldr": "现有世界-动作模型在自动驾驶中面临推理速度慢和表示不匹配问题。本文提出Metis，采用混合专家变换器架构解耦视频生成与动作预测，通过专家模块各自保持数据分布特性。在导航任务上实现低延迟和强泛化，特别适用于城市环境导航。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
