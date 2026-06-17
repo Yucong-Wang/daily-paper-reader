@@ -1,0 +1,354 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-17T21:27:49.440420+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2606.17030v2",
+      "source": "arxiv",
+      "title": "Qwen-RobotWorld Technical Report: Unifying Embodied World Modeling through Language-Conditioned Video Generation",
+      "abstract": "We introduce Qwen-RobotWorld, a language-conditioned video world model for embodied intelligence. With natural language as a unified action interface, it predicts physically grounded future visual trajectories from current observations across robotic manipulation, autonomous driving, indoor navigation, and human-to-robot transfer. This unified formulation provides three promising application directions: synthetic data generation for policy training augmentation, scalable virtual environments for policy evaluation, and language-guided planning signals for downstream robot control. This is achieved through a three-part design: a) Double-Stream MMDiT with MLLM Action Encoding, where a 60-layer double-stream diffusion transformer couples frozen Qwen2.5-VL semantics with video-VAE latents through layer-wise joint attention; b) Embodied World Knowledge (EWK), an 8.6M video-text corpus (200M+ frames) with action-language mapping over 20+ embodiments and 500+ action categories; and c) General+Expert Progressive Curriculum, a two-stage training strategy that first learns general visual priors and then injects embodied specialization under a shared language interface. Extensive results show strong competitiveness: ranks 1st overall on EWMBench and DreamGen Bench, outperforms all open-source models on WorldModelBench and PBench. Additional zero-shot analyses on RoboTwin-IF benchmark further support robust generalization and multi-view consistency.",
+      "authors": [
+        "Jie Zhang",
+        "Xiaoyue Chen",
+        "Anzhe Chen",
+        "Deqing Li",
+        "Gengze Zhou",
+        "Hale Yin",
+        "Haoqi Yuan",
+        "Haoyang Li",
+        "Jiahao Li",
+        "Jiazhao Zhang",
+        "Jingren Zhou",
+        "Kaiyuan Gao",
+        "Kun Yan",
+        "Lihan Jiang",
+        "Ningyuan Tang",
+        "Pei Lin",
+        "Qihang Peng",
+        "Shengming Yin",
+        "Tianhe Wu",
+        "Tianyi Yan",
+        "Xiao Xu",
+        "Yan Shu",
+        "Yanran Zhang",
+        "Ye Wang",
+        "Yi Wang",
+        "Yilei Chen",
+        "Yixian Xu",
+        "Yiyang Huang",
+        "Yuxiang Chen",
+        "Zekai Zhang",
+        "Zhendong Wang",
+        "Zixing Lei",
+        "Zhixuan Liang",
+        "Zihao Liu",
+        "Zikai Zhou",
+        "Chenxu Lv",
+        "Xiong-Hui Chen",
+        "Chenfei Wu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-15T17:52:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.17030v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "language-conditioned video world model for embodied navigation and manipulation",
+      "llm_evidence_cn": "语言条件视频世界模型，覆盖室内导航等具身任务",
+      "llm_evidence": "语言条件视频世界模型，覆盖室内导航等具身任务",
+      "canonical_evidence": "语言条件视频世界模型，覆盖室内导航等具身任务",
+      "llm_tldr_en": "Qwen-RobotWorld unifies embodied world modeling through language-conditioned video generation, enabling navigation and manipulation tasks with natural language as interface. It predicts future visual trajectories and supports data augmentation, virtual evaluation, and planning.",
+      "llm_tldr_cn": "当前具身智能面临多任务建模不统一的问题。本文提出Qwen-RobotWorld，一个以自然语言为统一接口的语言条件视频世界模型，能够预测从当前观测出发的未来物理轨迹，覆盖机器人操控、自主驾驶、室内导航和人机迁移。该模型采用双流MMDiT结构，通过语言条件生成视频，为策略训练数据增强、虚拟环境评估和下游规划提供支持。实验表明其在多场景下具有良好泛化能力。",
+      "llm_tldr": "当前具身智能面临多任务建模不统一的问题。本文提出Qwen-RobotWorld，一个以自然语言为统一接口的语言条件视频世界模型，能够预测从当前观测出发的未来物理轨迹，覆盖机器人操控、自主驾驶、室内导航和人机迁移。该模型采用双流MMDiT结构，通过语言条件生成视频，为策略训练数据增强、虚拟环境评估和下游规划提供支持。实验表明其在多场景下具有良好泛化能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.18112v1",
+      "source": "arxiv",
+      "title": "Qwen-RobotNav Technical Report: A Scalable Navigation Model Designed for an Agentic Navigation System",
+      "abstract": "Agentic navigation systems require a base navigation model whose observation strategy can be externally reconfigured at inference time, because instruction following, object search, target tracking, and autonomous driving share the same perception-planning backbone yet demand fundamentally different strategies for consuming the visual stream. We present Qwen-RobotNav, a scalable navigation model built on Qwen-RobotNav that addresses it through a parameterised interface with two complementary dimensions: multiple task modes that select the navigation behaviour, and controllable observation parameters (e.g., token budget, per-camera weights) that govern how visual history is encoded. With training-time randomization over all parameters, Qwen-RobotNav is robust to any inference-time configuration requiring zero architectural modification to the Qwen-RobotNav backbone. We train Qwen-RobotNav on 15.6M samples; co-training with vision-language data prevents the collapse into reactive action-sequence mappers observed in trajectory-only training. The parameterised interface also makes Qwen-RobotNav a natural building block for agentic systems: for long-horizon scenarios, an upper-level planner decomposes goals into sub-tasks and dynamically switches Qwen-RobotNav's task mode and context strategy mid-episode, composing complex behaviours from repeated calls to the same model. Extensive experiments show that Qwen-RobotNav sets new state-of-the-art results across major navigation benchmarks. The model exhibits favourable scaling from 2B to 8B parameters, with joint multi-task training developing a shared spatial-planning substrate that transfers across task families, and demonstrates strong zero-shot generalisation to real-world robots across diverse environments.",
+      "authors": [
+        "Jiazhao Zhang",
+        "Gengze Zhou",
+        "Hale Yin",
+        "Yiyang Huang",
+        "Zixing Lei",
+        "Qihang Peng",
+        "Haoqi Yuan",
+        "Jie Zhang",
+        "Xudong Guo",
+        "Xiaoyue Chen",
+        "An Yang",
+        "Fei Huang",
+        "Junyang Lin",
+        "Dayiheng Liu",
+        "Jingren Zhou",
+        "Zhuoyuan Yu",
+        "Jingyang Fan",
+        "Zhixuan Liang",
+        "Pei Lin",
+        "Ye Wang",
+        "Anzhe Chen",
+        "Kun Yan",
+        "Xiao Xu",
+        "Jiahao Li",
+        "Lulu Hu",
+        "Minying Zhang",
+        "Shurui Li",
+        "Wenhu Xiao",
+        "Shuai Bai",
+        "Xuancheng Ren",
+        "Chenxu Lv",
+        "Chenfei Wu",
+        "Xiong-Hui Chen"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-06-16T16:17:44+00:00",
+      "link": "https://arxiv.org/pdf/2606.18112v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "scalable navigation model for agentic navigation",
+      "llm_evidence_cn": "可扩展的导航模型用于智能体导航系统",
+      "llm_evidence": "可扩展的导航模型用于智能体导航系统",
+      "canonical_evidence": "可扩展的导航模型用于智能体导航系统",
+      "llm_tldr_en": "Presents Qwen-RobotNav, a scalable navigation model with configurable observation strategy supporting instruction following, object search, target tracking, and autonomous driving.",
+      "llm_tldr_cn": "智能导航系统需要基础导航模型，其观察策略需在推理时外部可配置。本文提出Qwen-RobotNav，通过参数化接口支持多种任务模式和可控观察参数。训练时随机化所有参数使模型适应不同行为。实验证明该方法在多种导航任务上表现优异。这项工作为通用视觉语言导航模型提供了实用框架。",
+      "llm_tldr": "智能导航系统需要基础导航模型，其观察策略需在推理时外部可配置。本文提出Qwen-RobotNav，通过参数化接口支持多种任务模式和可控观察参数。训练时随机化所有参数使模型适应不同行为。实验证明该方法在多种导航任务上表现优异。这项工作为通用视觉语言导航模型提供了实用框架。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.17183v1",
+      "source": "arxiv",
+      "title": "VL-MemKnG: Hybrid Memory with a Spatio-Temporal Knowledge Graph for Question Answering over Long Egocentric Navigation Trajectories",
+      "abstract": "Answering navigation-relevant questions over long egocentric videos requires retrieving and organizing evidence distributed across distant temporal moments while maintaining spatial and contextual consistency. Although long-context vision--language models can achieve strong answer quality, they are computationally expensive for long trajectories and inefficient for repeated querying. Recent graph-based approaches such as VL-KnG address this challenge through persistent spatio-temporal knowledge graphs, but graph-centric retrieval alone may underrepresent broader temporal continuity and contextual cues. We present VL-MemKnG, a hybrid memory framework that extends VL-KnG by combining a spatio-temporal knowledge graph with persistent segment-level contextual memory. The knowledge graph captures structured relational information and long-range object associations, while segment-level memory preserves broader temporal context for long-horizon evidence retrieval. A hybrid retrieval-and-reasoning module jointly operates over both memory representations to produce evidence-grounded answers and temporally organized supporting evidence. We also introduce WalkieKnowledgeT+, an extension of WalkieKnowledge for long-horizon navigation-oriented video question answering. The benchmark includes temporally distributed reasoning tasks requiring evidence aggregation across multiple non-cooccurring moments. On WalkieKnowledgeT+, VL-MemKnG improves Top-1 retrieval accuracy from 58% to 67% and Recall@1 from 34.50% to 40.55%, outperforming all compared methods, including Gemini 2.5 Pro and Qwen 3.5+. The gains are particularly pronounced on temporal-global and temporally scattered aggregation questions, demonstrating the benefits of combining structured relational memory with segment-level contextual memory while maintaining efficient query-time inference.",
+      "authors": [
+        "Svetlana Lukina",
+        "Mohamad Al Mdfaa",
+        "Gloria Haro",
+        "Sergey Zagoruyko",
+        "Gonzalo Ferrer"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-15T18:21:14+00:00",
+      "link": "https://arxiv.org/pdf/2606.17183v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "navigation question answering with spatio-temporal knowledge graph",
+      "llm_evidence_cn": "使用时空知识图谱进行导航问题回答",
+      "llm_evidence": "使用时空知识图谱进行导航问题回答",
+      "canonical_evidence": "使用时空知识图谱进行导航问题回答",
+      "llm_tldr_en": "VL-MemKnG extends knowledge graphs with hybrid memory to efficiently answer navigation questions over long egocentric trajectories.",
+      "llm_tldr_cn": "针对长ego导航轨迹中问答效率低的问题，提出VL-MemKnG混合记忆框架，结合时空知识图谱与记忆机制，在保持回答质量的同时降低计算开销，支持高效重复查询。",
+      "llm_tldr": "针对长ego导航轨迹中问答效率低的问题，提出VL-MemKnG混合记忆框架，结合时空知识图谱与记忆机制，在保持回答质量的同时降低计算开销，支持高效重复查询。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.13156v1",
+      "source": "arxiv",
+      "title": "Iterative Visual Thinking: Teaching Vision-Language Models Spatial Self-Correction through Visual Feedback",
+      "abstract": "Vision-language models (VLMs) achieve strong singleshot spatial grounding, yet lack any mechanism to observe and correct their own predictions. We find that naively prompting a VLM to iterate over rendered visualizations of its predictions causes catastrophic failure: Acc@0.5 on referring expression comprehension collapses from 79.6% to 48.7% (a 31 percentage point drop), revealing a fundamental gap between grounding capability and self-correction ability. We propose Iterative Visual Thinking (IVT), a closed-loop framework in which the model predicts a bounding box, observes the prediction rendered on the image, and iteratively refines through visual feedback. A two-phase training recipe closes the self-correction gap: first, we exploit the base model's own predictions as realistic errors and prompt a teacher VLM to generate corrective reasoning traces, yielding supervised data without human annotation; second, we apply Group Relative Policy Optimization (GRPO) with a simple IoU reward to stabilize multi-step refinement. On a mixed benchmark spanning RefCOCOg, Ref-Adv, and Ref-L4 (505 test samples), SFT warm-up with IVT surpasses the single-shot base model on every metric: Acc@0.5 rises to 82.0% (+2.4pp), Acc@0.7 to 74.1% (+3.2pp), and Acc@0.9 to 48.3% (+2.8pp). GRPO further reduces per-step IoU degradation by 5x, stabilizing the refinement trajectory. All training uses only 2,400 samples on a single GPU, demonstrating that spatial self-correction is a learnable capability that can be instilled at modest scale.",
+      "authors": [
+        "Animesh Tripathy",
+        "Aswanth Krishnan"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-11T10:27:29+00:00",
+      "link": "https://arxiv.org/pdf/2606.13156v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "teaches VLMs spatial self-correction via visual feedback",
+      "llm_evidence_cn": "通过视觉反馈训练VLM空间自纠正",
+      "llm_evidence": "通过视觉反馈训练VLM空间自纠正",
+      "canonical_evidence": "通过视觉反馈训练VLM空间自纠正",
+      "llm_tldr_en": "Iterative Visual Thinking (IVT) is a closed-loop framework that enables VLMs to self-correct spatial predictions by observing rendered visualizations, closing the grounding-correction gap.",
+      "llm_tldr_cn": "视觉语言模型（VLM）在单次空间定位中表现良好，但缺乏自我纠正能力。IVT提出闭环框架，让模型预测边界框后观察渲染结果，并通过视觉反馈迭代精炼。两阶段训练方案使VLM学会自我纠正，在指代表达理解任务上准确率大幅提升，弥补了定位与纠正之间的鸿沟。",
+      "llm_tldr": "视觉语言模型（VLM）在单次空间定位中表现良好，但缺乏自我纠正能力。IVT提出闭环框架，让模型预测边界框后观察渲染结果，并通过视觉反馈迭代精炼。两阶段训练方案使VLM学会自我纠正，在指代表达理解任务上准确率大幅提升，弥补了定位与纠正之间的鸿沟。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.14010v1",
+      "source": "arxiv",
+      "title": "RT-VLA: Real-Time Vision-Language-Action Models via Knowledge Distillation",
+      "abstract": "Vision-Language-Action (VLA) models have shown strong potential for end-to-end autonomous driving by jointly modeling visual perception, language reasoning, explainability and action prediction. However, their large vision-language backbones and reasoning modules introduce substantial inference latency and thereby prevent their deployment in the unforgiving reality of the road networks. We propose RT-VLA, a lightweight, distilled VLA model that transfers the driving and reasoning capabilities of the state-of-the-art SimLingo model into a compact student through multi-level supervised distillation. RT-VLA preserves language-based reasoning and supports post-hoc explanation through offline language analysis of safety-critical driving moments without adding latency to real-time control. Compared to the SimLingo teacher, RT-VLA maintains competitive closed-loop driving and language reasoning performance while reducing inference time by 44.8X in vision-only mode and 7.9X in vision+language mode. These results suggest that supervised distillation is a practical approach for building real-time, explainable VLA-style autonomous driving models.",
+      "authors": [
+        "Xiangyu Huang",
+        "Zhenlin Hua",
+        "Han Zhou",
+        "Shounak Sural",
+        "Ragunathan Rajkumar"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "cs.RO"
+      ],
+      "published": "2026-06-12T01:06:42+00:00",
+      "link": "https://arxiv.org/pdf/2606.14010v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "vision-language-action model for end-to-end autonomous driving",
+      "llm_evidence_cn": "端到端自动驾驶中的视觉语言动作模型",
+      "llm_evidence": "端到端自动驾驶中的视觉语言动作模型",
+      "canonical_evidence": "端到端自动驾驶中的视觉语言动作模型",
+      "llm_tldr_en": "This paper distills a lightweight VLA model (RT-VLA) for real-time autonomous driving, using knowledge distillation to preserve language reasoning while reducing latency, enabling efficient vision-language navigation.",
+      "llm_tldr_cn": "该论文针对视觉-语言-动作（VLA）模型在自动驾驶中推理延迟过高难以部署的问题，提出RT-VLA。通过多级监督蒸馏将大型VLA模型SimLingo的知识压缩到轻量学生模型中，在保持语言推理能力的同时大幅降低延迟。实验表明RT-VLA在真实驾驶场景中实现了实时推理，同时维持了较高的规划性能。该方法为具身导航（特别是自动驾驶领域）提供了高效的视觉语言融合框架。",
+      "llm_tldr": "该论文针对视觉-语言-动作（VLA）模型在自动驾驶中推理延迟过高难以部署的问题，提出RT-VLA。通过多级监督蒸馏将大型VLA模型SimLingo的知识压缩到轻量学生模型中，在保持语言推理能力的同时大幅降低延迟。实验表明RT-VLA在真实驾驶场景中实现了实时推理，同时维持了较高的规划性能。该方法为具身导航（特别是自动驾驶领域）提供了高效的视觉语言融合框架。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.17294v1",
+      "source": "arxiv",
+      "title": "VISTA: Scale-Aware Visual Navigation via Action History Conditioning",
+      "abstract": "Vision Navigation Foundation Models (VNMs) promise end-to-end learned navigation policies capable of zero-shot deployment across diverse embodiments and environments. To maintain generality, many vision-based navigation models predict normalized actions. However, this normalization introduces a critical deployment vulnerability: applying different scaling factors to the same normalized trajectory alters its physical geometry, which degrades navigation performance and increases collision risks. We address this vulnerability by conditioning the model on normalized action histories alongside image observations, providing explicit context on the relationship between the model's predictions and the robot's actual physical displacement. Furthermore, current VNMs often struggle in visually repetitive environments that lack distinct features. To resolve this issue, we integrate a DINOv3 encoder, whose richer representations enable our model to capture both spatial and geometric dimensions between observations. VISTA generalizes robustly to out-of-distribution environments, achieving 100% goal prediction accuracy in zero-shot, real-world deployment in Outdoor, Forest and Office settings, and an average of 95% checkpoints crossed, demonstrating consistent path following in unseen environments.",
+      "authors": [
+        "Maeva Guerrier",
+        "Koki Kobayashi",
+        "Simon Roy",
+        "Jana Pavlasek",
+        "Giovanni Beltrame"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.LG"
+      ],
+      "published": "2026-06-15T21:01:30+00:00",
+      "link": "https://arxiv.org/pdf/2606.17294v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "scale-aware visual navigation with action history conditioning",
+      "llm_evidence_cn": "通过动作历史条件实现尺度感知视觉导航",
+      "llm_evidence": "通过动作历史条件实现尺度感知视觉导航",
+      "canonical_evidence": "通过动作历史条件实现尺度感知视觉导航",
+      "llm_tldr_en": "VISTA addresses normalization vulnerability in vision navigation foundation models by conditioning on action histories.",
+      "llm_tldr_cn": "针对视觉导航基础模型中归一化动作导致物理几何变化的问题，提出VISTA通过条件化动作历史提供物理尺度上下文，增强模型对不同实施例和环境尺度的鲁棒性。",
+      "llm_tldr": "针对视觉导航基础模型中归一化动作导致物理几何变化的问题，提出VISTA通过条件化动作历史提供物理尺度上下文，增强模型对不同实施例和环境尺度的鲁棒性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.18235v1",
+      "source": "arxiv",
+      "title": "EvolveNav: Proactive Preflection and Self-Evolving Memory for Zero-Shot Object Goal Navigation",
+      "abstract": "Zero-Shot Object-Goal Navigation (ZS-OGN) requires embodied agents to explore and locate target objects without any prior training. To this end, recent methods leverage foundation models. But they typically rely on static priors and lack adaptation, which leads to repeated errors and costly trial and error. In this paper, we propose a self-evolving ZS-OGN framework that enables continuous test-time improvement. Specifically, we build an agentic rule memory by extracting actionable knowledge from past trajectories. Then, we propose a retrieval strategy based on upper confidence bound, selecting effective rules by balancing semantic relevance and historical success. In addition, we introduce a memory-guided preflection module that forecasts potential outcomes before action, reducing inefficient exploration. Extensive experiments show that our method outperforms existing zero-shot baselines, achieving a 10.1\\% improvement in success rate with fewer unnecessary steps.",
+      "authors": [
+        "Qi Chai",
+        "Wenhao Shen",
+        "Nanjie Yao",
+        "Yue Xia",
+        "Kaiyong Zhao",
+        "Jie Ma",
+        "Guosheng Lin",
+        "Hao Wang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-16T17:56:57+00:00",
+      "link": "https://arxiv.org/pdf/2606.18235v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "zero-shot object-goal navigation with self-evolving memory",
+      "llm_evidence_cn": "具有自进化记忆的零样本目标导航",
+      "llm_evidence": "具有自进化记忆的零样本目标导航",
+      "canonical_evidence": "具有自进化记忆的零样本目标导航",
+      "llm_tldr_en": "EvolveNav achieves zero-shot object-goal navigation by extracting actionable rules from past trajectories into an agentic memory, with UCB-based retrieval and memory-guided preflection.",
+      "llm_tldr_cn": "针对零样本目标导航中静态先验导致重复错误的问题，本文提出EvolveNav自进化框架。它从历史轨迹中提取可操作知识构建智能体规则记忆，采用上置信界策略平衡语义相关性与历史成功率进行检索，并引入记忆引导预反思模块。实验表明该方法在未见环境中持续改进，显著减少不必要的探索，实现了高效的零样本目标导航。",
+      "llm_tldr": "针对零样本目标导航中静态先验导致重复错误的问题，本文提出EvolveNav自进化框架。它从历史轨迹中提取可操作知识构建智能体规则记忆，采用上置信界策略平衡语义相关性与历史成功率进行检索，并引入记忆引导预反思模块。实验表明该方法在未见环境中持续改进，显著减少不必要的探索，实现了高效的零样本目标导航。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
