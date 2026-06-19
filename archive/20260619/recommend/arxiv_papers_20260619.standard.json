@@ -1,0 +1,443 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-19T20:32:17.149483+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 6,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2606.18112v2",
+      "source": "arxiv",
+      "title": "Qwen-RobotNav Technical Report: A Scalable Navigation Model Designed for an Agentic Navigation System",
+      "abstract": "Agentic navigation systems require a base navigation model whose observation strategy can be externally reconfigured at inference time, because instruction following, object search, target tracking, and autonomous driving share the same perception-planning backbone yet demand fundamentally different strategies for consuming the visual stream. We present Qwen-RobotNav, a scalable navigation model built on Qwen-RobotNav that addresses it through a parameterised interface with two complementary dimensions: multiple task modes that select the navigation behaviour, and controllable observation parameters (e.g., token budget, per-camera weights) that govern how visual history is encoded. With training-time randomization over all parameters, Qwen-RobotNav is robust to any inference-time configuration requiring zero architectural modification to the Qwen-RobotNav backbone. We train Qwen-RobotNav on 15.6M samples; co-training with vision-language data prevents the collapse into reactive action-sequence mappers observed in trajectory-only training. The parameterised interface also makes Qwen-RobotNav a natural building block for agentic systems: for long-horizon scenarios, an upper-level planner decomposes goals into sub-tasks and dynamically switches Qwen-RobotNav's task mode and context strategy mid-episode, composing complex behaviours from repeated calls to the same model. Extensive experiments show that Qwen-RobotNav sets new state-of-the-art results across major navigation benchmarks. The model exhibits favourable scaling from 2B to 8B parameters, with joint multi-task training developing a shared spatial-planning substrate that transfers across task families, and demonstrates strong zero-shot generalisation to real-world robots across diverse environments.",
+      "authors": [
+        "Jiazhao Zhang",
+        "Gengze Zhou",
+        "Hale Yin",
+        "Yiyang Huang",
+        "Zixing Lei",
+        "Qihang Peng",
+        "Haoqi Yuan",
+        "Jie Zhang",
+        "Xudong Guo",
+        "Xiaoyue Chen",
+        "An Yang",
+        "Fei Huang",
+        "Zhibo Yang",
+        "Junyang Lin",
+        "Dayiheng Liu",
+        "Jingren Zhou",
+        "Zhuoyuan Yu",
+        "Jingyang Fan",
+        "Zhixuan Liang",
+        "Pei Lin",
+        "Ye Wang",
+        "Anzhe Chen",
+        "Kun Yan",
+        "Xiao Xu",
+        "Jiahao Li",
+        "Lulu Hu",
+        "Minying Zhang",
+        "Shurui Li",
+        "Wenhu Xiao",
+        "Shuai Bai",
+        "Xuancheng Ren",
+        "Chenxu Lv",
+        "Chenfei Wu",
+        "Xiong-Hui Chen"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-06-16T16:17:44+00:00",
+      "link": "https://arxiv.org/pdf/2606.18112v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "scalable navigation model with instruction following and object search",
+      "llm_evidence_cn": "可扩展导航模型，支持指令跟随和物体搜索",
+      "llm_evidence": "可扩展导航模型，支持指令跟随和物体搜索",
+      "canonical_evidence": "可扩展导航模型，支持指令跟随和物体搜索",
+      "llm_tldr_en": "Qwen-RobotNav proposes a parameterized navigation model with reconfigurable observation strategy for instruction following and object search tasks.",
+      "llm_tldr_cn": "Qwen-RobotNav提出一种可扩展导航模型，通过参数化接口实现观测策略的重配置。该模型支持多种任务模式（如指令跟随、目标搜索）和可控观测参数，通过训练时随机化实现零样本适应。实验验证了其在多种导航任务中的泛化能力。",
+      "llm_tldr": "Qwen-RobotNav提出一种可扩展导航模型，通过参数化接口实现观测策略的重配置。该模型支持多种任务模式（如指令跟随、目标搜索）和可控观测参数，通过训练时随机化实现零样本适应。实验验证了其在多种导航任务中的泛化能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.19948v1",
+      "source": "arxiv",
+      "title": "Advancing DialNav through Automatic Embodied Dialog Augmentation",
+      "abstract": "For embodied agents capable of physical interaction, the capability to create and understand dialog is crucial to ensure both safety and effectiveness. While DialNav~\\cite{han2025dialnav} provides a framework for holistic evaluation of the dialog--execution loop in photorealistic indoor navigation, its performance remains limited by a critical scarcity of training data (2K episodes). To address this, we propose an automatic generation pipeline, and construct the \\textbf{RAINbow} dataset, a large-scale training dataset with 238K episodes for DialNav. Our pipeline converts existing VLN datasets into multi-turn dialog and creates cost-efficient and high-quality dataset. Then, we introduce two additional complementary advances to unlock the data's full potential: (1) Dual-Strategy Training, a navigation training scheme to align the navigation training with the dynamic dialog-navigation loop, and (2) a localization model that leverages VLN knowledge. By combining these complementary solutions, our model substantially outperforms the baseline in success rate on both \\textbf{Val Seen} (58.24, \\textbf{+89\\%}) and \\textbf{Val Unseen} (29.05, \\textbf{+100\\%}) splits, establishing a new state of the art.",
+      "authors": [
+        "Leekyeung Han",
+        "Sangwon Jung",
+        "Hyunji Min",
+        "Jinseong Jeong",
+        "Minyoung Kim",
+        "Paul Hongsuck Seo"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-18T08:45:25+00:00",
+      "link": "https://arxiv.org/pdf/2606.19948v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Automatic generation of embodied dialog navigation data from VLN datasets",
+      "llm_evidence_cn": "从VLN数据集自动生成具身对话导航数据",
+      "llm_evidence": "从VLN数据集自动生成具身对话导航数据",
+      "canonical_evidence": "从VLN数据集自动生成具身对话导航数据",
+      "llm_tldr_en": "Proposes automatic pipeline to augment DialNav dataset from VLN data, creating 238K episodes to improve dialog-based navigation performance in indoor environments.",
+      "llm_tldr_cn": "本文针对DialNav框架中训练数据匮乏的问题，提出一种自动生成流水线，将现有的视觉语言导航（VLN）数据集转换为多轮对话导航数据，构建了包含23.8万条情景的大规模RAINbow数据集。同时引入两项互补技术以充分发挥数据潜力。实验表明，该方法显著提升了具身代理在室内环境中的对话导航能力，为结合语言理解与导航决策提供了数据基础。",
+      "llm_tldr": "本文针对DialNav框架中训练数据匮乏的问题，提出一种自动生成流水线，将现有的视觉语言导航（VLN）数据集转换为多轮对话导航数据，构建了包含23.8万条情景的大规模RAINbow数据集。同时引入两项互补技术以充分发挥数据潜力。实验表明，该方法显著提升了具身代理在室内环境中的对话导航能力，为结合语言理解与导航决策提供了数据基础。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.20045v1",
+      "source": "arxiv",
+      "title": "See-and-Reach: Precise Vision-Language Navigation for UAVs within the Field of View",
+      "abstract": "UAV Vision-Language Navigation (UAV-VLN) is typically formulated as a holistic search-and-reach problem, where long-range target discovery and final target approach are optimized and evaluated jointly. This formulation makes it difficult to assess a critical capability of aerial embodied agents, namely whether a UAV can accurately ground a visible target and translate vision-language evidence into precise 3D motion once the target enters its field of view. To address this limitation, we introduce UAV-VLN-FOV, a target-visible navigation task that isolates the see-and-reach stage and enables a more diagnostic evaluation of terminal reaching ability. We further propose 3DG-VLN, a vision-language waypoint prediction framework guided by dynamic 3D direction cues to enhance fine-grained visual grounding and spatial direction alignment for precise target reaching. Specifically, 3DG-VLN adaptively processes high-resolution front-view and downward-view observations to preserve fine-grained visual and geometric details for target grounding. It also updates the target-relative direction online during closed-loop navigation, allowing the agent to maintain spatial alignment with the target and reduce accumulated direction drift. To support this task, we construct a dedicated high-resolution benchmark which contains 2,717 trajectories with target-oriented high-level instructions, high-resolution front-view and downward-view egocentric observations, and continuous 3D waypoint annotations. Experiments show that 3DG-VLN outperforms competitive UAV-VLN baselines, achieving a 13.82\\% improvement in success rate. Real-world trials further demonstrate the potential of 3DG-VLN for practical see-and-reach navigation. The source code and benchmark are available at https://github.com/xuefanfu/3DG-VLN.",
+      "authors": [
+        "Fanfu Xue",
+        "En Yu",
+        "Yantian Shen",
+        "Zhikun Hu",
+        "Hongjun Wang",
+        "Yang Yang",
+        "Xindi Wang",
+        "Jiande Sun"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-18T10:21:42+00:00",
+      "link": "https://arxiv.org/pdf/2606.20045v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "UAV Vision-Language Navigation (UAV-VLN) with precise terminal reaching",
+      "llm_evidence_cn": "无人机视觉语言导航，精确末端到达",
+      "llm_evidence": "无人机视觉语言导航，精确末端到达",
+      "canonical_evidence": "无人机视觉语言导航，精确末端到达",
+      "llm_tldr_en": "See-and-Reach introduces UAV-VLN-FOV task isolating see-and-reach stage, and proposes 3DG-VLN waypoint prediction framework.",
+      "llm_tldr_cn": "See-and-Reach针对无人机视觉语言导航中末端接近能力难以评估的问题，提出UAV-VLN-FOV任务，分离出可见目标到达阶段。同时提出3DG-VLN框架，用动态3D引导的视觉语言航点预测实现精确接近。实验表明该方法显著提升了终端到达精度。",
+      "llm_tldr": "See-and-Reach针对无人机视觉语言导航中末端接近能力难以评估的问题，提出UAV-VLN-FOV任务，分离出可见目标到达阶段。同时提出3DG-VLN框架，用动态3D引导的视觉语言航点预测实现精确接近。实验表明该方法显著提升了终端到达精度。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.20458v1",
+      "source": "arxiv",
+      "title": "Slow Brain, Fast Planner: Latency-Resilient VLM-Augmented Urban Navigation",
+      "abstract": "Learning-based planners for sidewalk navigation can generate diverse candidate trajectories in real time, yet their scoring functions often fail to select the best trajectory in challenging situations, outputting trajectories that make the mobile robot drive onto grass, toward pedestrians, or in the wrong direction, even when better candidates exist in the same set. We call this the trajectory scoring gap: in real-world sidewalk navigation, the gap between an anchor-based planner's top choice and the best possible candidate is substantial, likely due to limited high-level scene understanding capability of the planner. Rather than replacing the planner with an end-to-end Vision-Language-Action model, we propose a VLM-Planner interface that uses a VLM to select a candidate index from the planner's proposal set and then fuse it with the planner's initial output. However, VLMs take 1--3s per query and so cannot directly drive a 5--20Hz control loop. We contribute a training-free, latency-resilient trajectory-level fusion layer that turns a stale VLM selection into real-time planner scoring via geometric similarity with exponential decay. On $\\sim$2,000 challenging real-world scenarios (e.g., junctions, pedestrian encounters), VLM selection achieves 30% ADE reduction versus the planner's best selection, while the planner remains competitive in routine situations. In simulation, Score Fusion maintains >80% success rate with delays up to 5s. We demonstrate the full system on a mobile robot navigating challenging campus sidewalks with varied network latency.",
+      "authors": [
+        "Zhenghao \"Mark'' Peng",
+        "Honglin He",
+        "Quanyi Li",
+        "Yukai Ma",
+        "Bolei Zhou"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-18T16:40:07+00:00",
+      "link": "https://arxiv.org/pdf/2606.20458v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "VLM-augmented urban sidewalk navigation",
+      "llm_evidence_cn": "VLM增强的城市人行道导航",
+      "llm_evidence": "VLM增强的城市人行道导航",
+      "canonical_evidence": "VLM增强的城市人行道导航",
+      "llm_tldr_en": "Proposes a VLM-Planner interface that augments anchor-based planners with VLM scene understanding to bridge the trajectory scoring gap in sidewalk navigation.",
+      "llm_tldr_cn": "基于学习的规划器在复杂场景中无法选出最优轨迹，存在轨迹评分差距。本文提出慢脑快规划器接口，利用VLM的高层场景理解能力纠正规划器的误判，无需替换整个规划器。在城市人行道导航任务上，该方法显著提升了轨迹选择质量，使移动机器人避开危险区域。",
+      "llm_tldr": "基于学习的规划器在复杂场景中无法选出最优轨迹，存在轨迹评分差距。本文提出慢脑快规划器接口，利用VLM的高层场景理解能力纠正规划器的误判，无需替换整个规划器。在城市人行道导航任务上，该方法显著提升了轨迹选择质量，使移动机器人避开危险区域。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.20479v1",
+      "source": "arxiv",
+      "title": "GroundControl: Anticipating Navigation Failures in Vision-Language Agents via Trajectory-Consistent Uncertainty Estimates",
+      "abstract": "Vision-language navigation agents achieve competitive average success on benchmark tasks, yet failures often arise through predictable trajectory-level breakdowns such as oscillation, stagnation, or inefficient detours. Reliable deployment, therefore, requires uncertainty signals that anticipate emerging failure dynamics during execution rather than reflect only instantaneous action entropy. We introduce \\emph{GroundControl}, a trajectory-consistent uncertainty estimator defined as statistical deviation from nominal goal-directed distance-to-goal dynamics aggregated over an episode. GroundControl models distance evolution using a constant-velocity Kalman filter and combines normalized innovation statistics with complementary trajectory features capturing progress, monotonicity, path efficiency, and oscillatory behavior. The resulting uncertainty score reflects geometric and temporal inconsistency in navigation behavior rather than local prediction dispersion. To evaluate uncertainty quality independently of task success, we formalize \\emph{Selective Risk--Coverage Navigation (SRCN)}, a protocol that measures how effectively an uncertainty score ranks episodes by failure or inefficiency using risk--coverage curves and AURC / E-AURC summaries. Across five EB-Navigation splits ($N=300$ episodes), trajectory-consistent uncertainty achieves near-oracle ordering under success-based selective risk, with weighted-average $\\mathrm{E\\text{-}AURC}_{\\mathrm{SR}}=0.0024$ for the GPT-4o model, substantially outperforming entropy-, conformal-, and heuristic baselines. Under SPL-based selective evaluation, GroundControl consistently achieves the lowest AURC and E-AURC across models and navigation splits. These results show that modeling deviation from goal-directed dynamics provides an interpretable and robust signal for anticipating navigation failures in vision-language agents.",
+      "authors": [
+        "Nastaran Darabi",
+        "Divake Kumar",
+        "Sina Tayebati",
+        "Devashri Naik",
+        "Amit Ranjan Trivedi"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-18T16:56:20+00:00",
+      "link": "https://arxiv.org/pdf/2606.20479v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "vision-language navigation failure anticipation",
+      "llm_evidence_cn": "视觉语言导航故障预测",
+      "llm_evidence": "视觉语言导航故障预测",
+      "canonical_evidence": "视觉语言导航故障预测",
+      "llm_tldr_en": "Proposes GroundControl, a trajectory-consistent uncertainty estimator that anticipates navigation failures in VLN agents via Kalman filter deviation.",
+      "llm_tldr_cn": "视觉语言导航代理在基准上成功率高，但常出现震荡、停滞等轨迹级故障。本文提出GroundControl，通过卡尔曼滤波建模距离动态，聚合归一化创新统计量作为不确定性信号，在故障发生前进行预警。实验表明该方法能有效预测多种故障类型，提升VLN部署可靠性。",
+      "llm_tldr": "视觉语言导航代理在基准上成功率高，但常出现震荡、停滞等轨迹级故障。本文提出GroundControl，通过卡尔曼滤波建模距离动态，聚合归一化创新统计量作为不确定性信号，在故障发生前进行预警。实验表明该方法能有效预测多种故障类型，提升VLN部署可靠性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.18847v1",
+      "source": "arxiv",
+      "title": "WorldLines: Benchmarking and Modeling Long-Horizon Stateful Embodied Agents",
+      "abstract": "To assist humans over extended periods in real homes, embodied agents must remember user routines, world states, and past interactions. Existing long-term memory benchmarks mainly evaluate language-centric retrieval and question answering, while embodied benchmarks often focus on short-horizon task execution without testing long-term memory use in dynamic environments. We introduce WorldLines, a project-driven benchmark for long-horizon embodied household assistance. It constructs temporally extended household traces with dialogues, actions, execution feedback, object and device state changes, and converts them into evidence-linked samples for Memory QA and Embodied Task Planning. We further propose ObsMem, an observer-grounded memory framework that maintains visibility-aware memories and action-native state trails for state-aware decisions. Experiments reveal persistent challenges in partial observability, overwritten world states, and translating long-term memory into embodied plans, while ObsMem offers a stronger reference architecture for this setting.",
+      "authors": [
+        "Yehang Zhang",
+        "Jianchong Su",
+        "Haojian Huang",
+        "Yifan Chang",
+        "Tianhao Zhou",
+        "Xinli Xu",
+        "Yingjie Xu",
+        "Yinchuan Li",
+        "Zexi Li",
+        "Ying-Cong Chen"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-17T09:26:26+00:00",
+      "link": "https://arxiv.org/pdf/2606.18847v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "benchmark for long-horizon embodied agents in home environments",
+      "llm_evidence_cn": "面向家庭环境的长周期具身智能体基准",
+      "llm_evidence": "面向家庭环境的长周期具身智能体基准",
+      "canonical_evidence": "面向家庭环境的长周期具身智能体基准",
+      "llm_tldr_en": "WorldLines benchmarks long-horizon stateful embodied agents with memory QA and task planning, proposing ObsMem memory framework for household assistance.",
+      "llm_tldr_cn": "现有具身智能基准多聚焦短周期任务，忽略长期记忆与状态跟踪。本文提出WorldLines基准，构建包含对话、动作、状态变化的长时间家庭轨迹，并设计ObsMem记忆框架，用于测试智能体的记忆问答与任务规划能力，推动具身智能在真实家庭场景中的长期自主性。",
+      "llm_tldr": "现有具身智能基准多聚焦短周期任务，忽略长期记忆与状态跟踪。本文提出WorldLines基准，构建包含对话、动作、状态变化的长时间家庭轨迹，并设计ObsMem记忆框架，用于测试智能体的记忆问答与任务规划能力，推动具身智能在真实家庭场景中的长期自主性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.15714v1",
+      "source": "arxiv",
+      "title": "Beyond English: Uncovering the Multilingual Gap in Vision-Language-Action Models",
+      "abstract": "Vision-Language-Action models have recently demonstrated promising capabilities in learning generalist robot policies from large-scale multimodal data. However, most existing VLA systems are trained and evaluated primarily with English instructions, leaving their ability to understand and execute instructions in other languages largely unexplored. While the underlying large language models often possess multilingual capabilities, it remains unclear whether these multilingual capabilities transfer to VLAs during training. In this work, we present the first systematic study of multilingual instruction following in VLA models. We first construct multilingual instructions by extending existing benchmarks with translations of their instructions. Using these instructions, we evaluate several representative VLA models across a range of tasks in simulation settings. Our experiments reveal a significant multilingual gap: models trained primarily on English instructions exhibit substantial performance degradation when evaluated on other languages, even when the underlying language backbone is multilingual. We provide several findings and analyses to understand the multilingual gap. Cross-lingual transfer behavior analysis shows that performance drops correlate with both instruction understanding and action execution. Representation analyses suggest that multilingual instruction-caused representation shifts may contribute to the multilingual gap. Motivated by these findings, we further explore strategies to improve multilingual performance in VLAs. We propose a simple yet effective multilingual fine-tuning approach, Multilingual Principal Component Alignment, which leverages Principal Component Analysis to get the principal component subspace and align projected multilingual representations, effectively reducing the multilingual performance gap.",
+      "authors": [
+        "Hanyang Chen",
+        "Hongliang Li",
+        "Jiarui Cao",
+        "Yang Li",
+        "Yang Jiang",
+        "Haonan Wen",
+        "Kaiyu Huang",
+        "Shengnan Guo",
+        "Huaiyu Wan"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.RO"
+      ],
+      "published": "2026-06-14T10:04:08+00:00",
+      "link": "https://arxiv.org/pdf/2606.15714v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "multilingual instruction following in VLA models for navigation",
+      "llm_evidence_cn": "VLA模型的多语言指令跟随能力研究",
+      "llm_evidence": "VLA模型的多语言指令跟随能力研究",
+      "canonical_evidence": "VLA模型的多语言指令跟随能力研究",
+      "llm_tldr_en": "This paper studies multilingual instruction following in Vision-Language-Action models, revealing a gap between English and other languages, relevant to instruction-following navigation.",
+      "llm_tldr_cn": "当前视觉-语言-动作(VLA)模型大多仅用英语指令训练，多语言能力未知。本文首次系统研究VLA模型的多语言指令跟随，通过构建多语言基准发现模型在非英语指令下表现显著下降。该研究揭示了多语言导航指令的差距，为未来鲁棒的跨语言导航智能体提供了重要基线。",
+      "llm_tldr": "当前视觉-语言-动作(VLA)模型大多仅用英语指令训练，多语言能力未知。本文首次系统研究VLA模型的多语言指令跟随，通过构建多语言基准发现模型在非英语指令下表现显著下降。该研究揭示了多语言导航指令的差距，为未来鲁棒的跨语言导航智能体提供了重要基线。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.17924v1",
+      "source": "arxiv",
+      "title": "PearlVLA: Progressive Embodied Action-Plan Refinement in Latent Space",
+      "abstract": "Current Vision-Language-Action (VLA) models face a trade-off between efficient action generation and explicit deliberation. Directly decoding actions from vision-language backbone representations enables low-latency control, whereas explicit reasoning through textual chains, pixel-level subgoals, or action search can improve planning but incurs substantial latency and computational cost. We propose PearlVLA, a VLA framework that moves deliberation into the latent space of a vision-language model (VLM). PearlVLA separates VLM meta-query representations into a fixed visual grounding branch and an iterative latent plan branch. At each refinement round, a plan-conditioned world query probes a lightweight frozen latent world model for an action-free future observation latent, which is fed back to guide plan refinement. A future-guided RefineNet then applies scheduled residual updates to progressively refine a coarse semantic draft into a fine-grained latent action plan. The refined plan after K rounds is then decoded in parallel into an action chunk for low-latency execution. We further introduce Causal Refinement-Grouped Process-Reward RL to optimize the latent refinement process with rewards from longer-horizon imagined futures induced by latent plan edits. Empirical evaluations on the LIBERO benchmark demonstrate that PearlVLA achieves state-of-the-art performance among existing methods.",
+      "authors": [
+        "Bochen Yang",
+        "Lianlei Shan"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-16T13:38:03+00:00",
+      "link": "https://arxiv.org/pdf/2606.17924v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "embodied action-plan refinement in latent space for VLA models",
+      "llm_evidence_cn": "基于潜在空间的具身动作规划精炼用于视觉语言动作模型",
+      "llm_evidence": "基于潜在空间的具身动作规划精炼用于视觉语言动作模型",
+      "canonical_evidence": "基于潜在空间的具身动作规划精炼用于视觉语言动作模型",
+      "llm_tldr_en": "PearlVLA proposes a VLA framework that performs iterative action-plan refinement in latent space, balancing efficiency and deliberation.",
+      "llm_tldr_cn": "当前视觉语言动作模型在高效生成与显式规划之间存在权衡。PearlVLA将规划过程迁移到视觉语言模型的潜在空间中，通过固定视觉分支和迭代潜在规划分支，利用冻结世界模型进行未来预测，实现低延迟且可规划的具身动作输出。",
+      "llm_tldr": "当前视觉语言动作模型在高效生成与显式规划之间存在权衡。PearlVLA将规划过程迁移到视觉语言模型的潜在空间中，通过固定视觉分支和迭代潜在规划分支，利用冻结世界模型进行未来预测，实现低延迟且可规划的具身动作输出。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.19088v1",
+      "source": "arxiv",
+      "title": "ReSiReg: Towards Spatially Consistent Semantics in Language-Conditioned Robotic Tasks",
+      "abstract": "Vision-Language Models (VLMs) enable robots to follow open-language instructions. However, dense VLM embeddings have shown to be noisy and lack spatial consistency. This is problematic for robotic applications, which require simultaneous reasoning over semantics and 3D space. We examine spatial structure across recent VLMs and propose ReSiReg, a feature reconstruction method that uses spatially consistent VLM intermediates to improve dense language-grounded retrieval. ReSiReg clusters intermediates into visual prototypes, derives their language descriptors, and reconstructs each patch as a soft mixture of prototype-level language embeddings. We evaluate quantitatively on OVSS and 3D mapping across backbones, and qualitatively in real-world manipulation scenes. Quantitative results show improved dense retrieval; manipulation scenes show more spatially consistent target activations. We further provide a compact 25M dense VLM for robotic applications, substantially smaller than and competitive with ViT-B baselines. Available at https://resireg.github.io",
+      "authors": [
+        "Simon Schwaiger",
+        "David Seyser",
+        "Alessandro Scherl",
+        "Wilfried Wöber",
+        "Gerald Steinbauer-Wagner"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-17T13:58:06+00:00",
+      "link": "https://arxiv.org/pdf/2606.19088v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "spatially consistent semantics for language-conditioned robotic tasks",
+      "llm_evidence_cn": "语言条件机器人任务中的空间一致性语义",
+      "llm_evidence": "语言条件机器人任务中的空间一致性语义",
+      "canonical_evidence": "语言条件机器人任务中的空间一致性语义",
+      "llm_tldr_en": "Proposes ReSiReg to reconstruct dense VLM embeddings with spatial consistency for language-grounded retrieval in 3D robotic tasks.",
+      "llm_tldr_cn": "VLM嵌入在机器人应用中缺乏空间一致性，影响语言指令的准确执行。本文提出ReSiReg方法，将VLM中间特征聚类为原型，导出语言描述符，并重建每个patch为软混合嵌入。在开放词汇语义分割和3D地图构建任务上验证效果，为embodied导航中的语言接地提供改进思路。",
+      "llm_tldr": "VLM嵌入在机器人应用中缺乏空间一致性，影响语言指令的准确执行。本文提出ReSiReg方法，将VLM中间特征聚类为原型，导出语言描述符，并重建每个patch为软混合嵌入。在开放词汇语义分割和3D地图构建任务上验证效果，为embodied导航中的语言接地提供改进思路。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.19584v1",
+      "source": "arxiv",
+      "title": "Language-Instructed Vision Embeddings for Controllable and Generalizable Perception",
+      "abstract": "Vision foundation models are typically trained as static feature extractors, placing the burden of task adaptation onto large downstream models. We propose an alternative paradigm: instead of solely feeding visual features into language models, we use language itself to dynamically guide the vision encoder. Our method, Language-Instructed Vision Embeddings (LIVE), leverages language as high-level guidance to produce task-centric embeddings at inference time, removing the need for task-specific retraining. This enables the encoder to focus on contextually relevant aspects of the input, yielding more controllable and generalizable representations. Empirically, LIVE reduces visual hallucinations (+34 points on MMVP), surpasses vision-language models with orders of magnitude more parameters on visual question answering, and generalizes to unseen instructions and tasks -- offering a direct path toward adaptive, instruction-driven visual intelligence.",
+      "authors": [
+        "Chengzhi Mao",
+        "Xudong Lin",
+        "Wen-Sheng Chu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-17T20:39:04+00:00",
+      "link": "https://arxiv.org/pdf/2606.19584v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Language-guided vision embeddings for controllable perception",
+      "llm_evidence_cn": "语言引导的视觉嵌入以实现可控感知",
+      "llm_evidence": "语言引导的视觉嵌入以实现可控感知",
+      "canonical_evidence": "语言引导的视觉嵌入以实现可控感知",
+      "llm_tldr_en": "Introduces LIVE, a method that uses language to dynamically guide vision encoders, producing task-centric embeddings without retraining, improving controllability and reducing hallucinations.",
+      "llm_tldr_cn": "本文提出语言引导视觉嵌入（LIVE）方法，在推理时利用语言作为高层指导动态引导视觉编码器，生成任务中心的嵌入表示，避免了针对每个任务的重新训练。该方法增强了视觉表征的可控性和泛化能力，在多项基准上减少了视觉幻觉（MMVP提升34分），并超越了现有视觉语言模型在细粒度理解任务上的表现。",
+      "llm_tldr": "本文提出语言引导视觉嵌入（LIVE）方法，在推理时利用语言作为高层指导动态引导视觉编码器，生成任务中心的嵌入表示，避免了针对每个任务的重新训练。该方法增强了视觉表征的可控性和泛化能力，在多项基准上减少了视觉幻觉（MMVP提升34分），并超越了现有视觉语言模型在细粒度理解任务上的表现。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

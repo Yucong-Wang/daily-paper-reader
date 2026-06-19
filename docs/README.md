@@ -6,47 +6,50 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-18
-- 运行时间：2026-06-18 21:43:06 UTC
+- 最新运行日期：2026-06-19
+- 运行时间：2026-06-19 20:38:08 UTC
 - 运行状态：成功
-- 本次总论文数：9
-- 精读区：3
-- 速读区：6
+- 本次总论文数：10
+- 精读区：6
+- 速读区：4
 
 ### 今日简报（AI）
-今日聚焦导航VLA与具身世界模型，其中VEGA从野外视频学习导航取得10分满分，Qwen-RobotWorld统一语言条件视频生成获9分。最值得关注的是几何轨迹监督下的导航学习与具身世界建模方法。建议后续可深入探索自然视频中机器人技能迁移及视频生成在具身推理中的潜力。
-- 详情：[/202606/18/README](/202606/18/README)
+今日重点精读两篇9分导航与对话导航论文，同时速读多模态跨语言、语义一致性和动作规划研究。最值得关注的是Qwen-RobotNav构建可扩展导航模型与DialNav通过自动对话增强提升性能。建议优先精读这两篇论文，并关注多语言差距对具身模型泛化能力的启示。
+- 详情：[/202606/19/README](/202606/19/README)
 
 ### 精读区论文标签
-1. [VEGA: Learning Navigation VLAs from In-the-Wild Egocentric Video with Geometric Trajectory Supervision](/202606/18/2606.18426v1-vega-learning-navigation-vlas-from-in-the-wild-egocentric-video-with-geometric-trajectory-supervision)  
-   标签：评分：10.0/10、query:vln
-   evidence：从自我中心视频训练导航视觉语言动作模型
-2. [Qwen-RobotWorld Technical Report: Unifying Embodied World Modeling through Language-Conditioned Video Generation](/202606/18/2606.17030v3-qwen-robotworld-technical-report-unifying-embodied-world-modeling-through-language-conditioned-video-generation)  
+1. [Qwen-RobotNav Technical Report: A Scalable Navigation Model Designed for an Agentic Navigation System](/202606/19/2606.18112v2-qwen-robotnav-technical-report-a-scalable-navigation-model-designed-for-an-agentic-navigation-system)  
    标签：评分：9.0/10、query:vln
-   evidence：语言条件视频世界模型，涵盖室内导航
-3. [EffiNav: Fusing Depth and Vision-Language for Efficient Object Goal Navigation](/202606/18/2606.18634v1-effinav-fusing-depth-and-vision-language-for-efficient-object-goal-navigation)  
+   evidence：可扩展导航模型，支持指令跟随和物体搜索
+2. [Advancing DialNav through Automatic Embodied Dialog Augmentation](/202606/19/2606.19948v1-advancing-dialnav-through-automatic-embodied-dialog-augmentation)  
+   标签：评分：9.0/10、query:vln
+   evidence：从VLN数据集自动生成具身对话导航数据
+3. [See-and-Reach: Precise Vision-Language Navigation for UAVs within the Field of View](/202606/19/2606.20045v1-see-and-reach-precise-vision-language-navigation-for-uavs-within-the-field-of-view)  
+   标签：评分：9.0/10、query:vln
+   evidence：无人机视觉语言导航，精确末端到达
+4. [Slow Brain, Fast Planner: Latency-Resilient VLM-Augmented Urban Navigation](/202606/19/2606.20458v1-slow-brain-fast-planner-latency-resilient-vlm-augmented-urban-navigation)  
+   标签：评分：9.0/10、query:vln
+   evidence：VLM增强的城市人行道导航
+5. [GroundControl: Anticipating Navigation Failures in Vision-Language Agents via Trajectory-Consistent Uncertainty Estimates](/202606/19/2606.20479v1-groundcontrol-anticipating-navigation-failures-in-vision-language-agents-via-trajectory-consistent-uncertainty-estimates)  
+   标签：评分：9.0/10、query:vln
+   evidence：视觉语言导航故障预测
+6. [WorldLines: Benchmarking and Modeling Long-Horizon Stateful Embodied Agents](/202606/19/2606.18847v1-worldlines-benchmarking-and-modeling-long-horizon-stateful-embodied-agents)  
    标签：评分：8.0/10、query:vln
-   evidence：融合深度和视觉语言实现未知环境中高效目标导航
+   evidence：面向家庭环境的长周期具身智能体基准
 
 ### 速读区论文标签
-1. [Reroute, Don't Remove: Recoverable Visual Token Routing for Vision-Language Models](/202606/18/2606.12412v1-reroute-dont-remove-recoverable-visual-token-routing-for-vision-language-models)  
+1. [Beyond English: Uncovering the Multilingual Gap in Vision-Language-Action Models](/202606/19/2606.15714v1-beyond-english-uncovering-the-multilingual-gap-in-vision-language-action-models)  
    标签：评分：7.0/10、query:vln
-   evidence：视觉令牌路由方法，有助于VLN中VLM的接地效率
-2. [Semantic Flip: Synthetic OOD Generation for Robust Refusal in Embodied Question Answering and Spatial Localization](/202606/18/2606.16898v1-semantic-flip-synthetic-ood-generation-for-robust-refusal-in-embodied-question-answering-and-spatial-localization)  
+   evidence：VLA模型的多语言指令跟随能力研究
+2. [ReSiReg: Towards Spatially Consistent Semantics in Language-Conditioned Robotic Tasks](/202606/19/2606.19088v1-resireg-towards-spatially-consistent-semantics-in-language-conditioned-robotic-tasks)  
    标签：评分：7.0/10、query:vln
-   evidence：处理具身问答和导航空间定位中无法回答的查询
-3. [PearlVLA: Progressive Embodied Action-Plan Refinement in Latent Space](/202606/18/2606.17924v1-pearlvla-progressive-embodied-action-plan-refinement-in-latent-space)  
-   标签：评分：7.0/10、query:vln
-   evidence：潜在空间渐进式动作规划改进的VLA框架
-4. [Hy-Embodied-0.5-VLA: From Vision-Language-Action Models to a Real-World Robot Learning Stack](/202606/18/2606.14409v1-hy-embodied-05-vla-from-vision-language-action-models-to-a-real-world-robot-learning-stack)  
+   evidence：语言条件机器人任务中的空间一致性语义
+3. [PearlVLA: Progressive Embodied Action-Plan Refinement in Latent Space](/202606/19/2606.17924v1-pearlvla-progressive-embodied-action-plan-refinement-in-latent-space)  
    标签：评分：6.0/10、query:vln
-   evidence：提供端到端VLA系统用于具身智能体，与VLN堆栈相关
-5. [Steering Autoregressive Vision-Language-Action Policies via Action Token Intervention](/202606/18/2606.15021v1-steering-autoregressive-vision-language-action-policies-via-action-token-intervention)  
+   evidence：基于潜在空间的具身动作规划精炼用于视觉语言动作模型
+4. [Language-Instructed Vision Embeddings for Controllable and Generalizable Perception](/202606/19/2606.19584v1-language-instructed-vision-embeddings-for-controllable-and-generalizable-perception)  
    标签：评分：6.0/10、query:vln
-   evidence：引导VLA轨迹的方法，可应用于导航
-6. [WorldLines: Benchmarking and Modeling Long-Horizon Stateful Embodied Agents](/202606/18/2606.18847v1-worldlines-benchmarking-and-modeling-long-horizon-stateful-embodied-agents)  
-   标签：评分：6.0/10、query:vln
-   evidence：长周期具身智能体基准与记忆建模
+   evidence：语言引导的视觉嵌入以实现可控感知
 
 
 <div class="dpr-home-promo-card">
