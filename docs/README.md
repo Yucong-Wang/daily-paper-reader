@@ -6,50 +6,44 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-19
-- 运行时间：2026-06-19 20:38:08 UTC
+- 最新运行日期：2026-06-20
+- 运行时间：2026-06-20 20:31:47 UTC
 - 运行状态：成功
-- 本次总论文数：10
-- 精读区：6
-- 速读区：4
+- 本次总论文数：8
+- 精读区：2
+- 速读区：6
 
 ### 今日简报（AI）
-今日重点精读两篇9分导航与对话导航论文，同时速读多模态跨语言、语义一致性和动作规划研究。最值得关注的是Qwen-RobotNav构建可扩展导航模型与DialNav通过自动对话增强提升性能。建议优先精读这两篇论文，并关注多语言差距对具身模型泛化能力的启示。
-- 详情：[/202606/19/README](/202606/19/README)
+今日聚焦机器人学习与语言视觉研究，精读两篇高分论文。最值得关注：Hy-Embodied-0.5-VLA提供的完整机器人学习栈，以及LaViSA对语言视觉结构歧义的评测。建议后续多关注VLA模型的基础常识与推理能力。
+- 详情：[/202606/20/README](/202606/20/README)
 
 ### 精读区论文标签
-1. [Qwen-RobotNav Technical Report: A Scalable Navigation Model Designed for an Agentic Navigation System](/202606/19/2606.18112v2-qwen-robotnav-technical-report-a-scalable-navigation-model-designed-for-an-agentic-navigation-system)  
+1. [Hy-Embodied-0.5-VLA: From Vision-Language-Action Models to a Real-World Robot Learning Stack](/202606/20/2606.14409v1-hy-embodied-05-vla-from-vision-language-action-models-to-a-real-world-robot-learning-stack)  
    标签：评分：9.0/10、query:vln
-   evidence：可扩展导航模型，支持指令跟随和物体搜索
-2. [Advancing DialNav through Automatic Embodied Dialog Augmentation](/202606/19/2606.19948v1-advancing-dialnav-through-automatic-embodied-dialog-augmentation)  
-   标签：评分：9.0/10、query:vln
-   evidence：从VLN数据集自动生成具身对话导航数据
-3. [See-and-Reach: Precise Vision-Language Navigation for UAVs within the Field of View](/202606/19/2606.20045v1-see-and-reach-precise-vision-language-navigation-for-uavs-within-the-field-of-view)  
-   标签：评分：9.0/10、query:vln
-   evidence：无人机视觉语言导航，精确末端到达
-4. [Slow Brain, Fast Planner: Latency-Resilient VLM-Augmented Urban Navigation](/202606/19/2606.20458v1-slow-brain-fast-planner-latency-resilient-vlm-augmented-urban-navigation)  
-   标签：评分：9.0/10、query:vln
-   evidence：VLM增强的城市人行道导航
-5. [GroundControl: Anticipating Navigation Failures in Vision-Language Agents via Trajectory-Consistent Uncertainty Estimates](/202606/19/2606.20479v1-groundcontrol-anticipating-navigation-failures-in-vision-language-agents-via-trajectory-consistent-uncertainty-estimates)  
-   标签：评分：9.0/10、query:vln
-   evidence：视觉语言导航故障预测
-6. [WorldLines: Benchmarking and Modeling Long-Horizon Stateful Embodied Agents](/202606/19/2606.18847v1-worldlines-benchmarking-and-modeling-long-horizon-stateful-embodied-agents)  
+   evidence：包含视觉-语言-动作模型的完整机器人学习栈，支持真实世界部署
+2. [LaViSA: A Language and Vision Structural Ambiguity Benchmark](/202606/20/2606.19552v1-lavisa-a-language-and-vision-structural-ambiguity-benchmark)  
    标签：评分：8.0/10、query:vln
-   evidence：面向家庭环境的长周期具身智能体基准
+   evidence：评估VLM解决结构歧义能力的基准
 
 ### 速读区论文标签
-1. [Beyond English: Uncovering the Multilingual Gap in Vision-Language-Action Models](/202606/19/2606.15714v1-beyond-english-uncovering-the-multilingual-gap-in-vision-language-action-models)  
+1. [Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models](/202606/20/2606.19297v1-does-vla-even-know-the-basics-measuring-commonsense-and-world-knowledge-retention-in-vision-language-action-models)  
    标签：评分：7.0/10、query:vln
-   evidence：VLA模型的多语言指令跟随能力研究
-2. [ReSiReg: Towards Spatially Consistent Semantics in Language-Conditioned Robotic Tasks](/202606/19/2606.19088v1-resireg-towards-spatially-consistent-semantics-in-language-conditioned-robotic-tasks)  
-   标签：评分：7.0/10、query:vln
-   evidence：语言条件机器人任务中的空间一致性语义
-3. [PearlVLA: Progressive Embodied Action-Plan Refinement in Latent Space](/202606/19/2606.17924v1-pearlvla-progressive-embodied-action-plan-refinement-in-latent-space)  
+   evidence：评估用于VLN的VLA模型的知识保留能力
+2. [Thinking with Visual Grounding](/202606/20/2606.16122v1-thinking-with-visual-grounding)  
    标签：评分：6.0/10、query:vln
-   evidence：基于潜在空间的具身动作规划精炼用于视觉语言动作模型
-4. [Language-Instructed Vision Embeddings for Controllable and Generalizable Perception](/202606/19/2606.19584v1-language-instructed-vision-embeddings-for-controllable-and-generalizable-perception)  
+   evidence：视觉锚定思维用于视觉-语言推理
+3. [MagicSim: A Unified Infrastructure for Executable Embodied Interaction](/202606/20/2606.17511v1-magicsim-a-unified-infrastructure-for-executable-embodied-interaction)  
    标签：评分：6.0/10、query:vln
-   evidence：语言引导的视觉嵌入以实现可控感知
+   evidence：支持导航仿真的具身交互基础设施
+4. [StepGuard: Guarding Web Navigation via Single-Step Calibration](/202606/20/2606.17871v1-stepguard-guarding-web-navigation-via-single-step-calibration)  
+   标签：评分：6.0/10、query:vln
+   evidence：网络导航代理遵循自然语言目标，与指令跟随导航相关
+5. [Generative-Model Predictive Planning for Navigation in Partially Observable Environments](/202606/20/2606.18888v1-generative-model-predictive-planning-for-navigation-in-partially-observable-environments)  
+   标签：评分：6.0/10、query:vln
+   evidence：生成模型用于部分可观察环境中的导航规划
+6. [Occ-VLM: Occupancy Grounded Vision Language Model for Indoor Scene Understanding](/202606/20/2606.19776v1-occ-vlm-occupancy-grounded-vision-language-model-for-indoor-scene-understanding)  
+   标签：评分：6.0/10、query:vln
+   evidence：基于占用的视觉语言模型用于室内场景理解
 
 
 <div class="dpr-home-promo-card">

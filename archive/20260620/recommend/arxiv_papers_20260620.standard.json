@@ -1,0 +1,374 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-20T20:26:13.783092+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2606.14409v1",
+      "source": "arxiv",
+      "title": "Hy-Embodied-0.5-VLA: From Vision-Language-Action Models to a Real-World Robot Learning Stack",
+      "abstract": "In this report, we present Hy-Embodied-0.5-VLA, abbreviated as HyVLA-0.5, an end-to-end system that spans the full robot learning stack: data collection, model design, continued pre-training and supervised fine-tuning, RL post-training, and real-world deployment. Each component serves a distinct role in this stack.",
+      "authors": [
+        "He Zhang",
+        "Lingzhu Xiang",
+        "Haitao Lin",
+        "Zeyu Huang",
+        "Minghui Wang",
+        "Dingyan Zhong",
+        "Yubo Dong",
+        "Yihao Wu",
+        "Yongming Rao",
+        "Dongsheng Zhang",
+        "Wanjia He",
+        "Ling Chen",
+        "Kai Huang",
+        "Jiahao Chen",
+        "Sichang Su",
+        "Xumin Yu",
+        "Ziyi Wang",
+        "Chengwei Zhu",
+        "Xiao Teng",
+        "Yuchun Guo",
+        "Yufeng Zhang",
+        "Yuandong Liu",
+        "Rui Wang",
+        "Zisheng Lu",
+        "Han Hu",
+        "Zhengyou Zhang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-12T12:45:18+00:00",
+      "link": "https://arxiv.org/pdf/2606.14409v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "full robot learning stack with VLA models for real-world deployment",
+      "llm_evidence_cn": "包含视觉-语言-动作模型的完整机器人学习栈，支持真实世界部署",
+      "llm_evidence": "包含视觉-语言-动作模型的完整机器人学习栈，支持真实世界部署",
+      "canonical_evidence": "包含视觉-语言-动作模型的完整机器人学习栈，支持真实世界部署",
+      "llm_tldr_en": "HyVLA-0.5 provides a complete robot learning stack including data collection, VLA model design, pre-training, fine-tuning, RL post-training, and real-world deployment.",
+      "llm_tldr_cn": "该工作构建了从数据采集到真实部署的完整机器人学习系统HyVLA-0.5，以视觉-语言-动作模型为核心。系统涵盖继续预训练、监督微调和强化学习后训练等环节。在真实机器人上验证了端到端指令跟随能力，为具身智能体遵循自然语言导航提供了可复现的工程框架。",
+      "llm_tldr": "该工作构建了从数据采集到真实部署的完整机器人学习系统HyVLA-0.5，以视觉-语言-动作模型为核心。系统涵盖继续预训练、监督微调和强化学习后训练等环节。在真实机器人上验证了端到端指令跟随能力，为具身智能体遵循自然语言导航提供了可复现的工程框架。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.19552v1",
+      "source": "arxiv",
+      "title": "LaViSA: A Language and Vision Structural Ambiguity Benchmark",
+      "abstract": "Structural ambiguity arises when a single sentence admits multiple valid interpretations due to its syntactic structure, posing a fundamental challenge for language understanding. Visual scenes serve as useful cues for resolving such ambiguity, and Vision and Language Models (VLMs) need to be capable of deriving possible semantic interpretations from visual scenes. We introduce Language and Vision Structural Ambiguity (LaViSA), a benchmark designed to evaluate the ability of VLMs to resolve structural ambiguity leveraging visual scenes. LaViSA consists of ambiguous sentences, their disambiguated sentences, and corresponding images of these disambiguated sentences across seven ambiguity categories. Using LaViSA, we conduct a comprehensive evaluation of diverse VLMs, including both proprietary and open-source models with varying parameter scales and reasoning capabilities. Experimental results show that although recent VLMs can leverage visual scenes to resolve structural ambiguity to a some extent, they still struggle with certain ambiguity types and visually subtle semantic distinctions, indicating remaining limitations in resolving structural ambiguity using visual scenes.",
+      "authors": [
+        "Lee Sangmyeong",
+        "Shun Inadumi",
+        "Koichiro Yoshino"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-06-17T19:51:00+00:00",
+      "link": "https://arxiv.org/pdf/2606.19552v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "benchmark for evaluating VLMs on structural ambiguity resolution",
+      "llm_evidence_cn": "评估VLM解决结构歧义能力的基准",
+      "llm_evidence": "评估VLM解决结构歧义能力的基准",
+      "canonical_evidence": "评估VLM解决结构歧义能力的基准",
+      "llm_tldr_en": "LaViSA introduces a benchmark of ambiguous sentences with disambiguating images across seven categories to evaluate vision-language models' ability to resolve structural ambiguity using visual scenes.",
+      "llm_tldr_cn": "本文提出LaViSA基准，包含七类结构歧义句子及其对应消歧图像，用于系统评估视觉语言模型利用视觉场景解决句法歧义的能力。实验发现当前主流VLM在多种歧义类型上表现不佳，揭示了视觉语言理解中的一个关键薄弱环节。",
+      "llm_tldr": "本文提出LaViSA基准，包含七类结构歧义句子及其对应消歧图像，用于系统评估视觉语言模型利用视觉场景解决句法歧义的能力。实验发现当前主流VLM在多种歧义类型上表现不佳，揭示了视觉语言理解中的一个关键薄弱环节。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.19297v1",
+      "source": "arxiv",
+      "title": "Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models",
+      "abstract": "Embodied Vision-Language-Action (VLA) models are typically obtained by fine-tuning powerful pretrained VLMs on robotics data, yet it is unclear how much commonsense and factual knowledge they retain after adaptation. Failures on knowledge-sensitive tasks are ambiguous, conflating missing knowledge with poor generalization of low-level control. We introduce Act2Answer, a lightweight protocol that adapts VLM knowledge benchmarks to VLA evaluation by requiring agents to answer through action. Each question becomes a short tabletop episode where the agent performs a single object-placement action to select among candidate answers, yielding an action-grounded success rate with reduced control confounds. We curate a test suite of such environments across diverse commonsense and world-knowledge categories and introduce layerwise intent probing to localize answer-relevant information across the VLM backbone and action head. In a large-scale study of 7 VLA models and 9 VLM baselines, we systematically rank models across categories, finding that VLAs show solid performance on simple concepts while exhibiting larger gaps on richer semantic categories relative to their source VLMs, that VQA co-training is associated with better knowledge retention, and that answer-relevant signals peak in middle VLA layers but attenuate in upper layers. Act2Answer is available at https://tttonyalpha.github.io/act2answer/.",
+      "authors": [
+        "Nikita Kachaev",
+        "Andrey Moskalenko",
+        "Matvey Skripkin",
+        "Nikita Kurlaev",
+        "Daria Pugacheva",
+        "Albina Burlova",
+        "Mikhail Kolosov",
+        "Denis Shepelev",
+        "Andrey Kuznetsov",
+        "Elena Tutubalina",
+        "Aleksandr I. Panov",
+        "Alexey K. Kovalev",
+        "Vlad Shakhuro"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.RO"
+      ],
+      "published": "2026-06-17T17:20:46+00:00",
+      "link": "https://arxiv.org/pdf/2606.19297v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "evaluates commonsense retention in VLA models used in VLN",
+      "llm_evidence_cn": "评估用于VLN的VLA模型的知识保留能力",
+      "llm_evidence": "评估用于VLN的VLA模型的知识保留能力",
+      "canonical_evidence": "评估用于VLN的VLA模型的知识保留能力",
+      "llm_tldr_en": "Act2Answer adapts VLM knowledge benchmarks to VLA evaluation through action-grounded question answering, revealing knowledge retention in navigation VLAs.",
+      "llm_tldr_cn": "视觉-语言-动作（VLA）模型通常在机器人数据上微调，但其常识和事实知识保留未知。Act2Answer设计轻量级协议，将VLM知识基准转化为表格顶物系列情景，要求智能体通过动作选择答案。该方法减少了控制混杂，揭示了VLA模型在知识敏感任务上的失败模式，为改进VLN等具身模型提供诊断工具。",
+      "llm_tldr": "视觉-语言-动作（VLA）模型通常在机器人数据上微调，但其常识和事实知识保留未知。Act2Answer设计轻量级协议，将VLM知识基准转化为表格顶物系列情景，要求智能体通过动作选择答案。该方法减少了控制混杂，揭示了VLA模型在知识敏感任务上的失败模式，为改进VLN等具身模型提供诊断工具。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.16122v1",
+      "source": "arxiv",
+      "title": "Thinking with Visual Grounding",
+      "abstract": "Visual thinking should not only sound right; it should show its evidence. While recent vision-language models (VLMs) can produce natural-language reasoning traces, these traces often leave the supporting image regions implicit, making them hard to verify and difficult to supervise. We introduce visually grounded thinking, a reasoning process in which models interleave natural-language thoughts with explicit point or box groundings of the visual evidence used at each step. This lets the model express intermediate reasoning in language while grounding key objects in the image regions they refer to. To train this behavior, we construct a scalable synthesis pipeline that distills correct visual reasoning traces, extracts the visual objects required by the traces, grounds them with a SAM3-based agent, and derives aligned point and box supervision from the resulting masks. We further propose grounding-aware reinforcement learning, which combines answer correctness rewards with dense grounding rewards that score whether generated object references match the correct image evidence. Across two counting benchmarks and four spatial reasoning benchmarks, adding visually grounded thinking to Gemma3-4B-IT consistently improves performance over the original model and the non-grounded thinking baseline. On spatial reasoning, the visually grounded thinking 4B models match, and in some cases surpass, Gemma3-27B-IT from the same model family. Our analysis shows that point grounding is well suited to counting, while box grounding benefits most from explicit grounding rewards on spatial tasks. Overall, our results show that VLMs think better when their intermediate thoughts are tied to the image regions that make them true.",
+      "authors": [
+        "Junkai Zhang",
+        "Yihe Deng",
+        "Kai-Wei Chang",
+        "Wei Wang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-15T02:28:34+00:00",
+      "link": "https://arxiv.org/pdf/2606.16122v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "visually grounded thinking for vision-language reasoning",
+      "llm_evidence_cn": "视觉锚定思维用于视觉-语言推理",
+      "llm_evidence": "视觉锚定思维用于视觉-语言推理",
+      "canonical_evidence": "视觉锚定思维用于视觉-语言推理",
+      "llm_tldr_en": "This paper introduces visually grounded thinking where reasoning steps include explicit point/box groundings, improving verifiability and performance in VLM reasoning tasks.",
+      "llm_tldr_cn": "该论文提出视觉锚定思维，让模型在推理过程中交替输出自然语言和视觉证据（点或框），实现可验证的推理。通过可扩展的合成流水线蒸馏正确视觉推理轨迹，在视觉问答和具身推理任务上显著提升准确性，使模型不仅说得对还能展示证据。",
+      "llm_tldr": "该论文提出视觉锚定思维，让模型在推理过程中交替输出自然语言和视觉证据（点或框），实现可验证的推理。通过可扩展的合成流水线蒸馏正确视觉推理轨迹，在视觉问答和具身推理任务上显著提升准确性，使模型不仅说得对还能展示证据。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.17511v1",
+      "source": "arxiv",
+      "title": "MagicSim: A Unified Infrastructure for Executable Embodied Interaction",
+      "abstract": "Robot learning and embodied agents now require simulation to serve as a shared execution substrate linking control, skills, and planning, not only as a renderer, controller testbed, or fixed task environment. Existing pipelines split these layers with \"magic\" actions, disconnected training environments, or forward-only renders that cannot reproduce, evaluate, and annotate the same episode. We present MagicSim, an embodied interaction infrastructure built around one deterministic batched runtime and a shared Markov decision process (MDP). From YAML-first specifications that decouple contents, placement, behavior, and agent exposure, MagicSim constructs diverse executable worlds spanning task families, interaction regimes, physics, layouts, sensors, avatars, and robot embodiments in one reset-and-step loop. A common execution interface grounds high-level commands through controllers, atomicskills, planner primitives, and asynchronous planning, realizing them as robot actions rather than simulator-side state edits. One task definition supports three capabilities: benchmark and RL evaluation, an autocollect interface that automatically turns commands into grounded trajectories, and agent/VLM-facing interaction. For automatic execution, commands flow through a Command->Skill->Planner->Robot->Record pipeline, while per-environment command, skill, planning, retry, annotation, and episode states advance independently above the shared physics tick. Successful rollouts are saved as structured multimodal trajectories aligning language supervision, action representations, visual/geometric representations, and task-level status with the executed episode. MagicSim thus unifies diverse world construction, embodied execution, task evaluation, automatic rollout generation, and interactive agent interfaces in one planner-in-the-loop runtime.",
+      "authors": [
+        "Haoran Lu",
+        "Songling Liu",
+        "Yue Chen",
+        "Guo Ye",
+        "Mutian Shen",
+        "Shuyang Yu",
+        "Yu Xiao",
+        "Jihai Zhao",
+        "Shang Wu",
+        "Jianshu Zhang",
+        "Xiangtian Gui",
+        "Chuye Hong",
+        "Yuran Wang",
+        "Maojiang Su",
+        "Jiayi Wang",
+        "Ruihai Wu",
+        "Zhaoran Wang",
+        "Han Liu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-06-16T04:42:43+00:00",
+      "link": "https://arxiv.org/pdf/2606.17511v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "embodied interaction infrastructure supporting navigation simulation",
+      "llm_evidence_cn": "支持导航仿真的具身交互基础设施",
+      "llm_evidence": "支持导航仿真的具身交互基础设施",
+      "canonical_evidence": "支持导航仿真的具身交互基础设施",
+      "llm_tldr_en": "MagicSim provides a unified infrastructure for embodied interaction with deterministic batched runtime and shared MDP, enabling reproducible navigation simulation.",
+      "llm_tldr_cn": "现有仿真平台将控制、技能和规划层分离，导致复现困难。MagicSim提出基于确定性批处理运行时和共享MDP的统一具身交互基础设施，通过YAML规范解耦内容、布局和行为，构建可执行世界。它支持多种任务和传感器，为导航等具身智能研究提供可靠执行平台。",
+      "llm_tldr": "现有仿真平台将控制、技能和规划层分离，导致复现困难。MagicSim提出基于确定性批处理运行时和共享MDP的统一具身交互基础设施，通过YAML规范解耦内容、布局和行为，构建可执行世界。它支持多种任务和传感器，为导航等具身智能研究提供可靠执行平台。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.17871v1",
+      "source": "arxiv",
+      "title": "StepGuard: Guarding Web Navigation via Single-Step Calibration",
+      "abstract": "Web navigation requires agents to follow natural language goals, interact with web pages, and produce accurate answers. While recent advances leverage vision-language models and reinforcement learning, existing methods still suffer from single-step fragility due to reward misalignment and error propagation. To tackle the reward entanglement, we design Dynamic Dual-Policy Optimization (DDPO), which dynamically switches between a navigation-first mode for exploration and an answer-first mode for question-answering to mitigate reward conflict. To calibrate the single-step error, we propose Confidence-Guided Adaptive Navigation Reflection (CANR), a mechanism that estimates per-step confidence, triggers reflection only when necessary, and uses contrastive rewards to encourage self-correction to calibrate the single-step inaccuracy. With the above as the main components, we finally develop our StepGuard, a new framework of Guarding Web Navigation via Single-Step Calibration. Experiments demonstrate that our approach significantly improves navigation and answer accuracy, setting new state-of-the-art performance on standard web navigation benchmarks.",
+      "authors": [
+        "Zhihao Cui",
+        "Yuchen Zhang",
+        "Xiyang Sun",
+        "Yaxiong Wang",
+        "Li Zhu",
+        "Jinpeng Hu",
+        "Liu Liu",
+        "Mengjia Li",
+        "Yujiao Wu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-16T12:42:09+00:00",
+      "link": "https://arxiv.org/pdf/2606.17871v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "web navigation agents following natural language goals, relevant to instruction following navigation",
+      "llm_evidence_cn": "网络导航代理遵循自然语言目标，与指令跟随导航相关",
+      "llm_evidence": "网络导航代理遵循自然语言目标，与指令跟随导航相关",
+      "canonical_evidence": "网络导航代理遵循自然语言目标，与指令跟随导航相关",
+      "llm_tldr_en": "StepGuard calibrates web navigation steps using dynamic dual-policy optimization and confidence-guided reflection.",
+      "llm_tldr_cn": "该论文提出StepGuard，通过动态双策略优化和置信度引导的反射校准单步错误，提升web代理遵循自然语言目标的导航准确性。虽非物理导航，但方法适用于指令跟随导航。",
+      "llm_tldr": "该论文提出StepGuard，通过动态双策略优化和置信度引导的反射校准单步错误，提升web代理遵循自然语言目标的导航准确性。虽非物理导航，但方法适用于指令跟随导航。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.18888v1",
+      "source": "arxiv",
+      "title": "Generative-Model Predictive Planning for Navigation in Partially Observable Environments",
+      "abstract": "Navigation in partially observable environments presents a significant challenge for autonomous agents, requiring effective decision-making with limited sensory information in unknown environments. Belief-based methods, particularly those using neural networks to approximate the belief space, often fail to capture the inherent multimodality of belief spaces, especially in high-dimensional cases with perceptual aliasing. While generative models present a compelling alternative, they typically require substantial data or expert demonstrations and lack explicit mechanisms for long-term planning. In this paper, we introduce BeliefDiffusion, a novel framework that combines the benefits of both generation and planning. BeliefDiffusion leverages diffusion models to explicitly characterize multimodal belief distributions and utilizes Model Predictive Control (MPC) to simultaneously plan ahead. It consists of two steps: (1) Imagining plausible environment configurations based on observation history and (2) Planning efficient navigation strategies across an aggregated configurations. Through extensive experiments in synthetic map environments, we demonstrate that BeliefDiffusion significantly outperforms both model-free reinforcement learning baselines and other generative approaches in navigation success rate and path efficiency. Our results validate that explicitly incorporating multimodal belief representations into planning enables more robust navigation in partially observable settings.",
+      "authors": [
+        "Thomas Quilter",
+        "Yifan Zhu",
+        "Guorui Quan",
+        "Mingfei Sun",
+        "Samuel Kaski"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-17T10:06:39+00:00",
+      "link": "https://arxiv.org/pdf/2606.18888v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "generative model for navigation planning in partially observable environments",
+      "llm_evidence_cn": "生成模型用于部分可观察环境中的导航规划",
+      "llm_evidence": "生成模型用于部分可观察环境中的导航规划",
+      "canonical_evidence": "生成模型用于部分可观察环境中的导航规划",
+      "llm_tldr_en": "BeliefDiffusion combines generative models with planning for navigation under partial observability.",
+      "llm_tldr_cn": "该论文提出BeliefDiffusion，利用生成模型近似信念空间并结合规划，解决部分可观察环境中的导航问题。虽未涉及语言指令，但对具身导航的基础规划有贡献。",
+      "llm_tldr": "该论文提出BeliefDiffusion，利用生成模型近似信念空间并结合规划，解决部分可观察环境中的导航问题。虽未涉及语言指令，但对具身导航的基础规划有贡献。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.19776v1",
+      "source": "arxiv",
+      "title": "Occ-VLM: Occupancy Grounded Vision Language Model for Indoor Scene Understanding",
+      "abstract": "Recently, vision-language models (VLMs) have made significant progress in 3D scene understanding, driving advances in applications such as embodied intelligence and robotic vision. However, existing approaches typically either rely directly on explicit 3D inputs (e.g., point clouds or RGB-D sequences), or introduce an additional 3D geometry encoder to derive 3D-aware visual tokens from 2D images. Such designs structurally decouple 3D geometric perception from the rich 2D semantics learned via vision-language pre-training, hindering the development of a unified 3D vision-language representation. In this work, we propose Occ-VLM, a novel framework for 3D scene understanding that operates purely on posed RGB images and employs a single 2D vision encoder. Specifically, Occ-VLM reconstructs 3D scene occupancy as an auxiliary geometric prior, which is utilized to spatially associate foreground 2D tokens with 3D space. These tokens are then decoded by a Large Language Model (LLM) for unified scene understanding. Extensive experiments demonstrate that Occ-VLM achieves both accurate geometric perception and robust vision-language reasoning: it attains state-of-the-art performance on multi-view occupancy prediction, while performing on par with 3D-input VLMs on 3D Visual Question Answering (VQA) and 3D dense captioning benchmarks.",
+      "authors": [
+        "Jianing Li",
+        "Zhou Fang",
+        "Yijiang Liu",
+        "Li Du"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-18T04:24:28+00:00",
+      "link": "https://arxiv.org/pdf/2606.19776v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "occupancy grounded vision language model for indoor scene understanding",
+      "llm_evidence_cn": "基于占用的视觉语言模型用于室内场景理解",
+      "llm_evidence": "基于占用的视觉语言模型用于室内场景理解",
+      "canonical_evidence": "基于占用的视觉语言模型用于室内场景理解",
+      "llm_tldr_en": "Occ-VLM uses only posed RGB images to build 3D-aware visual tokens via a single 2D backbone for indoor scene understanding, enabling unified 3D vision-language representation.",
+      "llm_tldr_cn": "Occ-VLM仅使用带位姿的RGB图像，通过单一2D骨干网络生成3D感知视觉令牌，实现统一的3D视觉语言表示。该方法避免了显式3D编码器，弥合了2D语义与3D几何的鸿沟。在室内场景理解任务中取得领先性能，为具身导航提供更好的场景感知基础。",
+      "llm_tldr": "Occ-VLM仅使用带位姿的RGB图像，通过单一2D骨干网络生成3D感知视觉令牌，实现统一的3D视觉语言表示。该方法避免了显式3D编码器，弥合了2D语义与3D几何的鸿沟。在室内场景理解任务中取得领先性能，为具身导航提供更好的场景感知基础。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
