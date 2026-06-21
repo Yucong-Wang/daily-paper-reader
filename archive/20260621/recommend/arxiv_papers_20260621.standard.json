@@ -1,0 +1,144 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-21T21:13:02.223341+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2606.15765v1",
+      "source": "arxiv",
+      "title": "Task-Instructed Causal Routing of Vision Foundation Models for Multi-Task Learning",
+      "abstract": "Vision foundation models (VFMs) have demonstrated strong robustness and transferability across a wide range of visual tasks. However, each model typically encodes strong inductive biases shaped by its pre-training objective and data domain, resulting in fragmented yet complementary visual knowledge. As a result, a single model often struggles to capture the diverse visual representations required across multiple dense prediction tasks. To address this limitation, we propose TIGER (Task-Instruction-Guided Expert Routing), a framework that coordinates multiple heterogeneous VFMs for multi-task dense prediction. Instead of naively aggregating expert features, TIGER leverages natural-language task instructions to guide a routing network that assigns token-level expert weights conditioned on task semantics, enabling adaptive integration of complementary expert features. TIGER further introduces a counterfactual loss that aligns routing decisions with each expert's causal contribution by measuring prediction changes when experts are excluded, encouraging more reliable and interpretable routing. We evaluate TIGER on two multi-task dense prediction benchmarks, NYUD-v2 and Pascal Context, where it consistently outperforms recent multi-task learning baselines while keeping all VFMs frozen. These results demonstrate that combining instruction-guided expert routing with counterfactual causal alignment enables effective coordination of heterogeneous vision foundation models.",
+      "authors": [
+        "Donghyun Han",
+        "Yuseok Bae",
+        "Jung Uk Kim",
+        "Hyung-Il Kim"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-14T11:55:13+00:00",
+      "link": "https://arxiv.org/pdf/2606.15765v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Task-instruction-guided routing of vision foundation models",
+      "llm_evidence_cn": "任务指令引导的视觉基础模型路由",
+      "llm_evidence": "任务指令引导的视觉基础模型路由",
+      "canonical_evidence": "任务指令引导的视觉基础模型路由",
+      "llm_tldr_en": "TIGER uses natural-language task instructions to guide a routing network that coordinates multiple heterogeneous vision foundation models for multi-task dense prediction, enhancing visual language understanding.",
+      "llm_tldr_cn": "TIGER提出任务指令引导的专家路由框架，利用自然语言任务指令来协调多个异构视觉基础模型进行多任务密集预测。该方法避免了简单聚合特征，而是根据指令动态选择最合适的视觉知识，从而提升了多种视觉任务的性能，展示了视觉语言理解在任务路由中的关键作用。",
+      "llm_tldr": "TIGER提出任务指令引导的专家路由框架，利用自然语言任务指令来协调多个异构视觉基础模型进行多任务密集预测。该方法避免了简单聚合特征，而是根据指令动态选择最合适的视觉知识，从而提升了多种视觉任务的性能，展示了视觉语言理解在任务路由中的关键作用。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.18558v1",
+      "source": "arxiv",
+      "title": "MolmoMotion: Forecasting Point Trajectories in 3D with Language Instruction",
+      "abstract": "Motion forecasting is central to visual intelligence: agents must anticipate how objects will move in order to plan actions, reason about physical interactions, and synthesize realistic futures. We argue that 3D points in world coordinates provide a general representation that is class-agnostic, view-stable, compact, and directly useful for downstream tasks. We formalize the task of goal-conditioned 3D point motion forecasting: given a short visual history, a set of 3D query points on an object of interest, and a language description of the intended goal, the model predicts the future 3D trajectory of each point. We introduce a full stack to study this task at scale: (1) MolmoMotion-1M is a large corpus of action-described, object-grounded 3D point trajectories annotated from 1.16M unconstrained videos; (2) PointMotionBench is a human-verified benchmark spanning 111 object categories and 61 motion types; and (3) MolmoMotion is a general motion forecasting model that supports both autoregressive coordinate prediction and flow-matching-based trajectory generation. MolmoMotion accurately predicts diverse motion patterns with different language instructions, and significantly outperforms existing motion prediction baselines on PointMotionBench. Finally, we show that the learned 3D motion prior transfers well to downstream applications: it improves training efficiency and generalization for robot manipulation, and its predicted trajectories provide effective motion guidance for generative models to synthesize videos with more realistic object motion.",
+      "authors": [
+        "Jianing Zhang",
+        "Chenhao Zheng",
+        "Yajun Yang",
+        "Max Argus",
+        "Rustin Soraki",
+        "Winson Han",
+        "Taira Anderson",
+        "Chun-Liang Li",
+        "Shuo Liu",
+        "Jiafei Duan",
+        "Zhongzheng Ren",
+        "Jieyu Zhang",
+        "Ranjay Krishna"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-17T00:19:00+00:00",
+      "link": "https://arxiv.org/pdf/2606.18558v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "language-conditioned 3D motion forecasting for agents",
+      "llm_evidence_cn": "语言条件下的3D运动预测，可用于导航",
+      "llm_evidence": "语言条件下的3D运动预测，可用于导航",
+      "canonical_evidence": "语言条件下的3D运动预测，可用于导航",
+      "llm_tldr_en": "MolmoMotion formalizes goal-conditioned 3D point motion forecasting with language instruction and introduces a large-scale dataset.",
+      "llm_tldr_cn": "运动预测对视觉智能至关重要。本文提出目标条件3D点轨迹预测任务：给定视觉历史和语言指令，预测目标物体上点的未来3D轨迹。构建了MolmoMotion-1M大规模数据集，并显示了该任务在动作规划中的应用潜力。",
+      "llm_tldr": "运动预测对视觉智能至关重要。本文提出目标条件3D点轨迹预测任务：给定视觉历史和语言指令，预测目标物体上点的未来3D轨迹。构建了MolmoMotion-1M大规模数据集，并显示了该任务在动作规划中的应用潜力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.18846v1",
+      "source": "arxiv",
+      "title": "From Bounding Boxes to Visual Reasoning: An On-Policy Data Annotation Tool for Vision-Language Models",
+      "abstract": "Vision-language models (VLMs) are rapidly advancing toward sophisticated grounded structured visual reasoning. Training models for such advanced capabilities demands a new genre of data that seamlessly unifies spatial coordinates, open-vocabulary descriptions, structured attributes, and topological relationships into a singular representation. However, existing data annotation tools fundamentally fail to meet these intricate demands, suffering from three systematic bottlenecks: limited expressiveness, severe annotation-training decoupling, and poor data reusability. To bridge this infrastructure gap, we introduce an open-source annotation tool, ScreenAnnotator. First, we define a unified annotation atom schema that binds spatial, semantic, and structural primitives into a single unit. Second, we implement an on-policy annotation loop embedded with a Bayesian Annotation Verifier (BAV). Finally, we design a template-driven multi-task data synthesis process dynamically transforms static atoms into diverse multi-dimensional reasoning tasks, eliminating redundant re-annotation. The on-policy loop drives the annotation accept rate to nearly 100% on flowcharts and 77% on GUI screenshots, while steadily reducing per-image annotation time as labeled data accumulate. In the flowchart scenario, fine-tuning a VLM yields 76.1% average accuracy, which is a 35.1% point absolute gain. Our code is available at: https://github.com/WnQinm/Annotator.",
+      "authors": [
+        "Like Zhang",
+        "Runliang Niu",
+        "Shiqi Wang",
+        "Xiyu Hu",
+        "Qianli Xing",
+        "Pan Wang",
+        "Qingzu He",
+        "Qi Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-17T09:25:59+00:00",
+      "link": "https://arxiv.org/pdf/2606.18846v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "on-policy annotation tool for VLMs enabling structured visual reasoning",
+      "llm_evidence_cn": "用于VLM的在策略数据标注工具，支持结构化视觉推理",
+      "llm_evidence": "用于VLM的在策略数据标注工具，支持结构化视觉推理",
+      "canonical_evidence": "用于VLM的在策略数据标注工具，支持结构化视觉推理",
+      "llm_tldr_en": "ScreenAnnotator is an open-source annotation tool for VLMs that unifies spatial coordinates, open-vocabulary descriptions, attributes, and relationships into a single schema, enabling on-policy data generation for grounded visual reasoning.",
+      "llm_tldr_cn": "本文提出开源标注工具ScreenAnnotator，解决现有工具在表达力不足、标注-训练脱节和可复用性差方面的瓶颈。它定义统一的标注原子模式，将空间坐标、开放词汇描述、结构化属性和拓扑关系绑定在一起，支持在策略数据标注和实时反馈。该工具为训练更高级的具身视觉推理模型（如视觉语言导航中的空间理解）提供了关键基础设施。",
+      "llm_tldr": "本文提出开源标注工具ScreenAnnotator，解决现有工具在表达力不足、标注-训练脱节和可复用性差方面的瓶颈。它定义统一的标注原子模式，将空间坐标、开放词汇描述、结构化属性和拓扑关系绑定在一起，支持在策略数据标注和实时反馈。该工具为训练更高级的具身视觉推理模型（如视觉语言导航中的空间理解）提供了关键基础设施。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

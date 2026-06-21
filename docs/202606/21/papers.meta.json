@@ -1,0 +1,54 @@
+{
+  "label": "2026-06-21",
+  "date": "2026-06-21",
+  "generated_at": "2026-06-21T21:15:22",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202606/21/2606.15765v1-task-instructed-causal-routing-of-vision-foundation-models-for-multi-task-learning",
+      "section": "quick",
+      "title_en": "Task-Instructed Causal Routing of Vision Foundation Models for Multi-Task Learning",
+      "authors": "Donghyun Han, Yuseok Bae, Jung Uk Kim, Hyung-Il Kim",
+      "date": "2026-06-14",
+      "pdf": "https://arxiv.org/pdf/2606.15765v1",
+      "score": "6.0",
+      "evidence": "任务指令引导的视觉基础模型路由",
+      "tldr": "视觉基础模型因预训练目标和数据域不同导致知识碎片化，单个模型难以同时处理多种密集预测任务。为此提出TIGER框架，利用自然语言任务指令指导路由网络为每个token分配基于任务语义的专家权重，并引入反事实损失对齐路由决策与专家因果贡献。在NYUD-v2和Pascal Context两个多任务密集预测基准上，TIGER保持所有VFM冻结，持续优于最新多任务学习基线。结果表明指令引导的专家路由与反事实因果对齐能有效协调异构视觉基础模型。",
+      "tags": "query:vln",
+      "abstract_en": "Vision foundation models (VFMs) have demonstrated strong robustness and transferability across a wide range of visual tasks. However, each model typically encodes strong inductive biases shaped by its pre-training objective and data domain, resulting in fragmented yet complementary visual knowledge. As a result, a single model often struggles to capture the diverse visual representations required across multiple dense prediction tasks. To address this limitation, we propose TIGER (Task-Instruction-Guided Expert Routing), a framework that coordinates multiple heterogeneous VFMs for multi-task dense prediction. Instead of naively aggregating expert features, TIGER leverages natural-language task instructions to guide a routing network that assigns token-level expert weights conditioned on task semantics, enabling adaptive integration of complementary expert features. TIGER further introduces a counterfactual loss that aligns routing decisions with each expert's causal contribution by measuring prediction changes when experts are excluded, encouraging more reliable and interpretable routing. We evaluate TIGER on two multi-task dense prediction benchmarks, NYUD-v2 and Pascal Context, where it consistently outperforms recent multi-task learning baselines while keeping all VFMs frozen. These results demonstrate that combining instruction-guided expert routing with counterfactual causal alignment enables effective coordination of heterogeneous vision foundation models.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/21/2606.18558v1-molmomotion-forecasting-point-trajectories-in-3d-with-language-instruction",
+      "section": "quick",
+      "title_en": "MolmoMotion: Forecasting Point Trajectories in 3D with Language Instruction",
+      "authors": "Jianing Zhang, Chenhao Zheng, Yajun Yang, Max Argus, Rustin Soraki, Winson Han, Taira Anderson, Chun-Liang Li, Shuo Liu, Jiafei Duan, Zhongzheng Ren, Jieyu Zhang, Ranjay Krishna",
+      "date": "2026-06-17",
+      "pdf": "https://arxiv.org/pdf/2606.18558v1",
+      "score": "6.0",
+      "evidence": "语言条件下的3D运动预测，可用于导航",
+      "tldr": "运动预测对视觉智能至关重要，现有方法依赖类别或视图。本文提出在3D世界坐标中预测点轨迹，结合语言指令进行目标条件化。构建大规模数据集MolmoMotion-1M和基准PointMotionBench，模型MolmoMotion支持自回归坐标预测和流匹配轨迹生成。在基准上显著超越基线，并展示在机器人操作和视频生成中的迁移能力。",
+      "tags": "query:vln",
+      "abstract_en": "Motion forecasting is central to visual intelligence: agents must anticipate how objects will move in order to plan actions, reason about physical interactions, and synthesize realistic futures. We argue that 3D points in world coordinates provide a general representation that is class-agnostic, view-stable, compact, and directly useful for downstream tasks. We formalize the task of goal-conditioned 3D point motion forecasting: given a short visual history, a set of 3D query points on an object of interest, and a language description of the intended goal, the model predicts the future 3D trajectory of each point. We introduce a full stack to study this task at scale: (1) MolmoMotion-1M is a large corpus of action-described, object-grounded 3D point trajectories annotated from 1.16M unconstrained videos; (2) PointMotionBench is a human-verified benchmark spanning 111 object categories and 61 motion types; and (3) MolmoMotion is a general motion forecasting model that supports both autoregressive coordinate prediction and flow-matching-based trajectory generation. MolmoMotion accurately predicts diverse motion patterns with different language instructions, and significantly outperforms existing motion prediction baselines on PointMotionBench. Finally, we show that the learned 3D motion prior transfers well to downstream applications: it improves training efficiency and generalization for robot manipulation, and its predicted trajectories provide effective motion guidance for generative models to synthesize videos with more realistic object motion.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/21/2606.18846v1-from-bounding-boxes-to-visual-reasoning-an-on-policy-data-annotation-tool-for-vision-language-models",
+      "section": "quick",
+      "title_en": "From Bounding Boxes to Visual Reasoning: An On-Policy Data Annotation Tool for Vision-Language Models",
+      "authors": "Like Zhang, Runliang Niu, Shiqi Wang, Xiyu Hu, Qianli Xing, Pan Wang, Qingzu He, Qi Wang",
+      "date": "2026-06-17",
+      "pdf": "https://arxiv.org/pdf/2606.18846v1",
+      "score": "6.0",
+      "evidence": "用于VLM的在策略数据标注工具，支持结构化视觉推理",
+      "tldr": "现有多模态标注工具无法满足视觉语言模型在结构化视觉推理中对空间、语义、结构统一标注的需求。为此提出ScreenAnnotator，定义统一的标注原子模式，实现在策略标注循环并嵌入贝叶斯验证器，以及模板驱动的多任务数据合成。在流程图场景中标注接受率近100%，GUI截图达77%，微调VLM准确率提升35.1个百分点。该工具有效降低了标注成本并提升了数据质量。",
+      "tags": "query:vln",
+      "abstract_en": "Vision-language models (VLMs) are rapidly advancing toward sophisticated grounded structured visual reasoning. Training models for such advanced capabilities demands a new genre of data that seamlessly unifies spatial coordinates, open-vocabulary descriptions, structured attributes, and topological relationships into a singular representation. However, existing data annotation tools fundamentally fail to meet these intricate demands, suffering from three systematic bottlenecks: limited expressiveness, severe annotation-training decoupling, and poor data reusability. To bridge this infrastructure gap, we introduce an open-source annotation tool, ScreenAnnotator. First, we define a unified annotation atom schema that binds spatial, semantic, and structural primitives into a single unit. Second, we implement an on-policy annotation loop embedded with a Bayesian Annotation Verifier (BAV). Finally, we design a template-driven multi-task data synthesis process dynamically transforms static atoms into diverse multi-dimensional reasoning tasks, eliminating redundant re-annotation. The on-policy loop drives the annotation accept rate to nearly 100% on flowcharts and 77% on GUI screenshots, while steadily reducing per-image annotation time as labeled data accumulate. In the flowchart scenario, fine-tuning a VLM yields 76.1% average accuracy, which is a 35.1% point absolute gain. Our code is available at: https://github.com/WnQinm/Annotator.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
