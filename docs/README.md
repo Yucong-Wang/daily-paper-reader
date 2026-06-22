@@ -6,30 +6,43 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-21
-- 运行时间：2026-06-21 21:15:14 UTC
+- 最新运行日期：2026-06-22
+- 运行时间：2026-06-22 21:48:18 UTC
 - 运行状态：成功
-- 本次总论文数：3
-- 精读区：0
-- 速读区：3
+- 本次总论文数：7
+- 精读区：1
+- 速读区：6
 
 ### 今日简报（AI）
-今日速读三篇视觉与语言相关论文，均为6分水平，聚焦多任务学习、3D轨迹预测和视觉语言标注。最值得关注方向是视觉基础模型的多任务因果路由，以及利用语言指令进行3D点轨迹预测。建议日常读者留意语言指令如何提升视觉任务的灵活性与可控性。
-- 详情：[/202606/21/README](/202606/21/README)
+今天研读了7篇论文，精读1篇、速读6篇，重点覆盖机器人导航与视觉语言驾驶领域。
+最值得关注的是人行道视觉导航基准SidewalkBench，以及20秒内完成策略训练的FlashNav。
+建议读者优先精读SidewalkBench理解城市导航挑战，同时关注EventDrive的事件相机在驾驶中的创新应用。
+- 详情：[/202606/22/README](/202606/22/README)
 
 ### 精读区论文标签
-- 本次无精读推荐。
+1. [SidewalkBench: Benchmarking Visual Navigation on Urban Sidewalks](/202606/22/2606.16953v1-sidewalkbench-benchmarking-visual-navigation-on-urban-sidewalks)  
+   标签：评分：8.0/10、query:vln
+   evidence：城市人行道视觉导航基准
 
 ### 速读区论文标签
-1. [Task-Instructed Causal Routing of Vision Foundation Models for Multi-Task Learning](/202606/21/2606.15765v1-task-instructed-causal-routing-of-vision-foundation-models-for-multi-task-learning)  
+1. [FlashNav: Ultra-Fast Policy Training for Robot Navigation within 20 Seconds](/202606/22/2606.15846v1-flashnav-ultra-fast-policy-training-for-robot-navigation-within-20-seconds)  
+   标签：评分：7.0/10、query:vln
+   evidence：超快策略训练的机器人导航框架
+2. [EventDrive: Event Cameras for Vision-Language Driving Intelligence](/202606/22/2606.18242v1-eventdrive-event-cameras-for-vision-language-driving-intelligence)  
+   标签：评分：7.0/10、query:vln
+   evidence：事件相机用于视觉语言驾驶智能，涉及导航与语言
+3. [FlowMaps: Modeling Long-Term Multimodal Object Dynamics with Flow Matching](/202606/22/2606.20209v1-flowmaps-modeling-long-term-multimodal-object-dynamics-with-flow-matching)  
+   标签：评分：7.0/10、query:vln
+   evidence：建模长期物体动态以支持下游导航任务
+4. [ERQA-Plus: A Diagnostic Benchmark for Reasoning in Embodied AI](/202606/22/2606.17639v1-erqa-plus-a-diagnostic-benchmark-for-reasoning-in-embodied-ai)  
    标签：评分：6.0/10、query:vln
-   evidence：任务指令引导的视觉基础模型路由
-2. [MolmoMotion: Forecasting Point Trajectories in 3D with Language Instruction](/202606/21/2606.18558v1-molmomotion-forecasting-point-trajectories-in-3d-with-language-instruction)  
+   evidence：具身AI推理的诊断基准，与评估VLN智能体相关
+5. [Timage: A Generative Text-in-Image Paradigm for Fine-Tuning Vision-Language Models](/202606/22/2606.19944v1-timage-a-generative-text-in-image-paradigm-for-fine-tuning-vision-language-models)  
    标签：评分：6.0/10、query:vln
-   evidence：语言条件下的3D运动预测，可用于导航
-3. [From Bounding Boxes to Visual Reasoning: An On-Policy Data Annotation Tool for Vision-Language Models](/202606/21/2606.18846v1-from-bounding-boxes-to-visual-reasoning-an-on-policy-data-annotation-tool-for-vision-language-models)  
+   evidence：生成式文本嵌入图像范式用于VLM空间推理
+6. [S-Agent: Spatial Tool-Use Elicits Reasoning for Spatial Intelligence](/202606/22/2606.20515v1-s-agent-spatial-tool-use-elicits-reasoning-for-spatial-intelligence)  
    标签：评分：6.0/10、query:vln
-   evidence：用于VLM的在策略数据标注工具，支持结构化视觉推理
+   evidence：使用VLM作为规划器的空间工具使用代理进行连续3D推理
 
 
 <div class="dpr-home-promo-card">

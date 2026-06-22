@@ -1,0 +1,311 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-22T21:42:36.187718+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 1,
+    "deep_cap": 6,
+    "deep_selected": 1,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2606.16953v1",
+      "source": "arxiv",
+      "title": "SidewalkBench: Benchmarking Visual Navigation on Urban Sidewalks",
+      "abstract": "Urban sidewalk navigation presents significant challenges due to complex structural layouts, dynamic pedestrian behaviors, and long distances. While recent visual navigation models offer a promising solution, the lack of a unified benchmark hinders quantitative and reproducible evaluation. To bridge this gap, we propose SidewalkBench, a comprehensive benchmark designed for visual navigation on urban sidewalks. Built upon NVIDIA Isaac Sim, SidewalkBench brings GPU-accelerated simulation of diverse, high-fidelity sidewalk environments, including both procedurally generated and real-world scanned scenes. We further populate the scenes with rich, reactive event-based pedestrian behaviors and flexible, efficient animation, enabling standardized model evaluation under realistic real-world settings. We conduct a comprehensive evaluation of 9 visual navigation models on 330 unit-test scenarios, 800 pedestrian-reactive scenarios, and 105 long-horizon scenarios. Our findings highlight that pedestrian interaction and long-horizon robustness remain critical bottlenecks for existing models, and scaling up sidewalk training with synthetic data emerges as a promising solution.",
+      "authors": [
+        "Zhizheng Liu",
+        "Honglin He",
+        "Vivek Alumootil",
+        "Akshat Pandya",
+        "Brad Squicciarini",
+        "Wayne Wu",
+        "Bolei Zhou"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-15T16:54:30+00:00",
+      "link": "https://arxiv.org/pdf/2606.16953v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "benchmark for visual navigation on urban sidewalks",
+      "llm_evidence_cn": "城市人行道视觉导航基准",
+      "llm_evidence": "城市人行道视觉导航基准",
+      "canonical_evidence": "城市人行道视觉导航基准",
+      "llm_tldr_en": "SidewalkBench provides a comprehensive simulation benchmark for visual navigation on urban sidewalks with diverse environments and pedestrian behaviors.",
+      "llm_tldr_cn": "SidewalkBench是一个针对城市人行道视觉导航的综合基准，基于NVIDIA Isaac Sim构建，包含程序化生成和真实扫描的高保真场景，并配备了丰富的反应式行人行为动画，为视觉导航模型提供了标准化的评估平台，解决了该领域缺乏统一量化评测的问题。",
+      "llm_tldr": "SidewalkBench是一个针对城市人行道视觉导航的综合基准，基于NVIDIA Isaac Sim构建，包含程序化生成和真实扫描的高保真场景，并配备了丰富的反应式行人行为动画，为视觉导航模型提供了标准化的评估平台，解决了该领域缺乏统一量化评测的问题。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.15846v1",
+      "source": "arxiv",
+      "title": "FlashNav: Ultra-Fast Policy Training for Robot Navigation within 20 Seconds",
+      "abstract": "Deep reinforcement learning has shown strong potential for robot navigation, but its practical deployment is still limited by the long wall-clock cost of policy training. This paper presents FlashNav, a GPU-first framework for ultra-fast range-based robot navigation training. To the best of our knowledge, FlashNav is the first DRL-based robot navigation framework that reaches seconds-level policy training, with the fastest deployable policy trained in less than 20 seconds. The key idea is to align simulation with the navigation MDP: FlashNav preserves the essential components for velocity-level navigation, including occupancy geometry, range sensing, goal-conditioned control, robot motion dynamics, collision handling, termination, and reset, while removing unnecessary rendering and high-fidelity physical details from the training loop. Built on a batched bitmap simulator and a fully GPU-resident training pipeline with our FastDSAC learner, FlashNav generates massive parallel navigation transitions entirely on GPU. Experiments on TurtleBot2 and Unitree Go2 show that FlashNav achieves a 100\\% success-rate below 20 seconds on an RTX 5090 and remains within tens of seconds across desktop GPUs. The learned policies further transfer to physical wheeled and legged robots in static and dynamic indoor scenes, demonstrating that DRL-based navigation can be trained at seconds-level speed while preserving deployable obstacle-avoidance behavior.",
+      "authors": [
+        "Shanze Wang",
+        "Yiwei Qian",
+        "Xinming Zhang",
+        "Jun Xue",
+        "Siwei Cheng",
+        "Xianghui Wang",
+        "Qingyuan Hu",
+        "Xiaoyu Shen",
+        "Wei Zhang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-14T15:02:07+00:00",
+      "link": "https://arxiv.org/pdf/2606.15846v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "ultra-fast policy training for robot navigation",
+      "llm_evidence_cn": "超快策略训练的机器人导航框架",
+      "llm_evidence": "超快策略训练的机器人导航框架",
+      "canonical_evidence": "超快策略训练的机器人导航框架",
+      "llm_tldr_en": "FlashNav is a GPU-first framework enabling deployable robot navigation policy training in under 20 seconds by aligning simulation with navigation MDP.",
+      "llm_tldr_cn": "FlashNav提出了一个GPU优先的机器人导航训练框架，通过将仿真与导航马尔可夫决策过程对齐，实现了在20秒内训练出可部署的导航策略，极大地降低了深度强化学习方法在实际部署中的训练时间成本。",
+      "llm_tldr": "FlashNav提出了一个GPU优先的机器人导航训练框架，通过将仿真与导航马尔可夫决策过程对齐，实现了在20秒内训练出可部署的导航策略，极大地降低了深度强化学习方法在实际部署中的训练时间成本。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.17639v1",
+      "source": "arxiv",
+      "title": "ERQA-Plus: A Diagnostic Benchmark for Reasoning in Embodied AI",
+      "abstract": "Generalist embodied agents require more than object recognition: they must reason about spatial relations, actions, procedures, human intentions, environmental constraints, and commonsense consequences from situated visual observations. Yet existing visual and embodied question answering benchmarks often provide limited control over the reasoning dependencies being tested, making it difficult to distinguish grounded embodied reasoning from shortcut-driven visual or linguistic pattern matching. We present ERQA-Plus, a diagnostic benchmark for reasoning in embodied AI. ERQA-Plus contains 1,766 question-answer instances grounded in 711 robot-centric images and organized according to a structured taxonomy spanning perceptual, action-centric, social-interaction, navigation-environmental, and contextual commonsense reasoning. The dataset is constructed using a multi-stage generation and validation pipeline that combines taxonomy-guided question generation, automatic quality judging, iterative revision, and human assessment to improve visual grounding, answer validity, and reasoning quality. We benchmark representative general-purpose vision-language models and embodied models, including LLaVA-NeXT-8B, Prismatic-7B, MiniCPM-V-4.5-8B, Qwen3-VL, RoboRefer-8B, and RoboBrain2.5-8B. Although the strongest model, Qwen3-VL-32B, achieves 83.4% overall accuracy and 61.4 SBERT score, category-level results reveal persistent weaknesses in spatial reasoning, procedural reasoning, event prediction, and intention inference. ERQA-Plus therefore provides a fine-grained evaluation framework for measuring not only whether embodied agents answer correctly, but also which forms of embodied reasoning they can and cannot perform reliably. The dataset is available https://huggingface.co/datasets/huggingdas/erqa-plus and the project page at https://github.com/LUNAProject22/erqa-plus.",
+      "authors": [
+        "Hong Yang",
+        "Basura Fernando"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-06-16T07:56:33+00:00",
+      "link": "https://arxiv.org/pdf/2606.17639v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "diagnostic benchmark for reasoning in embodied AI, relevant to evaluating VLN agents",
+      "llm_evidence_cn": "具身AI推理的诊断基准，与评估VLN智能体相关",
+      "llm_evidence": "具身AI推理的诊断基准，与评估VLN智能体相关",
+      "canonical_evidence": "具身AI推理的诊断基准，与评估VLN智能体相关",
+      "llm_tldr_en": "Introduces ERQA-Plus, a diagnostic benchmark for evaluating reasoning in embodied AI, including spatial and action reasoning relevant to navigation.",
+      "llm_tldr_cn": "本文提出ERQA-Plus基准，用于诊断具身AI的推理能力。包含1766个基于机器人视角图像的问答实例，涵盖感知、动作、社交等推理类型，有助于区分真正的具身推理与捷径匹配，对VLN智能体的评估有重要价值。",
+      "llm_tldr": "本文提出ERQA-Plus基准，用于诊断具身AI的推理能力。包含1766个基于机器人视角图像的问答实例，涵盖感知、动作、社交等推理类型，有助于区分真正的具身推理与捷径匹配，对VLN智能体的评估有重要价值。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.18242v1",
+      "source": "arxiv",
+      "title": "EventDrive: Event Cameras for Vision-Language Driving Intelligence",
+      "abstract": "Event cameras sense the world through asynchronous brightness changes with microsecond latency and high dynamic range, offering motion fidelity far beyond frame-based sensors and capturing temporal structure that conventional exposures often miss. These properties make events a powerful complement to RGB in autonomous driving, especially under blur, glare, and rapid motion, where frame-based perception can become unreliable. However, existing event-aware vision-language models remain limited to generic perception and do not reveal how event sensing contributes to reasoning and decision-making across the full driving loop. We present EventDrive, a large-scale benchmark and model suite that unifies event streams, RGB frames, and language supervision across four core dimensions: Perception, Understanding, Prediction, and Planning, covering captions, structured QA, grounding, motion-state recognition, trajectory forecasting, and planning tasks. Building on this foundation, EventDrive-VLM introduces a multi-horizon event pyramid and a temporal-horizon mixture-of-experts module to adaptively encode and fuse asynchronous and frame-based information for downstream reasoning. Comprehensive evaluation across diverse tasks shows that event streams provide substantial gains in temporal precision, motion awareness, and robustness, bringing event sensing into the center of driving intelligence.",
+      "authors": [
+        "Dongyue Lu",
+        "Rong Li",
+        "Ao Liang",
+        "Lingdong Kong",
+        "Wei Yin",
+        "Lai Xing Ng",
+        "Benoit R. Cottereau",
+        "Camille Simon Chane",
+        "Wei Tsang Ooi"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-16T17:58:40+00:00",
+      "link": "https://arxiv.org/pdf/2606.18242v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "event cameras for vision-language driving intelligence, involving navigation and language",
+      "llm_evidence_cn": "事件相机用于视觉语言驾驶智能，涉及导航与语言",
+      "llm_evidence": "事件相机用于视觉语言驾驶智能，涉及导航与语言",
+      "canonical_evidence": "事件相机用于视觉语言驾驶智能，涉及导航与语言",
+      "llm_tldr_en": "Presents EventDrive, a benchmark and model suite unifying event streams, RGB frames, and language for autonomous driving navigation and reasoning.",
+      "llm_tldr_cn": "面向自动驾驶中的视觉语言导航，提出EventDrive基准与模型套件，融合事件流、RGB图像和语言指令。实验证明事件数据在高速运动、低光照等挑战场景下显著提升导航决策性能，为鲁棒的驾驶导航提供了新范式。",
+      "llm_tldr": "面向自动驾驶中的视觉语言导航，提出EventDrive基准与模型套件，融合事件流、RGB图像和语言指令。实验证明事件数据在高速运动、低光照等挑战场景下显著提升导航决策性能，为鲁棒的驾驶导航提供了新范式。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.19944v1",
+      "source": "arxiv",
+      "title": "Timage: A Generative Text-in-Image Paradigm for Fine-Tuning Vision-Language Models",
+      "abstract": "Multimodal Large Language Models (MLLMs) often lose track of the right image regions during fine-grained spatial reasoning, because a textual query rarely carries any explicit geometric anchor into the pixel domain. Prevailing remedies either rewire the model's weights or pad the prompt with verbose instructions, yet neither reliably pins the language to the correct visual coordinates without eroding the backbone's general competence. We introduce Timage, a paradigm that recasts multimodal understanding as an alignment problem solved at the input: the query is drawn, as a typeset overlay, onto the image itself. The placement and appearance of this overlay are produced by a Constrained Schrödinger Bridge (cSB), an entropic optimal-transport sampler that factorizes layout synthesis into two coupled stochastic stages. The first stage, Region Search, transports noise toward query-aligned image zones while obeying a hard occlusion barrier that protects salient foreground content; the second stage, Appearance Shaping, sizes the glyphs through an ``ink-budget'' regularizer so that the rendered text stays legible and visually balanced. The resulting overlay behaves as an explicit attention beacon that channels the model's focus along spatial semantics. On the VMCBench suite, Timage paired with a modest 7B backbone clearly overtakes far larger proprietary systems as well as parameter-tuned baselines. The study positions deliberate input reconstruction as a powerful, architecture-neutral lever for strengthening multimodal reasoning.",
+      "authors": [
+        "Yifeng Wu",
+        "Huimin Huang",
+        "Ruiluo Wu",
+        "Chunyi Lin",
+        "Guanhua Chen",
+        "Xian Wu",
+        "Wang Song",
+        "Ruize Han"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-18T08:40:41+00:00",
+      "link": "https://arxiv.org/pdf/2606.19944v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "generative text-in-image paradigm for spatial reasoning in VLMs",
+      "llm_evidence_cn": "生成式文本嵌入图像范式用于VLM空间推理",
+      "llm_evidence": "生成式文本嵌入图像范式用于VLM空间推理",
+      "canonical_evidence": "生成式文本嵌入图像范式用于VLM空间推理",
+      "llm_tldr_en": "Timage introduces a paradigm where the query is drawn onto the image using a Constrained Schrodinger Bridge to align language and visual coordinates for fine-grained spatial reasoning.",
+      "llm_tldr_cn": "Timage提出了一种生成式文本嵌入图像范式，通过约束薛定谔桥将查询文本以排版覆盖方式绘制到图像上，从而在输入层面对齐语言与视觉坐标，解决了多模态大模型在细粒度空间推理中视觉定位不准确的问题。",
+      "llm_tldr": "Timage提出了一种生成式文本嵌入图像范式，通过约束薛定谔桥将查询文本以排版覆盖方式绘制到图像上，从而在输入层面对齐语言与视觉坐标，解决了多模态大模型在细粒度空间推理中视觉定位不准确的问题。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.20209v1",
+      "source": "arxiv",
+      "title": "FlowMaps: Modeling Long-Term Multimodal Object Dynamics with Flow Matching",
+      "abstract": "Joint spatial and temporal understanding of 3D scenes is a crucial requirement for robots deployed in everyday household environments. Such agents must not only comprehend and navigate spatial layouts, but also reason about how these spaces evolve over time. In particular, humans interact with objects daily, causing them to change position throughout the environment and making it difficult for robots to reliably associate current observations with previously seen objects. However, these interactions are not random: human habits and routines induce spatio-temporally consistent patterns in object locations, which robotic agents can potentially learn and then exploit for downstream tasks such as navigation. To this end, we introduce FlowMaps, a latent flow matching model for estimating multimodal distributions over the future locations of dynamic objects in a continuous 3D space. By learning the implicit dependencies among objects and their temporal evolution, FlowMaps predicts likely changes in object locations conditioned on past human interactions, while supporting generalization across previously unseen environments that share similar object routines. To demonstrate the utility of this method, we deploy FlowMaps in a downstream dynamic Object Navigation task in both simulated and real-world environments. Across more than 600 episodes, FlowMaps outperforms state-of-the-art approaches, showing that modeling object dynamics through continuous, multimodal spatio-temporal distributions improves robotic search and navigation in changing household environments. Code and additional material is available at https://fra-tsuna.github.io/flowmaps/.",
+      "authors": [
+        "Francesco Argenziano",
+        "Miguel Saavedra-Ruiz",
+        "Sacha Morin",
+        "Charlie Gauthier",
+        "Daniele Nardi",
+        "Liam Paull"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-18T13:21:40+00:00",
+      "link": "https://arxiv.org/pdf/2606.20209v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "modeling long-term object dynamics for downstream navigation tasks",
+      "llm_evidence_cn": "建模长期物体动态以支持下游导航任务",
+      "llm_evidence": "建模长期物体动态以支持下游导航任务",
+      "canonical_evidence": "建模长期物体动态以支持下游导航任务",
+      "llm_tldr_en": "FlowMaps uses flow matching to model long-term multimodal object dynamics, enabling robots to predict object location changes for improved navigation.",
+      "llm_tldr_cn": "针对机器人需要理解3D场景中物体随时间动态变化的需求，FlowMaps引入流匹配（Flow Matching）来建模长期多模态物体动态，通过学习人类习惯导致的时空一致模式，使机器人能够预测物体位置变化，从而在导航等下游任务中更可靠地关联当前观测与历史物体，提升了环境理解能力。",
+      "llm_tldr": "针对机器人需要理解3D场景中物体随时间动态变化的需求，FlowMaps引入流匹配（Flow Matching）来建模长期多模态物体动态，通过学习人类习惯导致的时空一致模式，使机器人能够预测物体位置变化，从而在导航等下游任务中更可靠地关联当前观测与历史物体，提升了环境理解能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.20515v1",
+      "source": "arxiv",
+      "title": "S-Agent: Spatial Tool-Use Elicits Reasoning for Spatial Intelligence",
+      "abstract": "Real-world spatial intelligence requires reasoning over a continuous and evolving 3D world, yet existing VLMs and tool-augmented agents largely remain tied to static, stateless inference from isolated visual observations. We introduce \\textbf{\\textsc{S-Agent}}, a spatial tool-use agentic paradigm for understanding and reasoning over continuous multi-view images and videos. By formulating spatial reasoning as spatio-temporal evidence accumulation rather than isolated frame-level prediction, \\textsc{S-Agent} reshapes spatial perception into scene-centric understanding beyond frame-centric recognition. Specifically, \\textsc{S-Agent} casts the VLM as a semantic planner that decides what evidence is needed, while a hierarchy of spatial tools and experts grounds objects in 2D, lifts them into 3D geometric evidence, and aggregates this evidence into high-level spatial knowledge (\\textit{e.g.}, counting, measurement, orientation, and relative position). Additionally, a temporal memory mechanism, including Scene Memory for maintaining the evolving scene state and Agent Memory for accumulating reasoning context, enables evidence integration across frames and reasoning steps. Comprehensive experiments on multi-view and video spatial reasoning benchmarks show that \\textsc{S-Agent} consistently improves both open-source and closed-source VLMs in a training-free manner. Beyond inference-time augmentation, supervised fine-tuning (SFT) on \\textsc{S-Agent}-generated spatial trajectories \\textsc{S-300K} yields \\textsc{S-Agent-8B}, a compact spatial agent that significantly surpasses similar-scale baselines (e.g., Qwen3-VL-8B) and performs comparably to advanced closed-source models (e.g., GPT-5.4 and Gemini 3).",
+      "authors": [
+        "Yalun Dai",
+        "Hao Li",
+        "Shulin Tian",
+        "Runmao Yao",
+        "Yuhao Dong",
+        "Fangzhou Hong",
+        "Zhaoxi Chen",
+        "Fangfu Liu",
+        "Baoliang Tian",
+        "Dingwen Zhang",
+        "Tao Wang",
+        "Kim-Hui Yap",
+        "Ziwei Liu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-18T17:34:55+00:00",
+      "link": "https://arxiv.org/pdf/2606.20515v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "spatial tool-use agent with VLM as planner for continuous 3D reasoning",
+      "llm_evidence_cn": "使用VLM作为规划器的空间工具使用代理进行连续3D推理",
+      "llm_evidence": "使用VLM作为规划器的空间工具使用代理进行连续3D推理",
+      "canonical_evidence": "使用VLM作为规划器的空间工具使用代理进行连续3D推理",
+      "llm_tldr_en": "S-Agent proposes a spatial tool-use agentic paradigm for continuous multi-view 3D reasoning, using a VLM as semantic planner to decide what evidence to gather.",
+      "llm_tldr_cn": "S-Agent提出了空间工具使用的智能体范式，将VLM作为语义规划器，通过层次化工具和专家系统将空间推理转化为时空证据积累，实现了对连续多视图图像和视频的场景级理解，提升了空间智能。",
+      "llm_tldr": "S-Agent提出了空间工具使用的智能体范式，将VLM作为语义规划器，通过层次化工具和专家系统将空间推理转化为时空证据积累，实现了对连续多视图图像和视频的场景级理解，提升了空间智能。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
