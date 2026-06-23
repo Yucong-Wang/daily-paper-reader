@@ -6,43 +6,61 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-22
-- 运行时间：2026-06-22 21:48:18 UTC
+- 最新运行日期：2026-06-23
+- 运行时间：2026-06-23 20:50:16 UTC
 - 运行状态：成功
-- 本次总论文数：7
-- 精读区：1
-- 速读区：6
+- 本次总论文数：13
+- 精读区：4
+- 速读区：9
 
 ### 今日简报（AI）
-今天研读了7篇论文，精读1篇、速读6篇，重点覆盖机器人导航与视觉语言驾驶领域。
-最值得关注的是人行道视觉导航基准SidewalkBench，以及20秒内完成策略训练的FlashNav。
-建议读者优先精读SidewalkBench理解城市导航挑战，同时关注EventDrive的事件相机在驾驶中的创新应用。
-- 详情：[/202606/22/README](/202606/22/README)
+今日具身智能两大突破：Vesta通用推理模型与BIT-Nav脑启发导航均获9分高分。  
+精读推荐：Vesta将语言推理融入身体动作控制，BIT-Nav模仿海马体记忆实现高效自主导航。  
+速读可关注SCOPE开放环境符号规划，以及空间感知与3D视觉的新方法。
+- 详情：[/202606/23/README](/202606/23/README)
 
 ### 精读区论文标签
-1. [SidewalkBench: Benchmarking Visual Navigation on Urban Sidewalks](/202606/22/2606.16953v1-sidewalkbench-benchmarking-visual-navigation-on-urban-sidewalks)  
+1. [Vesta: A Generalist Embodied Reasoning Model](/202606/23/2606.20905v1-vesta-a-generalist-embodied-reasoning-model)  
+   标签：评分：9.0/10、query:vln
+   evidence：集成导航、空间推理和规划的统一具身通用模型
+2. [BIT-Nav: Brain-Inspired Trajectory Memory for Embodied Navigation](/202606/23/2606.21398v1-bit-nav-brain-inspired-trajectory-memory-for-embodied-navigation)  
+   标签：评分：9.0/10、query:vln
+   evidence：受脑启发的轨迹记忆用于VLM导航
+3. [FlowDec: Temporal Conditional Flow Decorruptor for Robust Continuous Vision-Language Navigation](/202606/23/2606.22424v1-flowdec-temporal-conditional-flow-decorruptor-for-robust-continuous-vision-language-navigation)  
+   标签：评分：9.0/10、query:vln
+   evidence：直接针对连续环境视觉语言导航的鲁棒性改进
+4. [A scalar per patch from pre-trained ViTs enables fast moving navigation in the real world](/202606/23/2606.21216v1-a-scalar-per-patch-from-pre-trained-vits-enables-fast-moving-navigation-in-the-real-world)  
    标签：评分：8.0/10、query:vln
-   evidence：城市人行道视觉导航基准
+   evidence：真实世界导航研究对比预训练视觉编码器
 
 ### 速读区论文标签
-1. [FlashNav: Ultra-Fast Policy Training for Robot Navigation within 20 Seconds](/202606/22/2606.15846v1-flashnav-ultra-fast-policy-training-for-robot-navigation-within-20-seconds)  
+1. [SpatialSV: Internalizing Interpretable 3D Spatial Awareness in MLLMs via Task-Oriented Visual Supervision](/202606/23/2606.19915v1-spatialsv-internalizing-interpretable-3d-spatial-awareness-in-mllms-via-task-oriented-visual-supervision)  
    标签：评分：7.0/10、query:vln
-   evidence：超快策略训练的机器人导航框架
-2. [EventDrive: Event Cameras for Vision-Language Driving Intelligence](/202606/22/2606.18242v1-eventdrive-event-cameras-for-vision-language-driving-intelligence)  
+   evidence：在多模态大语言模型中内化3D空间意识，增强视觉语言理解
+2. [Scaling Diverse Language Generation for 3D Visual Grounding](/202606/23/2606.20946v1-scaling-diverse-language-generation-for-3d-visual-grounding)  
    标签：评分：7.0/10、query:vln
-   evidence：事件相机用于视觉语言驾驶智能，涉及导航与语言
-3. [FlowMaps: Modeling Long-Term Multimodal Object Dynamics with Flow Matching](/202606/22/2606.20209v1-flowmaps-modeling-long-term-multimodal-object-dynamics-with-flow-matching)  
+   evidence：用于3D视觉定位的视觉语言理解
+3. [SCOPE: Evolving Symbolic World for Planning in Open-Ended Environments](/202606/23/2606.22488v1-scope-evolving-symbolic-world-for-planning-in-open-ended-environments)  
    标签：评分：7.0/10、query:vln
-   evidence：建模长期物体动态以支持下游导航任务
-4. [ERQA-Plus: A Diagnostic Benchmark for Reasoning in Embodied AI](/202606/22/2606.17639v1-erqa-plus-a-diagnostic-benchmark-for-reasoning-in-embodied-ai)  
+   evidence：基于VLM的自适应符号规划，用于开放具身任务
+4. [MAPS: Multi-Anchor Projection Similarity for Joint Vision-Language Geo-Localization](/202606/23/2606.22543v1-maps-multi-anchor-projection-similarity-for-joint-vision-language-geo-localization)  
+   标签：评分：7.0/10、query:vln
+   evidence：联合视觉语言地理定位，将图像文本查询对齐到空间位置
+5. [HoloAgent-0: A Unified Embodied Agent Framework with 3D Spatial Memory](/202606/23/2606.23565v1-holoagent-0-a-unified-embodied-agent-framework-with-3d-spatial-memory)  
+   标签：评分：7.0/10、query:vln
+   evidence：统一具身智能体框架，包含3D空间记忆，支持导航
+6. [ERQA-Plus: A Diagnostic Benchmark for Reasoning in Embodied AI](/202606/23/2606.17639v1-erqa-plus-a-diagnostic-benchmark-for-reasoning-in-embodied-ai)  
    标签：评分：6.0/10、query:vln
-   evidence：具身AI推理的诊断基准，与评估VLN智能体相关
-5. [Timage: A Generative Text-in-Image Paradigm for Fine-Tuning Vision-Language Models](/202606/22/2606.19944v1-timage-a-generative-text-in-image-paradigm-for-fine-tuning-vision-language-models)  
+   evidence：用于导航的具身推理基准
+7. [ASCII Art Turns LLMs into VLA Controllers](/202606/23/2606.21470v1-ascii-art-turns-llms-into-vla-controllers)  
    标签：评分：6.0/10、query:vln
-   evidence：生成式文本嵌入图像范式用于VLM空间推理
-6. [S-Agent: Spatial Tool-Use Elicits Reasoning for Spatial Intelligence](/202606/22/2606.20515v1-s-agent-spatial-tool-use-elicits-reasoning-for-spatial-intelligence)  
+   evidence：将LLM改造为VLA控制器，能跟随自然语言指令产生动作
+8. [Decoupling the Declarative from the Procedural in Vision-Language-Action Models](/202606/23/2606.21496v1-decoupling-the-declarative-from-the-procedural-in-vision-language-action-models)  
    标签：评分：6.0/10、query:vln
-   evidence：使用VLM作为规划器的空间工具使用代理进行连续3D推理
+   evidence：面向具身智能体的视觉-语言-动作模型，解决操作泛化问题
+9. [4DVLT: Dynamic Scene Understanding with Worldline-Centered Vision-Language Tracking](/202606/23/2606.22631v1-4dvlt-dynamic-scene-understanding-with-worldline-centered-vision-language-tracking)  
+   标签：评分：6.0/10、query:vln
+   evidence：基于指令的4D场景理解与视觉语言跟踪
 
 
 <div class="dpr-home-promo-card">
