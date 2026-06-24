@@ -1,0 +1,336 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-24T21:14:30.277417+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2606.22424v2",
+      "source": "arxiv",
+      "title": "FlowDec: Temporal Conditional Flow Decorruptor for Robust Continuous Vision-Language Navigation",
+      "abstract": "Vision-and-Language Navigation in Continuous Environments (VLN-CE) requires agents to follow natural-language instructions in unseen scenes. While Large Models (LMs) have advanced VLN-CE, their performance remains severely degraded by real-world visual corruptions, a critical yet underexplored domain constraint. We introduce Temporal Conditional Flow Decorruptor (FlowDec), a novel image restoration framework tailored for LM-based VLN-CE. FlowDec integrates a hybrid temporal conditioning strategy to align the generative flow path with historical context and employs action-centroid guided filtering to dynamically assess and integrate outputs. Extensive experiments demonstrate that FlowDec outperforms state-of-the-art decorruption methods in both navigation accuracy and generation latency. Our approach establishes a robust, efficient paradigm for resilient embodied navigation in unpredictable real-world conditions.",
+      "authors": [
+        "Yufei Zhang",
+        "Changhao Chen"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-21T10:24:16+00:00",
+      "link": "https://arxiv.org/pdf/2606.22424v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Robust continuous vision-language navigation with image restoration",
+      "llm_evidence_cn": "面向鲁棒连续视觉语言导航的图像恢复",
+      "llm_evidence": "面向鲁棒连续视觉语言导航的图像恢复",
+      "canonical_evidence": "面向鲁棒连续视觉语言导航的图像恢复",
+      "llm_tldr_en": "FlowDec is a temporal conditional flow decorruptor for robust VLN-CE, integrating hybrid temporal conditioning and action-centroid guided filtering to restore corrupted images and boost LM-based navigation performance.",
+      "llm_tldr_cn": "连续环境下的视觉语言导航(VLN-CE)在真实世界中会受到视觉损坏的影响。FlowDec提出了一种时间条件流去噪框架，通过混合时间条件策略对齐生成流路径与历史上下文，并利用动作中心引导过滤动态整合输出。实验表明，FlowDec在多种损坏条件下显著优于现有去噪方法，大幅提升了基于大模型的VLN-CE鲁棒性。",
+      "llm_tldr": "连续环境下的视觉语言导航(VLN-CE)在真实世界中会受到视觉损坏的影响。FlowDec提出了一种时间条件流去噪框架，通过混合时间条件策略对齐生成流路径与历史上下文，并利用动作中心引导过滤动态整合输出。实验表明，FlowDec在多种损坏条件下显著优于现有去噪方法，大幅提升了基于大模型的VLN-CE鲁棒性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.24068v1",
+      "source": "arxiv",
+      "title": "ObsGraph: Hierarchical Observation Representation for Embodied Reasoning and Exploration",
+      "abstract": "Embodied reasoning and exploration are increasingly considered crucial abilities for robots operating in complex and unfamiliar environments. To accomplish tasks in such settings, an agent must identify and acquire the information necessary for the task through exploration. We propose ObsGraph, an observation-centric hierarchical scene graph that unifies scene representation, retrieval, and exploration. It retains visual evidence and organizes it into room-view-object layers: rooms provide coarse semantic anchors, views preserve contextual object covisibility, and objects store fine-grained details. On top of this representation, we perform coarse-to-fine hierarchical retrieval under a bounded budget, and crucially use retrieval outcomes to structure the exploration candidate space--activating room-level exploration, view refinement, or frontier exploration--thereby tightly coupling representation, retrieval, and adaptive multi-scale exploration. Experiments across embodied reasoning and exploration benchmarks demonstrate improved success and efficiency, highlighting the benefits of structured scene representation and more targeted information gathering driven by identified evidence gaps.",
+      "authors": [
+        "Taekbeom Lee",
+        "Youngseok Jang",
+        "Jeonghwa Heo",
+        "Jeongjun Choi",
+        "H. Jin Kim"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-06-23T02:17:08+00:00",
+      "link": "https://arxiv.org/pdf/2606.24068v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "embodied reasoning and exploration with hierarchical scene graph",
+      "llm_evidence_cn": "具身推理与探索的层次场景图",
+      "llm_evidence": "具身推理与探索的层次场景图",
+      "canonical_evidence": "具身推理与探索的层次场景图",
+      "llm_tldr_en": "ObsGraph builds hierarchical observation-centric scene graphs for embodied agents, enabling efficient coarse-to-fine retrieval and exploration in unfamiliar environments.",
+      "llm_tldr_cn": "针对机器人在复杂陌生环境中的探索与推理问题，提出ObsGraph，一种以观测为中心的层次场景图表示，将环境组织为房间-视图-对象三层结构。通过有界预算的由粗到精检索机制，代理能高效获取任务所需信息。实验表明该表示在探索效率和任务成功率上优于现有方法，为具身导航提供了紧凑的感知记忆方案。",
+      "llm_tldr": "针对机器人在复杂陌生环境中的探索与推理问题，提出ObsGraph，一种以观测为中心的层次场景图表示，将环境组织为房间-视图-对象三层结构。通过有界预算的由粗到精检索机制，代理能高效获取任务所需信息。实验表明该表示在探索效率和任务成功率上优于现有方法，为具身导航提供了紧凑的感知记忆方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.24101v1",
+      "source": "arxiv",
+      "title": "NavWM: A Unified Navigation World Model for Foresight-Driven Planning",
+      "abstract": "Conventional visual navigation policies often struggle with myopic decision-making and mode collapse in complex environments. While world models offer a promising alternative, existing paradigms typically isolate perception, generation, and control, failing to capture their shared spatio-temporal dynamics. In this paper, we propose NavWM, a unified navigation world model that seamlessly integrates latent world reasoning, multimodal action prediction, and controllable visual generation. At its core, NavWM leverages latent world tokens to distill geometric and semantic priors, endowing the agent with robust structural understanding. To overcome the limitations of deterministic policies, we introduce an anchor-based multimodal trajectory forecasting framework that generates a diverse action space. This inherent diversity explicitly empowers the generative world model to act as a robust closed-loop planner, utilizing visual foresight to evaluate and select the optimal path. Extensive experiments across diverse robotics datasets demonstrate that NavWM significantly advances the state-of-the-art, delivering remarkable improvements in both high-fidelity future state generation and zero-shot navigation success.",
+      "authors": [
+        "Yanghong Mei",
+        "Longteng Guo",
+        "Ming-Ming Yu",
+        "Guiyu Zhao",
+        "Xingjian He",
+        "Jing Liu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-06-23T03:30:20+00:00",
+      "link": "https://arxiv.org/pdf/2606.24101v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Unified navigation world model for foresight-driven planning",
+      "llm_evidence_cn": "统一导航世界模型，支持前瞻规划",
+      "llm_evidence": "统一导航世界模型，支持前瞻规划",
+      "canonical_evidence": "统一导航世界模型，支持前瞻规划",
+      "llm_tldr_en": "NavWM integrates latent world reasoning, multimodal action prediction, and visual generation for foresight-driven navigation planning.",
+      "llm_tldr_cn": "传统导航策略往往短视且模式崩溃。NavWM统一了潜在世界推理、多模态动作预测和可控视觉生成，利用潜在世界令牌提取几何语义先验，通过锚点多模态轨迹预测实现前瞻规划。在多种导航环境中表现出鲁棒的规划和生成能力。该工作为具身导航提供了世界模型新范式。",
+      "llm_tldr": "传统导航策略往往短视且模式崩溃。NavWM统一了潜在世界推理、多模态动作预测和可控视觉生成，利用潜在世界令牌提取几何语义先验，通过锚点多模态轨迹预测实现前瞻规划。在多种导航环境中表现出鲁棒的规划和生成能力。该工作为具身导航提供了世界模型新范式。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.22158v1",
+      "source": "arxiv",
+      "title": "Improving Reasoning in Vision-Language Models via Perception Verified Self-Training",
+      "abstract": "Achieving human-like reasoning in Vision-Language Models (VLMs) remains a long-standing challenge. Recent approaches leverage Chain-of-Thought (CoT) rationales generated by human annotators or proprietary models to improve reasoning, which is costly and difficult to scale. Self-training offers a promising alternative by using models own outputs as supervision. However, existing methods often suffer from visual hallucinations -- where rationales describe non-existent visual content, and language shortcuts -- where predictions rely on textual priors rather than true visual grounding, as rationales are typically filtered only by answer correctness without verifying visual perception. To address this limitation, we propose a perception-verified self-training framework that enforces visually grounded reasoning. First, our method employs a CoT template (caption-reasoning-conclusion) that disentangles perception from reasoning, enabling independent verification of visual understanding. To compensate for the absence of ground-truth captions, we propose PerceptEval, an unsupervised method that evaluates caption quality based on its alignment with visual and textual elements present in the image. Using caption verification together with answer correctness, we partition the data into three subsets: easy (correct caption and conclusion), medium (correct caption but incorrect conclusion), and hard (incorrect caption). Building on this partitioning, we design a two-stage curriculum learning strategy. In Stage 1, the model is trained on easy examples and subsequently in Stage 2, medium samples are incorporated through a caption-guided reasoning enhancement procedure that regenerates reasoning conditioned on verified captions. Only regenerated samples with the correct conclusions are retained.",
+      "authors": [
+        "Sourabh Sharma",
+        "Sonam Gupta",
+        "Sadbhawna Thakur"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-20T17:33:07+00:00",
+      "link": "https://arxiv.org/pdf/2606.22158v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "improves reasoning in VLMs via self-training with perception verification",
+      "llm_evidence_cn": "通过感知验证的自训练改进视觉语言模型推理",
+      "llm_evidence": "通过感知验证的自训练改进视觉语言模型推理",
+      "canonical_evidence": "通过感知验证的自训练改进视觉语言模型推理",
+      "llm_tldr_en": "Proposes perception-verified self-training for VLMs to reduce hallucinations and language shortcuts, improving reasoning without human annotations.",
+      "llm_tldr_cn": "针对视觉语言模型推理中的视觉幻觉和语言捷径问题，提出了一种基于感知验证的自训练方法，利用模型自身输出作为监督，通过验证视觉感知来过滤不正确的推理链，从而提升推理能力。该方法避免了昂贵的人工标注，实验表明在多个推理基准上取得了改进。",
+      "llm_tldr": "针对视觉语言模型推理中的视觉幻觉和语言捷径问题，提出了一种基于感知验证的自训练方法，利用模型自身输出作为监督，通过验证视觉感知来过滤不正确的推理链，从而提升推理能力。该方法避免了昂贵的人工标注，实验表明在多个推理基准上取得了改进。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.24815v1",
+      "source": "arxiv",
+      "title": "MANGO: Automated Multi-Agent Test Oracle Generation for Vision-Language-Action Models",
+      "abstract": "Vision-Language-Action (VLA) models are emerging robotic control systems that integrate perception, language understanding, and action generation in a unified architecture. Existing testing approaches for VLA-enabled robots rely on manually constructed symbolic test oracles that determine task success from final environment states. These oracles are costly to construct, require domain expertise, and are often tightly coupled to specific tasks and environments, limiting scalability and reuse. Furthermore, they provide only end-state assessments of task outcomes, offering limited insight into intermediate behavior and fault localization. To address these limitations, we introduce MANGO, a multi-agent framework that automatically generates fine-grained oracles from natural-language descriptions of robotic tasks. MANGO first generates a reusable library of atomic tasks, then generates simulator-grounded oracle definitions for each atomic task, and finally produces executable fine-grained oracles by decomposing complex instructions into ordered sequences of atomic actions and corresponding oracles. The framework uses collaborative Generator, Assessor, and Judge agents that iteratively refine generated artifacts through structured feedback. We evaluate MANGO on the LIBERO_10 and RoboCasa Humanoid Tabletop benchmarks. Results show that MANGO generates executable, fine-grained oracles that detect a similar number of failures as symbolic oracles while accurately localizing them and providing richer diagnostic information. Through ablation studies, we further analyzed component contributions and the effect of initial task set, while preserving oracle quality. Overall, the results show the feasibility and effectiveness of test oracle generation for VLA-enabled robots testing.",
+      "authors": [
+        "Pablo Valle",
+        "Shaukat Ali",
+        "Aitor Arrieta",
+        "Lionel Briand"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE"
+      ],
+      "published": "2026-06-23T17:00:06+00:00",
+      "link": "https://arxiv.org/pdf/2606.24815v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Automated test oracle generation for VLA models",
+      "llm_evidence_cn": "VLA模型自动化测试预言生成",
+      "llm_evidence": "VLA模型自动化测试预言生成",
+      "canonical_evidence": "VLA模型自动化测试预言生成",
+      "llm_tldr_en": "MANGO automatically generates test oracles for Vision-Language-Action models, enabling scalable testing of VLA-based robots including navigation agents.",
+      "llm_tldr_cn": "针对VLA模型测试依赖人工构造预言且缺乏中间行为检查的问题，提出MANGO多智能体框架自动生成测试预言，可评估包括导航在内的机器人任务完成情况并提供行为诊断，提升测试可扩展性和故障定位能力。",
+      "llm_tldr": "针对VLA模型测试依赖人工构造预言且缺乏中间行为检查的问题，提出MANGO多智能体框架自动生成测试预言，可评估包括导航在内的机器人任务完成情况并提供行为诊断，提升测试可扩展性和故障定位能力。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.22543v1",
+      "source": "arxiv",
+      "title": "MAPS: Multi-Anchor Projection Similarity for Joint Vision-Language Geo-Localization",
+      "abstract": "Humans localize places by integrating perceptual cues from vision with semantic reasoning from language, forming a scene understanding that is both intuitive and structured. Although existing geo-localization models have made substantial progress in cross-view and cross-modal settings, they are largely built upon point-to-point alignment, which is insufficient for joint vision-language queries. In such queries, visual and textual cues do not simply act as independent references, but jointly define a semantic subspace for locating the target. In this paper, we formulate vision-language geo-localization (VLGL) with joint image-text queries as a multi-anchor geometric alignment problem and propose a unified framework for this setting. To realize this formulation, we propose Multi-Anchor Projection Similarity (MAPS), a new metric which constructs an anchor plane from visual and textual query features in a high-dimensional space and measures similarity by the projection length of the target feature onto this plane. Unlike cosine similarity which evaluates isolated pairwise relations, MAPS captures the geometric consistency between the target feature and the joint query subspace, providing a more discriminative ranking criterion during retrieval. To make the learned representation consistent with this geometry, we further introduce a MAPS-based contrastive loss that drives target features toward the corresponding anchor plane. The proposed framework, similarity metric, and training objective jointly yield state-of-the-art performance in VLGL.",
+      "authors": [
+        "Yutong Hu",
+        "Siyuan Tan",
+        "Shaocheng Yan",
+        "Pengcheng Shi",
+        "Qingwu Hu",
+        "Jiayuan Li"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-21T15:01:53+00:00",
+      "link": "https://arxiv.org/pdf/2606.22543v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Joint vision-language geo-localization",
+      "llm_evidence_cn": "联合视觉语言地理定位",
+      "llm_evidence": "联合视觉语言地理定位",
+      "canonical_evidence": "联合视觉语言地理定位",
+      "llm_tldr_en": "MAPS formulates vision-language geo-localization as multi-anchor geometric alignment, handling joint image-text queries by defining a unified semantic subspace for location matching.",
+      "llm_tldr_cn": "现有地理定位方法主要基于点对点对齐，无法处理联合图像文本查询。MAPS将视觉语言地理定位建模为多锚点几何对齐问题，通过多锚点投影相似度学习一个统一的语义子空间。实验表明该方法在跨视图和跨模态定位任务中表现优异，对导航中的位置理解有借鉴意义。",
+      "llm_tldr": "现有地理定位方法主要基于点对点对齐，无法处理联合图像文本查询。MAPS将视觉语言地理定位建模为多锚点几何对齐问题，通过多锚点投影相似度学习一个统一的语义子空间。实验表明该方法在跨视图和跨模态定位任务中表现优异，对导航中的位置理解有借鉴意义。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.24051v1",
+      "source": "arxiv",
+      "title": "DriveStack-VLA: Render-Teacher Alignment for BEV-Based DeepStack Vision-Language-Action Model",
+      "abstract": "Vision-Language-Action driving models convert a pretrained Vision-Language Model into a driving policy, allowing them to use world knowledge and follow language guidances. However, existing VLA driving models still lack driving-oriented spatial intelligence: their policies are mainly grounded on perspective image tokens and language priors, while precise motion planning requires metric geometry, top-down scene structure, and attention to safety-critical perceptual cues. This limitation makes current models vulnerable to weak visual geometry modeling and perceptual coverage in expert demonstrations. In this paper, we present DriveStack-VLA, a framework built upon a large VLM backbone. To strengthen the spatial grounding of VLA driving, we develop dual visual modeling components. We inject a Bird-Eye-View representation into the Large Language Model decoder through a DeepStack-style connection, and propose Render-Teacher Alignment to align the perceptual focus of real images with that of rasterized images. Furthermore, to bridge the gap in multimodal trajectory selection, we introduce a head-based self-critique module that ranks sampled trajectories and conditionally refines the best one. DriveStack-VLA achieves 91.6 PDMS on NAVSIMv1, 91.0 EPDMS on NAVSIMv2 (with the human penalty filter enabled), and a driving score of 79.49 with a success rate of 56.36\\% on the closed-loop Bench2Drive. More visualizations are available on our project page: https://anonymous.4open.science/w/drivestack-vla/.",
+      "authors": [
+        "Jingke Wang",
+        "Zhenru Zhao",
+        "Shuangming Lei",
+        "Hao Su",
+        "Yuehao Huang",
+        "Yijia Xie",
+        "Kai Tang",
+        "Guanglin Xu",
+        "AiXue Ye",
+        "Yukai Ma",
+        "Yong Liu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-23T01:40:54+00:00",
+      "link": "https://arxiv.org/pdf/2606.24051v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Vision-Language-Action driving model with language guidance",
+      "llm_evidence_cn": "视觉语言动作驾驶模型，遵循语言指令",
+      "llm_evidence": "视觉语言动作驾驶模型，遵循语言指令",
+      "canonical_evidence": "视觉语言动作驾驶模型，遵循语言指令",
+      "llm_tldr_en": "DriveStack-VLA enhances VLA driving models with BEV spatial grounding, addressing weak geometry in expert demonstrations.",
+      "llm_tldr_cn": "当前视觉语言动作驾驶模型缺乏驾驶导向的空间智能，仅依赖透视图像标记和语言先验。DriveStack-VLA通过渲染-教师对齐和BEV表示，强化空间基础，提升规划能力。实验表明该方法在驾驶规划上超越基线。该工作虽专注驾驶，但为视觉语言导航中的空间推理提供了可借鉴的思路。",
+      "llm_tldr": "当前视觉语言动作驾驶模型缺乏驾驶导向的空间智能，仅依赖透视图像标记和语言先验。DriveStack-VLA通过渲染-教师对齐和BEV表示，强化空间基础，提升规划能力。实验表明该方法在驾驶规划上超越基线。该工作虽专注驾驶，但为视觉语言导航中的空间推理提供了可借鉴的思路。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.24338v1",
+      "source": "arxiv",
+      "title": "RoBoSR: Structured Scene Representations for Embodied Robotic Reasoning",
+      "abstract": "Despite rapid progress, embodied reasoning under real-world variability remains challenging. Existing approaches rely on demonstration-driven sequential biases, limiting flexibility in open-ended and long-horizon tasks that require structured reasoning over evolving states.   We introduce RoBoSR, an intermediate structural representation that formulates manipulation as step-wise state transitions over semantically grounded, object-centric scene graphs. By modeling object states and their spatial relations at the perception-action interface, RoBoSR disentangles high-level task reasoning from raw inputs and enables structured reasoning over preconditions, effects, and goal states. This representation endows the agent with causal reasoning capability, enforcing subtask dependencies and supporting coherent long-horizon task planning.   To learn such structure-aware reasoning, we construct Manip-Cognition-1.6M, an open-world dataset that jointly supervises scene understanding, instruction interpretation, and subtask planning across diverse tasks.   Across several benchmarks and real-world demonstrations, our method consistently outperforms prompting-based methods and classical TAMP baselines in zero-shot generalization and long-horizon tasks. The results underscore structured intermediate representations as a critical inductive bias for scalable embodied reasoning.",
+      "authors": [
+        "Kewei Hu",
+        "Wanchan Yu",
+        "Fangwen Chen",
+        "Jing Jiajian",
+        "Zimeng Li",
+        "Ying Wei",
+        "Tianhao Liu",
+        "Michael Zhang",
+        "Hanwen Kang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-23T09:24:52+00:00",
+      "link": "https://arxiv.org/pdf/2606.24338v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Structured scene representation for embodied reasoning",
+      "llm_evidence_cn": "具身推理的结构化场景表征",
+      "llm_evidence": "具身推理的结构化场景表征",
+      "canonical_evidence": "具身推理的结构化场景表征",
+      "llm_tldr_en": "RoBoSR introduces object-centric scene graphs with state transitions to enable structured reasoning for embodied manipulation tasks, disentangling high-level task planning from raw perception.",
+      "llm_tldr_cn": "现有具身推理方法受限于演示驱动的序列偏差，缺乏灵活性。RoBoSR提出以对象为中心的语义场景图，将操作建模为逐步状态转换，从而解耦高层任务推理与原始输入。该结构赋予智能体因果推理能力，在开放任务中表现更好。",
+      "llm_tldr": "现有具身推理方法受限于演示驱动的序列偏差，缺乏灵活性。RoBoSR提出以对象为中心的语义场景图，将操作建模为逐步状态转换，从而解耦高层任务推理与原始输入。该结构赋予智能体因果推理能力，在开放任务中表现更好。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
