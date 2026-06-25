@@ -1,0 +1,458 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-25T20:48:47.986963+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 9,
+    "quick_skim_target": 11,
+    "quick_selected": 9
+  },
+  "deep_dive": [
+    {
+      "id": "2606.25206v1",
+      "source": "arxiv",
+      "title": "RAVEN: Long-Horizon Reasoning & Navigation with a Visuo-Spatio-Temporal Memory",
+      "abstract": "Long-term robot deployment requires a compact and scalable memory that preserves fine-grained visual semantics, grounds observations in space and time, and enables efficient storage and retrieval. In this paper, we propose RAVEN, an agentic memory system for long-horizon robotic question answering and navigation. RAVEN stores visual embeddings with pose and time in a vector database, and grounds retrieval in a spatial map to answer queries and navigate to goals. By operating directly on visual embeddings, RAVEN avoids lossy image-to-text captioning and enables accurate semantic, spatial, and temporal retrieval at scale. Across several simulated and real-world video question-answering benchmarks, RAVEN consistently surpasses caption-based memory systems and matches frontier VLMs on long-horizon tasks at 10$\\times$ lower retrieval cost. Finally, we instantiate RAVEN on a Unitree Go1 robot for the task of long-horizon navigation for natural language goal-reaching, and show successful deployment over several large indoor environments.",
+      "authors": [
+        "Yixun Hu",
+        "Zhicheng Zheng",
+        "Lihan Zha",
+        "Chunwei Xing",
+        "Rajdeep Singh",
+        "Omar Hossain",
+        "Antonio Loquercio",
+        "Dhruv Shah"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-06-23T21:56:41+00:00",
+      "link": "https://arxiv.org/pdf/2606.25206v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "long-horizon navigation with visual-language memory",
+      "llm_evidence_cn": "长程导航结合视觉语言记忆",
+      "llm_evidence": "长程导航结合视觉语言记忆",
+      "canonical_evidence": "长程导航结合视觉语言记忆",
+      "llm_tldr_en": "RAVEN proposes an agentic memory system using visual embeddings with pose and time for long-horizon robotic navigation and question answering, surpassing caption-based memory on video QA benchmarks.",
+      "llm_tldr_cn": "针对长程机器人导航中记忆系统需同时保存视觉语义、空间和时间信息的问题，本文提出RAVEN，一种代理记忆系统，通过将视觉嵌入与位姿和时间一起存储在向量数据库中，并基于空间地图进行检索，实现高效语义、空间和时间检索。在多个模拟和真实视频问答基准上，RAVEN一致优于基于标题的记忆方法，展示了其在导航和问答任务中的有效性。",
+      "llm_tldr": "针对长程机器人导航中记忆系统需同时保存视觉语义、空间和时间信息的问题，本文提出RAVEN，一种代理记忆系统，通过将视觉嵌入与位姿和时间一起存储在向量数据库中，并基于空间地图进行检索，实现高效语义、空间和时间检索。在多个模拟和真实视频问答基准上，RAVEN一致优于基于标题的记忆方法，展示了其在导航和问答任务中的有效性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.25497v1",
+      "source": "arxiv",
+      "title": "SAGE-Nav: Leveraging LLM Planning and Alignment Fusion for Hierarchical Scene Graph-Guided Navigation",
+      "abstract": "Object-Goal Navigation (ObjNav) requires embodied agents to autonomously locate specified targets using only egocentric visual observations. Existing monolithic methods struggle with long-horizon reasoning and generalize poorly to novel environments. To address these limitations, we propose SAGE-Nav, a novel hierarchical framework that integrates the reasoning capabilities of Large Language Models (LLMs) with dynamic scene graphs. Crucially, it decouples asynchronous global semantic planning from the high-frequency reactive control loop. The LLM serves as a global planner, decomposing abstract instructions into a sequence of semantically grounded waypoints. To translate these plans into dense multi-modal guidance, we design a Hierarchical Scene Graph Encoder (HSGE) that leverages relational graph convolutions to produce structure-aware embeddings preserving both semantic and spatial topology. Furthermore, we develop the Goal-aware Alignment-Fusion Network (GAFN) to dynamically fuse real-time perception with these structural priors. Using an adaptive gating mechanism with an explicit inductive bias, GAFN ensures robust visual-topological alignment for the low-level policy. Extensive evaluations in the i-THOR and RoboTHOR environments demonstrate that SAGE-Nav achieves state-of-the-art performance, delivering substantial gains in navigation efficiency and zero-shot generalization while maintaining the low control latency required for physical robotic deployment.",
+      "authors": [
+        "Hao Su",
+        "Yuehao Huang",
+        "Yukai Ma",
+        "Yong Liu",
+        "Jiajun Lv"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-24T07:24:39+00:00",
+      "link": "https://arxiv.org/pdf/2606.25497v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "LLM-based hierarchical navigation with scene graph and instruction following",
+      "llm_evidence_cn": "基于LLM的层次化导航，结合场景图与指令跟随",
+      "llm_evidence": "基于LLM的层次化导航，结合场景图与指令跟随",
+      "canonical_evidence": "基于LLM的层次化导航，结合场景图与指令跟随",
+      "llm_tldr_en": "SAGE-Nav uses LLM as global planner to decompose instructions into waypoints, coupled with dynamic scene graphs for embodied object-goal navigation; strong VLN relevance.",
+      "llm_tldr_cn": "该论文针对长程目标导航中单块模型推理能力不足的问题，提出SAGE-Nav层次框架，利用LLM将抽象指令分解为语义路点，并融合动态场景图生成多模态导航指导。在仿真环境中显著提升导航成功率与泛化能力，直接贡献于视觉语言导航领域。",
+      "llm_tldr": "该论文针对长程目标导航中单块模型推理能力不足的问题，提出SAGE-Nav层次框架，利用LLM将抽象指令分解为语义路点，并融合动态场景图生成多模态导航指导。在仿真环境中显著提升导航成功率与泛化能力，直接贡献于视觉语言导航领域。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.21493v1",
+      "source": "arxiv",
+      "title": "Semi-Supervised Vision-Language-Action Model",
+      "abstract": "Vision-Language-Action (VLA) models enable robots to predict actions directly from visual observations and language instructions, but adapting them to new environments still depends on costly action-labeled demonstrations. To reduce this dependence, we study semi-supervised VLA adaptation under limited supervision signals, where only a small portion of trajectories contain robot actions and the remaining trajectories provide action-unlabeled vision-language observations. Unlike standard semi-supervised learning, the missing supervision is an embodied action signal that must be visually grounded, language-consistent, physically feasible, and temporally stable. To address this problem, we propose SemiVLA, a self-distilled teacher-student framework that learns from reliable pseudo-actions on unlabeled trajectories. SemiVLA introduces a VLA-specific reliability controller to assess vision-language alignment, action feasibility, and temporal transition consistency, and further updates the teacher through a Bottleneck-Projected Alignment Update to avoid noisy feedback contamination. With OpenVLA as the backbone, SemiVLA consistently improves multiple PEFT strategies across LIBERO and CALVIN. Under 10\\% labeled trajectories, SemiVLA with Selective LoRA achieves 89.0\\% average success on LIBERO, outperforming supervised LoRA by 8.0 points without extra inference cost.",
+      "authors": [
+        "Hongyang He",
+        "Jiuming Liu",
+        "Victor Sanchez"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.ET"
+      ],
+      "published": "2026-06-19T14:42:52+00:00",
+      "link": "https://arxiv.org/pdf/2606.21493v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "semi-supervised VLA model for robot action from language and vision, embodied agents following instructions",
+      "llm_evidence_cn": "半监督视觉语言动作模型，机器人从语言指令学习动作，体现指令跟随导航",
+      "llm_evidence": "半监督视觉语言动作模型，机器人从语言指令学习动作，体现指令跟随导航",
+      "canonical_evidence": "半监督视觉语言动作模型，机器人从语言指令学习动作，体现指令跟随导航",
+      "llm_tldr_en": "SemiVLA proposes a self-distilled teacher-student framework for semi-supervised VLA adaptation, reducing dependency on action-labeled demonstrations while maintaining performance for instruction following.",
+      "llm_tldr_cn": "视觉语言动作（VLA）模型依赖大量动作标注的演示数据，适应新环境成本高。本文提出SemiVLA，一种自蒸馏师生框架，利用少量标注和大量未标注轨迹进行半监督学习。该方法生成的伪动作具有视觉接地、语言一致性和物理可行性，在多个机器人环境上显著降低了标注需求，同时保持高指令跟随准确率。",
+      "llm_tldr": "视觉语言动作（VLA）模型依赖大量动作标注的演示数据，适应新环境成本高。本文提出SemiVLA，一种自蒸馏师生框架，利用少量标注和大量未标注轨迹进行半监督学习。该方法生成的伪动作具有视觉接地、语言一致性和物理可行性，在多个机器人环境上显著降低了标注需求，同时保持高指令跟随准确率。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.20755v1",
+      "source": "arxiv",
+      "title": "UNSEEN: Uncertainty-aware Navigation via Sparse Estimation in Unknown Environments",
+      "abstract": "Visual navigation in unknown environments remains a core challenge in mobile robotics, especially for resource-constrained platforms. Most existing approaches rely on loosely coupled modular pipelines and strong assumptions on perception quality or environmental structure, often resorting to multi-modal sensor suites that increase system complexity and deployment cost. Vision-only navigation offers a lightweight alternative, but its performance degrades severely under motion blur, low texture, and illumination changes, largely because they neglect the tight coupling between commanded motion and perception. While perception-aware methods partially address this issue, they typically optimize individual modules and fail to propagate uncertainty consistently across the navigation stack. In this paper, we present UNSEEN, a unified uncertainty- and perception-aware navigation framework that explicitly couples localization, mapping, and planning using only a front-mounted camera. UNSEEN estimates sparse maps and robot poses with associated uncertainties at 6Hz, and leverages them to plan trajectories that jointly optimize task progress and estimation accuracy in receding-horizon. Simulations and extensive real-world experiments in unknown environments demonstrate the robustness of the proposed approach, with UNSEEN-SLAM reducing absolute translational error by 9.8% and UNSEEN-Plan improving estimation accuracy by up to 45% compared to state-of-the-art methods, while achieving a 100% task success rate.",
+      "authors": [
+        "Tommaso Faraci",
+        "Marco Camurri",
+        "Daniele Fontanelli",
+        "Luigi Palopoli"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-18T07:54:07+00:00",
+      "link": "https://arxiv.org/pdf/2606.20755v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "visual navigation in unknown environments with uncertainty awareness",
+      "llm_evidence_cn": "未知环境中的不确定性感知视觉导航",
+      "llm_evidence": "未知环境中的不确定性感知视觉导航",
+      "canonical_evidence": "未知环境中的不确定性感知视觉导航",
+      "llm_tldr_en": "UNSEEN designs an uncertainty-aware visual navigation method for unknown environments, coupling perception and motion to improve robustness under challenging conditions.",
+      "llm_tldr_cn": "针对视觉导航在未知环境中性能退化的问题，该文提出UNSEEN框架，通过稀疏估计显式传播感知不确定性并紧密耦合运动控制。在资源受限平台上验证了方法的有效性，显著提升了在运动模糊、低纹理等挑战条件下的导航鲁棒性。该工作强调了感知-运动联合建模的重要性，为轻量化导航系统提供了借鉴。",
+      "llm_tldr": "针对视觉导航在未知环境中性能退化的问题，该文提出UNSEEN框架，通过稀疏估计显式传播感知不确定性并紧密耦合运动控制。在资源受限平台上验证了方法的有效性，显著提升了在运动模糊、低纹理等挑战条件下的导航鲁棒性。该工作强调了感知-运动联合建模的重要性，为轻量化导航系统提供了借鉴。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.25629v1",
+      "source": "arxiv",
+      "title": "Event-Adaptive Motion Planning with Distilled Vision-Language Model in Safety-Critical Situations",
+      "abstract": "Robot navigation in safety-critical scenarios faces significant challenges from unforeseen semantic events, where collisions arise primarily from the unpredictable behaviors of dynamic agents rather than unseen objects. While large vision-language models (VLMs) offer remarkable capabilities in commonsense reasoning, frequently invoking them within the continuous control loop introduces severe computational latency, fundamentally destabilizing physical execution. To address these challenges, we propose event-adaptive motion planning (EAMP), an efficient framework for VLM-based robot navigation. Specifically, a prompt-configurable semantic event trigger (PC-SET) selectively activates semantic intervention by continuously monitoring short temporal clips for behavioral anomalies. Upon triggering, an event-triggered distilled SemNav-VLM, fine-tuned via physically verified semantic distillation, maps detected anomalies into discrete strategy-level decisions. Subsequently, a semantic model predictive control (SMPC) module translates these strategies into dynamic reconfigurations of optimization objectives and geometric references. Extensive experiments in safety-critical logistics scenarios demonstrate that EAMP effectively aligns high-level reasoning with low-level control, significantly improving dynamic safety margins over existing baselines while preserving real-time efficiency.",
+      "authors": [
+        "Zhenwei Huang",
+        "Changsheng You",
+        "Shuai Wang",
+        "Chao Zhou",
+        "Wei Xu",
+        "Yi Gong"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-24T09:35:26+00:00",
+      "link": "https://arxiv.org/pdf/2606.25629v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "VLM-based motion planning for robot navigation in safety-critical situations",
+      "llm_evidence_cn": "基于视觉语言模型的安全关键场景机器人导航运动规划",
+      "llm_evidence": "基于视觉语言模型的安全关键场景机器人导航运动规划",
+      "canonical_evidence": "基于视觉语言模型的安全关键场景机器人导航运动规划",
+      "llm_tldr_en": "Proposes event-adaptive motion planning with distilled VLM for efficient and safe robot navigation in safety-critical dynamic environments.",
+      "llm_tldr_cn": "该论文针对安全关键场景中的机器人导航，提出事件自适应运动规划框架EAMP。它利用提炼后的视觉语言模型进行语义事件触发，在不引入过大计算延迟的前提下处理动态代理的意外行为，实现了高效且安全的导航控制。",
+      "llm_tldr": "该论文针对安全关键场景中的机器人导航，提出事件自适应运动规划框架EAMP。它利用提炼后的视觉语言模型进行语义事件触发，在不引入过大计算延迟的前提下处理动态代理的意外行为，实现了高效且安全的导航控制。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.24814v1",
+      "source": "arxiv",
+      "title": "Vision-Language Model Reasoning for Contextual Semantic Mapping in Intralogistics",
+      "abstract": "Autonomous mobile robots operating in intralogistics environments rely on geometric maps for localization and navigation, but lack semantic understanding of objects and their contextual properties. We present a contextual semantic mapping pipeline that combines SLAM-based geometric mapping, SAM-based instance segmentation, instance clustering, and VLM multi-view reasoning to produce a contextual semantic map representation encoding geometric structure, object class, and object movability. By aggregating observations across multiple viewpoints and querying a VLM in a zero-shot, open-vocabulary setting, the pipeline infers contextual object properties--here demonstrated through movability--without requiring task-specific training or predefined object categories. We evaluate three VLMs under two prompting strategies and conduct a component-wise analysis of the pipeline. The proposed pipeline achieves 98.93 % mIoU for semantic classification and 89.17 % mAcc for object movability estimation. Component analysis identifies VLM reasoning as the primary bottleneck for contextual understanding and instance clustering as the main limitation for panoptic performance. The resulting semantic map supports context-aware filtering and robust navigation in dynamic intralogistics environments.",
+      "authors": [
+        "Marvin Rüdt",
+        "Hao Pang",
+        "Constantin Enke",
+        "Zäzilia Seibold",
+        "Kai Furmans"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-23T16:59:52+00:00",
+      "link": "https://arxiv.org/pdf/2606.24814v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "VLM reasoning for contextual semantic mapping, enabling visual language understanding for navigation",
+      "llm_evidence_cn": "VLM推理用于上下文语义地图构建，增强导航中的视觉语言理解",
+      "llm_evidence": "VLM推理用于上下文语义地图构建，增强导航中的视觉语言理解",
+      "canonical_evidence": "VLM推理用于上下文语义地图构建，增强导航中的视觉语言理解",
+      "llm_tldr_en": "Proposes a contextual semantic mapping pipeline using VLM multi-view reasoning to infer object movability, improving semantic understanding for robot navigation.",
+      "llm_tldr_cn": "针对自主移动机器人缺乏环境语义理解的问题，提出结合SLAM、SAM分割和VLM多视角推理的语义地图构建流水线，能够在零样本条件下推断物体可移动性等上下文属性。实验证明该方法无需任务特定训练即可有效构建语义地图，提升了机器人在仓储等环境中的导航能力。",
+      "llm_tldr": "针对自主移动机器人缺乏环境语义理解的问题，提出结合SLAM、SAM分割和VLM多视角推理的语义地图构建流水线，能够在零样本条件下推断物体可移动性等上下文属性。实验证明该方法无需任务特定训练即可有效构建语义地图，提升了机器人在仓储等环境中的导航能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.25160v1",
+      "source": "arxiv",
+      "title": "Toward Low-Latency Vision-Language Models with Doubly-Correct Predictions in Egocentric Visual Understanding",
+      "abstract": "The rapid rise of Vision-Language Models (VLMs) in egocentric visual understanding has made low-latency inference in human-robot collaborative (HRC) tasks increasingly critical. Weight pruning techniques developed for VLMs to shrink model size and computation can be readily applied to satisfy the efficiency demands of on-board processing and real-time interactive robotics. Moreover, safe human-robot interaction demands pruning strategies that preserve doubly-correct predictions; outputs must be both accurate and evidentially grounded to mitigate risks and ensure user trust. In this paper, we present a new study of VLM pruning through the lens of doubly-correct prediction. Our experiments surprisingly show that existing pruning methods often preserve the right evidence localization but undermine correct prediction. To address this, we propose a rationale-informed pruning strategy that better aligns evidence with decisions. Benchmark results on egocentric video datasets demonstrate that our method not only achieves the highest prediction accuracy but also outperforms existing approaches in attaining doubly-correct predictions. We aim to stimulate research on efficient and reliable VLMs, ensuring accuracy-driven advances align with the transparency, auditability, and safety required for responsible human-robot interaction and embodied intelligence.",
+      "authors": [
+        "Qitong Wang",
+        "Fan Du",
+        "Pranav Maneriker",
+        "Jihui Jin",
+        "Christopher Rasmussen"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-06-23T20:46:54+00:00",
+      "link": "https://arxiv.org/pdf/2606.25160v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Vision-language models for egocentric visual understanding",
+      "llm_evidence_cn": "用于自我中心视觉理解的视觉语言模型",
+      "llm_evidence": "用于自我中心视觉理解的视觉语言模型",
+      "canonical_evidence": "用于自我中心视觉理解的视觉语言模型",
+      "llm_tldr_en": "This paper studies weight pruning of VLMs for low-latency egocentric visual understanding, preserving doubly-correct predictions.",
+      "llm_tldr_cn": "针对视觉语言模型（VLM）在自我中心视觉理解中的低延迟推理需求，本文研究了权重剪枝策略，并引入“双重正确”预测要求，即输出既要准确又要基于证据。实验表明现有剪枝方法在保持准确性和可解释性方面存在不足。该工作为安全人机协作中的实时VLM部署提供了重要见解。",
+      "llm_tldr": "针对视觉语言模型（VLM）在自我中心视觉理解中的低延迟推理需求，本文研究了权重剪枝策略，并引入“双重正确”预测要求，即输出既要准确又要基于证据。实验表明现有剪枝方法在保持准确性和可解释性方面存在不足。该工作为安全人机协作中的实时VLM部署提供了重要见解。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.25162v1",
+      "source": "arxiv",
+      "title": "fARfetch: Enabling Collocated AR-HRC in Large Visually Diverse Environments with VLM-Driven AR Content Adaptation",
+      "abstract": "Augmented Reality (AR) can improve collocated human-robot collaboration by making robot state and intent visible and enabling intuitive control, yet large, visually diverse environments like the outdoors challenge both interaction and content legibility, especially at long distances and beyond visual line of sight. We present fARfetch, an AR-HRC system that integrates (i) shared semantic environment mapping across an AR headset and robot that visualizes detected landmarks in AR to support landmark-grounded go-to commands, (ii) a context-aware world-in-miniature representation of the shared environment for fine-grained path authoring, and (iii) vision-language-model driven AR view management that jointly adapts virtual content color, size, and orientation to maintain legibility in large visually diverse environments. We implement fARfetch with a Meta Quest 3 headset and Unitree Go2 quadruped robot, and conduct a within-subjects user study (N=13) on a real-world large-scale (30.5m) outdoor inspection task. fARfetch yielded significantly faster completion times than a non-AR baseline (66%) and significantly lower workload in mental demand (-43%), temporal demand (-34%), and frustration (-66%). A custom legibility survey indicated fARfetch effectively maintained virtual content legibility in the large outdoor environment.",
+      "authors": [
+        "Christian Fronk",
+        "Hanting Ye",
+        "David Hunt",
+        "Miroslav Pajic",
+        "Maria Gorlatova"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV",
+        "cs.HC"
+      ],
+      "published": "2026-06-23T20:51:08+00:00",
+      "link": "https://arxiv.org/pdf/2606.25162v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "landmark-grounded go-to commands and VLM-driven AR view management for instruction following navigation",
+      "llm_evidence_cn": "基于地标的导航指令和VLM驱动的AR视角管理，用于指令跟随导航",
+      "llm_evidence": "基于地标的导航指令和VLM驱动的AR视角管理，用于指令跟随导航",
+      "canonical_evidence": "基于地标的导航指令和VLM驱动的AR视角管理，用于指令跟随导航",
+      "llm_tldr_en": "fARfetch uses VLM-driven AR content adaptation to enable collocated human-robot navigation with landmark-grounded go-to commands and path authoring, relevant to instruction following navigation.",
+      "llm_tldr_cn": "针对远程协作中机器人指令跟随导航的挑战，提出fARfetch系统，结合共享语义环境地图和VLM驱动的AR视图管理，支持基于地标的导航指令和路径规划。实验表明该系统能有效提升大范围环境下的交互效率和导航准确性，为AR辅助的具身导航提供新方法。",
+      "llm_tldr": "针对远程协作中机器人指令跟随导航的挑战，提出fARfetch系统，结合共享语义环境地图和VLM驱动的AR视图管理，支持基于地标的导航指令和路径规划。实验表明该系统能有效提升大范围环境下的交互效率和导航准确性，为AR辅助的具身导航提供新方法。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.25360v1",
+      "source": "arxiv",
+      "title": "Decoupling Semantics and Geometric Grounding: Spatial Visual Prompts for Language-Conditioned Imitation Learning",
+      "abstract": "While end-to-end Vision-Language-Action (VLA) models show promise in robotic manipulation, their monolithic paradigm inherently couples semantic reasoning and spatial control. This creates a severe alignment bottleneck, limiting precise target disambiguation in data-constrained imitation learning. To overcome this, we propose SVP-IL, a decoupled architecture that explicitly extracts spatial visual grounding from the action generation loop. By leveraging vision-language foundation models, we parse instructions into zero-shot geometric masks, translating language into explicit Spatial Visual Prompts (SVP). These priors are injected into a continuous action generator via a lightweight direct feature-level fusion mechanism. This integration provides explicit and uncorrupted spatial gradient guidance while ensuring highly stable optimization under low-data regimes. Extensive experiments demonstrate that SVP-IL significantly outperforms state-of-the-art VLAs and pure visuomotor baselines. Trained on as few as 50 to 100 demonstrations, SVP-IL improves average success rates on highly ambiguous language-conditioned tasks from 24.0% to 39.5%, achieving 67.8% on standard benchmarks. Real-world robotic experiments further validate its robustness and data efficiency in unstructured physical environments.",
+      "authors": [
+        "Yanzhe Tang",
+        "Xinyu Shao",
+        "Yuxuan Hu",
+        "Siyu Chen",
+        "Bowen Yang",
+        "Yajun Gao",
+        "Tongtong Cao",
+        "Xiu Li",
+        "Long Zeng"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-24T03:45:06+00:00",
+      "link": "https://arxiv.org/pdf/2606.25360v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "decoupled semantics and geometric grounding for language-conditioned tasks",
+      "llm_evidence_cn": "解耦语义与几何接地用于语言条件任务",
+      "llm_evidence": "解耦语义与几何接地用于语言条件任务",
+      "canonical_evidence": "解耦语义与几何接地用于语言条件任务",
+      "llm_tldr_en": "SVP-IL decouples semantic reasoning from spatial control in VLA models for manipulation, using spatial visual prompts from language instructions; not directly navigation but shares core vision-language grounding.",
+      "llm_tldr_cn": "该论文针对视觉-语言-动作模型在操作中耦合语义与空间控制导致的接地瓶颈问题，提出SVP-IL架构，利用视觉语言基础模型将指令解析为零样本几何掩码作为空间视觉提示，实现解耦。虽然聚焦操作而非导航，但所提的视觉语言接地方法可直接迁移至具身导航中的指令跟随场景，为VLN提供方法论参考。",
+      "llm_tldr": "该论文针对视觉-语言-动作模型在操作中耦合语义与空间控制导致的接地瓶颈问题，提出SVP-IL架构，利用视觉语言基础模型将指令解析为零样本几何掩码作为空间视觉提示，实现解耦。虽然聚焦操作而非导航，但所提的视觉语言接地方法可直接迁移至具身导航中的指令跟随场景，为VLN提供方法论参考。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.25504v1",
+      "source": "arxiv",
+      "title": "GROVE: Grounded Pedestrian Simulation via Natural Language for Interactive Social Robot Navigation",
+      "abstract": "Pedestrian simulation is a critical component for training and deploying social robot navigation approaches, yet it remains a largely rigid system that repeatedly requires manual data generation to define even simple scenarios. We propose GROVE, a text-to-scenario pedestrian simulation framework that combines state-of-the-art approaches to produce realistic, socially challenging scenarios for social robot navigation. Our framework allows users to customize one of several common presets (emergency, queuing, normal) or even enter a fully independent prompt to generate a highly customizable pedestrian simulation. Multiple modules separately ensure the realism and soundness of long-horizon human behavior, medium-horizon pedestrian navigation, and short-horizon robot/social interactions. Each module is tuned by the prompt in a way that reflects the user intent across all aspects of pedestrian simulation. By dynamically selecting one of several state-of-the-art (SotA) approaches in our modules based on the scenario, we capture many situational nuances of pedestrian behavior in order to narrow the simulation-to-real (sim2real) gap. The human simulation is directly integrated into Isaac Sim, Gazebo, and RViz simulators for robot deployment in highly social environments. We validate our approach through qualitative comparison against existing pedestrian simulation baselines across scenarios of varying complexity in residential, hospital, and office environments. The result is a high-fidelity pedestrian simulation that challenges social robot navigation with complex, diverse, realistic human behaviors.",
+      "authors": [
+        "Duc Tai Nguyen",
+        "Volodymyr Shcherbyna",
+        "Anh Do Duc",
+        "Zhengcheng Shen",
+        "Teham Buiyan",
+        "Linh Kästner"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-24T07:39:01+00:00",
+      "link": "https://arxiv.org/pdf/2606.25504v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "text-to-scenario pedestrian simulation for social robot navigation",
+      "llm_evidence_cn": "用于社交机器人导航的文本到场景行人仿真",
+      "llm_evidence": "用于社交机器人导航的文本到场景行人仿真",
+      "canonical_evidence": "用于社交机器人导航的文本到场景行人仿真",
+      "llm_tldr_en": "GROVE enables text-to-scenario pedestrian simulation for social robot navigation, supporting customizable presets and free-form prompts to generate realistic social challenges.",
+      "llm_tldr_cn": "针对社交机器人导航训练中行人仿真缺乏灵活性的问题，提出GROVE框架，允许用户通过文本描述或预设模式生成逼真的行人场景。系统结合多个模块分别建模长期行为、中期动态和短期避碰。该框架降低了仿真数据生成成本，并支持高度定制化的社交挑战场景，为导航策略训练提供了有力工具。",
+      "llm_tldr": "针对社交机器人导航训练中行人仿真缺乏灵活性的问题，提出GROVE框架，允许用户通过文本描述或预设模式生成逼真的行人场景。系统结合多个模块分别建模长期行为、中期动态和短期避碰。该框架降低了仿真数据生成成本，并支持高度定制化的社交挑战场景，为导航策略训练提供了有力工具。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.25800v1",
+      "source": "arxiv",
+      "title": "ROAD-VLA: Robust Online Adaptation via Self-Distillation for Vision-Language-Action Models",
+      "abstract": "Effective online adaptation of vision-language-action (VLA) models remains challenging, as sparse rewards provide weak supervision for high-dimensional autoregressive action policies. Although self-distillation can in principle provide denser training signals, we find that text-based privileged teachers conditioned on demonstrations, retrieved experiences, or high-level plans are ineffective for VLA adaptation, exposing a modality gap between symbolic guidance and low-level robot actions. We propose ROAD-VLA, an advantage-guided self-distillation framework that constructs a proximal teacher directly in action space by perturbing action-token logits with calibrated advantage estimates. This converts sparse rewards into dense token-level supervision while keeping the teacher close to the current policy. We further derive a policy-improvement lower bound under calibrated advantages and accurate teacher matching. Across seven robotic manipulation environments with in-distribution and out-of-distribution shifts, ROADVLA outperforms PPO in nearly all settings, demonstrating robust online VLA adaptation.",
+      "authors": [
+        "Kejing Wang",
+        "Toan Nguyen",
+        "Minh Hoang Nguyen",
+        "Simon Khan",
+        "Flora D. Salim"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.RO"
+      ],
+      "published": "2026-06-24T13:17:59+00:00",
+      "link": "https://arxiv.org/pdf/2606.25800v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "online adaptation for vision-language-action models applicable to embodied navigation",
+      "llm_evidence_cn": "视觉-语言-行动模型的在线自适应方法可应用于具身导航",
+      "llm_evidence": "视觉-语言-行动模型的在线自适应方法可应用于具身导航",
+      "canonical_evidence": "视觉-语言-行动模型的在线自适应方法可应用于具身导航",
+      "llm_tldr_en": "ROAD-VLA introduces advantage-guided self-distillation for online adaptation of VLA models, converting sparse rewards into dense token-level signals without requiring text-based teachers.",
+      "llm_tldr_cn": "视觉-语言-行动（VLA）模型在线自适应面临稀疏奖励问题，传统自蒸馏使用文本教师存在模态差距。本文提出ROAD-VLA，一种优势引导的自蒸馏框架，通过在动作空间内构建近端教师（扰动动作标记对数几率），将稀疏奖励转化为密集的标记级信号。在多个机器人操控基准上，ROAD-VLA显著提升了自适应效率，为VLA模型的持续学习提供了有效方法。",
+      "llm_tldr": "视觉-语言-行动（VLA）模型在线自适应面临稀疏奖励问题，传统自蒸馏使用文本教师存在模态差距。本文提出ROAD-VLA，一种优势引导的自蒸馏框架，通过在动作空间内构建近端教师（扰动动作标记对数几率），将稀疏奖励转化为密集的标记级信号。在多个机器人操控基准上，ROAD-VLA显著提升了自适应效率，为VLA模型的持续学习提供了有效方法。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
