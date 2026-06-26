@@ -1,0 +1,351 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-26T21:55:41.260338+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 1,
+    "deep_cap": 6,
+    "deep_selected": 1,
+    "quick_candidates": 7,
+    "quick_skim_target": 11,
+    "quick_selected": 7
+  },
+  "deep_dive": [
+    {
+      "id": "2606.26047v1",
+      "source": "arxiv",
+      "title": "Learning Robot Visual Navigation in Crowds via Intention-Aware Scene Representations",
+      "abstract": "Robot crowd navigation requires the ability to infer human intentions while accounting for the structural constraints of the environment. Currently, deep reinforcement learning (DRL) provides a promising method for learning navigation policies that understand human intentions. However, most of them rely on limited scene representations, treating pedestrians as simple 2D points and ignoring rich visual cues from both humans and the environment. To address this issue, we introduce iCrowdNav, a novel visual crowd navigation method with intention-aware scene representations, to encode behavioral and structural context from egocentric visual observations. Our method employs two key components: a spatio-temporal encoder for extracting occupancy features of the scene, and Intent-Interact Former (I$^2$ Former), an attention-based module that encodes human poses to infer pedestrians' motion intentions. These features are integrated into a compact state embedding that supports effective DRL policy training. Extensive experiments show that our method achieves superior performance over baselines, and real-world deployment demonstrates vision-based crowd navigation.",
+      "authors": [
+        "Han Bao",
+        "Bingyi Xia",
+        "Hanjing Ye",
+        "Yu Zhan",
+        "Hao Cheng",
+        "Baozhi Jia",
+        "Wenjun Xu",
+        "Jiankun Wang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-24T17:26:17+00:00",
+      "link": "https://arxiv.org/pdf/2606.26047v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "robot visual navigation in crowds using intention-aware scene representations",
+      "llm_evidence_cn": "使用意图感知场景表示的机器人人群视觉导航",
+      "llm_evidence": "使用意图感知场景表示的机器人人群视觉导航",
+      "canonical_evidence": "使用意图感知场景表示的机器人人群视觉导航",
+      "llm_tldr_en": "Introduces iCrowdNav, a visual crowd navigation method with intention-aware scene representations using DRL, encoding human intentions and structural context.",
+      "llm_tldr_cn": "针对机器人人群导航中仅将行人视为二维点而忽略丰富视觉线索的问题，提出iCrowdNav，通过意图感知场景表示，利用时空编码器提取行人和环境的行为及结构上下文，在仿真和真实场景中显著提升导航安全性和效率。",
+      "llm_tldr": "针对机器人人群导航中仅将行人视为二维点而忽略丰富视觉线索的问题，提出iCrowdNav，通过意图感知场景表示，利用时空编码器提取行人和环境的行为及结构上下文，在仿真和真实场景中显著提升导航安全性和效率。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.25504v1",
+      "source": "arxiv",
+      "title": "GROVE: Grounded Pedestrian Simulation via Natural Language for Interactive Social Robot Navigation",
+      "abstract": "Pedestrian simulation is a critical component for training and deploying social robot navigation approaches, yet it remains a largely rigid system that repeatedly requires manual data generation to define even simple scenarios. We propose GROVE, a text-to-scenario pedestrian simulation framework that combines state-of-the-art approaches to produce realistic, socially challenging scenarios for social robot navigation. Our framework allows users to customize one of several common presets (emergency, queuing, normal) or even enter a fully independent prompt to generate a highly customizable pedestrian simulation. Multiple modules separately ensure the realism and soundness of long-horizon human behavior, medium-horizon pedestrian navigation, and short-horizon robot/social interactions. Each module is tuned by the prompt in a way that reflects the user intent across all aspects of pedestrian simulation. By dynamically selecting one of several state-of-the-art (SotA) approaches in our modules based on the scenario, we capture many situational nuances of pedestrian behavior in order to narrow the simulation-to-real (sim2real) gap. The human simulation is directly integrated into Isaac Sim, Gazebo, and RViz simulators for robot deployment in highly social environments. We validate our approach through qualitative comparison against existing pedestrian simulation baselines across scenarios of varying complexity in residential, hospital, and office environments. The result is a high-fidelity pedestrian simulation that challenges social robot navigation with complex, diverse, realistic human behaviors.",
+      "authors": [
+        "Duc Tai Nguyen",
+        "Volodymyr Shcherbyna",
+        "Anh Do Duc",
+        "Zhengcheng Shen",
+        "Teham Buiyan",
+        "Linh Kästner"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-24T07:39:01+00:00",
+      "link": "https://arxiv.org/pdf/2606.25504v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "text-to-scenario pedestrian simulation for social robot navigation",
+      "llm_evidence_cn": "利用自然语言生成行人仿真场景，用于社交机器人导航训练",
+      "llm_evidence": "利用自然语言生成行人仿真场景，用于社交机器人导航训练",
+      "canonical_evidence": "利用自然语言生成行人仿真场景，用于社交机器人导航训练",
+      "llm_tldr_en": "GROVE enables users to generate realistic pedestrian simulation scenarios via natural language prompts for social robot navigation training.",
+      "llm_tldr_cn": "本文针对行人仿真系统缺乏灵活性、需要大量手动数据生成的问题，提出GROVE框架，允许用户通过自然语言提示或预设模版（如紧急、排队、正常）快速生成多样化的行人仿真场景。框架结合多个模块确保长时程人类行为的真实性和合理性，有效支持社交机器人导航的训练与部署。实验表明GROVE能生成符合文本描述的高质量场景。",
+      "llm_tldr": "本文针对行人仿真系统缺乏灵活性、需要大量手动数据生成的问题，提出GROVE框架，允许用户通过自然语言提示或预设模版（如紧急、排队、正常）快速生成多样化的行人仿真场景。框架结合多个模块确保长时程人类行为的真实性和合理性，有效支持社交机器人导航的训练与部署。实验表明GROVE能生成符合文本描述的高质量场景。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.24767v1",
+      "source": "arxiv",
+      "title": "Compact Object-Level Representations with Open-Vocabulary Understanding for Indoor Visual Relocalization",
+      "abstract": "Indoor visual relocalization plays a critical role in emerging spatial and embodied AI applications. However, prior research was predominantly devoted to low-level vision schemes, struggling to perceive scene semantics and compositions, which limits both interpretability and applicability. In this paper, we explore the issue of how to organize rich object information in a scene, including semantics, layout, and geometry, into a structured map representation, thereby utilizing object units exclusively to drive the camera relocalization task. To this end, we propose OpenReLoc, a camera relocalization system designed to provide scene understanding and accurate pose estimation capabilities. Leveraging recent foundation models, we first introduce a multi-modal mechanism to integrate open-vocabulary semantic knowledge for effective 2D-3D object matching. Additionally, we design object-oriented reference frames as position priors, paired with a reference frame selection strategy based on the Distance-IoU (DIOU), enabling extension to scalable scenes. Moreover, to ensure stable and accurate pose optimization, we also propose a dual-path 2D Iterative Closest Pixel loss guided by object shape. Experimental results demonstrate that OpenReLoc achieves superior relocalization recall and accuracy across various datasets. Our source code will be released upon acceptance.",
+      "authors": [
+        "Zhaopeng Cui",
+        "Jiarui Hu",
+        "Jingbo Liu",
+        "Boming Zhao",
+        "Xiyue Guo",
+        "Boyin Feng",
+        "Haocheng Peng",
+        "Yujun Shen",
+        "Hujun Bao",
+        "Guofeng Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-06-23T16:27:04+00:00",
+      "link": "https://arxiv.org/pdf/2606.24767v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "indoor visual relocalization for embodied AI",
+      "llm_evidence_cn": "面向具身AI的室内视觉重定位",
+      "llm_evidence": "面向具身AI的室内视觉重定位",
+      "canonical_evidence": "面向具身AI的室内视觉重定位",
+      "llm_tldr_en": "Proposes OpenReLoc, a camera relocalization system using object-level representations with open-vocabulary understanding from foundation models, improving accuracy and interpretability for indoor embodied applications.",
+      "llm_tldr_cn": "该论文针对传统室内视觉重定位缺乏语义理解的问题，提出OpenReLoc系统，利用基础模型构建包含语义、布局和几何的紧凑目标级地图，仅通过目标单元驱动重定位。实验表明该方法在多个数据集上提升了定位精度和可解释性，为具身导航中的场景理解提供了结构化表征方案。",
+      "llm_tldr": "该论文针对传统室内视觉重定位缺乏语义理解的问题，提出OpenReLoc系统，利用基础模型构建包含语义、布局和几何的紧凑目标级地图，仅通过目标单元驱动重定位。实验表明该方法在多个数据集上提升了定位精度和可解释性，为具身导航中的场景理解提供了结构化表征方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.26964v1",
+      "source": "arxiv",
+      "title": "Look-Before-Move: Narrative-Grounded World Visual Attention in Dynamic 3D Story Worlds",
+      "abstract": "As embodied AI and world models increasingly operate in dynamic 3D environments, visual perception must move beyond passively interpreting given observations toward actively deciding what to observe. We study this problem through camera planning in dynamic 3D story worlds, where the camera must not only generate smooth motion, but also decide what visual evidence should be acquired before it moves. We formulate this capability as Narrative-Grounded World Visual Attention, where the camera acts as an embodied observer that determines what to observe, how to compose the observation, and how to shift attention over time under narrative intent and physical 3D constraints. To realize this capability, we propose Look-Before-Move, a camera planning framework that separates observation specification from motion execution. It first builds a Semantic Observation Contract to convert directorial intent into executable visual constraints, then performs Monte Carlo Viewpoint Search to find narrative-compliant and geometrically feasible viewpoints, and finally applies Semantic Trajectory Grounding to connect selected viewpoints into continuous, collision-aware, and temporally coherent camera motion. We further construct a dynamic 3D Story World Benchmark based on StoryBlender, covering 50 stories, 457 scenes, and 1585 shots with animated characters, semantic scene configurations, and executable 3D environments. Experiments show that our framework improves subject perception, intent consistency, and trajectory quality over representative baselines, demonstrating the importance of organizing visual attention before generating camera motion.",
+      "authors": [
+        "Jiaming Bian",
+        "Bingliang Li",
+        "Yuehao Wu",
+        "Pichao Wang",
+        "Zhi Wang",
+        "Hailan Ma",
+        "Huadong Mo",
+        "Zhenhong Sun"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-06-25T12:38:39+00:00",
+      "link": "https://arxiv.org/pdf/2606.26964v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "embodied camera planning in 3D worlds",
+      "llm_evidence_cn": "3D世界中的具身相机规划",
+      "llm_evidence": "3D世界中的具身相机规划",
+      "canonical_evidence": "3D世界中的具身相机规划",
+      "llm_tldr_en": "Look-Before-Move formulates narrative-grounded visual attention for camera planning in dynamic 3D story worlds, deciding what to observe before moving.",
+      "llm_tldr_cn": "动态3D故事世界中的相机规划需要主动决定观察内容，而非被动处理。本文提出叙事引导的世界视觉注意力，使相机作为具身观察者，根据叙事意图和物理约束决定观察目标、构图和注意力转移。Look-Before-Move方法实现了这种能力，在3D世界中生成连贯的镜头运动。",
+      "llm_tldr": "动态3D故事世界中的相机规划需要主动决定观察内容，而非被动处理。本文提出叙事引导的世界视觉注意力，使相机作为具身观察者，根据叙事意图和物理约束决定观察目标、构图和注意力转移。Look-Before-Move方法实现了这种能力，在3D世界中生成连贯的镜头运动。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.25800v1",
+      "source": "arxiv",
+      "title": "ROAD-VLA: Robust Online Adaptation via Self-Distillation for Vision-Language-Action Models",
+      "abstract": "Effective online adaptation of vision-language-action (VLA) models remains challenging, as sparse rewards provide weak supervision for high-dimensional autoregressive action policies. Although self-distillation can in principle provide denser training signals, we find that text-based privileged teachers conditioned on demonstrations, retrieved experiences, or high-level plans are ineffective for VLA adaptation, exposing a modality gap between symbolic guidance and low-level robot actions. We propose ROAD-VLA, an advantage-guided self-distillation framework that constructs a proximal teacher directly in action space by perturbing action-token logits with calibrated advantage estimates. This converts sparse rewards into dense token-level supervision while keeping the teacher close to the current policy. We further derive a policy-improvement lower bound under calibrated advantages and accurate teacher matching. Across seven robotic manipulation environments with in-distribution and out-of-distribution shifts, ROADVLA outperforms PPO in nearly all settings, demonstrating robust online VLA adaptation.",
+      "authors": [
+        "Kejing Wang",
+        "Toan Nguyen",
+        "Minh Hoang Nguyen",
+        "Simon Khan",
+        "Flora D. Salim"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.RO"
+      ],
+      "published": "2026-06-24T13:17:59+00:00",
+      "link": "https://arxiv.org/pdf/2606.25800v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "online adaptation of vision-language-action models via self-distillation",
+      "llm_evidence_cn": "通过自蒸馏在线自适应视觉-语言-动作模型",
+      "llm_evidence": "通过自蒸馏在线自适应视觉-语言-动作模型",
+      "canonical_evidence": "通过自蒸馏在线自适应视觉-语言-动作模型",
+      "llm_tldr_en": "ROAD-VLA uses advantage-guided self-distillation to adapt VLA models online, constructing a proximal teacher in action space to convert sparse rewards into dense token-level supervision.",
+      "llm_tldr_cn": "视觉-语言-动作（VLA）模型在线自适应困难，稀疏奖励难以监督高维自回归动作策略。本文提出ROAD-VLA框架，通过优势引导的自蒸馏在动作空间构建近端教师，对动作token逻辑进行扰动，将稀疏奖励转化为密集token级监督。实验表明该方法在机器人操作任务上实现高效在线适应。",
+      "llm_tldr": "视觉-语言-动作（VLA）模型在线自适应困难，稀疏奖励难以监督高维自回归动作策略。本文提出ROAD-VLA框架，通过优势引导的自蒸馏在动作空间构建近端教师，对动作token逻辑进行扰动，将稀疏奖励转化为密集token级监督。实验表明该方法在机器人操作任务上实现高效在线适应。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.25880v1",
+      "source": "arxiv",
+      "title": "USS: Unified Spatial-Semantic Prompts for Embodied Visual Tracking with Latent Dynamics Learning",
+      "abstract": "Embodied Visual Tracking (EVT) requires an agent to continuously follow a specified target while actively moving through dynamic environments. However, prevailing EVT paradigms predominantly rely on language-based target indication. While language is expressive and convenient, cluttered scenes often contain multiple objects that satisfy the same semantic description, leading to ambiguous target grounding. We therefore propose a paradigm shift, reframing target indication in EVT from text-only specification to unified spatial-semantic prompting. Based on this paradigm, we introduce Unified Spatial-Semantic Prompts for Embodied Visual Tracking with Latent Dynamics Learning, USS, an end-to-end embodied tracking framework that supports text, point, bounding box, and mask prompts within a unified architecture. USS encodes heterogeneous prompts with modality-specific encoders, fuses prompt tokens with visual features through hybrid attention, and decodes compact prompt-conditioned representations into egocentric waypoints. To further improve temporal robustness, USS incorporates a latent world model that predicts future representations through self-supervised alignment. Real-robot experiments demonstrate that explicit spatial target cues yield higher success rates than text-only prompts, particularly in scenarios involving similar distractors and longer-horizon tracking where maintaining instance-level target identity is critical. In the simulation benchmark, USS also achieves state-of-the-art performance among non-MLLM-based methods and competitive results against recent MLLM-based approaches with faster inference speed. Our findings reveal that spatial-semantic prompting provides a more precise and flexible target indication interface for embodied visual tracking. Project site: https://arescheah.github.io/uss-project-page/.",
+      "authors": [
+        "Yuchen Xie",
+        "Xinyu Zhou",
+        "Kuangji Zuo",
+        "Yanshuo Lu",
+        "Fengrui Huang",
+        "Boyu Ma",
+        "Jianfei Yang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-24T14:25:05+00:00",
+      "link": "https://arxiv.org/pdf/2606.25880v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified spatial-semantic prompts for embodied visual tracking",
+      "llm_evidence_cn": "具身视觉跟踪的统一空间-语义提示",
+      "llm_evidence": "具身视觉跟踪的统一空间-语义提示",
+      "canonical_evidence": "具身视觉跟踪的统一空间-语义提示",
+      "llm_tldr_en": "USS reframes target indication in embodied visual tracking from text-only to unified spatial-semantic prompting, enabling robust tracking in dynamic environments.",
+      "llm_tldr_cn": "现有具身视觉跟踪主要依赖语言描述指示目标，在杂乱场景中易产生歧义。本文提出USS框架，将目标指示从纯文本转向统一空间-语义提示，并引入潜在动力学学习，实现端到端跟踪。该方法有效处理了语义相同但空间位置不同的目标，在动态环境中表现鲁棒。",
+      "llm_tldr": "现有具身视觉跟踪主要依赖语言描述指示目标，在杂乱场景中易产生歧义。本文提出USS框架，将目标指示从纯文本转向统一空间-语义提示，并引入潜在动力学学习，实现端到端跟踪。该方法有效处理了语义相同但空间位置不同的目标，在动态环境中表现鲁棒。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.26839v1",
+      "source": "arxiv",
+      "title": "Ordinal Neural Collapse as a Representation Prior for Visual Navigation",
+      "abstract": "Learning robust navigation policies directly from visual observations remains a fundamental challenge in vision-based robotic navigation. In end-to-end imitation learning approaches, the visual encoder and action decoder are jointly optimized using a single action loss, which provides only an indirect supervisory signal to the encoder. This indirect supervision frequently results in the encoder learning ambiguous, action-agnostic representations. The problem is further complicated by substantial variations in scene structure and appearance across diverse environments, as well as the prevalence of visual distractors inherent to real-world navigation settings. Such action-agnostic features cause the navigation policy to produce inconsistent actions at ambiguous decision points, leading to navigation failure. To overcome these limitations, we propose ORION (Ordinal Neural Collapse for Visual Navigation), a method that explicitly organizes the encoder's representation space according to the ordinal structure of navigation actions. In the context of goal-directed navigation, ego-centric control categories from Far Left to Far Right exhibit a natural ordinal relationship in which neighboring classes share similar visual contexts, while semantically opposing classes differ substantially in appearance. We encourage class representations to be arranged sequentially along a single discriminative axis, while suppressing off-axis variance within each class. The pretrained encoder is then integrated into a diffusion-based navigation framework, and the full pipeline is fine-tuned end-to-end. Extensive experiments in both simulation and real-world settings show that ORION consistently outperforms end-to-end and neural collapse baselines in navigation success rate and goal progress, with notable gains in visually challenging scenarios such as complex multi-way intersections.",
+      "authors": [
+        "E-In Son",
+        "Jung-Taak Kim",
+        "Seung-Woo Seo"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-06-25T10:25:25+00:00",
+      "link": "https://arxiv.org/pdf/2606.26839v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "representation prior for visual navigation",
+      "llm_evidence_cn": "面向视觉导航的表征先验",
+      "llm_evidence": "面向视觉导航的表征先验",
+      "canonical_evidence": "面向视觉导航的表征先验",
+      "llm_tldr_en": "Proposes ordinal neural collapse as a representation prior for end-to-end visual navigation, improving encoder representations and policy consistency.",
+      "llm_tldr_cn": "视觉导航中端到端模仿学习的行为编码器因监督间接而学到模糊表征，导致策略不一致。本文引入序数神经坍缩作为表征先验，约束编码器学习具有序数结构的特征，从而生成动作感知的视觉表示。在多个导航环境中，该方法显著提升了策略的稳健性和泛化能力。",
+      "llm_tldr": "视觉导航中端到端模仿学习的行为编码器因监督间接而学到模糊表征，导致策略不一致。本文引入序数神经坍缩作为表征先验，约束编码器学习具有序数结构的特征，从而生成动作感知的视觉表示。在多个导航环境中，该方法显著提升了策略的稳健性和泛化能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.27251v1",
+      "source": "arxiv",
+      "title": "Advancing Omnimodal Embodied Agents from Isolated Skills to Everyday Physical Autonomy",
+      "abstract": "Building persistent embodied agents in unstructured environments demands unified orchestration of heterogeneous tools spanning both cyber (APIs, IoT) and physical (manipulation, navigation) domains, coupled with autonomous recovery from physical failures that inevitably arise over extended operation. Existing systems treat these as separate problems: VLM-based planners lack a unified cyber-physical action space, agent frameworks accumulate unbounded context that degrades temporal coherence, and VLA policies execute open-loop without detecting their own failures. We argue that persistent autonomy requires not a monolithic model but a hierarchical asynchronous architecture with explicit separation of planning, memory, and verification. To this end, we present OmniAct, a framework integrating a multimodal semantic planner for skill routing across unified action spaces, an adaptive hierarchical memory with event-boundary-driven compression for sub-linear context growth, and an asynchronous visual preemption engine that closes the semantic loop during physical execution. Across 40 real-world long-horizon tasks on two robotic platforms coordinating four IoT devices, OmniAct achieves consistent improvements in end-to-end success across all complexity levels, maintains near-flat token consumption over under 100k+ accumulated interaction tokens, and elevates mid-scale open-weight models to proprietary-level performance.",
+      "authors": [
+        "Junhao Shi",
+        "Zezheng Huai",
+        "Siyin Wang",
+        "Jia Chen",
+        "Yubang Wang",
+        "Zhaoye Fei",
+        "Hechang Chen",
+        "Jingjing Gong",
+        "Xipeng Qiu",
+        "Yu-Gang Jiang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-25T16:36:35+00:00",
+      "link": "https://arxiv.org/pdf/2606.27251v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "omnimodal embodied agents including navigation capability",
+      "llm_evidence_cn": "包括导航能力的全模态具身代理",
+      "llm_evidence": "包括导航能力的全模态具身代理",
+      "canonical_evidence": "包括导航能力的全模态具身代理",
+      "llm_tldr_en": "Proposes a hierarchical asynchronous architecture for persistent embodied agents that unifies cyber-physical actions, long-term memory, and failure recovery across manipulation and navigation.",
+      "llm_tldr_cn": "持久性具身代理需要在非结构化环境中统一协调网络与物理工具。现有系统将操纵、导航等分离处理。本文提出分层异步架构，明确分离规划、记忆与验证，支持任务编排、自主恢复。该架构为实现日常环境中的物理自主提供了统一框架。",
+      "llm_tldr": "持久性具身代理需要在非结构化环境中统一协调网络与物理工具。现有系统将操纵、导航等分离处理。本文提出分层异步架构，明确分离规划、记忆与验证，支持任务编排、自主恢复。该架构为实现日常环境中的物理自主提供了统一框架。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

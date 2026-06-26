@@ -6,53 +6,46 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-25
-- 运行时间：2026-06-25 20:52:10 UTC
+- 最新运行日期：2026-06-26
+- 运行时间：2026-06-26 22:00:04 UTC
 - 运行状态：成功
-- 本次总论文数：11
-- 精读区：2
-- 速读区：9
+- 本次总论文数：8
+- 精读区：1
+- 速读区：7
 
 ### 今日简报（AI）
-今日精读两篇高分论文，聚焦长程推理导航与层级场景图引导导航，速读9篇涵盖半监督VLA模型、事件自适应规划及未知环境导航。最值得关注的是RAVEN的视空间时间记忆方法（9.0分）与SAGE-Nav利用LLM规划和对齐融合（9.0分），它们分别突破了长程导航和复杂场景理解瓶颈。建议后续关注安全关键场景下的运动规划与未知环境不确定性导航的工程落地案例。
-- 详情：[/202606/25/README](/202606/25/README)
+今日聚焦机器人导航与视觉理解前沿，涵盖意图感知人群导航、自然语言驱动的社交导航及动态3D故事世界的视觉注意研究。  
+最值得关注的是精读论文《Learning Robot Visual Navigation in Crowds via Intention-Aware Scene Representations》，其意图感知场景表示显著提升了导航性能；速读中《GROVE》与《Look-Before-Move》分别从自然语言交互和叙事驱动视觉注意角度补充了交互能力。  
+建议普通读者优先精读8.0分论文，再结合《GROVE》理解多模态交互在社交导航中的实践。
+- 详情：[/202606/26/README](/202606/26/README)
 
 ### 精读区论文标签
-1. [RAVEN: Long-Horizon Reasoning & Navigation with a Visuo-Spatio-Temporal Memory](/202606/25/2606.25206v1-raven-long-horizon-reasoning--navigation-with-a-visuo-spatio-temporal-memory)  
-   标签：评分：9.0/10、query:vln
-   evidence：长程导航结合视觉语言记忆
-2. [SAGE-Nav: Leveraging LLM Planning and Alignment Fusion for Hierarchical Scene Graph-Guided Navigation](/202606/25/2606.25497v1-sage-nav-leveraging-llm-planning-and-alignment-fusion-for-hierarchical-scene-graph-guided-navigation)  
-   标签：评分：9.0/10、query:vln
-   evidence：基于LLM的层次化导航，结合场景图与指令跟随
+1. [Learning Robot Visual Navigation in Crowds via Intention-Aware Scene Representations](/202606/26/2606.26047v1-learning-robot-visual-navigation-in-crowds-via-intention-aware-scene-representations)  
+   标签：评分：8.0/10、query:vln
+   evidence：使用意图感知场景表示的机器人人群视觉导航
 
 ### 速读区论文标签
-1. [Semi-Supervised Vision-Language-Action Model](/202606/25/2606.21493v1-semi-supervised-vision-language-action-model)  
+1. [GROVE: Grounded Pedestrian Simulation via Natural Language for Interactive Social Robot Navigation](/202606/26/2606.25504v1-grove-grounded-pedestrian-simulation-via-natural-language-for-interactive-social-robot-navigation)  
    标签：评分：7.0/10、query:vln
-   evidence：半监督视觉语言动作模型，机器人从语言指令学习动作，体现指令跟随导航
-2. [Event-Adaptive Motion Planning with Distilled Vision-Language Model in Safety-Critical Situations](/202606/25/2606.25629v1-event-adaptive-motion-planning-with-distilled-vision-language-model-in-safety-critical-situations)  
+   evidence：利用自然语言生成行人仿真场景，用于社交机器人导航训练
+2. [Look-Before-Move: Narrative-Grounded World Visual Attention in Dynamic 3D Story Worlds](/202606/26/2606.26964v1-look-before-move-narrative-grounded-world-visual-attention-in-dynamic-3d-story-worlds)  
    标签：评分：7.0/10、query:vln
-   evidence：基于视觉语言模型的安全关键场景机器人导航运动规划
-3. [UNSEEN: Uncertainty-aware Navigation via Sparse Estimation in Unknown Environments](/202606/25/2606.20755v1-unseen-uncertainty-aware-navigation-via-sparse-estimation-in-unknown-environments)  
+   evidence：3D世界中的具身相机规划
+3. [Compact Object-Level Representations with Open-Vocabulary Understanding for Indoor Visual Relocalization](/202606/26/2606.24767v1-compact-object-level-representations-with-open-vocabulary-understanding-for-indoor-visual-relocalization)  
    标签：评分：6.0/10、query:vln
-   evidence：未知环境中的不确定性感知视觉导航
-4. [Vision-Language Model Reasoning for Contextual Semantic Mapping in Intralogistics](/202606/25/2606.24814v1-vision-language-model-reasoning-for-contextual-semantic-mapping-in-intralogistics)  
+   evidence：面向具身AI的室内视觉重定位
+4. [ROAD-VLA: Robust Online Adaptation via Self-Distillation for Vision-Language-Action Models](/202606/26/2606.25800v1-road-vla-robust-online-adaptation-via-self-distillation-for-vision-language-action-models)  
    标签：评分：6.0/10、query:vln
-   evidence：VLM推理用于上下文语义地图构建，增强导航中的视觉语言理解
-5. [Toward Low-Latency Vision-Language Models with Doubly-Correct Predictions in Egocentric Visual Understanding](/202606/25/2606.25160v1-toward-low-latency-vision-language-models-with-doubly-correct-predictions-in-egocentric-visual-understanding)  
+   evidence：通过自蒸馏在线自适应视觉-语言-动作模型
+5. [USS: Unified Spatial-Semantic Prompts for Embodied Visual Tracking with Latent Dynamics Learning](/202606/26/2606.25880v1-uss-unified-spatial-semantic-prompts-for-embodied-visual-tracking-with-latent-dynamics-learning)  
    标签：评分：6.0/10、query:vln
-   evidence：用于自我中心视觉理解的视觉语言模型
-6. [fARfetch: Enabling Collocated AR-HRC in Large Visually Diverse Environments with VLM-Driven AR Content Adaptation](/202606/25/2606.25162v1-farfetch-enabling-collocated-ar-hrc-in-large-visually-diverse-environments-with-vlm-driven-ar-content-adaptation)  
+   evidence：具身视觉跟踪的统一空间-语义提示
+6. [Ordinal Neural Collapse as a Representation Prior for Visual Navigation](/202606/26/2606.26839v1-ordinal-neural-collapse-as-a-representation-prior-for-visual-navigation)  
    标签：评分：6.0/10、query:vln
-   evidence：基于地标的导航指令和VLM驱动的AR视角管理，用于指令跟随导航
-7. [Decoupling Semantics and Geometric Grounding: Spatial Visual Prompts for Language-Conditioned Imitation Learning](/202606/25/2606.25360v1-decoupling-semantics-and-geometric-grounding-spatial-visual-prompts-for-language-conditioned-imitation-learning)  
+   evidence：面向视觉导航的表征先验
+7. [Advancing Omnimodal Embodied Agents from Isolated Skills to Everyday Physical Autonomy](/202606/26/2606.27251v1-advancing-omnimodal-embodied-agents-from-isolated-skills-to-everyday-physical-autonomy)  
    标签：评分：6.0/10、query:vln
-   evidence：解耦语义与几何接地用于语言条件任务
-8. [GROVE: Grounded Pedestrian Simulation via Natural Language for Interactive Social Robot Navigation](/202606/25/2606.25504v1-grove-grounded-pedestrian-simulation-via-natural-language-for-interactive-social-robot-navigation)  
-   标签：评分：6.0/10、query:vln
-   evidence：用于社交机器人导航的文本到场景行人仿真
-9. [ROAD-VLA: Robust Online Adaptation via Self-Distillation for Vision-Language-Action Models](/202606/25/2606.25800v1-road-vla-robust-online-adaptation-via-self-distillation-for-vision-language-action-models)  
-   标签：评分：6.0/10、query:vln
-   evidence：视觉-语言-行动模型的在线自适应方法可应用于具身导航
+   evidence：包括导航能力的全模态具身代理
 
 
 <div class="dpr-home-promo-card">
