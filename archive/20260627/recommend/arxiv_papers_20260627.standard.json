@@ -1,0 +1,473 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-27T21:16:03.617963+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 1,
+    "deep_cap": 6,
+    "deep_selected": 1,
+    "quick_candidates": 10,
+    "quick_skim_target": 11,
+    "quick_selected": 10
+  },
+  "deep_dive": [
+    {
+      "id": "2606.23641v1",
+      "source": "arxiv",
+      "title": "Flatness Preserves Instruction Following in Vision-Language-Action Models",
+      "abstract": "Vision-language-action (VLA) models have the potential for open-world generalization by leveraging pretrained vision-language representations, yet downstream finetuning on limited robot data often degrades these representations, leading to brittle policies that ignore language instructions in favor of visual shortcuts, a failure mode we term instruction blindness. We hypothesize that standard finetuning with limited data applies gradients to a sparse set of points, which manifests as a sharp loss landscape with high-curvature minima. We propose to address this directly through flatness-preserving optimization while finetuning on the exact same data, where learning a flatter landscape results in a model more robust to perturbations in the weight space. Specifically, we demonstrate that simply applying sharpness-aware minimization during VLA finetuning significantly improves instruction following by over 60% across multiple simulation and real-world benchmarks without additional data, architectural modification, or retraining. We further analyze the effect of selective sharpness, quantify its effects, and show that our approach is complementary to existing guidance techniques. Project page can be found at https://haochenz11.github.io/papers/flatness-vla/.",
+      "authors": [
+        "Haochen Zhang",
+        "Yonatan Bisk"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-22T17:30:29+00:00",
+      "link": "https://arxiv.org/pdf/2606.23641v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Directly addresses instruction following in VLA models, combating instruction blindness",
+      "llm_evidence_cn": "直接针对VLA模型中的指令遵循问题，解决指令忽视现象",
+      "llm_evidence": "直接针对VLA模型中的指令遵循问题，解决指令忽视现象",
+      "canonical_evidence": "直接针对VLA模型中的指令遵循问题，解决指令忽视现象",
+      "llm_tldr_en": "Flatness-preserving finetuning on VLA models reduces instruction blindness, improving robustness to visual shortcuts.",
+      "llm_tldr_cn": "本文发现VLA模型微调后容易忽视语言指令而依赖视觉捷径，称为指令盲视。提出平坦性保持优化方法，在相同数据上学习更平坦损失景观，使模型更鲁棒。实验证明该方法有效缓解指令盲视，提升指令遵循能力，对导航等任务中的语言引导行为具有重要改进。",
+      "llm_tldr": "本文发现VLA模型微调后容易忽视语言指令而依赖视觉捷径，称为指令盲视。提出平坦性保持优化方法，在相同数据上学习更平坦损失景观，使模型更鲁棒。实验证明该方法有效缓解指令盲视，提升指令遵循能力，对导航等任务中的语言引导行为具有重要改进。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.21623v1",
+      "source": "arxiv",
+      "title": "A DVDrive Approach for doScenes Instructed Driving Challenge",
+      "abstract": "Instruction-conditioned trajectory prediction is an emerging problem in autonomous driving, where a model predicts the future ego trajectory not only from visual scene context and historical motion, but also from a natural-language maneuver instruction. This paper presents our submission to the doScenes Instructed Driving Challenge, built upon OmniDrive, a vision-language-action driving agent with 3D perception, reasoning, and planning capabilities. We adapt OmniDrive to the doScenes setting by training it on instruction-annotated nuScenes scenes and generating a 6-second ego trajectory represented by 12 future waypoints. To improve multi-view visual grounding, we further introduce a DVPE-style divided-view perception module into the OmniDrive perception head. Instead of attending globally to all camera features, the proposed module groups query features and image tokens into divided local view spaces and performs visibility-aware cross-attention within each view. This design reduces irrelevant cross-view interference and helps the model better align language instructions with local driving-relevant visual evidence. The code is publicly available at: https://github.com/feel12348/doscenes-omnidrive.",
+      "authors": [
+        "Zijian Fu",
+        "Xiangyang Chu",
+        "Mengshi Qi",
+        "Huadong Ma",
+        "Guanghao Zhang",
+        "Wei Li"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-19T17:26:58+00:00",
+      "link": "https://arxiv.org/pdf/2606.21623v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "instruction-conditioned trajectory prediction for autonomous driving using vision-language-action agent",
+      "llm_evidence_cn": "自动驾驶中基于自然语言指令的轨迹预测，使用视觉-语言-动作智能体",
+      "llm_evidence": "自动驾驶中基于自然语言指令的轨迹预测，使用视觉-语言-动作智能体",
+      "canonical_evidence": "自动驾驶中基于自然语言指令的轨迹预测，使用视觉-语言-动作智能体",
+      "llm_tldr_en": "Instruction-conditioned trajectory prediction for autonomous driving using OmniDrive agent with DVPE module; addresses instructed driving challenge.",
+      "llm_tldr_cn": "该论文针对指令条件轨迹预测这一自动驾驶新兴问题，基于视觉-语言-动作智能体OmniDrive进行改进，引入DVPE风格的分视角感知模块以增强多视角视觉定位，在nuScenes场景上训练并生成6秒未来轨迹，最终提交至doScenes指令驾驶挑战。该工作展示了语言指令在驾驶导航中的应用，与VLN中指令跟随导航任务高度相关。",
+      "llm_tldr": "该论文针对指令条件轨迹预测这一自动驾驶新兴问题，基于视觉-语言-动作智能体OmniDrive进行改进，引入DVPE风格的分视角感知模块以增强多视角视觉定位，在nuScenes场景上训练并生成6秒未来轨迹，最终提交至doScenes指令驾驶挑战。该工作展示了语言指令在驾驶导航中的应用，与VLN中指令跟随导航任务高度相关。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.22409v1",
+      "source": "arxiv",
+      "title": "Gold Points Sniper: Self-guided Visual Reasoning in VLM for Fine-grained Action Understanding",
+      "abstract": "Robots operating in everyday environments must understand fine-grained human actions, intentions, and contextual cues from broad views where people occupy only small regions, a capability unmet by current systems. While open-vocabulary action recognition methods remain limited to assigning predefined labels, and vision-language models (VLMs) face an inherent trade-off between informational richness and factual fidelity in their outputs, neither approach achieves the deep semantic interpretation required for reliable human-robot interaction. We propose Gold Points Sniper (GPS), a novel framework that empowers lightweight VLMs with self-guided multimodal reasoning capabilities for fine-grained human action understanding. Our approach comprises three key modules: Gold Points Extractor trains VLMs to identify critical action-relevant details, Selective Socratic Questioner validates and refines these details through selective self-questioning, and Semantic Entailment Evaluator quantitatively assesses factual consistency using semantic entailment classification. Extensive experiments on our curated instruction-tuning dataset based on the CAP benchmark demonstrate that GPS-enhanced lightweight VLMs achieve substantial performance improvements, with some models reaching performance comparable to proprietary GPT-4o while maintaining superior factual accuracy. Our work establishes a reliable foundation for fine-grained action understanding in domestic robotics, enabling robots to safely interpret human behavior through information-dense yet factually grounded descriptions. Source code, training configurations, annotation prompts, and dataset details are released at https://github.com/Haodi-Liu/GPS-Gold-Point-Sniper.",
+      "authors": [
+        "Haodi Liu",
+        "Xinhang Yang",
+        "Kunda Yan",
+        "Sen Cui",
+        "Zeyu Zhang",
+        "Changshui Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-21T09:54:39+00:00",
+      "link": "https://arxiv.org/pdf/2606.22409v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "fine-grained action understanding for embodied navigation",
+      "llm_evidence_cn": "面向具身导航的细粒度动作理解",
+      "llm_evidence": "面向具身导航的细粒度动作理解",
+      "canonical_evidence": "面向具身导航的细粒度动作理解",
+      "llm_tldr_en": "GPS empowers lightweight VLMs with self-guided reasoning for fine-grained human action understanding, improving robot-environment interaction in navigation.",
+      "llm_tldr_cn": "机器人导航需要理解环境中人类的精细动作，现有方法或局限于预定义标签，或面临信息丰富度与真实性的权衡。本文提出Gold Points Sniper（GPS），赋予轻量级VLM自引导多模态推理能力，实现对细粒度人类动作的深入语义理解，为人机交互导航提供关键支撑。",
+      "llm_tldr": "机器人导航需要理解环境中人类的精细动作，现有方法或局限于预定义标签，或面临信息丰富度与真实性的权衡。本文提出Gold Points Sniper（GPS），赋予轻量级VLM自引导多模态推理能力，实现对细粒度人类动作的深入语义理解，为人机交互导航提供关键支撑。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.25119v1",
+      "source": "arxiv",
+      "title": "SurveilNav: Collaborative Object Goal Navigation with Robot and Surveillance System",
+      "abstract": "With the growing deployment of surveillance systems in factories, offices, and homes, integrating them with robots offers a promising direction for collaborative and efficient task execution. However, existing approaches largely focus on single-robot scenarios and struggle with multi-view collaboration in large-scale environments. In this paper, we present a novel indoor collaborative object navigation dataset built on Habitat-Sim, featuring 206 cameras across 74 floors. The dataset enables systematic evaluation of an agent's ability to exploit multi-view surveillance information. To address the limitations of single-robot perception, we propose SurveilNav, a collaborative navigation framework that integrates active camera scheduling, joint 2D/3D mapping, VLM-based value estimation, and collaborative target verification. By synergizing the robot's dynamic local perception with the static global view of surveillance, this architecture effectively overcomes both the limited perception range of single agents and the inherent blind spots of fixed cameras, resolving inefficient exploration. Experimental results on the HM3D dataset demonstrate that SurveilNav substantially outperforms existing methods, achieving state-of-the-art performance in both exploration efficiency and navigation success rate. Moreover, the system shows strong potential for applications in large-scale search, home environments, and rescue missions.",
+      "authors": [
+        "Ming-Ming Yu",
+        "Qunbo Wang",
+        "Rongtao Xu",
+        "Yanghong Mei",
+        "Yirong Yang",
+        "Longteng Guo",
+        "Wenjun Wu",
+        "Jing Liu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-23T19:45:44+00:00",
+      "link": "https://arxiv.org/pdf/2606.25119v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "collaborative object goal navigation with robot and surveillance system",
+      "llm_evidence_cn": "机器人与监控系统协作的物体目标导航",
+      "llm_evidence": "机器人与监控系统协作的物体目标导航",
+      "canonical_evidence": "机器人与监控系统协作的物体目标导航",
+      "llm_tldr_en": "SurveilNav: collaborative navigation framework using multi-view surveillance cameras for object goal navigation in large-scale indoor environments.",
+      "llm_tldr_cn": "该论文提出室内协作物体导航数据集和SurveilNav框架，集成监控系统多视角信息以辅助机器人导航。基于Habitat-Sim构建包含206个摄像头覆盖74层的数据集，实现主动相机调度与联合感知。该工作属于具身导航范畴，但与VLN的区别在于未使用自然语言指令。",
+      "llm_tldr": "该论文提出室内协作物体导航数据集和SurveilNav框架，集成监控系统多视角信息以辅助机器人导航。基于Habitat-Sim构建包含206个摄像头覆盖74层的数据集，实现主动相机调度与联合感知。该工作属于具身导航范畴，但与VLN的区别在于未使用自然语言指令。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.23843v1",
+      "source": "arxiv",
+      "title": "HANCLIP: A Family of Hyperbolic Angular Negation Vision Language Models",
+      "abstract": "Vision-Language Models (VLMs) are typically pre-trained on large-scale image-text datasets to capture semantic correspondences between visual content and natural language. However, they remain surprisingly brittle to negation: models often rely on shallow word co-occurrence and are easily distracted by misleading or irrelevant textual cues, even when their overall retrieval or classification performance is strong. Moreover, directly finetuning on negation data can interfere with previously acquired knowledge, causing noticeable degradation on standard vision-language benchmarks. To tackle these issues, this work introduces HANCLIP (Hyperbolic + Angular + Negation), a family of VLMs that explicitly restructures the embedding space to encode \"what an image is not\" alongside \"what it is.\" HANCLIP is trained on a compact set of 20,000 image-text quadruplets and combines a hyperbolic formulation, which models hierarchical semantic relations and asymmetries, with an angular triplet objective that drives systematic separation between negated descriptions and their corresponding positives. This geometry-aware design strengthens negation sensitivity while preserving the global structure of pretrained representations, rather than overwriting them. Extensive experiments across multiple vision-language tasks show that HANCLIP delivers consistent gains on the negation-focused NegBench benchmark, while maintaining competitive or improved performance on standard classification and image-text retrieval benchmarks. The framework is model-agnostic and can be plugged into CLIP, LongCLIP, SmartCLIP, and HiMo-CLIP without large-scale retraining, demonstrating that a carefully designed geometric objective can substantially extend the reasoning capabilities of existing VLMs using only modest additional data.",
+      "authors": [
+        "Hoang-Bao Le",
+        "Aiden Durrant",
+        "Thai Son Mai",
+        "Binh T. Nguyen",
+        "Liting Zhou",
+        "Cathal Gurrin"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.IR"
+      ],
+      "published": "2026-06-22T18:25:37+00:00",
+      "link": "https://arxiv.org/pdf/2606.23843v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "improving VLM robustness to negation via hyperbolic angular embedding",
+      "llm_evidence_cn": "通过双曲角度嵌入增强视觉语言模型对否定的鲁棒性",
+      "llm_evidence": "通过双曲角度嵌入增强视觉语言模型对否定的鲁棒性",
+      "canonical_evidence": "通过双曲角度嵌入增强视觉语言模型对否定的鲁棒性",
+      "llm_tldr_en": "HANCLIP restructures VLM embedding space to handle negation, improving performance on negation benchmarks while preserving standard VLM abilities.",
+      "llm_tldr_cn": "该论文针对视觉语言模型对否定语义脆弱的问题，提出HANCLIP系列模型，通过显式重构嵌入空间来编码“图像不包含什么”，采用双曲角度嵌入策略。实验表明，HANCLIP在否定性基准上表现优异，且不降低标准视觉语言任务性能。该工作增强了VLMs的语言理解能力，可间接提升VLN中指令理解的准确性。",
+      "llm_tldr": "该论文针对视觉语言模型对否定语义脆弱的问题，提出HANCLIP系列模型，通过显式重构嵌入空间来编码“图像不包含什么”，采用双曲角度嵌入策略。实验表明，HANCLIP在否定性基准上表现优异，且不降低标准视觉语言任务性能。该工作增强了VLMs的语言理解能力，可间接提升VLN中指令理解的准确性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.25504v1",
+      "source": "arxiv",
+      "title": "GROVE: Grounded Pedestrian Simulation via Natural Language for Interactive Social Robot Navigation",
+      "abstract": "Pedestrian simulation is a critical component for training and deploying social robot navigation approaches, yet it remains a largely rigid system that repeatedly requires manual data generation to define even simple scenarios. We propose GROVE, a text-to-scenario pedestrian simulation framework that combines state-of-the-art approaches to produce realistic, socially challenging scenarios for social robot navigation. Our framework allows users to customize one of several common presets (emergency, queuing, normal) or even enter a fully independent prompt to generate a highly customizable pedestrian simulation. Multiple modules separately ensure the realism and soundness of long-horizon human behavior, medium-horizon pedestrian navigation, and short-horizon robot/social interactions. Each module is tuned by the prompt in a way that reflects the user intent across all aspects of pedestrian simulation. By dynamically selecting one of several state-of-the-art (SotA) approaches in our modules based on the scenario, we capture many situational nuances of pedestrian behavior in order to narrow the simulation-to-real (sim2real) gap. The human simulation is directly integrated into Isaac Sim, Gazebo, and RViz simulators for robot deployment in highly social environments. We validate our approach through qualitative comparison against existing pedestrian simulation baselines across scenarios of varying complexity in residential, hospital, and office environments. The result is a high-fidelity pedestrian simulation that challenges social robot navigation with complex, diverse, realistic human behaviors.",
+      "authors": [
+        "Duc Tai Nguyen",
+        "Volodymyr Shcherbyna",
+        "Anh Do Duc",
+        "Zhengcheng Shen",
+        "Teham Buiyan",
+        "Linh Kästner"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-24T07:39:01+00:00",
+      "link": "https://arxiv.org/pdf/2606.25504v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "social robot navigation with natural language scenario generation",
+      "llm_evidence_cn": "社交机器人导航与自然语言场景生成",
+      "llm_evidence": "社交机器人导航与自然语言场景生成",
+      "canonical_evidence": "社交机器人导航与自然语言场景生成",
+      "llm_tldr_en": "GROVE generates realistic pedestrian scenarios from natural language for social robot navigation training and testing.",
+      "llm_tldr_cn": "该论文提出GROVE框架，用户可通过自然语言定制行人仿真场景，结合多个模块保证行为的真实性与合理性，为社交机器人导航的训练和评估提供灵活平台，显著降低手动数据生成成本。",
+      "llm_tldr": "该论文提出GROVE框架，用户可通过自然语言定制行人仿真场景，结合多个模块保证行为的真实性与合理性，为社交机器人导航的训练和评估提供灵活平台，显著降低手动数据生成成本。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.24649v1",
+      "source": "arxiv",
+      "title": "Agentic Collaborative Cognition for Zero-Shot 3D Understanding",
+      "abstract": "Recent advancements have explored agentic zero-shot 3D understanding by reformulating it as video keyframe understanding with Multimodal Large Language Models (MLLMs). However, existing methods face an intrinsic bottleneck due to the finite observation perspectives inherent in videos and the implicit perception of 3D scenes. In this paper, we propose a collaborative multi-agent framework that assigns a Planning Agent to handle high-level viewpoint planning and supplement novel perspectives, and a Perception Agent to explicitly summarize the 3D scene into a structured holistic cognitive map. Specifically, Planning Agent first analyzes this cognitive map to determine query-relevant viewpoints and supplements missing critical perspectives to ensure comprehensive observation. Subsequently, Perception Agent documents object-level attributes from these views by assigning consistent instance identifiers across viewpoints, thereby integrating fragmented observations into the holistic cognitive map. In parallel, it provides feedback to filter out mismatched candidate objects and guide subsequent viewpoint planning. Through this closed-loop iterative process, two agents collaboratively figure out candidates until Perception Agent determines that sufficient information has been captured to complete the task. Extensive experiments demonstrate that our method achieves state-of-the-art performance on 6 benchmarks, with improvements of 11.1\\% Acc@0.5 on ScanRefer, 14.6 BLEU-1 on 3D-assisted dialog, and 2.1 EM on SQA3D.",
+      "authors": [
+        "Wenxin Wang",
+        "Bo Zhang",
+        "Feng Chen",
+        "Zixuan Wang",
+        "Wen Li",
+        "Changsheng Li",
+        "Yinjie Lei"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-23T14:44:04+00:00",
+      "link": "https://arxiv.org/pdf/2606.24649v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "3D scene understanding for embodied navigation",
+      "llm_evidence_cn": "面向具身导航的3D场景理解",
+      "llm_evidence": "面向具身导航的3D场景理解",
+      "canonical_evidence": "面向具身导航的3D场景理解",
+      "llm_tldr_en": "Proposes a collaborative multi-agent framework for zero-shot 3D understanding using planning and perception agents, enabling comprehensive scene comprehension from limited viewpoints.",
+      "llm_tldr_cn": "零样本3D理解面临观测视角有限和场景感知隐式的瓶颈。本文提出协作多智能体框架，规划智能体补充关键视角，感知智能体构建结构化的认知地图。该方法提升了3D场景理解的全面性，为具身导航等下游任务提供支持。",
+      "llm_tldr": "零样本3D理解面临观测视角有限和场景感知隐式的瓶颈。本文提出协作多智能体框架，规划智能体补充关键视角，感知智能体构建结构化的认知地图。该方法提升了3D场景理解的全面性，为具身导航等下游任务提供支持。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.26265v1",
+      "source": "arxiv",
+      "title": "NavIsaacLab: Generating Realistic Crowd via Parallel Robot Learning for Benchmarking Human-aware Navigation",
+      "abstract": "Robot autonomous navigation that accounts for surrounding human activities is crucial for ensuring both safety and natural human-robot interaction in real-world environments shared by humans and robots. Simulation of complex and diverse navigation scenarios serves as the foundation for training reliable robot navigation policies and accurately evaluating the performance of algorithms, offering an efficient alternative to manual supervision of real data. However, current human-aware navigation research faces significant challenges due to the scarcity of diverse, high-quality scene data. Existing simulation platforms often rely on handcrafted rules to approximate pedestrian behavior and lack the capability to provide extensive sensor signals, typically assuming perfect observations. To address these limitations, this paper presents NavIsaacLab, a comprehensive framework for benchmarking and training human-aware navigation policies through physics-based and photo-realistic simulations of pedestrians and scenes. Based on Isaac Lab, the proposed framework employs photo-realistic scene rendering capabilities and supports parallel simulation on GPU, delivering real-time and accurate 3D visual feedback to robots. To enhance the realism of human behavior, a data-driven approach is employed that incorporates a trajectory diffusion model and an adversarial motion learning controller, enabling controllable, physics-based pedestrian simulation. Furthermore, the integration of diverse cross-scale scenes provides a robust benchmark for state-of-the-art human-aware navigation methods.",
+      "authors": [
+        "Bingyi Xia",
+        "Han Bao",
+        "Jingyu Zhu",
+        "Hanjing Ye",
+        "Yuhan Pang",
+        "Guangcheng Chen",
+        "Liang Lin",
+        "Wenjun Xu",
+        "Jiankun Wang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-24T18:08:19+00:00",
+      "link": "https://arxiv.org/pdf/2606.26265v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Simulation platform for human-aware autonomous navigation",
+      "llm_evidence_cn": "面向行人感知的自主导航仿真平台",
+      "llm_evidence": "面向行人感知的自主导航仿真平台",
+      "canonical_evidence": "面向行人感知的自主导航仿真平台",
+      "llm_tldr_en": "NavIsaacLab generates realistic crowds via parallel robot learning for benchmarking human-aware navigation algorithms.",
+      "llm_tldr_cn": "本文针对人类感知导航研究中场景数据缺乏的问题，提出NavIsaacLab仿真平台。利用并行机器人学习生成逼真人群，提供多样化的导航场景用于训练和评估。该平台支持策略学习和算法基准测试，有效降低对真实数据依赖，为具身导航（包括VLN）的模拟测试提供重要基础设施。",
+      "llm_tldr": "本文针对人类感知导航研究中场景数据缺乏的问题，提出NavIsaacLab仿真平台。利用并行机器人学习生成逼真人群，提供多样化的导航场景用于训练和评估。该平台支持策略学习和算法基准测试，有效降低对真实数据依赖，为具身导航（包括VLN）的模拟测试提供重要基础设施。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.24649v2",
+      "source": "arxiv",
+      "title": "Agentic Collaborative Cognition for Zero-Shot 3D Understanding",
+      "abstract": "Recent advancements have explored agentic zero-shot 3D understanding by reformulating it as video keyframe understanding with Multimodal Large Language Models (MLLMs). However, existing methods face an intrinsic bottleneck due to the finite observation perspectives inherent in videos and the implicit perception of 3D scenes. In this paper, we propose a collaborative multi-agent framework that assigns a Planning Agent to handle high-level viewpoint planning and supplement novel perspectives, and a Perception Agent to explicitly summarize the 3D scene into a structured holistic cognitive map. Specifically, Planning Agent first analyzes this cognitive map to determine query-relevant viewpoints and supplements missing critical perspectives to ensure comprehensive observation. Subsequently, Perception Agent documents object-level attributes from these views by assigning consistent instance identifiers across viewpoints, thereby integrating fragmented observations into the holistic cognitive map. In parallel, it provides feedback to filter out mismatched candidate objects and guide subsequent viewpoint planning. Through this closed-loop iterative process, two agents collaboratively figure out candidates until Perception Agent determines that sufficient information has been captured to complete the task. Extensive experiments demonstrate that our method achieves state-of-the-art performance on 6 benchmarks, with improvements of 11.1\\% Acc@0.5 on ScanRefer, 14.6 BLEU-1 on 3D-assisted dialog, and 2.1 EM on SQA3D.",
+      "authors": [
+        "Wenxin Wang",
+        "Bo Zhang",
+        "Feng Chen",
+        "Zixuan Wang",
+        "Wen Li",
+        "Changsheng Li",
+        "Yinjie Lei"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-23T14:44:04+00:00",
+      "link": "https://arxiv.org/pdf/2606.24649v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "3D scene understanding for embodied navigation",
+      "llm_evidence_cn": "面向具身导航的3D场景理解",
+      "llm_evidence": "面向具身导航的3D场景理解",
+      "canonical_evidence": "面向具身导航的3D场景理解",
+      "llm_tldr_en": "Proposes a collaborative multi-agent framework for zero-shot 3D understanding using planning and perception agents, enabling comprehensive scene comprehension from limited viewpoints.",
+      "llm_tldr_cn": "零样本3D理解面临观测视角有限和场景感知隐式的瓶颈。本文提出协作多智能体框架，规划智能体补充关键视角，感知智能体构建结构化的认知地图。该方法提升了3D场景理解的全面性，为具身导航等下游任务提供支持。",
+      "llm_tldr": "零样本3D理解面临观测视角有限和场景感知隐式的瓶颈。本文提出协作多智能体框架，规划智能体补充关键视角，感知智能体构建结构化的认知地图。该方法提升了3D场景理解的全面性，为具身导航等下游任务提供支持。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.27295v1",
+      "source": "arxiv",
+      "title": "LA4VLA: Learning to Act without Seeing via Language-Action Pretraining",
+      "abstract": "Vision-Language-Action (VLA) models are commonly pretrained on robot demonstrations by jointly mapping visual observations and language instructions to actions. However, dense visual-action supervision can dominate the comparatively sparse language-action signal. As a result, policies may rely on visual shortcuts rather than learn how language conditions action execution, making them sensitive to visual variations. To address this limitation, we propose LA4VLA, a language-action pretraining framework that enables policies to acquire language-conditioned action priors without visual observations. These priors capture reusable manipulation skills shared across tasks and scenes, reducing reliance on scene-specific visual cues. Specifically, LA4VLA decomposes expert demonstration trajectories into atomic action segments and pairs each segment with a corresponding low-level action description. This yields LA4-33K, a dataset of 33K Language-Action (LA) episodes derived entirely from existing demonstrations without additional robot data collection. We further develop LA4VLA-1B, a lightweight 1B-parameter VLA model, and investigate three paradigms for incorporating language-action supervision into VLA learning: LA-only pretraining, sequential LA-to-VLA pretraining, and mixed LA-VLA pretraining. Across simulation and real-world tasks, LA-pretrained policies consistently outperform matched VLA-pretrained counterparts, while combining LA and VLA supervision leads to further gains. In particular, mixed LA-VLA pretraining improves the average success rate of LA4VLA-1B over the no-pretraining baseline by up to 17.8 and 45.0 percentage points in simulation and real-world tasks, respectively. These results establish LA4VLA as an effective and complementary pretraining strategy for building stronger and more robust VLA policies.",
+      "authors": [
+        "Tao Lin",
+        "Yuxin Du",
+        "Yiran Mao",
+        "Zewei Ye",
+        "Yilei Zhong",
+        "Bing Cheng",
+        "Yiming Wang",
+        "Jiting Liu",
+        "Yang Tian",
+        "Junchi Yan",
+        "Feiran Wu",
+        "Zenan Meng",
+        "Hu Wei",
+        "Yuqian Fu",
+        "Gen Li",
+        "Bo Zhao"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-25T17:13:02+00:00",
+      "link": "https://arxiv.org/pdf/2606.27295v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "language-action pretraining for vision-language-action models",
+      "llm_evidence_cn": "语言-动作预训练用于视觉-语言-动作模型",
+      "llm_evidence": "语言-动作预训练用于视觉-语言-动作模型",
+      "canonical_evidence": "语言-动作预训练用于视觉-语言-动作模型",
+      "llm_tldr_en": "LA4VLA pretrains language-conditioned action priors without visual observations, reducing reliance on visual shortcuts in VLA models.",
+      "llm_tldr_cn": "该论文发现VLA模型密集的视觉-动作监督会抑制语言-动作信号，导致策略依赖视觉捷径，提出LA4VLA预训练框架，在无视觉观测下获取语言条件动作先验，实验表明该方法提升了策略对视觉变化的鲁棒性，且动作先验可迁移到新任务。",
+      "llm_tldr": "该论文发现VLA模型密集的视觉-动作监督会抑制语言-动作信号，导致策略依赖视觉捷径，提出LA4VLA预训练框架，在无视觉观测下获取语言条件动作先验，实验表明该方法提升了策略对视觉变化的鲁棒性，且动作先验可迁移到新任务。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.25657v1",
+      "source": "arxiv",
+      "title": "Steering Vision-Language Models with Joint Sparse Autoencoders",
+      "abstract": "Sparse Autoencoders (SAEs) have shown promise for analyzing language models, but applying them to vision-language models (VLMs) often yields representations that are difficult to use as controllable cross-modal steering directions. We introduce the Joint Sparse Autoencoder (JSAE), which uses an explicit alignment constraint to jointly factorize sequence-pooled vision and language activations into shared, interpretable image/caption-level features. Applied to LLaVA, JSAE recovers cross-modal features for recognizable concepts (e.g., food and animals). Through bidirectional interventions (additive steering and suppression), we observe a layer-dependent asymmetry under our protocol: additive steering peaks at mid-to-late (pre-output) layers and weakens at both ends, whereas suppression scores remain within a comparable range across all probed layers within statistical noise. Experiments on three VLMs, namely LLaVA-v1.6-Mistral-7B, Llama3-LLaVA-8B, and the MoE-based Qwen3-VL-30B, show related layer-localized effects across architectures. Together, these results suggest that explicitly aligned sparse representations support more controllable intervention-based analysis of multimodal features, within an identifiable layer range, than the unconstrained alternatives tested here.",
+      "authors": [
+        "Huizhen Shu",
+        "Xuying Li",
+        "Hongxu Lin",
+        "Wenjie Sun",
+        "Hui Li"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-24T10:11:04+00:00",
+      "link": "https://arxiv.org/pdf/2606.25657v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "steering VLMs with interpretable features for navigation",
+      "llm_evidence_cn": "通过可解释特征调控视觉-语言模型用于导航",
+      "llm_evidence": "通过可解释特征调控视觉-语言模型用于导航",
+      "canonical_evidence": "通过可解释特征调控视觉-语言模型用于导航",
+      "llm_tldr_en": "JSAE jointly factorizes vision and language activations into shared interpretable features, enabling cross-modal steering for VLMs.",
+      "llm_tldr_cn": "该论文提出联合稀疏自编码器（JSAE），通过显式对齐约束将视觉和语言激活分解为共享可解释特征，支持对VLM进行跨模态干预调控，研究表明加性调控在中间层效果最佳，为提升VLM在导航等任务中的可控性提供工具。",
+      "llm_tldr": "该论文提出联合稀疏自编码器（JSAE），通过显式对齐约束将视觉和语言激活分解为共享可解释特征，支持对VLM进行跨模态干预调控，研究表明加性调控在中间层效果最佳，为提升VLM在导航等任务中的可控性提供工具。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
