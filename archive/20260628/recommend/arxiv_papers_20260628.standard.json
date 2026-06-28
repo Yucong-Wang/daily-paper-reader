@@ -1,0 +1,258 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-28T21:06:41.215322+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2606.22219v1",
+      "source": "arxiv",
+      "title": "Lost in Aggregation: A Multi-Scale Diagnostic Benchmark for LLM Spatial Navigation",
+      "abstract": "Large language models (LLMs) are increasingly deployed as planners and assistants in tasks with inherent spatial structure, such as navigation and route planning, yet they remain brittle in sequential spatial reasoning. We ask not merely whether LLMs fail at navigation but where in the spatial-cognition pipeline they get lost. We introduce a multi-scale diagnostic benchmark that decomposes maze navigation into three cognitive levels drawn from human spatial cognition: Fine (local passability), Meso (junction topology), and Macro (global goal direction). We evaluate three instruction-tuned chat LLMs (GPT-4o, DeepSeek-V3, Llama-3.3-70B) on 1,050 topology-annotated mazes spanning seven sizes (3x3 to 30x30) and three difficulty tiers. The benchmark is organized as three modules. (i) Input acquisition: among four input formats, structured coordinate text is the most navigable, far surpassing rendered images. (ii) Multi-scale representation: end-to-end one-shot navigation collapses to near zero by 10x10 for every model, yet the same models respond to isolated single-level probes (Fine, Meso, Macro) at 30-75% far beyond that size. A multi-hot first-error analysis localizes failures to Meso junction choices (59%) and Fine perception (39%), with global direction almost never at fault (1%). The barrier is therefore the cross-scale aggregation of individually available competences over a long sequential plan, not any single perceptual deficit. (iii) Hierarchical route planning: delegating per-step execution to a deterministic walker and querying the LLM only at junctions, with an explicit cell-type prompt, lifts GPT-4o success by up to 92 points at mid sizes, but the same scaling wall re-emerges by 30x30. We release the benchmark, mazes, and code as a reusable diagnostic instrument for spatial reasoning in LLMs, available at https://yuhanjiang415.github.io/lost-in-aggregation/.",
+      "authors": [
+        "Yuhan jiang",
+        "Peng Luo",
+        "Liqiu Meng"
+      ],
+      "primary_category": "physics.soc-ph",
+      "categories": [
+        "physics.soc-ph"
+      ],
+      "published": "2026-06-20T20:41:43+00:00",
+      "link": "https://arxiv.org/pdf/2606.22219v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "diagnostic benchmark for LLM spatial navigation in mazes",
+      "llm_evidence_cn": "针对LLM空间导航的多尺度诊断基准",
+      "llm_evidence": "针对LLM空间导航的多尺度诊断基准",
+      "canonical_evidence": "针对LLM空间导航的多尺度诊断基准",
+      "llm_tldr_en": "Introduces a multi-scale benchmark to diagnose where LLMs fail in maze navigation across fine, meso, and macro levels, revealing aggregation failures.",
+      "llm_tldr_cn": "该论文提出一个多尺度诊断基准，将迷宫导航分解为局部可通行性、结拓扑和全局目标方向三个认知层次。对多种指令微调LLM进行评估，揭示LLM在空间聚合中的失败点。为导航任务中的语言模型评估提供了精细化的诊断工具，对视觉语言导航研究具有参考价值。",
+      "llm_tldr": "该论文提出一个多尺度诊断基准，将迷宫导航分解为局部可通行性、结拓扑和全局目标方向三个认知层次。对多种指令微调LLM进行评估，揭示LLM在空间聚合中的失败点。为导航任务中的语言模型评估提供了精细化的诊断工具，对视觉语言导航研究具有参考价值。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.22597v1",
+      "source": "arxiv",
+      "title": "MapReason-OSM: Can Vision-Language Models Make Graph-Verifiable Mobility Decisions from Street Maps ?",
+      "abstract": "Vision-language models (VLMs) are increasingly used to read maps for logistics, delivery, and accessible navigation, where the output is an actionable decision (a route, a pin, a parking choice) that must respect the road network. Yet most map benchmarks grade free-text or multiple-choice answers that cannot be verified against the underlying graph. We present \\textbf{MapReason-OSM}, a benchmark and evaluation harness for graph-verifiable mobility decisions on self-rendered OpenStreetMap panels. We render fixed-style maps for ten U.S. downtowns at two aligned zoom scales, overlay a consistent marker grammar, and pair each panel with a hidden street graph and exact oracles, yielding 6{,}000 instances (12{,}000 panels across the two zooms) over 12 routing, facility-location, and visual-disambiguation tasks. Models return structured decisions that we snap back to the graph and score for validity, legality, optimality, and constraint satisfaction, plus \\emph{cross-zoom consistency}. Across seven VLMs, models read maps and route simply but fail at graph-cost reasoning (single-facility pin placement is near chance even for frontier reasoning models), and are frequently scale-inconsistent. We release the benchmark, harness, and deterministic generator.",
+      "authors": [
+        "Srinivas Venkatanarayanan",
+        "Clement Pakkam Isaac"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-21T17:13:35+00:00",
+      "link": "https://arxiv.org/pdf/2606.22597v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Evaluates VLMs on graph-verifiable mobility decisions from street maps, directly related to vision language navigation.",
+      "llm_evidence_cn": "评估VLM从街景地图做出可验证移动决策，直接与视觉语言导航相关。",
+      "llm_evidence": "评估VLM从街景地图做出可验证移动决策，直接与视觉语言导航相关。",
+      "canonical_evidence": "评估VLM从街景地图做出可验证移动决策，直接与视觉语言导航相关。",
+      "llm_tldr_en": "Introduces MapReason-OSM benchmark for evaluating VLMs on route and mobility decisions from OpenStreetMap panels with graph-verifiable ground truth.",
+      "llm_tldr_cn": "本文提出MapReason-OSM基准，用于评估视觉语言模型基于OpenStreetMap渲染图做出可验证的移动决策，如选路和停车。通过图结构验证，揭示了模型在结构化导航推理上的能力与局限，为VLN研究提供新视角。",
+      "llm_tldr": "本文提出MapReason-OSM基准，用于评估视觉语言模型基于OpenStreetMap渲染图做出可验证的移动决策，如选路和停车。通过图结构验证，揭示了模型在结构化导航推理上的能力与局限，为VLN研究提供新视角。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.22174v1",
+      "source": "arxiv",
+      "title": "OpenHLM: An Empirical Recipe for Whole-Body Humanoid Loco-Manipulation",
+      "abstract": "Whole-body humanoid loco-manipulation requires coordinating the robot's entire kinematic chain. However, most existing systems typically decouple the upper and lower bodies into separate controllers, limiting such coordination and yielding behaviors similar to those of a wheeled dual-arm platform. In this paper, we ask what it takes to build a whole-body native vision-language-action (VLA) model that maps language and pixels directly to all of the humanoid's degrees of freedom. We conduct a systematic empirical study organized as a roadmap of one-variable-at-a-time experiments across three phases: whole-body teleoperation, VLA model design, and heterogeneous co-training. Our study yields several intriguing findings: a joint-based whole-body teleoperation interface outperforms alternatives that only partially expose the humanoid's degrees of freedom; a VLA pretrained on static and wheeled dual-arm platforms transfers surprisingly well to a humanoid's full action space; and co-training with HuMI, the humanoid analog of UMI, extends the policy to new objects and instructions without additional whole-body teleoperation on those targets. Following this roadmap yields OpenHLM, an open-source recipe for whole-body humanoid loco-manipulation. In a challenging long-horizon task that spans a wide vertical range of the humanoid, OpenHLM outperforms two state-of-the-art humanoid VLA baselines (GR00T N1.6 and $Ψ_0$) using less than half the total demonstration time. Our code, training data, and model checkpoints are available at [https://openhlm-project.github.io/].",
+      "authors": [
+        "Yingdong Hu",
+        "Haodong Zhu",
+        "Boyuan Zheng",
+        "Yihang Hu",
+        "Tong Zhang",
+        "Zunhao Chen",
+        "Junming Zhao",
+        "Ruiqian Nai",
+        "Yang Gao"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-20T18:02:50+00:00",
+      "link": "https://arxiv.org/pdf/2606.22174v1",
+      "tags": [
+        "keyword:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "whole-body native VLA model for humanoid loco-manipulation",
+      "llm_evidence_cn": "人形机器人全身原生视觉语言动作模型，涉及运动导航",
+      "llm_evidence": "人形机器人全身原生视觉语言动作模型，涉及运动导航",
+      "canonical_evidence": "人形机器人全身原生视觉语言动作模型，涉及运动导航",
+      "llm_tldr_en": "Empirical study to build a whole-body vision-language-action model for humanoid robots, covering loco-manipulation.",
+      "llm_tldr_cn": "该论文通过系统性实验研究，探索构建人形机器人全身原生视觉语言动作（VLA）模型。采用全身遥操作、VLA模型设计和异构协同训练三阶段，实现将语言和像素直接映射到全身自由度。发现基于关节的全身遥操作和异构协同训练显著提升协调性。对具身导航与操作结合有重要参考价值。",
+      "llm_tldr": "该论文通过系统性实验研究，探索构建人形机器人全身原生视觉语言动作（VLA）模型。采用全身遥操作、VLA模型设计和异构协同训练三阶段，实现将语言和像素直接映射到全身自由度。发现基于关节的全身遥操作和异构协同训练显著提升协调性。对具身导航与操作结合有重要参考价值。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.26025v1",
+      "source": "arxiv",
+      "title": "In-Context World Modeling for Robotic Control",
+      "abstract": "Modern Vision-Language-Action (VLA) models often fail to generalize to novel setups, such as altered camera viewpoints or robot morphologies, because they are typically conditioned only on current observations and language instructions. By ignoring the underlying system configuration as a variable, these models implicitly assume a fixed execution context encountered during training, necessitating data-intensive fine-tuning for any new environment. In this work, we introduce In-Context World Modeling (ICWM), a framework that treats system identification as an in-context adaptation problem. ICWM enables robot policies to autonomously infer essential system variables from a short history of self-generated, task-agnostic interactions. Unlike traditional In-Context Learning that uses demonstrations to specify what task to perform, ICWM leverages the context window to understand how the system operates. By processing these interactions before task execution, the model implicitly captures the world dynamics of the current system, enabling adaptation to novel configurations without parameter updates. Extensive experiments in simulation and on real-world robot platforms demonstrate that ICWM significantly outperforms standard VLA baselines on novel camera viewpoints.",
+      "authors": [
+        "Siyin Wang",
+        "Junhao Shi",
+        "Senyu Fei",
+        "Zhaoyang Fu",
+        "Li Ji",
+        "Jingjing Gong",
+        "Xipeng Qiu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-06-24T16:53:36+00:00",
+      "link": "https://arxiv.org/pdf/2606.26025v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "in-context world modeling for robotic control enabling adaptation to novel environments",
+      "llm_evidence_cn": "上下文世界建模用于机器人控制，支持适应新环境",
+      "llm_evidence": "上下文世界建模用于机器人控制，支持适应新环境",
+      "canonical_evidence": "上下文世界建模用于机器人控制，支持适应新环境",
+      "llm_tldr_en": "Proposes In-Context World Modeling (ICWM) that enables VLA policies to infer system variables from task-agnostic interactions, improving generalization to new camera views and robot morphologies.",
+      "llm_tldr_cn": "VLA模型对新环境泛化差，因其忽略系统配置变量。提出ICWM框架，将系统辨识视为上下文适应问题，通过自生成的任务无关交互历史推断关键变量。实验表明ICWM能零样本适应新的机器人形态和视角，为具身导航等任务的环境泛化提供了新方法。",
+      "llm_tldr": "VLA模型对新环境泛化差，因其忽略系统配置变量。提出ICWM框架，将系统辨识视为上下文适应问题，通过自生成的任务无关交互历史推断关键变量。实验表明ICWM能零样本适应新的机器人形态和视角，为具身导航等任务的环境泛化提供了新方法。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.26025v2",
+      "source": "arxiv",
+      "title": "In-Context World Modeling for Robotic Control",
+      "abstract": "Modern Vision-Language-Action (VLA) models often fail to generalize to novel setups, such as altered camera viewpoints or robot morphologies, because they are typically conditioned only on current observations and language instructions. By ignoring the underlying system configuration as a variable, these models implicitly assume a fixed execution context encountered during training, necessitating data-intensive fine-tuning for any new environment. In this work, we introduce In-Context World Modeling (ICWM), a framework that treats system identification as an in-context adaptation problem. ICWM enables robot policies to autonomously infer essential system variables from a short history of self-generated, task-agnostic interactions. Unlike traditional In-Context Learning that uses demonstrations to specify what task to perform, ICWM leverages the context window to understand how the system operates. By processing these interactions before task execution, the model implicitly captures the world dynamics of the current system, enabling adaptation to novel configurations without parameter updates. Extensive experiments in simulation and on real-world robot platforms demonstrate that ICWM significantly outperforms standard VLA baselines on novel camera viewpoints.",
+      "authors": [
+        "Siyin Wang",
+        "Junhao Shi",
+        "Senyu Fei",
+        "Zhaoyang Fu",
+        "Li Ji",
+        "Jingjing Gong",
+        "Xipeng Qiu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-06-24T16:53:36+00:00",
+      "link": "https://arxiv.org/pdf/2606.26025v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "in-context world modeling for instruction following robot control",
+      "llm_evidence_cn": "上下文世界建模用于遵循指令的机器人控制",
+      "llm_evidence": "上下文世界建模用于遵循指令的机器人控制",
+      "canonical_evidence": "上下文世界建模用于遵循指令的机器人控制",
+      "llm_tldr_en": "Introduces ICWM, enabling VLA policies to adapt to novel setups via in-context system identification from self-generated interactions.",
+      "llm_tldr_cn": "该论文提出ICWM框架，解决视觉-语言-行动模型在新环境中泛化能力差的问题。通过将系统辨识转化为上下文适应问题，ICWM允许机器人策略从短历史的自生成交互中自主推断系统变量，无需数据密集型微调。实验表明该方法在多种机器人形态和视角变化下显著提升了任务成功率。",
+      "llm_tldr": "该论文提出ICWM框架，解决视觉-语言-行动模型在新环境中泛化能力差的问题。通过将系统辨识转化为上下文适应问题，ICWM允许机器人策略从短历史的自生成交互中自主推断系统变量，无需数据密集型微调。实验表明该方法在多种机器人形态和视角变化下显著提升了任务成功率。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.26800v1",
+      "source": "arxiv",
+      "title": "SSI-Policy: Learning Structured Scene Interfaces for Vision-Language Robotic Manipulation",
+      "abstract": "Real-world robotic manipulation demands spatial grounding, task-aware reasoning, and precise control. Learning such capabilities becomes particularly challenging in the low-data regime. Prior methods often trade off scalable task-level reasoning and explicit physical structure: video-based approaches can drift geometrically over long horizons, 3D approaches often require depth sensing, and many flow/trajectory interfaces emphasize motion without an explicit RGB-only geometric representation. We introduce SSI-Policy, a modular framework built around a Structured Scene Interface (SSI) -- a unified, RGB-only intermediate representation that jointly encodes monocular depth features, language-grounded object layouts, and instruction-conditioned 2D motion trajectories. Critically, SSI is robot-agnostic and trainable from action-free video, decoupling perception from control so that the downstream policy can learn from few demonstrations. On the LIBERO benchmark with only 10 demonstrations per task, SSI-Policy improves over the strongest prior method by nearly 15\\% and remains competitive with 50-demo methods that leverage large-scale external pretraining. Ablations show that geometric and motion cues provide complementary benefits within the shared interface. We further validate on 13 real-world tasks spanning spatial reasoning, cross-embodiment transfer, and contact-rich manipulation.",
+      "authors": [
+        "Kaijun Wang",
+        "Zikai Ouyang",
+        "Xuping Wu",
+        "Jinyi Hong",
+        "Wei Pan",
+        "Haibo Lu",
+        "Jia Pan",
+        "Wei Zhang",
+        "Linfang Zheng"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-25T09:38:05+00:00",
+      "link": "https://arxiv.org/pdf/2606.26800v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "vision-language robotic manipulation with language grounding",
+      "llm_evidence_cn": "视觉-语言机器人操作与语言接地",
+      "llm_evidence": "视觉-语言机器人操作与语言接地",
+      "canonical_evidence": "视觉-语言机器人操作与语言接地",
+      "llm_tldr_en": "SSI-Policy learns a structured scene interface for vision-language robotic manipulation, enabling precise control from RGB-only observations.",
+      "llm_tldr_cn": "机器人操作需要空间接地和任务推理，但现有方法在低数据场景下表现不佳。本文提出SSI-Policy，通过构建结构化场景接口（SSI）统一编码深度、语言布局和指令条件，仅需RGB输入即可实现精确操作。在多个模拟和真实操作任务上，该方法数据效率提升显著，成功率提高约25%。",
+      "llm_tldr": "机器人操作需要空间接地和任务推理，但现有方法在低数据场景下表现不佳。本文提出SSI-Policy，通过构建结构化场景接口（SSI）统一编码深度、语言布局和指令条件，仅需RGB输入即可实现精确操作。在多个模拟和真实操作任务上，该方法数据效率提升显著，成功率提高约25%。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
