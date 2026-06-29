@@ -1,0 +1,54 @@
+{
+  "label": "2026-06-29",
+  "date": "2026-06-29",
+  "generated_at": "2026-06-29T21:27:55",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202606/29/2606.27807v1-spikevla-vision-language-action-models-with-spiking-neural-networks",
+      "section": "deep",
+      "title_en": "SpikeVLA: Vision-Language-Action Models with Spiking Neural Networks",
+      "authors": "Ruiqi Song, Dujun Nie, Siyu Teng, Baiyong Ding, Xiaotong Zhang, Dong Li, Chenming Zhang, Yuchen Li, Hangbin Wu, Long Chen",
+      "date": "2026-06-26",
+      "pdf": "https://arxiv.org/pdf/2606.27807v1",
+      "score": "9.0",
+      "evidence": "用于具身导航的视觉-语言-动作模型",
+      "tldr": "现有VLA模型依赖大规模Transformer，推理延迟与能耗高，难以部署于低功耗实时场景。SpikeVLA提出基于脉冲神经网络的VLA架构，包含脉冲视觉编码器、多模态脉冲语言模型和脉冲动作策略网络，利用事件驱动稀疏计算。在导航和机器人控制任务中，能耗和计算成本显著降低，性能保持竞争力，为低功耗具身智能提供新方案。",
+      "tags": "query:vln",
+      "abstract_en": "Vision-Language-Action (VLA) models have become a dominant paradigm for embodied intelligence. However, most existing approaches are built on large-scale transformers, resulting in substantial inference latency and energy consumption that limit their practical deployment in low-power, real-time scenarios. We propose SpikeVLA, a spiking VLA architecture for embodied navigation with energy-efficient inference, consisting of three key components. (i) A spiking vision encoder, Spike-V, that replaces dense continuous layers with event-driven spiking layers to reduce the energy consumption of visual representation learning. (ii) A multi-modal spiking large language model, Spike-L, that reformulates cross-modal reasoning with spiking dynamics and token-level event-driven sparsity to further lower computational cost. (iii) A spiking action policy network, Spike-A employs Laplacian-kernel population coding with a multi-layer fully connected SNN, and decodes spiking activities into stable and robust continuous control with energy-efficient inference under low-power constraints. Experiments on navigation and robotic control tasks show that SpikeVLA significantly reduces energy consumption and computational cost while maintaining competitive performance, highlighting its potential for low-power, real-time embodied intelligence.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/29/2606.27871v1-localnav-distilling-frontier-vlms-and-embodied-rl-for-on-device-object-goal-navigation",
+      "section": "deep",
+      "title_en": "LocalNav: Distilling Frontier VLMs and Embodied RL for On-Device Object Goal Navigation",
+      "authors": "Nicolas Baumann, Liam Boyle, Pu Deng, Edoardo Ghignone, Boyang Sun, Marc Pollefeys, Luca Benini, Michele Magno",
+      "date": "2026-06-26",
+      "pdf": "https://arxiv.org/pdf/2606.27871v1",
+      "score": "9.0",
+      "evidence": "使用VLM和具身RL的目标导航",
+      "tldr": "针对设备端物体目标导航任务，提出蒸馏策略将前沿VLM的空间语义推理能力迁移至轻量级4B参数本地模型。基于Claude Sonnet 4.6构建场景图管道取得39.7%成功率，仅用500条推理轨迹微调Qwen3.5-4B即达34.5%成功率。引入E-RLVR与Token生成正则化压缩输出序列，结合量化使推理延迟累计降低82.8%，实现低延迟边缘部署。",
+      "tags": "query:vln",
+      "abstract_en": "Vision Language Models (VLMs) have emerged in the robotic domain as a powerful tool that enables environmental perception with language context, serving as a catalyst for open-vocabulary tasks like ObjectNav. Yet, their computational footprint typically confines them to cloud execution, hindering low-latency inference with local deployment on resource-constrained robots. To address this challenge, we present a distillation strategy that transfers complex spatial-semantic reasoning from large frontier models into a lightweight, 4B-parameter local VLM for edge execution on embedded GPU devices (e.g., Jetson Orin). We first establish a State of the Art (SotA), Scene Graph (SG)-based pipeline using Claude Sonnet 4.6, achieving a 39.7% Success Rate (SR) on the HM3D OVON benchmark. We then demonstrate that fine-tuning Qwen3.5-4B on just 500 frontier reasoning traces effectively enables navigation capabilities, yielding a SR of 34.5%, narrowing the gap to the performance of large cloud models. Finally, we introduce E-RLVR with Token Generation (TG) regularization to compress output sequence lengths for physical deployment while grounding the agent in its task. This downstream optimization reduces TG overhead by 72.1% and latency by 71.8%. Combined with quantization, this joint strategy yields a cumulative 82.8% reduction in overall inference latency without significantly sacrificing performance, presenting a viable paradigm for local, low-latency VLM execution on mobile robots.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/29/2606.24292v1-activescope-actively-seeking-and-correcting-perception-for-mllms",
+      "section": "quick",
+      "title_en": "ActiveScope: Actively Seeking and Correcting Perception for MLLMs",
+      "authors": "Yajing Wang, Chao Bi, Junshu Sun, Shufan Shen, Zhaobo Qi, Shuhui Wang, Qingming Huang",
+      "date": "2026-06-23",
+      "pdf": "https://arxiv.org/pdf/2606.24292v1",
+      "score": "6.0",
+      "evidence": "多模态大模型细粒度感知增强",
+      "tldr": "针对多模态大语言模型在高分辨率图像细粒度感知中易受干扰和语义偏差影响的问题，提出无需额外训练的ActiveScope框架，通过语义锚点定位模块独立定位目标，结合干扰抑制细化模块抑制显著干扰，在V* Bench等基准上实现96.34%准确率，展现了主动搜索与自校正范式的优越性。",
+      "tags": "query:vln",
+      "abstract_en": "Multimodal Large Language Models (MLLMs) have demonstrated impressive vision-language understanding, yet still struggle with fine-grained perception in high-resolution images. While existing training-free methods typically rely on attention-based localization or coarse-to-fine search, they are often misled by distractors and fail to locate multiple targets. Our investigation attributes these failures to Contextual Dominance, where salient distractors overwhelm target attention and cause inaccurate localization, and Semantic Bias, where global semantics cause the model to fixate on the most salient concept, resulting in incomplete localization in multi-object scenarios. Built on these insights, we propose ActiveScope, a training-free framework that enhances MLLMs by actively seeking and correcting perception. ActiveScope features two modules. The Semantic Anchor Localization (SAL) utilizes fine-grained semantic anchors to independently localize key targets, thereby mitigating semantic bias. The Interference-Suppressed Refinement (ISR) refines localization by suppressing attention on salient distractions to overcome contextual dominance. Extensive experiments on high-resolution image understanding benchmarks demonstrate that ActiveScope outperforms existing training-free methods (e.g., 96.34 percent accuracy on $V^{*}$ Bench), validating the superiority of the active search and self-correction paradigm. Our code is available at https://github.com/jasmine-ww/ActiveScope.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
