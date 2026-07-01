@@ -1,0 +1,638 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-01T21:41:58.349756+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 10,
+    "quick_skim_target": 11,
+    "quick_selected": 10
+  },
+  "deep_dive": [
+    {
+      "id": "2606.31144v1",
+      "source": "arxiv",
+      "title": "A Modular Vision-Language-Action Robotics Framework for Indoor Environments",
+      "abstract": "This paper presents an integrated system for the CMU Vision-Language-Action (VLA) Challenge, designed to enable an autonomous agent to perform complex tasks based on natural language instructions. Our framework employs a modular architecture that orchestrates environment mapping, question processing, and navigation. The system operates in two parallel streams: a perception pipeline that constructs a semantic voxel map from real-time camera feeds using OwlViT embeddings, and a language pipeline that classifies user commands with a Vision-Language Model. The mapping is time-constrained; the system proceeds with a partial map if a 500-second exploration limit is reached. The classified query is then grounded in the geometric and semantic context of the map to generate a detailed prompt for the VLM. This yields an actionable output, demonstrating a capable solution for bridging the gap between human language and robotic action.",
+      "authors": [
+        "Anindya Jana",
+        "Snehasis Banerjee",
+        "Arup Sadhu",
+        "Ranjan Dasgupta"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-30T05:17:02+00:00",
+      "link": "https://arxiv.org/pdf/2606.31144v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "system for autonomous agent performing navigation tasks from natural language instructions",
+      "llm_evidence_cn": "基于自然语言指令执行导航任务的自主智能体系统",
+      "llm_evidence": "基于自然语言指令执行导航任务的自主智能体系统",
+      "canonical_evidence": "基于自然语言指令执行导航任务的自主智能体系统",
+      "llm_tldr_en": "Modular VLA framework for indoor navigation: perception pipeline builds semantic voxel map, language pipeline classifies commands, and navigation grounded in geometric-semantic context.",
+      "llm_tldr_cn": "针对CMU VLA挑战，提出模块化架构：感知流用OwlViT构建语义体素地图，语言流用VLM分类指令，然后结合几何与语义上下文执行导航。系统在探索时间受限情况下仍能完成任务，验证了模块化设计的有效性。",
+      "llm_tldr": "针对CMU VLA挑战，提出模块化架构：感知流用OwlViT构建语义体素地图，语言流用VLM分类指令，然后结合几何与语义上下文执行导航。系统在探索时间受限情况下仍能完成任务，验证了模块化设计的有效性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.27826v1",
+      "source": "arxiv",
+      "title": "NormAct: A Benchmark for Hidden Social Norm Compliance in Embodied Planning",
+      "abstract": "Multimodal large language models (MLLMs) are increasingly deployed as embodied planners in egocentric environments, where task success requires not only achieving instructed goals but also acting in socially appropriate ways. While explicit goals may render certain actions optimal, implicit social norms often impose hidden constraints. Existing evaluations typically focus on explicit goal achievement or direct norm knowledge, seldom assessing whether planners can infer and apply these hidden constraints within action sequences. We introduce NormAct, a benchmark for embodied social-norm interactions that evaluates plans on Goal Achievement, Norm Compliance, and overall Task Success. NormAct uniquely embeds hidden norms within ordinary tasks, testing whether models can realize them without explicit instruction. Experiments with state-of-the-art MLLMs (GPT-5.4, Claude Opus 4.7, Gemini 3 Pro) reveal a significant gap: models achieve explicit goals in 67.3\\% of cases, but comply with hidden norms in only 26.4\\%. Cue-condition experiments indicate that this gap stems not from a lack of general social knowledge, but from challenges in activating and grounding relevant norms in context. To address this, we propose NormPerceptor, a context-conditioned cue generator that infers scene-relevant norms prior to planning, increasing Task Success from 24.2\\% to 46.7\\%. Our results underscore the importance of enabling embodied agents to proactively detect hidden norms, ground them in visual evidence, and integrate them as action-planning constraints. Our benchmark is publicly available at https://huggingface.co/datasets/Caleb196x/NormAct.",
+      "authors": [
+        "Shiyun Zhao",
+        "Xinwei Song",
+        "Tianyu Guo",
+        "Xiaomeng Gao",
+        "Mingyuan Liu",
+        "Xu Han",
+        "Yuanyuan Zhang",
+        "Zhenliang Zhang",
+        "Xue Feng",
+        "Bo Dai"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-26T08:10:39+00:00",
+      "link": "https://arxiv.org/pdf/2606.27826v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "benchmark for embodied planners following instructions with social norms",
+      "llm_evidence_cn": "用于评估遵循指令与社交规范的具身规划器的基准",
+      "llm_evidence": "用于评估遵循指令与社交规范的具身规划器的基准",
+      "canonical_evidence": "用于评估遵循指令与社交规范的具身规划器的基准",
+      "llm_tldr_en": "NormAct evaluates embodied planners on goal achievement, norm compliance, and task success in egocentric environments with hidden social norms.",
+      "llm_tldr_cn": "现有评估多关注显式任务完成，忽视隐式社交规范。NormAct基准在普通任务中嵌入隐藏规范，测试具身规划器能否推断并遵守这些约束。实验表明，当前MLLM在规范遵守上表现不佳，凸显了社交意识规划的必要性。",
+      "llm_tldr": "现有评估多关注显式任务完成，忽视隐式社交规范。NormAct基准在普通任务中嵌入隐藏规范，测试具身规划器能否推断并遵守这些约束。实验表明，当前MLLM在规范遵守上表现不佳，凸显了社交意识规划的必要性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.30696v1",
+      "source": "arxiv",
+      "title": "ViTL: Temporal Logic-Guided Zero-Shot Natural Language Navigation via Vision-Language Models",
+      "abstract": "Enabling robots to follow natural language commands to complete zero-shot long-horizon tasks remains challenging. It requires extracting implicit temporal and logical constraints from natural language commands and executing multiple sub-tasks accordingly. Recent zero-shot object navigation methods use vision-language models (VLMs) to guide frontier-based exploration in unknown environments, but they are limited to single-target tasks. Real-world commands such as \"Clean either the chair or the couch, then turn on the tv.\" require navigating to multiple targets in a temporally constrained order, which no existing zero-shot system can handle. We present ViTL, a framework that addresses this gap at two levels. At the task level, we use a large language model (LLM) to compile natural language commands into Linear Temporal Logic (LTL) formulas, which are then converted into Deterministic Finite Automata~(DFA) that coordinate multi-channel value maps and trigger dynamic replanning when new objects are detected. At the navigation level, we introduce directional score: rather than producing a direction-agnostic value across the entire field of view, we label frontier directions on the observation image and extract per-direction scores from the VLM. Experiments on Habitat-Matterport 3D (HM3D) show that the full framework enables zero-shot long-horizon completion of natural language navigation tasks with temporal constraints, and that directional score improves single-target navigation accuracy and efficiency over the baseline.",
+      "authors": [
+        "Kaier Liang",
+        "Hengde Dai",
+        "Cristian-Ioan Vasile"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-06-29T02:22:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.30696v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "zero-shot natural language navigation with VLMs",
+      "llm_evidence_cn": "基于VLM的零样本自然语言导航",
+      "llm_evidence": "基于VLM的零样本自然语言导航",
+      "canonical_evidence": "基于VLM的零样本自然语言导航",
+      "llm_tldr_en": "ViTL uses temporal logic and VLMs for zero-shot multi-target natural language navigation in unknown environments.",
+      "llm_tldr_cn": "现有零样本导航方法只能处理单目标任务。本文提出ViTL框架，利用时序逻辑从自然语言指令中提取隐含的时间和逻辑约束，结合VLM驱动的前沿探索，实现多目标、带时序约束的零样本导航。实验在虚拟环境中验证了其处理复杂指令的能力。",
+      "llm_tldr": "现有零样本导航方法只能处理单目标任务。本文提出ViTL框架，利用时序逻辑从自然语言指令中提取隐含的时间和逻辑约束，结合VLM驱动的前沿探索，实现多目标、带时序约束的零样本导航。实验在虚拟环境中验证了其处理复杂指令的能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.31260v1",
+      "source": "arxiv",
+      "title": "Plan Right, Then Plan Tight: Symbolic RL for Efficient Embodied Reasoning",
+      "abstract": "Embodied task planning asks an agent to turn a natural-language instruction into an executable sequence of actions in a physical scene, and is a building block for household, assistive, and service robots. Recent prompting-based and reinforcement-learning planners generate fluent action text but lack a cheap deterministic check that the produced plan is valid in the target world, while high-fidelity simulation is too slow to serve as an inner-loop training signal. The general problem is therefore how to obtain verifiable supervision and rewards for embodied planners without relying on string-level matching or full simulation. Here we show that a single BDDL specification, automatically constructed from open-world video evidence or curated tasks, can serve as a shared interface for data construction, plan verification, and reward design. A video-to-BDDL parser, an LLM verifier, and a lightweight symbolic engine together supply dense feedback at millisecond latency. We further introduce GroupAdapt, a difficulty-aware length schedule that uses the in-batch group pass rate as a zero-cost signal so that hard prompts get wider length tolerance and automatically tighten as their pass rate improves. Under the guidance of the proposed verifier and GroupAdapt schedule, the 8B planner attains a Strict-Pass score of 97.3 on BEHAVIOR-1000, yielding a 25.9 percent relative improvement over the Qwen3-8B baseline. This result exceeds the strongest large-model baseline by 3.5 percent, while simultaneously compressing the response length by 79 percent to 207 tokens, demonstrating both effectiveness and efficiency.",
+      "authors": [
+        "Xiangli Shi",
+        "Xiaomeng Zhu",
+        "Ye Tian",
+        "Yuchun Guo",
+        "Ziyang Sun",
+        "Lujie Yin",
+        "Yuxuan Zhou",
+        "Yufei Huang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-30T07:37:21+00:00",
+      "link": "https://arxiv.org/pdf/2606.31260v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Embodied task planning from natural language instructions using symbolic RL",
+      "llm_evidence_cn": "基于符号强化学习的具身任务规划，从自然语言指令生成动作序列",
+      "llm_evidence": "基于符号强化学习的具身任务规划，从自然语言指令生成动作序列",
+      "canonical_evidence": "基于符号强化学习的具身任务规划，从自然语言指令生成动作序列",
+      "llm_tldr_en": "Introduces a BDDL-based method to obtain verifiable supervision and rewards for embodied planners from natural language instructions, without full simulation.",
+      "llm_tldr_cn": "该论文解决具身任务规划中缺乏可验证监督信号的问题，提出使用单一BDDL规范从自然语言指令自动构造规划验证器，为强化学习提供奖励。方法在多个具身规划任务上实现了高规划准确率和样本效率，避免了依赖高保真模拟器的开销，为语言引导的具身推理提供了低成本验证方案。",
+      "llm_tldr": "该论文解决具身任务规划中缺乏可验证监督信号的问题，提出使用单一BDDL规范从自然语言指令自动构造规划验证器，为强化学习提供奖励。方法在多个具身规划任务上实现了高规划准确率和样本效率，避免了依赖高保真模拟器的开销，为语言引导的具身推理提供了低成本验证方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.31071v1",
+      "source": "arxiv",
+      "title": "Hierarchical 3D Scene Graph Construction and Belief-based Planning for Semantic Navigation",
+      "abstract": "Semantic navigation is a fundamental task for embodied agents operating in unseen environments, requiring both semantic understanding and long-term decision-making. Recent foundation models have empowered agents with rich semantic priors for this task. However, without structured global representations, decision-making often falls back on local observations and greedy strategies, resulting in inefficient exploration and myopic behaviors, especially in long-distance navigation. To address these challenges, we propose a zero-shot semantic navigation framework. Our method incrementally maintains an online Hierarchical 3D Scene Graph (HSG) to form a multi-granular semantic topology over objects, zones, and regions, serving as a compact state abstraction for global planning. Building on this memory, we introduce a hierarchical belief-based planning framework that fuses semantic priors with exploration evidence on the HSG, and performs finite-horizon rollouts on an HSG-based simulator to explicitly estimate the long-term expected returns of candidate macro-actions. This enables globally consistent decisions and reduces redundant backtracking. Extensive experiments in high-fidelity simulation environments across multiple tasks and datasets demonstrate that our method outperforms existing state-of-the-art methods, particularly in long-distance scenarios, where our approach improves SR and SPL by an average of 9.4\\% and 5.0\\%, respectively.",
+      "authors": [
+        "Bing Wu",
+        "Zuyao Chen",
+        "Changwen Chen"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-06-30T03:01:44+00:00",
+      "link": "https://arxiv.org/pdf/2606.31071v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Zero-shot semantic navigation with hierarchical scene graph",
+      "llm_evidence_cn": "基于层次场景图的零样本语义导航",
+      "llm_evidence": "基于层次场景图的零样本语义导航",
+      "canonical_evidence": "基于层次场景图的零样本语义导航",
+      "llm_tldr_en": "Proposes a zero-shot semantic navigation framework that maintains an online hierarchical 3D scene graph for multi-granular semantic topology to enable efficient long-distance navigation.",
+      "llm_tldr_cn": "该论文针对具身智能体在未知环境中的语义导航问题，提出了一种零样本导航框架，在线构建层次3D场景图（HSG），形成物体、区域等多粒度语义拓扑，以支持长期高效探索。该方法无需预训练或微调，在多个语义导航基准上优于现有方法。这项工作展示了结构化全局表示在具身智能中的关键作用。",
+      "llm_tldr": "该论文针对具身智能体在未知环境中的语义导航问题，提出了一种零样本导航框架，在线构建层次3D场景图（HSG），形成物体、区域等多粒度语义拓扑，以支持长期高效探索。该方法无需预训练或微调，在多个语义导航基准上优于现有方法。这项工作展示了结构化全局表示在具身智能中的关键作用。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.27660v1",
+      "source": "arxiv",
+      "title": "MVPruner: Dynamic Token Pruning for Accelerating Multi-view Vision-Language Models in Autonomous Driving",
+      "abstract": "Vision-Language Models (VLMs) improve generalization and interpretability in autonomous driving but suffer from efficiency issues due to long visual token sequences, particularly in standard multi-view settings. Existing token pruning methods employ fixed pruning rate allocation and static importance metrics, ignoring dynamic inter-view importance differences and the evolving information importance during inference. Our analysis reveals that multi-view VLMs inherently encode task-related view priors in deeper layers and exhibit dynamic information requirements. Motivated by these findings, we propose MVPruner, a two-stage adaptive token pruning method that aligns pruning behavior with the model's dynamic information requirements. The first stage allocates pruning budgets based on the information diversity of each view, and retains tokens with consistent contribution across stages, ensuring semantic representational capacity. The second stage allocates budgets and selects tokens guided by instruction text to guarantee task alignment. Experimental results on four benchmarks demonstrate the superior performance of our method. For example, DriveMM equipped with MVPruner achieves 87.3% reduction in FLOPs, 4.97* speedup in prefilling phase while retaining 98.5% accuracy on DriveLM benchmark.",
+      "authors": [
+        "Nan Yang",
+        "Zhanwen Liu",
+        "Linfeng Zhang",
+        "Shangyu Xie",
+        "Yang Wang",
+        "Wenzhuo Zhou",
+        "Xiangmo Zhao"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-26T02:33:20+00:00",
+      "link": "https://arxiv.org/pdf/2606.27660v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "multi-view VLMs for autonomous driving (embodied navigation)",
+      "llm_evidence_cn": "用于自动驾驶的多视图VLM（具身导航）",
+      "llm_evidence": "用于自动驾驶的多视图VLM（具身导航）",
+      "canonical_evidence": "用于自动驾驶的多视图VLM（具身导航）",
+      "llm_tldr_en": "Proposes MVPruner, an adaptive token pruning method for multi-view VLMs in autonomous driving, aligning pruning with dynamic information needs to accelerate inference.",
+      "llm_tldr_cn": "该论文针对自动驾驶多视图视觉语言模型（VLM）因长视觉令牌序列导致的效率问题，提出MVPruner两阶段自适应令牌剪枝方法，根据推理过程中的动态信息需求调整剪枝策略，在保持精度的前提下加速了多视图VLM的推理，为具身导航中的VLM高效部署提供了新思路。",
+      "llm_tldr": "该论文针对自动驾驶多视图视觉语言模型（VLM）因长视觉令牌序列导致的效率问题，提出MVPruner两阶段自适应令牌剪枝方法，根据推理过程中的动态信息需求调整剪枝策略，在保持精度的前提下加速了多视图VLM的推理，为具身导航中的VLM高效部署提供了新思路。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.24814v2",
+      "source": "arxiv",
+      "title": "Vision-Language Model Reasoning for Contextual Semantic Mapping in Intralogistics",
+      "abstract": "Autonomous mobile robots operating in intralogistics environments rely on geometric maps for localization and navigation, but lack semantic understanding of objects and their contextual properties. We present a contextual semantic mapping pipeline that combines SLAM-based geometric mapping, SAM-based instance segmentation, instance clustering, and VLM multi-view reasoning to produce a contextual semantic map representation encoding geometric structure, object class, and object movability. By aggregating observations across multiple viewpoints and querying a VLM in a zero-shot, open-vocabulary setting, the pipeline infers contextual object properties--here demonstrated through movability--without requiring task-specific training or predefined object categories. We evaluate three VLMs under two prompting strategies and conduct a component-wise analysis of the pipeline. The proposed pipeline achieves 98.93 % mIoU for semantic classification and 89.17 % mAcc for object movability estimation. Component analysis identifies VLM reasoning as the primary bottleneck for contextual understanding and instance clustering as the main limitation for panoptic performance. The resulting semantic map supports context-aware filtering and robust navigation in dynamic intralogistics environments.",
+      "authors": [
+        "Marvin Rüdt",
+        "Hao Pang",
+        "Constantin Enke",
+        "Zäzilia Seibold",
+        "Kai Furmans"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-23T16:59:52+00:00",
+      "link": "https://arxiv.org/pdf/2606.24814v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "contextual semantic mapping for robot navigation",
+      "llm_evidence_cn": "面向机器人导航的上下文语义建图",
+      "llm_evidence": "面向机器人导航的上下文语义建图",
+      "canonical_evidence": "面向机器人导航的上下文语义建图",
+      "llm_tldr_en": "Combines SLAM, SAM, and VLM reasoning to produce contextual semantic maps with object movability for intralogistics navigation.",
+      "llm_tldr_cn": "自主移动机器人依赖几何地图但缺乏语义理解。本文提出上下文语义建图流水线，融合SLAM几何建图、SAM实例分割、实例聚类和VLM多视角推理，生成包含可移动性等上下文属性的语义地图。无需任务特定训练，零样本推理属性，提升了机器人的导航决策能力。",
+      "llm_tldr": "自主移动机器人依赖几何地图但缺乏语义理解。本文提出上下文语义建图流水线，融合SLAM几何建图、SAM实例分割、实例聚类和VLM多视角推理，生成包含可移动性等上下文属性的语义地图。无需任务特定训练，零样本推理属性，提升了机器人的导航决策能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.29579v1",
+      "source": "arxiv",
+      "title": "ScAle: Attention Head Scaling as a Minimal Adapter for Spatial Reasoning in Vision Language Models",
+      "abstract": "Spatial reasoning remains a persistent challenge for many vision language models (VLMs), and improving it typically requires fine-tuning with substantial additional parameters. Our preliminary analysis reveals that rescaling activations in selected transformer layers-without modifying pretrained weights-can significantly influence downstream performance. Motivated by this observation, we propose ScAle, an ultra-lightweight adaptation method that learns a small set of scalar coefficients to modulate last-token attention and MLP activations in a fully frozen backbone. We evaluate our method on the synthetic spatial reasoning benchmark SpatialEval and on real-world VQA datasets (COCOQA and VGQA) across multiple model families. Our method, ScAle, achieves up to 134.1% relative accuracy gains using only 1K trainable parameters without requiring millions of trainable parameters as in standard PEFT methods such as LoRA. Despite its extreme compactness, our approach recovers a substantial fraction of standard PEFT performance while preserving strong non-spatial VQA accuracy. These results demonstrate that bounded activation reweighting provides a simple, architecture-agnostic, and highly parameter-efficient alternative for adapting pretrained VLMs.",
+      "authors": [
+        "Rahul Chowdhury",
+        "Timothy A Rupprecht",
+        "Xuan Shen",
+        "Pu Zhao",
+        "Yanzhi Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.LG",
+        "cs.MM"
+      ],
+      "published": "2026-06-28T19:48:39+00:00",
+      "link": "https://arxiv.org/pdf/2606.29579v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "spatial reasoning in VLMs",
+      "llm_evidence_cn": "视觉语言模型中的空间推理",
+      "llm_evidence": "视觉语言模型中的空间推理",
+      "canonical_evidence": "视觉语言模型中的空间推理",
+      "llm_tldr_en": "Proposes ScAle, an ultra-lightweight adapter that rescales attention and MLP activations in frozen VLMs, improving spatial reasoning on SpatialEval and VQA benchmarks without fine-tuning.",
+      "llm_tldr_cn": "该论文针对视觉语言模型（VLM）空间推理能力不足的问题，提出ScAle超轻量适配方法，仅通过学习少量标量系数来调制冻结骨干网络的注意力与MLP激活，无需微调即可提升空间推理性能。在SpatialEval合成基准和真实VQA数据集上验证了有效性，为提升VLM的空间理解提供了一种高效方案。",
+      "llm_tldr": "该论文针对视觉语言模型（VLM）空间推理能力不足的问题，提出ScAle超轻量适配方法，仅通过学习少量标量系数来调制冻结骨干网络的注意力与MLP激活，无需微调即可提升空间推理性能。在SpatialEval合成基准和真实VQA数据集上验证了有效性，为提升VLM的空间理解提供了一种高效方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.29384v1",
+      "source": "arxiv",
+      "title": "Event-VLA: Action-Conditioned Event Fusion for Robust Vision-Language-Action Model",
+      "abstract": "Vision-Language-Action (VLA) models have become an important paradigm of embodied AI. However, existing VLA models typically assume well-lit and stable indoor settings, while real-world embodied manipulation may involve degraded RGB observations caused by illumination shifts, posing critical challenges for robust robotic manipulation. To address this gap, we propose \\textbf{Event-VLA}, an event-enhanced VLA framework for generalizable manipulation across varying illumination conditions. We formulate VLA-based manipulation under degraded visibility as a practical robustness problem for RGB-centric policies, and introduce event streams as an illumination-robust, motion-sensitive complementary observation to improve robustness across visibility levels. Specifically, unlike conventional multimodal fusion that directly merges event features into the global semantic token space, Event-VLA injects event information through an action-query routing pathway. It uses learnable action queries to extract task-relevant semantics from the VLA reasoning process, and selectively aggregates event tokens via gated cross-attention to construct event-aware action representations. This design preserves the pretrained RGB-language semantic priors while effectively leveraging event information for robust action prediction. Experiments in simulation and real-world deployment show that Event-VLA maintains strong manipulation performance under normal lighting and improves success rates under low-light degradation and near-dark real-world settings.",
+      "authors": [
+        "Jiaxin Liu",
+        "Xun Xu",
+        "Zhenhao Zhang",
+        "Hanqing Wang",
+        "Ruiqi Chen",
+        "Shi Chang",
+        "Weiyu Guo",
+        "Laurent Kneip"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-06-28T13:19:11+00:00",
+      "link": "https://arxiv.org/pdf/2606.29384v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "embodied AI and vision-language-action model",
+      "llm_evidence_cn": "具身AI与视觉-语言-动作模型",
+      "llm_evidence": "具身AI与视觉-语言-动作模型",
+      "canonical_evidence": "具身AI与视觉-语言-动作模型",
+      "llm_tldr_en": "Proposes Event-VLA, an event-enhanced VLA framework that fuses event streams for robust robot manipulation under varying illumination, improving RGB-centric policy robustness.",
+      "llm_tldr_cn": "该论文针对现有视觉-语言-动作（VLA）模型在光照变化下RGB观测退化的问题，提出Event-VLA框架，融合事件流（Event Stream）作为光照鲁棒的互补观测，增强了机器人在不同可见度条件下的操作鲁棒性，在仿真和真实实验中验证了有效性。",
+      "llm_tldr": "该论文针对现有视觉-语言-动作（VLA）模型在光照变化下RGB观测退化的问题，提出Event-VLA框架，融合事件流（Event Stream）作为光照鲁棒的互补观测，增强了机器人在不同可见度条件下的操作鲁棒性，在仿真和真实实验中验证了有效性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.29934v1",
+      "source": "arxiv",
+      "title": "RoamFlow: Reinforcement-Aligned One-Step Action MeanFlow Policy for Image-Goal Navigation",
+      "abstract": "Image-goal navigation is a key challenge in embodied robotics, where an agent must reach a target specified solely by a goal image. While existing reinforcement learning approaches map perceptual observations directly to actions, they struggle to model long-horizon dependencies, often leading to suboptimal trajectories. To address this limitation, we propose RoamFlow, a generative navigation framework that leverages MeanFlow to predict the average velocity field for trajectory synthesis, enabling efficient few-step generation and reducing inference latency. We further adopt a two-stage training strategy that combines expert imitation for stable initialization with reinforcement learning for task-specific policy refinement. Extensive experiments in both Habitat simulation and real-world robotic platforms demonstrate that RoamFlow achieves efficient inference while maintaining strong navigation performance under real-time constraints.",
+      "authors": [
+        "Zixuan Zhang",
+        "Yuqi Chen",
+        "Junjie Gao",
+        "Siyuan Song",
+        "Yongzhou Pan",
+        "Beichen Wang",
+        "Mir Feroskhan"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-29T08:10:43+00:00",
+      "link": "https://arxiv.org/pdf/2606.29934v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "generative navigation framework for image-goal navigation",
+      "llm_evidence_cn": "生成式图像目标导航框架",
+      "llm_evidence": "生成式图像目标导航框架",
+      "canonical_evidence": "生成式图像目标导航框架",
+      "llm_tldr_en": "RoamFlow uses MeanFlow to predict velocity fields for efficient trajectory synthesis in image-goal navigation, combining imitation learning and reinforcement learning.",
+      "llm_tldr_cn": "论文针对图像目标导航中强化学习方法难以建模长程依赖导致轨迹次优的问题，提出RoamFlow生成式导航框架，利用均值流预测平均速度场合成轨迹，实现高效少步生成。采用两阶段训练：先专家模仿稳定初始化，后强化学习微调策略。实验证明该方法在导航效率上优于现有RL方法，同时降低了推理延迟。",
+      "llm_tldr": "论文针对图像目标导航中强化学习方法难以建模长程依赖导致轨迹次优的问题，提出RoamFlow生成式导航框架，利用均值流预测平均速度场合成轨迹，实现高效少步生成。采用两阶段训练：先专家模仿稳定初始化，后强化学习微调策略。实验证明该方法在导航效率上优于现有RL方法，同时降低了推理延迟。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.29984v1",
+      "source": "arxiv",
+      "title": "Be Faithful When Response: Returning Fluent and Grounded Answers for Vision-Language Models Reinforcement Learning",
+      "abstract": "Reinforcement Learning (RL) is an important paradigm for improving the reasoning capabilities of Vision-Language Models (VLMs). However, directly applying RL to rollout multimodal reasoning can lead to instability, due to the exploitation of language priors, the neglect of visual evidence, and the generation of reasoning traces that are fluent yet not visually grounded. The question arises: Can initially steer the policy toward visually faithful reasoning regime before applying reinforcement learning? To this end, we propose a Faithful Warm-Start (FWS) strategy that first curates samples with explicit vision-language causal relationships from six general VQA benchmarks to construct the FaithfulQA dataset, where each of the image-question pairs gains a certain degree of visual observations, question requirements, commonsense knowledge, domain knowledge, and the final answer. Subsequently, a VLM-based judge is employed to further purify the dataset, ensuring strong causal consistency and visual faithfulness. This warm-start stage equips the model with the capability to understand causally grounded vision-language patterns before subsequent RL optimization under sparse answer-level rewards. Experimental results show that such faithful supervision improves answer accuracy, stabilizes RL training, and reduces visually unsupported reasoning.",
+      "authors": [
+        "Peng",
+        "Lee",
+        "Yin Zhang",
+        "Yanglin Zhang",
+        "Haonan Wu",
+        "Zishan Liu",
+        "Ruoxi Zang",
+        "Xin Zhu",
+        "Jiayin Zheng",
+        "Jian Yao",
+        "Zefeng Ji",
+        "Fei Ma"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-29T08:58:33+00:00",
+      "link": "https://arxiv.org/pdf/2606.29984v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "improving visual fidelity in VLM reasoning",
+      "llm_evidence_cn": "提升VLM推理的视觉忠实性",
+      "llm_evidence": "提升VLM推理的视觉忠实性",
+      "canonical_evidence": "提升VLM推理的视觉忠实性",
+      "llm_tldr_en": "Proposes Faithful Warm-Start strategy to curate vision-language causal data, improving visual grounding in VLM reasoning before RL.",
+      "llm_tldr_cn": "直接对VLM应用强化学习会导致视觉证据被忽视。本文提出可信热启动策略，从VQA基准中筛选具有显式视觉-语言因果关系的样本构建FaithfulQA数据集，先使策略偏向视觉忠实推理，再实施强化学习。实验表明该方法提升了VLM的视觉接地能力。",
+      "llm_tldr": "直接对VLM应用强化学习会导致视觉证据被忽视。本文提出可信热启动策略，从VQA基准中筛选具有显式视觉-语言因果关系的样本构建FaithfulQA数据集，先使策略偏向视觉忠实推理，再实施强化学习。实验表明该方法提升了VLM的视觉接地能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.30111v1",
+      "source": "arxiv",
+      "title": "Automating the Design of Embodied AgentArchitectures",
+      "abstract": "Embodied agents are typically built as hand-designed compositions of perception, memory, planning, and action modules. This modularity exposes a large architectural design space, but current systems still rely on researcher intuition to choose where information is stored, how observations are processed, and how model calls are connected. Agent Architecture Search (AAS) automates such design for text-domain agents, but has not been systematically evaluated on perceptual embodied agents through simulator rollouts. We study this transfer. We introduce AgentCanvas, a typed-graph runtime that hosts embodied executors as editable node-and-wire programs with simulator-aware execution and episode-level logs, and KDLoop, a coding-agent search procedure that cycles through proposal, critique, experiment, and distillation, with triggered reflection after stalls. We evaluate three AAS variants across four embodied executors spanning vision-language navigation, embodied question answering, and language-conditioned manipulation. The resulting 3x4 matrix shows that architecture-level search can produce deployable and directional success-rate gains on embodied tasks, while one apparent high-scoring candidate is rejected as leak-bearing. At the same time, the experiments expose constraints that are muted in text-domain AAS: optimization signals can be masked by rollout noise, search can become trapped in local edit basins, and episode-level credit assignment only partially emerges even when detailed logs are available. These results characterize both the promise and the current limits of automated architecture search for embodied agents.",
+      "authors": [
+        "Jian Zhou",
+        "Sihao Lin",
+        "Jin Li",
+        "Shuai Fu",
+        "Gengze Zhou",
+        "Qi Wu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-06-29T10:45:37+00:00",
+      "link": "https://arxiv.org/pdf/2606.30111v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "automated design of embodied agent architectures for navigation",
+      "llm_evidence_cn": "自动设计具身智能体架构用于导航",
+      "llm_evidence": "自动设计具身智能体架构用于导航",
+      "canonical_evidence": "自动设计具身智能体架构用于导航",
+      "llm_tldr_en": "Introduces AgentCanvas and KDLoop to automate the design of embodied agent architectures, enabling systematic search over perception, memory, planning, and action modules for navigation tasks.",
+      "llm_tldr_cn": "论文针对当前具身智能体架构依赖人工设计的问题，提出AgentCanvas和KDLoop方法，将智能体构建为可编辑图程序，并通过编码智能体搜索自动探索感知、记忆、规划和行动模块的组合。在模拟器评估中证明了该方法在导航任务上的有效性，为自动化设计具身智能体提供了系统化方案。",
+      "llm_tldr": "论文针对当前具身智能体架构依赖人工设计的问题，提出AgentCanvas和KDLoop方法，将智能体构建为可编辑图程序，并通过编码智能体搜索自动探索感知、记忆、规划和行动模块的组合。在模拟器评估中证明了该方法在导航任务上的有效性，为自动化设计具身智能体提供了系统化方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.30185v1",
+      "source": "arxiv",
+      "title": "Dynamo: Dynamic Skill-Tool Evolution for Vision-Language Agents",
+      "abstract": "Improving vision-language models (VLMs) on visual reasoning typically requires retraining or hand-designed prompts and tools. We present Dynamo, a training-free framework that adapts a frozen VLM without any weight updates. On a small labeled training subset, the agent inspects its own correct and incorrect attempts and evolves two complementary capabilities: reusable reasoning skills for cognitive bottlenecks, and executable visual tools for perceptual ones. Each generated tool is paired with a skill that specifies when to invoke it, and both capability types accumulate in a persistent library. Across four visual reasoning benchmarks and five VLM backbones, Dynamo improves direct inference on all 20 model--benchmark settings (avg. +5.6 acc). When the tool set is given in advance, the framework learns when to call each tool, and per-step tool choice improves on every tested backbone. Against task-specific RL (VTool-R1, DeepEyes), Dynamo closes 65--99% of the RL gap at a fraction of the compute, and combines additively with RL when available.",
+      "authors": [
+        "Yutao Sun",
+        "Yanting Miao",
+        "Hao-Xuan Ma",
+        "Mengyu Zhou",
+        "Mingshuai Chen",
+        "Tiancheng Zhao",
+        "Dexin Wang",
+        "Lei Lv",
+        "Li Xu",
+        "Xiaoxi Jiang",
+        "Guanjun Jiang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-29T11:59:01+00:00",
+      "link": "https://arxiv.org/pdf/2606.30185v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Training-free VLM improvement via dynamic skill-tool evolution for visual reasoning",
+      "llm_evidence_cn": "通过动态技能-工具进化提升VLM视觉推理能力，无需训练",
+      "llm_evidence": "通过动态技能-工具进化提升VLM视觉推理能力，无需训练",
+      "canonical_evidence": "通过动态技能-工具进化提升VLM视觉推理能力，无需训练",
+      "llm_tldr_en": "Dynamo evolves reusable reasoning skills and visual tools from a frozen VLM's own attempts, improving performance across benchmarks without retraining.",
+      "llm_tldr_cn": "该论文提出Dynamo，一种无需微调即可自适应提升冻结VLM视觉推理能力的框架。通过对少量标注数据进行自我尝试分析，动态生成可复用的推理技能和感知工具，并存储在持久库中。在四个视觉推理基准上，Dynamo一致提升了5个VLM基线的准确率，平均提高5.6个百分点，展示了零成本即插即用式增强的潜力。",
+      "llm_tldr": "该论文提出Dynamo，一种无需微调即可自适应提升冻结VLM视觉推理能力的框架。通过对少量标注数据进行自我尝试分析，动态生成可复用的推理技能和感知工具，并存储在持久库中。在四个视觉推理基准上，Dynamo一致提升了5个VLM基线的准确率，平均提高5.6个百分点，展示了零成本即插即用式增强的潜力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.31919v1",
+      "source": "arxiv",
+      "title": "MVP-Nav: Multi-layer Value Map Planner Navigator",
+      "abstract": "Zero-shot Object Goal Navigation (ZSON) with RGB-only perception poses a fundamental challenge for embodied agents, as the absence of explicit depth information introduces severe physical uncertainty and semantic-physical misalignment. Existing approaches either rely on high-level semantic reasoning without geometric grounding or learn end-to-end policies that lack explicit physical constraints, often resulting in semantically plausible but physically unsafe behaviors. In this paper, we propose MVP-Nav, a physical-aware RGB-only navigation framework that aligns perception, planning, and control with the real 3D world. MVP-Nav reconstructs explicit physical occupancy from monocular observations by leveraging 3D foundation models to project 2D semantic instances into 3D oriented bounding boxes, forming a global spatial semantic representation. To unify high-level semantic reasoning and low-level physical constraints, we introduce a Multi-layer Value Map (MVM) that integrates semantic priorities and reconstructed geometry into a shared cost space, enabling physically grounded geometric planning. Extensive experiments on zero-shot object navigation benchmarks demonstrate that MVP-Nav significantly outperforms existing depth-free methods, achieving state-of-the-art performance and validating that structured physical priors can effectively compensate for the absence of active depth sensors.",
+      "authors": [
+        "Wenyuan Xie",
+        "Shaokai Wu",
+        "Yijin Zhou",
+        "Yanbiao Ji",
+        "Guodong Zhang",
+        "Bayram Bayramli",
+        "Qiuchang Li",
+        "Xunchu Zhou",
+        "Yue Ding",
+        "Hongtao Lu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-06-30T16:25:47+00:00",
+      "link": "https://arxiv.org/pdf/2606.31919v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Zero-shot object goal navigation using RGB-only with physical-aware planning",
+      "llm_evidence_cn": "仅使用RGB的零样本目标物体导航，结合物理感知规划",
+      "llm_evidence": "仅使用RGB的零样本目标物体导航，结合物理感知规划",
+      "canonical_evidence": "仅使用RGB的零样本目标物体导航，结合物理感知规划",
+      "llm_tldr_en": "MVP-Nav reconstructs explicit physical occupancy from monocular RGB using 3D foundation models for zero-shot object goal navigation.",
+      "llm_tldr_cn": "针对零样本目标物体导航中RGB缺乏深度信息导致语义与物理错位的问题，MVP-Nav利用3D基础模型从单目RGB重建显式物理占用，生成多层价值地图用于规划。该方法无需深度传感器，在多个仿真环境中实现了安全且高效的目标导航，缩小了语义理解与物理执行之间的鸿沟。",
+      "llm_tldr": "针对零样本目标物体导航中RGB缺乏深度信息导致语义与物理错位的问题，MVP-Nav利用3D基础模型从单目RGB重建显式物理占用，生成多层价值地图用于规划。该方法无需深度传感器，在多个仿真环境中实现了安全且高效的目标导航，缩小了语义理解与物理执行之间的鸿沟。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.31471v1",
+      "source": "arxiv",
+      "title": "Think While You Map: Asynchronous Vision-Language Agents for Incremental 3D Scene Graphs",
+      "abstract": "Open-vocabulary 3D scene graph methods typically operate in two stages: first reconstruct, then enrich with vision-language models, leaving the graph unqueryable during exploration. We argue that this sequential coupling is unnecessary and propose an asynchronous architecture in which lightweight online mapping runs concurrently with heavyweight semantic refinement. A probabilistic voxel-based backbone maintains stable object identities incrementally, while background VLM agents progressively enrich the graph. This framework resolves duplicate object tracks through semantic loop closure, attaches fine-grained visual attributes and derives spatial relations between objects. A multi-target frame scheduler amortizes VLM cost by selecting a small set of informative frames that jointly cover multiple targets. The resulting scene graph is queryable during exploration and grows in semantic richness over time. Our method matches or outperforms existing open-vocabulary 3D scene graph methods on semantic segmentation (ScanNet, Replica) and surpasses the prior state-of-the-art across three visual grounding benchmarks (Sr3D+, Nr3D, ScanRefer) by 15.3 to 18.8 A@0.25. Project page: https://denizbickici.github.io/thinkgraphs/",
+      "authors": [
+        "Deniz Bickici",
+        "Michael Pabst",
+        "Shohei Mori",
+        "Dieter Schmalstieg"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-30T10:49:21+00:00",
+      "link": "https://arxiv.org/pdf/2606.31471v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "incremental 3D scene graph building with VLMs supports VLN perception",
+      "llm_evidence_cn": "增量式3D场景图构建为视觉语言导航提供感知支持",
+      "llm_evidence": "增量式3D场景图构建为视觉语言导航提供感知支持",
+      "canonical_evidence": "增量式3D场景图构建为视觉语言导航提供感知支持",
+      "llm_tldr_en": "Proposes asynchronous VL agents for incremental 3D scene graphs, enabling concurrent mapping and semantic enrichment, useful for navigation understanding.",
+      "llm_tldr_cn": "现有方法先重建再语义丰富，导致探索期间场景图不可查询。本文提出异步架构，轻量在线建图与重型VLM语义细化并行，通过概率体素骨干和语义闭环解决对象重复跟踪，并调度多目标帧分摊VLM成本。该方法可用于增强VLN中的场景理解。",
+      "llm_tldr": "现有方法先重建再语义丰富，导致探索期间场景图不可查询。本文提出异步架构，轻量在线建图与重型VLM语义细化并行，通过概率体素骨干和语义闭环解决对象重复跟踪，并调度多目标帧分摊VLM成本。该方法可用于增强VLN中的场景理解。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

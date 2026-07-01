@@ -6,64 +6,65 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-30
-- 运行时间：2026-06-30 21:07:35 UTC
+- 最新运行日期：2026-07-01
+- 运行时间：2026-07-01 21:48:49 UTC
 - 运行状态：成功
-- 本次总论文数：14
-- 精读区：6
-- 速读区：8
+- 本次总论文数：15
+- 精读区：5
+- 速读区：10
 
 ### 今日简报（AI）
-1) 今日日报聚焦视觉语言导航与人形机器人操作前沿，精读两篇9.0高分论文，速读三篇8.0进阶工作。
-2) 最值得关注CLOSER-VLN的闭环自验证检索增强推理，以及可部署社交机器人导航中语义推理与低层控制的桥接融合。
-3) 建议深入精读两篇9.0论文中的多模态联合推理方法，并关注ViPSim的场景一致性建模对长程任务泛化的启发。
-- 详情：[/202606/30/README](/202606/30/README)
+今天聚焦机器人学与视觉语言模型，精读《A Modular Vision-Language-Action Robotics Framework》和《NormAct》两篇高分论文，速读了三篇效率优化工作。最值得看的是10分的模块化机器人框架与9分的社交规范基准，分别关注室内环境机器人和隐式社会规范。建议深入精读论文，并关注速读中动态token剪枝和注意力头缩放等加速技术。
+- 详情：[/202607/01/README](/202607/01/README)
 
 ### 精读区论文标签
-1. [CLOSER-VLN: Closed-Loop Self-Verified Retrieval-Augmented Reasoning for Aerial Vision-Language Navigation](/202606/30/2606.28397v1-closer-vln-closed-loop-self-verified-retrieval-augmented-reasoning-for-aerial-vision-language-navigation)  
+1. [A Modular Vision-Language-Action Robotics Framework for Indoor Environments](/202607/01/2606.31144v1-a-modular-vision-language-action-robotics-framework-for-indoor-environments)  
+   标签：评分：10.0/10、query:vln
+   evidence：基于自然语言指令执行导航任务的自主智能体系统
+2. [NormAct: A Benchmark for Hidden Social Norm Compliance in Embodied Planning](/202607/01/2606.27826v1-normact-a-benchmark-for-hidden-social-norm-compliance-in-embodied-planning)  
    标签：评分：9.0/10、query:vln
-   evidence：空中视觉语言导航
-2. [Vision-Language Models for Deployable Social Robot Navigation: Bridging Semantic Reasoning and Low-Level Control](/202606/30/2606.28760v1-vision-language-models-for-deployable-social-robot-navigation-bridging-semantic-reasoning-and-low-level-control)  
+   evidence：用于评估遵循指令与社交规范的具身规划器的基准
+3. [ViTL: Temporal Logic-Guided Zero-Shot Natural Language Navigation via Vision-Language Models](/202607/01/2606.30696v1-vitl-temporal-logic-guided-zero-shot-natural-language-navigation-via-vision-language-models)  
    标签：评分：9.0/10、query:vln
-   evidence：基于VLM的社会机器人导航，桥接语义推理与控制
-3. [Pondering the Way: Spatial-perceiving World Action Model for Embodied Navigation](/202606/30/2606.29908v1-pondering-the-way-spatial-perceiving-world-action-model-for-embodied-navigation)  
+   evidence：基于VLM的零样本自然语言导航
+4. [Plan Right, Then Plan Tight: Symbolic RL for Efficient Embodied Reasoning](/202607/01/2606.31260v1-plan-right-then-plan-tight-symbolic-rl-for-efficient-embodied-reasoning)  
    标签：评分：9.0/10、query:vln
-   evidence：用于具身导航的空间感知世界动作模型
-4. [FutureNav: Unified World-Action Modeling for Vision-and-Language Navigation](/202606/30/2606.30367v1-futurenav-unified-world-action-modeling-for-vision-and-language-navigation)  
-   标签：评分：9.0/10、query:vln
-   evidence：直接的视觉语言导航论文
-5. [HUMEMBR: Learning Human Routines for Predictive Embodied Navigation](/202606/30/2606.30404v1-humembr-learning-human-routines-for-predictive-embodied-navigation)  
-   标签：评分：9.0/10、query:vln
-   evidence：利用人类日常记忆进行预测性具身导航
-6. [PointVG-R: Internalizing Geometric Reasoning in MLLMs for Precise Pointing Localization via Visual Chain of Thought](/202606/30/2606.24539v1-pointvg-r-internalizing-geometric-reasoning-in-mllms-for-precise-pointing-localization-via-visual-chain-of-thought)  
+   evidence：基于符号强化学习的具身任务规划，从自然语言指令生成动作序列
+5. [Hierarchical 3D Scene Graph Construction and Belief-based Planning for Semantic Navigation](/202607/01/2606.31071v1-hierarchical-3d-scene-graph-construction-and-belief-based-planning-for-semantic-navigation)  
    标签：评分：8.0/10、query:vln
-   evidence：基于指点的视觉接地，结合几何推理实现精确定位
+   evidence：基于层次场景图的零样本语义导航
 
 ### 速读区论文标签
-1. [ViPSim: Collaborating Visual and Parameter Spaces for Consistent Long-Horizon Embodied World Models](/202606/30/2606.28804v1-vipsim-collaborating-visual-and-parameter-spaces-for-consistent-long-horizon-embodied-world-models)  
-   标签：评分：8.0/10、query:vln
-   evidence：用于视觉语言动作评估的具身世界模型
-2. [Efficient Visual Pointing for Embodied AI:Agent-Driven Data Synthesis, Cross-Block Attention, and Iterative Correction](/202606/30/2606.29850v1-efficient-visual-pointing-for-embodied-aiagent-driven-data-synthesis-cross-block-attention-and-iterative-correction)  
-   标签：评分：8.0/10、query:vln
-   evidence：视觉指代将语言指令映射到像素坐标，用于具身AI
-3. [VLK: Learning Humanoid Loco-Manipulation from Synthetic Interactions in Reconstructed Scenes](/202606/30/2606.30645v1-vlk-learning-humanoid-loco-manipulation-from-synthetic-interactions-in-reconstructed-scenes)  
-   标签：评分：8.0/10、query:vln
-   evidence：人形机器人的语言命令驱动行走与操作、合成第一人称数据
-4. [Dynamic Parsing and Updating Natural Language Specification using VLMs for Robust Vision-Language Tracking](/202606/30/2606.29357v1-dynamic-parsing-and-updating-natural-language-specification-using-vlms-for-robust-vision-language-tracking)  
+1. [MVPruner: Dynamic Token Pruning for Accelerating Multi-view Vision-Language Models in Autonomous Driving](/202607/01/2606.27660v1-mvpruner-dynamic-token-pruning-for-accelerating-multi-view-vision-language-models-in-autonomous-driving)  
    标签：评分：7.0/10、query:vln
-   evidence：视觉语言跟踪中的动态语言规范，与视觉语言导航密切相关
-5. [ScAle: Attention Head Scaling as a Minimal Adapter for Spatial Reasoning in Vision Language Models](/202606/30/2606.29579v1-scale-attention-head-scaling-as-a-minimal-adapter-for-spatial-reasoning-in-vision-language-models)  
+   evidence：用于自动驾驶的多视图VLM（具身导航）
+2. [ScAle: Attention Head Scaling as a Minimal Adapter for Spatial Reasoning in Vision Language Models](/202607/01/2606.29579v1-scale-attention-head-scaling-as-a-minimal-adapter-for-spatial-reasoning-in-vision-language-models)  
    标签：评分：7.0/10、query:vln
-   evidence：视觉语言模型空间推理、极轻量适配器
-6. [AirGroundBench: Probing Spatial Intelligence in Multimodal Large Models under Heterogeneous Multi-View Embodied Collaboration](/202606/30/2606.28049v1-airgroundbench-probing-spatial-intelligence-in-multimodal-large-models-under-heterogeneous-multi-view-embodied-collaboration)  
+   evidence：视觉语言模型中的空间推理
+3. [RoamFlow: Reinforcement-Aligned One-Step Action MeanFlow Policy for Image-Goal Navigation](/202607/01/2606.29934v1-roamflow-reinforcement-aligned-one-step-action-meanflow-policy-for-image-goal-navigation)  
+   标签：评分：7.0/10、query:vln
+   evidence：生成式图像目标导航框架
+4. [Automating the Design of Embodied AgentArchitectures](/202607/01/2606.30111v1-automating-the-design-of-embodied-agentarchitectures)  
+   标签：评分：7.0/10、query:vln
+   evidence：自动设计具身智能体架构用于导航
+5. [MVP-Nav: Multi-layer Value Map Planner Navigator](/202607/01/2606.31919v1-mvp-nav-multi-layer-value-map-planner-navigator)  
+   标签：评分：7.0/10、query:vln
+   evidence：仅使用RGB的零样本目标物体导航，结合物理感知规划
+6. [Vision-Language Model Reasoning for Contextual Semantic Mapping in Intralogistics](/202607/01/2606.24814v2-vision-language-model-reasoning-for-contextual-semantic-mapping-in-intralogistics)  
    标签：评分：6.0/10、query:vln
-   evidence：评估具身协作中空间智能的基准
-7. [HKVLM: Faithful Reasoning Grounding by Binding Language Queries to a Frozen Detector](/202606/30/2606.28862v1-hkvlm-faithful-reasoning-grounding-by-binding-language-queries-to-a-frozen-detector)  
+   evidence：面向机器人导航的上下文语义建图
+7. [Event-VLA: Action-Conditioned Event Fusion for Robust Vision-Language-Action Model](/202607/01/2606.29384v1-event-vla-action-conditioned-event-fusion-for-robust-vision-language-action-model)  
    标签：评分：6.0/10、query:vln
-   evidence：语言查询到视觉区域的忠实接地，对导航指令跟随至关重要
-8. [Event-VLA: Action-Conditioned Event Fusion for Robust Vision-Language-Action Model](/202606/30/2606.29384v1-event-vla-action-conditioned-event-fusion-for-robust-vision-language-action-model)  
+   evidence：具身AI与视觉-语言-动作模型
+8. [Be Faithful When Response: Returning Fluent and Grounded Answers for Vision-Language Models Reinforcement Learning](/202607/01/2606.29984v1-be-faithful-when-response-returning-fluent-and-grounded-answers-for-vision-language-models-reinforcement-learning)  
    标签：评分：6.0/10、query:vln
-   evidence：面向光照变化鲁棒操作的视觉语言动作模型及事件融合
+   evidence：提升VLM推理的视觉忠实性
+9. [Dynamo: Dynamic Skill-Tool Evolution for Vision-Language Agents](/202607/01/2606.30185v1-dynamo-dynamic-skill-tool-evolution-for-vision-language-agents)  
+   标签：评分：6.0/10、query:vln
+   evidence：通过动态技能-工具进化提升VLM视觉推理能力，无需训练
+10. [Think While You Map: Asynchronous Vision-Language Agents for Incremental 3D Scene Graphs](/202607/01/2606.31471v1-think-while-you-map-asynchronous-vision-language-agents-for-incremental-3d-scene-graphs)  
+   标签：评分：6.0/10、query:vln
+   evidence：增量式3D场景图构建为视觉语言导航提供感知支持
 
 
 <div class="dpr-home-promo-card">
