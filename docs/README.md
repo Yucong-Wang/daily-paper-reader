@@ -6,65 +6,43 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-01
-- 运行时间：2026-07-01 21:48:49 UTC
+- 最新运行日期：2026-07-02
+- 运行时间：2026-07-02 21:33:36 UTC
 - 运行状态：成功
-- 本次总论文数：15
-- 精读区：5
-- 速读区：10
+- 本次总论文数：7
+- 精读区：2
+- 速读区：5
 
 ### 今日简报（AI）
-今天聚焦机器人学与视觉语言模型，精读《A Modular Vision-Language-Action Robotics Framework》和《NormAct》两篇高分论文，速读了三篇效率优化工作。最值得看的是10分的模块化机器人框架与9分的社交规范基准，分别关注室内环境机器人和隐式社会规范。建议深入精读论文，并关注速读中动态token剪枝和注意力头缩放等加速技术。
-- 详情：[/202607/01/README](/202607/01/README)
+1) 今日精读两篇高分解码：视觉语言导航记忆衰减与多模态定位语义地图。
+2) 最值得关注：离散VLN中的测试时记忆正则化技术，以及借助VLMs实现语义地图定位的跨模态方案。
+3) 建议从DART-VLN的抗循环机制切入，结合社交导航与增量3D场景图，快速理解如何用语言提升机器人鲁棒性。
+- 详情：[/202607/02/README](/202607/02/README)
 
 ### 精读区论文标签
-1. [A Modular Vision-Language-Action Robotics Framework for Indoor Environments](/202607/01/2606.31144v1-a-modular-vision-language-action-robotics-framework-for-indoor-environments)  
+1. [DART-VLN: Test-Time Memory Decay and Anti-Loop Regularization for Discrete Vision-Language Navigation](/202607/02/2607.01043v1-dart-vln-test-time-memory-decay-and-anti-loop-regularization-for-discrete-vision-language-navigation)  
    标签：评分：10.0/10、query:vln
-   evidence：基于自然语言指令执行导航任务的自主智能体系统
-2. [NormAct: A Benchmark for Hidden Social Norm Compliance in Embodied Planning](/202607/01/2606.27826v1-normact-a-benchmark-for-hidden-social-norm-compliance-in-embodied-planning)  
-   标签：评分：9.0/10、query:vln
-   evidence：用于评估遵循指令与社交规范的具身规划器的基准
-3. [ViTL: Temporal Logic-Guided Zero-Shot Natural Language Navigation via Vision-Language Models](/202607/01/2606.30696v1-vitl-temporal-logic-guided-zero-shot-natural-language-navigation-via-vision-language-models)  
-   标签：评分：9.0/10、query:vln
-   evidence：基于VLM的零样本自然语言导航
-4. [Plan Right, Then Plan Tight: Symbolic RL for Efficient Embodied Reasoning](/202607/01/2606.31260v1-plan-right-then-plan-tight-symbolic-rl-for-efficient-embodied-reasoning)  
-   标签：评分：9.0/10、query:vln
-   evidence：基于符号强化学习的具身任务规划，从自然语言指令生成动作序列
-5. [Hierarchical 3D Scene Graph Construction and Belief-based Planning for Semantic Navigation](/202607/01/2606.31071v1-hierarchical-3d-scene-graph-construction-and-belief-based-planning-for-semantic-navigation)  
+   evidence：离散视觉语言导航中的测试时记忆衰减和反循环正则化
+2. [Where Am I? Semantic Map Grounding via Vision-Language Models for Multi-Modal Localization](/202607/02/2607.01079v1-where-am-i-semantic-map-grounding-via-vision-language-models-for-multi-modal-localization)  
    标签：评分：8.0/10、query:vln
-   evidence：基于层次场景图的零样本语义导航
+   evidence：基于VLM的语义定位用于具身导航
 
 ### 速读区论文标签
-1. [MVPruner: Dynamic Token Pruning for Accelerating Multi-view Vision-Language Models in Autonomous Driving](/202607/01/2606.27660v1-mvpruner-dynamic-token-pruning-for-accelerating-multi-view-vision-language-models-in-autonomous-driving)  
+1. [Robots Ask the Way: Communication-Enabled Social Navigation](/202607/02/2607.01044v1-robots-ask-the-way-communication-enabled-social-navigation)  
    标签：评分：7.0/10、query:vln
-   evidence：用于自动驾驶的多视图VLM（具身导航）
-2. [ScAle: Attention Head Scaling as a Minimal Adapter for Spatial Reasoning in Vision Language Models](/202607/01/2606.29579v1-scale-attention-head-scaling-as-a-minimal-adapter-for-spatial-reasoning-in-vision-language-models)  
-   标签：评分：7.0/10、query:vln
-   evidence：视觉语言模型中的空间推理
-3. [RoamFlow: Reinforcement-Aligned One-Step Action MeanFlow Policy for Image-Goal Navigation](/202607/01/2606.29934v1-roamflow-reinforcement-aligned-one-step-action-meanflow-policy-for-image-goal-navigation)  
-   标签：评分：7.0/10、query:vln
-   evidence：生成式图像目标导航框架
-4. [Automating the Design of Embodied AgentArchitectures](/202607/01/2606.30111v1-automating-the-design-of-embodied-agentarchitectures)  
-   标签：评分：7.0/10、query:vln
-   evidence：自动设计具身智能体架构用于导航
-5. [MVP-Nav: Multi-layer Value Map Planner Navigator](/202607/01/2606.31919v1-mvp-nav-multi-layer-value-map-planner-navigator)  
-   标签：评分：7.0/10、query:vln
-   evidence：仅使用RGB的零样本目标物体导航，结合物理感知规划
-6. [Vision-Language Model Reasoning for Contextual Semantic Mapping in Intralogistics](/202607/01/2606.24814v2-vision-language-model-reasoning-for-contextual-semantic-mapping-in-intralogistics)  
+   evidence：通信使能的社交导航；机器人主动问路
+2. [H-GRPO: Permutation-Invariant Reinforcement Learning for Grounded Visual Reasoning](/202607/02/2606.29915v1-h-grpo-permutation-invariant-reinforcement-learning-for-grounded-visual-reasoning)  
    标签：评分：6.0/10、query:vln
-   evidence：面向机器人导航的上下文语义建图
-7. [Event-VLA: Action-Conditioned Event Fusion for Robust Vision-Language-Action Model](/202607/01/2606.29384v1-event-vla-action-conditioned-event-fusion-for-robust-vision-language-action-model)  
+   evidence：基于VLM的分解式证据接地视觉理解
+3. [Think While You Map: Asynchronous Vision-Language Agents for Incremental 3D Scene Graphs](/202607/02/2606.31471v1-think-while-you-map-asynchronous-vision-language-agents-for-incremental-3d-scene-graphs)  
    标签：评分：6.0/10、query:vln
-   evidence：具身AI与视觉-语言-动作模型
-8. [Be Faithful When Response: Returning Fluent and Grounded Answers for Vision-Language Models Reinforcement Learning](/202607/01/2606.29984v1-be-faithful-when-response-returning-fluent-and-grounded-answers-for-vision-language-models-reinforcement-learning)  
+   evidence：异步VLM代理增量构建3D场景图，涉及视觉语言理解
+4. [MindEdit-Bench: Benchmarking Object-Level Counterfactual Spatial Reasoning in VLMs from In-the-Wild Photos](/202607/02/2607.00491v1-mindedit-bench-benchmarking-object-level-counterfactual-spatial-reasoning-in-vlms-from-in-the-wild-photos)  
    标签：评分：6.0/10、query:vln
-   evidence：提升VLM推理的视觉忠实性
-9. [Dynamo: Dynamic Skill-Tool Evolution for Vision-Language Agents](/202607/01/2606.30185v1-dynamo-dynamic-skill-tool-evolution-for-vision-language-agents)  
+   evidence：面向视觉语言理解的VLM空间推理基准
+5. [LeVLJEPA: End-to-End Vision-Language Pretraining Without Negatives](/202607/02/2607.00784v1-levljepa-end-to-end-vision-language-pretraining-without-negatives)  
    标签：评分：6.0/10、query:vln
-   evidence：通过动态技能-工具进化提升VLM视觉推理能力，无需训练
-10. [Think While You Map: Asynchronous Vision-Language Agents for Incremental 3D Scene Graphs](/202607/01/2606.31471v1-think-while-you-map-asynchronous-vision-language-agents-for-incremental-3d-scene-graphs)  
-   标签：评分：6.0/10、query:vln
-   evidence：增量式3D场景图构建为视觉语言导航提供感知支持
+   evidence：视觉语言预训练提升视觉语言理解
 
 
 <div class="dpr-home-promo-card">

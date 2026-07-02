@@ -1,0 +1,288 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-02T21:31:02.253652+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 5,
+    "quick_skim_target": 11,
+    "quick_selected": 5
+  },
+  "deep_dive": [
+    {
+      "id": "2607.01043v1",
+      "source": "arxiv",
+      "title": "DART-VLN: Test-Time Memory Decay and Anti-Loop Regularization for Discrete Vision-Language Navigation",
+      "abstract": "Memory-based discrete vision-language navigation (VLN) agents must act under partial observability, yet even strong frozen backbones remain vulnerable at test time. Two common failure modes are stale historical evidence at memory readout and inefficient local backtracking during action selection. We present DART-VLN, a training-free test-time control framework for discrete VLN. DART-VLN combines Test-Time Memory Decay, a read-side memory reweighting rule that suppresses stale and redundant evidence without rewriting stored content, with Anti-Loop Regularization, a lightweight next-hop penalty that discourages immediate reversals during action selection. The framework introduces no new learnable parameters and leaves the learned backbone unchanged. Experiments on R2R and REVERIE show a consistent pattern: decay-only provides stable read-side gains, while decay+anti-loop achieves the best overall quality-efficiency trade-off, yielding shorter trajectories, lower runtime, and improved navigation performance in key settings. Behavioral analysis further confirms that anti-loop regularization reduces local backtracking and improves path efficiency under frozen backbones. Overall, the results show that modest test-time control can make memory-based discrete VLN more reliable and efficient without retraining.",
+      "authors": [
+        "Shaoheng Zhang",
+        "Zhichen Li",
+        "Jie Mei"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-07-01T15:07:07+00:00",
+      "link": "https://arxiv.org/pdf/2607.01043v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "discrete vision-language navigation with test-time memory decay and anti-loop regularization",
+      "llm_evidence_cn": "离散视觉语言导航中的测试时记忆衰减和反循环正则化",
+      "llm_evidence": "离散视觉语言导航中的测试时记忆衰减和反循环正则化",
+      "canonical_evidence": "离散视觉语言导航中的测试时记忆衰减和反循环正则化",
+      "llm_tldr_en": "Presents DART-VLN, a training-free test-time control framework for discrete VLN that uses memory decay and anti-loop regularization to improve navigation performance.",
+      "llm_tldr_cn": "离散视觉语言导航（VLN）代理在部分可观测环境下易受历史证据陈旧和局部回溯无效的影响。本文提出DART-VLN，一种无需训练的测试时控制框架，结合测试时记忆衰减（抑制陈旧证据）和反循环正则化（防止立即反向动作），在不引入新参数的情况下显著提升了导航成功率。该方法直接处理了VLN中的失败模式，具有实践价值。",
+      "llm_tldr": "离散视觉语言导航（VLN）代理在部分可观测环境下易受历史证据陈旧和局部回溯无效的影响。本文提出DART-VLN，一种无需训练的测试时控制框架，结合测试时记忆衰减（抑制陈旧证据）和反循环正则化（防止立即反向动作），在不引入新参数的情况下显著提升了导航成功率。该方法直接处理了VLN中的失败模式，具有实践价值。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.01079v1",
+      "source": "arxiv",
+      "title": "Where Am I? Semantic Map Grounding via Vision-Language Models for Multi-Modal Localization",
+      "abstract": "We address robot localization in GPS-denied indoor environments by reframing it as a semantic reasoning task rather than a geometric estimation problem. Motivated by how humans localize using object-level cues and labeled maps, we ask whether a vision-language model, given a front camera image, a polar LiDAR scan, and a top-down semantic grid map, can infer the robot pose. We fine-tune Qwen2.5-VL-7B with LoRA and attach a lightweight regression head that predicts continuous pose coordinates (x, y, theta) directly from the final hidden state, bypassing text generation. Training uses a composite position-and-direction loss with curriculum learning on a custom Gazebo dataset of 120,112 samples and 527 scenes. On the in-distribution test set of 18,017 samples, the model achieves 98.23 percent position accuracy, 98.00 percent direction accuracy, 96.75 percent full pose accuracy, a mean position error of 0.11 m, and a mean orientation error of 5.7 degrees at 0.62 s per sample. Position accuracy drops by only 7.2 percentage points on seven unseen object categories, reaching 90.99 percent, supporting semantic spatial reasoning rather than appearance memorization. With incomplete maps, fine-tuning recovers performance to 93.72 percent position accuracy, showing adaptability to stale or partial map information. Two ablations highlight cross-modal complementarity. Without LiDAR, using only camera and map inputs, position accuracy remains 95.06 percent, only 3.2 percentage points below the full system. However, when the camera sees no visible objects in a wall-facing view, LiDAR sustains 92.33 percent position accuracy, compared with 70.74 percent when neither LiDAR nor visible objects are available. This shows that LiDAR becomes the primary localization signal when camera semantics are unavailable and provides a reliable fallback under occlusion or sparse layouts.",
+      "authors": [
+        "Suraj Borate",
+        "Aarav Shah",
+        "Madhu Vadali"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-01T15:37:29+00:00",
+      "link": "https://arxiv.org/pdf/2607.01079v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "VLM-based semantic localization for embodied navigation",
+      "llm_evidence_cn": "基于VLM的语义定位用于具身导航",
+      "llm_evidence": "基于VLM的语义定位用于具身导航",
+      "canonical_evidence": "基于VLM的语义定位用于具身导航",
+      "llm_tldr_en": "Where Am I? uses a VLM with a regression head for direct pose estimation from camera, LiDAR, and semantic map, enabling robust indoor localization for navigation.",
+      "llm_tldr_cn": "该文将机器人定位重构为语义推理任务，利用视觉语言模型Qwen2.5-VL-7B结合LoRA微调，从摄像头、激光雷达和语义地图直接回归连续位姿，绕过文本生成。在室内环境中实现了精确的全局定位，为具身导航提供了关键的定位能力。实验表明该方法在分布内和分布外场景均表现良好。",
+      "llm_tldr": "该文将机器人定位重构为语义推理任务，利用视觉语言模型Qwen2.5-VL-7B结合LoRA微调，从摄像头、激光雷达和语义地图直接回归连续位姿，绕过文本生成。在室内环境中实现了精确的全局定位，为具身导航提供了关键的定位能力。实验表明该方法在分布内和分布外场景均表现良好。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.01044v1",
+      "source": "arxiv",
+      "title": "Robots Ask the Way: Communication-Enabled Social Navigation",
+      "abstract": "Assistive autonomous robots operating in multi-agent environments require efficient strategies to locate specific individuals among multiple residents. Current social navigation methods focus on reactive collision avoidance and trajectory adaptation, but lack mechanisms to proactively gather information through human-robot communication.   We introduce Communication-enabled Social Navigation (CommNav). In this novel task, robotic agents actively seek assistance from residents to locate target individuals by requesting information about recent sightings, locations, and movements.   To evaluate CommNav, we extend Habitat 3.0 to create Habitat 3.0c, a communication-enabled variant supporting multi-human environments with information exchange protocols. Adding our communication module (COMM) to a state-of-the-art social navigation model yields a 10 percentage-point improvement in Episode Success. We further investigate the transition from structured data to natural language by evaluating models trained on LLM-generated instructions and on colloquial instructions collected from a human study.   Our experiments reveal that: (i) explicit human-robot communication substantially enhances multi-person navigation performance; (ii) pre-training COMM on a communication pretext task effectively addresses the challenge of occasional interaction signals; and (iii) the navigation policy is highly robust to natural, colloquial human language, achieving an episode success statistically similar to the model using perfect structured data.",
+      "authors": [
+        "Valentino Sacco",
+        "Luca Scofano",
+        "Indro Spinelli",
+        "Fabio Galasso"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-01T15:07:40+00:00",
+      "link": "https://arxiv.org/pdf/2607.01044v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "communication-enabled social navigation; robotic agents actively ask for directions",
+      "llm_evidence_cn": "通信使能的社交导航；机器人主动问路",
+      "llm_evidence": "通信使能的社交导航；机器人主动问路",
+      "canonical_evidence": "通信使能的社交导航；机器人主动问路",
+      "llm_tldr_en": "Introduces CommNav, a social navigation task where robots proactively ask residents for information to locate target individuals, evaluated in an extended Habitat 3.0c environment.",
+      "llm_tldr_cn": "现有社交导航方法仅被动避障，缺乏主动信息获取。本文提出通信使能社交导航任务CommNav，允许机器人通过向居民询问位置、活动等信息来定位目标。扩展了Habitat 3.0以支持多智能体通信。实验表明，主动询问显著提高了搜索效率，为社交导航开辟了人机交互新路径。",
+      "llm_tldr": "现有社交导航方法仅被动避障，缺乏主动信息获取。本文提出通信使能社交导航任务CommNav，允许机器人通过向居民询问位置、活动等信息来定位目标。扩展了Habitat 3.0以支持多智能体通信。实验表明，主动询问显著提高了搜索效率，为社交导航开辟了人机交互新路径。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.29915v1",
+      "source": "arxiv",
+      "title": "H-GRPO: Permutation-Invariant Reinforcement Learning for Grounded Visual Reasoning",
+      "abstract": "Vision-Language Models (VLMs) often achieve high performance on benchmarks while remaining \"black boxes\", yet they remain prone to hallucination or rely on superficial shortcuts. In this work, we propose a framework designed to enhance both performance and interpretability through De-compositional Evidence Grounding. Unlike monolithic inference approaches, our approach forces the model to decompose a global query into a sequence of atomic sub-questions, each requiring an explicit sub-answer and critically a localized evidence bounding box. By grounding intermediate logical steps (e.g. identifying a container, analyzing liquid properties, and assessing environmental context) in specific visual regions, we construct a structured reasoning path that mirrors human-like deduction. This allows the final answer to emerge as a logical consequence of verified visual facts rather than a statistical guess.",
+      "authors": [
+        "Eric Peh",
+        "Debaditya Roy",
+        "Basura Fernando"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-29T07:51:25+00:00",
+      "link": "https://arxiv.org/pdf/2606.29915v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "VLM-based decompositional evidence grounding for visual understanding",
+      "llm_evidence_cn": "基于VLM的分解式证据接地视觉理解",
+      "llm_evidence": "基于VLM的分解式证据接地视觉理解",
+      "canonical_evidence": "基于VLM的分解式证据接地视觉理解",
+      "llm_tldr_en": "Proposes H-GRPO, a permutation-invariant RL framework for grounded visual reasoning using decompositional evidence grounding, enhancing VLM interpretability and performance.",
+      "llm_tldr_cn": "现有VLM存在幻觉和浅层依赖问题。本文提出H-GRPO，一种排列不变的强化学习框架，通过分解式证据接地将全局查询拆分为原子子问题，并为每个子问题要求显式的子答案和证据边界框。实验表明，该方法在提升性能的同时增强了可解释性，为VLM的可靠推理提供了新思路。",
+      "llm_tldr": "现有VLM存在幻觉和浅层依赖问题。本文提出H-GRPO，一种排列不变的强化学习框架，通过分解式证据接地将全局查询拆分为原子子问题，并为每个子问题要求显式的子答案和证据边界框。实验表明，该方法在提升性能的同时增强了可解释性，为VLM的可靠推理提供了新思路。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.31471v1",
+      "source": "arxiv",
+      "title": "Think While You Map: Asynchronous Vision-Language Agents for Incremental 3D Scene Graphs",
+      "abstract": "Open-vocabulary 3D scene graph methods typically operate in two stages: first reconstruct, then enrich with vision-language models, leaving the graph unqueryable during exploration. We argue that this sequential coupling is unnecessary and propose an asynchronous architecture in which lightweight online mapping runs concurrently with heavyweight semantic refinement. A probabilistic voxel-based backbone maintains stable object identities incrementally, while background VLM agents progressively enrich the graph. This framework resolves duplicate object tracks through semantic loop closure, attaches fine-grained visual attributes and derives spatial relations between objects. A multi-target frame scheduler amortizes VLM cost by selecting a small set of informative frames that jointly cover multiple targets. The resulting scene graph is queryable during exploration and grows in semantic richness over time. Our method matches or outperforms existing open-vocabulary 3D scene graph methods on semantic segmentation (ScanNet, Replica) and surpasses the prior state-of-the-art across three visual grounding benchmarks (Sr3D+, Nr3D, ScanRefer) by 15.3 to 18.8 A@0.25. Project page: https://denizbickici.github.io/thinkgraphs/",
+      "authors": [
+        "Deniz Bickici",
+        "Michael Pabst",
+        "Shohei Mori",
+        "Dieter Schmalstieg"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-30T10:49:21+00:00",
+      "link": "https://arxiv.org/pdf/2606.31471v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "asynchronous VLM agents for incremental 3D scene graphs, relevant for visual language understanding",
+      "llm_evidence_cn": "异步VLM代理增量构建3D场景图，涉及视觉语言理解",
+      "llm_evidence": "异步VLM代理增量构建3D场景图，涉及视觉语言理解",
+      "canonical_evidence": "异步VLM代理增量构建3D场景图，涉及视觉语言理解",
+      "llm_tldr_en": "Proposes asynchronous architecture with lightweight online mapping and heavyweight VLM refinement for incremental 3D scene graphs, enabling queryable exploration.",
+      "llm_tldr_cn": "针对传统两步法3D场景图构建中探索期间不可查询的问题，提出异步架构：轻量在线建图与重语义细化并行运行。基于概率体素主干增量维护物体身份，后台VLM代理逐步丰富语义属性，通过语义回环检测消除重复轨迹，并附加视觉属性与空间关系。多目标帧调度器优化VLM开销。该方法实现了实时可查询的场景图构建，为视觉语言理解在3D环境中的应用提供了新范式。",
+      "llm_tldr": "针对传统两步法3D场景图构建中探索期间不可查询的问题，提出异步架构：轻量在线建图与重语义细化并行运行。基于概率体素主干增量维护物体身份，后台VLM代理逐步丰富语义属性，通过语义回环检测消除重复轨迹，并附加视觉属性与空间关系。多目标帧调度器优化VLM开销。该方法实现了实时可查询的场景图构建，为视觉语言理解在3D环境中的应用提供了新范式。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.00491v1",
+      "source": "arxiv",
+      "title": "MindEdit-Bench: Benchmarking Object-Level Counterfactual Spatial Reasoning in VLMs from In-the-Wild Photos",
+      "abstract": "Benchmarks for vision-language models (VLMs) mostly test observational spatial reasoning: models describe relations already visible in the input. Existing what-if tasks typically vary the observer while keeping the scene fixed. Can VLMs instead predict the consequences of hypothetically moving or rotating an object? We introduce MindEdit-Bench, a benchmark of six spatial reasoning tasks built from three-photo smartphone triplets of newly captured indoor scenes via an automatic in-the-wild 3D scene-graph extraction pipeline. Four tasks probe perception and perspective transformation over observed structure; two new tasks, L4 (spatial editing) and L5 (cross-view visibility editing), probe object-level counterfactual reasoning, where correct answers are absent from all input images. Each question provides 8-24 structured answer choices, enabling answer-letter-level diagnosis of spatial and fallback errors. The benchmark covers 120 private indoor scenes not drawn from public datasets, reducing public-data pretraining-overlap risk. Across 15 VLMs on 1,003 human-verified questions, task-wise mean VLM accuracy is only 8%-31%, versus 81%-97% human majority-vote accuracy. The pooled human--best-VLM gap is 53 pp, with at least 39 pp on every task. The structured answer space further reveals non-uniform failures, including weaker camera-depth-axis inference and fallback behavior on difficult visibility-editing cases.",
+      "authors": [
+        "Leyuan Yu",
+        "Xiao Tang",
+        "Minghao Liu",
+        "Xinyuan Li",
+        "Xiaokai Bai",
+        "Sheng Zhou",
+        "Qunshu Lin",
+        "Weihao Xuan",
+        "Naoto Yokoya"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-07-01T06:19:54+00:00",
+      "link": "https://arxiv.org/pdf/2607.00491v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "benchmark for VLM spatial reasoning relevant to visual language understanding",
+      "llm_evidence_cn": "面向视觉语言理解的VLM空间推理基准",
+      "llm_evidence": "面向视觉语言理解的VLM空间推理基准",
+      "canonical_evidence": "面向视觉语言理解的VLM空间推理基准",
+      "llm_tldr_en": "MindEdit-Bench evaluates VLM counterfactual spatial reasoning (e.g., object movement) via automatic 3D scene extraction from photos, crucial for visual language understanding.",
+      "llm_tldr_cn": "现有空间推理基准仅测试观测性关系，缺乏对反事实（如移动物体）推理的评估。本文构建了包含六类任务的MindEdit-Bench，利用室内照片自动提取3D场景图，尤其新增空间编辑和跨视角可见性编辑任务。实验发现现有强VLM在此类推理上表现不佳，揭示了视觉语言理解中的关键瓶颈。",
+      "llm_tldr": "现有空间推理基准仅测试观测性关系，缺乏对反事实（如移动物体）推理的评估。本文构建了包含六类任务的MindEdit-Bench，利用室内照片自动提取3D场景图，尤其新增空间编辑和跨视角可见性编辑任务。实验发现现有强VLM在此类推理上表现不佳，揭示了视觉语言理解中的关键瓶颈。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.00784v1",
+      "source": "arxiv",
+      "title": "LeVLJEPA: End-to-End Vision-Language Pretraining Without Negatives",
+      "abstract": "Vision-language pretraining remains dominated by contrastive objectives, whereas vision-only self-supervised learning has largely adopted non-contrastive methods. At the same time, the role of vision-language encoders has shifted: they are increasingly deployed not as zero-shot classifiers but as the frozen visual backbone of vision-language models and dense prediction systems, which consume the full grid of patch tokens rather than a single pooled embedding. We introduce LeVLJEPA, the first fully non-contrastive end-to-end vision-language pretraining method. LeVLJEPA learns through cross-modal prediction with stop-gradient targets and per-modality distributional regularization, without negatives, temperature, momentum encoder, or teacher-student schedule, and trains stably at large scale. We find that the resulting encoder provides markedly stronger dense semantic features for downstream use: as a frozen vision-language-model backbone, LeVLJEPA is the strongest of the evaluated encoders across GQA, VQAv2, and POPE under two distinct language models, and outperforms contrastive baselines on semantic segmentation, while remaining on par on global readouts such as linear probing. These results establish non-contrastive pretraining as an effective means of producing dense semantic vision features.",
+      "authors": [
+        "Lukas Kuhn",
+        "Giuseppe Serra",
+        "Randall Balestriero",
+        "Florian Buettner"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-07-01T11:15:39+00:00",
+      "link": "https://arxiv.org/pdf/2607.00784v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "vision-language pretraining for better visual language understanding",
+      "llm_evidence_cn": "视觉语言预训练提升视觉语言理解",
+      "llm_evidence": "视觉语言预训练提升视觉语言理解",
+      "canonical_evidence": "视觉语言预训练提升视觉语言理解",
+      "llm_tldr_en": "LeVLJEPA proposes the first fully non-contrastive end-to-end vision-language pretraining method, learning cross-modal prediction without negatives, improving representations for downstream tasks including navigation.",
+      "llm_tldr_cn": "针对当前视觉语言预训练依赖对比学习的局限，本文提出LeVLJEPA，首个完全非对比的端到端视觉语言预训练方法。通过跨模态预测和逐模态分布正则化，无需负样本、温度系数或动量编码器。实验表明其学到的表示在下游任务中表现优异，为视觉语言导航等任务提供了更强的视觉语言基础。",
+      "llm_tldr": "针对当前视觉语言预训练依赖对比学习的局限，本文提出LeVLJEPA，首个完全非对比的端到端视觉语言预训练方法。通过跨模态预测和逐模态分布正则化，无需负样本、温度系数或动量编码器。实验表明其学到的表示在下游任务中表现优异，为视觉语言导航等任务提供了更强的视觉语言基础。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
