@@ -1,0 +1,268 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-03T21:09:31.749521+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2607.01754v1",
+      "source": "arxiv",
+      "title": "Path-level Hindsight Instructions for Semantic Exploration in Vision-Language Navigation",
+      "abstract": "On-policy exploration is a crucial component for training robust Vision-Language Navigation agents, as it exposes the policy to a broader state distribution. However, such exploration inevitably leads to trajectories that deviate from expert demonstrations, resulting in a semantic mismatch between the executed visual stream and the original language instruction. In this work, we address this challenge by introducing Phi-Nav, a unified on-policy framework that leverages hindsight reasoning to align instructions with the agent's actual exploratory journey. Specifically, Phi-Nav operates through a three-stage dual-supervision cycle: 1) the agent performs oracle-guided on-policy exploration, sampling a trajectory while learning from expert action feedback, 2) a hindsight speaker synthesizes a path-level hindsight instruction grounded in the collected visual observations, and 3) the agent conducts a second imitation pass, treating the synthesized trajectory-instruction pair as an additional expert demonstration. Through this process, Phi-Nav bridges the critical semantic supervision gap inherent in on-policy methods, transforming semantically unlabeled movement into dense training signals. Evaluations on the R2R-CE and RxR-CE benchmarks show that Phi-Nav yields competitive performance while requiring only a fraction of the expert demonstrations used by current baselines. These results underscore the necessity of semantic exploration in VLN, positioning Phi-Nav as an effective solution for training embodied agents with limited data.",
+      "authors": [
+        "Sung June Kim",
+        "Sangpil Kim",
+        "Honglak Lee"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-02T06:11:07+00:00",
+      "link": "https://arxiv.org/pdf/2607.01754v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "proposes on-policy framework with hindsight instructions for VLN agents",
+      "llm_evidence_cn": "提出基于事后指令的VLN在线探索框架",
+      "llm_evidence": "提出基于事后指令的VLN在线探索框架",
+      "canonical_evidence": "提出基于事后指令的VLN在线探索框架",
+      "llm_tldr_en": "Addresses semantic mismatch in VLN exploration by introducing Phi-Nav, a framework that uses hindsight reasoning to align instructions with actual exploratory trajectories, using oracle-guided on-policy training.",
+      "llm_tldr_cn": "本文针对视觉语言导航中在线探索导致的指令与轨迹语义不匹配问题，提出Phi-Nav框架。通过事后推理将原始指令与执行轨迹对齐，采用三阶段双监督周期训练，显著提升导航鲁棒性。该方法为VLN探索训练提供了有效解决方案。",
+      "llm_tldr": "本文针对视觉语言导航中在线探索导致的指令与轨迹语义不匹配问题，提出Phi-Nav框架。通过事后推理将原始指令与执行轨迹对齐，采用三阶段双监督周期训练，显著提升导航鲁棒性。该方法为VLN探索训练提供了有效解决方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.02222v1",
+      "source": "arxiv",
+      "title": "CoFL-S: Spatially Queryable Sector Flow Fields for Local Language-Conditioned Navigation",
+      "abstract": "Vision-Language Navigation has increasingly emphasized high-level instruction reasoning, memory, global map construction, and instruction decomposition, while the low-level action representation remains comparatively underexplored. We propose CoFL-S, a low-level vision-language-action framework that predicts a language-conditioned flow field over the robot's local visible sector and generates continuous trajectories by rolling out the predicted field. To train this low-level representation, we convert each VLN-CE episode, originally a whole-episode instruction paired with an action sequence, into frame-level local supervision with aligned sub-instructions and matched action, trajectory, and dense flow-field targets. For evaluation, we introduce a continuous-time Habitat benchmark that isolates low-level action interfaces from instruction decomposition and executes all methods through a shared velocity-command controller, enabling decomposition-independent closed-loop comparison across different planner frequencies rather than fixed discrete forward-and-turn transitions in VLN-CE. Under matched encoders and training settings, CoFL-S consistently outperforms action-token and action-chunk baselines across planner frequencies in the continuous-time Habitat benchmark, and zero-shot real-world closed-loop deployment further shows its advantage over both baselines beyond simulation.",
+      "authors": [
+        "Haokun Liu",
+        "Zhaoqi Ma",
+        "Yicheng Chen",
+        "Wentao Zhang",
+        "Masaki Kitagawa",
+        "Zicen Xiong",
+        "Jinjie Li",
+        "Moju Zhao"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-07-02T14:26:55+00:00",
+      "link": "https://arxiv.org/pdf/2607.02222v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "proposes low-level vision-language-action framework for continuous navigation",
+      "llm_evidence_cn": "提出底层视觉-语言-动作框架用于连续导航",
+      "llm_evidence": "提出底层视觉-语言-动作框架用于连续导航",
+      "canonical_evidence": "提出底层视觉-语言-动作框架用于连续导航",
+      "llm_tldr_en": "Introduces CoFL-S, a low-level VLN framework predicting language-conditioned flow fields over local sectors, converting whole-episode instructions into frame-level supervision for continuous trajectory generation.",
+      "llm_tldr_cn": "本文针对视觉语言导航中底层动作表示不足的问题，提出CoFL-S框架。该框架在机器人局部可见扇区上预测语言条件流场，通过滚动生成连续轨迹。将整个回合指令转化为帧级局部监督，实现了精细的指令跟随导航。",
+      "llm_tldr": "本文针对视觉语言导航中底层动作表示不足的问题，提出CoFL-S框架。该框架在机器人局部可见扇区上预测语言条件流场，通过滚动生成连续轨迹。将整个回合指令转化为帧级局部监督，实现了精细的指令跟随导航。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.29222v1",
+      "source": "arxiv",
+      "title": "CORE Planner: Contextual-memory Oriented Reinforcement-learning in Unknown Environments for Robot Navigation",
+      "abstract": "Autonomous navigation in unknown environments requires a robot to efficiently reach a predefined goal while exploring without prior maps. Although progress has been made in this area, most existing works still rely on traditional planning methods with hand-crafted rules, while learning-based methods often suffer from limited environmental memory and challenges in simulation-to-real (sim-to-real) transfer. To overcome these limitations, we propose a Contextual-memory Oriented Reinforcement-learning (CORE) planner for robot navigation in unknown environments. The proposed CORE planner effectively combines the core advantages of traditional and learning-based methods. Specifically, our method uses a sparse visibility graph for structured environment representation, reducing the computational overhead of dense grid maps, and employs a Transformer network to achieve a holistic environmental understanding, thereby significantly improving navigation efficiency. Moreover, we introduce a visibility graph-based graph sparsification method and a contextual memory mechanism, which alleviates local optima and enhances computational performance in large-scale scenes. Finally, our approach achieves zero-shot sim-to-real transfer after training solely on image-based environments, requiring no fine-tuning. Experimental results show that CORE Planner consistently outperforms state-of-the-art methods, including the traditional FAR Planner and all learning-based baselines, across representative environments, reducing travel distance by 13\\% over traditional FAR Planner and by up to 48\\% relative to learning-based baselines, with larger gains observed in more complex environments. In real-world scenarios, CORE successfully navigates without human intervention, showcasing zero-shot sim-to-real transfer. Code is available at https://github.com/BBD00/core_planner.",
+      "authors": [
+        "Jintao Kong",
+        "Zhihao Zhang",
+        "Weihuang Chen",
+        "Liming Chen",
+        "Zhongyu Guo",
+        "Shuaiyu Liu",
+        "Hongbin Sun"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-28T06:17:23+00:00",
+      "link": "https://arxiv.org/pdf/2606.29222v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "embodied navigation in unknown environments",
+      "llm_evidence_cn": "未知环境中的具身导航",
+      "llm_evidence": "未知环境中的具身导航",
+      "canonical_evidence": "未知环境中的具身导航",
+      "llm_tldr_en": "Proposes CORE planner, a contextual-memory oriented reinforcement learning method for robot navigation in unknown environments, combining traditional and learning-based planning with sparse visibility graphs.",
+      "llm_tldr_cn": "未知环境中的自主导航需要机器人无需先验地图高效到达目标。现有方法依赖传统规划或学习，但存在记忆不足和仿真到现实迁移困难。本文提出CORE规划器，结合传统和学习方法优势：使用稀疏可见度图作为环境记忆，并采用深度强化学习进行规划。实验表明，CORE在未知环境中实现了高效导航，并具有良好的跨场景泛化能力。",
+      "llm_tldr": "未知环境中的自主导航需要机器人无需先验地图高效到达目标。现有方法依赖传统规划或学习，但存在记忆不足和仿真到现实迁移困难。本文提出CORE规划器，结合传统和学习方法优势：使用稀疏可见度图作为环境记忆，并采用深度强化学习进行规划。实验表明，CORE在未知环境中实现了高效导航，并具有良好的跨场景泛化能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.02497v1",
+      "source": "arxiv",
+      "title": "Seek to Segment: Active Perception for Panoramic Referring Segmentation",
+      "abstract": "Existing referring segmentation models passively process static images captured from fixed perspectives, limiting their applicability in Embodied AI, where agents must perform active perception in the continuous 360$^\\circ$ environments. To bridge this gap, we introduce a novel task: Active Panoramic Referring Segmentation (APRS). In this setting, an agent is required to adjust its viewing direction ($Δθ, Δφ$) to explore the 360$^\\circ$ environment, seeking the object specified by a user instruction for segmentation. To tackle this challenging task, we propose PanoSeeker, a memory-augmented agent for efficient APRS. Rather than relying on heuristic scanning, PanoSeeker integrates a Vision-Language Model (VLM) with EgoSphere, an explicit spatial visual memory. By progressively integrating sequential local observations into a unified 360$^\\circ$ representation, EgoSphere enables the agent to plan efficient and non-redundant search trajectories. Once the target is found, the agent performs active viewpoint alignment and outputs the segmentation mask. Furthermore, we curate an expert-annotated search trajectory dataset with memory timelines for Supervised Fine-Tuning, followed by Reinforcement Learning post-training to explicitly optimize PanoSeeker's exploration efficiency. Extensive experiments on our newly established APRS benchmark demonstrate that PanoSeeker achieves superior search efficiency and segmentation accuracy, significantly outperforming adapted state-of-the-art baselines.",
+      "authors": [
+        "Song Tang",
+        "Shuming Hu",
+        "Xincheng Shuai",
+        "Henghui Ding",
+        "Yu-Gang Jiang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-02T17:56:49+00:00",
+      "link": "https://arxiv.org/pdf/2607.02497v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "agent adjusts viewing direction to follow user instruction for segmentation in 360 environment",
+      "llm_evidence_cn": "智能体根据用户指令主动调整视角进行分割",
+      "llm_evidence": "智能体根据用户指令主动调整视角进行分割",
+      "canonical_evidence": "智能体根据用户指令主动调整视角进行分割",
+      "llm_tldr_en": "Introduces Active Panoramic Referring Segmentation where an agent explores 360 environments following a user instruction to segment objects, using a memory-augmented VLM agent.",
+      "llm_tldr_cn": "本文提出了主动全景指代分割任务，要求智能体在360度环境中根据用户指令调整视角寻找目标并分割。提出PanoSeeker，结合视觉语言模型和显式空间记忆，实现高效主动感知。该工作拓展了指令跟随在感知任务中的应用。",
+      "llm_tldr": "本文提出了主动全景指代分割任务，要求智能体在360度环境中根据用户指令调整视角寻找目标并分割。提出PanoSeeker，结合视觉语言模型和显式空间记忆，实现高效主动感知。该工作拓展了指令跟随在感知任务中的应用。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.01658v1",
+      "source": "arxiv",
+      "title": "Teaching Vision-Language-Action Models What to See and Where to Look",
+      "abstract": "Vision-Language-Action (VLA) models have emerged as a promising paradigm for end-to-end autonomous driving. However, existing VLAs' training relies heavily on text-centric visual question answering and chain-of-thought reasoning data, which emphasizes linguistic reasoning rather than action-grounded planning. As a result, the learned representations capture semantic knowledge but lack spatial dependencies crucial for reliable trajectory prediction. We propose DriveTeach-VLA, a framework that explicitly teaches VLAs what to see and where to look. Driving-aware Vision Distillation (DVD) injects driving-specific perceptual priors into the vision encoder, while 2D Trajectory-Guided Prompts (2D-TGP) provide spatial conditioning aligned with feasible driving trajectories. Together, they form a vision-guided learning pipeline: what to see (DVD pretraining) - where to look (TGP-guided SFT) - how to act (TGP-guided GRPO). DriveTeach-VLA achieves the state-of-the-art performance on NAVSIM and nuScenes. Our code is available at: https://github.com/ShivaTeam/DriveTeach-VLA.",
+      "authors": [
+        "Yuguang Yang",
+        "Canyu Chen",
+        "Zhewen Tan",
+        "Yizhi Wang",
+        "Zichao Feng",
+        "Chunyang Liu",
+        "Kehua Sheng",
+        "Juan Zhang",
+        "Linlin Yang",
+        "Baochang Zhang",
+        "Yan Wang",
+        "Bo Zhang",
+        "Xianbin Cao"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-02T03:34:32+00:00",
+      "link": "https://arxiv.org/pdf/2607.01658v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "teaches VLAs what to see and where to look for driving, relevant to vision-language-action for navigation",
+      "llm_evidence_cn": "教授VLA模型在驾驶中该看什么和看哪里，与视觉语言导航相关",
+      "llm_evidence": "教授VLA模型在驾驶中该看什么和看哪里，与视觉语言导航相关",
+      "canonical_evidence": "教授VLA模型在驾驶中该看什么和看哪里，与视觉语言导航相关",
+      "llm_tldr_en": "Proposes DriveTeach-VLA to improve VLA models for autonomous driving by injecting driving-specific perceptual priors and trajectory-guided prompts, enhancing spatial awareness for trajectory prediction.",
+      "llm_tldr_cn": "本文针对现有的视觉-语言-动作(VLA)模型在自动驾驶中依赖文本推理而缺乏空间依赖性的问题，提出了DriveTeach-VLA框架。该框架通过驾驶感知视觉蒸馏将驾驶特定的感知先验注入视觉编码器，并利用2D轨迹引导提示提供空间条件。实验表明，该方法有效提升了轨迹预测的可靠性。该工作为视觉语言导航中的动作引导提供了可迁移的方法。",
+      "llm_tldr": "本文针对现有的视觉-语言-动作(VLA)模型在自动驾驶中依赖文本推理而缺乏空间依赖性的问题，提出了DriveTeach-VLA框架。该框架通过驾驶感知视觉蒸馏将驾驶特定的感知先验注入视觉编码器，并利用2D轨迹引导提示提供空间条件。实验表明，该方法有效提升了轨迹预测的可靠性。该工作为视觉语言导航中的动作引导提供了可迁移的方法。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.02417v1",
+      "source": "arxiv",
+      "title": "LIME: Learning Intent-aware Camera Motion from Egocentric Video",
+      "abstract": "Autonomous robots often need to move their camera before they can act: to inspect an object, reveal an occluded region, or obtain a view that responds to a user's intent. While vision-language navigation translates instructions to base motion and vision-language-action policies map instructions to manipulation actions, language-conditioned camera motion remains comparatively underexplored as a first-class action. We formulate language-conditioned camera motion generation: given a current RGB observation and a free-form natural-language intent, predict a relative target camera pose for the next observation. This task is inherently non-trivial: viewpoint changes are driven by latent perceptual intentions, and a valid motion may operate at different semantic granularity, from entering a room to looking around a corner, inspecting a visible object, or revealing an occluded detail. To model this structure, we mine multi-intention camera-motion supervision from egocentric video, pairing plausible intents and observation-gain descriptions with relative SE(3) target poses. We propose LIME, a vision-language camera-motion generator that combines an auto-regressive observation-gain output with a continuous flow-matching pose head. This design lets the model jointly predict what the next view should reveal while representing multi-hypothesis target views. Across experiments and downstream robotic tasks, we show that LIME can learn to actively choose camera poses from passive human video, turning ordinary egocentric recordings into supervision for intent-aware active perception.",
+      "authors": [
+        "Boyang Sun",
+        "Jiajie Li",
+        "Yung-Hsu Yang",
+        "Chenyangguang Zhang",
+        "Tim Engelbracht",
+        "Sunghwan Hong",
+        "Cesar Cadena",
+        "Marc Pollefeys",
+        "Hermann Blum"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-07-02T16:48:43+00:00",
+      "link": "https://arxiv.org/pdf/2607.02417v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "language-conditioned camera motion for navigation",
+      "llm_evidence_cn": "语言条件相机运动用于导航",
+      "llm_evidence": "语言条件相机运动用于导航",
+      "canonical_evidence": "语言条件相机运动用于导航",
+      "llm_tldr_en": "Formulates language-conditioned camera motion generation: given current RGB and natural-language intent, predict relative target camera pose. Addresses a gap in vision-language navigation by treating camera motion as a first-class action.",
+      "llm_tldr_cn": "自主机器人常需先移动相机才能行动。本文提出语言条件相机运动生成任务：给定当前RGB观测和自然语言意图，预测下一观测的相对目标相机姿态。该任务具有挑战性，因为视点变化由潜在感知意图驱动。作者构建了LIME模型，学习从自我中心视频中生成意图感知的相机运动。实验表明，LIME能有效响应用户意图，弥补了视觉语言导航中相机运动作为一等动作的研究空白。",
+      "llm_tldr": "自主机器人常需先移动相机才能行动。本文提出语言条件相机运动生成任务：给定当前RGB观测和自然语言意图，预测下一观测的相对目标相机姿态。该任务具有挑战性，因为视点变化由潜在感知意图驱动。作者构建了LIME模型，学习从自我中心视频中生成意图感知的相机运动。实验表明，LIME能有效响应用户意图，弥补了视觉语言导航中相机运动作为一等动作的研究空白。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

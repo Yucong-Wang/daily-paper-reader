@@ -6,43 +6,40 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-02
-- 运行时间：2026-07-02 21:33:36 UTC
+- 最新运行日期：2026-07-03
+- 运行时间：2026-07-03 21:14:21 UTC
 - 运行状态：成功
-- 本次总论文数：7
+- 本次总论文数：6
 - 精读区：2
-- 速读区：5
+- 速读区：4
 
 ### 今日简报（AI）
-1) 今日精读两篇高分解码：视觉语言导航记忆衰减与多模态定位语义地图。
-2) 最值得关注：离散VLN中的测试时记忆正则化技术，以及借助VLMs实现语义地图定位的跨模态方案。
-3) 建议从DART-VLN的抗循环机制切入，结合社交导航与增量3D场景图，快速理解如何用语言提升机器人鲁棒性。
-- 详情：[/202607/02/README](/202607/02/README)
+今日推荐聚焦视觉语言导航两大创新：路径级事后指令实现语义探索，空间可查询流场驱动局部语言导航。  
+最值得精读《Path-level Hindsight Instructions for Semantic Exploration in Vision-Language Navigation》与《CoFL-S: Spatially Queryable Sector Flow Fields for Local Language-Conditioned Navigation》，二者均以9.0高分提出新机制，提升跨场景泛化与自然交互。  
+建议优先阅读这两篇论文，并关注其如何将语言先验融入导航策略的细节设计，尤其适合从事机器人具身智能的研究者。
+- 详情：[/202607/03/README](/202607/03/README)
 
 ### 精读区论文标签
-1. [DART-VLN: Test-Time Memory Decay and Anti-Loop Regularization for Discrete Vision-Language Navigation](/202607/02/2607.01043v1-dart-vln-test-time-memory-decay-and-anti-loop-regularization-for-discrete-vision-language-navigation)  
-   标签：评分：10.0/10、query:vln
-   evidence：离散视觉语言导航中的测试时记忆衰减和反循环正则化
-2. [Where Am I? Semantic Map Grounding via Vision-Language Models for Multi-Modal Localization](/202607/02/2607.01079v1-where-am-i-semantic-map-grounding-via-vision-language-models-for-multi-modal-localization)  
-   标签：评分：8.0/10、query:vln
-   evidence：基于VLM的语义定位用于具身导航
+1. [Path-level Hindsight Instructions for Semantic Exploration in Vision-Language Navigation](/202607/03/2607.01754v1-path-level-hindsight-instructions-for-semantic-exploration-in-vision-language-navigation)  
+   标签：评分：9.0/10、query:vln
+   evidence：提出基于事后指令的VLN在线探索框架
+2. [CoFL-S: Spatially Queryable Sector Flow Fields for Local Language-Conditioned Navigation](/202607/03/2607.02222v1-cofl-s-spatially-queryable-sector-flow-fields-for-local-language-conditioned-navigation)  
+   标签：评分：9.0/10、query:vln
+   evidence：提出底层视觉-语言-动作框架用于连续导航
 
 ### 速读区论文标签
-1. [Robots Ask the Way: Communication-Enabled Social Navigation](/202607/02/2607.01044v1-robots-ask-the-way-communication-enabled-social-navigation)  
+1. [CORE Planner: Contextual-memory Oriented Reinforcement-learning in Unknown Environments for Robot Navigation](/202607/03/2606.29222v1-core-planner-contextual-memory-oriented-reinforcement-learning-in-unknown-environments-for-robot-navigation)  
    标签：评分：7.0/10、query:vln
-   evidence：通信使能的社交导航；机器人主动问路
-2. [H-GRPO: Permutation-Invariant Reinforcement Learning for Grounded Visual Reasoning](/202607/02/2606.29915v1-h-grpo-permutation-invariant-reinforcement-learning-for-grounded-visual-reasoning)  
+   evidence：未知环境中的具身导航
+2. [Teaching Vision-Language-Action Models What to See and Where to Look](/202607/03/2607.01658v1-teaching-vision-language-action-models-what-to-see-and-where-to-look)  
+   标签：评分：7.0/10、query:vln
+   evidence：教授VLA模型在驾驶中该看什么和看哪里，与视觉语言导航相关
+3. [LIME: Learning Intent-aware Camera Motion from Egocentric Video](/202607/03/2607.02417v1-lime-learning-intent-aware-camera-motion-from-egocentric-video)  
+   标签：评分：7.0/10、query:vln
+   evidence：语言条件相机运动用于导航
+4. [Seek to Segment: Active Perception for Panoramic Referring Segmentation](/202607/03/2607.02497v1-seek-to-segment-active-perception-for-panoramic-referring-segmentation)  
    标签：评分：6.0/10、query:vln
-   evidence：基于VLM的分解式证据接地视觉理解
-3. [Think While You Map: Asynchronous Vision-Language Agents for Incremental 3D Scene Graphs](/202607/02/2606.31471v1-think-while-you-map-asynchronous-vision-language-agents-for-incremental-3d-scene-graphs)  
-   标签：评分：6.0/10、query:vln
-   evidence：异步VLM代理增量构建3D场景图，涉及视觉语言理解
-4. [MindEdit-Bench: Benchmarking Object-Level Counterfactual Spatial Reasoning in VLMs from In-the-Wild Photos](/202607/02/2607.00491v1-mindedit-bench-benchmarking-object-level-counterfactual-spatial-reasoning-in-vlms-from-in-the-wild-photos)  
-   标签：评分：6.0/10、query:vln
-   evidence：面向视觉语言理解的VLM空间推理基准
-5. [LeVLJEPA: End-to-End Vision-Language Pretraining Without Negatives](/202607/02/2607.00784v1-levljepa-end-to-end-vision-language-pretraining-without-negatives)  
-   标签：评分：6.0/10、query:vln
-   evidence：视觉语言预训练提升视觉语言理解
+   evidence：智能体根据用户指令主动调整视角进行分割
 
 
 <div class="dpr-home-promo-card">
