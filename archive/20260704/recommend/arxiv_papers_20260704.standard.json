@@ -1,0 +1,141 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-04T20:01:45.266332+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 1,
+    "quick_skim_target": 11,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2607.02417v1",
+      "source": "arxiv",
+      "title": "LIME: Learning Intent-aware Camera Motion from Egocentric Video",
+      "abstract": "Autonomous robots often need to move their camera before they can act: to inspect an object, reveal an occluded region, or obtain a view that responds to a user's intent. While vision-language navigation translates instructions to base motion and vision-language-action policies map instructions to manipulation actions, language-conditioned camera motion remains comparatively underexplored as a first-class action. We formulate language-conditioned camera motion generation: given a current RGB observation and a free-form natural-language intent, predict a relative target camera pose for the next observation. This task is inherently non-trivial: viewpoint changes are driven by latent perceptual intentions, and a valid motion may operate at different semantic granularity, from entering a room to looking around a corner, inspecting a visible object, or revealing an occluded detail. To model this structure, we mine multi-intention camera-motion supervision from egocentric video, pairing plausible intents and observation-gain descriptions with relative SE(3) target poses. We propose LIME, a vision-language camera-motion generator that combines an auto-regressive observation-gain output with a continuous flow-matching pose head. This design lets the model jointly predict what the next view should reveal while representing multi-hypothesis target views. Across experiments and downstream robotic tasks, we show that LIME can learn to actively choose camera poses from passive human video, turning ordinary egocentric recordings into supervision for intent-aware active perception.",
+      "authors": [
+        "Boyang Sun",
+        "Jiajie Li",
+        "Yung-Hsu Yang",
+        "Chenyangguang Zhang",
+        "Tim Engelbracht",
+        "Sunghwan Hong",
+        "Cesar Cadena",
+        "Marc Pollefeys",
+        "Hermann Blum"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-07-02T16:48:43+00:00",
+      "link": "https://arxiv.org/pdf/2607.02417v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "language-conditioned camera motion generation for vision-language navigation",
+      "llm_evidence_cn": "语言条件下的相机运动生成，用于视觉语言导航",
+      "llm_evidence": "语言条件下的相机运动生成，用于视觉语言导航",
+      "canonical_evidence": "语言条件下的相机运动生成，用于视觉语言导航",
+      "llm_tldr_en": "LIME formulates language-conditioned camera motion generation from egocentric video, predicting relative target camera poses from RGB observations and natural language intents.",
+      "llm_tldr_cn": "针对机器人需要根据语言意图移动相机进行观察的需求，提出LIME，将语言条件相机运动作为一个基本动作，从当前RGB和自然语言意图预测下一观测的相机相对位姿。方法在合成和真实场景中验证了有效性，填补了VLN中相机操纵的空白。",
+      "llm_tldr": "针对机器人需要根据语言意图移动相机进行观察的需求，提出LIME，将语言条件相机运动作为一个基本动作，从当前RGB和自然语言意图预测下一观测的相机相对位姿。方法在合成和真实场景中验证了有效性，填补了VLN中相机操纵的空白。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.02466v1",
+      "source": "arxiv",
+      "title": "Learning to Move Before Learning to Do: Task-Agnostic pretraining for VLAs",
+      "abstract": "Vision-Language-Action (VLA) models are fundamentally bottlenecked by the scarcity of expert demonstrations -- triplets of observations, instructions, and actions that are costly to collect at scale. We argue that this bottleneck stems from conflating two distinct learning objectives: acquiring physical competence (how to move) and acquiring semantic alignment (what to do). Crucially, only the latter requires language supervision. Building on this Decomposition Hypothesis, we propose Task-Agnostic Pretraining (TAP), a two-stage framework that first learns transferable motor priors from cheap, unlabeled interaction data -- including discarded off-task trajectories and autonomous robot play -- via a self-supervised Inverse Dynamics objective. A lightweight second stage then grounds these priors in language using minimal expert data. On the SIMPLER benchmark, TAP matches models trained on over 1M expert trajectories while using orders of magnitude less labeled data, yielding a 10% absolute gain over standard behavior cloning. On a real-world WidowX platform, TAP retains 25% success under camera perturbations where internet-scale baselines collapse to 0%, demonstrating that task-agnostic pretraining produces robust, transferable physical representations and offers a scalable path forward for Embodied AI.",
+      "authors": [
+        "Junhao Shi",
+        "Siyin Wang",
+        "Xiaopeng Yu",
+        "Li Ji",
+        "Jingjing Gong",
+        "Xipeng Qiu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-07-02T17:33:37+00:00",
+      "link": "https://arxiv.org/pdf/2607.02466v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "embodied agent following language instructions for navigation and action",
+      "llm_evidence_cn": "遵循语言指令的具身智能体导航与动作",
+      "llm_evidence": "遵循语言指令的具身智能体导航与动作",
+      "canonical_evidence": "遵循语言指令的具身智能体导航与动作",
+      "llm_tldr_en": "TAP decomposes VLA learning into motor priors from unlabeled data and semantic alignment from language, enabling efficient learning from fewer demonstrations.",
+      "llm_tldr_cn": "本文提出任务无关预训练（TAP）框架，解决视觉-语言-动作模型因专家演示稀缺导致的瓶颈。TAP将学习分解为两个阶段：首先通过自监督逆动力学从廉价无标签交互数据学习迁移性的运动先验，然后使用少量语言监督学习语义对齐。该方法证明运动技能可从非专家数据中预先获取，显著降低演示需求。",
+      "llm_tldr": "本文提出任务无关预训练（TAP）框架，解决视觉-语言-动作模型因专家演示稀缺导致的瓶颈。TAP将学习分解为两个阶段：首先通过自监督逆动力学从廉价无标签交互数据学习迁移性的运动先验，然后使用少量语言监督学习语义对齐。该方法证明运动技能可从非专家数据中预先获取，显著降低演示需求。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.00989v1",
+      "source": "arxiv",
+      "title": "SenseWalk: Agent-Based Semantic Trajectory Simulation Powered by Large Language Models in Zoned Environments",
+      "abstract": "Semantic trajectory analysis has recently emerged as an approach for modeling human movement by capturing implicit patterns and behaviors through semantic information (e.g., visitors' profiles and goals) beyond raw spatial paths to better understand why people move in certain ways. However, analyzing semantic trajectories in real-world scenarios remains challenging, as collecting high-quality data is costly and often lacks rich semantic information. Meanwhile, existing simulation tools require substantial technical expertise, which makes them difficult for practitioners to adopt. To address these limitations, the paper proposes ${SenseWalk}$, an interactive system that supports simulating semantic trajectories by LLM-powered agents. We develop a simulation workflow that combines LLMs and the social force model to balance physical plausibility and semantic coherence. A user-friendly interface is designed to facilitate users in customizing the simulation configuration and analyzing simulation outputs. We also conduct a quantitative experiment to evaluate the effectiveness of our simulation workflow, and a user study (n=12) to assess the usefulness and efficiency of our system.",
+      "authors": [
+        "Ziyue Lin",
+        "Xinhang Xie",
+        "Kangyi Wang",
+        "Siming Chen"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.AI"
+      ],
+      "published": "2026-07-01T14:25:47+00:00",
+      "link": "https://arxiv.org/pdf/2607.00989v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Agent-based semantic trajectory simulation using LLMs, can generate VLN training data",
+      "llm_evidence_cn": "基于智能体的语义轨迹仿真，利用LLM可生成VLN训练数据",
+      "llm_evidence": "基于智能体的语义轨迹仿真，利用LLM可生成VLN训练数据",
+      "canonical_evidence": "基于智能体的语义轨迹仿真，利用LLM可生成VLN训练数据",
+      "llm_tldr_en": "Presents SenseWalk, an interactive system that simulates semantic trajectories using LLMs to model human movement patterns, enabling easy data generation for embodied tasks.",
+      "llm_tldr_cn": "语义轨迹分析需要高质量数据，但真实数据收集成本高。本文提出SenseWalk，一个交互式系统，利用大型语言模型模拟智能体在分区环境中的语义轨迹。该系统允许用户定义智能体属性和目标，生成带有丰富语义标签的路径。SenseWalk降低了仿真门槛，可为视觉语言导航等任务生成多样化的训练数据，促进具身智能研究。",
+      "llm_tldr": "语义轨迹分析需要高质量数据，但真实数据收集成本高。本文提出SenseWalk，一个交互式系统，利用大型语言模型模拟智能体在分区环境中的语义轨迹。该系统允许用户定义智能体属性和目标，生成带有丰富语义标签的路径。SenseWalk降低了仿真门槛，可为视觉语言导航等任务生成多样化的训练数据，促进具身智能研究。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
