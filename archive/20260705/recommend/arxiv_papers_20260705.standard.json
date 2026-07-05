@@ -1,0 +1,214 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-05T20:44:14.278545+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2606.30698v1",
+      "source": "arxiv",
+      "title": "Vision-Language Procedural Reasoning for Context-Aware Reward Modeling of Robotic Endovascular Guidewire Navigation",
+      "abstract": "Robotic-assisted endovascular interventions demand accurate, stable, and context-aware guidewire navigation in complex and patient-specific vascular anatomies. Despite recent advances in robotic precision and learning-based control, existing autonomous navigation methods remain limited by their reliance on static reward functions and the lack of explicit procedural reasoning regarding anatomical context and task progression. To address these challenges, this paper proposes a vision-language procedural reasoning (VL-PR) framework for autonomous guidewire navigation. The framework integrates a multimodal large language model (MLLM) as a procedural reasoning module that interprets real-time visual observations to infer high-level navigation contexts. Instead of generating low-level control commands, the inferred procedural insights enable context-aware reward adaptation by dynamically adjusting the importance of reward components across different navigation phases. This approach allows a single policy to resolve competing objectives and handle complex transitions while preserving a consistent global task goal. Experiments on a physical robotic platform across diverse vascular scenarios demonstrate enhanced task reliability and streamlined navigational efficiency, highlighting the advantages over static-reward methods and offering a scalable solution for complex and multi-task robotic endovascular procedures.",
+      "authors": [
+        "Wentong Tian",
+        "Jiyuan Zhao",
+        "Tianliang Yao",
+        "Yuxiang Fan",
+        "Zhengyu Shi",
+        "Dong Liu",
+        "Peng Qi"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-29T07:35:20+00:00",
+      "link": "https://arxiv.org/pdf/2606.30698v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "vision-language procedural reasoning for context-aware reward modeling in robotic navigation",
+      "llm_evidence_cn": "用于机器人导航的视觉语言程序化推理与上下文感知奖励建模",
+      "llm_evidence": "用于机器人导航的视觉语言程序化推理与上下文感知奖励建模",
+      "canonical_evidence": "用于机器人导航的视觉语言程序化推理与上下文感知奖励建模",
+      "llm_tldr_en": "VL-PR integrates MLLM for procedural reasoning in endovascular guidewire navigation, enabling context-aware reward modeling from visual observations.",
+      "llm_tldr_cn": "针对血管介入机器人导航中静态奖励函数缺乏上下文适应性的问题，本文提出视觉语言程序化推理框架（VL-PR），集成多模态大语言模型作为程序化推理模块，实时解读视觉观察并结合解剖结构动态调整奖励，实现更准确、稳定的自主导丝导航。实验表明该方法在复杂血管环境中显著优于传统方法。",
+      "llm_tldr": "针对血管介入机器人导航中静态奖励函数缺乏上下文适应性的问题，本文提出视觉语言程序化推理框架（VL-PR），集成多模态大语言模型作为程序化推理模块，实时解读视觉观察并结合解剖结构动态调整奖励，实现更准确、稳定的自主导丝导航。实验表明该方法在复杂血管环境中显著优于传统方法。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.31645v1",
+      "source": "arxiv",
+      "title": "Technical Report of RoboSpatial Challenge at CVPR 2026: Selective Reasoning Activation and Reference-Frame Disambiguation for Embodied Spatial Reasoning",
+      "abstract": "Vision-language models achieve strong general perception but often struggle with the spatial reasoning required for embodied tasks. We present RoboSpatialBrain, our submission to the RoboSpatial Challenge at the Embodied Reasoning in Action Workshop, CVPR 2026, built on RoboBrain2.5-8B-NV. RoboSpatialBrain combines two training-free, inference-time mechanisms: a forced <think> prefix activation strategy paired with a task-specific post-prompt that elicits deliberate reasoning on context and compatibility tasks, and an explicit reference-frame redirection pipeline that resolves camera-centric and object-centric ambiguity for context tasks. We additionally explore fine-tuning RoboBrain2.5 on compatibility data and present a detailed analysis of its interaction with prompting. RoboSpatialBrain achieved first place in the RoboSpatial Challenge, with an overall success rate of 80.9\\% on RoboSpatial-Home. Code is available at https://github.com/YuxiangXie2003/RoboSpatialBrain.",
+      "authors": [
+        "Yuxiang Xie",
+        "Qi Lv",
+        "Jianming Xing",
+        "Zijian Hong",
+        "Xiang Deng",
+        "Weili Guan",
+        "Liqiang Nie"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-30T13:25:59+00:00",
+      "link": "https://arxiv.org/pdf/2606.31645v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "embodied spatial reasoning with VLMs for navigation tasks",
+      "llm_evidence_cn": "使用VLM进行具身空间推理，适用于导航任务",
+      "llm_evidence": "使用VLM进行具身空间推理，适用于导航任务",
+      "canonical_evidence": "使用VLM进行具身空间推理，适用于导航任务",
+      "llm_tldr_en": "RoboSpatialBrain combines forced reasoning prefix and reference-frame disambiguation to improve VLM spatial reasoning for embodied tasks like navigation.",
+      "llm_tldr_cn": "本文针对VLM在具身空间推理任务中表现不佳的问题，提出RoboSpatialBrain。它使用强制<think>前缀激活策略结合任务后提示来引导推理，并通过参考帧重定向算子消除相机与物体中心歧义。在RoboSpatial挑战赛中取得好成绩，验证了方法的有效性。",
+      "llm_tldr": "本文针对VLM在具身空间推理任务中表现不佳的问题，提出RoboSpatialBrain。它使用强制<think>前缀激活策略结合任务后提示来引导推理，并通过参考帧重定向算子消除相机与物体中心歧义。在RoboSpatial挑战赛中取得好成绩，验证了方法的有效性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.29464v1",
+      "source": "arxiv",
+      "title": "Rank-Aware Hyperbolic Alignment for Vision-Language Dataset Distillation",
+      "abstract": "Vision-language dataset distillation (VLDD) compresses a large image-text paired dataset into a small set of synthetic pairs that can efficiently train contrastive vision-language models under strict data and compute budgets. Most existing methods match expert trajectories or cross-modal statistics, yet still enforce full-dimensional alignment in a Euclidean embedding space. This is often overly restrictive due to rank-deficient image--text correlation, with shared semantics concentrated in a low-dimensional range and remaining variation spread across a weakly correlated residual subspace. LoRS relaxes alignment at the similarity level by low-rank factorization, but does not explicitly control dominant alignment capacity and structure in the representation space. We thus propose a rank-aware hyperbolic alignment (RAHA) that combines hierarchical geometry with explicit alignment-capacity control. RAHA lifts multimodal representations to hyperbolic space and optimizes distilled pairs with asymmetric objectives that enforce geodesic alignment in the shared range while regularizing the residual subspace to preserve modality-private diversity and improve transfer robustness. Experiments on benchmarks show that RAHA demonstrates competitive cross-modal retrieval and improved transfer indicators under fixed budgets.",
+      "authors": [
+        "Jongoh Jeong",
+        "Sun-Kyung Lee",
+        "Kuk-Jin Yoon"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-28T15:41:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.29464v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Vision-language dataset distillation for efficient training of contrastive VL models, applicable to VLN tasks",
+      "llm_evidence_cn": "视觉语言数据集蒸馏技术，可高效训练对比视觉语言模型，适用于VLN任务",
+      "llm_evidence": "视觉语言数据集蒸馏技术，可高效训练对比视觉语言模型，适用于VLN任务",
+      "canonical_evidence": "视觉语言数据集蒸馏技术，可高效训练对比视觉语言模型，适用于VLN任务",
+      "llm_tldr_en": "Proposes Rank-Aware Hyperbolic Alignment for vision-language dataset distillation to improve efficiency, enabling better training of VL models under constrained budgets, potentially benefiting VLN.",
+      "llm_tldr_cn": "现有数据集蒸馏方法在欧氏空间中强制全维对齐，忽略了图像-文本相关性秩不足问题。本文提出秩感知双曲对齐方法，在双曲空间中自适应控制对齐容量，更高效地合成小规模高质量图像-文本对，在低预算下训练对比VL模型，可间接加速VLN模型开发。",
+      "llm_tldr": "现有数据集蒸馏方法在欧氏空间中强制全维对齐，忽略了图像-文本相关性秩不足问题。本文提出秩感知双曲对齐方法，在双曲空间中自适应控制对齐容量，更高效地合成小规模高质量图像-文本对，在低预算下训练对比VL模型，可间接加速VLN模型开发。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.00685v1",
+      "source": "arxiv",
+      "title": "M2Note: Continual Evolution of Vision Language Models via Mistake Notebook Learning",
+      "abstract": "Vision Language Models (VLMs) have demonstrated remarkable capabilities in multimodal reasoning tasks, yet they still suffer from recurring failures, such as skipping key visual checks, misapplying domain rules, and hallucinating unsupported concepts. Most existing solutions rely on supervised fine-tuning (SFT) and reinforcement learning (RL), which are expensive to iterate and can be brittle under distribution shift. To this end, we propose Multimodal Mistake Notebook Learning (M2Note), a training-free continual evolution framework that externalizes learning into an editable memory. M2Note transforms failed trajectories into compact subject-guidance notes: the subject summarizes the underlying domain and concept, while the guidance provides actionable verification steps that can be reused in future inference. At test time, M2Note retrieves relevant notes via multimodal retrieval-augmented generation (RAG) and appends them to the model context, steering reasoning away from previously observed pitfalls. To stabilize continual evolution, we adopt batch-level post-verification with rollback, which commits notebook edits only if they improve performance on the same batch, reducing noisy updates and preventing regressions. M2Note supports both self-evolving, where the same VLM acts as solver and supervisor, and cross-model evolving, where a stronger supervisor guides a weaker solver, enabling capability transfer without weight updates. Experiments on six multimodal reasoning benchmarks show consistent improvements across domains and backbones, while achieving strong cost and sample efficiency and remaining complementary to Chain-of-Thought (CoT) prompting.",
+      "authors": [
+        "Haiwen Li",
+        "Jing Tang",
+        "Rui Chen",
+        "Lei Sun",
+        "Xiangxiang Chu"
+      ],
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA"
+      ],
+      "published": "2026-07-01T09:30:10+00:00",
+      "link": "https://arxiv.org/pdf/2607.00685v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "continual evolution of vision language models via mistake notebook learning",
+      "llm_evidence_cn": "通过错误笔记学习实现视觉语言模型的持续进化",
+      "llm_evidence": "通过错误笔记学习实现视觉语言模型的持续进化",
+      "canonical_evidence": "通过错误笔记学习实现视觉语言模型的持续进化",
+      "llm_tldr_en": "Proposes M2Note, a training-free framework for continually improving VLMs by externalizing failed trajectories into editable memory notes.",
+      "llm_tldr_cn": "视觉语言模型在推理中常出现视觉检查遗漏、规则误用等问题。现有微调方法昂贵且脆弱。本文提出多模态错误笔记学习（M2Note），将失败轨迹转化为可编辑的主题指导笔记，无需训练即可持续提升VLM能力，实现更稳定的多模态推理。",
+      "llm_tldr": "视觉语言模型在推理中常出现视觉检查遗漏、规则误用等问题。现有微调方法昂贵且脆弱。本文提出多模态错误笔记学习（M2Note），将失败轨迹转化为可编辑的主题指导笔记，无需训练即可持续提升VLM能力，实现更稳定的多模态推理。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.02092v1",
+      "source": "arxiv",
+      "title": "Guided Action Flow: Q-Guided Inference for Flow-Matching Vision-Language-Action Policies",
+      "abstract": "Flow-matching vision-language-action policies generate robot action chunks through an iterative transport process, creating an opportunity for test-time guidance without retraining the base policy. We study this opportunity in Guided Action Flow, an inference-time framework that keeps a pretrained SmolVLA policy frozen and uses a learned action-chunk critic to guide its reverse-time flow sampler. The critic is trained from real success and failure rollouts, can condition on task-description features from the frozen SmolVLA language pathway, and is used only through action gradients during sampling. We evaluate the approach on LIBERO manipulation tasks. A single-task critic improves success from 68.0% to 82.0% on one seed window and from 82.0% to 86.0% on another. A multi-family task-description critic improves validation success from 46.0% to 56.0%, while the locked held-out test gain is positive but modest, from 65.0% to 67.5%. These results support the feasibility of Q-guided inference for frozen flow-matching VLA policies, while showing that critic generalization and uncertainty-aware guidance remain the central bottlenecks.",
+      "authors": [
+        "Liuhaichen Yang",
+        "Zhuang Jiang",
+        "Chenchao Sheng",
+        "Zezhi Tang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-07-02T12:30:50+00:00",
+      "link": "https://arxiv.org/pdf/2607.02092v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "vision-language-action policy with guidance for robot control",
+      "llm_evidence_cn": "带有指导的视觉-语言-动作策略用于机器人控制",
+      "llm_evidence": "带有指导的视觉-语言-动作策略用于机器人控制",
+      "canonical_evidence": "带有指导的视觉-语言-动作策略用于机器人控制",
+      "llm_tldr_en": "Guided Action Flow keeps a pretrained VLA policy frozen and uses a learned action-chunk critic to guide flow-matching sampling at inference time, improving manipulation task success rates.",
+      "llm_tldr_cn": "本文提出推理时引导框架，保持预训练VLA策略冻结，利用从成功/失败轨迹中学习的动作块评论器指导逆向流采样。在LIBERO操作任务上，单任务评论器将成功率从68.0%提升至82.0%，展示了无需重训即可优化策略的潜力，其方法可迁移至导航等具身任务。",
+      "llm_tldr": "本文提出推理时引导框架，保持预训练VLA策略冻结，利用从成功/失败轨迹中学习的动作块评论器指导逆向流采样。在LIBERO操作任务上，单任务评论器将成功率从68.0%提升至82.0%，展示了无需重训即可优化策略的潜力，其方法可迁移至导航等具身任务。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

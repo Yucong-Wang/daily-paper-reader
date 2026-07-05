@@ -6,29 +6,35 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-04
-- 运行时间：2026-07-04 20:04:19 UTC
+- 最新运行日期：2026-07-05
+- 运行时间：2026-07-05 20:48:30 UTC
 - 运行状态：成功
-- 本次总论文数：3
+- 本次总论文数：5
 - 精读区：2
-- 速读区：1
+- 速读区：3
 
 ### 今日简报（AI）
-今日精读两篇8分论文：《LIME》从第一人称视频学习意图感知相机运动，《Learning to Move Before Learning to Do》提出VLA的任务无关预训练方法。最值得关注的方向是人物视角与机器人操作的预训练范式。建议普通读者优先阅读这两篇高评分论文，可快速了解多模态运动生成与基础模型的前沿思路。
-- 详情：[/202607/04/README](/202607/04/README)
+今日聚焦两篇高分论文：机器人血管介入导航的视觉语言推理与CVPR 2026具身空间推理挑战。精读揭示了利用上下文感知奖励建模优化导丝操作，以及通过选择性推理激活解决参考系歧义。建议关注视觉语言模型在医疗与导航等高风险具身任务中的推理能力提升。
+- 详情：[/202607/05/README](/202607/05/README)
 
 ### 精读区论文标签
-1. [LIME: Learning Intent-aware Camera Motion from Egocentric Video](/202607/04/2607.02417v1-lime-learning-intent-aware-camera-motion-from-egocentric-video)  
+1. [Vision-Language Procedural Reasoning for Context-Aware Reward Modeling of Robotic Endovascular Guidewire Navigation](/202607/05/2606.30698v1-vision-language-procedural-reasoning-for-context-aware-reward-modeling-of-robotic-endovascular-guidewire-navigation)  
    标签：评分：8.0/10、query:vln
-   evidence：语言条件下的相机运动生成，用于视觉语言导航
-2. [Learning to Move Before Learning to Do: Task-Agnostic pretraining for VLAs](/202607/04/2607.02466v1-learning-to-move-before-learning-to-do-task-agnostic-pretraining-for-vlas)  
+   evidence：用于机器人导航的视觉语言程序化推理与上下文感知奖励建模
+2. [Technical Report of RoboSpatial Challenge at CVPR 2026: Selective Reasoning Activation and Reference-Frame Disambiguation for Embodied Spatial Reasoning](/202607/05/2606.31645v1-technical-report-of-robospatial-challenge-at-cvpr-2026-selective-reasoning-activation-and-reference-frame-disambiguation-for-embodied-spatial-reasoning)  
    标签：评分：8.0/10、query:vln
-   evidence：遵循语言指令的具身智能体导航与动作
+   evidence：使用VLM进行具身空间推理，适用于导航任务
 
 ### 速读区论文标签
-1. [SenseWalk: Agent-Based Semantic Trajectory Simulation Powered by Large Language Models in Zoned Environments](/202607/04/2607.00989v1-sensewalk-agent-based-semantic-trajectory-simulation-powered-by-large-language-models-in-zoned-environments)  
+1. [Rank-Aware Hyperbolic Alignment for Vision-Language Dataset Distillation](/202607/05/2606.29464v1-rank-aware-hyperbolic-alignment-for-vision-language-dataset-distillation)  
    标签：评分：6.0/10、query:vln
-   evidence：基于智能体的语义轨迹仿真，利用LLM可生成VLN训练数据
+   evidence：视觉语言数据集蒸馏技术，可高效训练对比视觉语言模型，适用于VLN任务
+2. [M2Note: Continual Evolution of Vision Language Models via Mistake Notebook Learning](/202607/05/2607.00685v1-m2note-continual-evolution-of-vision-language-models-via-mistake-notebook-learning)  
+   标签：评分：6.0/10、query:vln
+   evidence：通过错误笔记学习实现视觉语言模型的持续进化
+3. [Guided Action Flow: Q-Guided Inference for Flow-Matching Vision-Language-Action Policies](/202607/05/2607.02092v1-guided-action-flow-q-guided-inference-for-flow-matching-vision-language-action-policies)  
+   标签：评分：6.0/10、query:vln
+   evidence：带有指导的视觉-语言-动作策略用于机器人控制
 
 
 <div class="dpr-home-promo-card">
