@@ -1,6 +1,9 @@
 * <a class="dpr-sidebar-root-link" href="#/">首页</a>
 * <a class="dpr-sidebar-root-link dpr-sidebar-noactive-link" href="javascript:void(0)" data-dpr-hash="#/tutorial/README">使用教程</a>
 * Daily Papers
+  * 2026-07-06 <!--dpr-date:20260706-->
+    * 速读区
+      * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202607/06/2606.30288v1-visreflect-latent-visual-reflection-for-fine-grained-perception-in-long-visual-context" data-sidebar-item="{&quot;title&quot;: &quot;VisReflect: Latent Visual Reflection for Fine-Grained Perception in Long Visual Context&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/2606.30288v1-visreflect-latent-visual-reflection-for-fine-grained-perception-in-long-visual-context&quot;, &quot;score&quot;: &quot;7.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;vln&quot;}], &quot;evidence&quot;: &quot;长视觉上下文中LVLM的细粒度感知&quot;}">VisReflect: Latent Visual Reflection for Fine-Grained Perception in Long Visual Context</a>
   * 2026-07-05 <!--dpr-date:20260705-->
     * 精读区
       * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202607/05/2606.30698v1-vision-language-procedural-reasoning-for-context-aware-reward-modeling-of-robotic-endovascular-guidewire-navigation" data-sidebar-item="{&quot;title&quot;: &quot;Vision-Language Procedural Reasoning for Context-Aware Reward Modeling of Robotic Endovascular Guidewire Navigation&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/2606.30698v1-vision-language-procedural-reasoning-for-context-aware-reward-modeling-of-robotic-endovascular-guidewire-navigation&quot;, &quot;score&quot;: &quot;8.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;vln&quot;}], &quot;evidence&quot;: &quot;用于机器人导航的视觉语言程序化推理与上下文感知奖励建模&quot;}">Vision-Language Procedural Reasoning for Context-Aware Reward Modeling of Robotic Endovascular Guidewire Navigation</a>

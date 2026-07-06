@@ -1,0 +1,24 @@
+{
+  "label": "2026-07-06",
+  "date": "2026-07-06",
+  "generated_at": "2026-07-06T21:01:25",
+  "count": 1,
+  "papers": [
+    {
+      "paper_id": "202607/06/2606.30288v1-visreflect-latent-visual-reflection-for-fine-grained-perception-in-long-visual-context",
+      "section": "quick",
+      "title_en": "VisReflect: Latent Visual Reflection for Fine-Grained Perception in Long Visual Context",
+      "authors": "Xiaoqian Shen, Mohamed Elhoseiny",
+      "date": "2026-06-29",
+      "pdf": "https://arxiv.org/pdf/2606.30288v1",
+      "score": "7.0",
+      "evidence": "长视觉上下文中LVLM的细粒度感知",
+      "tldr": "大视觉语言模型在处理高分辨率图像和长视频时存在细粒度感知难题，由于视觉注意力下沉导致无关标记占据过多注意力。现有方法依赖边界框预测和重编码，计算开销大。本文提出VisReflect框架，通过潜在空间生成连续的视觉反射来强调问题相关区域，无需离散化定位和额外前向传播，单次推理即可引导注意力。在图像和视频基准上分别提升4.1%和1.8%，推理时间减少约44%。该工作为长视觉上下文的细粒度感知提供了简单有效的解决方案。",
+      "tags": "query:vln",
+      "abstract_en": "Large Vision Language Models (LVLMs) have achieved remarkable success on vision-language tasks, yet fine-grained perception over high-resolution images and long-context videos remains challenging. As the number of visual tokens increases, the visual attention sink phenomenon becomes increasingly severe, causing irrelevant tokens to absorb a disproportionate amount of attention mass. Recent approaches attempt to mitigate this issue by explicitly predicting bounding boxes or temporal spans and re-encoding the cropped visual regions. Such methods depend on unreliable numeric localization in the discrete token space and incur significant computational overhead due to additional forward passes. In this work, we propose **VisReflect**, a simple yet effective framework that improves fine-grained perception in long visual contexts through latent visual reflection. Instead of decoding intermediate predictions into discrete tokens, the model generates continuous visual reflection that represents question-relevant visual features in the latent space. These reflections selectively emphasize salient regions or frames, guiding attention towards relevant visual tokens within a single forward pass. We conduct comprehensive evaluations on challenging high-resolution image benchmarks, including BLINK, V*, and HRBench-4K/8K, as well as video understanding benchmarks such as MVBench, VideoMME, and MLVU. Our method consistently improves over strong baselines, achieving gains of 4.1% on image benchmarks and 1.8% on video benchmarks. Compared with zooming-based methods, our model achieves comparable performance while reducing inference time by roughly 44% on video understanding.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
