@@ -1,0 +1,453 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-07T21:15:44.348415+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 4,
+    "deep_cap": 6,
+    "deep_selected": 4,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2607.03792v1",
+      "source": "arxiv",
+      "title": "From Region Arrival to Instance-Level Grounding in Vision-and-Language Navigation",
+      "abstract": "Vision-and-Language Navigation (VLN) agents may satisfy conventional success criteria while still failing to establish reliable object-level grounding, because current evaluation protocols mainly reward stopping within a 3-meter radius and largely ignore the agent's final orientation and target visibility. We formalize this limitation as the Last-3-Meter Grounding Gap and introduce three instance-centric metrics to quantify proximity precision, target visibility, and final-view grounding. To mitigate this gap, we propose REALM (Region-to-Entity Alignment for Last-3-Meter Navigation), a plug-and-play, architecture-agnostic refinement module that decouples fine-grained target approaching from long-horizon navigation. REALM uses a visibility-aware stopping strategy to reduce premature termination and improve final viewpoint alignment. We further construct REVERIE-AIM, which provides object-instance-level goals and 180K short-horizon training samples for final-stage target approaching. Extensive evaluations across four diverse VLN backbones show that REALM consistently improves proximity precision and visual grounding success, demonstrating its broad applicability.",
+      "authors": [
+        "Xiangyu Shi",
+        "Ruoxi Yang",
+        "Wei Tao",
+        "Jiwen Zhang",
+        "Yanyuan Qiao",
+        "Qi Wu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-07-04T09:44:57+00:00",
+      "link": "https://arxiv.org/pdf/2607.03792v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "directly addresses VLN grounding gap and proposes instance-centric metrics and REALM module",
+      "llm_evidence_cn": "直接针对VLN中的定位差距，提出实例级指标和REALM模块",
+      "llm_evidence": "直接针对VLN中的定位差距，提出实例级指标和REALM模块",
+      "canonical_evidence": "直接针对VLN中的定位差距，提出实例级指标和REALM模块",
+      "llm_tldr_en": "This paper identifies the Last-3-Meter Grounding Gap in VLN evaluation and proposes REALM, a plug-and-play module that decouples fine-grained target approaching from long-horizon navigation, improving instance-level grounding.",
+      "llm_tldr_cn": "该论文揭示了现有VLN评估中最后3米的定位盲区，并提出了三个实例级指标来评估接近精度、目标可见性和最终视角定位。为缓解这一差距，设计了REALM模块，将精细目标逼近与长程导航解耦，利用可见性感知采样和实体对齐实现更可靠的定位。实验表明该方法在多个VLN基准上显著提升实例级定位效果。",
+      "llm_tldr": "该论文揭示了现有VLN评估中最后3米的定位盲区，并提出了三个实例级指标来评估接近精度、目标可见性和最终视角定位。为缓解这一差距，设计了REALM模块，将精细目标逼近与长程导航解耦，利用可见性感知采样和实体对齐实现更可靠的定位。实验表明该方法在多个VLN基准上显著提升实例级定位效果。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.03920v1",
+      "source": "arxiv",
+      "title": "LH-AVLN: A Benchmark for Long-Horizon Audio-Visual-Language Navigation",
+      "abstract": "Embodied navigation is moving toward long-horizon missions, yet existing long-horizon benchmarks are largely acoustically silent, and audio-visual navigation tasks typically focus on a single goal. We introduce LH-AVLN, a benchmark for Long-Horizon Audio-Visual-Language Navigation that combines multi-goal mission execution, heterogeneous goal specifications, and persistent spatialized acoustic cues. In LH-AVLN, an agent receives a global mission of two to four goals specified by category, language description, or reference image, and navigates with RGB-D observations, pose, and binaural audio in indoor 3D environments. The benchmark supports both ordered and unordered missions, where alternating goal-associated sounds can guide non-line-of-sight search but may also become distractors as mission progress changes. We further develop PAG-Nav, a training-free reference agent that maintains a temporal uniform semantic map and performs progressive goal-state planning, using sound for search while reserving completion for visual-semantic verification. Experiments show that existing vision-language, memory-based, and audio-visual agents struggle to complete full LH-AVLN missions, and that PAG-Nav provides a stronger diagnostic baseline while leaving substantial room for future progress.",
+      "authors": [
+        "Rufeng Chen",
+        "Yue Chang",
+        "Zili Shao",
+        "Zhaofan Zhang",
+        "Hechang Chen",
+        "Hui Xiong",
+        "Sihong Xie"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-04T15:25:25+00:00",
+      "link": "https://arxiv.org/pdf/2607.03920v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "benchmark for long-horizon audio-visual-language navigation",
+      "llm_evidence_cn": "面向长期多目标音频-视觉-语言导航的基准",
+      "llm_evidence": "面向长期多目标音频-视觉-语言导航的基准",
+      "canonical_evidence": "面向长期多目标音频-视觉-语言导航的基准",
+      "llm_tldr_en": "LH-AVLN benchmark combines multi-goal missions, heterogeneous goal specifications, and persistent spatialized audio for long-horizon navigation, enabling evaluation of agents using audio, vision, and language.",
+      "llm_tldr_cn": "现有长期导航基准缺少音频信号，而音频-视觉导航任务通常只针对单一目标。本文提出LH-AVLN基准，融合多目标任务、异构目标规格和持续空间化音频，支持有顺序和无顺序任务。该基准推动了具身导航研究向更真实的多模态长期场景发展，为评估智能体在复杂环境中的语言指令跟随能力提供了新平台。",
+      "llm_tldr": "现有长期导航基准缺少音频信号，而音频-视觉导航任务通常只针对单一目标。本文提出LH-AVLN基准，融合多目标任务、异构目标规格和持续空间化音频，支持有顺序和无顺序任务。该基准推动了具身导航研究向更真实的多模态长期场景发展，为评估智能体在复杂环境中的语言指令跟随能力提供了新平台。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.03146v1",
+      "source": "arxiv",
+      "title": "Exp2VLA: Enabling Vision-Language-Action for Drone Navigation from Expert Demonstrations",
+      "abstract": "Vision-language-action (VLA) models open a new path toward intuitive robot control by directly linking perception, language, and action in a single end-to-end framework. Yet for UAVs, practical adoption remains difficult because existing solutions are either computationally heavy or insufficiently capable in complex environments. In this work, we propose a practical expert-distillation pipeline (Exp2VLA) for language-conditioned drone navigation. The core idea is to distill expert behavior, obtained from reinforcement learning, teleoperation, or other controllers, into training data that can be used to fine-tune compact VLA models. This allows existing control strategies to be transferred into a unified language-guided navigation model, reducing manual system integration and lowering the barrier for deploying new robot behaviors. Experiments in both sim-to-sim and simulation-in-the-loop settings across multi-object scenes show that the fine-tuned models can handle varied semantic commands and generalize to unseen target compositions. The proposed framework demonstrates how expert-policy distillation can help mechatronic systems move from specialized control modules toward more flexible and reusable robot intelligence.",
+      "authors": [
+        "Van Huyen Dang",
+        "Kabilesh Rajendran",
+        "Erdi Sayar",
+        "Erdal Kayacan"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-03T09:37:48+00:00",
+      "link": "https://arxiv.org/pdf/2607.03146v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "language-conditioned drone navigation, VLA model for navigation",
+      "llm_evidence_cn": "语言条件无人机导航，视觉-语言-动作模型用于导航",
+      "llm_evidence": "语言条件无人机导航，视觉-语言-动作模型用于导航",
+      "canonical_evidence": "语言条件无人机导航，视觉-语言-动作模型用于导航",
+      "llm_tldr_en": "Exp2VLA distills expert behaviors from RL/teleoperation into training data to fine-tune compact VLA models for language-conditioned drone navigation, enabling unified language-guided control.",
+      "llm_tldr_cn": "现有无人机导航方案在复杂环境中计算量大或能力不足。本文提出Exp2VLA专家蒸馏流水线，将强化学习或遥操作获得的专家行为转化为训练数据，微调紧凑的视觉-语言-动作（VLA）模型，实现语言条件无人机导航。该方法将现有控制策略统一为语言引导导航模式，在无人机任务中展示了有效性和实用性。",
+      "llm_tldr": "现有无人机导航方案在复杂环境中计算量大或能力不足。本文提出Exp2VLA专家蒸馏流水线，将强化学习或遥操作获得的专家行为转化为训练数据，微调紧凑的视觉-语言-动作（VLA）模型，实现语言条件无人机导航。该方法将现有控制策略统一为语言引导导航模式，在无人机任务中展示了有效性和实用性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.05122v1",
+      "source": "arxiv",
+      "title": "Green for Go, Red for No: Visual Grounding via Semantic Segmentation for VLA Navigation Policies",
+      "abstract": "Vision-language-action (VLA) models enable robot navigation from natural language and visual goals, but remain susceptible to perceptual distractions and ambiguous scene interpretations. This paper presents the first empirical evaluation of visual grounding for VLA navigation policies. We propose a real-time segmentation-based grounding method that highlights traversable areas in green and non-traversable areas in red using SegFormer. Two variants are evaluated: observation-only segmentation and joint observation-goal augmentation. Using OmniVLA on the Grand Tour dataset, we show that visual grounding reduces the mean waypoint error by 27-44% at the farthest waypoint, depending on the instruction length. The benefits are greater for long instructions than for short instructions, and grounding provides little improvement for image goals. Normalized error analysis indicates that grounding primarily acts as a trajectory length regularizer, reducing the predicted path length by 30% without improving per-unit-distance reasoning. Our results indicate that visual grounding offers a simple, computationally inexpensive method to improve VLA navigation without model retraining, although it cannot compensate for missing training signals in out-of-distribution instructions.",
+      "authors": [
+        "Adrian Szvoren",
+        "Dimitrios Kanoulas",
+        "Nilufer Tuptuk"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-07-06T14:11:27+00:00",
+      "link": "https://arxiv.org/pdf/2607.05122v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "visual grounding for VLA navigation policies, segmentation-based method",
+      "llm_evidence_cn": "针对VLA导航策略的视觉基础，基于分割的方法",
+      "llm_evidence": "针对VLA导航策略的视觉基础，基于分割的方法",
+      "canonical_evidence": "针对VLA导航策略的视觉基础，基于分割的方法",
+      "llm_tldr_en": "This paper proposes real-time segmentation-based visual grounding for VLA navigation, coloring traversable areas green and non-traversable red, reducing waypoint error by 27-44% on the Grand Tour dataset.",
+      "llm_tldr_cn": "VLA导航模型在面对感知干扰和歧义场景时表现不佳。本文提出一种实时分割基础方法，利用SegFormer将可通行区域标记为绿色、不可通行区域标记为红色，并集成到OmniVLA导航策略中。在Grand Tour数据集上的实验表明，该方法在最远航路点处平均误差降低27-44%，且对指令长度具有鲁棒性。该工作首次系统评估了视觉基础对VLA导航的收益，为提升导航可靠性提供了实用工具。",
+      "llm_tldr": "VLA导航模型在面对感知干扰和歧义场景时表现不佳。本文提出一种实时分割基础方法，利用SegFormer将可通行区域标记为绿色、不可通行区域标记为红色，并集成到OmniVLA导航策略中。在Grand Tour数据集上的实验表明，该方法在最远航路点处平均误差降低27-44%，且对指令长度具有鲁棒性。该工作首次系统评估了视觉基础对VLA导航的收益，为提升导航可靠性提供了实用工具。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.04426v1",
+      "source": "arxiv",
+      "title": "ACE-Brain-0.5: A Unified Embodied Foundational Model for Physical Agentic AI",
+      "abstract": "Embodied AI is moving from isolated perception or action modules toward physical agents that understand, plan under goals, act through robot bodies, monitor progress, and improve from experience. Existing systems address this loop only in parts: end-to-end policies generate actions but often lack spatial reasoning, planning, and execution assessment, while robot-agent systems orchestrate tools or specialists but do not learn a shared representation. This fragmentation limits general Physical Agentic AI. We present ACE-Brain-0.5, a unified embodied foundation model that organizes robot intelligence into five coupled functions: spatial perception, decision making, embodied interaction, self-monitoring, and self-improvement. Built on ACE-Brain-0, which established spatial intelligence as a shared scaffold across robot platforms, ACE-Brain-0.5 extends an understanding-centric model into a closed-loop foundation model. A single 8B backbone instantiates the first four functions: grounding objects and affordances, reasoning over 3D and egocentric spatial relations, decomposing instructions into subgoals, generating navigation and manipulation actions, and estimating progress for verification and recovery. To unify these capabilities without cross-task interference, we introduce SSR+, which extends Scaffold-Specialize-Reconcile with a Reactivate stage after task-vector merging. The fifth function, self-improvement, is realized by a companion framework that updates external execution state, including task schemas, spatial memory, and failure-recovery cases, from rollouts. Across fifteen benchmarks, ACE-Brain-0.5 improves over ACE-Brain-0 on 14 of 18 spatial perception and grounding benchmarks, achieves competitive navigation and manipulation performance, and provides strong progress estimation in ID and OOD settings. Together, these results mark an early step toward general Physical Agentic AI.",
+      "authors": [
+        "ACE-Brain Team",
+        ":",
+        "Ziyang Gong",
+        "Haoming Gu",
+        "Zehang Luo",
+        "Tianyi Zhang",
+        "Tao Tao",
+        "Yixiao Chi",
+        "Zhe Liu",
+        "Lingsi Zhu",
+        "Jingyuan Liu",
+        "Anke Tang",
+        "Songze Li",
+        "Yilun Kong",
+        "Ningjing Liu",
+        "Tianyu Zhu",
+        "Yunpeng Qing",
+        "Shuang Luo",
+        "Xiang Liu",
+        "Shi Fu",
+        "Dawei Nie",
+        "Sixiang Liu",
+        "Zhexi Wen",
+        "Feng Pan",
+        "Xiaofeng Wang",
+        "Zhi Hou",
+        "Chunxiao Liu",
+        "Xue Yang",
+        "Junchi Yan",
+        "Hengshuang Zhao",
+        "Dacheng Tao",
+        "Xiaogang Wang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-05T17:43:06+00:00",
+      "link": "https://arxiv.org/pdf/2607.04426v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified embodied foundation model for Physical Agentic AI, includes spatial perception and decision making for navigation",
+      "llm_evidence_cn": "统一的具身基础模型，涵盖空间感知和决策，可用于导航",
+      "llm_evidence": "统一的具身基础模型，涵盖空间感知和决策，可用于导航",
+      "canonical_evidence": "统一的具身基础模型，涵盖空间感知和决策，可用于导航",
+      "llm_tldr_en": "Presents ACE-Brain-0.5, a unified embodied foundation model integrating spatial perception, decision making, embodied interaction, self-monitoring, and self-improvement.",
+      "llm_tldr_cn": "该论文针对具身AI系统模块分离的问题，提出ACE-Brain-0.5统一基础模型。模型包含空间感知、决策、交互、自我监控和改进五个耦合功能。在多个具身任务中表现强大，为通用物理具身代理提供基础。",
+      "llm_tldr": "该论文针对具身AI系统模块分离的问题，提出ACE-Brain-0.5统一基础模型。模型包含空间感知、决策、交互、自我监控和改进五个耦合功能。在多个具身任务中表现强大，为通用物理具身代理提供基础。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.03449v1",
+      "source": "arxiv",
+      "title": "HiMe: Hierarchical Embodied Memory for Long-Horizon Vision-Language-Action Control",
+      "abstract": "Current Vision-Language-Action (VLA) models excel at robotic manipulation but often struggle with non-Markovian tasks requiring long-term memory and reasoning due to their reliance on immediate observations. Existing solutions face a ''frequency-competence paradox,'' where stronger reasoning models are too slow for real-time control, while faster models lack sufficient reasoning capabilities. To resolve this architectural misalignment, we propose HiMe, a Hierarchical Embodied Memory framework that decouples embodied intelligence into a high-frequency Executor for execution, a Sentry for working memory, and a Planner for long-term strategy. We also introduce a dynamic knowledge system based on cross-modal semantic schemas and active management mechanisms, allowing robots to maintain memory plasticity through ''Add, Update, and Delete'' operations. This hierarchical design effectively balances the conflict between real-time execution and slow thinking planning, significantly improving success rates in long-horizon tasks. Experiments demonstrate that this approach not only outperforms flat memory baselines but also exhibits the novel ability to self-correct its internal knowledge based on human preferences.",
+      "authors": [
+        "Li Ji",
+        "Siyin Wang",
+        "Pengfang Qian",
+        "Xiaopeng Yu",
+        "Yihai Tian",
+        "Zhaoye Fei",
+        "Jingjing Gong",
+        "Xipeng Qiu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-07-03T16:06:48+00:00",
+      "link": "https://arxiv.org/pdf/2607.03449v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "hierarchical embodied memory for long-horizon VLA control",
+      "llm_evidence_cn": "面向长期任务的具身分层记忆框架",
+      "llm_evidence": "面向长期任务的具身分层记忆框架",
+      "canonical_evidence": "面向长期任务的具身分层记忆框架",
+      "llm_tldr_en": "HiMe proposes a Hierarchical Embodied Memory framework decoupling intelligence into Executor, Sentry, and Planner to resolve the frequency-competence paradox in long-horizon VLA control, enabling real-time performance with strong reasoning.",
+      "llm_tldr_cn": "当前VLA模型在长期任务中面临推理速度与能力的矛盾。HiMe提出分层具身记忆框架，将智能解耦为高频执行器、工作记忆哨兵和长期规划器，并引入基于跨模态语义模式的动态知识系统。实验表明该系统在机器人操作任务中实现了实时控制和复杂推理的平衡，为具身导航中的长期规划提供了可借鉴的架构。",
+      "llm_tldr": "当前VLA模型在长期任务中面临推理速度与能力的矛盾。HiMe提出分层具身记忆框架，将智能解耦为高频执行器、工作记忆哨兵和长期规划器，并引入基于跨模态语义模式的动态知识系统。实验表明该系统在机器人操作任务中实现了实时控制和复杂推理的平衡，为具身导航中的长期规划提供了可借鉴的架构。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.03461v1",
+      "source": "arxiv",
+      "title": "WorldBagel: Uncovering the Power of Unified Multimodal Models for Vision-Language-Action-World Modeling",
+      "abstract": "World models aim to capture environment dynamics in ways that support perception, reasoning, and action, and have recently become a central direction in Vision-Language-Action-World (VLAW) modeling. Meanwhile, unified vision-language models have demonstrated strong multimodal generation capabilities, yet their potential as world models remains underexplored. In this work, we introduce \\texttt{WorldBagel}, a unified VLAW framework built on BAGEL, a modern multimodal unified model, and use it to systematically investigate the role of unification in world modeling. Across multi-task robotic manipulation and cross-domain experiments, \\texttt{WorldBagel} consistently outperforms task-specific alternatives and learns action representations that are more structured and semantically aligned with visual and linguistic context. Experiments on LIBERO, Language Table, and Franka show that unification is not only an architectural convenience, but also a key factor in learning effective VLAW models, leading to consistent empirical gains and deeper insights into multimodal world modeling. Code and model checkpoints will be released upon acceptance.",
+      "authors": [
+        "Zelin Zhao",
+        "Min Shi",
+        "Bo Yuan",
+        "Haotian Xue",
+        "Jialuo Li",
+        "Lama Moukheiber",
+        "Humphrey Shi",
+        "Yongxin Chen"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-07-03T16:18:20+00:00",
+      "link": "https://arxiv.org/pdf/2607.03461v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified VLAW framework for embodied world modeling",
+      "llm_evidence_cn": "统一的视觉-语言-动作-世界建模框架用于具身世界建模",
+      "llm_evidence": "统一的视觉-语言-动作-世界建模框架用于具身世界建模",
+      "canonical_evidence": "统一的视觉-语言-动作-世界建模框架用于具身世界建模",
+      "llm_tldr_en": "Proposes WorldBagel, a unified VLAW framework built on BAGEL, that outperforms task-specific alternatives in multi-task robotic manipulation and cross-domain experiments, showing the power of unification for world modeling.",
+      "llm_tldr_cn": "当前世界模型通常针对特定任务设计，缺乏统一性。本文提出WorldBagel，一个基于BAGEL的统一视觉-语言-动作-世界建模框架，通过联合建模感知、推理和动作，在多项机器人操作和跨领域实验中优于任务特定的替代方案。该工作表明统一的多模态框架能有效提升世界模型在具身任务中的泛化能力。",
+      "llm_tldr": "当前世界模型通常针对特定任务设计，缺乏统一性。本文提出WorldBagel，一个基于BAGEL的统一视觉-语言-动作-世界建模框架，通过联合建模感知、推理和动作，在多项机器人操作和跨领域实验中优于任务特定的替代方案。该工作表明统一的多模态框架能有效提升世界模型在具身任务中的泛化能力。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.03595v1",
+      "source": "arxiv",
+      "title": "Token-Based Affordance Grounding with Large Vision-Language Models",
+      "abstract": "Affordance grounding aims to localize image regions that support a specific action, serving as a core capability for physical intelligence and embodied perception. Previous studies have primarily relied on weakly supervised learning with action labels from exocentric images. However, these methods often struggle with visually ambiguous exocentric images containing co-occurring actions; moreover, they fail to distinguish semantically similar actions because existing methods typically rely on brief action phrases that lack rich semantic details for action-specific localization. Although large vision-language models (LVLMs) encode rich action semantics and their action-conditioned textual outputs implicitly contain spatial cues, they do not directly provide action-specific spatial localization. To address these problems, we propose TokAG, a zero-shot affordance grounding framework that exploits the token-level semantic-spatial signals in LVLMs to localize action-relevant regions without external supervision. We observe that attention maps associated with different LVLM output tokens vary significantly, with many attending to irrelevant regions such as the background. Thus, we introduce a spatial-aware token-selection mechanism to systematically evaluate each output token and select the one whose attention maps exhibit dominant activation over the target object, instead of relying on arbitrary attention maps. By extracting these object-focused attention maps, we transform the LVLM's implicit semantic signals into zero-shot affordance heatmaps. Our zero-shot framework consistently outperforms prior weakly supervised approaches across multiple benchmarks, improving NSS by 10.7% on the unseen split of AGD20K and by 29.7% on HICO-IIF. The code and models will be made publicly available.",
+      "authors": [
+        "Seung Il Lee",
+        "Qinqian Lei",
+        "Daguang Xu",
+        "Dong Yang",
+        "Robby T. Tan",
+        "Yixin Chen",
+        "Bo Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-07-03T20:34:42+00:00",
+      "link": "https://arxiv.org/pdf/2607.03595v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "affordance grounding using large vision-language models",
+      "llm_evidence_cn": "使用大型视觉语言模型进行可操作区域定位",
+      "llm_evidence": "使用大型视觉语言模型进行可操作区域定位",
+      "canonical_evidence": "使用大型视觉语言模型进行可操作区域定位",
+      "llm_tldr_en": "Token-Based Affordance Grounding leverages LVLMs to localize image regions supporting specific actions, overcoming ambiguity in exocentric images and distinguishing semantically similar actions.",
+      "llm_tldr_cn": "该论文针对弱监督方法在复杂外心图像中难以区分相似动作的问题，提出基于标记的可操作区域定位方法。利用大型视觉语言模型丰富的语义知识，将动作短语细化为空间线索，从而精准定位可操作区域。实验表明该方法能有效解决视觉歧义和语义混淆，增强具身感知能力。这项工作为视觉语言理解在机器人自主操作中的应用提供了新思路。",
+      "llm_tldr": "该论文针对弱监督方法在复杂外心图像中难以区分相似动作的问题，提出基于标记的可操作区域定位方法。利用大型视觉语言模型丰富的语义知识，将动作短语细化为空间线索，从而精准定位可操作区域。实验表明该方法能有效解决视觉歧义和语义混淆，增强具身感知能力。这项工作为视觉语言理解在机器人自主操作中的应用提供了新思路。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.03941v1",
+      "source": "arxiv",
+      "title": "WSA$_1$: a 3D-Centric World-Spatial-Action Model for Generalizable Robot Control",
+      "abstract": "Recent advances in embodied AI have established robot foundation models (RFMs) as the dominant approach for generalist robotic systems to date. By leveraging imitation learning on extensive robot demonstrations, RFMs have achieved impressive capabilities in mapping visual observations and language instructions to continuous robotic actions. However, current RFMs lack an inherent ability to reason about physical dynamics and the causal effects of robot behaviors on the 3D physical world. This creates a fundamental mismatch between 2D-centric visual perception and 3D-centric embodied interaction, severely limiting the generalization ability of RFMs in real-world tasks.To address this gap, we present WSA$_1$, a novel RFM built upon proposed 3D-Centric World-Spatial-Action modeling paradigm. It not only learns 3D world-aware visual thought for future robot behaviors, but also models mutual constraints between 3D world state transitions and robotic actions to enhance behavior generalization. Notably, WSA$_1$ achieves highly data-efficient pre-training with 6k hours of expert demonstration data (only 1k hours from real robot), while delivering competitive manipulation performance (93% success rate) on RoboTwin2.0 simulation benchmark and achieving +20% average boosted performance over state-of-the-art RFMs on real-world robot control tasks. These results reveal that generalizable RFM can be attained without large-scale real robot data when paired with 3D-centric world-action joint modeling, which offers a practical and affordable pathway to generalist robotic systems.",
+      "authors": [
+        "Jiahao Jiang",
+        "Jianing Zhang",
+        "Zhenhan Yin",
+        "Ruidong Chen",
+        "Sen Wang",
+        "Zhaoshu Yu",
+        "Pengpeng Zeng",
+        "Xiaofeng Cao",
+        "Xuanhan Wang",
+        "Jingkuan Song",
+        "Heng Tao Shen"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-04T16:26:39+00:00",
+      "link": "https://arxiv.org/pdf/2607.03941v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "3D-centric robot foundation model for visual-language-action mapping",
+      "llm_evidence_cn": "三维中心的机器人基础模型，用于视觉语言动作映射",
+      "llm_evidence": "三维中心的机器人基础模型，用于视觉语言动作映射",
+      "canonical_evidence": "三维中心的机器人基础模型，用于视觉语言动作映射",
+      "llm_tldr_en": "WSA1 proposes a 3D-centric robot foundation model that bridges 2D perception and 3D interaction for generalizable control from language instructions, improving reasoning about physical dynamics.",
+      "llm_tldr_cn": "当前机器人基础模型主要基于2D视觉，难以理解3D物理世界的因果效应。WSA1提出以3D为中心的世界空间动作模型，通过引入3D特征表示和物理动态推理，使机器人能更准确地根据语言指令执行操作。在多个模拟和真实场景中，WSA1表现出更好的泛化能力，弥合了2D感知与3D交互之间的鸿沟。",
+      "llm_tldr": "当前机器人基础模型主要基于2D视觉，难以理解3D物理世界的因果效应。WSA1提出以3D为中心的世界空间动作模型，通过引入3D特征表示和物理动态推理，使机器人能更准确地根据语言指令执行操作。在多个模拟和真实场景中，WSA1表现出更好的泛化能力，弥合了2D感知与3D交互之间的鸿沟。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.05077v1",
+      "source": "arxiv",
+      "title": "LangLoc: \"Tell Me What You See\"",
+      "abstract": "We tackle fine-grained indoor localization from natural language: given a free-form description of one's surroundings, estimate the observer's 2D position and heading within a known 3D environment. Language queries are lightweight, privacy-preserving, and need no camera - yet prior work stops at coarse scene retrieval and cannot resolve an intra-scene pose. We close this gap with LangLoc, a three-stage pipeline that (i) retrieves the correct scene via a dual-branch GATv2 encoder with CLIP semantic features, surpassing the previous best by 8 percentage points in Top-1 recall; (ii) estimates position and heading by scoring a dense floor grid through ray-cast object visibility, reaching a median error of 0.95 m; and (iii) resolves residual ambiguity through a Bayesian dialog module that asks targeted yes/no questions and updates a pose posterior until the location is pinpointed. To support this task we contribute a benchmark of $13{,}000{+}$ pose-indexed natural-language descriptions over $1{,}300{+}$ indoor 3D scans.",
+      "authors": [
+        "Shaurya Kishore Panwar",
+        "Roham Zendehdel Nobari",
+        "Shirley Feng Yi Lau",
+        "Abu Bakr Rahman Shaik",
+        "Manuel Günther",
+        "Marc Pollefeys",
+        "Daniel Barath"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-06T13:39:22+00:00",
+      "link": "https://arxiv.org/pdf/2607.05077v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "fine-grained indoor localization from natural language descriptions, supporting navigation",
+      "llm_evidence_cn": "从自然语言描述进行细粒度室内定位，支持导航",
+      "llm_evidence": "从自然语言描述进行细粒度室内定位，支持导航",
+      "canonical_evidence": "从自然语言描述进行细粒度室内定位，支持导航",
+      "llm_tldr_en": "LangLoc achieves fine-grained indoor localization from free-form language by scene retrieval, ray-cast position estimation, and Bayesian dialog disambiguation, achieving 0.95m median error.",
+      "llm_tldr_cn": "现有自然语言定位只能到场景级，无法确定室内精确位姿。LangLoc提出三阶段流水线：先用双分支GATv2编码器以CLIP特征检索正确场景，再通过光线投射物体可见性评分估计位置和朝向，中位误差0.95米，最后使用贝叶斯对话模块解决剩余歧义。该方法无需相机，仅凭语言描述即可实现亚米级定位，对隐私保护和轻量级导航应用有重要意义。",
+      "llm_tldr": "现有自然语言定位只能到场景级，无法确定室内精确位姿。LangLoc提出三阶段流水线：先用双分支GATv2编码器以CLIP特征检索正确场景，再通过光线投射物体可见性评分估计位置和朝向，中位误差0.95米，最后使用贝叶斯对话模块解决剩余歧义。该方法无需相机，仅凭语言描述即可实现亚米级定位，对隐私保护和轻量级导航应用有重要意义。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
