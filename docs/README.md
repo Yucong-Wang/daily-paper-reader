@@ -6,52 +6,56 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-07
-- 运行时间：2026-07-07 21:24:08 UTC
+- 最新运行日期：2026-07-08
+- 运行时间：2026-07-08 20:53:02 UTC
 - 运行状态：成功
-- 本次总论文数：10
+- 本次总论文数：12
 - 精读区：4
-- 速读区：6
+- 速读区：8
 
 ### 今日简报（AI）
-今日精读两篇满分论文，聚焦视觉语言导航从区域级到实例级定位的突破及长时序视听语言导航基准；速读则涉及具身基础模型与分层记忆等方向。  
-最值得关注的是VLN的实例级接地能力，以及长时序多模态导航的标准制定，这两个方向是当前具身AI的核心推进点。  
-建议深入阅读两篇精读论文，理解实例级定位与长时序融合的技术细节，对后续研究或工程落地具有直接参考价值。
-- 详情：[/202607/07/README](/202607/07/README)
+今日聚焦具身智能与多模态统一模型，精读两篇9.0高分导航研究。最值得关注《EAGOR》的全向推理框架和《UniLM-Nav》的零样本导航方案。建议优先阅读这两篇，并跟进WorldBagel等统一建模方向。
+- 详情：[/202607/08/README](/202607/08/README)
 
 ### 精读区论文标签
-1. [From Region Arrival to Instance-Level Grounding in Vision-and-Language Navigation](/202607/07/2607.03792v1-from-region-arrival-to-instance-level-grounding-in-vision-and-language-navigation)  
-   标签：评分：10.0/10、query:vln
-   evidence：直接针对VLN中的定位差距，提出实例级指标和REALM模块
-2. [LH-AVLN: A Benchmark for Long-Horizon Audio-Visual-Language Navigation](/202607/07/2607.03920v1-lh-avln-a-benchmark-for-long-horizon-audio-visual-language-navigation)  
-   标签：评分：10.0/10、query:vln
-   evidence：面向长期多目标音频-视觉-语言导航的基准
-3. [Exp2VLA: Enabling Vision-Language-Action for Drone Navigation from Expert Demonstrations](/202607/07/2607.03146v1-exp2vla-enabling-vision-language-action-for-drone-navigation-from-expert-demonstrations)  
+1. [EAGOR: Embodied Reasoning in Omni-direction](/202607/08/2607.06165v1-eagor-embodied-reasoning-in-omni-direction)  
    标签：评分：9.0/10、query:vln
-   evidence：语言条件无人机导航，视觉-语言-动作模型用于导航
-4. [Green for Go, Red for No: Visual Grounding via Semantic Segmentation for VLA Navigation Policies](/202607/07/2607.05122v1-green-for-go-red-for-no-visual-grounding-via-semantic-segmentation-for-vla-navigation-policies)  
+   evidence：全向导航中的具身推理
+2. [UniLM-Nav: A Unified Framework for Zero-Shot Last-Mile Navigation](/202607/08/2607.06537v1-unilm-nav-a-unified-framework-for-zero-shot-last-mile-navigation)  
    标签：评分：9.0/10、query:vln
-   evidence：针对VLA导航策略的视觉基础，基于分割的方法
+   evidence：使用多模态大语言模型解决零样本最后一英里导航；直接对应视觉语言导航问题
+3. [AnchorVLA: Bridging Discrete Decisions and Continuous Trajectories for Vision-Language-Action Planning](/202607/08/2607.03182v1-anchorvla-bridging-discrete-decisions-and-continuous-trajectories-for-vision-language-action-planning)  
+   标签：评分：8.0/10、query:vln
+   evidence：VLA模型用于语言引导的自动驾驶轨迹规划
+4. [GEM-Occ: From Visual Geometry Evidence to Embodied Semantic Occupancy Memory](/202607/08/2607.05543v1-gem-occ-from-visual-geometry-evidence-to-embodied-semantic-occupancy-memory)  
+   标签：评分：8.0/10、query:vln
+   evidence：为具身室内代理提供语义占用；与导航环境建图相关
 
 ### 速读区论文标签
-1. [ACE-Brain-0.5: A Unified Embodied Foundational Model for Physical Agentic AI](/202607/07/2607.04426v1-ace-brain-05-a-unified-embodied-foundational-model-for-physical-agentic-ai)  
+1. [WorldBagel: Uncovering the Power of Unified Multimodal Models for Vision-Language-Action-World Modeling](/202607/08/2607.03461v1-worldbagel-uncovering-the-power-of-unified-multimodal-models-for-vision-language-action-world-modeling)  
    标签：评分：7.0/10、query:vln
-   evidence：统一的具身基础模型，涵盖空间感知和决策，可用于导航
-2. [HiMe: Hierarchical Embodied Memory for Long-Horizon Vision-Language-Action Control](/202607/07/2607.03449v1-hime-hierarchical-embodied-memory-for-long-horizon-vision-language-action-control)  
+   evidence：用于机器人任务的统一视觉-语言-动作-世界模型
+2. [ACE-Brain-0.5: A Unified Embodied Foundational Model for Physical Agentic AI](/202607/08/2607.04426v1-ace-brain-05-a-unified-embodied-foundational-model-for-physical-agentic-ai)  
+   标签：评分：7.0/10、query:vln
+   evidence：统一具身基础模型，涵盖感知与决策
+3. [Scene Graph Thinking: Reinforcing Structured Visual Reasoning for Multimodal Large Language Models](/202607/08/2607.05716v1-scene-graph-thinking-reinforcing-structured-visual-reasoning-for-multimodal-large-language-models)  
+   标签：评分：7.0/10、query:vln
+   evidence：场景图推理用于视觉导航
+4. [Image2Sim: Scaling Embodied Navigation via Generative Neural Simulator](/202607/08/2607.05765v1-image2sim-scaling-embodied-navigation-via-generative-neural-simulator)  
+   标签：评分：7.0/10、query:vln
+   evidence：可扩展的具身导航模拟器
+5. [Diagnosing Semantic Handoff Failures in Agent-Orchestrated Vision-Language-Action Skill Composition](/202607/08/2607.06256v1-diagnosing-semantic-handoff-failures-in-agent-orchestrated-vision-language-action-skill-composition)  
+   标签：评分：7.0/10、query:vln
+   evidence：研究包括导航在内的长期任务中VLA技能组合的语义交接
+6. [Multi-scale Mixture of World Models for Embodied Agents in Evolving Environments](/202607/08/2607.00457v1-multi-scale-mixture-of-world-models-for-embodied-agents-in-evolving-environments)  
    标签：评分：6.0/10、query:vln
-   evidence：面向长期任务的具身分层记忆框架
-3. [WorldBagel: Uncovering the Power of Unified Multimodal Models for Vision-Language-Action-World Modeling](/202607/07/2607.03461v1-worldbagel-uncovering-the-power-of-unified-multimodal-models-for-vision-language-action-world-modeling)  
+   evidence：具身代理的多尺度世界模型；支持导航环境中的适应
+7. [Embodied Operators and Benchmarking: Toward Reusable and Deployable Embodied Intelligence Systems](/202607/08/2607.03283v1-embodied-operators-and-benchmarking-toward-reusable-and-deployable-embodied-intelligence-systems)  
    标签：评分：6.0/10、query:vln
-   evidence：统一的视觉-语言-动作-世界建模框架用于具身世界建模
-4. [Token-Based Affordance Grounding with Large Vision-Language Models](/202607/07/2607.03595v1-token-based-affordance-grounding-with-large-vision-language-models)  
+   evidence：具身算子：具身智能系统中可复用的功能模块
+8. [RoboVista: Evaluating Vision Language Models for Diverse Robot Applications](/202607/08/2607.04610v1-robovista-evaluating-vision-language-models-for-diverse-robot-applications)  
    标签：评分：6.0/10、query:vln
-   evidence：使用大型视觉语言模型进行可操作区域定位
-5. [WSA$_1$: a 3D-Centric World-Spatial-Action Model for Generalizable Robot Control](/202607/07/2607.03941v1-wsa1-a-3d-centric-world-spatial-action-model-for-generalizable-robot-control)  
-   标签：评分：6.0/10、query:vln
-   evidence：三维中心的机器人基础模型，用于视觉语言动作映射
-6. [LangLoc: "Tell Me What You See"](/202607/07/2607.05077v1-langloc-tell-me-what-you-see)  
-   标签：评分：6.0/10、query:vln
-   evidence：从自然语言描述进行细粒度室内定位，支持导航
+   evidence：评估机器人应用的视觉语言模型，含导航任务
 
 
 <div class="dpr-home-promo-card">
