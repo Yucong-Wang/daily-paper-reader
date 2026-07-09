@@ -6,56 +6,38 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-08
-- 运行时间：2026-07-08 20:53:02 UTC
+- 最新运行日期：2026-07-09
+- 运行时间：2026-07-09 20:28:59 UTC
 - 运行状态：成功
-- 本次总论文数：12
-- 精读区：4
-- 速读区：8
+- 本次总论文数：6
+- 精读区：2
+- 速读区：4
 
 ### 今日简报（AI）
-今日聚焦具身智能与多模态统一模型，精读两篇9.0高分导航研究。最值得关注《EAGOR》的全向推理框架和《UniLM-Nav》的零样本导航方案。建议优先阅读这两篇，并跟进WorldBagel等统一建模方向。
-- 详情：[/202607/08/README](/202607/08/README)
+今日聚焦6篇论文，精读多模态导航与3D空间推理两项高分工作。最值得关注的是《GemNav》利用离散token实现视觉导航，以及《SpaceEra++》的视频3D空间推理框架。建议普通读者优先深入阅读这两篇，了解多模态大模型在具身智能中的应用新范式。
+- 详情：[/202607/09/README](/202607/09/README)
 
 ### 精读区论文标签
-1. [EAGOR: Embodied Reasoning in Omni-direction](/202607/08/2607.06165v1-eagor-embodied-reasoning-in-omni-direction)  
+1. [GemNav: Discrete-Token Visual Robot Navigation using a Multimodal Large Language Model](/202607/09/2607.06882v1-gemnav-discrete-token-visual-robot-navigation-using-a-multimodal-large-language-model)  
    标签：评分：9.0/10、query:vln
-   evidence：全向导航中的具身推理
-2. [UniLM-Nav: A Unified Framework for Zero-Shot Last-Mile Navigation](/202607/08/2607.06537v1-unilm-nav-a-unified-framework-for-zero-shot-last-mile-navigation)  
-   标签：评分：9.0/10、query:vln
-   evidence：使用多模态大语言模型解决零样本最后一英里导航；直接对应视觉语言导航问题
-3. [AnchorVLA: Bridging Discrete Decisions and Continuous Trajectories for Vision-Language-Action Planning](/202607/08/2607.03182v1-anchorvla-bridging-discrete-decisions-and-continuous-trajectories-for-vision-language-action-planning)  
+   evidence：使用多模态大语言模型进行视觉机器人导航
+2. [SpaceEra++: A Unified Framework Towards 3D Spatial Reasoning in Video](/202607/09/2607.01784v1-spaceera-a-unified-framework-towards-3d-spatial-reasoning-in-video)  
    标签：评分：8.0/10、query:vln
-   evidence：VLA模型用于语言引导的自动驾驶轨迹规划
-4. [GEM-Occ: From Visual Geometry Evidence to Embodied Semantic Occupancy Memory](/202607/08/2607.05543v1-gem-occ-from-visual-geometry-evidence-to-embodied-semantic-occupancy-memory)  
-   标签：评分：8.0/10、query:vln
-   evidence：为具身室内代理提供语义占用；与导航环境建图相关
+   evidence：用于机器人导航和具身交互的3D空间推理框架
 
 ### 速读区论文标签
-1. [WorldBagel: Uncovering the Power of Unified Multimodal Models for Vision-Language-Action-World Modeling](/202607/08/2607.03461v1-worldbagel-uncovering-the-power-of-unified-multimodal-models-for-vision-language-action-world-modeling)  
+1. [Text as Partial Constraint: Core-Residual Alignment for Robust Vision-Language Learning](/202607/09/2607.03143v1-text-as-partial-constraint-core-residual-alignment-for-robust-vision-language-learning)  
    标签：评分：7.0/10、query:vln
-   evidence：用于机器人任务的统一视觉-语言-动作-世界模型
-2. [ACE-Brain-0.5: A Unified Embodied Foundational Model for Physical Agentic AI](/202607/08/2607.04426v1-ace-brain-05-a-unified-embodied-foundational-model-for-physical-agentic-ai)  
+   evidence：鲁棒的视觉语言对齐方法，处理不完整标注
+2. [EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embodied AI](/202607/09/2607.07459v1-embodiedgen-v2-an-agentic-simulation-ready-3d-world-engine-for-embodied-ai)  
    标签：评分：7.0/10、query:vln
-   evidence：统一具身基础模型，涵盖感知与决策
-3. [Scene Graph Thinking: Reinforcing Structured Visual Reasoning for Multimodal Large Language Models](/202607/08/2607.05716v1-scene-graph-thinking-reinforcing-structured-visual-reasoning-for-multimodal-large-language-models)  
-   标签：评分：7.0/10、query:vln
-   evidence：场景图推理用于视觉导航
-4. [Image2Sim: Scaling Embodied Navigation via Generative Neural Simulator](/202607/08/2607.05765v1-image2sim-scaling-embodied-navigation-via-generative-neural-simulator)  
-   标签：评分：7.0/10、query:vln
-   evidence：可扩展的具身导航模拟器
-5. [Diagnosing Semantic Handoff Failures in Agent-Orchestrated Vision-Language-Action Skill Composition](/202607/08/2607.06256v1-diagnosing-semantic-handoff-failures-in-agent-orchestrated-vision-language-action-skill-composition)  
-   标签：评分：7.0/10、query:vln
-   evidence：研究包括导航在内的长期任务中VLA技能组合的语义交接
-6. [Multi-scale Mixture of World Models for Embodied Agents in Evolving Environments](/202607/08/2607.00457v1-multi-scale-mixture-of-world-models-for-embodied-agents-in-evolving-environments)  
+   evidence：生成支持导航任务的具身AI仿真环境
+3. [Adaptive Companionship for Group-Following Robots: Handling Dynamically Changing Group Formations](/202607/09/2607.01287v1-adaptive-companionship-for-group-following-robots-handling-dynamically-changing-group-formations)  
    标签：评分：6.0/10、query:vln
-   evidence：具身代理的多尺度世界模型；支持导航环境中的适应
-7. [Embodied Operators and Benchmarking: Toward Reusable and Deployable Embodied Intelligence Systems](/202607/08/2607.03283v1-embodied-operators-and-benchmarking-toward-reusable-and-deployable-embodied-intelligence-systems)  
+   evidence：基于VLM的机器人自适应群体跟随，处理动态编队
+4. [Social-spatial dependencies for learning visual navigation](/202607/09/2607.07460v1-social-spatial-dependencies-for-learning-visual-navigation)  
    标签：评分：6.0/10、query:vln
-   evidence：具身算子：具身智能系统中可复用的功能模块
-8. [RoboVista: Evaluating Vision Language Models for Diverse Robot Applications](/202607/08/2607.04610v1-robovista-evaluating-vision-language-models-for-diverse-robot-applications)  
-   标签：评分：6.0/10、query:vln
-   evidence：评估机器人应用的视觉语言模型，含导航任务
+   evidence：社交环境下的具身视觉导航
 
 
 <div class="dpr-home-promo-card">

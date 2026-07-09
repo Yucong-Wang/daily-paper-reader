@@ -1,0 +1,708 @@
+Title: Adaptive Companionship for Group-Following Robots: Handling Dynamically Changing Group Formations
+
+URL Source: https://arxiv.org/pdf/2607.01287v1
+
+Published Time: Fri, 03 Jul 2026 00:03:33 GMT
+
+Number of Pages: 8
+
+Markdown Content:
+## Adaptive Companionship for Group-Following Robots: Handling Dynamically Changing Group Formations 
+
+Cong-Thanh Vu and Yen-Chen Liu 
+
+Abstract — Accompanying a group of humans is an essential aspect of developing human-like social cognition in robots. How-ever, human groups typically do not follow fixed formations, which poses significant challenges for robots in maintaining natural companionship behaviors. In this paper, we propose an adaptive group-accompaniment method for social robots based on Vision-Language Models (VLMs), leveraging their semantic reasoning capabilities to infer companion positions, maintain social distances, and understand group dynamics. The members of the group are first detected, and a perceptual module generates visual representations of the interaction group space as input to the VLM, which is then combined with a Model Predictive Path Integral (MPPI) controller to ensure sta-bility and safety. Experimental evaluations across five scenarios show that the proposed method enables robots to accompany the group effectively, demonstrating a 15% improvement in success rate and a 25% reduction in collision rate compared to baseline approaches. Additionally, a user study indicates that the generated companionship behaviors are perceived as natural and socially appropriate. 
+
+I. I NTRODUCTION 
+
+In recent years, the development of social robots has attracted increasing attention, driven by the growing demand for robots capable of seamless interaction with humans in everyday environments [1]. Among these capabilities, accompanying an individual or a group of pedestrians is considered a key aspect of human-like social cognition, with a wide range of practical applications, from assisting with daily tasks to providing logistical support [2], [3]. Over the past two decades, a wide range of companionship strategies have been investigated to enhance the social cogni-tion and interaction capabilities of companion robots. Early research primarily focused on accompanying a single indi-vidual, which laid the foundation for companionship tasks in social robotics. Various strategies have been proposed, including following from behind [4]–[6], walking side by side [7]–[10], and leading in front of the human [11], [12]. In addition to improving tracking, socially aware navigation frameworks that respect interpersonal distances [13], [14] and learning-based methods that adapt to individual walking patterns [12], [15] have been developed to enhance natural-ness and human comfort. More recently, human-companion strategies have been extended to quadruped robots, enabling more agile and terrain-adaptive behaviors [16].   
+
+> This work was supported in part by the National Science and Technology Council (NSTC), Taiwan, under Grant NSTC 114-2628-E-006-010 and NSTC 114-2218-E-006-021. Cong-Thanh Vu and Yen-Chen Liu are with the Department of Mechan-ical Engineering, National Cheng Kung University, Tainan 70101, Taiwan. Email: vuthanh.cdt@gmail.com ,yliu@mail.ncku.edu.tw .
+
+Fig. 1: A member leaves the group, changing the group formation. In everyday life, humans often move not only individually but also in groups [17]. For robots, accompanying pedestrian groups poses significant challenges due to the dynamic and often unpredictable behaviors of multiple individuals. Groups of two often walk side by side to facilitate interaction, while groups of three commonly adopt a V-shaped formation [18]. However, group members are not always arranged in such fixed formations, and their interactions generate complex social dynamics that the robot must recognize and adapt to, including constraints on available walking space [19]. Moreover, groups in social spaces are inherently dynamic, as individuals may join or leave at any time, as shown in Fig. 1, which further increases the complexity of the task. Therefore, effective group accompaniment requires adaptive strategies that go beyond single-person tracking, integrating social awareness, spatial reasoning, and dynamic decision-making to ensure natural and safe interactions. Although research on human-following robots has been conducted for quite some time, most previous studies have primarily focused on accompanying a single individual. Research on human groups has typically emphasized group detection to facilitate navigation and collision avoidance [20], while other studies have investigated the synchronization of group movements to generate robot behaviors for coordinated tasks, such as integrating robots into dance performances [21]. Only a few studies have addressed the challenge of enabling robots to accompany pedestrian groups. Repiso et al. [22] proposed an adaptive group-following approach that uses a social force model to predict human behavior, combined with movement patterns such as V-shaped or side-by-side formations. This approach was later extended [23], [24] to improve robot behavior and performance, allowing the robot to prioritize side-by-side accompanying behavior.     
+
+> arXiv:2607.01287v1 [cs.RO] 1 Jul 2026 VLM -based group companionship
+> MPPI Controller
+> Human -Companion Robot
+> Group tracking
+> CBF
+> VLM for Group Companion
+> Human Detection Module 2D Visualization
+> Prompt
+> Prompt
+> How can you accompany
+> a group of humans?
+> Coordinate mapping Coordinate mapping
+> 3D LiDAR 3D LiDAR 3D LiDAR VLM for Group Detection VLM for Group Detection
+> Interactive Visualization
+> VLM -based group companionship
+> MPPI Controller
+> Human -Companion Robot
+> Group tracking
+> CBF
+> VLM for Group Companion
+> Human Detection Module 2D Visualization
+> Prompt
+> Prompt
+> How can you accompany
+> a group of humans?
+> Coordinate mapping Coordinate mapping
+> 3D LiDAR 3D LiDAR 3D LiDAR VLM for Group Detection VLM for Group Detection
+> Interactive Visualization
+
+Fig. 2: The overall structure of the system architecture. VLM uses a visual representation of detected humans and the robot to infer the companion group. Based on the identified group IDs, a grid-based interaction space is constructed, enabling the VLM to reason about adaptive companion positions. These positions are then provided as input to the MPPI controller. However, the method still requires the user’s goal to be pro-vided, assumes fixed group membership, and only considers groups of two individuals. In addition, the reliance on fixed formations, such as V-shaped or side-by-side, limits appli-cability because real pedestrian groups do not consistently maintain these structures. Leader-selection strategies within a group were also explored by Liao et al. [25]. However, situations in which the formation is disrupted, such as when a person leaves or a new individual joins, have not yet been examined. Recent breakthroughs in Large Language Models (LLMs) and Vision-Language Models (VLMs) have demonstrated remarkable abilities in deep contextual understanding, com-monsense reasoning, and multi-step inference, reflecting characteristics of human thought processes. These capabili-ties have been applied across diverse robotics domains. Their reasoning abilities have also enabled applications in social robotics, such as navigation guided by human reasoning [26], [27] and group detection for movement decision-making [28]. Furthermore, they have been applied to complex agri-cultural environments [29]. However, the use of language models in companion robotics, particularly for the group-following task, has received limited attention to date. In this paper, we introduce a novel group-companion robot approach that adaptively adjusts its position without relying on pre-defined formations. The method can handle disruptions in group membership, such as when someone leaves or joins, which has not been addressed before. The main contributions are: 1) We present an integration of VLM-based reasoning into the companion task for human-group following. By leveraging human-like inference capabilities, the robot can select appropriate positions within the group and recognize or anticipate membership changes, thereby improving the robustness of group-following behaviors. 2) We propose a group detection module based on VLM, which allows the robot to recognize when a member leaves or a new member joins, based on proxemic distances and path similarity. In addition, the group interaction space is introduced, enabling the VLM to make accompaniment decisions within this space rather than issuing inappropriate actions. 3) We validate the proposed approach through five sce-narios, comparing it with the methods in [10], [23], [25], followed by a user study and an ablation study. Experimental results demonstrate a 15% improvement in success rate and a 25% reduction in collision rate. Furthermore, the user study confirms an enhanced user experience when interacting with the robot. II. P ROBLEM FORMULATION 
+
+Consider the robot’s state qr = [ xr , y r , θ r ]T ∈ R3 in the global frame G. The robot’s task is to determine the optimal accompaniment position qd = [ xd, y d]T ∈ R2 for following a pedestrian group G with k members, whose positions are qhi = [ xhi , y hi , θ hi ]T ∈ R3 for i = 1 , . . . , k in the frame G. The robot perceives its environment through point cloud data P obtained from a 3D LiDAR sensor. The accompaniment position qd must ensure safety by avoiding collisions with both static obstacles and group members, while adapting to potential changes in the group inferred from observations. The robot’s current position is then ad-justed via an accompaniment controller to reach qd. We use a VLM to predict the group members’ behavior, allowing the robot to understand when members leave or new members join the group. Based on the VLM’s predictions, the robot determines its accompaniment position using environmental information, reasoning in a manner analogous to how humans select positions to move alongside their companions. III. M ETHOD 
+
+This section presents the proposed approach, which lever-ages a VLM to detect group members and determine the robot’s companion position, followed by an accompaniment controller based on MPPI. The overall structure of the method is illustrated in Fig. 2. 
+
+A. Companion Group Identification 
+
+The first task for a robot to accompany a group of people is to identify the individuals within the group G.Unlike previous studies on group companionship [22]–[24], which assume that group members are known in advance and remain unchanged, detecting changes, such as someone joining or leaving the group, remains a significant challenge. To address this issue, we propose a VLM-based method for group member identification, leveraging its capability to process multimodal inputs and support high-level semantic understanding and reasoning. Individuals are detected using 3D LiDAR point cloud data processed with PointPillars [30]. Each detected object is assigned a unique ID and projected into a 2D space that encodes the robot’s position, individual trajectories, and corresponding IDs. Although VLMs have been applied to social group recognition [28], prior work is constrained by the narrow field of view of camera-based inputs, making it unsuitable for continuous group accompaniment. In contrast, our method incorporates trajectory similarity and proxemic distances within a 2D visual representation, which is pro-vided to the VLM. This enables the model to infer group membership based on trajectories and spatial relations with the robot, rather than relying on camera images limited by field of view. Furthermore, arranging the representation on a grid allows the model to explicitly reason about the relative positions of individuals. Formally, group detection G by the VLM is expressed as: 
+
+G = VLM group (Igroup , Pgroup ), (1) where Igroup is the visual image representation reconstructed from the positions of the robot and humans, annotated with their IDs and trajectories, and Pgroup is an instruction prompt that defines the context and guides the model to perform the task and generate the desired output. The designed prompt is illustrated in Fig. 3. VLM -based group c 
+
+> VLM
+
+Task Description: You are a companion robot accompanying a group of 
+
+people. Identify the members of the companion group from the visual input. 
+
+Input Representation: The image shows the robot (red) and humans (blue) with 
+
+their trajectories. Each human has a unique ID, and distances can be estimated 
+
+from the grid. The grid spacing is 0.5 m. 
+
+Instructions: Select humans who are spatially close according to proxemic 
+
+distances and have similar trajectories to form the companion group. 
+
+Continuously update the group by removing those who move away and adding 
+
+newcomers. Output only the IDs of the current group members. 
+
+Answer Format: Return the IDs of the companion group members like "ID: 0,1,2" 
+
+Instruction Prompt  ID: 1,2,3 
+
+Output 
+
+Human Detection 
+
+MPPI Controller 
+
+Human -Companion Robot 
+
+Group tracking 
+
+CBF 
+
+VLM for Group Companion 
+
+Human Detection Module  2D Visualiza 
+
+Prompt 
+
+How can you accompan 
+
+a group of humans 
+
+Coordinate mapping Coordinate mapping 
+
+3D LiDAR 3D LiDAR 3D LiDAR 
+
+2D Visualization 
+
+Instruction Prompt 
+
+You are a socially -aware companion robot. Based on the RGB scene image from your camera and the visual 
+
+representation of environmental information in RViz, navigate effectively to accompany a human while respecting social 
+
+norms. The visual information in RViz includes: 
+
+• The current position and trajectory of the robot (purple) 
+
+• The current position and trajectory of the human (blue) 
+
+• The positions and trajectories of other pedestrians (red). If not shown, the environment contains no pedestrians. 
+
+• The positions of obstacles detected by the LiDAR sensor (black) 
+
+Think step -by -step and then output the index number of the final companion position. 
+
+Question: How can a robot effectively accompany a human while adhering to social norms? 
+
+CoT step 1: What is the current position of the robot in the interactive space? Where is the human located relative to the 
+
+robot, and what is the predicted trajectory of the human? 
+
+The robot is currently at position 1 in the interactive space, and the human is located to its right, walking straight ahead 
+
+CoT step 2: Are there any obstacles or collision risks near the candidate positions? Which candidate positions are blocked 
+
+or unsafe? 
+
+Positions 3, 4, 5, and 6 are obstructed by uneven terrain, making navigation unsafe. 
+
+CoT step 3: Are there any other humans moving toward the robot or occupying candidate positions? Could their 
+
+presence obstruct safe and socially appropriate companionship? 
+
+One pedestrian is approaching from the left and may interfere with Positions 1 and 2. 
+
+CoT step 4 : Which position maintains a close distance to the user while respecting social norms? 
+
+Position 8 is near the robot ’s current location, avoids the approaching pedestrian, and maintains close proximity to the 
+
+human. Position 7 is farther from the robot ’s current location and behind the human, which might cause more discomfort 
+
+for the user. 
+
+CoT step 5 : Among the feasible and socially appropriate candidates that effectively support companionship with the 
+
+human, which position should the robot choose? 
+
+Position 8 satisfies all criteria: it is free of obstacles, not obstructed by other pedestrians, and is close to a side -by -side 
+
+configuration with the human, allowing the user to feel comfortable —aligning with social norms and ensuring safe 
+
+companionship. 
+
+Final choice: Position 8 
+
+CoT Prompt Example 
+
+How can a robot effectively accompany 
+
+a human group? 
+
+(n,m) = (10,4) 
+
+Question  VLM 
+
+Image Input 
+
+VLM -based group c 
+
+> VLM
+
+Task Description: You are a companion robot accompanying a group of 
+
+people. Identify the members of the companion group from the visual input. 
+
+Input Representation: The image shows the robot (red) and humans (blue) with 
+
+their trajectories. Each human has a unique ID, and distances can be estimated 
+
+from the grid. The grid spacing is 0.5 m. 
+
+Instructions: Select humans who are spatially close according to proxemic 
+
+distances and have similar trajectories to form the companion group. 
+
+Continuously update the group by removing those who move away and adding 
+
+newcomers. Output only the IDs of the current group members. 
+
+Answer Format: Return the IDs of the companion group members like "ID: 0,1,2" 
+
+Instruction Prompt  ID: 1,2,3 
+
+Output 
+
+Human Detection 
+
+MPPI Controller 
+
+Human -Companion Robot 
+
+Group tracking 
+
+CBF 
+
+VLM for Group Companion 
+
+Human Detection Module  2D Visualiza 
+
+Prompt 
+
+How can you accompan 
+
+a group of humans 
+
+Coordinate mapping Coordinate mapping 
+
+3D LiDAR 3D LiDAR 3D LiDAR 
+
+2D Visualization 
+
+Instruction Prompt 
+
+You are a socially -aware companion robot. Based on the RGB scene image from your camera and the visual 
+
+representation of environmental information in RViz, navigate effectively to accompany a human while respecting social 
+
+norms. The visual information in RViz includes: 
+
+• The current position and trajectory of the robot (purple) 
+
+• The current position and trajectory of the human (blue) 
+
+• The positions and trajectories of other pedestrians (red). If not shown, the environment contains no pedestrians. 
+
+• The positions of obstacles detected by the LiDAR sensor (black) 
+
+Think step -by -step and then output the index number of the final companion position. 
+
+Question: How can a robot effectively accompany a human while adhering to social norms? 
+
+CoT step 1: What is the current position of the robot in the interactive space? Where is the human located relative to the 
+
+robot, and what is the predicted trajectory of the human? 
+
+The robot is currently at position 1 in the interactive space, and the human is located to its right, walking straight ahead 
+
+CoT step 2: Are there any obstacles or collision risks near the candidate positions? Which candidate positions are blocked 
+
+or unsafe? 
+
+Positions 3, 4, 5, and 6 are obstructed by uneven terrain, making navigation unsafe. 
+
+CoT step 3: Are there any other humans moving toward the robot or occupying candidate positions? Could their 
+
+presence obstruct safe and socially appropriate companionship? 
+
+One pedestrian is approaching from the left and may interfere with Positions 1 and 2. 
+
+CoT step 4 : Which position maintains a close distance to the user while respecting social norms? 
+
+Position 8 is near the robot ’s current location, avoids the approaching pedestrian, and maintains close proximity to the 
+
+human. Position 7 is farther from the robot ’s current location and behind the human, which might cause more discomfort 
+
+for the user. 
+
+CoT step 5 : Among the feasible and socially appropriate candidates that effectively support companionship with the 
+
+human, which position should the robot choose? 
+
+Position 8 satisfies all criteria: it is free of obstacles, not obstructed by other pedestrians, and is close to a side -by -side 
+
+configuration with the human, allowing the user to feel comfortable —aligning with social norms and ensuring safe 
+
+companionship. 
+
+Final choice: Position 8 
+
+CoT Prompt Example 
+
+How can a robot effectively accompany 
+
+a human group? 
+
+(n,m) = (10,4) 
+
+Question  VLM 
+
+Image Input 
+
+Fig. 3: VLM identifies members of the companion group from an image representing human and robot trajectories. 
+
+B. VLM-Based Group Companionship 
+
+Although VLMs exhibit human-like reasoning capabilities, they remain limited when relying solely on visual input, particularly for tasks such as inferring spatial positions directly from RGB images or performing complex mathe-matical computations. Thus, we limit direct computations and transformations for the VLM by introducing a grid-based group interaction space, which defines the positions where the robot can operate and accompany the group during movement. This framework allows the VLM to reason over predefined candidate positions rather than processing raw visual information or performing mathematical conversions. The group space is represented as: 
+
+Q = qdn,m n = 1 , . . . , N, m = 1 , . . . , M , (2) where each grid position is given by 
+
+qdn,m =
+
+xmin (G) + ( n − 1)∆ grid − xoffset 
+
+ymin (G) + ( m − 1)∆ grid − yoffset 
+
+
+
+. (3) The number of columns N and rows M is determined from the group’s spatial extent and the grid spacing ∆grid as: 
+
+N = xmax (G) − xmin (G) + 2 xoffset 
+
+∆grid 
+
++ 1 , (4) 
+
+M = ymax (G) − ymin (G) + 2 yoffset 
+
+∆grid 
+
++ 1 . (5) Here, xmin (G), xmax (G), ymin (G), and ymax (G) denote the minimum and maximum x and y coordinates of the group, while xoffset and yoffset adjust the overall placement of the grid. The group interaction space Q is represented as a visual input to the VLM. This input encodes information about the group, including the positions, identifiers, and trajectories of individual members, as well as the position and trajectory of the robot. Two-dimensional environmental obstacles O are also incorporated by projecting a layer of point cloud data 
+
+P , providing spatial context and enhancing the information available for the robot’s decision-making. To avoid random position selection by the VLM, the grid cells are indexed in a structured manner with N columns and M rows. Accordingly, the selection of a position within the interaction space Q can be expressed as: 
+
+(n, m ) = VLM (I, O, N, M, P), (6) where I represents the visual input, and P denotes the prompt used to guide the model’s reasoning. This indexing scheme enables the VLM to systematically reference and select candidate positions, which are subsequently converted into spatial coordinates using (3). To enable the VLM to reason and identify tasks effectively, we employ prompt engineering based on Chain-of-Thought (CoT) prompting combined with a one-shot example. This approach guides the VLM to perform step-by-step reasoning according to predefined structures, similar to human reason-ing, while avoiding irrelevant information. This technique allows the robot to systematically identify potential positions within the designed interaction space, such as selecting locations that adhere to social norms, avoid obstructing group members, maintain stable companionship, or adjust when the human formation changes. Moreover, the robot can incorporate information about environmental obstacles using the grid distances to estimate collision risks and eliminate unsafe positions. The CoT prompt for the companion task with the human group is illustrated in Fig. 4. VLM -based group companionship 
+
+MPPI Controller 
+
+Human -Companion Robot 
+
+Group tracking 
+
+CBF 
+
+VLM for Group Companion 
+
+Human Detection Module  2D Visualization 
+
+Prompt 
+
+Prompt 
+
+How can you accompany 
+
+a group of humans? 
+
+Coordinate mapping Coordinate mapping 
+
+3D LiDAR 3D LiDAR 3D LiDAR  VLM for Group Detection VLM for Group Detection 
+
+Interactive Visualization 
+
+Instruction Prompt 
+
+You are a companion robot accompanying a group of people. Based on the provided image, select the best companion 
+
+position to ensure natural accompaniment within the designated interaction space. The input image illustrates: 
+
+• The robot ’s position and trajectory are shown in red. 
+
+• The positions and trajectories of group members, labeled with IDs, in blue. 
+
+• Obstacles in black. 
+
+• The group interaction space is in light gray, annotated with row and column indices. The grid spacing within the 
+
+interaction space is 0.5, and the outer grid spacing is also 0.5. 
+
+Please select the best companion position that satisfies the following conditions: 
+
+• The position must not collide with or overlap any group members. 
+
+• The position must avoid obstacles. 
+
+• The position must lie within the defined rows, columns, and interaction space. 
+
+• The companion position should maintain a proxemic distance to the group members and account for social factors to 
+
+ensure comfortable accompaniment. 
+
+Think step by step, and then output the column and row in the interactive group space by following the example. 
+
+Question: How can a robot effectively accompany a human group? 
+
+CoT step 1: What is the current position of the robot? Is it within the group interaction space? 
+
+The robot is at column 4, row 10, which is inside the interaction space. 
+
+CoT step 2: How many members are in the group, and what is their movement trajectory? 
+
+There are 3 members in the group, and their trajectory appears to be straight. 
+
+CoT step 3: Given the current group trajectory, which positions might collide with obstacles within a distance of 3 m? 
+
+The trajectory appears to be straight. Based on the grid spacing (0.5 m per cell), there are no obstacles within 3 m in front .
+
+Obstacles are present on the left side, but do not obstruct the path. Therefore, all positions within the interaction space 
+
+satisfy the no -collision requirement for the 3 m threshold. 
+
+CoT step 4 : Which position is closest to the robot and allows it to naturally accompany the group while respecting the 
+
+intimate zone and remaining within the personal zone according to proxemic distances with members? 
+
+The current position (column 4, row 9) does not collide with group members, keeps a distance of 1.0 m within the personal 
+
+zon e while respecting the intimate zone, and does not intersect the group ’s path. 
+
+Final Answer: (n, m) = (4, 9) 
+
+CoT Prompt Example 
+
+How can a robot effectively accompany 
+
+a human group? 
+
+(n,m) = (4,10) 
+
+Question 
+
+VLM 
+
+Image Input Image Input 
+
+VLM -based group companionship 
+
+MPPI Controller 
+
+Human -Companion Robot 
+
+Group tracking 
+
+CBF 
+
+VLM for Group Companion 
+
+Human Detection Module  2D Visualization 
+
+Prompt 
+
+Prompt 
+
+How can you accompany 
+
+a group of humans? 
+
+Coordinate mapping Coordinate mapping 
+
+3D LiDAR 3D LiDAR 3D LiDAR  VLM for Group Detection VLM for Group Detection 
+
+Interactive Visualization 
+
+Instruction Prompt 
+
+You are a companion robot accompanying a group of people. Based on the provided image, select the best companion 
+
+position to ensure natural accompaniment within the designated interaction space. The input image illustrates: 
+
+• The robot ’s position and trajectory are shown in red. 
+
+• The positions and trajectories of group members, labeled with IDs, in blue. 
+
+• Obstacles in black. 
+
+• The group interaction space is in light gray, annotated with row and column indices. The grid spacing within the 
+
+interaction space is 0.5, and the outer grid spacing is also 0.5. 
+
+Please select the best companion position that satisfies the following conditions: 
+
+• The position must not collide with or overlap any group members. 
+
+• The position must avoid obstacles. 
+
+• The position must lie within the defined rows, columns, and interaction space. 
+
+• The companion position should maintain a proxemic distance to the group members and account for social factors to 
+
+ensure comfortable accompaniment. 
+
+Think step by step, and then output the column and row in the interactive group space by following the example. 
+
+Question: How can a robot effectively accompany a human group? 
+
+CoT step 1: What is the current position of the robot? Is it within the group interaction space? 
+
+The robot is at column 4, row 10, which is inside the interaction space. 
+
+CoT step 2: How many members are in the group, and what is their movement trajectory? 
+
+There are 3 members in the group, and their trajectory appears to be straight. 
+
+CoT step 3: Given the current group trajectory, which positions might collide with obstacles within a distance of 3 m? 
+
+The trajectory appears to be straight. Based on the grid spacing (0.5 m per cell), there are no obstacles within 3 m in front .
+
+Obstacles are present on the left side, but do not obstruct the path. Therefore, all positions within the interaction space 
+
+satisfy the no -collision requirement for the 3 m threshold. 
+
+CoT step 4 : Which position is closest to the robot and allows it to naturally accompany the group while respecting the 
+
+intimate zone and remaining within the personal zone according to proxemic distances with members? 
+
+The current position (column 4, row 9) does not collide with group members, keeps a distance of 1.0 m within the personal 
+
+zon e while respecting the intimate zone, and does not intersect the group ’s path. 
+
+Final Answer: (n, m) = (4, 9) 
+
+CoT Prompt Example 
+
+How can a robot effectively accompany 
+
+a human group? 
+
+(n,m) = (4,10) 
+
+Question 
+
+VLM 
+
+Image Input Image Input 
+
+Fig. 4: CoT prompting with a one-shot example enables the VLM to perform step-by-step reasoning for the task of accompanying human groups, thereby providing row and column positions within the interaction space. 
+
+C. Human-Companion Controller 
+
+The MPPI (Model Predictive Path Integral) controller, combined with a Control Barrier Function (CBF), is used as the group-tracking controller with the desired tracking position qd, adapted from [31]. The cost functions for the controller are defined as follows: 
+
+Ctracking = wx(xr − xd)2 + wy (yr − yd)2, (7) 
+
+Cobs = wo
+
+(
+
+ccollision , if l(qr ) ≥ τ
+
+0, otherwise , (8) where the weighting factors wx, wy , and wo correspond to tracking along the x- and y-axes and to obstacle avoidance, respectively. Here, τ is a threshold used to detect potential collisions based on the local costmap. The function l(qr )
+
+returns the cost value from the local costmap constructed using LiDAR data. Although the cost term Cobs helps avoid obstacles, it does not explicitly guarantee the preservation of users’ intimate zones or the safety of group members. Therefore, a CBF is employed, with a barrier function h(·) defined for each group member as: 
+
+h(qr )i = ( xr − xhi )2 + ( yr − yhi )2 − r2, (9) where r denotes the minimum allowable distance defining the boundary of each user’s intimate space. The MPPI controller is implemented in Python using PyTorch to leverage GPU-accelerated parallel processing. The parameters are set as follows: xoffset = 1 .5, yoffset = 1 .5,
+
+∆grid = 0 .5, wx = 50 , wy = 10 , wo = 10000 , τ = 50 , and 
+
+r = 1 .0.IV. R ESULTS AND DISCUSSION 
+
+In this section, the proposed method is validated through evaluations of the VLM-based group-following strategy and comparisons with previous studies. Five controlled scenarios were designed, complemented by a user study to assess the system’s effectiveness in realistic settings. An ablation study was further conducted to analyze the contribution of each component within the proposed framework. In addition, real-world experiments with extended group configurations were performed to demonstrate the robustness and scalability of the approach. Gemini 2.5 Flash GPT-4.1 Gemini 2.5 Flash Lite GPT-4.1 Mini Qwen2.5-VL-7B 
+
+0
+
+20 
+
+40 
+
+60 
+
+80 
+
+100 
+
+> Success Rate (%)
+
+98% 96% 
+
+89% 87% 
+
+72% 
+
+Success Rate Latency 
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+> Average Latency (s)
+
+Fig. 5: Performance comparison of different VLMs for the group-following strategy. 
+
+A. Evaluation of VLM-Based Group Accompaniment Strat-egy 
+
+To verify that the VLM-based accompaniment positions are both socially appropriate and physically navigable, we evaluated the positions generated by the VLM across 30 distinct group-accompaniment scenarios. These scenarios included dynamic situations such as new members joining the group or existing members leaving the formation, with group sizes ranging from 5 to 10 individuals. Five different VLM architectures were used to assess the accuracy and overall performance of the proposed method, namely Gemini 2.5 Flash Lite, GPT-4.1 Mini, Gemini 2.5 Flash, GPT-4.1, and Qwen2.5-VL-7B. Each scenario was repeated 10 times for every model. A model is considered successful if the predicted position satisfies all three evaluation criteria: the proposed coordinates fall within the predefined valid accompaniment region, the selected position avoids physical interference with surround-ing individuals or obstacles, and the robot maintains a smooth and socially appropriate formation within the group. Scenario 1 Scenario 2 Scenario 3 Scenario 4 Scenario 5 
+
+> Robot adjusts when a team member leaves Robot yields space to a new group member Robot adjusts its position when the group formation changes
+> Robot changes its position to avoid obstacles
+
+Fig. 6: Qualitative results illustrating the motion of the proposed method across the five scenarios. The experimental results, illustrated in Fig. 5, show that the larger models, Gemini 2.5 Flash and GPT-4.1, achieved the highest success rates, with averages of 98 ±1.2% and 96 ±
+
+1.5% , respectively. The lighter variants also performed com-petitively, with Gemini 2.5 Flash Lite reaching 89 ±2.1% and GPT-4.1 Mini achieving 87 ±2.7% . Regarding computational efficiency, we observed a clear trade-off between model complexity and latency. Gemini 2.5 Flash Lite achieved the lowest average response time at 1.12 s, followed by GPT-4.1 Mini at 1.35 s. In contrast, Gemini 2.5 Flash required 2.97 s on average, and GPT-4.1 exhibited the highest latency at 3.89 s. Notably, the on-board model Qwen2.5-VL-7B provided the fastest inference at approximately 0.7 s, but this came with a substantial reduction in accuracy, achieving only 72 ±10 .5% .These findings suggest that although the larger VLMs offer more robust reasoning capabilities, the Lite and Mini variants provide a desirable balance between accuracy and latency without requiring any fine-tuning. Meanwhile, the on-board Qwen2.5-VL-7B model demonstrates promising responsive-ness, but its accuracy indicates that task-specific fine-tuning would be necessary to achieve comparable reliability. There-fore, we select Gemini 2.5 Flash Lite as the VLM for the remaining evaluations, balancing performance and response time. 
+
+B. Comparative Evaluation 1) Experiment Setup: The proposed method was evalu-ated on an omnidirectional mobile robot platform, the AgileX Robotics Scout Mini, equipped with a Livox MID-360 3D LiDAR sensor. The algorithms were implemented in ROS 2 Humble and executed on an NVIDIA Jetson Orin, leveraging CUDA for accelerated computation. To assess performance, we compared our method against ESFM [23], a side-by-side group-accompaniment approach, as well as the People-as-Planner (PP) method [25], which selects a leader within the group to follow. Additionally, we evaluated it against MPPI [10], an individual-following baseline, to investigate whether behaviors designed for single-person accompaniment can generalize to group settings. All methods were tested across the five scenarios illustrated in Fig. 6:  
+
+> •
+
+Scenario 1: Evaluates the baseline tracking perfor-mance of the robot when accompanying a group of three people.  
+
+> •
+
+Scenario 2: Evaluates performance when obstacles are present while accompanying three people.  
+
+> •
+
+Scenario 3: Evaluates the robot’s ability to detect group TABLE I: Quantitative Results of Comparison                                                                                                               
+
+> Method Scenario 1 Scenario 2 Scenario 3 Scenario 4 Scenario 5
+> SR ↑CR ↓CD ↑SR ↑CR ↓CD ↑SR ↑CR ↓CD ↑SR ↑CR ↓CD ↑SR ↑CR ↓CD ↑
+> MPPI [10] 100 00.75 ±0.07 20 80 0.51 ±0.14 002.31 ±0.12 50 40 0.59 ±0.16 30 70 0.41 ±0.13
+> ESFM [23] 100 00.81 ±0.13 30 60 0.62 ±0.17 10 02.97 ±0.27 35 60 0.52 ±0.15 085 0.45 ±0.07
+> PP [25] 100 01.34 ±0.27 75 10 1.71 ±0.35 55 01.67 ±0.23 60 35 1.03 ±0.25 65 30 1.34 ±0.21
+> Proposed 100 01.1±0.04 80 10 1.05 ±0.06 90 01.07 ±0.09 85 01.03 ±0.07 95 50.87 ±0.11
+
+changes and adapt its accompanying position when one member leaves a group of three.  
+
+> •
+
+Scenario 4: Evaluates the robot’s ability to detect group changes and adapt its position when accompanying two people with a new member joining the group.  
+
+> •
+
+Scenario 5: Evaluates the robot’s ability to adjust its accompanying position as three group members move and change formation. Three quantitative metrics were used for evaluation, with results averaged over 20 runs. Success Rate (SR) denotes the percentage of successful accompaniment episodes, where the robot is considered to have failed if it lags more than 2.5 m behind the group for longer than 5 s. Collision Rate (CR) represents the percentage of episodes involving collisions, while Comfortable Distance (CD) measures the average distance maintained between the robot and group members, reflecting its adherence to personal space. 
+
+2) Comparison Results: The comparison results, pre-sented in Table I, show that the proposed method improved the average success rate by at least 15% and reduced the collision rate by 25%. The comfortable distance remained within 0.87–1.1 m, demonstrating greater stability compared with MPPI, ESFM, and PP. Qualitative outcomes are also illustrated in Fig. 6, which presents the motion sequences of the proposed method across the five scenarios. In Scenario 1, all methods successfully completed the task, as the robot moved straight without changes in group formation or obstacles. In Scenario 2, MPPI failed because it misidentified a group member as an obstacle while switching sides to avoid obstacles, resulting in unstable trajectories and collisions. ESFM maintained its side-by-side configuration and avoided obstacles but ultimately collided due to the narrow passage. Notably, the proposed method and PP completed the scenario with higher success rates and fewer collisions. In Scenario 3, the proposed method successfully detected a member leaving the group and continued accompanying the remaining two members, while MPPI and PP followed the departing individual. ESFM, unable to detect the departure, relied on the group centroid for tracking, which caused it to lose the group entirely. These results highlight the limitations of applying single-person tracking methods such as MPPI or leader-selection approaches such as PP to group-level tracking, as well as the inability of ESFM to adapt to changes in group composition. In Scenario 4, the proposed method correctly recognized the arrival of a new member and yielded space accordingly, TABLE II: User Study Questionnaire         
+
+> Comfort Scale
+> 1I felt comfortable when the robot was following me. 2I felt safe when the robot was accompanying me. 3The robot maintained an appropriate distance from me.
+> Sociability Scale
+> 4The robot’s behavior while following me seemed natural. 5The robot responded socially appropriately.
+> Intelligence Scale
+> 6The robot behaved intelligently while accompanying me. 7The robot anticipated my movements effectively. 8The robot handled situations involving multiple people effectively.
+
+while MPPI, PP, and ESFM all treated the new member as an obstacle, resulting in collisions. Finally, in Scenario 5, when the group changed formation, the proposed method maintained an appropriate accompanying position without in-truding into the group, unlike ESFM, or shifting excessively to the side, like MPPI. Both of these behaviors resulted in collisions with other members. 
+
+C. User Study 
+
+A user study was conducted with 20 participants to evaluate their experience while accompanying the robot. Four scenarios were carried out (excluding Scenario 1), and after each trial, participants completed a questionnaire assessing their experience, as summarized in Table II. The three methods were presented in a randomized order, and participants rated each scenario using a five-point Likert scale. The average scores from the user study are shown in Fig. 7. The survey results indicate that the proposed method delivered the best overall user experience across all scenarios, consistently receiving the highest scores on the Intelligence metric. Furthermore, the Comfort and Sociability metrics show that users perceived the robot’s behavior under the proposed method as friendlier and safer compared with MPPI, ESFM, and PP. To verify these observations, a two-way repeated-measures ANOVA was conducted. The results show that the choice of method had a significant effect on all evaluation metrics (p < 0.05 ). Post-hoc analyses further reveal that the Pro-posed method achieved significantly higher average scores across all three metrics: Comfort, Social, and Intelligence. The scenario factor also exhibited a statistically significant influence on users’ perceived comfort (p < 0.05 ) and sociability ( p < 0.05 ). Notably, we observed an interaction Scenario 2 Scenario 3 Scenario 4 Scenario 5 012345Intelligence Score Scenario 2 Scenario 3 Scenario 4 Scenario 5 012345Proposed MPPI ESFM PP Sociability Score Scenario 2 Scenario 3 Scenario 4 Scenario 5 012345Comfort Score Fig. 7: User Study Average Scores. TABLE III: Quantitative Results of the Ablation Study                                                                                                                        
+
+> Method Scenario 1 Scenario 2 Scenario 3 Scenario 4 Scenario 5
+> SR CR ↓CD ↓SR ↑CR ↓CD ↓SR ↑CR ↓CD ↓SR ↑CR ↓CD ↓SR ↑CR ↓CD ↓
+> Proposed 100 01.1±0.04 80 10 1.05 ±0.06 90 01.07 ±0.09 85 01.03 ±0.07 95 50.87 ±0.11
+> w/o VLM group detection 100 01.07 ±0.07 80 01.10 ±0.09 30 20 2.10 ±0.14 85 10 1.11 ±0.09 90 10 1.06 ±0.06
+> w/o VLM for companion 100 01.03 ±0.09 20 80 1.07 ±0.06 002.51 ±0.17 60 40 1.06 ±0.06 001.20 ±0.09
+> w/o interactive space 10 60 2.09 ±0.13 0100 2.20 ±0.19 0100 1.76 ±0.13 0100 3.50 ±0.34 0100 1.48 ±0.11
+
+effect between Method and Scenario for the Intelligence and Social metrics ( p < 0.05 ). This indicates that as the interac-tion conditions became more complex, the performance gap between the Proposed method and the other methods became more pronounced. These findings confirm that the Proposed method enables the robot to behave more intelligently and naturally, thereby substantially improving the overall user experience across all tested scenarios. 
+
+D. Ablation Study 
+
+An ablation study was conducted to evaluate the impor-tance of each component across five scenarios, with results summarized in Table III. First, we tested the method without (w/o) the group detection module by VLM to assess its impact. The success rate did not differ significantly, except in Scenario 3, when a member left; the robot continued to treat the departing member as part of the group, which reduced its performance. In Scenario 4, despite the arrival of a new member, the VLM-based group-accompaniment module inferred the new member as an obstacle and adjusted the robot’s position to continue tracking the group while avoiding them, so the performance was not affected. Subse-quently, the VLM-based group-accompaniment module was removed, fixing the robot’s accompanying position within the interaction space. In this setup, the robot attempted to maintain a static position and avoid obstacles using only the tracking controller, which led to collisions in all but the first scenario. This highlights the importance of using the VLM for decision-making in robot group accompaniment. Finally, the effect of removing the interaction space input to the VLM was evaluated. It was observed that the interaction space played a critical role in the robot’s performance during accompaniment. Without this input, the robot failed in all scenarios, including the baseline Scenario 1, because the VLM generated inaccurate accompanying positions due to the lack of cues for determining appropriate positions, 3 5 7 9 12    
+
+> Number of Group Members
+> 0
+> 20
+> 40
+> 60
+> 80
+> 100
+> Success Rate (%)
+> Success Rate Latency
+> 95% 90%
+> 80% 75%
+> 40%
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> 2.0
+> 2.5
+> 3.0
+> 3.5
+> 4.0
+> Average Latency (s)
+
+Fig. 8: Performance of the proposed method for different group sizes. resulting in collisions and loss of group tracking. 
+
+E. Evaluation of Different Group Sizes 
+
+To assess the real-world deployability and scalability of the proposed method, we conducted experiments across multiple group sizes, specifically 3, 5, 7, 9, and 12 members. Each configuration was evaluated over 10 experimental trials. A trial was considered successful if the robot consistently main-tained the permitted companionship distance from the group while avoiding any physical collisions. The primary objective of this evaluation was to examine whether increasing the complexity of the human group affects the VLM’s reasoning latency and the robot’s ability to maintain stable behavior when the VLM is integrated with the MPPI-CBF controller. The experimental results are illustrated in Fig. 8. The robot demonstrates high success rates in smaller group configu-rations, achieving 95% with 3 members and 90% with 5 members. However, as the group size increases, performance gradually degrades: the success rate decreases to 80% with 7 members, 75% with 9 members, and drops significantly to 40% with 12 members. Furthermore, we observe a clear positive correlation between group size and system latency. The average reasoning latency increases from approximately 1.07 s for 3 members to 1.67 s for 7 members. When the group size reaches 12 members, the latency further increases to approximately 2.77 s. These findings suggest that the framework is most effective for groups of up to 7 members, while larger groups and more crowded environments present challenges that merit further investigation. V. C ONCLUSION 
+
+In this study, we presented a novel approach enabling a robot to accompany a group of people. By leveraging human-like reasoning and contextual understanding, the robot can detect changes in group membership and adapt to changes in the group’s formation. We introduced an interaction space representation combined with CoT prompting for the VLM, allowing the robot to determine an appropriate accompanying position, which is tracked using an MPPI controller with a CBF. The method was evaluated across five scenarios and compared with previous approaches, alongside a user study. Results show improved tracking performance in terms of success rate and reduced collisions, as well as higher user satisfaction scores. An ablation study confirmed the importance of each component. Future work will involve testing with larger groups, in crowded environments, and using a local VLM to improve reasoning speed. REFERENCES [1] P. T. Singamaneni, P. Bachiller-Burgos, L. J. Manso, A. Garrell, A. Sanfeliu, A. Spalanzani, and R. Alami, “A survey on socially aware robot navigation: Taxonomy and future challenges,” The International Journal of Robotics Research , vol. 43, no. 10, pp. 1533–1572, 2024. [2] M. J. Islam, J. Hong, and J. Sattar, “Person-following by autonomous robots: A categorical overview,” The International Journal of Robotics Research , vol. 38, no. 14, pp. 1581–1618, 2019. [3] E. Ahmed, O. O. Buruk, and J. Hamari, “Human–robot compan-ionship: Current trends and future agenda,” International Journal of Social Robotics , vol. 16, no. 8, pp. 1809–1860, 2024. [4] N. V. Toan, M. Do Hoang, P. B. Khoi, and S.-Y. Yi, “The human-following strategy for mobile robots in mixed environments,” Robotics and Autonomous Systems , vol. 160, p. 104317, 2023. [5] C. V. Dang, H. Ahn, J.-W. Kim, and S. C. Lee, “Collision-free navigation in human-following task using a cognitive robotic system on differential drive vehicles,” IEEE Transactions on Cognitive and Developmental Systems , vol. 15, no. 1, pp. 78–87, 2023. [6] S. Gui and Y. Luximon, “Anticipatory control on human-following robots using online deep-model predictive control,” IEEE Transactions on Industrial Electronics , vol. 72, no. 2, pp. 1702–1711, 2025. [7] Y. Morales, T. Kanda, and N. Hagita, “Walking together: Side-by-side walking model for an interacting robot,” J. Hum.-Robot Interact. ,vol. 3, no. 2, p. 50–73, Jul. 2014. [8] K. Y. Tan, N. P. Garg, M. Ramanathan, and W. T. Ang, “Robust side following robotic wheelchair by using homotopy class of human intention,” IEEE Robotics and Automation Letters , vol. 10, no. 5, pp. 5018–5025, 2025. [9] J. Peng, Z. Liao, H. Yao, Z. Su, Y. Zeng, and H. Dai, “MPC-based human-accompanying control strategy for improving the motion coor-dination between the target person and the robot,” in 2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) ,2023, pp. 7969–7975. [10] C.-T. Vu, H.-H. Huang, and Y.-C. Liu, “Autonomous navigation for human-following robots based on optimized position tracking,” in 
+
+2025 10th International Conference on Control and Robotics Engi-neering (ICCRE) , 2025, pp. 23–27. [11] S. Sekiguchi, A. Yorozu, K. Kuno, M. Okada, Y. Watanabe, and M. Takahashi, “Uncertainty-aware non-linear model predictive control for human-following companion robot,” in 2021 IEEE International Conference on Robotics and Automation (ICRA) , 2021, pp. 8316– 8322. [12] S. Leisiazar, S. R. R. Rohani, E. J. Park, A. Lim, and M. Chen, “Adapting to frequent human direction changes in autonomous frontal following robots,” IEEE Robotics and Automation Letters , vol. 10, no. 3, pp. 2934–2941, 2025. [13] J. Peng, Z. Liao, Z. Su, H. Yao, Y. Zeng, and H. Dai, “A dual closed-loop control strategy for human-following robots respecting social space,” in 2024 IEEE International Conference on Robotics and Automation (ICRA) , 2024, pp. 11 252–11 258. [14] E. Repiso, A. Garrell, and A. Sanfeliu, “Adaptive social planner to accompany people in real-life dynamic environments,” International Journal of Social Robotics , vol. 16, no. 6, pp. 1189–1221, 2024. [15] C.-T. Vu and Y.-C. Liu, “Autonomous adjustment of tracking position in dynamic environments for human-following robots using deep reinforcement learning,” in 2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) , 2025, pp. 16 863–16 869. [16] C. Scheidemann, L. Werner, V. Reijgwart, A. Cramariuc, J. Chomarat, J.-R. Chiu, R. Siegwart, and M. Hutter, “Obstacle-avoidant leader following with a quadruped robot,” in 2025 IEEE International Con-ference on Robotics and Automation (ICRA) , 2025, pp. 1407–1413. [17] W. Wu and X. Zheng, “A systematic analysis of subgroup research in pedestrian and evacuation dynamics,” IEEE Transactions on Intelligent Transportation Systems , vol. 25, no. 2, pp. 1225–1246, 2024. [18] F. Zanlungo, T. Ikeda, and T. Kanda, “Potential for the dynamics of pedestrians in a socially interacting group,” Phys. Rev. E , vol. 89, p. 012811, Jan 2014. [19] F. Zanlungo, Z. Y¨ ucel, and T. Kanda, “Intrinsic group behaviour ii: On the dependence of triad spatial dynamics on social and personal features; and on the effect of social interaction on small group dynamics,” PloS one , vol. 14, no. 12, p. e0225704, 2019. [20] X. Lu, A. Faragasso, Y. Wang, A. Yamashita, and H. Asama, “Group-aware robot navigation in crowds using spatio-temporal graph atten-tion network with deep reinforcement learning,” IEEE Robotics and Automation Letters , vol. 10, no. 4, pp. 4140–4147, 2025. [21] T. Iqbal, S. Rack, and L. D. Riek, “Movement coordination in hu-man–robot teams: A dynamical systems approach,” IEEE Transactions on Robotics , vol. 32, no. 4, pp. 909–919, 2016. [22] E. Repiso, F. Zanlungo, T. Kanda, A. Garrell, and A. Sanfeliu, “People’s v-formation and side-by-side model adapted to accompany groups of people by social robots,” in 2019 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) , 2019, pp. 2082– 2088. [23] E. Repiso, A. Garrell, and A. Sanfeliu, “People’s adaptive side-by-side model evolved to accompany groups of people by social robots,” IEEE Robotics and Automation Letters , vol. 5, no. 2, pp. 2387–2394, 2020. [24] ——, “Adaptive social planner to accompany people in real-life dynamic environments,” International Journal of Social Robotics ,vol. 16, no. 6, pp. 1189–1221, 2024. [25] Y. Liao, X. Xu, R. Bai, Y. Yang, M. Cao, S. Yuan, and L. Xie, “Following is all you need: Robot crowd navigation using people as planners,” IEEE Robotics and Automation Letters , vol. 10, no. 10, pp. 9814–9821, 2025. [26] D. Song, J. Liang, A. Payandeh, A. H. Raj, X. Xiao, and D. Manocha, “VLM-Social-Nav: Socially aware robot navigation through scoring using vision-language models,” IEEE Robotics and Automation Let-ters , vol. 10, no. 1, pp. 508–515, 2025. [27] S. Narasimhan, A. H. Tan, D. Choi, and G. Nejat, “OLiVia-Nav: an online lifelong vision language approach for mobile robot social navigation,” in 2025 IEEE International Conference on Robotics and Automation (ICRA) , 2025, pp. 9130–9137. [28] S. Luo, P. Sun, J. Zhu, Y. Deng, C. Yu, A. Xiao, and X. Wang, “GSON: a group-based social navigation framework with large multimodal model,” IEEE Robotics and Automation Letters , vol. 10, no. 10, pp. 9646–9653, 2025. [29] C.-T. Vu and Y.-C. Liu, “Context-aware adaptive pesticide spraying for agricultural robots under changing weather and terrain using vision–language models,” Computers and Electronics in Agriculture ,vol. 252, p. 112092, 2026. [30] A. H. Lang, S. Vora, H. Caesar, L. Zhou, J. Yang, and O. Beijbom, “Pointpillars: Fast encoders for object detection from point clouds,” in Proceedings of the IEEE/CVF conference on computer vision and pattern recognition , 2019, pp. 12 697–12 705. [31] J. Yin, C. Dawson, C. Fan, and P. Tsiotras, “Shield model predictive path integral: A computationally efficient robust mpc method using control barrier functions,” IEEE Robotics and Automation Letters ,vol. 8, no. 11, pp. 7106–7113, 2023.
