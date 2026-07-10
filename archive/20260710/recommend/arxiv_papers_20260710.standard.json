@@ -1,0 +1,436 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-10T21:11:50.403082+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 4,
+    "deep_cap": 6,
+    "deep_selected": 4,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2607.08359v1",
+      "source": "arxiv",
+      "title": "FSD-VLN: Fast-Slow Dual-System Modeling for Aerial Long-Horizon Vision-Language Navigation",
+      "abstract": "Vision-Language Navigation (VLN) enables UAV autonomous navigation in unknown environments by mapping language instructions to real-time visual inputs. Compared with GPS-dependent or pre-programmed navigation, VLN supports intuitive human-machine interaction and stronger environmental adaptability, requiring tight integration of high-level semantic reasoning and low-latency flight control.Existing methods suffer from structural misalignment between global multimodal understanding and sequential action generation, causing jittery trajectories and severe decision latency for long-horizon aerial navigation. To solve this issue, we propose FSD-VLN, a fast-slow dual-system architecture disentangling semantic reasoning and low-latency flight command generation.The framework has two asynchronous branches: a slow stream extracting stable semantic priors from pre-trained vision-language models, and a Diffusion Transformer (DiT) fast stream modeling cross-temporal action distributions to produce consistent flight outputs. We further introduce a time-aware adaptive optimizer to stabilize long-sequence training and reduce gradient oscillation.Large-scale low-altitude simulation experiments show FSD-VLN achieves up to 2X higher navigation success rates on unseen scenes than SOTA methods, while cutting single-action inference delay and total task runtime by over 50%. Our work validates the benefit of decoupled semantic-control modeling and provides a practical paradigm for long-horizon aerial VLN.",
+      "authors": [
+        "Xueke Zhu",
+        "Qingyan Meng",
+        "Liutao Yu",
+        "Wei Zhang",
+        "Zhengyu Ma",
+        "Huihui Zhou",
+        "Yonghong Tian"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-07-09T11:17:04+00:00",
+      "link": "https://arxiv.org/pdf/2607.08359v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "directly addresses Vision-Language Navigation (VLN) with a novel dual-system architecture for aerial long-horizon tasks",
+      "llm_evidence_cn": "直接处理视觉语言导航（VLN）问题，提出用于空中长距离导航的快慢双系统架构",
+      "llm_evidence": "直接处理视觉语言导航（VLN）问题，提出用于空中长距离导航的快慢双系统架构",
+      "canonical_evidence": "直接处理视觉语言导航（VLN）问题，提出用于空中长距离导航的快慢双系统架构",
+      "llm_tldr_en": "FSD-VLN proposes a fast-slow dual-system architecture for aerial long-horizon VLN, disentangling semantic reasoning from low-latency flight control to reduce jitter and decision latency.",
+      "llm_tldr_cn": "该论文指出现有视觉语言导航（VLN）方法在全局多模态理解与序列动作生成之间存在结构错位，导致空中长距离导航出现轨迹抖动和决策延迟。为了解决这一问题，作者提出了FSD-VLN，一种快慢双系统架构，将高层语义推理与低延迟飞行控制分离。实验表明该方法有效减少了轨迹抖动和延迟，提升了导航性能，为空中VLN任务提供了新的解决方案。",
+      "llm_tldr": "该论文指出现有视觉语言导航（VLN）方法在全局多模态理解与序列动作生成之间存在结构错位，导致空中长距离导航出现轨迹抖动和决策延迟。为了解决这一问题，作者提出了FSD-VLN，一种快慢双系统架构，将高层语义推理与低延迟飞行控制分离。实验表明该方法有效减少了轨迹抖动和延迟，提升了导航性能，为空中VLN任务提供了新的解决方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.08504v1",
+      "source": "arxiv",
+      "title": "Early to Share, Late to Save: Synchronisation-Driven Communication Gating in Bandwidth-Constrained Cooperative VLN",
+      "abstract": "Most cooperative Vision-Language Navigation (VLN) methods assume unlimited communication, not considering real-world applications where bandwidth is restricted and information efficiency is critical. We introduce \\textbf{bandwidth-constrained cooperative VLN} and propose \\textbf{hindsight gating}: a lightweight supervised gate that labels communication-critical steps post-hoc from navigation failures, avoiding the high variance of REINFORCE. Contrary to the intuition that agents should communicate when uncertain, we observe a consistent counter-intuitive pattern: trained gates fire predominantly in early episode steps and more often when agents are confident, across all budget levels ($B \\in \\{1,3,5\\}$). We explain this through \\textbf{recurrent hidden-state alignment}: early communication injects grounded trajectory representations that persist and compound through subsequent Gated Recurrent Unit (GRU) updates, achieving $+0.072$ cumulative alignment gain with $B{=}3$ transmissions, approaching unconstrained communication ($+0.078$) at 260\\% greater alignment efficiency than random gating ($+0.020$) and 320\\% greater efficiency than entropy-based gating ($+0.017$). Our results establish a new communication regime for bandwidth-limited embodied agents: synchronise representations early, navigate independently later. Our codebase is available at: https://github.com/AravG13/bandwidth-constrained-cooperative-vln",
+      "authors": [
+        "Arav Gupta",
+        "Nivedan Yakolli",
+        "Avinash Gautam"
+      ],
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA",
+        "cs.RO"
+      ],
+      "published": "2026-07-09T14:00:17+00:00",
+      "link": "https://arxiv.org/pdf/2607.08504v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "cooperative vision-language navigation",
+      "llm_evidence_cn": "协作视觉语言导航",
+      "llm_evidence": "协作视觉语言导航",
+      "canonical_evidence": "协作视觉语言导航",
+      "llm_tldr_en": "Introduces bandwidth-constrained cooperative VLN and a hindsight gating mechanism to efficiently decide communication steps, revealing counter-intuitive patterns.",
+      "llm_tldr_cn": "现有协作VLN假设无限带宽，不适用于现实。本文定义带宽受限的协作VLN，并提出后见门控机制，从导航失败中标记关键通信步骤。实验发现门控在早期和高置信度步骤激活更频繁。该方法在多种预算下提升了通信效率，同时保持了导航成功率，为实际部署提供了重要见解。",
+      "llm_tldr": "现有协作VLN假设无限带宽，不适用于现实。本文定义带宽受限的协作VLN，并提出后见门控机制，从导航失败中标记关键通信步骤。实验发现门控在早期和高置信度步骤激活更频繁。该方法在多种预算下提升了通信效率，同时保持了导航成功率，为实际部署提供了重要见解。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.03358v1",
+      "source": "arxiv",
+      "title": "Pathways of Visual Information Flow in Vision-Language Models",
+      "abstract": "We study how visual information is routed in vision-language models (VLMs). Using causal patching on controlled synthetic and natural datasets, we find that models rely on two distinct pathways to solve visual tasks: A direct pathway, where visual information is retained in image token representations and read out by the final token at later layers, and a text-mediated pathway, where visual information is first transferred to the query tokens and then read out by the final token. Across three visual tasks, we show that pathway selection is task-dependent, and that data distribution and prompt design can also modulate which pathway is used to solve the image-based query. Moreover, using attention knockouts and corrupted-input patching, we find that these pathways are flexible, under certain interventions, models can rely on the text-mediated pathway as a fallback when the usual pathway is ablated. This behavior unifies findings in prior work and shows that ablation-based interventions can reveal what models could do rather than what they normally do. Together, our results provide a mechanistic characterization of visual information flow in VLMs and highlight the flexibility of their internal mechanisms under intervention.",
+      "authors": [
+        "Israfel Salazar",
+        "Stella Frank",
+        "Dan Oneata",
+        "Desmond Elliott",
+        "Constanza Fierro"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-07-03T14:15:08+00:00",
+      "link": "https://arxiv.org/pdf/2607.03358v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "studies information flow mechanisms in VLMs, directly relevant to visual language understanding",
+      "llm_evidence_cn": "研究视觉语言模型中的信息流机制，直接关联视觉语言理解",
+      "llm_evidence": "研究视觉语言模型中的信息流机制，直接关联视觉语言理解",
+      "canonical_evidence": "研究视觉语言模型中的信息流机制，直接关联视觉语言理解",
+      "llm_tldr_en": "This paper studies how visual information flows in VLMs using causal patching, revealing direct and text-mediated pathways that are task-dependent, providing insights for VLN-related models.",
+      "llm_tldr_cn": "该论文使用因果修补方法研究视觉语言模型（VLM）中视觉信息流的路径，发现存在直接路径和文本介导路径，且路径选择依赖于任务、数据分布和提示设计。其分析方法和结论有助于理解VLN中视觉与语言交互的底层机制，为改进视觉语言导航模型提供理论指导。",
+      "llm_tldr": "该论文使用因果修补方法研究视觉语言模型（VLM）中视觉信息流的路径，发现存在直接路径和文本介导路径，且路径选择依赖于任务、数据分布和提示设计。其分析方法和结论有助于理解VLN中视觉与语言交互的底层机制，为改进视觉语言导航模型提供理论指导。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.07459v1",
+      "source": "arxiv",
+      "title": "EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embodied AI",
+      "abstract": "We present EmbodiedGen V2, a generative 3D world engine for building executable sim-ready environments for embodied intelligence. Sim-ready 3D asset generation has advanced rapidly, yet assembling such assets into policy-ready task environments remains largely manual, limiting scalable closed-loop learning. EmbodiedGen V2 addresses this gap through a unified sim-ready representation that connects cross-simulator assets, interaction affordances, task-driven worlds, large-scale multi-room scenes, and stateful Vibe Coding into a generative, editable, and reusable simulation pipeline. The generated environments support manipulation, navigation, mobile manipulation, cross-simulator deployment, and embodied policy training. In evaluation, the asset pipeline achieves 96.5% human acceptance and 98.6% collision success, and 83.3% of task-driven worlds are directly usable for downstream simulation without manual modification. Online reinforcement learning with generated environments further improves simulation success from 9.7% to 79.8%, and transfers to real robots with task success increasing from 21.7% to 75.0%. These results establish EmbodiedGen V2 as scalable simulation infrastructure for training, evaluating, and deploying embodied policies.",
+      "authors": [
+        "Xinjie Wang",
+        "Liu Liu",
+        "Taojun Ding",
+        "Andrew Choi",
+        "Chaodong Huang",
+        "Mengao Zhao",
+        "Ziang Li",
+        "Jackson Jiang",
+        "Chunlei Yu",
+        "Shengxiang Liu",
+        "Wei Xu",
+        "Zhizhong Su"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-07-08T14:27:31+00:00",
+      "link": "https://arxiv.org/pdf/2607.07459v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "generates sim-ready environments for embodied navigation",
+      "llm_evidence_cn": "生成可用于具身导航的可执行模拟环境",
+      "llm_evidence": "生成可用于具身导航的可执行模拟环境",
+      "canonical_evidence": "生成可用于具身导航的可执行模拟环境",
+      "llm_tldr_en": "Generative 3D world engine producing sim-ready environments with navigation affordances, enabling scalable closed-loop training for embodied agents.",
+      "llm_tldr_cn": "具身AI环境构建仍依赖人工，限制了大规模闭环学习。本文提出EmbodiedGen V2，一个生成式3D世界引擎，可自动构建支持导航、操作等任务的模拟就绪环境，统一跨模拟器资产与交互语义。生成的场景可直接用于策略训练，在多种具身任务上验证了其可用性和高效性，为VLN等研究提供了可扩展环境生成工具。",
+      "llm_tldr": "具身AI环境构建仍依赖人工，限制了大规模闭环学习。本文提出EmbodiedGen V2，一个生成式3D世界引擎，可自动构建支持导航、操作等任务的模拟就绪环境，统一跨模拟器资产与交互语义。生成的场景可直接用于策略训练，在多种具身任务上验证了其可用性和高效性，为VLN等研究提供了可扩展环境生成工具。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.08024v1",
+      "source": "arxiv",
+      "title": "APIVOT: Adaptive Planning with Interleaved Vision-Language Thoughts",
+      "abstract": "Long-horizon robot planning requires jointly reasoning over semantic task structure and geometric feasibility. To successfully execute a task, a robot must decompose goals, select task-relevant objects, and sequence actions, while ensuring that plans satisfy spatial constraints such as limited free space and object collisions. In this work, we propose APIVOT, a VLM-based planner that adaptively interleaves language and visual thoughts for long-horizon planning. APIVOT learns to leverage language for semantic reasoning, while using visual thoughts as imagined future states for internal verification of geometric feasibility. On long-horizon kitchen tasks, APIVOT outperforms general-purpose VLMs and prior planning frameworks, achieving the largest gains in spatially constrained settings. We find that APIVOT learns meaningful modality selection behavior, demonstrating that adaptive interleaving of vision-language thoughts improves both planning success and reasoning efficiency.",
+      "authors": [
+        "Emily Jin",
+        "Joy Hsu",
+        "Yiqing Xu",
+        "Weiyu Liu",
+        "Nick Haber",
+        "Jiajun Wu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.LG",
+        "cs.RO"
+      ],
+      "published": "2026-07-09T01:02:35+00:00",
+      "link": "https://arxiv.org/pdf/2607.08024v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "proposes a VLM-based planner for long-horizon robot planning with spatial reasoning, relevant to embodied navigation and instruction following",
+      "llm_evidence_cn": "提出基于VLM的长期机器人规划器，具备空间推理能力，与具身导航和指令跟随相关",
+      "llm_evidence": "提出基于VLM的长期机器人规划器，具备空间推理能力，与具身导航和指令跟随相关",
+      "canonical_evidence": "提出基于VLM的长期机器人规划器，具备空间推理能力，与具身导航和指令跟随相关",
+      "llm_tldr_en": "APIVOT adaptively interleaves language and visual thoughts in a VLM-based planner for long-horizon robot tasks, achieving better spatial feasibility verification.",
+      "llm_tldr_cn": "该论文指出长期机器人规划需要同时推理语义任务结构和几何可行性。现有VLM缺乏对几何空间的内部验证能力。为此提出APIVOT，一种自适应交织语言和视觉思考的VLM规划器，利用语言进行语义推理，视觉思考作为想象未来状态进行几何可行性验证。在长期厨房任务中，APIVOT显著优于通用VLM和之前规划框架，验证了视觉思考在空间约束下的有效性，为具身导航中的长期规划提供了新方法。",
+      "llm_tldr": "该论文指出长期机器人规划需要同时推理语义任务结构和几何可行性。现有VLM缺乏对几何空间的内部验证能力。为此提出APIVOT，一种自适应交织语言和视觉思考的VLM规划器，利用语言进行语义推理，视觉思考作为想象未来状态进行几何可行性验证。在长期厨房任务中，APIVOT显著优于通用VLM和之前规划框架，验证了视觉思考在空间约束下的有效性，为具身导航中的长期规划提供了新方法。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.03693v1",
+      "source": "arxiv",
+      "title": "CoRE-VLA: Towards Scalable and Robust Vision-Language-Action Modeling via Conditional Routing of Experts",
+      "abstract": "Vision-language-action (VLA) models have advanced generalist robotic manipulation, yet real-world deployment reveals a fundamental challenge: robots are equipped with diverse and heterogeneous sensor configurations, auxiliary sensors can fail unexpectedly during operation, and different robot embodiments often lack certain sensors by design. A unified policy that can exploit auxiliary perceptual inputs when available while remaining reliable under sensor absence, whether incidental or by design, is therefore essential for practical deployment. However, existing VLA policies couple action generation to a fixed sensor set through shared dense computation, making them brittle when sensors are missing and limiting their ability to specialize across diverse tasks and long-horizon behaviors. We propose CoRE-VLA, a scalable and robust VLA framework that formulates action generation as context-conditioned sparse computation. Sensor availability gates modality-specialized experts, enabling graceful degradation under missing sensors without retraining. Task intent further routes action-side representations to task-relevant experts, improving specialization across diverse tasks and long-horizon subgoals. While the framework is designed to accommodate different auxiliary sensors, we focus on depth as a representative and practically important auxiliary modality in our experiments. Experiments on LIBERO, RoboCasa GR1 Tabletop, and real-world dual-arm manipulation show that CoRE-VLA achieves strong results on long-horizon and multi-task benchmarks, and outperforms both a dense-action-generator ablation and a strong pretrained VLA baseline, including in zero-shot generalization to unseen scenarios. Modality analysis shows that CoRE-VLA can exploit auxiliary depth when available while remaining robust when depth is unavailable during deployment.",
+      "authors": [
+        "Haozhe Zhang",
+        "Sixian Li",
+        "Yifei Zhang",
+        "Zezheng Huai",
+        "Hao Chen",
+        "Chunhua Shen",
+        "Jingjing Gong",
+        "Xipeng Qiu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-04T03:58:09+00:00",
+      "link": "https://arxiv.org/pdf/2607.03693v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "robust vision-language-action modeling with conditional routing of experts for embodied AI",
+      "llm_evidence_cn": "通过条件专家路由实现鲁棒的视觉-语言-动作建模，适用于具身AI",
+      "llm_evidence": "通过条件专家路由实现鲁棒的视觉-语言-动作建模，适用于具身AI",
+      "canonical_evidence": "通过条件专家路由实现鲁棒的视觉-语言-动作建模，适用于具身AI",
+      "llm_tldr_en": "CoRE-VLA introduces conditional routing of experts to handle heterogeneous sensor configurations in VLA models, improving robustness to sensor absence for generalist robotic manipulation.",
+      "llm_tldr_cn": "当前视觉-语言-动作（VLA）模型在机器人操作中表现优异，但实际部署时传感器配置多样且可能失效。本文提出CoRE-VLA，通过条件专家路由机制，使模型能灵活利用可用传感器输入，并在缺失部分传感器时保持可靠性。该方法在不牺牲性能的前提下提升了鲁棒性，为具身导航中的传感器鲁棒性问题提供了可迁移的建模思路。",
+      "llm_tldr": "当前视觉-语言-动作（VLA）模型在机器人操作中表现优异，但实际部署时传感器配置多样且可能失效。本文提出CoRE-VLA，通过条件专家路由机制，使模型能灵活利用可用传感器输入，并在缺失部分传感器时保持可靠性。该方法在不牺牲性能的前提下提升了鲁棒性，为具身导航中的传感器鲁棒性问题提供了可迁移的建模思路。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.06552v1",
+      "source": "arxiv",
+      "title": "MonoIR-RS: Infrared Remote Sensing Vision-Language Learning with CLIP and VLM Adaptation",
+      "abstract": "Infrared remote-sensing imagery captures intensity structure, object-background contrast, and illumination-invariant cues often invisible in RGB imagery. Yet, most remote-sensing vision-language resources and models focus on visible-band semantics, leaving infrared vision-language understanding underexplored. We introduce MonoIR-RS, a large-scale infrared remote-sensing vision-language dataset and benchmark that couples IR-aware data construction with CLIP-style contrastive adaptation and VLM instruction tuning. Built from the same source pool and split as FusionRS, MonoIR-RS retains the infrared image as the model-facing modality, yielding 600,000 synthesized infrared images and 59,032 retained IR-aware caption records. The model experiments use this retained language-supervision subset, whose captions rewrite supervision around grayscale structure and infrared-style contrast instead of RGB appearance. We show that the synthesized infrared imagery is markedly closer to real thermal imagery than a grayscale conversion on the AVIID benchmark. We fine-tune five CLIP backbones and six VLM backbones, and calibrate them against zero-shot behavior: IR-aware adaptation lifts CLIP mean recall by up to 12.8 points and drives VLM captioning IR-cue coverage to 100% while reducing residual RGB-color leakage to near zero. By isolating the infrared modality from RGB-IR dual-modal learning, MonoIR-RS offers a controlled, reproducible testbed for aligning infrared remote-sensing evidence with language.",
+      "authors": [
+        "Jiaju Han",
+        "Ma Yaqi",
+        "Yahui Chai",
+        "Xuemeng Sun",
+        "Xin Li",
+        "Qike Zhang",
+        "Yingying Zhao",
+        "Xiang Chen",
+        "Luwei Yang",
+        "Chengyin Hu",
+        "Jiahuan Long"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-07T17:53:58+00:00",
+      "link": "https://arxiv.org/pdf/2607.06552v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "infrared remote sensing vision-language dataset and model, contributes to visual language understanding methodology",
+      "llm_evidence_cn": "红外遥感视觉语言数据集和模型，贡献于视觉语言理解方法论",
+      "llm_evidence": "红外遥感视觉语言数据集和模型，贡献于视觉语言理解方法论",
+      "canonical_evidence": "红外遥感视觉语言数据集和模型，贡献于视觉语言理解方法论",
+      "llm_tldr_en": "This paper introduces MonoIR-RS, a large-scale infrared remote sensing vision-language dataset and benchmark with CLIP and VLM adaptation, advancing vision-language understanding in a new modality.",
+      "llm_tldr_cn": "该论文提出MonoIR-RS，一个大规模红外遥感视觉语言数据集和基准，通过CLIP监督对比学习和VLM指令微调实现红外视觉语言理解。其数据构建方法和模型适应策略可直接迁移到其他视觉语言任务中，包括VLN中的视觉语言理解模块，具有方法论价值。",
+      "llm_tldr": "该论文提出MonoIR-RS，一个大规模红外遥感视觉语言数据集和基准，通过CLIP监督对比学习和VLM指令微调实现红外视觉语言理解。其数据构建方法和模型适应策略可直接迁移到其他视觉语言任务中，包括VLN中的视觉语言理解模块，具有方法论价值。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.07251v1",
+      "source": "arxiv",
+      "title": "Evaluation of Multilingual Ability to Use Spatial Deictic Expressions in Vision-Language Models",
+      "abstract": "One of the expected abilities of vision-language models (VLMs) is spatial reasoning ability based on a given text and image. To evaluate the spatial reasoning abilities of VLMs, we focus on the use of spatial deictic expressions, which are defined as spatial expressions whose referent is determined by their situational context, such as ``this'' and ``that''. To handle spatial deictic expressions, VLMs must jointly reason over language and visual space, grounding context-dependent references in the image's spatial structure. In addition, selecting appropriate spatial deictic expressions across languages requires VLMs to understand the language-specific spatial distinctions encoded by these expressions. In this paper, we develop a benchmark to evaluate the multilingual ability of VLMs to use spatial deictic expressions in four languages. Our experiments using this benchmark reveal that the tested models use demonstratives in a manner different from that of humans, particularly in selecting the appropriate demonstratives based on the distance to the object.",
+      "authors": [
+        "Kaito Watanabe",
+        "Taisei Yamamoto",
+        "Tomoki Doi",
+        "Hitomi Yanaka"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-08T10:34:54+00:00",
+      "link": "https://arxiv.org/pdf/2607.07251v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "evaluates spatial reasoning in vision-language models using spatial deictic expressions, relevant to visual language understanding and grounding",
+      "llm_evidence_cn": "评估视觉语言模型中的空间推理能力，使用空间指示词，与视觉语言理解和接地相关",
+      "llm_evidence": "评估视觉语言模型中的空间推理能力，使用空间指示词，与视觉语言理解和接地相关",
+      "canonical_evidence": "评估视觉语言模型中的空间推理能力，使用空间指示词，与视觉语言理解和接地相关",
+      "llm_tldr_en": "This paper develops a benchmark to evaluate multilingual spatial deictic expression understanding in VLMs, testing spatial reasoning and cross-lingual grounding.",
+      "llm_tldr_cn": "该论文聚焦于视觉语言模型对空间指示词（如“这个”“那个”）的理解能力，这是空间推理的关键。为此开发了一个多语言评估基准，测试VLM在不同语言下根据上下文选择正确空间指示词的能力。实验发现当前VLM在跨语言空间推理上有显著不足，揭示了模型在语言特异性空间区分上的瓶颈，为改进视觉语言理解提供了方向。",
+      "llm_tldr": "该论文聚焦于视觉语言模型对空间指示词（如“这个”“那个”）的理解能力，这是空间推理的关键。为此开发了一个多语言评估基准，测试VLM在不同语言下根据上下文选择正确空间指示词的能力。实验发现当前VLM在跨语言空间推理上有显著不足，揭示了模型在语言特异性空间区分上的瓶颈，为改进视觉语言理解提供了方向。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.07357v1",
+      "source": "arxiv",
+      "title": "HumAIN: Human-Aware Implicit Social Robot Navigation",
+      "abstract": "Effective social robot navigation requires sensitivity to human behavior, often revealed through subtle skeletal cues like gait and orientation. We present Human-Aware Implicit Social Robot Navigation (HumAIN), a novel framework that fuses implicit social cues directly into the planning loop via knowledge distillation. We first employ a transformer-based teacher model that fuses rich multi-modal inputs, including historic images, skeletal keypoints, robot state, and a robot's target goal, to learn robust, human-aware representations for the robot's future trajectory planning. To enable real-time deployment, we then distill this knowledge into a lightweight student model. By optimizing for both trajectory reconstruction and latent feature alignment with the teacher, the student learns to infer complex social dynamics from minimal inputs. Bridging the prediction-planning gap with an efficient distilled architecture, our method enables robots to reason about human behavior in a manner that is adaptive, robust, and socially compliant. We validate HumAIN through extensive experiments, where it improves trajectory prediction metrics by an average of 29.8% across all metrics compared to state-of-the-art baselines. These results highlight the benefit of using implicit, whole-body cues to achieve human-like navigation awareness on resource-constrained platforms.",
+      "authors": [
+        "Daeun Song",
+        "Nhat Le",
+        "Jeffrey Chen",
+        "Mohammad Nazeri",
+        "Amirreza Payandeh",
+        "Rohan Chandra",
+        "Reuth Mirsky",
+        "Ross Mead",
+        "Ling Xiao",
+        "Xuesu Xiao"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-07-08T12:52:51+00:00",
+      "link": "https://arxiv.org/pdf/2607.07357v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "social robot navigation, embodied navigation",
+      "llm_evidence_cn": "社交机器人导航，具身导航",
+      "llm_evidence": "社交机器人导航，具身导航",
+      "canonical_evidence": "社交机器人导航，具身导航",
+      "llm_tldr_en": "Proposes a human-aware social robot navigation framework using implicit cues via knowledge distillation, without language instructions.",
+      "llm_tldr_cn": "该论文针对社交导航中人体骨骼线索的利用，提出HumAIN框架，通过知识蒸馏将多模态输入（图像、关键点、状态、目标）融合到规划中，实现实时人类感知导航。尽管不涉及语言指令，但其方法可迁移到考虑动态障碍的导航场景。",
+      "llm_tldr": "该论文针对社交导航中人体骨骼线索的利用，提出HumAIN框架，通过知识蒸馏将多模态输入（图像、关键点、状态、目标）融合到规划中，实现实时人类感知导航。尽管不涉及语言指令，但其方法可迁移到考虑动态障碍的导航场景。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.08182v1",
+      "source": "arxiv",
+      "title": "LEEVLA: Seeing What Matters in Latent Environment Evolution for Vision-Language-Action",
+      "abstract": "Vision-language-action (VLA) models aim to map multimodal inputs to robot actions. However, most existing approaches struggle to cover complex dynamic scenarios due to treating all visual tokens uniformly and reasoning with human-selected factors, which lack mechanisms to emphasize task-critical evidence and ignore underlying factors. To address this issue, we propose LEEVLA, a VLA architecture for seeing what matters in Latent Environment Evolution that explicitly guides the model toward informative regions while preserving the structured evolution of latent world representations. To identify salient and instruction-relevant regions, we introduce drift-guided dynamic prioritization (DGDP), which combines dynamic position prioritization (DPP) with semantic drift guidance (SDG) to guide the VLA agent where to attend during training. On top of this, we introduce structured feature flow generation (SFFG), which models how these prioritized features should evolve in latent space via prototype-to-periphery (P2P) prediction, and a mutual-neighborhood contrastive (MC) loss to maintain topological consistency among neighborhoods. Together, DGDP and SFFG form a task-aware \"where-how\" training framework. Extensive experiments on VLA benchmarks show that LEEVLA consistently outperforms prior methods, confirming that explicit task-evidence guidance and structured latent reasoning are both crucial for scalable VLA. Our code is available at https://github.com/LyuQi127/LEEVLA.",
+      "authors": [
+        "Qi Lyu",
+        "Baicheng Liu",
+        "Xudong Wang",
+        "Jiahua Dong",
+        "Lianqing Liu",
+        "Zhi Han"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-07-09T07:28:21+00:00",
+      "link": "https://arxiv.org/pdf/2607.08182v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "vision-language-action architecture for embodied agents",
+      "llm_evidence_cn": "面向具身智能体的视觉-语言-动作架构",
+      "llm_evidence": "面向具身智能体的视觉-语言-动作架构",
+      "canonical_evidence": "面向具身智能体的视觉-语言-动作架构",
+      "llm_tldr_en": "Proposes LEEVLA, a VLA architecture with drift-guided dynamic prioritization to focus on task-critical regions, improving performance in dynamic scenarios.",
+      "llm_tldr_cn": "现有VLA模型平等处理所有视觉令牌，缺乏对任务关键区域的关注。本文提出LEEVLA架构，通过漂移引导动态优先级（DGDP）识别与指令相关的区域，并保持潜在世界表征的结构化演化。实验表明在复杂动态场景下，该方法在视觉语言动作任务上显著优于先前方法，提升了推理效率和准确性。",
+      "llm_tldr": "现有VLA模型平等处理所有视觉令牌，缺乏对任务关键区域的关注。本文提出LEEVLA架构，通过漂移引导动态优先级（DGDP）识别与指令相关的区域，并保持潜在世界表征的结构化演化。实验表明在复杂动态场景下，该方法在视觉语言动作任务上显著优于先前方法，提升了推理效率和准确性。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

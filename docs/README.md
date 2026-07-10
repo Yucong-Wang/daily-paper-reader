@@ -6,38 +6,50 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-09
-- 运行时间：2026-07-09 20:28:59 UTC
+- 最新运行日期：2026-07-10
+- 运行时间：2026-07-10 21:18:49 UTC
 - 运行状态：成功
-- 本次总论文数：6
-- 精读区：2
-- 速读区：4
+- 本次总论文数：10
+- 精读区：4
+- 速读区：6
 
 ### 今日简报（AI）
-今日聚焦6篇论文，精读多模态导航与3D空间推理两项高分工作。最值得关注的是《GemNav》利用离散token实现视觉导航，以及《SpaceEra++》的视频3D空间推理框架。建议普通读者优先深入阅读这两篇，了解多模态大模型在具身智能中的应用新范式。
-- 详情：[/202607/09/README](/202607/09/README)
+今日聚焦视觉语言导航（VLN）前沿，精读两篇高分论文，速读三篇相关研究。最值得关注的是《FSD-VLN》提出的快慢双系统模型实现长时域空中导航，以及《Early to Share, Late to Save》中带宽约束下的同步驱动通信门控机制。建议优先阅读这两篇精读论文，它们分别解决了VLN中的规划与通信效率瓶颈。
+- 详情：[/202607/10/README](/202607/10/README)
 
 ### 精读区论文标签
-1. [GemNav: Discrete-Token Visual Robot Navigation using a Multimodal Large Language Model](/202607/09/2607.06882v1-gemnav-discrete-token-visual-robot-navigation-using-a-multimodal-large-language-model)  
+1. [FSD-VLN: Fast-Slow Dual-System Modeling for Aerial Long-Horizon Vision-Language Navigation](/202607/10/2607.08359v1-fsd-vln-fast-slow-dual-system-modeling-for-aerial-long-horizon-vision-language-navigation)  
+   标签：评分：10.0/10、query:vln
+   evidence：直接处理视觉语言导航（VLN）问题，提出用于空中长距离导航的快慢双系统架构
+2. [Early to Share, Late to Save: Synchronisation-Driven Communication Gating in Bandwidth-Constrained Cooperative VLN](/202607/10/2607.08504v1-early-to-share-late-to-save-synchronisation-driven-communication-gating-in-bandwidth-constrained-cooperative-vln)  
    标签：评分：9.0/10、query:vln
-   evidence：使用多模态大语言模型进行视觉机器人导航
-2. [SpaceEra++: A Unified Framework Towards 3D Spatial Reasoning in Video](/202607/09/2607.01784v1-spaceera-a-unified-framework-towards-3d-spatial-reasoning-in-video)  
+   evidence：协作视觉语言导航
+3. [Pathways of Visual Information Flow in Vision-Language Models](/202607/10/2607.03358v1-pathways-of-visual-information-flow-in-vision-language-models)  
    标签：评分：8.0/10、query:vln
-   evidence：用于机器人导航和具身交互的3D空间推理框架
+   evidence：研究视觉语言模型中的信息流机制，直接关联视觉语言理解
+4. [EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embodied AI](/202607/10/2607.07459v1-embodiedgen-v2-an-agentic-simulation-ready-3d-world-engine-for-embodied-ai)  
+   标签：评分：8.0/10、query:vln
+   evidence：生成可用于具身导航的可执行模拟环境
 
 ### 速读区论文标签
-1. [Text as Partial Constraint: Core-Residual Alignment for Robust Vision-Language Learning](/202607/09/2607.03143v1-text-as-partial-constraint-core-residual-alignment-for-robust-vision-language-learning)  
+1. [APIVOT: Adaptive Planning with Interleaved Vision-Language Thoughts](/202607/10/2607.08024v1-apivot-adaptive-planning-with-interleaved-vision-language-thoughts)  
    标签：评分：7.0/10、query:vln
-   evidence：鲁棒的视觉语言对齐方法，处理不完整标注
-2. [EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embodied AI](/202607/09/2607.07459v1-embodiedgen-v2-an-agentic-simulation-ready-3d-world-engine-for-embodied-ai)  
-   标签：评分：7.0/10、query:vln
-   evidence：生成支持导航任务的具身AI仿真环境
-3. [Adaptive Companionship for Group-Following Robots: Handling Dynamically Changing Group Formations](/202607/09/2607.01287v1-adaptive-companionship-for-group-following-robots-handling-dynamically-changing-group-formations)  
+   evidence：提出基于VLM的长期机器人规划器，具备空间推理能力，与具身导航和指令跟随相关
+2. [CoRE-VLA: Towards Scalable and Robust Vision-Language-Action Modeling via Conditional Routing of Experts](/202607/10/2607.03693v1-core-vla-towards-scalable-and-robust-vision-language-action-modeling-via-conditional-routing-of-experts)  
    标签：评分：6.0/10、query:vln
-   evidence：基于VLM的机器人自适应群体跟随，处理动态编队
-4. [Social-spatial dependencies for learning visual navigation](/202607/09/2607.07460v1-social-spatial-dependencies-for-learning-visual-navigation)  
+   evidence：通过条件专家路由实现鲁棒的视觉-语言-动作建模，适用于具身AI
+3. [MonoIR-RS: Infrared Remote Sensing Vision-Language Learning with CLIP and VLM Adaptation](/202607/10/2607.06552v1-monoir-rs-infrared-remote-sensing-vision-language-learning-with-clip-and-vlm-adaptation)  
    标签：评分：6.0/10、query:vln
-   evidence：社交环境下的具身视觉导航
+   evidence：红外遥感视觉语言数据集和模型，贡献于视觉语言理解方法论
+4. [Evaluation of Multilingual Ability to Use Spatial Deictic Expressions in Vision-Language Models](/202607/10/2607.07251v1-evaluation-of-multilingual-ability-to-use-spatial-deictic-expressions-in-vision-language-models)  
+   标签：评分：6.0/10、query:vln
+   evidence：评估视觉语言模型中的空间推理能力，使用空间指示词，与视觉语言理解和接地相关
+5. [HumAIN: Human-Aware Implicit Social Robot Navigation](/202607/10/2607.07357v1-humain-human-aware-implicit-social-robot-navigation)  
+   标签：评分：6.0/10、query:vln
+   evidence：社交机器人导航，具身导航
+6. [LEEVLA: Seeing What Matters in Latent Environment Evolution for Vision-Language-Action](/202607/10/2607.08182v1-leevla-seeing-what-matters-in-latent-environment-evolution-for-vision-language-action)  
+   标签：评分：6.0/10、query:vln
+   evidence：面向具身智能体的视觉-语言-动作架构
 
 
 <div class="dpr-home-promo-card">
