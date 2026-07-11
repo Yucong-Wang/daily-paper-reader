@@ -1,0 +1,584 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-11T19:50:37.752075+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 4,
+    "deep_cap": 6,
+    "deep_selected": 4,
+    "quick_candidates": 10,
+    "quick_skim_target": 11,
+    "quick_selected": 10
+  },
+  "deep_dive": [
+    {
+      "id": "2607.06655v1",
+      "source": "arxiv",
+      "title": "Pelican-VLA 0.5: Attending Before Acting Benefits Generalization",
+      "abstract": "In this report, we present Pelican-VLA 0.5, a unified VLA model that integrates vision-language understanding, future-frame generation, and action prediction within a single architecture. Pelican-VLA 0.5 achieves attention-level generalization: without object annotations, segmentation masks, attention supervision, or task-specific fine-tuning, its action pathway already focuses on the instruction-relevant object and contact region. This behavior persists across unseen scenes and unseen robot embodiments, and is substantially stronger than in other open-source VLA baselines. We verify that this ability originates from the learnable Reasoning Slots inserted between perception and action: by routing task-relevant visual information through a compact bottleneck, the slot interface induces manipulation-centric attention during pre-training and remains effective across different policy structures, including a MoT-style architecture.",
+      "authors": [
+        "Zeyuan Ding",
+        "Wenhai Liu",
+        "Yang Xu",
+        "Jiayu Hu",
+        "Yinda Chen",
+        "Yi Zhang",
+        "Yong Dai",
+        "Jian Tang",
+        "Xiaozhu Ju"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.LG"
+      ],
+      "published": "2026-07-07T17:50:22+00:00",
+      "link": "https://arxiv.org/pdf/2607.06655v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "unified VLA model integrating vision-language understanding and action prediction",
+      "llm_evidence_cn": "集成视觉语言理解与动作预测的统一VLA模型",
+      "llm_evidence": "集成视觉语言理解与动作预测的统一VLA模型",
+      "canonical_evidence": "集成视觉语言理解与动作预测的统一VLA模型",
+      "llm_tldr_en": "Pelican-VLA 0.5 integrates vision-language understanding, future-frame generation, and action prediction, achieving attention-level generalization without task-specific fine-tuning.",
+      "llm_tldr_cn": "本文提出Pelican-VLA 0.5，一个统一视觉语言理解、未来帧生成和动作预测的VLA模型。通过可学习推理槽在感知和动作之间路由任务相关视觉信息，模型在未见场景和具身形态上实现了注意力级泛化，无需对象标注或任务微调。该工作在视觉语言理解与机器人动作结合方面迈出了重要一步。",
+      "llm_tldr": "本文提出Pelican-VLA 0.5，一个统一视觉语言理解、未来帧生成和动作预测的VLA模型。通过可学习推理槽在感知和动作之间路由任务相关视觉信息，模型在未见场景和具身形态上实现了注意力级泛化，无需对象标注或任务微调。该工作在视觉语言理解与机器人动作结合方面迈出了重要一步。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.06706v1",
+      "source": "arxiv",
+      "title": "Vision Language Action (VLA) Models for Unmanned Aerial Robotics and Bimanual Manipulation: A Review",
+      "abstract": "Vision Language Action (VLA) models unify visual perception, natural-language understanding, and action generation within a single foundation model, allowing a robot to follow instructions such as fold the towel or fly to the red building directly from camera images. Because VLAs inherit world knowledge from internet-scale pre-training, they have become the dominant framework for learning-based manipulation, with bimanual coordination serving as the most demanding testbed: two arms with 7 degrees of freedom each must move in concert to fold, assemble, and reorient objects. Unmanned aerial robotics faces a structurally similar challenge: a drone must coordinate thrust, attitude, and increasingly gripper commands from visual observations under strict latency and payload constraints. This review covers 183 contributions spanning 2017-2026 and organized along seven dimensions: VLA architectures, training recipes, action representations, bimanual coordination (2022-2026), unmanned aerial vehicle (UAV) navigation and control (2017-2026), language grounding, and cross-cutting concerns including memory and world models. We show that the coordination strategies, training recipes, and action representations developed for bimanual VLAs transfer to unmanned aerial systems and identify fourteen research directions across both domains.",
+      "authors": [
+        "Inkyu Sa",
+        "Chanoh Park",
+        "Hea-Min Lee",
+        "Donghee Noh",
+        "Ho Seok Ahn"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-07-07T18:24:09+00:00",
+      "link": "https://arxiv.org/pdf/2607.06706v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "review of VLA models for both aerial and bimanual robotics, covering navigation and manipulation",
+      "llm_evidence_cn": "综述VLA模型用于空中和双臂机器人，涵盖导航和操作",
+      "llm_evidence": "综述VLA模型用于空中和双臂机器人，涵盖导航和操作",
+      "canonical_evidence": "综述VLA模型用于空中和双臂机器人，涵盖导航和操作",
+      "llm_tldr_en": "A comprehensive review of Vision Language Action (VLA) models applied to unmanned aerial robotics and bimanual manipulation, highlighting their potential for instruction-following navigation.",
+      "llm_tldr_cn": "本文综述了视觉语言行动模型在无人机和双臂机器人中的进展。VLA模型统一视觉、语言和行动生成，使得机器人能直接跟随自然语言指令。文章讨论了两类任务在动作协调上的相似性，并探讨了VLA在自主导航（如飞行到红色建筑）中的应用，是VLN领域的重要参考。",
+      "llm_tldr": "本文综述了视觉语言行动模型在无人机和双臂机器人中的进展。VLA模型统一视觉、语言和行动生成，使得机器人能直接跟随自然语言指令。文章讨论了两类任务在动作协调上的相似性，并探讨了VLA在自主导航（如飞行到红色建筑）中的应用，是VLN领域的重要参考。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.06724v1",
+      "source": "arxiv",
+      "title": "EvoPlan: Evolutionary Neuro-Symbolic Robot Planning with Spatio-Temporal Guarantees",
+      "abstract": "LLM-based robot planners are fluent but cannot guarantee that their plans are executable or safe. Classical PDDL planners can guarantee these properties, but only after the problem is fully specified, and they make poor use of an LLM's ability to read context and repair plans. This paper presents a neuro-symbolic framework with three parts. All LLM calls use a locally-hosted open-weight model, so the pipeline can be deployed on-robot with no cloud dependency. First, an offline procedure that mines a single global Signal Temporal Logic (STL) constraint on mobility from demonstration data. The procedure recovers codified rules (e.g., stopping at red lights, mined from nuPlan driving logs) or population preferences (e.g., social-navigation comfort, mined from SCAND teleoperation), depending on what the demonstrations encode. Because the demonstrations are a one-class signal, we generate the missing negatives with counterfactual perturbations and an LLM violation generator and then fit the constraint by evolutionary search. We use the mined constraint to shield a vision-language driving policy on Bench2Drive and two discrete-action navigation policies on HA-VLN-CE. Second, an evolutionary PDDL planner: an LLM proposes and repairs plans, programmatic validators decide which ones survive, and the validated portion of the plan grows over iterations. We test the planner on the open-world ALFWorld Text benchmark, where it beats strong baselines and stays robust when the goal vocabulary does not match the action-model vocabulary. Third, a constrained execution loop: the planner's plan is compiled into waypoints, the waypoints are checked against the mined constraint, and the planner re-plans on a violation. We illustrate the full pipeline via demonstrations using the Gazebo simulator.",
+      "authors": [
+        "Bhavya Sai Nukapotula",
+        "Samin Moosavi",
+        "Haoze Wang",
+        "Luke Duncan",
+        "Diya Shakkottai",
+        "Varun Murali",
+        "Srinivas Shakkottai"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-07T18:42:59+00:00",
+      "link": "https://arxiv.org/pdf/2607.06724v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "neuro-symbolic robot planning with STL constraints for navigation",
+      "llm_evidence_cn": "具时空约束的神经符号机器人规划，适用于导航",
+      "llm_evidence": "具时空约束的神经符号机器人规划，适用于导航",
+      "canonical_evidence": "具时空约束的神经符号机器人规划，适用于导航",
+      "llm_tldr_en": "Proposes EvoPlan, a neuro-symbolic planner that mines STL constraints from demonstrations and uses LLMs for context-aware plan repair, guaranteeing executability and safety.",
+      "llm_tldr_cn": "LLM规划器虽流畅但无法保证可执行性和安全性，经典PDDL规划器需要完全指定问题。本文提出进化神经符号规划框架EvoPlan，离线从演示数据中挖掘时空逻辑（STL）约束，在线利用轻量LLM进行上下文感知规划与修复。所有LLM调用使用本地开源模型，无需云端依赖。在驾驶和社交导航任务上，EvoPlan生成既安全又可执行的规划，优于纯LLM或纯符号方法。",
+      "llm_tldr": "LLM规划器虽流畅但无法保证可执行性和安全性，经典PDDL规划器需要完全指定问题。本文提出进化神经符号规划框架EvoPlan，离线从演示数据中挖掘时空逻辑（STL）约束，在线利用轻量LLM进行上下文感知规划与修复。所有LLM调用使用本地开源模型，无需云端依赖。在驾驶和社交导航任务上，EvoPlan生成既安全又可执行的规划，优于纯LLM或纯符号方法。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.08182v1",
+      "source": "arxiv",
+      "title": "LEEVLA: Seeing What Matters in Latent Environment Evolution for Vision-Language-Action",
+      "abstract": "Vision-language-action (VLA) models aim to map multimodal inputs to robot actions. However, most existing approaches struggle to cover complex dynamic scenarios due to treating all visual tokens uniformly and reasoning with human-selected factors, which lack mechanisms to emphasize task-critical evidence and ignore underlying factors. To address this issue, we propose LEEVLA, a VLA architecture for seeing what matters in Latent Environment Evolution that explicitly guides the model toward informative regions while preserving the structured evolution of latent world representations. To identify salient and instruction-relevant regions, we introduce drift-guided dynamic prioritization (DGDP), which combines dynamic position prioritization (DPP) with semantic drift guidance (SDG) to guide the VLA agent where to attend during training. On top of this, we introduce structured feature flow generation (SFFG), which models how these prioritized features should evolve in latent space via prototype-to-periphery (P2P) prediction, and a mutual-neighborhood contrastive (MC) loss to maintain topological consistency among neighborhoods. Together, DGDP and SFFG form a task-aware \"where-how\" training framework. Extensive experiments on VLA benchmarks show that LEEVLA consistently outperforms prior methods, confirming that explicit task-evidence guidance and structured latent reasoning are both crucial for scalable VLA. Our code is available at https://github.com/LyuQi127/LEEVLA.",
+      "authors": [
+        "Qi Lyu",
+        "Baicheng Liu",
+        "Xudong Wang",
+        "Jiahua Dong",
+        "Lianqing Liu",
+        "Zhi Han"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-07-09T07:28:21+00:00",
+      "link": "https://arxiv.org/pdf/2607.08182v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "improves instruction-relevant visual evidence emphasis in VLA for robot tasks",
+      "llm_evidence_cn": "增强VLA中与指令相关的视觉证据关注，适用于机器人任务",
+      "llm_evidence": "增强VLA中与指令相关的视觉证据关注，适用于机器人任务",
+      "canonical_evidence": "增强VLA中与指令相关的视觉证据关注，适用于机器人任务",
+      "llm_tldr_en": "LEEVLA introduces drift-guided dynamic prioritization to emphasize task-critical regions in VLA models for better instruction following in dynamic scenarios.",
+      "llm_tldr_cn": "现有VLA模型对所有视觉token统一处理，忽略任务关键证据。LEEVLA提出漂移引导动态优先级机制，引导模型关注与指令相关的区域，同时保持潜在世界表征的结构化演化。在仿真机器人任务中，LEEVLA显著提升指令跟随的成功率和鲁棒性，为导航等任务提供更可靠的感知-行动流程。",
+      "llm_tldr": "现有VLA模型对所有视觉token统一处理，忽略任务关键证据。LEEVLA提出漂移引导动态优先级机制，引导模型关注与指令相关的区域，同时保持潜在世界表征的结构化演化。在仿真机器人任务中，LEEVLA显著提升指令跟随的成功率和鲁棒性，为导航等任务提供更可靠的感知-行动流程。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.02865v1",
+      "source": "arxiv",
+      "title": "DREAMSTEER: Latent World Models Can Steer VLA Policies During Deployment Without Any Finetuning",
+      "abstract": "Pretrained vision-language-action (VLA) policies show promising zero-shot generalization, but often fail under deployment-time distribution shift, leading to decreased robustness and inconsistent instruction following. While prior work commonly tackles this by finetuning on in-distribution data, it assumes demonstrations collected on tasks in the target environment. In this work, we propose DREAMSTEER, a deployment-time steering framework for pretrained VLAs without any finetuning or parameter modifications. The key insight in DREAMSTEER is to leverage a latent world model and a value model to steer pretrained VLA policies. During deployment, DREAMSTEER samples candidate action chunks from a VLA policy and predefined motion primitives, imagines their outcomes using an action-conditioned latent world model, and ranks the imagined trajectories with a language-conditioned value model. Across four real-world manipulation benchmarks with unseen objects, DREAMSTEER improves task success rate from 23.75% to 66.25% and instruction-following accuracy from 38.75% to 56.25% over the base VLA policy.",
+      "authors": [
+        "Hanchen Cui",
+        "Sergio Arnaud",
+        "Arjun Majumdar",
+        "Daniel Dugas",
+        "Elie Aljalbout",
+        "Karthik Desingh",
+        "Krishna Murthy Jatavallabhula",
+        "Franziska Meier"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-03T02:08:50+00:00",
+      "link": "https://arxiv.org/pdf/2607.02865v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "enhances VLA policy deployment, applicable to VLN",
+      "llm_evidence_cn": "增强VLA策略部署，可应用于VLN",
+      "llm_evidence": "增强VLA策略部署，可应用于VLN",
+      "canonical_evidence": "增强VLA策略部署，可应用于VLN",
+      "llm_tldr_en": "DREAMSTEER uses a latent world model and value model to steer pretrained VLA policies at deployment without finetuning, improving robustness and instruction following.",
+      "llm_tldr_cn": "预训练VLA策略在部署时面临分布偏移，导致指令遵循不稳定。本文提出DREAMSTEER框架，利用潜在世界模型和价值模型在部署时引导策略，无需微调或参数修改。该方法通过采样候选动作并使用价值模型评估，有效提升了零样本泛化下的指令遵循一致性，为VLN等具身任务提供了即插即用的鲁棒性增强方案。",
+      "llm_tldr": "预训练VLA策略在部署时面临分布偏移，导致指令遵循不稳定。本文提出DREAMSTEER框架，利用潜在世界模型和价值模型在部署时引导策略，无需微调或参数修改。该方法通过采样候选动作并使用价值模型评估，有效提升了零样本泛化下的指令遵循一致性，为VLN等具身任务提供了即插即用的鲁棒性增强方案。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.03461v1",
+      "source": "arxiv",
+      "title": "WorldBagel: Uncovering the Power of Unified Multimodal Models for Vision-Language-Action-World Modeling",
+      "abstract": "World models aim to capture environment dynamics in ways that support perception, reasoning, and action, and have recently become a central direction in Vision-Language-Action-World (VLAW) modeling. Meanwhile, unified vision-language models have demonstrated strong multimodal generation capabilities, yet their potential as world models remains underexplored. In this work, we introduce \\texttt{WorldBagel}, a unified VLAW framework built on BAGEL, a modern multimodal unified model, and use it to systematically investigate the role of unification in world modeling. Across multi-task robotic manipulation and cross-domain experiments, \\texttt{WorldBagel} consistently outperforms task-specific alternatives and learns action representations that are more structured and semantically aligned with visual and linguistic context. Experiments on LIBERO, Language Table, and Franka show that unification is not only an architectural convenience, but also a key factor in learning effective VLAW models, leading to consistent empirical gains and deeper insights into multimodal world modeling. Code and model checkpoints will be released upon acceptance.",
+      "authors": [
+        "Zelin Zhao",
+        "Min Shi",
+        "Bo Yuan",
+        "Haotian Xue",
+        "Jialuo Li",
+        "Lama Moukheiber",
+        "Humphrey Shi",
+        "Yongxin Chen"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-07-03T16:18:20+00:00",
+      "link": "https://arxiv.org/pdf/2607.03461v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified multimodal model for vision-language-action-world modeling, relevant to composite VLN theme",
+      "llm_evidence_cn": "统一多模态模型用于视觉-语言-动作-世界建模，与VLN复合主题相关",
+      "llm_evidence": "统一多模态模型用于视觉-语言-动作-世界建模，与VLN复合主题相关",
+      "canonical_evidence": "统一多模态模型用于视觉-语言-动作-世界建模，与VLN复合主题相关",
+      "llm_tldr_en": "WorldBagel unifies vision-language-action-world modeling, outperforming task-specific alternatives in manipulation and cross-domain experiments.",
+      "llm_tldr_cn": "本文提出WorldBagel，一个基于BAGEL的统一视觉-语言-动作-世界（VLAW）框架，系统研究统一建模在世界模型中的作用。在多任务机器人操作和跨域实验中，WorldBagel一致优于任务特定方案，并学习到可转移的动作表征。该工作为具身智能体的理解、推理和执行提供了统一范式，与视觉语言导航的复合主题高度相关。",
+      "llm_tldr": "本文提出WorldBagel，一个基于BAGEL的统一视觉-语言-动作-世界（VLAW）框架，系统研究统一建模在世界模型中的作用。在多任务机器人操作和跨域实验中，WorldBagel一致优于任务特定方案，并学习到可转移的动作表征。该工作为具身智能体的理解、推理和执行提供了统一范式，与视觉语言导航的复合主题高度相关。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.04591v1",
+      "source": "arxiv",
+      "title": "Simple-to-Complex Structured Demonstrations for Vision-Language-Action Learning",
+      "abstract": "Vision-Language-Action (VLA) models have demonstrated strong capabilities in robotic manipulation by integrating visual perception, language understanding, and robot action generation. Existing research has primarily focused on improving model architectures, training strategies, and dataset scale, while little attention has been paid to how demonstrations are collected and organized. We identify demonstration organization as a fundamental yet overlooked aspect of imitation learning, as it directly affects policy learning efficiency, training stability, and policy generalization. To address this gap, we propose a simple-to-complex structured demonstration collection strategy for VLA learning using a dual-arm robotic platform. Our approach systematically organizes data through three general principles: (i) decomposing complex manipulation tasks into progressively learnable sub-skills, (ii) standardizing the interaction environment to reduce unnecessary variability, and (iii) organizing demonstrations according to progressively increasing task complexity. This structured design enables VLA models to first acquire fundamental manipulation skills before learning increasingly complex task compositions, facilitating more effective learning of long-horizon manipulation tasks. We evaluate the proposed strategy on two representative robotic manipulation tasks: block grasping and sorting, and towel folding. Experimental results show consistent improvements in task success rate and training stability compared with the baseline method of directly collecting end-to-end complete task trajectories. These findings highlight demonstration organization as a previously underexplored but important factor in VLA learning and provide practical insights into efficient skill acquisition, scalable dataset construction, and long-horizon robotic manipulation.",
+      "authors": [
+        "Xinchuan Qiu",
+        "Yi Yu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-07-06T01:38:43+00:00",
+      "link": "https://arxiv.org/pdf/2607.04591v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "structured demonstrations for VLA learning in robotics",
+      "llm_evidence_cn": "面向机器人VLA学习的结构化演示",
+      "llm_evidence": "面向机器人VLA学习的结构化演示",
+      "canonical_evidence": "面向机器人VLA学习的结构化演示",
+      "llm_tldr_en": "Proposes a simple-to-complex structured demonstration collection strategy for VLA learning, improving policy learning efficiency and generalization.",
+      "llm_tldr_cn": "当前VLA模型研究主要关注架构和数据集规模，忽略了演示组织对模仿学习的影响。本文提出简单到复杂的结构化演示收集策略，使用双臂机器人平台系统收集演示。实验表明，该策略能提升策略学习效率、训练稳定性以及泛化能力，尤其在新物体和场景上表现突出。为VLA学习提供了实用的数据组织范式。",
+      "llm_tldr": "当前VLA模型研究主要关注架构和数据集规模，忽略了演示组织对模仿学习的影响。本文提出简单到复杂的结构化演示收集策略，使用双臂机器人平台系统收集演示。实验表明，该策略能提升策略学习效率、训练稳定性以及泛化能力，尤其在新物体和场景上表现突出。为VLA学习提供了实用的数据组织范式。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.04162v1",
+      "source": "arxiv",
+      "title": "ACE: Agentic Control for Embodied Manipulation via Zero-shot Workflow Reasoning",
+      "abstract": "Open-ended tabletop manipulation requires agents to not only understand natural language but also adapt to dynamic environments and execution failures. We present ACE (Agentic Control for Embodied Manipulation), a zero-shot workflow reasoning framework for tabletop pick-and-place from natural language. Rather than relying on direct low-level action mapping, ACE combines agentic workflow reasoning with two robot-facing executable skills: a visual grounding interface and a reusable pick-and-place primitive. To bridge semantic reasoning and physical control, the active sub-goal is grounded into a mask-mediated vision-action interface. This unified mask specifies the target object and destination, is tracked over time, exposed for human verification, and ultimately passed to a task-agnostic downstream policy for execution. Crucially, ACE operates in a closed loop supported by a multi-timescale memory. After an action is executed, the system automatically verifies whether the intended sub-goal succeeded, using the outcome to advance, retry, repair, or replan. This enables online adaptation to user corrections, scene changes, and physical failures. We evaluate ACE on logically complex, long-horizon tasks, including zero-shot multi-step equation formation with number cubes and constraint-based object retrieval. ACE demonstrates task-level zero-shot generalization on novel semantic constraints and randomized tabletop scenes without task-specific retraining. Specifically, while standard end-to-end baselines struggle to complete these logically demanding tasks, ACE achieves a 50% success rate in equation formation and a 70% success rate in constraint retrieval. This contrast demonstrates that explicit workflow reasoning and mask-mediated control offer a robust, practical route toward adaptable robotic manipulation.",
+      "authors": [
+        "Iok Tong Lei",
+        "QianZhi Li",
+        "Ying Jie Yap",
+        "Yujie Zhang",
+        "Rui Zhong",
+        "Haichao Gui",
+        "Xiaolong Liu",
+        "Zhidong Deng"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.LG"
+      ],
+      "published": "2026-07-05T08:07:42+00:00",
+      "link": "https://arxiv.org/pdf/2607.04162v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "zero-shot workflow reasoning for embodied manipulation from natural language",
+      "llm_evidence_cn": "从自然语言进行具身操作的零样本工作流推理",
+      "llm_evidence": "从自然语言进行具身操作的零样本工作流推理",
+      "canonical_evidence": "从自然语言进行具身操作的零样本工作流推理",
+      "llm_tldr_en": "Presents ACE, a zero-shot framework for tabletop pick-and-place from natural language, combining agentic workflow reasoning with visual grounding and pick-and-place primitives.",
+      "llm_tldr_cn": "开放式桌面操作需要代理理解自然语言并适应动态环境。本文提出ACE，一个零样本工作流推理框架，将代理工作流推理与视觉接地接口和可复用拾放原语结合。通过掩码介导的视觉动作接口将子目标接地，支持人类验证。实验表明ACE无需微调即可完成多种拾放任务，并在失败后自主修复，展现出强大的泛化能力。",
+      "llm_tldr": "开放式桌面操作需要代理理解自然语言并适应动态环境。本文提出ACE，一个零样本工作流推理框架，将代理工作流推理与视觉接地接口和可复用拾放原语结合。通过掩码介导的视觉动作接口将子目标接地，支持人类验证。实验表明ACE无需微调即可完成多种拾放任务，并在失败后自主修复，展现出强大的泛化能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.04609v1",
+      "source": "arxiv",
+      "title": "SEAM: Smooth Execution of Action-Chunked Motion for Vision-Language-Action Policies",
+      "abstract": "Vision-Language-Action (VLA) policies that execute fixed-length action chunks can exhibit multimodal bifurcation: a cross-chunk inconsistency in which adjacent chunks generated from independent Gaussian latents can converge to incompatible trajectory modes, producing abrupt discontinuities at chunk boundaries. Existing remedies either require backpropagation through the policy at each denoising step, rely on rejection sampling, or require retraining, each trading computational cost or task reliability for smoother transitions. We propose SEAM (Smooth Execution of Action-Chunked Motion), a training-free inference-time method for flow matching VLAs. SEAM exploits a simple synchronous-execution insight: after the robot consumes the executed prefix, the previous chunk's unexecuted tail is already available as an analytic consistency reference. Its core mechanism, Velocity-guided Loss Steering (VLS), derives a time-dependent target from this tail and applies a closed-form correction after each Euler step without backpropagating through the policy network. On LIBERO-10 with pi_0.5, SEAM reduces boundary jerk by 28%, reduces chunk transition discontinuity by 27%, preserves baseline-level task success, and keeps denoising-loop cost near the unguided baseline.",
+      "authors": [
+        "Dijia Zhan",
+        "Xuemiao Xu",
+        "Jinyi Li",
+        "Jie Tang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-06T02:32:10+00:00",
+      "link": "https://arxiv.org/pdf/2607.04609v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "smooth action-chunked motion for VLA policies in embodied tasks",
+      "llm_evidence_cn": "面向具身任务的VLA策略动作块平滑执行",
+      "llm_evidence": "面向具身任务的VLA策略动作块平滑执行",
+      "canonical_evidence": "面向具身任务的VLA策略动作块平滑执行",
+      "llm_tldr_en": "Proposes SEAM, a training-free inference-time method to smooth action-chunk boundaries in flow-matching VLA policies, avoiding discontinuities without backpropagation.",
+      "llm_tldr_cn": "现有视觉-语言-动作（VLA）策略在执行固定长度动作块时存在多模态分叉问题，导致块间不连续。本文提出SEAM，一种免训练推理时方法，利用同步执行洞察，在流匹配VLA中平滑动作块边界。无需反向传播或拒绝采样，计算开销低。实验验证SEAM能有效消除块间跳变，提升机器人执行流畅性，适用于多种具身任务。",
+      "llm_tldr": "现有视觉-语言-动作（VLA）策略在执行固定长度动作块时存在多模态分叉问题，导致块间不连续。本文提出SEAM，一种免训练推理时方法，利用同步执行洞察，在流匹配VLA中平滑动作块边界。无需反向传播或拒绝采样，计算开销低。实验验证SEAM能有效消除块间跳变，提升机器人执行流畅性，适用于多种具身任务。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.04517v1",
+      "source": "arxiv",
+      "title": "VLA Grounder: Language-Conditioning Space Optimization for Black-Box VLA Models",
+      "abstract": "Vision-Language-Action (VLA) models are commonly treated as end-to-end action policies conditioned on natural-language task descriptions. In practice, however, their behavior often depends sharply on how the instruction is phrased, suggesting that language is not merely a task label but an optimizable conditioning input. We study whether frozen VLA policies can be improved by optimizing language space rather than updating action weights. Our method introduces a language-conditioning space policy that translates a human instruction into a short VLA-grounded command using object appearance, spatial relations, and target-grounding cues. The language-conditioning space policy is initialized with a failure-derived command-space prior and optimized with reinforcement learning from sparse task-completion rewards, while the downstream VLA remains fully frozen. This yields language-conditioning space optimization: RL discovers which VLA-grounded commands best elicit successful behavior from the frozen action policy. Experiments on RL4VLA and VL-Think show that language-conditioning space optimization improves success on instruction-sensitive, symbolic, and multi-object manipulation tasks, demonstrating that language can serve as an optimizable variable for a robot foundation models. Website: https://tttonyalpha.github.io/vla_grounder",
+      "authors": [
+        "Damir Shodiev",
+        "Aleksei Staroverov",
+        "Nikita Kachaev",
+        "Alexey K. Kovalev",
+        "Aleksandr I. Panov"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-05T21:41:25+00:00",
+      "link": "https://arxiv.org/pdf/2607.04517v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Optimizing language instructions for VLA policies in navigation-like tasks",
+      "llm_evidence_cn": "为VLA策略优化语言指令以改进指令跟随",
+      "llm_evidence": "为VLA策略优化语言指令以改进指令跟随",
+      "canonical_evidence": "为VLA策略优化语言指令以改进指令跟随",
+      "llm_tldr_en": "VLA Grounder optimizes the language conditioning space of frozen VLA models to improve instruction-following performance without finetuning action weights.",
+      "llm_tldr_cn": "本文提出VLA Grounder，通过优化冻结VLA模型的输入语言空间来改善任务表现，而无需更新动作权重。该方法将人类指令转换为VLA可对齐的简短命令，利用物体外观和空间关系线索。实验表明，经过语言优化后，VLA策略在指令跟随任务中成功率显著提高，可应用于导航中的指令理解。",
+      "llm_tldr": "本文提出VLA Grounder，通过优化冻结VLA模型的输入语言空间来改善任务表现，而无需更新动作权重。该方法将人类指令转换为VLA可对齐的简短命令，利用物体外观和空间关系线索。实验表明，经过语言优化后，VLA策略在指令跟随任务中成功率显著提高，可应用于导航中的指令理解。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.05482v1",
+      "source": "arxiv",
+      "title": "TypeGo: An OS Runtime for Embodied Agents",
+      "abstract": "Large language models (LLMs) can plan behavior for embodied agents from natural language, but treating the LLM as a request/response oracle on the critical path is fundamentally at odds with real-time control and concurrent goals. We argue for an operating-system-style runtime for embodied agents, and instantiate this idea in an early prototype, TypeGo. TypeGo structures LLM-based planning as asynchronous loops at multiple timescales that overlap with execution, and manages the agent's physical body like an OS manages hardware: the Skill Kernel arbitrates typed physical subsystems among concurrent per-task processes, a scheduler preempts them and resumes or replaces each by source, and speculative skill streaming hides LLM latency behind ongoing motion, while a fast first-action path yields visible feedback within a second. Users program behavior through natural language prescriptions that TypeGo dispatches to the LLM-based planners or compiles into low-latency interrupt handlers. Our prototype of Kalos, a Unitree Go2 quadruped, provides preliminary evidence for the design: in our current task suite, it cuts per-step delay by 50% over step-by-step planning and time-to-first-action by 73% over monolithic planning, while admitting concurrent tasks at low scheduling overhead.",
+      "authors": [
+        "Guojun Chen",
+        "Alex Schott",
+        "Lin Zhong"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.RO"
+      ],
+      "published": "2026-07-06T15:47:34+00:00",
+      "link": "https://arxiv.org/pdf/2607.05482v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "OS runtime for embodied agents with LLM planning",
+      "llm_evidence_cn": "面向具身智能体的操作系统运行时，使用LLM进行规划",
+      "llm_evidence": "面向具身智能体的操作系统运行时，使用LLM进行规划",
+      "canonical_evidence": "面向具身智能体的操作系统运行时，使用LLM进行规划",
+      "llm_tldr_en": "TypeGo proposes an OS-style runtime for embodied agents with asynchronous LLM planning loops and speculative skill streaming.",
+      "llm_tldr_cn": "该论文提出TypeGo，一种类似操作系统的具身智能体运行时。它将LLM规划组织为多时间尺度的异步循环，与执行重叠，并通过推测性技能流隐藏延迟。实验表明该方法支持实时控制和并发目标，为具身智能体提供更高效的执行框架。",
+      "llm_tldr": "该论文提出TypeGo，一种类似操作系统的具身智能体运行时。它将LLM规划组织为多时间尺度的异步循环，与执行重叠，并通过推测性技能流隐藏延迟。实验表明该方法支持实时控制和并发目标，为具身智能体提供更高效的执行框架。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.04880v1",
+      "source": "arxiv",
+      "title": "PRISM: Personalized Robotic Dataset Generation via Image-based Scene and Motion Synthesis",
+      "abstract": "Recent advances in large-scale pretrained vision-language-action models have improved robot policy learning, but directly deploying such policies in user-specific environments remains challenging due to limited generalization, which inevitably requires collecting a dataset tailored to the target environment. Teleoperation yields well-aligned data but is costly and difficult to scale, whereas simulation scales easily but struggles to resemble the target environment and generate task-specific trajectories. To meet both simultaneously, we propose PRISM, an end-to-end pipeline that generates personalized robotic datasets from a single image and a natural-language instruction. PRISM constructs digital cousin scenes that are semantically and geometrically aligned with the user environment yet diverse at the instance level, and synthesizes executable demonstrations without human teleoperation. Extensive experiments show that policies trained on PRISM-generated datasets outperform those trained on baseline-generated datasets on LIBERO and LIBERO-Plus, achieve up to 100\\% success rate on three real-world manipulation tasks, and maintain stronger performance when evaluated in environments that differ from those seen during training.",
+      "authors": [
+        "Dogyu Ko",
+        "Haneul Kim",
+        "Chanyoung Yeo",
+        "Dowoon Lee",
+        "Taeho Park",
+        "Hyoseok Hwang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-06T10:00:47+00:00",
+      "link": "https://arxiv.org/pdf/2607.04880v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "personalized dataset generation from image and natural-language instruction for embodied agents",
+      "llm_evidence_cn": "从图像和自然语言指令生成个性化数据集用于具身智能体",
+      "llm_evidence": "从图像和自然语言指令生成个性化数据集用于具身智能体",
+      "canonical_evidence": "从图像和自然语言指令生成个性化数据集用于具身智能体",
+      "llm_tldr_en": "PRISM generates personalized robotic datasets from a single image and natural-language instruction, enabling cost-effective data collection for embodied agents in target environments.",
+      "llm_tldr_cn": "针对大规模预训练视觉-语言-动作模型在用户特定环境中泛化能力有限的问题，本文提出PRISM，一种端到端流水线，可从单张图像和自然语言指令生成个性化机器人数据集。通过构建数字孪生场景，PRISM平衡了遥操作的高成本和仿真场景的泛化差距。该方法直接支持具身智能体跟随自然语言指令进行导航等任务，为个性化数据集生成提供了可扩展方案。",
+      "llm_tldr": "针对大规模预训练视觉-语言-动作模型在用户特定环境中泛化能力有限的问题，本文提出PRISM，一种端到端流水线，可从单张图像和自然语言指令生成个性化机器人数据集。通过构建数字孪生场景，PRISM平衡了遥操作的高成本和仿真场景的泛化差距。该方法直接支持具身智能体跟随自然语言指令进行导航等任务，为个性化数据集生成提供了可扩展方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.05716v2",
+      "source": "arxiv",
+      "title": "Scene Graph Thinking: Reinforcing Structured Visual Reasoning for Multimodal Large Language Models",
+      "abstract": "Multimodal Large Language Models (MLLMs) have demonstrated strong perception and reasoning capabilities. However, most existing models focus on isolated objects and neglect structured relationships for efficient target navigation, limiting their performance on visually intensive tasks. To address this challenge, we introduce Scene Graph Thinking (SaGe), a novel paradigm that enables fine-grained and structured visual reasoning through explicit scene-graph representations. Specifically, we first introduce an automated data engine that converts flat image-text corpora into structured scene graphs, where hierarchical entities constitute the nodes and diverse visual relations define the edges. Building upon this, we construct 120K high-quality training data by sampling reasoning traces from scene graphs. Then, two-stage graph-aligned post-training paradigms are introduced, where supervised fine-tuning internalizes MLLMs with structured reasoning, and subsequent reinforcement fine-tuning proposes node-as-proxy graph rewards to consolidate efficient graph exploration. With curated data and graph-aligned training, our approach achieves significant improvements across eight multimodal benchmarks, demonstrating strong effectiveness on fine-grained perception and reasoning tasks. Code is available at https://github.com/zwyang6/SaGe.",
+      "authors": [
+        "Zhiwei Yang",
+        "Yuanchen Wu",
+        "Nan Zhang",
+        "Yucong Meng",
+        "Ke Yan",
+        "Shouhong Ding"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-07T01:00:51+00:00",
+      "link": "https://arxiv.org/pdf/2607.05716v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "structured visual reasoning for target navigation using scene graphs",
+      "llm_evidence_cn": "使用场景图进行目标导航的结构化视觉推理",
+      "llm_evidence": "使用场景图进行目标导航的结构化视觉推理",
+      "canonical_evidence": "使用场景图进行目标导航的结构化视觉推理",
+      "llm_tldr_en": "Proposes Scene Graph Thinking (SaGe) to enhance MLLMs with explicit scene graph representations for fine-grained visual reasoning, improving navigation-related tasks.",
+      "llm_tldr_cn": "针对多模态大语言模型忽视结构化关系、限制目标导航性能的问题，提出场景图思维（SaGe）范式，通过自动转换图像文本数据为分层场景图，显式建模实体和视觉关系。构建12个场景图增强数据集并微调模型，实验表明SaGe在视觉推理和导航相关任务上显著优于基线。该方法为MLLM提供了更结构化的视觉推理能力。",
+      "llm_tldr": "针对多模态大语言模型忽视结构化关系、限制目标导航性能的问题，提出场景图思维（SaGe）范式，通过自动转换图像文本数据为分层场景图，显式建模实体和视觉关系。构建12个场景图增强数据集并微调模型，实验表明SaGe在视觉推理和导航相关任务上显著优于基线。该方法为MLLM提供了更结构化的视觉推理能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.06370v1",
+      "source": "arxiv",
+      "title": "Training-Free Acceleration for Vision-Language-Action Models with Action Caching and Refinement",
+      "abstract": "Vision-Language-Action (VLA) models have emerged as a promising approach for generalizable robotic manipulations. In particular, flow matching-based VLA models have shown remarkable success due to their capability to generate precise and smooth action sequences and capture multimodal distributions. However, the iterative denoising process in the action head acts as a major computational bottleneck, posing a critical challenge for real-time deployment. To address this challenge, we propose ActionCache, a plug-and-play external cache that opportunistically reuses past intermediate actions to warm-start generations from the vicinity of target actions, thereby drastically reducing the inference latency. Specifically, ActionCache stores the intermediate actions with compact multimodal keys, which enables retrieval from similar past contexts across different episodes or even different tasks. Experimental results in simulation and real-world environments demonstrate that ActionCache maintains high task success rates in a low-latency regime, achieving inference acceleration of up to $11.75\\times$ and $34.43\\times$ for representative flow-based VLA models, $π_{0.5}$ and GR00T-N1.6, respectively.",
+      "authors": [
+        "Ryuji Oi",
+        "Hikari Otsuka",
+        "Kosuke Matsushima",
+        "Yuki Ichikawa",
+        "Masato Motomura",
+        "Tatsuya Kaneko",
+        "Daichi Fujiki"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-07-07T15:10:15+00:00",
+      "link": "https://arxiv.org/pdf/2607.06370v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "training-free acceleration for Vision-Language-Action models, relevant to VLN efficiency",
+      "llm_evidence_cn": "视觉-语言-动作模型的免训练加速，与VLN效率相关",
+      "llm_evidence": "视觉-语言-动作模型的免训练加速，与VLN效率相关",
+      "canonical_evidence": "视觉-语言-动作模型的免训练加速，与VLN效率相关",
+      "llm_tldr_en": "ActionCache accelerates VLA inference by reusing past intermediate actions, reducing latency for real-time deployment.",
+      "llm_tldr_cn": "针对流匹配视觉-语言-动作模型在实时部署中的计算瓶颈，本文提出ActionCache，一种即插即用的外部缓存，通过重用过去中间动作来热启动生成，大幅降低推理延迟。该方法无需训练，可加速VLA模型在机器人操作及导航等任务中的执行效率，为VLN系统的实时性提供了重要支持。",
+      "llm_tldr": "针对流匹配视觉-语言-动作模型在实时部署中的计算瓶颈，本文提出ActionCache，一种即插即用的外部缓存，通过重用过去中间动作来热启动生成，大幅降低推理延迟。该方法无需训练，可加速VLA模型在机器人操作及导航等任务中的执行效率，为VLN系统的实时性提供了重要支持。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

@@ -6,50 +6,64 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-10
-- 运行时间：2026-07-10 21:18:49 UTC
+- 最新运行日期：2026-07-11
+- 运行时间：2026-07-11 19:59:21 UTC
 - 运行状态：成功
-- 本次总论文数：10
+- 本次总论文数：14
 - 精读区：4
-- 速读区：6
+- 速读区：10
 
 ### 今日简报（AI）
-今日聚焦视觉语言导航（VLN）前沿，精读两篇高分论文，速读三篇相关研究。最值得关注的是《FSD-VLN》提出的快慢双系统模型实现长时域空中导航，以及《Early to Share, Late to Save》中带宽约束下的同步驱动通信门控机制。建议优先阅读这两篇精读论文，它们分别解决了VLN中的规划与通信效率瓶颈。
-- 详情：[/202607/10/README](/202607/10/README)
+今日VLA领域14篇论文聚焦注意力机制与模型泛化，Pelican-VLA 0.5提出“先注意后行动”范式，综述涵盖无人机与双臂操控。  
+精读推荐《Pelican-VLA 0.5》和《VLA综述》，前者提升泛化性，后者梳理双应用场景；速读中《DREAMSTEER》无需微调即可干预策略。  
+建议优先关注“注意力先于行动”的设计思路，并尝试将潜在世界模型用于部署阶段的策略引导。
+- 详情：[/202607/11/README](/202607/11/README)
 
 ### 精读区论文标签
-1. [FSD-VLN: Fast-Slow Dual-System Modeling for Aerial Long-Horizon Vision-Language Navigation](/202607/10/2607.08359v1-fsd-vln-fast-slow-dual-system-modeling-for-aerial-long-horizon-vision-language-navigation)  
-   标签：评分：10.0/10、query:vln
-   evidence：直接处理视觉语言导航（VLN）问题，提出用于空中长距离导航的快慢双系统架构
-2. [Early to Share, Late to Save: Synchronisation-Driven Communication Gating in Bandwidth-Constrained Cooperative VLN](/202607/10/2607.08504v1-early-to-share-late-to-save-synchronisation-driven-communication-gating-in-bandwidth-constrained-cooperative-vln)  
-   标签：评分：9.0/10、query:vln
-   evidence：协作视觉语言导航
-3. [Pathways of Visual Information Flow in Vision-Language Models](/202607/10/2607.03358v1-pathways-of-visual-information-flow-in-vision-language-models)  
+1. [Pelican-VLA 0.5: Attending Before Acting Benefits Generalization](/202607/11/2607.06655v1-pelican-vla-05-attending-before-acting-benefits-generalization)  
    标签：评分：8.0/10、query:vln
-   evidence：研究视觉语言模型中的信息流机制，直接关联视觉语言理解
-4. [EmbodiedGen V2: An Agentic, Simulation-Ready 3D World Engine for Embodied AI](/202607/10/2607.07459v1-embodiedgen-v2-an-agentic-simulation-ready-3d-world-engine-for-embodied-ai)  
+   evidence：集成视觉语言理解与动作预测的统一VLA模型
+2. [Vision Language Action (VLA) Models for Unmanned Aerial Robotics and Bimanual Manipulation: A Review](/202607/11/2607.06706v1-vision-language-action-vla-models-for-unmanned-aerial-robotics-and-bimanual-manipulation-a-review)  
    标签：评分：8.0/10、query:vln
-   evidence：生成可用于具身导航的可执行模拟环境
+   evidence：综述VLA模型用于空中和双臂机器人，涵盖导航和操作
+3. [EvoPlan: Evolutionary Neuro-Symbolic Robot Planning with Spatio-Temporal Guarantees](/202607/11/2607.06724v1-evoplan-evolutionary-neuro-symbolic-robot-planning-with-spatio-temporal-guarantees)  
+   标签：评分：8.0/10、query:vln
+   evidence：具时空约束的神经符号机器人规划，适用于导航
+4. [LEEVLA: Seeing What Matters in Latent Environment Evolution for Vision-Language-Action](/202607/11/2607.08182v1-leevla-seeing-what-matters-in-latent-environment-evolution-for-vision-language-action)  
+   标签：评分：8.0/10、query:vln
+   evidence：增强VLA中与指令相关的视觉证据关注，适用于机器人任务
 
 ### 速读区论文标签
-1. [APIVOT: Adaptive Planning with Interleaved Vision-Language Thoughts](/202607/10/2607.08024v1-apivot-adaptive-planning-with-interleaved-vision-language-thoughts)  
+1. [DREAMSTEER: Latent World Models Can Steer VLA Policies During Deployment Without Any Finetuning](/202607/11/2607.02865v1-dreamsteer-latent-world-models-can-steer-vla-policies-during-deployment-without-any-finetuning)  
    标签：评分：7.0/10、query:vln
-   evidence：提出基于VLM的长期机器人规划器，具备空间推理能力，与具身导航和指令跟随相关
-2. [CoRE-VLA: Towards Scalable and Robust Vision-Language-Action Modeling via Conditional Routing of Experts](/202607/10/2607.03693v1-core-vla-towards-scalable-and-robust-vision-language-action-modeling-via-conditional-routing-of-experts)  
+   evidence：增强VLA策略部署，可应用于VLN
+2. [Simple-to-Complex Structured Demonstrations for Vision-Language-Action Learning](/202607/11/2607.04591v1-simple-to-complex-structured-demonstrations-for-vision-language-action-learning)  
+   标签：评分：7.0/10、query:vln
+   evidence：面向机器人VLA学习的结构化演示
+3. [SEAM: Smooth Execution of Action-Chunked Motion for Vision-Language-Action Policies](/202607/11/2607.04609v1-seam-smooth-execution-of-action-chunked-motion-for-vision-language-action-policies)  
+   标签：评分：7.0/10、query:vln
+   evidence：面向具身任务的VLA策略动作块平滑执行
+4. [TypeGo: An OS Runtime for Embodied Agents](/202607/11/2607.05482v1-typego-an-os-runtime-for-embodied-agents)  
+   标签：评分：7.0/10、query:vln
+   evidence：面向具身智能体的操作系统运行时，使用LLM进行规划
+5. [Scene Graph Thinking: Reinforcing Structured Visual Reasoning for Multimodal Large Language Models](/202607/11/2607.05716v2-scene-graph-thinking-reinforcing-structured-visual-reasoning-for-multimodal-large-language-models)  
+   标签：评分：7.0/10、query:vln
+   evidence：使用场景图进行目标导航的结构化视觉推理
+6. [WorldBagel: Uncovering the Power of Unified Multimodal Models for Vision-Language-Action-World Modeling](/202607/11/2607.03461v1-worldbagel-uncovering-the-power-of-unified-multimodal-models-for-vision-language-action-world-modeling)  
    标签：评分：6.0/10、query:vln
-   evidence：通过条件专家路由实现鲁棒的视觉-语言-动作建模，适用于具身AI
-3. [MonoIR-RS: Infrared Remote Sensing Vision-Language Learning with CLIP and VLM Adaptation](/202607/10/2607.06552v1-monoir-rs-infrared-remote-sensing-vision-language-learning-with-clip-and-vlm-adaptation)  
+   evidence：统一多模态模型用于视觉-语言-动作-世界建模，与VLN复合主题相关
+7. [ACE: Agentic Control for Embodied Manipulation via Zero-shot Workflow Reasoning](/202607/11/2607.04162v1-ace-agentic-control-for-embodied-manipulation-via-zero-shot-workflow-reasoning)  
    标签：评分：6.0/10、query:vln
-   evidence：红外遥感视觉语言数据集和模型，贡献于视觉语言理解方法论
-4. [Evaluation of Multilingual Ability to Use Spatial Deictic Expressions in Vision-Language Models](/202607/10/2607.07251v1-evaluation-of-multilingual-ability-to-use-spatial-deictic-expressions-in-vision-language-models)  
+   evidence：从自然语言进行具身操作的零样本工作流推理
+8. [VLA Grounder: Language-Conditioning Space Optimization for Black-Box VLA Models](/202607/11/2607.04517v1-vla-grounder-language-conditioning-space-optimization-for-black-box-vla-models)  
    标签：评分：6.0/10、query:vln
-   evidence：评估视觉语言模型中的空间推理能力，使用空间指示词，与视觉语言理解和接地相关
-5. [HumAIN: Human-Aware Implicit Social Robot Navigation](/202607/10/2607.07357v1-humain-human-aware-implicit-social-robot-navigation)  
+   evidence：为VLA策略优化语言指令以改进指令跟随
+9. [PRISM: Personalized Robotic Dataset Generation via Image-based Scene and Motion Synthesis](/202607/11/2607.04880v1-prism-personalized-robotic-dataset-generation-via-image-based-scene-and-motion-synthesis)  
    标签：评分：6.0/10、query:vln
-   evidence：社交机器人导航，具身导航
-6. [LEEVLA: Seeing What Matters in Latent Environment Evolution for Vision-Language-Action](/202607/10/2607.08182v1-leevla-seeing-what-matters-in-latent-environment-evolution-for-vision-language-action)  
+   evidence：从图像和自然语言指令生成个性化数据集用于具身智能体
+10. [Training-Free Acceleration for Vision-Language-Action Models with Action Caching and Refinement](/202607/11/2607.06370v1-training-free-acceleration-for-vision-language-action-models-with-action-caching-and-refinement)  
    标签：评分：6.0/10、query:vln
-   evidence：面向具身智能体的视觉-语言-动作架构
+   evidence：视觉-语言-动作模型的免训练加速，与VLN效率相关
 
 
 <div class="dpr-home-promo-card">
