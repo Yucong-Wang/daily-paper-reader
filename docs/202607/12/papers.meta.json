@@ -1,0 +1,39 @@
+{
+  "label": "2026-07-12",
+  "date": "2026-07-12",
+  "generated_at": "2026-07-12T20:27:03",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202607/12/2607.05493v1-ground3d-lmm-fine-grained-3d-point-grounding-and-spatial-reasoning-with-lmm",
+      "section": "quick",
+      "title_en": "Ground3D-LMM: Fine-Grained 3D Point Grounding and Spatial Reasoning with LMM",
+      "authors": "Amol Harsh, Zongyan Han, Jean Lahoud, Ye Liu, Rao Muhammad Anwer, Hisham Cholakkal, Salman Khan, Fahad Khan",
+      "date": "2026-07-06",
+      "pdf": "https://arxiv.org/pdf/2607.05493v1",
+      "score": "6.0",
+      "evidence": "细粒度3D点云定位与空间推理",
+      "tldr": "现有3D大模型在对话中缺乏显式3D点级接地和度量输出能力。本文提出Ground3D-LMM统一模型，以点云和可选RGB图像为输入，支持点级接地和物理单位的度量数值输出，涵盖物体和零件粒度。在ScanNet等数据集上构建2.5M问答对，定义3D Grounded Measurement任务。实验表明该模型为可接地、度量感知的3D对话理解提供了强基线。",
+      "tags": "query:vln",
+      "abstract_en": "Natural-language queries about 3D environments become actionable when responses are verifiable and metric. Verifiability requires explicit grounding to the referred 3D region, while metric answers report physical measurements in real-world units (e.g., size, thickness, clearance, and distance). Existing 3D large multimodal models (LMMs) approaches remain limited: conversational systems typically respond without explicit 3D grounding, while 3D grounding models are not designed for interactive, metric-aware dialogue. In this paper, we present Ground3D-LMM, a unified model that takes a point cloud and an optional RGB image as input and supports 3D spatial conversation with (i) point-grounded responses and (ii) metric numeric outputs at both object and part granularity, including multi-object queries. To evaluate this intersection of grounding and measurement, we define the 3D Grounded Measurement task, which requires predicting the referred 3D region and the corresponding metric quantities in real-world units. We introduce a large-scale dataset built on ScanNet and ScanNet++ datasets with dense object and part annotations and roughly 2.5M question-answer pairs spanning eight tasks, along with a manually verified test set. Extensive experiments on multiple datasets and tasks show that our proposed Ground3D-LMM model provides a strong baseline for grounded, metric-aware 3D conversational understanding. Our dataset and model are publicly available.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/12/2607.08194v1-dive-into-the-implicit-biases-of-low-rank-vision-language-alignment",
+      "section": "quick",
+      "title_en": "Dive Into the Implicit Biases of Low-rank Vision-language Alignment",
+      "authors": "Mingjia Shi, Shuo Wang, Xiaobo Wang, Sifan Zhou, Kai Wang, Tianyu Fu, Chenxu Zhao, Anyang Su, Ping Jiang, Minghui Wu",
+      "date": "2026-07-09",
+      "pdf": "https://arxiv.org/pdf/2607.08194v1",
+      "score": "6.0",
+      "evidence": "视觉语言对齐的低秩适应方法，改善模型行为",
+      "tldr": "本工作挑战视觉语言对齐需全参数更新的传统观点，在LLM上采用低秩适配进行对齐，显著降低计算负担且性能全面超越全参数方法。低秩对齐引入隐式偏差，使模型行为从幻觉转向保守，并保留视觉特征每tokens线性可分性（LS-curse），避免过早实体语义融合。理论上，两个定理证明低秩适配偏好平梯度参数子空间和对扰动鲁棒的特征子空间，揭示了结构保持机制。大量实验覆盖100种配置、三族低秩算子及不同秩设置，验证了方法的广泛有效性。",
+      "tags": "query:vln",
+      "abstract_en": "Vision-language alignment, the stage that bridges pretrained vision encoders and large language models, is widely treated as a form of pretraining requiring full-parameter updates. We challenge this view and investigate what happens when low-rank adaptation is applied to the LLM during this stage instead. We find that low-rank alignment not only reduces computational costs but also outperforms full-parameter alignment on most benchmarks. To understand this phenomenon, we systematically characterize the implicit biases introduced by low-rank adaptation during alignment. Empirically, we find that low-rank alignment shifts model behavior from hallucinatory to conservative and preserves per-token linear separability of visual features that full-parameter alignment disrupts, a phenomenon we term LS-curse. Geometrically, low rank aligned models exhibit more homogeneous and structurally stable visual representations, maintaining modality-specific knowledge rather than prematurely fusing entity-level semantics. Theoretically, we establish two theorems showing that low-rank alignment induces preferences for parameter subspaces with flat gradients and feature subspaces robust to perturbations, providing a principled explanation for the observed structure-preserving behavior. Extensive experiments cover ablation over 100 alignment configurations, three families of low-rank operators, and various rank, encoder, and other settings.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

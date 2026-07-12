@@ -1,0 +1,103 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-12T20:24:08.758340+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 2,
+    "quick_skim_target": 11,
+    "quick_selected": 2
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2607.05493v1",
+      "source": "arxiv",
+      "title": "Ground3D-LMM: Fine-Grained 3D Point Grounding and Spatial Reasoning with LMM",
+      "abstract": "Natural-language queries about 3D environments become actionable when responses are verifiable and metric. Verifiability requires explicit grounding to the referred 3D region, while metric answers report physical measurements in real-world units (e.g., size, thickness, clearance, and distance). Existing 3D large multimodal models (LMMs) approaches remain limited: conversational systems typically respond without explicit 3D grounding, while 3D grounding models are not designed for interactive, metric-aware dialogue. In this paper, we present Ground3D-LMM, a unified model that takes a point cloud and an optional RGB image as input and supports 3D spatial conversation with (i) point-grounded responses and (ii) metric numeric outputs at both object and part granularity, including multi-object queries. To evaluate this intersection of grounding and measurement, we define the 3D Grounded Measurement task, which requires predicting the referred 3D region and the corresponding metric quantities in real-world units. We introduce a large-scale dataset built on ScanNet and ScanNet++ datasets with dense object and part annotations and roughly 2.5M question-answer pairs spanning eight tasks, along with a manually verified test set. Extensive experiments on multiple datasets and tasks show that our proposed Ground3D-LMM model provides a strong baseline for grounded, metric-aware 3D conversational understanding. Our dataset and model are publicly available.",
+      "authors": [
+        "Amol Harsh",
+        "Zongyan Han",
+        "Jean Lahoud",
+        "Ye Liu",
+        "Rao Muhammad Anwer",
+        "Hisham Cholakkal",
+        "Salman Khan",
+        "Fahad Khan"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-06T18:00:00+00:00",
+      "link": "https://arxiv.org/pdf/2607.05493v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "fine-grained 3D point grounding for spatial reasoning",
+      "llm_evidence_cn": "细粒度3D点云定位与空间推理",
+      "llm_evidence": "细粒度3D点云定位与空间推理",
+      "canonical_evidence": "细粒度3D点云定位与空间推理",
+      "llm_tldr_en": "Ground3D-LMM unifies 3D point grounding and metric-aware spatial conversation, enabling verifiable and metric responses to natural language queries about 3D environments.",
+      "llm_tldr_cn": "Ground3D-LMM针对3D环境中自然语言查询的可验证性和度量响应需求，提出统一的大多模态模型，同时支持细粒度3D点云定位和度量输出（如尺寸、距离），实验证明其在空间对话中兼顾准确性和可解释性，为具身导航中的空间理解提供关键基础。",
+      "llm_tldr": "Ground3D-LMM针对3D环境中自然语言查询的可验证性和度量响应需求，提出统一的大多模态模型，同时支持细粒度3D点云定位和度量输出（如尺寸、距离），实验证明其在空间对话中兼顾准确性和可解释性，为具身导航中的空间理解提供关键基础。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.08194v1",
+      "source": "arxiv",
+      "title": "Dive Into the Implicit Biases of Low-rank Vision-language Alignment",
+      "abstract": "Vision-language alignment, the stage that bridges pretrained vision encoders and large language models, is widely treated as a form of pretraining requiring full-parameter updates. We challenge this view and investigate what happens when low-rank adaptation is applied to the LLM during this stage instead. We find that low-rank alignment not only reduces computational costs but also outperforms full-parameter alignment on most benchmarks. To understand this phenomenon, we systematically characterize the implicit biases introduced by low-rank adaptation during alignment. Empirically, we find that low-rank alignment shifts model behavior from hallucinatory to conservative and preserves per-token linear separability of visual features that full-parameter alignment disrupts, a phenomenon we term LS-curse. Geometrically, low rank aligned models exhibit more homogeneous and structurally stable visual representations, maintaining modality-specific knowledge rather than prematurely fusing entity-level semantics. Theoretically, we establish two theorems showing that low-rank alignment induces preferences for parameter subspaces with flat gradients and feature subspaces robust to perturbations, providing a principled explanation for the observed structure-preserving behavior. Extensive experiments cover ablation over 100 alignment configurations, three families of low-rank operators, and various rank, encoder, and other settings.",
+      "authors": [
+        "Mingjia Shi",
+        "Shuo Wang",
+        "Xiaobo Wang",
+        "Sifan Zhou",
+        "Kai Wang",
+        "Tianyu Fu",
+        "Chenxu Zhao",
+        "Anyang Su",
+        "Ping Jiang",
+        "Minghui Wu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-09T07:50:49+00:00",
+      "link": "https://arxiv.org/pdf/2607.08194v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "vision-language alignment; low-rank adaptation improves VLM alignment",
+      "llm_evidence_cn": "视觉语言对齐的低秩适应方法，改善模型行为",
+      "llm_evidence": "视觉语言对齐的低秩适应方法，改善模型行为",
+      "canonical_evidence": "视觉语言对齐的低秩适应方法，改善模型行为",
+      "llm_tldr_en": "Shows low-rank adaptation during vision-language alignment outperforms full-parameter updates, reducing hallucination and preserving visual features.",
+      "llm_tldr_cn": "针对视觉语言对齐阶段通常需要全参数更新的观点，本文研究了低秩适配的效果。实验发现低秩对齐不仅降低了计算成本，还在大多数基准上超越全参数对齐。通过系统性分析，揭示了低秩适配引入的隐式偏差：将模型行为从幻觉倾向转向保守，并保留视觉特征的逐词线性可分离性。这些发现对提升VLN中的视觉语言理解有潜在价值。",
+      "llm_tldr": "针对视觉语言对齐阶段通常需要全参数更新的观点，本文研究了低秩适配的效果。实验发现低秩对齐不仅降低了计算成本，还在大多数基准上超越全参数对齐。通过系统性分析，揭示了低秩适配引入的隐式偏差：将模型行为从幻觉倾向转向保守，并保留视觉特征的逐词线性可分离性。这些发现对提升VLN中的视觉语言理解有潜在价值。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
