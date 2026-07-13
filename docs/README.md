@@ -6,27 +6,24 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-12
-- 运行时间：2026-07-12 20:26:57 UTC
+- 最新运行日期：2026-07-13
+- 运行时间：2026-07-13 21:15:41 UTC
 - 运行状态：成功
-- 本次总论文数：2
+- 本次总论文数：1
 - 精读区：0
-- 速读区：2
+- 速读区：1
 
 ### 今日简报（AI）
-今天速读2篇论文，主题覆盖3D细粒度定位与低秩视觉语言对齐。值得关注的新方向：结合新型多模态模型实现3D点云细粒度定位与空间推理。建议后续可关注视觉语言对齐中的隐式偏差如何影响模型泛化能力。
-- 详情：[/202607/12/README](/202607/12/README)
+今日速读一篇关于多智能体具身规划效率的论文。值得关注的方向是运行时高效的多智能体协同规划方法。建议普通读者关注具身智能中计算效率与协作能力的平衡发展。
+- 详情：[/202607/13/README](/202607/13/README)
 
 ### 精读区论文标签
 - 本次无精读推荐。
 
 ### 速读区论文标签
-1. [Ground3D-LMM: Fine-Grained 3D Point Grounding and Spatial Reasoning with LMM](/202607/12/2607.05493v1-ground3d-lmm-fine-grained-3d-point-grounding-and-spatial-reasoning-with-lmm)  
+1. [Mosaic: Runtime-Efficient Multi-Agent Embodied Planning](/202607/13/2607.09603v1-mosaic-runtime-efficient-multi-agent-embodied-planning)  
    标签：评分：6.0/10、query:vln
-   evidence：细粒度3D点云定位与空间推理
-2. [Dive Into the Implicit Biases of Low-rank Vision-language Alignment](/202607/12/2607.08194v1-dive-into-the-implicit-biases-of-low-rank-vision-language-alignment)  
-   标签：评分：6.0/10、query:vln
-   evidence：视觉语言对齐的低秩适应方法，改善模型行为
+   evidence：多智能体具身规划，运行时高效
 
 
 <div class="dpr-home-promo-card">

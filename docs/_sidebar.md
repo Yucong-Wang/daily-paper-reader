@@ -1,6 +1,9 @@
 * <a class="dpr-sidebar-root-link" href="#/">首页</a>
 * <a class="dpr-sidebar-root-link dpr-sidebar-noactive-link" href="javascript:void(0)" data-dpr-hash="#/tutorial/README">使用教程</a>
 * Daily Papers
+  * 2026-07-13 <!--dpr-date:20260713-->
+    * 速读区
+      * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202607/13/2607.09603v1-mosaic-runtime-efficient-multi-agent-embodied-planning" data-sidebar-item="{&quot;title&quot;: &quot;Mosaic: Runtime-Efficient Multi-Agent Embodied Planning&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/2607.09603v1-mosaic-runtime-efficient-multi-agent-embodied-planning&quot;, &quot;score&quot;: &quot;6.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;vln&quot;}], &quot;evidence&quot;: &quot;多智能体具身规划，运行时高效&quot;}">Mosaic: Runtime-Efficient Multi-Agent Embodied Planning</a>
   * 2026-07-12 <!--dpr-date:20260712-->
     * 速读区
       * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202607/12/2607.05493v1-ground3d-lmm-fine-grained-3d-point-grounding-and-spatial-reasoning-with-lmm" data-sidebar-item="{&quot;title&quot;: &quot;Ground3D-LMM: Fine-Grained 3D Point Grounding and Spatial Reasoning with LMM&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/2607.05493v1-ground3d-lmm-fine-grained-3d-point-grounding-and-spatial-reasoning-with-lmm&quot;, &quot;score&quot;: &quot;6.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;vln&quot;}], &quot;evidence&quot;: &quot;细粒度3D点云定位与空间推理&quot;}">Ground3D-LMM: Fine-Grained 3D Point Grounding and Spatial Reasoning with LMM</a>
