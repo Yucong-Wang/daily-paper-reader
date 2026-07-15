@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-14T20:03:30.783457+00:00",
-  "updated_date": "20260714",
+  "generated_at": "2026-07-15T21:21:28.997057+00:00",
+  "updated_date": "20260715",
   "carryover_days": 9,
   "tag_states": {
     "VLN": {
-      "updated_date": "20260714",
+      "updated_date": "20260715",
       "carryover_days": 9,
       "items": []
     }
