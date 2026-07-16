@@ -1,0 +1,343 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-16T19:45:05.378665+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 5,
+    "quick_skim_target": 11,
+    "quick_selected": 5
+  },
+  "deep_dive": [
+    {
+      "id": "2607.13461v1",
+      "source": "arxiv",
+      "title": "Joint On-and-Off Policy Learning for Vision-and-Language Navigation",
+      "abstract": "Vision-and-Language Navigation (VLN) necessitates an embodied agent to navigate in the physical world by adhering to natural language instructions. Recent advancements in Vision-Language Models (VLM) have propelled the development of VLM-based VLN methods with two predominant paradigms: (1) imitation learning (IL) on expert demonstrations, followed by the Dataset Aggregation (DAgger) algorithm to bolster error recovery capabilities; (2) reinforcement learning (RL) driven by verifiable rewards to enhance reasoning and exploration. A notable gap is the absence of integration between these two distinct paradigms. This paper introduces JOP-VLN, a novel VLN framework that synergistically combines off-policy imitation learning and on-policy exploration within a three-stage training pipeline. Initially, IL is employed on expert demonstrations to acquire basic navigation skills. Subsequently, the DAgger algorithm is utilized to generate heuristic exploration trajectories, which are then used for imitation learning to improve error recovery capabilities. Finally, a joint on-and-off policy learning framework is implemented, featuring high-entropy trajectory sampling to enhance RL training efficiency and an error-correction-prioritized trajectory sorting strategy for effective error correction. Extensive experiments demonstrate the efficacy of JOP-VLN, achieving success rates of 69.9% and 68.0% on the VLN-CE R2R and RxR benchmarks, respectively, setting a new state-of-the-art on R2R. Project page: https://qingrongh.github.io/JOP-VLN.",
+      "authors": [
+        "Qingrong He",
+        "Lin Zhao",
+        "Kevin Zheng",
+        "Liang Lin"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-15T05:46:34+00:00",
+      "link": "https://arxiv.org/pdf/2607.13461v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "direct VLN paper with joint on/off policy learning",
+      "llm_evidence_cn": "直接针对视觉语言导航，提出联合在离策略学习",
+      "llm_evidence": "直接针对视觉语言导航，提出联合在离策略学习",
+      "canonical_evidence": "直接针对视觉语言导航，提出联合在离策略学习",
+      "llm_tldr_en": "Proposes JOP-VLN, integrating off-policy imitation learning and on-policy RL for vision-and-language navigation, achieving state-of-the-art performance.",
+      "llm_tldr_cn": "针对视觉语言导航中模仿学习和强化学习范式割裂的问题，本文提出JOP-VLN框架，结合离线策略的模仿学习和在线策略的探索，在多个VLN基准测试上取得最优性能，解决了长期导航中的错误累积和泛化问题。",
+      "llm_tldr": "针对视觉语言导航中模仿学习和强化学习范式割裂的问题，本文提出JOP-VLN框架，结合离线策略的模仿学习和在线策略的探索，在多个VLN基准测试上取得最优性能，解决了长期导航中的错误累积和泛化问题。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.13624v1",
+      "source": "arxiv",
+      "title": "From Language to Navigation Goals: A Vision-Language Approach for Semantic Navigation of Mobile Robots Using RGB-D Perception",
+      "abstract": "Natural language interaction provides an intuitive way for non-expert users to communicate with robotic platforms. However, transforming user requests into executable navigation actions remains a challenging task, requiring the integration of language understanding, environment perception, and autonomous navigation. This work presents a language-driven navigation framework that enables mobile robots to interpret user requests in natural language to move the robot to a destination and autonomously navigate towards it.   The framework is composed of modular ROS 2 components that cooperate to transform natural language instructions into navigation actions. Given a natural language request referring to a target in the environment (e.g., \"go to the mail box\"), the system identifies the referenced object, estimates its position using RGB-D data, and generates a navigation goal, which is then executed through the ROS 2 Nav2 navigation stack. The ROS 2-based implementation facilitates portability across different robotic platforms, requiring only the configuration of the corresponding topics and services.   The system is evaluated in both simulation and real-world scenarios using a TurtleBot3 Waffle and a Unitree Go2 robot with a RealSense camera. Experimental results show that the framework successfully interprets both direct commands and contextual requests, generates meaningful natural-language feedback, and navigates towards the desired target. These results demonstrate the feasibility of combining semantic perception and autonomous navigation to provide an intuitive human-robot interaction paradigm. Code will be released as open source upon acceptance.",
+      "authors": [
+        "Jose Martínez-Fajardo",
+        "Pablo Pueyo",
+        "Fernando Caballero",
+        "Luis Merino"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-07-15T09:15:21+00:00",
+      "link": "https://arxiv.org/pdf/2607.13624v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "language-driven semantic navigation for mobile robots",
+      "llm_evidence_cn": "语言驱动的移动机器人语义导航",
+      "llm_evidence": "语言驱动的移动机器人语义导航",
+      "canonical_evidence": "语言驱动的移动机器人语义导航",
+      "llm_tldr_en": "Presents a language-driven navigation framework that interprets natural language requests to navigate mobile robots to destinations using RGB-D perception and ROS 2 modules.",
+      "llm_tldr_cn": "针对自然语言交互的机器人导航需求，本文提出一个语言驱动的导航框架，利用RGB-D感知和ROS 2模块化组件，将自然语言指令转换为可执行的导航动作。框架集成语言理解、环境感知和自主导航，使得非专家用户能够直观控制机器人移动到指定目的地。实验证明该框架在真实场景中有效执行语义导航任务。",
+      "llm_tldr": "针对自然语言交互的机器人导航需求，本文提出一个语言驱动的导航框架，利用RGB-D感知和ROS 2模块化组件，将自然语言指令转换为可执行的导航动作。框架集成语言理解、环境感知和自主导航，使得非专家用户能够直观控制机器人移动到指定目的地。实验证明该框架在真实场景中有效执行语义导航任务。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.13621v1",
+      "source": "arxiv",
+      "title": "UESF-Bench: Benchmarking and Probing for Unified Embodied Seeking and Following",
+      "abstract": "Language-guided human following is an important capability for embodied agents, but existing benchmarks typically assume that the target person is visible at the start of an episode. This setting simplifies the problem and overlooks a more realistic requirement: an agent often needs to first find a language-described target and then persistently follow that target in a dynamic environment. While recent work has started to study human search, existing settings are typically evaluated in task-specific scenarios and often rely on stronger prior knowledge of the environment. Moreover, they usually treat searching and following as separate tasks and still lack a unified benchmark for systematic evaluation. To address these limitations, we introduce the Unified Embodied Seeking and Following Benchmark (UESF-Bench), a large-scale and diverse benchmark for embodied human seeking and following. The benchmark requires agents to handle semantic-guided exploration, reliable behavior switching and recovery, and delayed identity grounding. To this end, we propose SeekFollow-VLA, a vision-language-action framework with a task-driven routing mechanism for latent phase inference and transition modeling between seeking and following. Experimental results show that SeekFollow-VLA achieves clear improvements over both single-head and dual-head baselines across single-person and multi-person environments, establishing a baseline for unified embodied seek-and-follow.",
+      "authors": [
+        "Kun Yu",
+        "Jianhua Yang",
+        "Yixiang Chen",
+        "Changwei Wang",
+        "Hongyuan Yu",
+        "Yan Huang",
+        "Fushuo Huo",
+        "Ya Jing",
+        "Zhumin Chen",
+        "Keji He"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-15T09:09:25+00:00",
+      "link": "https://arxiv.org/pdf/2607.13621v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "language-guided human following with seeking and following",
+      "llm_evidence_cn": "语言引导的人类跟踪，包含寻找和跟随",
+      "llm_evidence": "语言引导的人类跟踪，包含寻找和跟随",
+      "canonical_evidence": "语言引导的人类跟踪，包含寻找和跟随",
+      "llm_tldr_en": "Introduces UESF-Bench, a unified benchmark for embodied agents to seek and follow a language-described target person in dynamic environments.",
+      "llm_tldr_cn": "现有语言引导的跟随任务假设目标可见，忽略了先寻找再跟随的真实需求。本文提出UESF-Bench统一基准，要求智能体先根据语言描述找到目标，再持续跟踪。基准包含了多种场景和评估协议。为语言引导的具身跟随任务提供了标准化评估平台。",
+      "llm_tldr": "现有语言引导的跟随任务假设目标可见，忽略了先寻找再跟随的真实需求。本文提出UESF-Bench统一基准，要求智能体先根据语言描述找到目标，再持续跟踪。基准包含了多种场景和评估协议。为语言引导的具身跟随任务提供了标准化评估平台。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied agents following natural language instructions for navigation",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.08448v1",
+      "source": "arxiv",
+      "title": "Harness VLA: Steering Frozen VLAs into Reliable Manipulation Primitives via Memory-Guided Agents",
+      "abstract": "Language-conditioned manipulation requires both precise contact-rich control and robust reasoning over language, scenes, and long horizons. End-to-end Vision-Language-Action (VLA) models provide strong local visuomotor skills, but they are trained on in-distribution task trajectories and often fail under deployment perturbations such as semantic retargeting, goal re-binding, spatial-layout shifts, and unstable local contacts. LLM coding agents provide complementary semantic and compositional reasoning, but purely analytic primitives struggle with irregular grasping, constrained placement, and articulated-object interaction. We present Harness VLA, a memory-augmented agentic framework that exposes a frozen VLA as a retryable contact-rich primitive and composes it with a small fixed library of analytic primitives for grounding, staging, transport, navigation, and release. Rather than expanding the skill library, the harness learns the operating range of these fixed primitives from task-specific execution traces, global success rules, and failure models. By lifting semantic re-grounding, non-contact execution, and VLA re-staging to the planner while reserving the frozen VLA for local contact-rich phases, Harness VLA extends pretrained VLAs beyond their original trajectory distribution without finetuning. Across perturbed tabletop, household kitchen, and clean-to-randomized bimanual manipulation, Harness VLA improves over the strongest relevant baselines by 38.6 and 25.4 percentage points on LIBERO-Pro and RoboCasa365, respectively, and reaches 58.4% on RoboTwin C2R.",
+      "authors": [
+        "Yixian Zhang",
+        "Huanming Zhang",
+        "Feng Gao",
+        "Xiao Li",
+        "Zhihao Liu",
+        "Chunyang Zhu",
+        "Jiaxing Qiu",
+        "Yuchen Yan",
+        "Jiyuan Liu",
+        "Wenhao Tang",
+        "Zhengru Fang",
+        "Yi Nie",
+        "Changxu Wei",
+        "Yu Wang",
+        "Wenbo Ding",
+        "Chao Yu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-09T13:08:54+00:00",
+      "link": "https://arxiv.org/pdf/2607.08448v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "visual language understanding for manipulation",
+      "llm_evidence_cn": "用于操作的视觉语言理解",
+      "llm_evidence": "用于操作的视觉语言理解",
+      "canonical_evidence": "用于操作的视觉语言理解",
+      "llm_tldr_en": "Harness VLA steers frozen Vision-Language-Action models into reliable manipulation primitives via memory-guided agents.",
+      "llm_tldr_cn": "针对端到端VLA模型在操作扰动下易失败的问题，本文提出Harness VLA框架，通过记忆增强的智能体将冻结的VLA模型转化为可重试的操作原语。该框架结合大语言模型的语义推理与VLA的局部技能，提升了在语义重定向、空间布局变化等场景下的鲁棒性。",
+      "llm_tldr": "针对端到端VLA模型在操作扰动下易失败的问题，本文提出Harness VLA框架，通过记忆增强的智能体将冻结的VLA模型转化为可重试的操作原语。该框架结合大语言模型的语义推理与VLA的局部技能，提升了在语义重定向、空间布局变化等场景下的鲁棒性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.12818v2",
+      "source": "arxiv",
+      "title": "Breaking Déjà Vu: Independent Auditing of Visual Place Recognition through Vision-Language Reasoning",
+      "abstract": "Visual place recognition (VPR) is a key enabler of accurate localization and long-term autonomous navigation in robotics applications, such as loop closure detection for simultaneous localisation and mapping (SLAM). However, real-world VPR deployment relies on selecting an image matching threshold that balances precision and recall. These thresholds are typically tuned using labeled validation data and fixed during deployment, making them unreliable under environmental changes where ground truth is unavailable. This is particularly problematic in safety-critical robotics, where accepting a false loop closure can corrupt the estimated trajectory and map. In this work, we introduce Visual Place Recognition Auditing, an independent post-retrieval verification framework that leverages Vision-Language Models (VLMs) to assess retrieved matches by reasoning jointly over query and candidate images. Unlike conventional verification methods, our approach performs instance-level verification without requiring architecture-specific confidence measures, dataset-dependent thresholds, or prior knowledge of the deployment environment. We evaluate our method on six benchmark datasets using five state-of-the-art VPR methods and four VLMs. Results show that VLM-based auditing improves recall@1 by 13.6% on average as compared to state-of-the-art methods while reducing false acceptance rates to 12%, maintaining precision above 95% and coverage above 75%.",
+      "authors": [
+        "Sania Waheed",
+        "Michael Milford",
+        "Sarvapali D. Ramchurn",
+        "Shoaib Ehsan"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-14T14:30:24+00:00",
+      "link": "https://arxiv.org/pdf/2607.12818v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "vision-language reasoning for visual place recognition auditing",
+      "llm_evidence_cn": "利用视觉语言推理进行视觉地点识别审计",
+      "llm_evidence": "利用视觉语言推理进行视觉地点识别审计",
+      "canonical_evidence": "利用视觉语言推理进行视觉地点识别审计",
+      "llm_tldr_en": "Introduces an independent auditing method for visual place recognition using vision-language reasoning to detect unreliable loop closures in autonomous navigation.",
+      "llm_tldr_cn": "视觉地点识别在机器人导航中关键但阈值固定导致环境变化时不可靠。本文提出视觉地点识别审计框架，利用视觉语言推理独立评估匹配置信度，无需真实标注。该方法能有效检测潜在错误闭环，避免轨迹和地图损坏。为安全关键机器人系统提供了可靠性的保障。",
+      "llm_tldr": "视觉地点识别在机器人导航中关键但阈值固定导致环境变化时不可靠。本文提出视觉地点识别审计框架，利用视觉语言推理独立评估匹配置信度，无需真实标注。该方法能有效检测潜在错误闭环，避免轨迹和地图损坏。为安全关键机器人系统提供了可靠性的保障。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.13072v1",
+      "source": "arxiv",
+      "title": "HRO: Hierarchical Room-to-Object Framework for Zero-Shot Object Goal Navigation with Large Language Models",
+      "abstract": "Zero-shot object-goal navigation aims to enable an intelligent agent to explore and navigate to objects of unknown categories in an unfamiliar environment without specific target training. In zero-shot navigation tasks, pre-trained large models are usually employed to leverage their prior knowledge for guiding the agent's navigation. However, existing zero-shot object-goal navigation methods based on large language models (LLMs) merely utilize LLMs as flat reasoning tools to directly associate objects or regions. They lack the hierarchical spatial cognition modeling of human-like room semantics to object localization, which leads to strong blindness in exploration, insufficient accuracy in semantic association, and failure to fully unleash the common-sense reasoning potential of LLMs. This paper proposes an LLM-driven hierarchical room-to-object (HRO) framework for zero-shot object-goal navigation, which guides the agent to explore and navigate to the target object in a coarse-to-fine manner. Experiments on Gibson and HM3D datasets verify that our HRO framework achieves superior success rate and generalization over existing LLM-based methods, underscoring LLMs' strong potential for zero-shot object-goal navigation.",
+      "authors": [
+        "Luyuan Jia",
+        "Yinfeng Yu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "eess.SP"
+      ],
+      "published": "2026-07-12T06:28:30+00:00",
+      "link": "https://arxiv.org/pdf/2607.13072v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Zero-shot object-goal navigation using LLMs with hierarchical spatial reasoning",
+      "llm_evidence_cn": "利用大语言模型进行层次空间推理的零样本目标导航",
+      "llm_evidence": "利用大语言模型进行层次空间推理的零样本目标导航",
+      "canonical_evidence": "利用大语言模型进行层次空间推理的零样本目标导航",
+      "llm_tldr_en": "HRO proposes a hierarchical room-to-object framework using LLMs for zero-shot object-goal navigation, improving semantic association and reducing blind exploration.",
+      "llm_tldr_cn": "HRO针对零样本目标导航中LLM仅用作平面推理导致探索盲目性高的问题，提出了层次化的房间到物体框架。通过模拟人类从房间语义到物体定位的认知过程，利用LLM进行分层空间推理。实验表明该方法显著提升语义关联准确性，减少无效探索，在未知环境中实现高效导航。",
+      "llm_tldr": "HRO针对零样本目标导航中LLM仅用作平面推理导致探索盲目性高的问题，提出了层次化的房间到物体框架。通过模拟人类从房间语义到物体定位的认知过程，利用LLM进行分层空间推理。实验表明该方法显著提升语义关联准确性，减少无效探索，在未知环境中实现高效导航。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.13597v1",
+      "source": "arxiv",
+      "title": "Semantic Anchoring for Robotic Action Representations",
+      "abstract": "Vision-Language-Action (VLA) models inherit rich semantic representations from pretrained Vision-Language Models, yet fine-tuning on limited robot demonstrations degrades this structure and undermines generalization. A fundamental question therefore arises: what constitutes a good action representation? Inspired by the mirror neuron theory's insight that observation and execution share an intention-level encoding, we examine whether a robot's action representations preserve the semantic structure captured by pretrained encoders. Systematic probing confirms that this structure erodes during finetuning, and that its quality synchronizes with both task success and out-of-distribution generalization. We further introduce a plug-and-play method that anchors action representations to a semantic manifold while decomposing representations into a shared semantic channel and a private channel, all discarded at inference, leaving the deployed model unchanged. Validated on different VLA backbones across simulation and real-world benchmarks, our method yields up to +18.7% on real-world in-distribution tasks and +21.5% on out-of-distribution generalization.",
+      "authors": [
+        "Yuan Xu",
+        "Youheng Shi",
+        "Chengyang Li",
+        "Wentao Zhu",
+        "Yizhou Wang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-07-15T08:45:15+00:00",
+      "link": "https://arxiv.org/pdf/2607.13597v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "semantic anchoring for robotic action representations, relevant to embodied navigation",
+      "llm_evidence_cn": "机器人动作表示的语义锚定，与具身导航相关",
+      "llm_evidence": "机器人动作表示的语义锚定，与具身导航相关",
+      "canonical_evidence": "机器人动作表示的语义锚定，与具身导航相关",
+      "llm_tldr_en": "Proposes semantic anchoring to preserve pretrained semantic structure in VLA fine-tuning, improving robot task success and generalization.",
+      "llm_tldr_cn": "针对VLA模型在微调中语义结构退化导致泛化下降的问题，本文提出语义锚定方法，通过维护动作表示的语义结构，在仿真和真实机器人任务中提升成功率，并增强分布外泛化能力，揭示了动作表示质量与任务性能的关联。",
+      "llm_tldr": "针对VLA模型在微调中语义结构退化导致泛化下降的问题，本文提出语义锚定方法，通过维护动作表示的语义结构，在仿真和真实机器人任务中提升成功率，并增强分布外泛化能力，揭示了动作表示质量与任务性能的关联。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.13926v1",
+      "source": "arxiv",
+      "title": "S-squared-VLA: Decoupling Semantic and Spatial Streams in Vision-Language-Action Models for Autonomous Driving",
+      "abstract": "Vision-Language Models (VLMs) have demonstrated remarkable potential for high-level reasoning in autonomous driving, yet they fundamentally struggle to generate precise, low-level control actions. This limitation is rooted in a semantic-physical gap caused by the inherent mismatch between discrete language tokens and continuous trajectory planning. While Vision-Language-Action (VLA) architectures attempt to bridge this gap by unifying perception and control into a single policy, this entanglement creates a new bottleneck. Standard VLAs experience a severe spatial representation collapse, which irreversibly degrades the fine-grained spatial and geometric priors essential for safe, boundary-aware navigation. To address this limitation, we propose the S-squared-VLA, which explicitly decouples the semantic and spatial streams in Vision-Language-Action models. The semantic stream leverages hierarchical bridging to extract multi-scale VLM features for robust intent reasoning. In parallel, an independent spatial stream bypasses the autoregressive language bottleneck, directly preserving uncompressed spatial features from the visual encoder. By integrating auxiliary perception supervision, this stream explicitly equips the model with rich spatial and geometric priors. Finally, a dual-stream planning adapter fuses high-level semantic intent with precise spatial constraints via cascaded attention mechanisms. Evaluations on the NAVSIM closed-loop benchmark show that S-squared-VLA achieves a Predictive Driver Model Score (PDMS) of 87.1, establishing a new state-of-the-art for VLA models under a purely supervised fine-tuning (SFT) setting. By mitigating the spatial representation collapse of traditional VLMs, our framework significantly outperforms baselines, achieving the highest No Collision (NC) rate of 98.4 among all evaluated methods.",
+      "authors": [
+        "Jianguo Yu",
+        "Rukang Wang",
+        "Duanfeng Chu",
+        "Chen Wang",
+        "Renju Feng",
+        "Liping Lu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-15T15:07:02+00:00",
+      "link": "https://arxiv.org/pdf/2607.13926v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "VLA for autonomous driving navigation",
+      "llm_evidence_cn": "用于自动驾驶导航的VLA模型",
+      "llm_evidence": "用于自动驾驶导航的VLA模型",
+      "canonical_evidence": "用于自动驾驶导航的VLA模型",
+      "llm_tldr_en": "S-squared-VLA decouples semantic and spatial streams in VLA models to preserve spatial priors for safe autonomous driving navigation.",
+      "llm_tldr_cn": "针对VLA模型在自动驾驶中因语义-物理鸿沟导致空间表示塌缩的问题，本文提出S-squared-VLA，将语义流和空间流解耦。该方法保留细粒度空间几何先验，使VLA能够生成边界感知的安全轨迹。实验证明其显著提升了导航控制精度和安全性。",
+      "llm_tldr": "针对VLA模型在自动驾驶中因语义-物理鸿沟导致空间表示塌缩的问题，本文提出S-squared-VLA，将语义流和空间流解耦。该方法保留细粒度空间几何先验，使VLA能够生成边界感知的安全轨迹。实验证明其显著提升了导航控制精度和安全性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
