@@ -1,0 +1,614 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-17T21:08:05.038338+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 8,
+    "quick_skim_target": 11,
+    "quick_selected": 8
+  },
+  "deep_dive": [
+    {
+      "id": "2607.14514v1",
+      "source": "arxiv",
+      "title": "VTM-Nav: Hierarchical Visual-Topological Memory for Cross-Episode Object-Goal Navigation",
+      "abstract": "Object-goal navigation requires an embodied agent to locate and reach an instance of a specified object category in an indoor environment. Recent training-free approaches leverage vision-language models (VLMs) for open-vocabulary semantic reasoning, but are typically evaluated under an episodic protocol that resets all scene-specific state after each episode. We introduce Cross-Episode Object-Goal Navigation, in which an agent repeatedly operates in the same scene, retains only self-acquired experience, and keeps its model parameters fixed. To support experience reuse, we present \\method, a training-free VLM navigation framework with a persistent hierarchical Visual-Topological Memory (VTM). The VTM organizes scene knowledge at room and object levels and retrieves relevant experience through coarse-to-fine matching, providing memory as soft guidance only when it agrees with current observations. A conservative execution guard further mitigates oscillations, blocked motions, and premature stopping. Under a controlled same-scene protocol, we evaluate \\method{} on three benchmarks, HM3D v0.1, HM3D v0.2, and MP3D, and compare it with a strengthened WMNav baseline augmented with cross-episode textual memory, while keeping the VLM backbone and action pipeline identical. \\method{} achieves the best performance across all three benchmarks, demonstrating the effectiveness and robustness of structured visual-topological experience reuse across datasets.",
+      "authors": [
+        "Xiaoran Xu",
+        "Yupeng Wu",
+        "Tianyu Xue",
+        "Yifan Xu",
+        "Xuanran Dong",
+        "Xiaoshan Yang",
+        "Changsheng Xu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-07-16T03:11:37+00:00",
+      "link": "https://arxiv.org/pdf/2607.14514v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "VLM-based object-goal navigation with cross-episode memory",
+      "llm_evidence_cn": "基于VLM的跨回合目标导航方法",
+      "llm_evidence": "基于VLM的跨回合目标导航方法",
+      "canonical_evidence": "基于VLM的跨回合目标导航方法",
+      "llm_tldr_en": "VTM-Nav introduces cross-episode object-goal navigation with a persistent hierarchical Visual-Topological Memory for VLMs, enabling experience reuse across episodes without retraining.",
+      "llm_tldr_cn": "本文提出跨回合目标导航任务，要求智能体在同一场景中反复运行并保留自获取经验。VTM-Nav框架利用训练好的VLM，通过层次化视觉拓扑记忆（VTM）组织场景知识，支持跨回合经验重用。实验证明该方法无需重新训练即可有效提升导航成功率，为VLN中的持续学习提供了新思路。",
+      "llm_tldr": "本文提出跨回合目标导航任务，要求智能体在同一场景中反复运行并保留自获取经验。VTM-Nav框架利用训练好的VLM，通过层次化视觉拓扑记忆（VTM）组织场景知识，支持跨回合经验重用。实验证明该方法无需重新训练即可有效提升导航成功率，为VLN中的持续学习提供了新思路。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.14586v1",
+      "source": "arxiv",
+      "title": "SoftNav: Injecting 3D Scene Tokens into VLMs for Embodied Navigation",
+      "abstract": "In goal-directed embodied navigation, where an agent must locate a specified target in an unseen environment, 3D scene understanding and navigation reasoning must work in concert. Current approaches transmit 3D scene information to vision-language models (VLMs) through text, suggesting a representation gap in our tested configurations; a controlled ablation confirms that direct embedding-level transfer significantly outperforms the evaluated text serialization formats. We introduce SoftNav, which injects entity-level 3D continuous representations -- one token per detected object or frontier -- into a VLM's hidden space as soft tokens through a lightweight projector. With the 3D encoder and VLM frozen, only ~1,200 samples and ~17M trainable parameters are needed. On HM3D-OVON, SoftNav achieves 74.2%/68.3%/66.7% SR across three splits, surpassing all prior methods in both SR and SPL; the same navigation policy transfers zero-shot to GOAT-Bench (67.2% SR), SG3D (47.2% s-SR), and real-world robot deployment without retraining or architectural modification. Injecting 3D scene tokens directly into VLMs bridges the representation gap, enabling transferable navigation with minimal training.",
+      "authors": [
+        "Yi Wu",
+        "Junjie An",
+        "Xiao Liu",
+        "Yiqun Zhou",
+        "Yuechen Wu",
+        "Xiaoqing Guan",
+        "Shuyang Yu",
+        "You Wang",
+        "Guang Li"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-16T05:32:52+00:00",
+      "link": "https://arxiv.org/pdf/2607.14586v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "embodied navigation using 3D scene tokens injected into VLMs",
+      "llm_evidence_cn": "将3D场景标记注入VLM用于具身导航",
+      "llm_evidence": "将3D场景标记注入VLM用于具身导航",
+      "canonical_evidence": "将3D场景标记注入VLM用于具身导航",
+      "llm_tldr_en": "SoftNav injects entity-level 3D continuous representations as soft tokens into a frozen VLM, achieving strong navigation performance with minimal training data.",
+      "llm_tldr_cn": "现有导航方法将3D信息转为文本输入VLM，存在表示差距。本文提出SoftNav，将物体和前沿点的3D连续表示作为软令牌注入VLM隐藏空间，仅需约1200个训练样本和17M可训练参数。实验证明直接嵌入级传输显著优于文本序列化，为高效具身导航提供了新思路。",
+      "llm_tldr": "现有导航方法将3D信息转为文本输入VLM，存在表示差距。本文提出SoftNav，将物体和前沿点的3D连续表示作为软令牌注入VLM隐藏空间，仅需约1200个训练样本和17M可训练参数。实验证明直接嵌入级传输显著优于文本序列化，为高效具身导航提供了新思路。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.13072v1",
+      "source": "arxiv",
+      "title": "HRO: Hierarchical Room-to-Object Framework for Zero-Shot Object Goal Navigation with Large Language Models",
+      "abstract": "Zero-shot object-goal navigation aims to enable an intelligent agent to explore and navigate to objects of unknown categories in an unfamiliar environment without specific target training. In zero-shot navigation tasks, pre-trained large models are usually employed to leverage their prior knowledge for guiding the agent's navigation. However, existing zero-shot object-goal navigation methods based on large language models (LLMs) merely utilize LLMs as flat reasoning tools to directly associate objects or regions. They lack the hierarchical spatial cognition modeling of human-like room semantics to object localization, which leads to strong blindness in exploration, insufficient accuracy in semantic association, and failure to fully unleash the common-sense reasoning potential of LLMs. This paper proposes an LLM-driven hierarchical room-to-object (HRO) framework for zero-shot object-goal navigation, which guides the agent to explore and navigate to the target object in a coarse-to-fine manner. Experiments on Gibson and HM3D datasets verify that our HRO framework achieves superior success rate and generalization over existing LLM-based methods, underscoring LLMs' strong potential for zero-shot object-goal navigation.",
+      "authors": [
+        "Luyuan Jia",
+        "Yinfeng Yu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "eess.SP"
+      ],
+      "published": "2026-07-12T06:28:30+00:00",
+      "link": "https://arxiv.org/pdf/2607.13072v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Zero-shot object-goal navigation with LLMs",
+      "llm_evidence_cn": "基于大语言模型的零样本目标导航",
+      "llm_evidence": "基于大语言模型的零样本目标导航",
+      "canonical_evidence": "基于大语言模型的零样本目标导航",
+      "llm_tldr_en": "HRO uses a hierarchical room-to-object framework with LLMs for zero-shot object-goal navigation, improving exploration efficiency.",
+      "llm_tldr_cn": "针对零样本目标导航中缺乏层次化空间认知的问题，HRO提出了一个从房间到物体的层次化框架，利用大语言模型模拟人类空间推理。该方法首先定位房间，再在房间内搜索目标，从而减少盲目探索，提升了在未知环境中的导航性能。",
+      "llm_tldr": "针对零样本目标导航中缺乏层次化空间认知的问题，HRO提出了一个从房间到物体的层次化框架，利用大语言模型模拟人类空间推理。该方法首先定位房间，再在房间内搜索目标，从而减少盲目探索，提升了在未知环境中的导航性能。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.13653v1",
+      "source": "arxiv",
+      "title": "Exploratory, Communicative, and Deployable: Vision-Driven Embodied Agents for Open-World Mobile Manipulation",
+      "abstract": "Real-world deployment of embodied agents requires active exploration, visual grounding, and interactive intent disambiguation. However, existing frameworks often rely on privileged simulator states or assume complete instructions, bypassing realistic deployment challenges. To bridge this gap, we present REAL, an agentic framework for open-world mobile manipulation. REAL establishes sim-to-real-consistent environment APIs without oracle perception and integrates a simulated user to enable human-in-the-loop interaction. Within this environment, we design diverse task compositions to drive data collection, supervised fine-tuning, and online reinforcement learning, systematically optimizing agent performance. To comprehensively evaluate this approach, we introduce REAL-Bench, a benchmark spanning 241 tasks across active exploration, visual distraction, articulated manipulation, and interactive disambiguation.   Experimental results demonstrate that our trained agent outperforms leading commercial closed-source VLMs on interactive tasks with a 56.9% success rate. Further empirical analysis reveals that our hierarchical training pipeline successfully aligns the model's tool-use capabilities while maintaining robust open-vocabulary reasoning under extended exploration horizons. Finally, we deploy and evaluate our framework on a physical dual-arm mobile robot, where it achieves a 78.3% end-to-end success rate over 60 real-world episodes. These physical trials demonstrate robust zero-shot transferability to unseen household scenarios, validating that our sim-to-real-consistent design successfully bridges the reality gap for long-horizon mobile manipulation. Code is available at https://github.com/InternRobotics/REAL.",
+      "authors": [
+        "Boyu Mi",
+        "Mengchen Ma",
+        "Yifei Yao",
+        "Xing Gao",
+        "Junting Chen",
+        "Yangzi Li",
+        "Zihou Zhu",
+        "Guohao Li",
+        "Zhenfei Yin",
+        "Tai Wang",
+        "Yao Mu",
+        "Jiangmiao Pang",
+        "Hanqing Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-07-15T09:55:45+00:00",
+      "link": "https://arxiv.org/pdf/2607.13653v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "vision-driven embodied agents for open-world mobile manipulation involves navigation",
+      "llm_evidence_cn": "视觉驱动的具身移动操作代理涉及环境探索与导航",
+      "llm_evidence": "视觉驱动的具身移动操作代理涉及环境探索与导航",
+      "canonical_evidence": "视觉驱动的具身移动操作代理涉及环境探索与导航",
+      "llm_tldr_en": "REAL framework for open-world mobile manipulation combines exploration, visual grounding, and human-in-the-loop interaction, addressing real-world deployment challenges without privileged simulator states.",
+      "llm_tldr_cn": "现有具身操作框架常依赖特权模拟器状态或假设完整指令，忽略实际部署中的探索和意图消歧挑战。本文提出REAL框架，通过建立模拟到真实一致的API和集成模拟用户实现人在回路交互，支持开放世界移动操作。在多种任务组合上，结合监督微调和在线强化学习，系统优化代理性能，为具身代理的鲁棒部署提供了新方案。",
+      "llm_tldr": "现有具身操作框架常依赖特权模拟器状态或假设完整指令，忽略实际部署中的探索和意图消歧挑战。本文提出REAL框架，通过建立模拟到真实一致的API和集成模拟用户实现人在回路交互，支持开放世界移动操作。在多种任务组合上，结合监督微调和在线强化学习，系统优化代理性能，为具身代理的鲁棒部署提供了新方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.14187v1",
+      "source": "arxiv",
+      "title": "RxBrain: Embodied Cognition Foundation Model with Joint Language-Visual Reasoning and Imagination",
+      "abstract": "Embodied cognition requires agents to connect high-level task reasoning with the physical states to be achieved. We introduce Hy-Embodied-RxBrain, an embodied cognition foundation model with joint language-visual reasoning and imagination. Unlike vision-language models that emphasize scene understanding and textual decision making, or generative world models that mainly predict future visual states, RxBrain represents embodied plans in a single planning sequence where language and visual imagination play complementary roles. Language provides the abstract structure of a plan, including task decomposition, planning primitives, constraints, temporal order, and decision logic, while visual imagination grounds this structure through world state prediction and joint subgoal planning, associating each planning step with intermediate and final physical states. RxBrain adopts a unified multimodal Mixture-of-Transformers architecture that supports language, image, and video understanding and generation within one model. To train this capability, we build an automatic pipeline that converts embodied videos into joint text-visual planning supervision by decomposing videos into planning steps and aligning them with visual state transitions. We further introduce RxBrain-Bench to evaluate whether models can represent embodied plans through joint textual and visual components rather than separate understanding or generation. Experiments show that RxBrain maintains embodied understanding and generation abilities, and produces plans with coupled textual reasoning, world state prediction, and joint subgoal planning. We also extend RxBrain to continuous robot action generation, where it shows promising real-robot performance without large-scale action-data pretraining. These results provide an initial step toward foundation models for embodied cognition.",
+      "authors": [
+        "Haotian Liang",
+        "Mingkang Chen",
+        "Yufei Huang",
+        "Yuchun Guo",
+        "Xiaomeng Zhu",
+        "Xiangli Shi",
+        "Kaixuan Wang",
+        "Yunxuan Mao",
+        "Weijie Zhou",
+        "Ling Chen",
+        "Shirong Zeng",
+        "Yueyu Long",
+        "Yuchen Si",
+        "Yajuan Zhu",
+        "Xingyu Zhou",
+        "Minghui Wang",
+        "Wanjia He",
+        "Xin Yang",
+        "Lingzhu Xiang",
+        "Zhiqing Liu",
+        "Bohan Ma",
+        "Xiran Huang",
+        "Tianshuo Yang",
+        "Zhiheng Liu",
+        "Xuantang Xiong",
+        "Zisheng Lu",
+        "Ping Luo",
+        "Yao Mu",
+        "Han Hu",
+        "Zhengyou Zhang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-07-15T15:45:25+00:00",
+      "link": "https://arxiv.org/pdf/2607.14187v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "embodied cognition foundation model with joint language-visual reasoning and imagination",
+      "llm_evidence_cn": "具身认知基础模型，结合语言-视觉推理与想象",
+      "llm_evidence": "具身认知基础模型，结合语言-视觉推理与想象",
+      "canonical_evidence": "具身认知基础模型，结合语言-视觉推理与想象",
+      "llm_tldr_en": "RxBrain is an embodied cognition foundation model that unifies language and visual imagination for planning, achieving structured task decomposition grounded in physical states.",
+      "llm_tldr_cn": "本文提出Hy-Embodied-RxBrain，一种具身认知基础模型，将语言抽象规划与视觉想象融合在统一的规划序列中。语言提供任务分解与逻辑，视觉想象则将其落地为具体物理状态。该模型在具身规划任务中展现出对复杂指令的理解与执行能力，为具身智能体的认知架构提供了新范式。",
+      "llm_tldr": "本文提出Hy-Embodied-RxBrain，一种具身认知基础模型，将语言抽象规划与视觉想象融合在统一的规划序列中。语言提供任务分解与逻辑，视觉想象则将其落地为具体物理状态。该模型在具身规划任务中展现出对复杂指令的理解与执行能力，为具身智能体的认知架构提供了新范式。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.10350v2",
+      "source": "arxiv",
+      "title": "ABot-AgentOS: A General Robotic Agent OS with Lifelong Multi-modal Memory",
+      "abstract": "Recent VLM and VLA systems have improved robotic perception and action prediction, yet long-horizon embodied agents still require a general runtime layer for reasoning, memory, tool use, verification, and cross-embodiment execution. We present ABot-AgentOS, a general robotic Agent Operating System that sits above low-level controllers and provides a deliberative agent layer for scene-conditioned planning, context-isolated skill execution, multi-stage verification, multi-modal memory, and edge-cloud collaboration. To evaluate such systems, we introduce EmbodiedWorldBench, an executable benchmark with 16 indoor, outdoor, and hybrid scenes, four difficulty levels, and over 200 tasks involving navigation, object search, NPC dialogue, dynamic events, and trace-grounded scoring. ABot-AgentOS further introduces Universal Multi-modal Graph Memory, a persistent source-grounded substrate that converts dialogue, visual observations, spatial context, temporal relations, and task traces into typed nodes and edges. A failure-driven self-evolution loop converts diagnosed memory failures into gated runtime evo-assets that are promoted only to later evaluation splits, preventing current-split ground-truth leakage while enabling continual improvement. On an initial EmbodiedWorldBench subset, ABot-AgentOS improves over a single-controller baseline in both task success and goal completion. Across memory benchmarks, ABot-AgentOS Static achieves 87.5 on LoCoMo, 59.9 on OpenEQA EM-EQA, 88.6 on Mem-Gallery, and 76.5 Acc@All on NExT-QA; self-evolution further improves LoCoMo to 88.7, OpenEQA to 60.4, and Mem-Gallery to 89.0. These results suggest that a general Agent OS layer can improve long-horizon embodied execution while providing persistent, auditable memory for continual interaction.",
+      "authors": [
+        "Jiayi Tian",
+        "Shiao Liu",
+        "Yuting Xu",
+        "Jia Lu",
+        "Zihao Guan",
+        "Honglin Han",
+        "Di Yang",
+        "Minqi Gu",
+        "Yifei Qian",
+        "Tianlin Zhang",
+        "Yanqing Zhu",
+        "Zeqian Ye",
+        "Menglin Yang",
+        "Fei Wang",
+        "Xu Hu",
+        "Xiuxian Li",
+        "Wei Zhang",
+        "Shihui Su",
+        "Yiyan Ji",
+        "Jingbo Wang",
+        "Ziteng Feng",
+        "Jiaheng Liu",
+        "Zhaoxiang Zhang",
+        "Xiaolong Wu",
+        "Zixiao Tang",
+        "Zhining Gu",
+        "Yang Cai",
+        "Linbo Zheng",
+        "Jingjing Ma",
+        "Mingyang Yin",
+        "Zedong Chu",
+        "Ziqiao Li",
+        "Mu Xu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-07-11T15:24:43+00:00",
+      "link": "https://arxiv.org/pdf/2607.10350v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "General robotic OS with multi-modal memory for embodied navigation",
+      "llm_evidence_cn": "面向具身导航的通用机器人操作系统与多模态记忆",
+      "llm_evidence": "面向具身导航的通用机器人操作系统与多模态记忆",
+      "canonical_evidence": "面向具身导航的通用机器人操作系统与多模态记忆",
+      "llm_tldr_en": "ABot-AgentOS provides a deliberative agent layer for long-horizon embodied tasks, integrating scene-conditioned planning, multi-modal memory, and edge-cloud collaboration, with EmbodiedWorldBench for evaluation.",
+      "llm_tldr_cn": "针对长时域具身任务缺乏统一运行时层的问题，本文提出ABot-AgentOS，一种通用机器人代理操作系统，提供场景条件规划、上下文隔离技能执行、多级验证、多模态记忆和边云协作。同时引入EmbodiedWorldBench，包含16个场景200+任务，涵盖导航、物体搜索等，为具身导航研究提供了可扩展的平台。",
+      "llm_tldr": "针对长时域具身任务缺乏统一运行时层的问题，本文提出ABot-AgentOS，一种通用机器人代理操作系统，提供场景条件规划、上下文隔离技能执行、多级验证、多模态记忆和边云协作。同时引入EmbodiedWorldBench，包含16个场景200+任务，涵盖导航、物体搜索等，为具身导航研究提供了可扩展的平台。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.08448v2",
+      "source": "arxiv",
+      "title": "Harness VLA: Steering Frozen VLAs into Reliable Manipulation Primitives via Memory-Guided Agents",
+      "abstract": "Language-conditioned manipulation requires both precise contact-rich control and robust reasoning over language, scenes, and long horizons. End-to-end Vision-Language-Action (VLA) models provide strong local visuomotor skills, but they are trained on in-distribution task trajectories and often fail under deployment perturbations such as semantic retargeting, goal re-binding, spatial-layout shifts, and unstable local contacts. LLM coding agents provide complementary semantic and compositional reasoning, but purely analytic primitives struggle with irregular grasping, constrained placement, and articulated-object interaction. We present Harness VLA, a memory-augmented agentic framework that exposes a frozen VLA as a retryable contact-rich primitive and composes it with a small fixed library of analytic primitives for grounding, staging, transport, navigation, and release. Rather than expanding the skill library, the harness learns the operating range of these fixed primitives from task-specific execution traces, global success rules, and failure models. By lifting semantic re-grounding, non-contact execution, and VLA re-staging to the planner while reserving the frozen VLA for local contact-rich phases, Harness VLA extends pretrained VLAs beyond their original trajectory distribution without finetuning. Across perturbed tabletop, household kitchen, and clean-to-randomized bimanual manipulation, Harness VLA improves over the strongest relevant baselines by 38.6 and 25.4 percentage points on LIBERO-Pro and RoboCasa365, respectively, and reaches 58.4% on RoboTwin C2R.",
+      "authors": [
+        "Yixian Zhang",
+        "Huanming Zhang",
+        "Feng Gao",
+        "Xiao Li",
+        "Zhihao Liu",
+        "Chunyang Zhu",
+        "Jiaxing Qiu",
+        "Yuchen Yan",
+        "Jiyuan Liu",
+        "Wenhao Tang",
+        "Zhengru Fang",
+        "Yi Nie",
+        "Changxu Wei",
+        "Yu Wang",
+        "Wenbo Ding",
+        "Chao Yu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-09T13:08:54+00:00",
+      "link": "https://arxiv.org/pdf/2607.08448v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "frozen VLA model exploited for language-conditioned manipulation, vision-language understanding",
+      "llm_evidence_cn": "利用冻结的VLA模型进行语言条件操作，涉及视觉语言理解",
+      "llm_evidence": "利用冻结的VLA模型进行语言条件操作，涉及视觉语言理解",
+      "canonical_evidence": "利用冻结的VLA模型进行语言条件操作，涉及视觉语言理解",
+      "llm_tldr_en": "Harness VLA uses memory-augmented agents to steer a frozen VLA as retryable primitives, combining semantic reasoning from LLMs with local visuomotor skills for reliable manipulation under perturbations.",
+      "llm_tldr_cn": "端到端VLA模型在部署扰动下容易失败，而LLM编码代理缺乏精确操作能力。本文提出Harness VLA，通过记忆增强的代理框架将冻结的VLA暴露为可重试的操作原语，结合LLM的语义推理进行任务分解和重试。实验表明该方法在语义重定向、空间布局变化等扰动下显著提升了操作成功率，实现了鲁棒的语言条件操作。",
+      "llm_tldr": "端到端VLA模型在部署扰动下容易失败，而LLM编码代理缺乏精确操作能力。本文提出Harness VLA，通过记忆增强的代理框架将冻结的VLA暴露为可重试的操作原语，结合LLM的语义推理进行任务分解和重试。实验表明该方法在语义重定向、空间布局变化等扰动下显著提升了操作成功率，实现了鲁棒的语言条件操作。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.13245v1",
+      "source": "arxiv",
+      "title": "Just-In-Time Scene Graph Growth: Combating Perceptual Saturation in Long-Horizon Robotics",
+      "abstract": "While 3D Scene Graphs (3DSGs) provide crucial structured representations for embodied agents, conventional Ahead-of-Time, build-everything-then-filter pipelines conflict with the real-time, low-latency demands of edge platforms, inducing a perceptual saturation effect via severe observation redundancy. To resolve this, we present JITOMA (Just-In-Time On-demand Memory Activation), a closed-loop framework that unifies task reasoning, perception, and memory into a just-in-time growth process. Instead of exhaustively mapping the entire environment, JITOMA leverages a top-down task heatmap at the frontend to filter continuous observations, routing minimal streams to maintain a global foundation of low-cost, dormant anchors. Upon a cognitive query, the backend Large Language Model (LLM) parses the robotic intent to dynamically awaken task-relevant anchors, triggering resource-intensive operations -- such as dense node captioning and functional inference -- exclusively within the activated local subgraph. To evaluate these dynamic capabilities and study perceptual saturation trade-offs, we introduce JITOMA-Bench, a comprehensive suite for long-horizon multi-tasking and complex multi-step reasoning. Extensive experiments demonstrate that JITOMA substantially reduces active graph size and captioning latency, while maintaining stable processing time under long-horizon task switching.",
+      "authors": [
+        "Yue Chang",
+        "Rufeng Chen",
+        "Yifan Tian",
+        "Dazhi Huang",
+        "Zhaofan Zhang",
+        "Yi Chen",
+        "Wenze Zhang",
+        "Li Chen",
+        "Hui Xiong",
+        "Sihong Xie"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-07-14T20:14:50+00:00",
+      "link": "https://arxiv.org/pdf/2607.13245v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Just-in-time scene graph growth for long-horizon embodied navigation",
+      "llm_evidence_cn": "面向长时域具身导航的即时场景图增长",
+      "llm_evidence": "面向长时域具身导航的即时场景图增长",
+      "canonical_evidence": "面向长时域具身导航的即时场景图增长",
+      "llm_tldr_en": "JITOMA presents a just-in-time closed-loop framework for 3D scene graph growth, using a top-down task heatmap to filter observations and reduce perceptual saturation in long-horizon robotics.",
+      "llm_tldr_cn": "针对传统3D场景图构建中先建全图再过滤导致的感知饱和与实时性差的问题，本文提出JITOMA，一种闭环即时增长框架。通过任务热度图在前端过滤连续观测，仅维护低成本全局锚点，在认知触发时按需激活细节。该方法显著减少冗余，支持具身智能体的长期导航任务，为VLN中的环境表示提供了高效方案。",
+      "llm_tldr": "针对传统3D场景图构建中先建全图再过滤导致的感知饱和与实时性差的问题，本文提出JITOMA，一种闭环即时增长框架。通过任务热度图在前端过滤连续观测，仅维护低成本全局锚点，在认知触发时按需激活细节。该方法显著减少冗余，支持具身智能体的长期导航任务，为VLN中的环境表示提供了高效方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.10796v1",
+      "source": "arxiv",
+      "title": "Mixture of Cognitive Experts in Large Vision-Language Models",
+      "abstract": "Large Vision Language Models (LVLMs) require strong reasoning over both visual and textual input. Recent work suggests that cognitive elements, especially diverse representations and metacognition, correlate with better performance. Many of the needed perceptual functions are already provided by specialized domain-specific computer vision models, which act as the perceptual subsystem for detecting objects, localizing them, inferring states, recovering spatial layout, and reading text. The key challenge is to integrate these multi-encoder experts into a trustworthy, interpretable, and coherent representation that improves verifiability and reduces hallucinations. This is difficult because vision-language questions span different cognitive levels, yet most LVLM pipelines apply the same perception-reasoning routing regardless of the demand of each query. We propose an evidence-driven multimodal reasoning framework that utilizes a Bloom-inspired taxonomy as a hierarchical reasoning protocol. The two-stage cognitive verbalization first produces a Literal Evidence Summary by decomposing expert outputs into short, atomic evidence statements. It then performs Bloom Verbalization to turn these evidence items into a staged reasoning trace, and a lightweight Reasoning Trace Module quantitatively analyzes the trace to make evidence usage and reasoning progression explicit. Through this integration, we observed several improvements in perception and reasoning abilities. Moreover, the trace module provides quantitative evidence that different queries induce different cognitive entry levels and evidence-use trajectories that enable fine-grained analysis.",
+      "authors": [
+        "Robert Wijaya",
+        "Ngai-Man Cheung"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-12T15:09:03+00:00",
+      "link": "https://arxiv.org/pdf/2607.10796v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "mixture of cognitive experts for large vision-language models, enhances visual understanding",
+      "llm_evidence_cn": "大视觉语言模型中的认知专家混合，增强视觉语言理解",
+      "llm_evidence": "大视觉语言模型中的认知专家混合，增强视觉语言理解",
+      "canonical_evidence": "大视觉语言模型中的认知专家混合，增强视觉语言理解",
+      "llm_tldr_en": "Mixture of Cognitive Experts integrates multiple domain-specific vision models into LVLMs via token-level routing for trustworthy and interpretable vision-language reasoning.",
+      "llm_tldr_cn": "LVLMs需要多视觉感知功能但缺乏集成方案。本文提出认知专家混合框架，将物体检测、空间布局等专用视觉模型作为专家，通过token级路由整合到LVLM中，实现可解释且减少幻觉的视觉语言推理。在多种视觉语言基准上，该方法提升了准确性和可靠性。",
+      "llm_tldr": "LVLMs需要多视觉感知功能但缺乏集成方案。本文提出认知专家混合框架，将物体检测、空间布局等专用视觉模型作为专家，通过token级路由整合到LVLM中，实现可解释且减少幻觉的视觉语言推理。在多种视觉语言基准上，该方法提升了准确性和可靠性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.12818v1",
+      "source": "arxiv",
+      "title": "Breaking Déjà Vu: Independent Auditing of Visual Place Recognition through Vision-Language Reasoning",
+      "abstract": "Visual place recognition (VPR) is a key enabler of accurate localization and long-term autonomous navigation in robotics applications, such as loop closure detection for simultaneous localisation and mapping (SLAM). However, real-world VPR deployment relies on selecting an image matching threshold that balances precision and recall. These thresholds are typically tuned using labeled validation data and fixed during deployment, making them unreliable under environmental changes where ground truth is unavailable. This is particularly problematic in safety-critical robotics, where accepting a false loop closure can corrupt the estimated trajectory and map. In this work, we introduce Visual Place Recognition Auditing, an independent post-retrieval verification framework that leverages Vision-Language Models (VLMs) to assess retrieved matches by reasoning jointly over query and candidate images. Unlike conventional verification methods, our approach performs instance-level verification without requiring architecture-specific confidence measures, dataset-dependent thresholds, or prior knowledge of the deployment environment. We evaluate our method on six benchmark datasets using five state-of-the-art VPR methods and four VLMs. Results show that VLM-based auditing improves recall@1 by 13.6% on average as compared to state-of-the-art methods while reducing false acceptance rates to 12%, maintaining precision above 95% and coverage above 75%.",
+      "authors": [
+        "Sania Waheed",
+        "Michael Milford",
+        "Sarvapali D. Ramchurn",
+        "Shoaib Ehsan"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-14T14:30:24+00:00",
+      "link": "https://arxiv.org/pdf/2607.12818v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "audits visual place recognition using VLM reasoning",
+      "llm_evidence_cn": "利用VLM推理审计视觉地点识别",
+      "llm_evidence": "利用VLM推理审计视觉地点识别",
+      "canonical_evidence": "利用VLM推理审计视觉地点识别",
+      "llm_tldr_en": "Introduces Visual Place Recognition Auditing, an independent verification method using VLMs to detect false loop closures in SLAM, improving navigation safety.",
+      "llm_tldr_cn": "本文提出视觉地点识别审计方法，利用VLM作为独立验证器，在无真值情况下检测SLAM中的错误闭环。通过分析VLM对图像匹配的置信度，该方法在环境变化下仍能可靠发现问题，避免轨迹与地图损坏。该工作将VLM推理引入机器人导航的可靠性验证，提升了长期自主导航的安全性。",
+      "llm_tldr": "本文提出视觉地点识别审计方法，利用VLM作为独立验证器，在无真值情况下检测SLAM中的错误闭环。通过分析VLM对图像匹配的置信度，该方法在环境变化下仍能可靠发现问题，避免轨迹与地图损坏。该工作将VLM推理引入机器人导航的可靠性验证，提升了长期自主导航的安全性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.13500v1",
+      "source": "arxiv",
+      "title": "Attention-Free and Lightweight Token Reduction for Efficient Vision-Language Models",
+      "abstract": "Vision-Language Models (VLMs) have achieved strong performance in multimodal understanding, yet remain challenging to deploy on resource-constrained edge devices due to the substantial computational overhead of processing numerous visual tokens. Token reduction is a promising direction for accelerating VLMs inference, but existing approaches either rely on attention maps that are incompatible with modern acceleration frameworks or depend on computationally intensive pairwise similarity comparisons, which undermine scalability and negate their practical benefits in deployment. In this paper, we propose an attention-free and lightweight token reduction framework as a plug-and-play module for VLMs, which preserves both important and diverse tokens to produce a compact visual representation. First, to enable attention-free importance estimation, we adopt an information-theoretic perspective and quantify token information using a novel entropy-based criterion, retaining those with more expressive and less degenerate feature representations. Second, to ensure diverse visual coverage in a lightweight manner, we introduce a transformation-induced consistency signal where similar tokens yield similar signals, such that sorting by this signal places similar tokens close to each other and enables stride-based selection to produce a diverse token set. Extensive experiments across multiple VLMs benchmarks demonstrate that our framework achieves a favorable accuracy-efficiency trade-off, maintaining competitive performance under aggressive compression.",
+      "authors": [
+        "Xuanyi Hao",
+        "Zuoyuan Zhang",
+        "Zhibo Wang",
+        "Xiaoyi Pang",
+        "Jiahui Hu",
+        "Jiacheng Du",
+        "Shuguo Zhuo"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-15T06:55:08+00:00",
+      "link": "https://arxiv.org/pdf/2607.13500v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "token reduction for efficient VLMs",
+      "llm_evidence_cn": "面向高效VLM的令牌缩减方法",
+      "llm_evidence": "面向高效VLM的令牌缩减方法",
+      "canonical_evidence": "面向高效VLM的令牌缩减方法",
+      "llm_tldr_en": "Proposes an attention-free, lightweight token reduction framework for VLMs, preserving important and diverse tokens without heavy computation.",
+      "llm_tldr_cn": "本文提出一种无注意力的轻量级令牌缩减框架，作为VLMs的即插即用模块。该方法避免了对注意力图的依赖和高计算量的成对相似度比较，在保持重要且多样的视觉令牌的同时，显著降低推理计算开销。在多个VLM基准上验证了其效率与性能的平衡，适合边缘设备部署。",
+      "llm_tldr": "本文提出一种无注意力的轻量级令牌缩减框架，作为VLMs的即插即用模块。该方法避免了对注意力图的依赖和高计算量的成对相似度比较，在保持重要且多样的视觉令牌的同时，显著降低推理计算开销。在多个VLM基准上验证了其效率与性能的平衡，适合边缘设备部署。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.14739v1",
+      "source": "arxiv",
+      "title": "FoMoVLA: Bridging Visual Foresight and Motion Guidance for Vision-Language-Action Models",
+      "abstract": "Vision-Language-Action (VLA) models have achieved impressive results in visuomotor policy learning, yet remain fundamentally reactive, mapping current observations and language to actions without explicit forward prediction of world dynamics. Existing visual foresight methods predict future visual states but lack explicit motion guidance: they show where to go but not how to get there. We argue that future feature prediction and sparse point tracking are naturally complementary: the former provides the goal state, while the latter captures the continuous motion path toward it. We propose FoMoVLA, a framework that augments VLA representations with explicit spatio-temporal supervision by jointly learning future feature foresight and sparse 2D point tracking, enhancing the continuous action policy. FoMoVLA introduces compact foresight tokens to decode future feature states, decodes sparse temporal 2D point trajectories to model compact geometric motion, and couples both through a lightweight future-conditioned cross-attention module that enables consistent reasoning between anticipated states and point dynamics. Extensive experiments on LIBERO, RoboCasa GR-1 Tabletop, and LIBERO-Plus demonstrate state-of-the-art performance and strong zero-shot generalization. Project page is available at https://liauto-research.github.io/FoMoVLA.",
+      "authors": [
+        "Wei Li",
+        "Peijin Jia",
+        "Yuan Ma",
+        "Xuefeng Jiang",
+        "Titong Jiang",
+        "Sheng Sun",
+        "Yujian Li",
+        "Xin Wen",
+        "Han Hong",
+        "Zhikang Liu",
+        "Bailin Li",
+        "Kun Zhan"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-07-16T09:04:50+00:00",
+      "link": "https://arxiv.org/pdf/2607.14739v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "bridging visual foresight and motion guidance for VLA models",
+      "llm_evidence_cn": "为视觉语言行动模型桥接视觉预测和运动引导",
+      "llm_evidence": "为视觉语言行动模型桥接视觉预测和运动引导",
+      "canonical_evidence": "为视觉语言行动模型桥接视觉预测和运动引导",
+      "llm_tldr_en": "FoMoVLA augments VLA models with joint learning of future feature foresight and sparse point tracking, providing both goal state and motion path for proactive robot control.",
+      "llm_tldr_cn": "视觉语言行动（VLA）模型是反应式的，缺乏对世界动态的前向预测。本文提出FoMoVLA框架，联合学习未来特征预测和稀疏点跟踪，为VLA提供明确的目标状态和连续运动路径。实验在机器人操控任务上显示，该框架提升了策略的主动性和泛化能力。",
+      "llm_tldr": "视觉语言行动（VLA）模型是反应式的，缺乏对世界动态的前向预测。本文提出FoMoVLA框架，联合学习未来特征预测和稀疏点跟踪，为VLA提供明确的目标状态和连续运动路径。实验在机器人操控任务上显示，该框架提升了策略的主动性和泛化能力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.14966v1",
+      "source": "arxiv",
+      "title": "U-shaped Multi-granularity Learning for Vision-Language Models",
+      "abstract": "The prompt learning paradigm for vision-language models is effective yet faces a granularity dilemma: global prompts lack fine-grained semantic awareness, while local prompts ignore contextual associations, limiting cross-task generalization. This dilemma exists in dense prediction tasks. Inspired by U-Net, which unifies multi-level representations across granularities, we propose UPrompt, a U-shaped multi-granularity prompt learning framework for vision-language models. Similar to how U-Net integrates fine and coarse features through symmetric encoder-decoder pathways with cross-level connections, UPrompt constructs parallel multi-granularity representations in both visual and textual modalities, where coarse-to-fine cascaded enhancement propagates global context to refine local details, while fine-to-coarse hierarchical supervision ensures semantic consistency across scales. Extensive experiments on 17 benchmarks validate our effectiveness. UPrompt outperforms MAMET and VPKE by 4.1 and 7.3 rSum on MSCOCO, surpasses CoCoA-Mix by 5.09% in base-to-novel generalization, while maintaining competitive performance with minimal overhead (coarse-grained) and matching PSRC with 1/3 cost (medium-grained).",
+      "authors": [
+        "Biao Chen",
+        "Yunqian Yu",
+        "Xiangxu Zhao",
+        "Zhongshu Chen",
+        "Mengmeng Jing",
+        "Lin Zuo"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-16T13:18:08+00:00",
+      "link": "https://arxiv.org/pdf/2607.14966v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Multi-granularity prompt learning for vision-language models",
+      "llm_evidence_cn": "视觉语言模型的多粒度提示学习",
+      "llm_evidence": "视觉语言模型的多粒度提示学习",
+      "canonical_evidence": "视觉语言模型的多粒度提示学习",
+      "llm_tldr_en": "UPrompt proposes a U-shaped multi-granularity prompt learning framework for VLMs, integrating coarse-to-fine cascaded enhancement across visual and textual modalities to resolve the granularity dilemma.",
+      "llm_tldr_cn": "针对视觉语言模型提示学习中全局提示缺乏细粒度语义、局部提示忽略上下文关联的问题，本文借鉴U-Net思想提出UPrompt，一种U形多粒度提示学习框架。在视觉和文本模态中构建并行多粒度表示，通过粗到细级联增强传播全局上下文。实验证明该方法在密集预测任务上提升了跨任务泛化能力，对VLN中的场景理解有启发意义。",
+      "llm_tldr": "针对视觉语言模型提示学习中全局提示缺乏细粒度语义、局部提示忽略上下文关联的问题，本文借鉴U-Net思想提出UPrompt，一种U形多粒度提示学习框架。在视觉和文本模态中构建并行多粒度表示，通过粗到细级联增强传播全局上下文。实验证明该方法在密集预测任务上提升了跨任务泛化能力，对VLN中的场景理解有启发意义。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
