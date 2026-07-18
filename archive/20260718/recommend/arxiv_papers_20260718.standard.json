@@ -1,0 +1,168 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-18T20:30:11.845019+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2607.10350v2",
+      "source": "arxiv",
+      "title": "ABot-AgentOS: A General Robotic Agent OS with Lifelong Multi-modal Memory",
+      "abstract": "Recent VLM and VLA systems have improved robotic perception and action prediction, yet long-horizon embodied agents still require a general runtime layer for reasoning, memory, tool use, verification, and cross-embodiment execution. We present ABot-AgentOS, a general robotic Agent Operating System that sits above low-level controllers and provides a deliberative agent layer for scene-conditioned planning, context-isolated skill execution, multi-stage verification, multi-modal memory, and edge-cloud collaboration. To evaluate such systems, we introduce EmbodiedWorldBench, an executable benchmark with 16 indoor, outdoor, and hybrid scenes, four difficulty levels, and over 200 tasks involving navigation, object search, NPC dialogue, dynamic events, and trace-grounded scoring. ABot-AgentOS further introduces Universal Multi-modal Graph Memory, a persistent source-grounded substrate that converts dialogue, visual observations, spatial context, temporal relations, and task traces into typed nodes and edges. A failure-driven self-evolution loop converts diagnosed memory failures into gated runtime evo-assets that are promoted only to later evaluation splits, preventing current-split ground-truth leakage while enabling continual improvement. On an initial EmbodiedWorldBench subset, ABot-AgentOS improves over a single-controller baseline in both task success and goal completion. Across memory benchmarks, ABot-AgentOS Static achieves 87.5 on LoCoMo, 59.9 on OpenEQA EM-EQA, 88.6 on Mem-Gallery, and 76.5 Acc@All on NExT-QA; self-evolution further improves LoCoMo to 88.7, OpenEQA to 60.4, and Mem-Gallery to 89.0. These results suggest that a general Agent OS layer can improve long-horizon embodied execution while providing persistent, auditable memory for continual interaction.",
+      "authors": [
+        "Jiayi Tian",
+        "Shiao Liu",
+        "Yuting Xu",
+        "Jia Lu",
+        "Zihao Guan",
+        "Honglin Han",
+        "Di Yang",
+        "Minqi Gu",
+        "Yifei Qian",
+        "Tianlin Zhang",
+        "Yanqing Zhu",
+        "Zeqian Ye",
+        "Menglin Yang",
+        "Fei Wang",
+        "Xu Hu",
+        "Xiuxian Li",
+        "Wei Zhang",
+        "Shihui Su",
+        "Yiyan Ji",
+        "Jingbo Wang",
+        "Ziteng Feng",
+        "Jiaheng Liu",
+        "Zhaoxiang Zhang",
+        "Xiaolong Wu",
+        "Zixiao Tang",
+        "Zhining Gu",
+        "Yang Cai",
+        "Linbo Zheng",
+        "Jingjing Ma",
+        "Mingyang Yin",
+        "Zedong Chu",
+        "Ziqiao Li",
+        "Mu Xu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-07-11T15:24:43+00:00",
+      "link": "https://arxiv.org/pdf/2607.10350v2",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Provides a general robotic agent OS that supports navigation tasks among many others",
+      "llm_evidence_cn": "提供通用机器人操作系统，支持导航等众多任务",
+      "llm_evidence": "提供通用机器人操作系统，支持导航等众多任务",
+      "canonical_evidence": "提供通用机器人操作系统，支持导航等众多任务",
+      "llm_tldr_en": "Proposes ABot-AgentOS, a general robotic agent OS providing a deliberative layer with multimodal memory, tool use, and verification, evaluated on a benchmark with over 200 tasks including navigation.",
+      "llm_tldr_cn": "该论文提出ABot-AgentOS，一个通用的机器人智能体操作系统。它在底层控制器之上提供推理、记忆、工具使用、验证等上层能力，并引入包含200多个任务的EmbodiedWorldBench评估基准。该系统支持跨场景导航、物体搜索等复杂任务，展示了终身多模态记忆在长周期任务中的潜力。",
+      "llm_tldr": "该论文提出ABot-AgentOS，一个通用的机器人智能体操作系统。它在底层控制器之上提供推理、记忆、工具使用、验证等上层能力，并引入包含200多个任务的EmbodiedWorldBench评估基准。该系统支持跨场景导航、物体搜索等复杂任务，展示了终身多模态记忆在长周期任务中的潜力。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.10625v1",
+      "source": "arxiv",
+      "title": "Dual-Process Atomic Skill Learning: Decoupling Semantic Reasoning and Real-Time Control",
+      "abstract": "Language-conditioned Imitation Learning (IL) is essential for enabling robots to perform complex tasks following natural language instructions. However, generalizing to multi-step compositional tasks remains a significant challenge. While hierarchical approaches attempt to address this by decomposing tasks into atomic skills, existing methods often suffer from training instability and codebook collapse due to the tight coupling between high-level skill reasoning and low-level action generation in joint training paradigms. Inspired by the Dual-Process Theory of cognition, we propose Dual-Process Atomic Skill Learning (DASL), a novel asynchronous hierarchical imitation learning framework that decouples slow semantic reasoning from fast, real-time motion control. DASL comprises a Slow-Frequency Policy that predicts interpretable, discrete skills via Vector Quantization, and a High-Frequency Policy that leverages a latent diffusion model and a Decision Transformer to generate precise actions conditioned on these latent skills. By asynchronously coordinating these modules and utilizing diffusion to structure the latent space, our framework mitigates the skill codebook interference problem common in joint training paradigms. Evaluations across simulation benchmarks and experiment demonstrate that DASL significantly outperforms state-of-the-art baselines, excelling in skill acquisition and compositional generalization to unseen instructions. GitHub page: https://github.com/Hatakekaka/DASL",
+      "authors": [
+        "Jun Chen",
+        "Erdent Bao",
+        "Wenlong Dong",
+        "Jierui Liu",
+        "Qi Cai",
+        "Hao Wan",
+        "Shaopeng Li",
+        "Weijun Qin",
+        "Jing Liang",
+        "Huiping Zhuang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-12T07:38:53+00:00",
+      "link": "https://arxiv.org/pdf/2607.10625v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "language-conditioned imitation learning for instruction following",
+      "llm_evidence_cn": "语言条件模仿学习用于指令跟随",
+      "llm_evidence": "语言条件模仿学习用于指令跟随",
+      "canonical_evidence": "语言条件模仿学习用于指令跟随",
+      "llm_tldr_en": "Proposes DASL, a hierarchical imitation learning framework decoupling semantic reasoning from real-time control for multi-step compositional tasks.",
+      "llm_tldr_cn": "该论文针对语言条件模仿学习中多步组合任务泛化困难的问题，借鉴双过程认知理论，提出异步分层模仿学习框架DASL，将慢速语义推理与快速实时控制解耦。该方法避免了联合训练中高层技能推理与低层动作生成的耦合导致的不稳定和码本崩溃。实验表明DASL在语言条件机器人任务上实现了更好的泛化性和训练稳定性。",
+      "llm_tldr": "该论文针对语言条件模仿学习中多步组合任务泛化困难的问题，借鉴双过程认知理论，提出异步分层模仿学习框架DASL，将慢速语义推理与快速实时控制解耦。该方法避免了联合训练中高层技能推理与低层动作生成的耦合导致的不稳定和码本崩溃。实验表明DASL在语言条件机器人任务上实现了更好的泛化性和训练稳定性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.12786v1",
+      "source": "arxiv",
+      "title": "CoRe: A Comprehensive Framework for Cross-Image Comparative Reasoning in Vision-Language Models",
+      "abstract": "Cross-image comparative reasoning remains challenging for vision-language models (VLMs), especially when correct prediction requires fine-grained attribute grounding and globally consistent reasoning. We present CoRe, a unified framework for this problem. CoRe includes: (i) CoRe-20K, a large-scale triplet-based training set automatically constructed from structured visual metadata through a multi-expert collaborative pipeline, covering counting, depth, distance, and spatial relations; (ii) TriSR, a structured reward framework that jointly supervises attribute grounding, judgment alignment, and triplet consistency under GRPO optimization; and (iii) CoRe-Bench, the first benchmark dedicated to fine-grained cross-image comparative reasoning. Experiments show that CoRe substantially outperforms existing VLMs on CoRe-Bench while remaining competitive on standard multimodal benchmarks, achieving a 28.2-point gain in partial accuracy over the strongest baseline.",
+      "authors": [
+        "Lin Peng",
+        "Cong Wan",
+        "Zeyu Guo",
+        "SongLin Dong",
+        "Yihong Gong"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-14T14:01:07+00:00",
+      "link": "https://arxiv.org/pdf/2607.12786v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "cross-image comparative reasoning for spatial relations, depth, distance",
+      "llm_evidence_cn": "跨图像比较推理，涵盖空间关系、深度和距离",
+      "llm_evidence": "跨图像比较推理，涵盖空间关系、深度和距离",
+      "canonical_evidence": "跨图像比较推理，涵盖空间关系、深度和距离",
+      "llm_tldr_en": "Presents CoRe framework including a large-scale training set (CoRe-20K) and structured reward for cross-image comparative reasoning in VLMs, focusing on spatial attributes.",
+      "llm_tldr_cn": "跨图像比较推理对VLM具有挑战性，本文提出CoRe框架，包含自动构建的CoRe-20K数据集和TriSR结构化奖励机制，覆盖计数、深度、距离和空间关系。在CoRe-Bench上，该方法显著提升了VLM的细粒度属性推理和全局一致性。",
+      "llm_tldr": "跨图像比较推理对VLM具有挑战性，本文提出CoRe框架，包含自动构建的CoRe-20K数据集和TriSR结构化奖励机制，覆盖计数、深度、距离和空间关系。在CoRe-Bench上，该方法显著提升了VLM的细粒度属性推理和全局一致性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
