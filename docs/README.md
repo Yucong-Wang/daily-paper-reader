@@ -6,34 +6,33 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-18
-- 运行时间：2026-07-18 20:31:40 UTC
+- 最新运行日期：2026-07-19
+- 运行时间：2026-07-19 20:20:17 UTC
 - 运行状态：成功
-- 本次总论文数：3
+- 本次总论文数：4
 - 精读区：0
-- 速读区：3
+- 速读区：4
 
 ### 今日简报（AI）
-今日梳理3篇速读论文，涵盖机器人智能体OS与多模态推理。
-
-重点推荐《ABot-AgentOS》的终身多模态记忆框架（7.0分），以及《CoRe》的跨图像对比推理方法（6.0分）。
-
-建议优先深入《ABot-AgentOS》的具体实现，后续可关注其与原子技能学习的结合潜力。
-- 详情：[/202607/18/README](/202607/18/README)
+今日速读4篇论文，聚焦视觉-语言空间推理与VLA微调优化。最值得关注《When Depth Is Better Told Than Shown》在空间推理上表现亮眼（7.0分），以及两篇通用VLA微调方法。建议优先阅读深度序数提示论文，为空间推理任务提供新思路。
+- 详情：[/202607/19/README](/202607/19/README)
 
 ### 精读区论文标签
 - 本次无精读推荐。
 
 ### 速读区论文标签
-1. [ABot-AgentOS: A General Robotic Agent OS with Lifelong Multi-modal Memory](/202607/18/2607.10350v2-abot-agentos-a-general-robotic-agent-os-with-lifelong-multi-modal-memory)  
+1. [When Depth Is Better Told Than Shown: Depth-Ordinal Prompting for Vision-Language Spatial Reasoning](/202607/19/2607.11173v1-when-depth-is-better-told-than-shown-depth-ordinal-prompting-for-vision-language-spatial-reasoning)  
    标签：评分：7.0/10、query:vln
-   evidence：提供通用机器人操作系统，支持导航等众多任务
-2. [Dual-Process Atomic Skill Learning: Decoupling Semantic Reasoning and Real-Time Control](/202607/18/2607.10625v1-dual-process-atomic-skill-learning-decoupling-semantic-reasoning-and-real-time-control)  
+   evidence：深度序数提示增强VLM空间推理，可支持导航相关任务
+2. [ExToken: Structured Exploration for Efficient Vision-Language-Action Reinforcement Fine-tuning](/202607/19/2607.12931v1-extoken-structured-exploration-for-efficient-vision-language-action-reinforcement-fine-tuning)  
    标签：评分：6.0/10、query:vln
-   evidence：语言条件模仿学习用于指令跟随
-3. [CoRe: A Comprehensive Framework for Cross-Image Comparative Reasoning in Vision-Language Models](/202607/18/2607.12786v1-core-a-comprehensive-framework-for-cross-image-comparative-reasoning-in-vision-language-models)  
+   evidence：针对视觉-语言-行动模型的探索方法，与视觉语言理解相关
+3. [Generalizable VLA Finetuning via Representation Anchoring and Language-Action Alignment](/202607/19/2607.13429v1-generalizable-vla-finetuning-via-representation-anchoring-and-language-action-alignment)  
    标签：评分：6.0/10、query:vln
-   evidence：跨图像比较推理，涵盖空间关系、深度和距离
+   evidence：VLA策略微调方法，解决表征漂移和语言-动作对齐，与视觉语言理解相关
+4. [Attention-Free and Lightweight Token Reduction for Efficient Vision-Language Models](/202607/19/2607.13500v1-attention-free-and-lightweight-token-reduction-for-efficient-vision-language-models)  
+   标签：评分：6.0/10、query:vln
+   evidence：视觉语言模型的token缩减方法，可在资源受限设备上部署
 
 
 <div class="dpr-home-promo-card">

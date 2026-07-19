@@ -1,0 +1,69 @@
+{
+  "label": "2026-07-19",
+  "date": "2026-07-19",
+  "generated_at": "2026-07-19T20:20:24",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202607/19/2607.11173v1-when-depth-is-better-told-than-shown-depth-ordinal-prompting-for-vision-language-spatial-reasoning",
+      "section": "quick",
+      "title_en": "When Depth Is Better Told Than Shown: Depth-Ordinal Prompting for Vision-Language Spatial Reasoning",
+      "authors": "Quynh Vo, Phuc Dao, Cong-Duy Nguyen, Thong Nguyen",
+      "date": "2026-07-13",
+      "pdf": "https://arxiv.org/pdf/2607.11173v1",
+      "score": "7.0",
+      "evidence": "深度序数提示增强VLM空间推理，可支持导航相关任务",
+      "tldr": "视觉-语言模型在空间推理（如判断物体远近、前后关系）上表现不佳。直接输入深度图反而导致性能下降，原因是深度信息虽被编码但难以利用，而伪深度图作为噪声干扰。本文提出Depth-Ordinal Prompting (DOP)，无需训练，将单目深度估计转化为针对查询对象的序数文本提示。在多个基准和模型上，DOP提升了空间推理准确率，且在强原始图像场景下保持中性，优于其他无训练深度提示方法。关键发现是深度信号的形式依赖性：以图像显示有害，以文本提示有益。",
+      "tags": "query:vln",
+      "abstract_en": "Vision-language models (VLMs) are expected to reason about physical space -- which object is closer, what lies behind what, and how objects are arranged in 3D -- yet they still struggle with such spatial judgments. A natural remedy is to show the model a depth map, but we find that this can make performance worse. We show that depth is not absent: it reaches the language model, but becomes difficult to access for downstream reasoning, while rendered pseudo-depth maps act as noisy auxiliary images that frozen VLMs cannot easily regulate. We propose Depth-Ordinal Prompting (DOP), a training-free method that converts monocular depth into a single question-targeted ordinal text cue at the queried objects, without adding a depth image, training a module, injecting features, or using labels. Our key finding is form dependence: the same depth signal can hurt when shown as an image but help when told as text.Across benchmarks, models, and depth estimators, DOP improves spatial reasoning when pseudo-depth provides reliable object-level ordering and remains largely neutral in strong original-image regimes. It is also competitive with the strongest training-free depth-prompting alternative while being simpler and more targeted.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/19/2607.12931v1-extoken-structured-exploration-for-efficient-vision-language-action-reinforcement-fine-tuning",
+      "section": "quick",
+      "title_en": "ExToken: Structured Exploration for Efficient Vision-Language-Action Reinforcement Fine-tuning",
+      "authors": "Yilun Kong, Yunpeng Qing, Guozheng Ma, Haoyu Wang, Li Shen, Zhi Hou, Dacheng Tao",
+      "date": "2026-07-14",
+      "pdf": "https://arxiv.org/pdf/2607.12931v1",
+      "score": "6.0",
+      "evidence": "针对视觉-语言-行动模型的探索方法，与视觉语言理解相关",
+      "tldr": "针对视觉-语言-行动（VLA）模型强化微调中探索效率低的问题，发现轨迹多样性比数量更重要。提出ExToken框架，利用离线演示提取离散行为先验作为条件token，引导结构化探索。训练时通过不同token激励多样行为模式，部署时由状态条件选择器自适应预测有效模式。在仿真和真实机器人任务中，ExToken加速收敛、提升性能，尤其在有限交互预算下表现鲁棒。该框架为VLA模型高效探索提供了通用解决方案。",
+      "tags": "query:vln",
+      "abstract_en": "Reinforcement Learning (RL) has demonstrated significant potential for improving Vision-Language-Action (VLA) models on complex manipulation tasks. However, its practical scalability remains severely limited by the substantial cost of environmental interactions. In this work, we first investigate the exploration stagnation bottleneck in current VLA-RL frameworks and reveal that trajectory diversity is fundamentally more important to sample efficiency than the sheer quantity of collected rollouts. Motivated by these insights, we introduce RL Exploration Token (ExToken), a simple yet general framework that condition VLA policies on discrete behavioral priors derived from offline demonstrations for structured exploration. By conditioning the policy on different tokens during rollout collection, ExToken encourages the agent to explore diverse behavioral modes, substantially improving state-action coverage and exploration efficiency. To bridge exploration during training with deterministic inference at deployment, ExToken further incorporates a state-conditioned token selector that adaptively predicts effective behavioral modes for unseen scenarios. Extensive experiments across simulated and real-world robotic manipulation tasks demonstrate that ExToken consistently accelerates convergence, improves task performance, and exhibits strong robustness under highly constrained interaction budgets.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/19/2607.13429v1-generalizable-vla-finetuning-via-representation-anchoring-and-language-action-alignment",
+      "section": "quick",
+      "title_en": "Generalizable VLA Finetuning via Representation Anchoring and Language-Action Alignment",
+      "authors": "Dwip Dalal, Shivansh Patel, Chahit Jain, Jeonghwan Kim, Utkarsh Mishra, Alex Baratian, Hyeonjeong Ha, Heng Ji, Svetlana Lazebnik, Unnat Jain",
+      "date": "2026-07-15",
+      "pdf": "https://arxiv.org/pdf/2607.13429v1",
+      "score": "6.0",
+      "evidence": "VLA策略微调方法，解决表征漂移和语言-动作对齐，与视觉语言理解相关",
+      "tldr": "针对微调视觉语言模型（VLM）为机器人策略时，行为克隆（BC）会覆盖预训练表示导致泛化下降的问题，本文提出Anchor-Align方法，通过冻结VLM副本进行逐层表示蒸馏（视觉语言锚定）和基于离散运动方向标签的联合动作语言训练（语言动作对齐）来缓解。在真实xArm7机器人上，两个VLA架构的成功率分别从28%和37%提升至54%和60%；在LIBERO-PRO、LIBERO-Plus和CALVIN模拟器中，在分布外扰动、感知鲁棒性和长程控制上均有一致提升，表明保留预训练表示与有效动作学习并不冲突。",
+      "tags": "query:vln",
+      "abstract_en": "Finetuning a pretrained vision-language model (VLM) on robot demonstrations via behavior cloning (BC) has become the standard recipe for vision-language-action (VLA) policies. However, BC finetuning progressively overwrites the pretrained representations that support visual and semantic generalization. Co-training on web image-text data, a common remedy, does not prevent this; it applies language and action losses to separate observations, leaving VLAs with language-action misalignment that standard manipulation benchmarks do not expose. We propose Anchor-Align, which augments BC with two objectives: Vision-Language Anchoring distills layer-wise representations from a frozen VLM copy to prevent this drift, while Language-Action Alignment converts each action target into a discrete motion-direction label and jointly trains language and action prediction on the same robot observation. On a physical xArm7 robot, across two widely used VLA architectures, Anchor-Align improves real-robot success on both (28% to 54% and 37% to 60%). At scale in simulation, we demonstrate consistent improvements on OOD perturbations, perceptual robustness, and long-horizon control across LIBERO-PRO, LIBERO-Plus, and CALVIN, respectively, suggesting that preserving pretrained representations and effective action learning are not fundamentally at odds. Project page: anchoralignvla.github.io",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/19/2607.13500v1-attention-free-and-lightweight-token-reduction-for-efficient-vision-language-models",
+      "section": "quick",
+      "title_en": "Attention-Free and Lightweight Token Reduction for Efficient Vision-Language Models",
+      "authors": "Xuanyi Hao, Zuoyuan Zhang, Zhibo Wang, Xiaoyi Pang, Jiahui Hu, Jiacheng Du, Shuguo Zhuo",
+      "date": "2026-07-15",
+      "pdf": "https://arxiv.org/pdf/2607.13500v1",
+      "score": "6.0",
+      "evidence": "视觉语言模型的token缩减方法，可在资源受限设备上部署",
+      "tldr": "视觉语言模型因处理大量视觉token而计算开销巨大，现有缩减方案或依赖注意力图不兼容现代加速框架，或需密集相似度比较难以扩展。本文提出无注意力轻量级token缩减框架：利用熵准则估计token信息量以保留重要特征，通过变换一致性信号排序并步长采样确保视觉多样性。在多个VLM基准上，该方法在激进压缩下仍维持竞争性能，实现精度与效率的优异平衡，且作为即插即用模块便于部署。",
+      "tags": "query:vln",
+      "abstract_en": "Vision-Language Models (VLMs) have achieved strong performance in multimodal understanding, yet remain challenging to deploy on resource-constrained edge devices due to the substantial computational overhead of processing numerous visual tokens. Token reduction is a promising direction for accelerating VLMs inference, but existing approaches either rely on attention maps that are incompatible with modern acceleration frameworks or depend on computationally intensive pairwise similarity comparisons, which undermine scalability and negate their practical benefits in deployment. In this paper, we propose an attention-free and lightweight token reduction framework as a plug-and-play module for VLMs, which preserves both important and diverse tokens to produce a compact visual representation. First, to enable attention-free importance estimation, we adopt an information-theoretic perspective and quantify token information using a novel entropy-based criterion, retaining those with more expressive and less degenerate feature representations. Second, to ensure diverse visual coverage in a lightweight manner, we introduce a transformation-induced consistency signal where similar tokens yield similar signals, such that sorting by this signal places similar tokens close to each other and enables stride-based selection to produce a diverse token set. Extensive experiments across multiple VLMs benchmarks demonstrate that our framework achieves a favorable accuracy-efficiency trade-off, maintaining competitive performance under aggressive compression.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
