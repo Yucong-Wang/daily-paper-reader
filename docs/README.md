@@ -6,33 +6,30 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-19
-- 运行时间：2026-07-19 20:20:17 UTC
+- 最新运行日期：2026-07-20
+- 运行时间：2026-07-20 21:07:46 UTC
 - 运行状态：成功
-- 本次总论文数：4
-- 精读区：0
-- 速读区：4
+- 本次总论文数：3
+- 精读区：3
+- 速读区：0
 
 ### 今日简报（AI）
-今日速读4篇论文，聚焦视觉-语言空间推理与VLA微调优化。最值得关注《When Depth Is Better Told Than Shown》在空间推理上表现亮眼（7.0分），以及两篇通用VLA微调方法。建议优先阅读深度序数提示论文，为空间推理任务提供新思路。
-- 详情：[/202607/19/README](/202607/19/README)
+今日精读两篇高分论文，聚焦视觉语言导航和零样本目标导航中的语义地图与技能干预。最值得关注的是实例增强语义地图能提升导航理解，以及SkillNav通过分数级技能干预实现零样本目标导航。建议深入阅读这两篇论文，重点比较语义地图构建与技能干预策略的异同。
+- 详情：[/202607/20/README](/202607/20/README)
 
 ### 精读区论文标签
-- 本次无精读推荐。
+1. [Instance-Enriched Semantic Maps for Visual Language Navigation](/202607/20/2607.12630v2-instance-enriched-semantic-maps-for-visual-language-navigation)  
+   标签：评分：9.0/10、query:vln
+   evidence：实例增强地图的视觉语言导航
+2. [SkillNav: Score-Level Skill Intervention for Zero-Shot Object Goal Navigation](/202607/20/2607.15758v1-skillnav-score-level-skill-intervention-for-zero-shot-object-goal-navigation)  
+   标签：评分：9.0/10、query:vln
+   evidence：基于VLM的零样本目标导航
+3. [Think at 5 Hz, Act at 20 Hz: Asynchronous Fast-Slow Vision-Language-Action Inference for Closed-Loop Driving](/202607/20/2607.15621v1-think-at-5-hz-act-at-20-hz-asynchronous-fast-slow-vision-language-action-inference-for-closed-loop-driving)  
+   标签：评分：8.0/10、query:vln
+   evidence：视觉-语言-动作推理用于闭环驾驶，包含指令跟随
 
 ### 速读区论文标签
-1. [When Depth Is Better Told Than Shown: Depth-Ordinal Prompting for Vision-Language Spatial Reasoning](/202607/19/2607.11173v1-when-depth-is-better-told-than-shown-depth-ordinal-prompting-for-vision-language-spatial-reasoning)  
-   标签：评分：7.0/10、query:vln
-   evidence：深度序数提示增强VLM空间推理，可支持导航相关任务
-2. [ExToken: Structured Exploration for Efficient Vision-Language-Action Reinforcement Fine-tuning](/202607/19/2607.12931v1-extoken-structured-exploration-for-efficient-vision-language-action-reinforcement-fine-tuning)  
-   标签：评分：6.0/10、query:vln
-   evidence：针对视觉-语言-行动模型的探索方法，与视觉语言理解相关
-3. [Generalizable VLA Finetuning via Representation Anchoring and Language-Action Alignment](/202607/19/2607.13429v1-generalizable-vla-finetuning-via-representation-anchoring-and-language-action-alignment)  
-   标签：评分：6.0/10、query:vln
-   evidence：VLA策略微调方法，解决表征漂移和语言-动作对齐，与视觉语言理解相关
-4. [Attention-Free and Lightweight Token Reduction for Efficient Vision-Language Models](/202607/19/2607.13500v1-attention-free-and-lightweight-token-reduction-for-efficient-vision-language-models)  
-   标签：评分：6.0/10、query:vln
-   evidence：视觉语言模型的token缩减方法，可在资源受限设备上部署
+- 本次无速读推荐。
 
 
 <div class="dpr-home-promo-card">
