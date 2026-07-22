@@ -6,49 +6,49 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-21
-- 运行时间：2026-07-21 20:12:53 UTC
+- 最新运行日期：2026-07-22
+- 运行时间：2026-07-22 21:35:56 UTC
 - 运行状态：成功
 - 本次总论文数：9
-- 精读区：6
-- 速读区：3
+- 精读区：3
+- 速读区：6
 
 ### 今日简报（AI）
-1) 今日聚焦视觉语言导航前沿，精读两篇高分论文：未来状态条件化导航与慢推理-快规划流式架构。  
-2) 最值得关注：利用未来状态预测（Anticipate Before Acting）和隐式Token流（Token-Wise Latent Streaming）能显著提升动态环境下的导航决策效率。  
-3) 下步可深入探索结合具身动作记忆（MEMORA）和开放词汇3D场景属性查询，以增强机器人在真实场景中的长期规划与自适应能力。
-- 详情：[/202607/21/README](/202607/21/README)
+1) 今日日报成功整理9篇论文，精读3篇，其中《No Training, Better Flights: Test-Time Scaled VLMs for UAV Navigation》获得9.0高分，速读《SAGE: A Socially-Aware Generative Engine for Heterogeneous Multi-Agent Navigation》等6篇。
+2) 最值得关注的精读方向：无训练测试时缩放视觉语言模型提升无人机导航，以及以语言为中心的多模态智能框架。
+3) 建议优先精读高分论文《No Training, Better Flights》和《From Modalities to Propositions》，速读侧重社交感知多智能体导航与线性注意力开放词汇目标导航。
+- 详情：[/202607/22/README](/202607/22/README)
 
 ### 精读区论文标签
-1. [Anticipate Before Acting: Future-State-Conditioned Vision-Language Navigation](/202607/21/2607.18042v1-anticipate-before-acting-future-state-conditioned-vision-language-navigation)  
-   标签：评分：10.0/10、query:vln
-   evidence：未来状态条件化的视觉语言导航，直接解决VLN任务
-2. [Token-Wise Latent Streaming from Slow Reasoners to Fast Planners for Dynamic Vision Language Navigation](/202607/21/2607.16806v1-token-wise-latent-streaming-from-slow-reasoners-to-fast-planners-for-dynamic-vision-language-navigation)  
+1. [No Training, Better Flights: Test-Time Scaled VLMs for UAV Navigation](/202607/22/2607.19288v1-no-training-better-flights-test-time-scaled-vlms-for-uav-navigation)  
    标签：评分：9.0/10、query:vln
-   evidence：动态视觉语言导航与令牌流
-3. [G2-Nav: Grounded and Guarded Vision-Language Costmaps for Robot Social Navigation](/202607/21/2607.16956v1-g2-nav-grounded-and-guarded-vision-language-costmaps-for-robot-social-navigation)  
-   标签：评分：9.0/10、query:vln
-   evidence：G2-Nav：基于视觉语言成本图的机器人社交导航，直接解决VLN问题
-4. [VLN-AVP: Zero-Shot Vision-Language Navigation with Hybrid Long-Short-Term Memory for Autonomous Valet Parking](/202607/21/2607.17767v1-vln-avp-zero-shot-vision-language-navigation-with-hybrid-long-short-term-memory-for-autonomous-valet-parking)  
-   标签：评分：9.0/10、query:vln
-   evidence：零样本视觉语言导航用于自动代客泊车
-5. [PGN: Design and Implementation of a Vision-Language Navigation System Based on Pangu Multimodal Foundation Model](/202607/21/2607.17806v1-pgn-design-and-implementation-of-a-vision-language-navigation-system-based-on-pangu-multimodal-foundation-model)  
-   标签：评分：9.0/10、query:vln
-   evidence：基于盘古多模态模型的离线VLN系统
-6. [Hy-Embodied-VLM-1.0: Efficient Physical-World Agents](/202607/21/2607.12894v1-hy-embodied-vlm-10-efficient-physical-world-agents)  
+   evidence：面向无人机视觉语言导航的测试时缩放VLM
+2. [From Modalities to Propositions: A Language-Centric Framework for Multimodal Intelligence](/202607/22/2607.16560v1-from-modalities-to-propositions-a-language-centric-framework-for-multimodal-intelligence)  
    标签：评分：8.0/10、query:vln
-   evidence：开发用于物理世界智能体的具身基础模型与VLM
+   evidence：提出以语言为中心的多模态理解框架，统一视觉和语言模态
+3. [Athena-Brain Technical Report: An Efficient Robot Brain for General Intelligence and Embodied Interactio](/202607/22/2607.18985v1-athena-brain-technical-report-an-efficient-robot-brain-for-general-intelligence-and-embodied-interactio)  
+   标签：评分：8.0/10、query:vln
+   evidence：专为具身智能设计的紧凑LLM作为机器人脑
 
 ### 速读区论文标签
-1. [Human-Robot Interaction in GenAI Architectures via the Agent-Client Protocol](/202607/21/2607.14919v1-human-robot-interaction-in-genai-architectures-via-the-agent-client-protocol)  
+1. [SAGE: A Socially-Aware Generative Engine for Heterogeneous Multi-Agent Navigation](/202607/22/2607.16619v1-sage-a-socially-aware-generative-engine-for-heterogeneous-multi-agent-navigation)  
    标签：评分：7.0/10、query:vln
-   evidence：将自然语言指令转化为机器人动作序列
-2. [MEMORA: Embodied Action Memory from Egocentric Videos for Reasoning and Planning](/202607/21/2607.14252v1-memora-embodied-action-memory-from-egocentric-videos-for-reasoning-and-planning)  
+   evidence：社交感知的异构多智能体导航方法
+2. [STeP: Signal Temporal Logic for Precise Specifications for Action Generation with Vision Language Models](/202607/22/2607.18580v1-step-signal-temporal-logic-for-precise-specifications-for-action-generation-with-vision-language-models)  
+   标签：评分：7.0/10、query:vln
+   evidence：使用VLM分解指令并生成STL规范用于机器人执行
+3. [Beyond Transformers: Linear Attention Policy for Open-Vocabulary Object Goal Navigation](/202607/22/2607.18794v1-beyond-transformers-linear-attention-policy-for-open-vocabulary-object-goal-navigation)  
+   标签：评分：7.0/10、query:vln
+   evidence：开放词汇目标导航，具身智能体
+4. [VisCo: Leveraging Large Language Models as Intrinsic Encoders for Visual Token Compression](/202607/22/2607.12756v1-visco-leveraging-large-language-models-as-intrinsic-encoders-for-visual-token-compression)  
    标签：评分：6.0/10、query:vln
-   evidence：面向规划和导航任务的具身动作记忆
-3. [Vision-Language-Motion Maps: An Open-Vocabulary, Uncertainty-Aware, Queryable Motion Attribute for 3D Scene Maps](/202607/21/2607.16173v1-vision-language-motion-maps-an-open-vocabulary-uncertainty-aware-queryable-motion-attribute-for-3d-scene-maps)  
+   evidence：视觉令牌压缩方法，可加速VLMs在具身导航系统中的推理
+5. [PhyAgentOS: A Self-Evolving Operating System for Embodied Agents with Decoupled Cognitive Planning and Physical Execution](/202607/22/2607.16636v1-phyagentos-a-self-evolving-operating-system-for-embodied-agents-with-decoupled-cognitive-planning-and-physical-execution)  
    标签：评分：6.0/10、query:vln
-   evidence：开放词汇3D地图用于机器人查询
+   evidence：具身智能体操作系统，认知-物理解耦
+6. [Agentic Real2Sim: Physics-based World Modeling with Vision-Language Agents](/202607/22/2607.19190v1-agentic-real2sim-physics-based-world-modeling-with-vision-language-agents)  
+   标签：评分：6.0/10、query:vln
+   evidence：使用视觉-语言智能体进行基于物理的世界建模以支持机器人仿真
 
 
 <div class="dpr-home-promo-card">

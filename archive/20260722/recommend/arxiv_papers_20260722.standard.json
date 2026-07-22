@@ -1,0 +1,413 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-22T21:29:43.963574+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2607.19288v1",
+      "source": "arxiv",
+      "title": "No Training, Better Flights: Test-Time Scaled VLMs for UAV Navigation",
+      "abstract": "Test-time scaling offers a promising method to improve the inference performance of Vision-Language Models (VLMs) without additional training. Existing approaches to vision-language navigation (VLN) for Unmanned Aerial Vehicle (UAV) typically relies on a single inference pass, which can falter in complex environments by producing suboptimal or unsafe trajectories. In this paper, we explore a simple and effective approach to apply test-time scaling to VLN for UAV. We enhance navigation reasoning through an iterative refinement process that requires no extra model training, guiding the model to re-evaluate its initial navigation plan for better accuracy and safety. Our method first prompts the model to generate multiple parallel candidates and then performs a self-correction step, achieving deeper and more robust planning without changing the underlying model. To further strengthen decision-making, we design a multi-criteria scoring function to evaluate the refined candidates based on safety, goal alignment, and forward-progress. This simple yet powerful combination enables a frozen UAV navigation VLMs to self-correct and generate more accurate and reliable flight plans, achieving SOTA performance in this task.",
+      "authors": [
+        "Feinan Cheng",
+        "Dongliang Xu",
+        "Wenli Nong",
+        "Zhiheng Zhang",
+        "Ang Liu",
+        "Tianyu Wang",
+        "Yue Yao"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-07-21T16:59:12+00:00",
+      "link": "https://arxiv.org/pdf/2607.19288v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Test-time scaling of VLMs for vision-language navigation in UAV",
+      "llm_evidence_cn": "面向无人机视觉语言导航的测试时缩放VLM",
+      "llm_evidence": "面向无人机视觉语言导航的测试时缩放VLM",
+      "canonical_evidence": "面向无人机视觉语言导航的测试时缩放VLM",
+      "llm_tldr_en": "Applies test-time scaling to VLMs for UAV navigation by iterative refinement and candidate generation, improving accuracy and safety without extra training.",
+      "llm_tldr_cn": "该论文探索将测试时缩放方法应用于无人机视觉语言导航。现有方法单次推理容易产生次优轨迹。通过多候选生成和迭代细化，引导模型重新评估初始计划。无需额外训练即可显著提升导航准确性和安全性，为VLN提供了高效扩展方法。",
+      "llm_tldr": "该论文探索将测试时缩放方法应用于无人机视觉语言导航。现有方法单次推理容易产生次优轨迹。通过多候选生成和迭代细化，引导模型重新评估初始计划。无需额外训练即可显著提升导航准确性和安全性，为VLN提供了高效扩展方法。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.16560v1",
+      "source": "arxiv",
+      "title": "From Modalities to Propositions: A Language-Centric Framework for Multimodal Intelligence",
+      "abstract": "We propose a language representation for multimodal data in which any observation, whether image, video, or text, is expressed as a bag of atomic propositions, simple statements about the entities, actions, and relations in a scene. A global semantic codebook unifies these into a shared vocabulary of canonical atomic propositions, placing every modality and observation into one interpretable space that spans fine grained facts to high level concepts and composes into richer ones. This brings interpretability with reasoning, cross-modal understanding and retrieval, and compositionality that enables complex multimodal understanding, rich data curation and complex structured retrieval. We demonstrate the framework on autonomous driving and open-world data.",
+      "authors": [
+        "Nadine Chang",
+        "Maying Shen",
+        "Shizhe Diao",
+        "Jialiang Wang",
+        "Jingde Chen",
+        "Thomas Breuel",
+        "Pavlo Molchanov",
+        "Rafid Mahmood",
+        "Jose M. Alvarez"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG",
+        "cs.MM"
+      ],
+      "published": "2026-07-18T00:08:47+00:00",
+      "link": "https://arxiv.org/pdf/2607.16560v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Language-centric framework for multimodal understanding, unifying visual and language modalities",
+      "llm_evidence_cn": "提出以语言为中心的多模态理解框架，统一视觉和语言模态",
+      "llm_evidence": "提出以语言为中心的多模态理解框架，统一视觉和语言模态",
+      "canonical_evidence": "提出以语言为中心的多模态理解框架，统一视觉和语言模态",
+      "llm_tldr_en": "Proposes a language representation that converts multimodal data into atomic propositions for interpretable cross-modal reasoning.",
+      "llm_tldr_cn": "该文提出一种语言表示，将图像、视频、文本等观测转化为原子命题袋，通过全局语义码本将其统一到共享空间，支持跨模态理解、检索和组合推理。在自动驾驶数据集上展示了其对复杂多模态场景的解析能力。该框架可增强视觉语言导航中的场景理解，使导航指令与视觉观察在命题层面对齐。",
+      "llm_tldr": "该文提出一种语言表示，将图像、视频、文本等观测转化为原子命题袋，通过全局语义码本将其统一到共享空间，支持跨模态理解、检索和组合推理。在自动驾驶数据集上展示了其对复杂多模态场景的解析能力。该框架可增强视觉语言导航中的场景理解，使导航指令与视觉观察在命题层面对齐。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "visual language understanding",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.18985v1",
+      "source": "arxiv",
+      "title": "Athena-Brain Technical Report: An Efficient Robot Brain for General Intelligence and Embodied Interactio",
+      "abstract": "Large language models (LLMs) have demonstrated remarkable capabilities in language understanding, reasoning, and world knowledge. As embodied agents become increasingly capable, there is a growing demand for compact models that can serve as an on-device brain, preserving the broad general intelligence of LLMs while enabling effective high-level interaction with embodied environments. Existing approaches, however, often prioritize either general-purpose intelligence or specialized embodied capabilities, making it challenging to satisfy both requirements within a single model. We present \\textbf{Athena-Brain-8B}, an 8B LLM designed to serve as an on-device brain for embodied intelligence for embodied intelligence. Through a multi-stage post-training pipeline consisting of General Supervised Fine-Tuning, General Reinforcement Learning, Embodied Expert training, and Model Merge, Athena-Brain-8B maintains strong general capabilities while acquiring strong high-level embodied interaction capabilities and generating concise responses for efficient embodied interaction. Experimental results demonstrate the effectiveness of Athena across both general and embodied evaluations. Compared with the corresponding Qwen3-8B thinking model, Athena-Brain-8B achieves comparable performance on general language and reasoning benchmarks while generating substantially shorter responses. On in-domain embodied benchmarks, Athena-Brain-8B consistently outperforms models of similar scale and surpasses several substantially larger frontier models evaluated zero-shot, demonstrating that compact language models can effectively integrate strong general intelligence with embodied capabilities.",
+      "authors": [
+        "Jialian Li",
+        "Junhong Liu",
+        "Yuchen Cao",
+        "Weiran Guo",
+        "Jiaming Song",
+        "Xutao Wang",
+        "Yi Zhao",
+        "Jiangpin Liu",
+        "Jie Chen"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-21T11:19:21+00:00",
+      "link": "https://arxiv.org/pdf/2607.18985v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "compact LLM for embodied intelligence as on-device brain",
+      "llm_evidence_cn": "专为具身智能设计的紧凑LLM作为机器人脑",
+      "llm_evidence": "专为具身智能设计的紧凑LLM作为机器人脑",
+      "canonical_evidence": "专为具身智能设计的紧凑LLM作为机器人脑",
+      "llm_tldr_en": "Presents Athena-Brain-8B, an 8B LLM optimized for on-device embodied intelligence, balancing general language capabilities with specialized embodied interaction performance.",
+      "llm_tldr_cn": "针对具身智能中通用智能与专用能力难以兼顾的问题，提出Athena-Brain-8B紧凑型大语言模型，作为机器人上的设备端大脑。通过联合训练和架构优化，在保持LLM通用推理能力的同时，提升与具身环境的高层交互效果。该模型可直接用于VLN系统中的语言理解与决策模块，具有较强的实用性。",
+      "llm_tldr": "针对具身智能中通用智能与专用能力难以兼顾的问题，提出Athena-Brain-8B紧凑型大语言模型，作为机器人上的设备端大脑。通过联合训练和架构优化，在保持LLM通用推理能力的同时，提升与具身环境的高层交互效果。该模型可直接用于VLN系统中的语言理解与决策模块，具有较强的实用性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "research on vision language navigation",
+      "matched_requirement_id": "req-7",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.16619v1",
+      "source": "arxiv",
+      "title": "SAGE: A Socially-Aware Generative Engine for Heterogeneous Multi-Agent Navigation",
+      "abstract": "Safe and socially compliant navigation in open human-robot environments requires robots to reason about heterogeneous participants with different dynamics, autonomy levels, and social roles. Existing trajectory prediction and planning methods often rely on homogeneous interaction assumptions or enforce only geometric collision constraints, making it difficult to jointly model asymmetric interactions, coupled prediction-planning, and soft social norms. This paper proposes SAGE, a socially-aware generative engine for heterogeneous multi-agent navigation. SAGE represents robots and surrounding entities as a directed heterogeneous graph and employs a Heterogeneous Graph Transformer (HGT) to encode type-specific asymmetric interactions. Conditioned on the resulting context, a diffusion-based generative module jointly models future entity trajectories and robot trajectory plans. During inference, a training-free safety-social energy guidance mechanism refines sampled robot trajectories using differentiable collision, kinematic, task-progress, and role-conditioned social-compliance terms. Extensive experiments on real-world (ETH/UCY and SDD) and synthetic datasets verify the effectiveness of SAGE in improving safety and social compliance while maintaining task performance. The proposed guidance mechanism consistently reduces collision and social-violation rates, scales to teams of up to 20 robots, and enables explicit control of the safety-accuracy-task trade-off without retraining. These findings demonstrate the potential of SAGE as a scalable framework for socially-aware multi-agent navigation in complex environments.",
+      "authors": [
+        "Lan Hu",
+        "Minghui Liwang",
+        "Wenbo Zhu",
+        "Xinlei Yi",
+        "Yiguang Hong",
+        "Xianbin Wang",
+        "Zhenzhen Jiao",
+        "Seyyedali Hosseinalipour"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.MA"
+      ],
+      "published": "2026-07-18T03:40:59+00:00",
+      "link": "https://arxiv.org/pdf/2607.16619v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Socially-aware heterogeneous multi-agent navigation method",
+      "llm_evidence_cn": "社交感知的异构多智能体导航方法",
+      "llm_evidence": "社交感知的异构多智能体导航方法",
+      "canonical_evidence": "社交感知的异构多智能体导航方法",
+      "llm_tldr_en": "SAGE models heterogeneous multi-agent navigation with heterogeneous graph transformer and generative trajectory planning for socially compliant behavior.",
+      "llm_tldr_cn": "针对开放人机环境中多种动力学和自治级别参与者的社交导航问题，本文提出SAGE引擎，通过有向异构图表示并利用异构图Transformer编码类型特定的非对称交互，结合生成式轨迹规划实现联合预测规划，有效处理了复杂社会规范，提升了安全性和社会合规性。",
+      "llm_tldr": "针对开放人机环境中多种动力学和自治级别参与者的社交导航问题，本文提出SAGE引擎，通过有向异构图表示并利用异构图Transformer编码类型特定的非对称交互，结合生成式轨迹规划实现联合预测规划，有效处理了复杂社会规范，提升了安全性和社会合规性。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.12756v1",
+      "source": "arxiv",
+      "title": "VisCo: Leveraging Large Language Models as Intrinsic Encoders for Visual Token Compression",
+      "abstract": "Vision-language models (VLMs) process large numbers of visual tokens, resulting in substantial inference latency and memory overhead. This has motivated extensive research on visual token compression. While training-free strategies rely on heuristic metrics and suffer significant performance degradation under high compression ratios, many training-based methods introduce external compression modules that force the VLM backbone to adapt, incurring substantial retraining cost and compromising VLMs' priors. Effective visual token compression hinges on strong information encoding, a capability already present in pretrained VLMs but underutilized by existing approaches. Motivated by this, we propose VisCo, a training-efficient self-compression framework that reuses the pretrained VLM itself as an intrinsic compressor. VisCo is a parameter-sharing autoencoder that compresses visual information using a small set of memory tokens and transfers hierarchical information from encoding to decoding. Experiments show that VisCo surpasses prior methods across all evaluated compression ratios, with larger gains under more aggressive compression, and remains stable even in the extreme single-token setting. Moreover, when combined with the original visual tokens, the learned memory tokens can even improve the base model, suggesting that VisCo captures complementary representations beyond compression.",
+      "authors": [
+        "Yupeng Zheng",
+        "Kai Zou",
+        "Bin Liu",
+        "Nenghai Yu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-14T13:21:36+00:00",
+      "link": "https://arxiv.org/pdf/2607.12756v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Visual token compression for VLMs, enabling efficient inference in embodied navigation systems",
+      "llm_evidence_cn": "视觉令牌压缩方法，可加速VLMs在具身导航系统中的推理",
+      "llm_evidence": "视觉令牌压缩方法，可加速VLMs在具身导航系统中的推理",
+      "canonical_evidence": "视觉令牌压缩方法，可加速VLMs在具身导航系统中的推理",
+      "llm_tldr_en": "Proposes VisCo, training-efficient visual token compression using VLM internal representations, reducing latency for VLMs.",
+      "llm_tldr_cn": "该文针对VLMs处理大量视觉令牌导致的推理开销问题，提出VisCo方法，利用预训练VLM本身的编码能力进行令牌压缩，无需外部模块或大量重训练。该方法在保持性能的同时大幅减少令牌数，从而降低延迟和内存。在导航应用中，压缩后的VLM可更快地处理视觉输入，有利于实时决策。",
+      "llm_tldr": "该文针对VLMs处理大量视觉令牌导致的推理开销问题，提出VisCo方法，利用预训练VLM本身的编码能力进行令牌压缩，无需外部模块或大量重训练。该方法在保持性能的同时大幅减少令牌数，从而降低延迟和内存。在导航应用中，压缩后的VLM可更快地处理视觉输入，有利于实时决策。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.18580v1",
+      "source": "arxiv",
+      "title": "STeP: Signal Temporal Logic for Precise Specifications for Action Generation with Vision Language Models",
+      "abstract": "Vision-language-action (VLA) models have shown impressive generalization, but often lack interpretability and can struggle to follow precise natural language instructions that encode spatial, temporal, and logical requirements. We propose a hierarchical framework that uses Signal Temporal Logic (STL) as a shared representation connecting high-level language understanding with low-level robot execution. A high-level policy leverages a VLM to decompose language instructions into high-level subtasks, generate STL specifications for each subtask, and choose a low-level policy for executing each subtask. The STL specifications translate language-derived intent into precise constraints, and the low-level policy selection determines whether those constraints are enforced directly through STL-guided model-predictive control or monitored during execution of a learned policy for perceptually complex, or contact-rich behaviors. By integrating STL into plan validation, low-level policy, subtask monitoring, and replanning, our framework enables language-derived plans to be checked, optimized, and revised at runtime using a common formal structure. We evaluate the approach on a real-world tabletop domain, demonstrating how formal specifications can improve the precision, reliability, and interpretability of language-conditioned robot planning.",
+      "authors": [
+        "Kasra Torshizi",
+        "Anukriti Singh",
+        "Sidharth Mathur",
+        "Khuzema Habib",
+        "Leo Du",
+        "Pratap Tokekar"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-20T23:26:32+00:00",
+      "link": "https://arxiv.org/pdf/2607.18580v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "uses VLM to decompose instructions and generate STL specs for robot execution",
+      "llm_evidence_cn": "使用VLM分解指令并生成STL规范用于机器人执行",
+      "llm_evidence": "使用VLM分解指令并生成STL规范用于机器人执行",
+      "canonical_evidence": "使用VLM分解指令并生成STL规范用于机器人执行",
+      "llm_tldr_en": "Proposes a hierarchical framework using Signal Temporal Logic to connect language intent with precise robot action constraints, enabling better instruction following for embodied agents.",
+      "llm_tldr_cn": "针对VLA模型难以精确遵循自然语言指令的问题，提出STeP框架，利用信号时序逻辑（STL）作为高层语言理解与底层机器人执行之间的桥梁。高层策略使用VLM将指令分解为子任务并生成STL规范，从而将语言意图转化为精确约束。该方法提升了指令跟随的准确性和可解释性，对VLN中的精确指令执行有重要借鉴意义。",
+      "llm_tldr": "针对VLA模型难以精确遵循自然语言指令的问题，提出STeP框架，利用信号时序逻辑（STL）作为高层语言理解与底层机器人执行之间的桥梁。高层策略使用VLM将指令分解为子任务并生成STL规范，从而将语言意图转化为精确约束。该方法提升了指令跟随的准确性和可解释性，对VLN中的精确指令执行有重要借鉴意义。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.16636v1",
+      "source": "arxiv",
+      "title": "PhyAgentOS: A Self-Evolving Operating System for Embodied Agents with Decoupled Cognitive Planning and Physical Execution",
+      "abstract": "Vision-language-action models, world models, and agentic planners each advance physical intelligence, yet their composition lacks a common execution abstraction, shared state, semantic verification, and persistent experience across heterogeneous embodiments. We present PhyAgentOS, a runtime foundation delivering scheduling, verification, memory, benchmarking, and safety as system-level services. Its Session-Centered Runtime treats a session, not an action, as the minimum unit of scheduling, compatibility preflight, supervised execution, evidence collection, and acceptance. To decouple cognition from physical execution, the cognition-physics boundary is a file system: the State-as-a-File protocol materializes cross-layer state as Markdown with YAML, yielding inspectable, versionable records without code dependencies between Agent and Runtime layers. These views form a unified cognitive state space aligning intent, capabilities, environment, execution, and experience. The SessionVerifier distinguishes execution termination from semantic task completion via evidence-grounded verdicts of success, failure, or replan. Verified outcomes are consolidated through epistemic memory into reusable knowledge and corrective lessons, closing a trial-and-error loop without retraining. Benchmarking reuses the deployment session and verification path, so results trace to real execution. Layered safety constrains both policy-driven and agent-driven execution: preflight, action bridges, SafetyGuard, heartbeat monitoring, and target-local constraints. Validation is progressive: games test cognitive planning, simulation adds dynamics and control, real robots add hardware noise, with the cognitive layer held constant. PhyAgentOS is benchmarked on Optimus-67, StarDojo, and DST-Dojo, validated on 19+ simulated and physical embodiments, and gains on LIBERO, Calvin, and RoboCasa365 across multiple VLA models.",
+      "authors": [
+        "Yang Liu",
+        "Weixing Chen",
+        "Xinshuai Song",
+        "Tao Pu",
+        "Siwen Mo",
+        "Yongjie Bai",
+        "Zihao Chen",
+        "Qianran Sun",
+        "Liruo Zhong",
+        "Ying Shen",
+        "Liang Lin"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-18T04:46:53+00:00",
+      "link": "https://arxiv.org/pdf/2607.16636v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "operating system for embodied agents with cognitive-physical decoupling",
+      "llm_evidence_cn": "具身智能体操作系统，认知-物理解耦",
+      "llm_evidence": "具身智能体操作系统，认知-物理解耦",
+      "canonical_evidence": "具身智能体操作系统，认知-物理解耦",
+      "llm_tldr_en": "Presents PhyAgentOS, a runtime system for embodied agents that decouples cognitive planning from physical execution via a file-system protocol, offering scheduling, verification, and memory services.",
+      "llm_tldr_cn": "针对具身智能体中异质组件缺乏统一执行抽象的问题，提出PhyAgentOS运行时系统。以会话为最小调度单元，通过状态即文件协议解耦认知与物理执行，提供调度、验证、记忆等系统级服务。该系统有助于构建鲁棒的导航框架，但并非直接研究导航算法。",
+      "llm_tldr": "针对具身智能体中异质组件缺乏统一执行抽象的问题，提出PhyAgentOS运行时系统。以会话为最小调度单元，通过状态即文件协议解耦认知与物理执行，提供调度、验证、记忆等系统级服务。该系统有助于构建鲁棒的导航框架，但并非直接研究导航算法。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.18794v1",
+      "source": "arxiv",
+      "title": "Beyond Transformers: Linear Attention Policy for Open-Vocabulary Object Goal Navigation",
+      "abstract": "Open-Vocabulary Object Goal Navigation (OVON) requires agents to operate under partial observability, making effective internal state updates critical for navigation performance. This update is implemented by the policy network, where recent approaches adopt Transformer-based backbones with self-attention over a context window to integrate temporal information. However, our controlled experiments show that performance does not scale with context length under Transformer-based policies, questioning the suitability of self-attention for state integration in navigation. To this end, we propose Linear Attention-based Navigation (LANav), which adopts linear attention (LA) as the policy backbone to maintain a structured state update rather than self-attention over the context window. Across multiple LA variants evaluated under identical settings, LANav consistently outperforms Transformer-based baselines. Performance improves as state update mechanisms become more structured and regulated, highlighting the importance of state update design. To improve state update effectiveness, we introduce Weighted State-Expansion Linear Attention (WSLA), which expands each attention head's state into multiple sub-states and uses learnable weighted readout to aggregate expanded sub-states. Equipped with WSLA, LANav achieves 36.4% average success rate (SR) on HM3D-OVON, outperforming Transformer-based counterparts by 6.3 percentage points in macro-averaged SR, while maintaining computational efficiency. Distance-stratified results show larger gains in long-distance episodes, while HSSD transfer and fine-tuning demonstrate robustness across scene distributions. Real-world deployment on a Unitree Go2 further achieves an 82% success rate over 50 trials, supporting the practical feasibility and sim-to-real transfer of LANav.",
+      "authors": [
+        "Jiahong Zhang",
+        "Yifan Lin",
+        "Yandong Zhang",
+        "Sijun Shen",
+        "Kexin Wang",
+        "Yuqi Pan",
+        "Hongjuan Pei",
+        "Wei Wang",
+        "Guoqi Li"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-21T07:15:36+00:00",
+      "link": "https://arxiv.org/pdf/2607.18794v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "open-vocabulary object goal navigation, embodied agent",
+      "llm_evidence_cn": "开放词汇目标导航，具身智能体",
+      "llm_evidence": "开放词汇目标导航，具身智能体",
+      "canonical_evidence": "开放词汇目标导航，具身智能体",
+      "llm_tldr_en": "Proposes LANav using linear attention policy for open-vocabulary object goal navigation, showing improved scalability over Transformer baselines.",
+      "llm_tldr_cn": "针对开放词汇目标导航（OVON）任务中Transformer策略性能不随上下文长度扩展的问题，论文提出LANav，采用线性注意力机制作为策略骨干，实现结构化状态更新。实验表明线性注意力在导航中更有效，超越了基于Transformer的方法，为具身导航提供了更高效的状态集成方案。",
+      "llm_tldr": "针对开放词汇目标导航（OVON）任务中Transformer策略性能不随上下文长度扩展的问题，论文提出LANav，采用线性注意力机制作为策略骨干，实现结构化状态更新。实验表明线性注意力在导航中更有效，超越了基于Transformer的方法，为具身导航提供了更高效的状态集成方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.19190v1",
+      "source": "arxiv",
+      "title": "Agentic Real2Sim: Physics-based World Modeling with Vision-Language Agents",
+      "abstract": "Real-to-sim conversion for robotic interaction with objects remains labor-intensive because it requires more than visual reconstruction: a streamlined real2sim process must recover scene geometries and object states, infer physical parameters, and assemble actors, objects, cameras, poses, and trajectories into a runnable physical simulation. Today this process still depends on manual tuning of visual foundation models, mesh cleanup, coordinate-frame alignment, and brittle workflow glue across visual perception tools and simulators. We introduce \\textit{Agentic Real2Sim}, a framework for generalized physical world modeling with vision-language agents, converting a real-world recording of object-robot interaction into a simulatable episodic twin which preserves observations, geometries, robot interactions, and object states. We evaluate Agentic Real2Sim on rigid-object manipulation, deformable-object interaction, and humanoid motion scenes, spanning domains that are usually handled by separate Real2Sim pipelines, marking a first step toward scalable conversion. The framework's agentic decisions can be driven by an open-weight VLM backend at a small fraction of the cost of frontier models, while attaining comparable conversion success rate. We aim to use the resulting real-world-aligned twins for downstream robotics tasks, specifically policy learning and evaluation. The project site is available at https://ericchen321.github.io/agentic_real2sim.github.io/.",
+      "authors": [
+        "Guanxiong Chen",
+        "Qianjun Xia",
+        "Jiawei Peng",
+        "Heng Zhang",
+        "Bole Ma",
+        "Justin Qian",
+        "Ziyi Jiao",
+        "Bingyang Zhou",
+        "Luoxin Ye",
+        "Kaifeng Zhang",
+        "Kunyi Wang",
+        "Weijia Zeng",
+        "Yunuo Chen",
+        "Pengzhi Yang",
+        "Ziqiu Zeng",
+        "Huamin Wang",
+        "Chao Liu",
+        "Alan Yuille",
+        "Fan Shi",
+        "Changxi Zheng",
+        "Yunzhu Li",
+        "Chenfanfu Jiang",
+        "Peter Yichen Chen"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-07-21T15:23:38+00:00",
+      "link": "https://arxiv.org/pdf/2607.19190v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "physics-based world modeling with vision-language agents for robotic simulation",
+      "llm_evidence_cn": "使用视觉-语言智能体进行基于物理的世界建模以支持机器人仿真",
+      "llm_evidence": "使用视觉-语言智能体进行基于物理的世界建模以支持机器人仿真",
+      "canonical_evidence": "使用视觉-语言智能体进行基于物理的世界建模以支持机器人仿真",
+      "llm_tldr_en": "Agentic Real2Sim converts real-world recordings into simulatable twins using vision-language agents, enabling automated physics-based simulation for embodied interaction research including navigation.",
+      "llm_tldr_cn": "针对真实到仿真转换依赖手动调参的问题，本文提出Agentic Real2Sim框架，利用视觉-语言智能体自动从真实交互记录生成可运行的物理仿真场景。该方法可快速构建具身导航所需的仿真环境，大幅降低仿真构建成本，为视觉语言导航研究提供便利。",
+      "llm_tldr": "针对真实到仿真转换依赖手动调参的问题，本文提出Agentic Real2Sim框架，利用视觉-语言智能体自动从真实交互记录生成可运行的物理仿真场景。该方法可快速构建具身导航所需的仿真环境，大幅降低仿真构建成本，为视觉语言导航研究提供便利。",
+      "llm_tags": [
+        "query:vln:composite"
+      ],
+      "matched_query_tag": "query:vln:composite",
+      "matched_query_text": "Papers central to 请你帮我找找vln(vision language navigation)方面的文章, especially work that connects or combines: r; l; vision language navigation; embodied navigation; visual language understanding; instruction following navigation; research on vision language navigation; embodied agents following natural language instructions for navigation.",
+      "matched_requirement_id": "req-composite-vln",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
