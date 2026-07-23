@@ -1,0 +1,262 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-23T21:15:24.119218+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2607.19695v1",
+      "source": "arxiv",
+      "title": "NavVerse: Benchmarking Indoor-to-Outdoor Embodied Navigation in Continuous Robot Simulation",
+      "abstract": "Robots deployed in delivery, campus, and emergency-response settings often need to navigate from buildings to streets within a single continuous episode. Existing benchmarks usually evaluate indoor and outdoor navigation separately, and many abstract away robot execution, leaving exit finding, boundary traversal, adaptation, and kinodynamic failures underexplored. We introduce NavVerse, a physics-enabled benchmark for indoor-to-outdoor embodied navigation. NavVerse contains 100 indoor scenes, 50 urban outdoor scenes, and 50 indoor-to-outdoor scenes, and 10,000 episodes spanning Object Navigation, Vision-and-Language Navigation, and Place Navigation tasks, where agents search for semantic points of interest such as restaurants or banks. Agents are evaluated through executable robot interfaces using task-success, path-efficiency, and safety metrics. Zero-shot experiments with RL, VLA, and modular baselines show that current agents remain far from solving cross-context navigation: end-to-end VLAs obtain the highest zero-shot success, while the modular method provides the strongest safety profile. PlaceNav further reveals a clear drop from outdoor to indoor-to-outdoor scenes, indicating that adaptation remains major bottleneck.",
+      "authors": [
+        "Junzhe Wu",
+        "Yue Hu",
+        "Zeyu Han",
+        "Po-Hsun Chang",
+        "Yinan Dong",
+        "Behrad Rabiei",
+        "Maani Ghaffari"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-07-22T02:53:46+00:00",
+      "link": "https://arxiv.org/pdf/2607.19695v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "includes Vision-and-Language Navigation task in benchmark",
+      "llm_evidence_cn": "基准中包含视觉语言导航任务",
+      "llm_evidence": "基准中包含视觉语言导航任务",
+      "canonical_evidence": "基准中包含视觉语言导航任务",
+      "llm_tldr_en": "Introduces NavVerse, a physics-enabled benchmark with 10,000 episodes for indoor-to-outdoor embodied navigation including Vision-and-Language Navigation tasks, enabling systematic evaluation.",
+      "llm_tldr_cn": "现有基准通常将室内外导航分开评估，且忽略真实机器人执行细节。为此提出NavVerse物理仿真基准，包含100个室内场景、50个城市室外场景和50个室内外过渡场景，设有物体导航、视觉语言导航和地点导航三类任务共10000个episode，可系统评估不同算法在连续跨域导航中的表现。该基准促进了对室内外一体化导航的研究。",
+      "llm_tldr": "现有基准通常将室内外导航分开评估，且忽略真实机器人执行细节。为此提出NavVerse物理仿真基准，包含100个室内场景、50个城市室外场景和50个室内外过渡场景，设有物体导航、视觉语言导航和地点导航三类任务共10000个episode，可系统评估不同算法在连续跨域导航中的表现。该基准促进了对室内外一体化导航的研究。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "vision language navigation",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.19850v1",
+      "source": "arxiv",
+      "title": "SOPD-SocialNav: Selective On-Policy Distillation for Vision-Language Social Navigation",
+      "abstract": "Vision-language models have shown strong potential for social robot navigation by leveraging rich semantic understanding of complex environments and human behaviors. However, large scale VLMs are difficult to deploy on resource-constrained robotic platforms, while lightweight VLMs often lack sufficient social reasoning capability. To address this problem, we propose SOPD-SocialNav, a selective on-policy distillation (SOPD) method that transfers social navigation knowledge from a large teacher VLM to a lightweight student VLM. SOPD introduces an entropy-based token selection mechanism that uses teacher uncertainty to identify socially informative decision tokens, while suppressing gradients from low-entropy tokens corresponding to trivial navigation states. A temperature-controlled Jensen-Shannon divergence objective is then used to align the student and teacher distributions on the selected tokens. Experiments on the SNEI and MUSON benchmarks demonstrate that SOPD consistently outperforms supervised fine-tuning, off-policy distillation, and standard on-policy distillation baselines in action prediction, perception consistency, and reasoning consistency. Real-world deployment on a Scout Mini robot further shows that the distilled model can generate more socially appropriate navigation behaviors in conversational and queuing scenarios. These results suggest that SOPD is an effective strategy for building lightweight yet socially aware VLM-based navigation systems.",
+      "authors": [
+        "Xinyu Zhang",
+        "Zishuo Wang",
+        "Ling Xiao"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-22T07:35:35+00:00",
+      "link": "https://arxiv.org/pdf/2607.19850v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Vision-language social navigation via distillation",
+      "llm_evidence_cn": "基于蒸馏的视觉语言社会导航",
+      "llm_evidence": "基于蒸馏的视觉语言社会导航",
+      "canonical_evidence": "基于蒸馏的视觉语言社会导航",
+      "llm_tldr_en": "Selective on-policy distillation transfers social navigation knowledge from large VLM to lightweight VLM, maintaining reasoning ability.",
+      "llm_tldr_cn": "本文针对社会导航中重量级VLM难以部署而轻量级VLM推理不足的问题，提出选择性在线策略蒸馏（SOPD）。通过熵驱动的令牌选择机制，仅蒸馏社会关键决策信息，在保持轻量模型高效性的同时大幅提升其社会导航能力。该方法直接服务于具身导航中的社交场景。",
+      "llm_tldr": "本文针对社会导航中重量级VLM难以部署而轻量级VLM推理不足的问题，提出选择性在线策略蒸馏（SOPD）。通过熵驱动的令牌选择机制，仅蒸馏社会关键决策信息，在保持轻量模型高效性的同时大幅提升其社会导航能力。该方法直接服务于具身导航中的社交场景。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.19880v1",
+      "source": "arxiv",
+      "title": "EA-Nav: Learning Safe Visual Navigation Policies with Embodiment Awareness",
+      "abstract": "Cross-embodiment navigation is a key challenge in embodied intelligence. Due to differences in embodiment, the same visual observation may imply different actions for different agents, making prediction ambiguous when relying solely on vision. Existing studies mainly rely on reinforcement learning, which requires large-scale interaction and careful reward design, making it difficult to support scalable pretraining and real-world adaptation. In contrast, imitation-learning-based approaches remain limited. To address these challenges, we propose an imitation-learning-based embodiment-aware navigation framework with a modular multi-stage design. In pretraining, we construct a cross-embodiment navigation dataset from Internet videos and introduce embodiment geometry as conditional tokens to reduce action ambiguity under the same observation. In fine-tuning, we design a multimodal information injection mechanism based on a decoupled architecture. Specifically, we design a trajectory augmentation strategy to generate high-risk samples, which are used to train spatial perception and risk-aware correction separately, thereby explicitly incorporating embodiment geometry for safe navigation. Experimental results show that the proposed method effectively improves navigation performance across different embodiment settings, demonstrating the effectiveness of incorporating embodiment geometry into embodied navigation.",
+      "authors": [
+        "Jialu Zhang",
+        "Yong Du",
+        "Xianda Guo",
+        "Shunwang Sun",
+        "Xinqi Liu",
+        "Yue Sun",
+        "Guodong Lu",
+        "Wei Sui",
+        "Jituo Li"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-07-22T08:10:49+00:00",
+      "link": "https://arxiv.org/pdf/2607.19880v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "embodiment-aware visual navigation policy via imitation learning",
+      "llm_evidence_cn": "通过模仿学习实现具身感知的视觉导航策略",
+      "llm_evidence": "通过模仿学习实现具身感知的视觉导航策略",
+      "canonical_evidence": "通过模仿学习实现具身感知的视觉导航策略",
+      "llm_tldr_en": "EA-Nav proposes an imitation-learning framework for cross-embodiment navigation, leveraging internet video data to learn embodiment-aware policies.",
+      "llm_tldr_cn": "跨具身导航因视觉观察对不同智能体含义不同而困难。本文提出基于模仿学习的具身感知导航框架，从互联网视频构建跨具身导航数据集，并引入具身感知模块。多阶段设计包括预训练和适应。实验证明该方法在多种机器人平台上实现了安全有效的导航，优于RL基线，为视觉导航的跨实体迁移提供了新路径。",
+      "llm_tldr": "跨具身导航因视觉观察对不同智能体含义不同而困难。本文提出基于模仿学习的具身感知导航框架，从互联网视频构建跨具身导航数据集，并引入具身感知模块。多阶段设计包括预训练和适应。实验证明该方法在多种机器人平台上实现了安全有效的导航，优于RL基线，为视觉导航的跨实体迁移提供了新路径。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.17574v1",
+      "source": "arxiv",
+      "title": "Predictive Training with Latent Imagination for Visual Quadruped Navigation",
+      "abstract": "Reinforcement-learning navigation policies for legged robots select actions reactively from current observations and short-term memory, with limited capacity to anticipate how moving obstacles will evolve in the near future. In dynamic environments, this reactivity causes the robot to respond too late because collision risk depends on short-horizon scene structure rather than on current obstacle positions alone. Lightweight predictive supervision applied to the policy's recurrent state during training can encode anticipatory obstacle dynamics without modifying the inference-time controller. We augment a reactive LSTM-SRU navigation backbone with an auxiliary JEPA-style predictor and SIGReg regularization: during training, the predictor supervises the deterministic hidden state to anticipate its own next state; at inference, it is fully discarded, incurring zero additional computational cost. On simulated and real-world navigation benchmarks with dynamic obstacles, our method substantially improves navigation success while reducing collision rates through the predictive training signal alone, without additional inference-time parameters. Real-robot deployment on a Unitree Go2 demonstrates zero-shot sim-to-real transfer: the controller navigates cluttered indoor and dynamic outdoor environments without fine-tuning, with evasive behavior consistent with the collision reduction observed in simulation.",
+      "authors": [
+        "Yancheng Zhu",
+        "Wanli Ma",
+        "Chen Han",
+        "Irvin Haozhe Zhan",
+        "Bingfeng Qin",
+        "Yixin Xu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-07-20T05:33:22+00:00",
+      "link": "https://arxiv.org/pdf/2607.17574v1",
+      "tags": [
+        "keyword:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "visual navigation for quadruped robots with predictive training",
+      "llm_evidence_cn": "四足机器人的视觉导航与预测训练",
+      "llm_evidence": "四足机器人的视觉导航与预测训练",
+      "canonical_evidence": "四足机器人的视觉导航与预测训练",
+      "llm_tldr_en": "Augments a reactive LSTM-SRU navigation policy with a JEPA-style predictor during training to anticipate obstacle dynamics, improving collision avoidance in dynamic environments without modifying inference-time controller.",
+      "llm_tldr_cn": "该论文针对强化学习导航策略因缺乏预测能力而在动态环境中响应迟缓的问题，提出在训练时使用JEPA风格的预测器对策略的循环状态进行监督，使其编码短期障碍物动态。实验表明该方法在不增加推理成本的情况下显著降低了碰撞率。",
+      "llm_tldr": "该论文针对强化学习导航策略因缺乏预测能力而在动态环境中响应迟缓的问题，提出在训练时使用JEPA风格的预测器对策略的循环状态进行监督，使其编码短期障碍物动态。实验表明该方法在不增加推理成本的情况下显著降低了碰撞率。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.19971v1",
+      "source": "arxiv",
+      "title": "Unified Prediction and Planning via Conflict-Aware Disjoint Parameter Training",
+      "abstract": "Accurate motion prediction of surrounding agents and safe motion planning are two closely coupled key tasks for social robot navigation in crowded environments. Deploying these systems on resource-constrained edge devices necessitates compact, unified models that can perform both tasks simultaneously. However, within these compact shared encoders, recent unified models often overlook severe representational conflicts that arise from the distinct objectives of predicting neighbor behaviors versus ego-centric safety planning. To address this issue, we first identify the Skill Conflict$\\unicode{x2014}$a phenomenon where overlapping parameter assignments cause distinct tasks to compete for the same weights, preventing the model from fully specializing in individual skills. To resolve this, we propose a novel model-merging-based framework, Disjoint Parameter Training (DPT). DPT mitigates performance degradation caused by Skill Conflict through distributed parameter learning, which separates the key parameter regions of each task while preserving their core capabilities prior to merging. In addition, we observe that sparse merging, which selectively integrates only the most influential parameters for each task rather than combining all task-specific parameters, yields optimal performance by preventing interference among adjacent features and concentrating representational capacity. DPT can be applied in parallel with a variety of merging methods. Evaluated on standard crowd navigation benchmarks (JRDB and JTA), our framework demonstrates superior performance, validating its versatility and effectiveness for safe, resource-efficient robot navigation.",
+      "authors": [
+        "Taewon Seo",
+        "Seonae Jeon",
+        "Giwon Lee",
+        "Kuk-Jin Yoon",
+        "Daehee Park"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-07-22T09:54:22+00:00",
+      "link": "https://arxiv.org/pdf/2607.19971v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "social robot navigation with prediction and planning",
+      "llm_evidence_cn": "社交机器人导航中的预测与规划",
+      "llm_evidence": "社交机器人导航中的预测与规划",
+      "canonical_evidence": "社交机器人导航中的预测与规划",
+      "llm_tldr_en": "Identifies skill conflict in shared encoders for navigation prediction and planning, proposing conflict-aware disjoint parameter training to resolve it for efficient edge deployment.",
+      "llm_tldr_cn": "在社交机器人导航中，紧凑统一模型面临预测邻居行为和自我安全规划之间的表征冲突导致性能下降。本文首先识别了技能冲突现象，并提出冲突感知的分离参数训练方法，在共享编码器内为不同任务分配独立参数子集，避免竞争。在多个导航数据集上验证该方法在保持参数高效的同时，提升了预测和规划性能，为边缘设备上的统一导航模型提供了可行方案。",
+      "llm_tldr": "在社交机器人导航中，紧凑统一模型面临预测邻居行为和自我安全规划之间的表征冲突导致性能下降。本文首先识别了技能冲突现象，并提出冲突感知的分离参数训练方法，在共享编码器内为不同任务分配独立参数子集，避免竞争。在多个导航数据集上验证该方法在保持参数高效的同时，提升了预测和规划性能，为边缘设备上的统一导航模型提供了可行方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "embodied navigation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.20061v1",
+      "source": "arxiv",
+      "title": "ReferTrack: Referring Then Tracking for Embodied Visual Tracking",
+      "abstract": "Embodied visual tracking (EVT) requires a mobile agent to continuously follow a specific target described in natural language using only onboard vision. While recent vision-language-action (VLA) policies unify target identification and trajectory planning, their chain-of-thought (CoT) reasoning often operates in abstract spatial latents that are difficult to supervise and weakly aligned with explicit image-space detections. To address this, we introduce ReferTrack, a referring-then-tracking paradigm that grounds EVT using a single forward-facing camera. Our model first selects the target from an indexed set of bounding boxes, then decodes tracking waypoints conditioned on this image-grounded decision. To preserve target motion cues over time, ReferTrack maintains a sliding-window queue of previously selected bounding boxes, injecting their geometric features into the visual history via temporal-viewpoint-bbox indicator (TVBI) tokens. We further enhance target identification by co-training on a custom Refer-QA dataset. On EVT-Bench, ReferTrack achieves state-of-the-art single-view performance with success rates of 89.4%, 73.3%, and 74.1% on the single-target, distracted, and ambiguity tracking splits, respectively -- matching or even surpassing several multi-camera baselines on identification-heavy tasks. Finally, real-world deployments on legged and humanoid robots validate its robust sim-to-real transfer capabilities. Code is available at https://github.com/MedlarTea/referTrack.",
+      "authors": [
+        "Hanjing Ye",
+        "Tianle Zeng",
+        "Jiazhao Zhang",
+        "Shaoan Wang",
+        "Zibo Zhang",
+        "Weisi Situ",
+        "Yuchen Zhou",
+        "Yonggen Ling",
+        "Hong Zhang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-22T12:05:13+00:00",
+      "link": "https://arxiv.org/pdf/2607.20061v1",
+      "tags": [
+        "keyword:VLN",
+        "query:VLN"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "embodied visual tracking following natural language instructions",
+      "llm_evidence_cn": "遵循自然语言指令的具身视觉跟踪",
+      "llm_evidence": "遵循自然语言指令的具身视觉跟踪",
+      "canonical_evidence": "遵循自然语言指令的具身视觉跟踪",
+      "llm_tldr_en": "Proposes ReferTrack, a referring-then-tracking paradigm for embodied visual tracking that selects a target bounding box using language and decodes tracking waypoints conditioned on it.",
+      "llm_tldr_cn": "具身视觉跟踪要求移动代理根据自然语言描述持续跟随目标。现有方法在抽象空间上推理，难以与图像空间检测对齐。本文提出先指认后跟踪的范式ReferTrack，首先根据语言从索引框集合中选择目标，然后基于图像接地决策解码跟踪路点。通过维护目标运动线索，该方法在多个基准上实现了更稳定和精确的跟踪，为具身跟踪任务提供了更可靠的语言引导方案。",
+      "llm_tldr": "具身视觉跟踪要求移动代理根据自然语言描述持续跟随目标。现有方法在抽象空间上推理，难以与图像空间检测对齐。本文提出先指认后跟踪的范式ReferTrack，首先根据语言从索引框集合中选择目标，然后基于图像接地决策解码跟踪路点。通过维护目标运动线索，该方法在多个基准上实现了更稳定和精确的跟踪，为具身跟踪任务提供了更可靠的语言引导方案。",
+      "llm_tags": [
+        "query:vln"
+      ],
+      "matched_query_tag": "query:vln",
+      "matched_query_text": "instruction following navigation",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
